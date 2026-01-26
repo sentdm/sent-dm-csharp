@@ -36,9 +36,9 @@ public interface ISentDmClient : IDisposable
     /// <inheritdoc cref="ClientOptions.Timeout" />
     TimeSpan? Timeout { get; init; }
 
-    string AdminAuthScheme { get; init; }
+    string ApiKey { get; init; }
 
-    string CustomerAuthScheme { get; init; }
+    string SenderID { get; init; }
 
     /// <summary>
     /// Returns a view of this service that provides access to raw HTTP responses
@@ -84,9 +84,9 @@ public interface ISentDmClientWithRawResponse : IDisposable
     /// <inheritdoc cref="ClientOptions.Timeout" />
     TimeSpan? Timeout { get; init; }
 
-    string AdminAuthScheme { get; init; }
+    string ApiKey { get; init; }
 
-    string CustomerAuthScheme { get; init; }
+    string SenderID { get; init; }
 
     /// <summary>
     /// Returns a view of this service with the given option modifications applied.

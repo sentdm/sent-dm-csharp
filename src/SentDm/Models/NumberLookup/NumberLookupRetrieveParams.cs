@@ -29,6 +29,26 @@ public record class NumberLookupRetrieveParams : ParamsBase
         init { this._rawQueryData.Set("phoneNumber", value); }
     }
 
+    public required string XApiKey
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNotNullClass<string>("x-api-key");
+        }
+        init { this._rawHeaderData.Set("x-api-key", value); }
+    }
+
+    public required string XSenderID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNotNullClass<string>("x-sender-id");
+        }
+        init { this._rawHeaderData.Set("x-sender-id", value); }
+    }
+
     public NumberLookupRetrieveParams() { }
 
 #pragma warning disable CS8618

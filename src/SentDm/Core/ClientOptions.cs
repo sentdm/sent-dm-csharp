@@ -83,29 +83,29 @@ public record struct ClientOptions()
     /// </summary>
     public TimeSpan? Timeout { get; set; }
 
-    Lazy<string> _adminAuthScheme = new(() =>
-        Environment.GetEnvironmentVariable("SENT_DM_ADMIN_AUTH_SCHEME")
+    Lazy<string> _apiKey = new(() =>
+        Environment.GetEnvironmentVariable("SENT_DM_API_KEY")
         ?? throw new SentDmInvalidDataException(
-            string.Format("{0} cannot be null", nameof(AdminAuthScheme)),
-            new ArgumentNullException(nameof(AdminAuthScheme))
+            string.Format("{0} cannot be null", nameof(ApiKey)),
+            new ArgumentNullException(nameof(ApiKey))
         )
     );
-    public string AdminAuthScheme
+    public string ApiKey
     {
-        readonly get { return _adminAuthScheme.Value; }
-        set { _adminAuthScheme = new(() => value); }
+        readonly get { return _apiKey.Value; }
+        set { _apiKey = new(() => value); }
     }
 
-    Lazy<string> _customerAuthScheme = new(() =>
-        Environment.GetEnvironmentVariable("SENT_DM_CUSTOMER_AUTH_SCHEME")
+    Lazy<string> _senderID = new(() =>
+        Environment.GetEnvironmentVariable("SENT_DM_SENDER_ID")
         ?? throw new SentDmInvalidDataException(
-            string.Format("{0} cannot be null", nameof(CustomerAuthScheme)),
-            new ArgumentNullException(nameof(CustomerAuthScheme))
+            string.Format("{0} cannot be null", nameof(SenderID)),
+            new ArgumentNullException(nameof(SenderID))
         )
     );
-    public string CustomerAuthScheme
+    public string SenderID
     {
-        readonly get { return _customerAuthScheme.Value; }
-        set { _customerAuthScheme = new(() => value); }
+        readonly get { return _senderID.Value; }
+        set { _senderID = new(() => value); }
     }
 }

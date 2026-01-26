@@ -1,4 +1,5 @@
 using System;
+using System.Net.Http;
 using SentDm.Models.Messages;
 
 namespace SentDm.Tests.Models.Messages;
@@ -8,25 +9,33 @@ public class MessageRetrieveParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new MessageRetrieveParams { ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8" };
+        var parameters = new MessageRetrieveParams
+        {
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            XApiKey = "",
+            XSenderID = "00000000-0000-0000-0000-000000000000",
+        };
 
         string expectedID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8";
+        string expectedXApiKey = "";
+        string expectedXSenderID = "00000000-0000-0000-0000-000000000000";
 
         Assert.Equal(expectedID, parameters.ID);
+        Assert.Equal(expectedXApiKey, parameters.XApiKey);
+        Assert.Equal(expectedXSenderID, parameters.XSenderID);
     }
 
     [Fact]
     public void Url_Works()
     {
-        MessageRetrieveParams parameters = new() { ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8" };
+        MessageRetrieveParams parameters = new()
+        {
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            XApiKey = "",
+            XSenderID = "00000000-0000-0000-0000-000000000000",
+        };
 
-        var url = parameters.Url(
-            new()
-            {
-                AdminAuthScheme = "My Admin Auth Scheme",
-                CustomerAuthScheme = "My Customer Auth Scheme",
-            }
-        );
+        var url = parameters.Url(new() { ApiKey = "My API Key", SenderID = "My Sender ID" });
 
         Assert.Equal(
             new Uri("https://api.sent.dm/v2/messages/7ba7b820-9dad-11d1-80b4-00c04fd430c8"),
@@ -35,9 +44,37 @@ public class MessageRetrieveParamsTest : TestBase
     }
 
     [Fact]
+    public void AddHeadersToRequest_Works()
+    {
+        HttpRequestMessage requestMessage = new();
+        MessageRetrieveParams parameters = new()
+        {
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            XApiKey = "",
+            XSenderID = "00000000-0000-0000-0000-000000000000",
+        };
+
+        parameters.AddHeadersToRequest(
+            requestMessage,
+            new() { ApiKey = "My API Key", SenderID = "My Sender ID" }
+        );
+
+        Assert.Equal([""], requestMessage.Headers.GetValues("x-api-key"));
+        Assert.Equal(
+            ["00000000-0000-0000-0000-000000000000"],
+            requestMessage.Headers.GetValues("x-sender-id")
+        );
+    }
+
+    [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new MessageRetrieveParams { ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8" };
+        var parameters = new MessageRetrieveParams
+        {
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            XApiKey = "",
+            XSenderID = "00000000-0000-0000-0000-000000000000",
+        };
 
         MessageRetrieveParams copied = new(parameters);
 

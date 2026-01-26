@@ -51,7 +51,7 @@ public interface IOrganizationService
     /// <inheritdoc cref="RetrieveProfiles(OrganizationRetrieveProfilesParams, CancellationToken)"/>
     Task<OrganizationRetrieveProfilesResponse> RetrieveProfiles(
         string orgID,
-        OrganizationRetrieveProfilesParams? parameters = null,
+        OrganizationRetrieveProfilesParams parameters,
         CancellationToken cancellationToken = default
     );
 }
@@ -92,7 +92,7 @@ public interface IOrganizationServiceWithRawResponse
     /// <inheritdoc cref="RetrieveProfiles(OrganizationRetrieveProfilesParams, CancellationToken)"/>
     Task<HttpResponse<OrganizationRetrieveProfilesResponse>> RetrieveProfiles(
         string orgID,
-        OrganizationRetrieveProfilesParams? parameters = null,
+        OrganizationRetrieveProfilesParams parameters,
         CancellationToken cancellationToken = default
     );
 }

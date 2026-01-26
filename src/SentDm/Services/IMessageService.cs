@@ -40,7 +40,7 @@ public interface IMessageService
     /// <inheritdoc cref="Retrieve(MessageRetrieveParams, CancellationToken)"/>
     Task<MessageRetrieveResponse> Retrieve(
         string id,
-        MessageRetrieveParams? parameters = null,
+        MessageRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
@@ -102,7 +102,7 @@ public interface IMessageServiceWithRawResponse
     /// <inheritdoc cref="Retrieve(MessageRetrieveParams, CancellationToken)"/>
     Task<HttpResponse<MessageRetrieveResponse>> Retrieve(
         string id,
-        MessageRetrieveParams? parameters = null,
+        MessageRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 

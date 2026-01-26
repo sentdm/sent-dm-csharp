@@ -22,6 +22,26 @@ public record class MessageRetrieveParams : ParamsBase
 {
     public string? ID { get; init; }
 
+    public required string XApiKey
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNotNullClass<string>("x-api-key");
+        }
+        init { this._rawHeaderData.Set("x-api-key", value); }
+    }
+
+    public required string XSenderID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNotNullClass<string>("x-sender-id");
+        }
+        init { this._rawHeaderData.Set("x-sender-id", value); }
+    }
+
     public MessageRetrieveParams() { }
 
 #pragma warning disable CS8618

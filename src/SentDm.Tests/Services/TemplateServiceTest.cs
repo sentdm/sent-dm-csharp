@@ -161,6 +161,8 @@ public class TemplateServiceTest : TestBase
                         ],
                     },
                 },
+                XApiKey = "",
+                XSenderID = "00000000-0000-0000-0000-000000000000",
             },
             TestContext.Current.CancellationToken
         );
@@ -172,7 +174,7 @@ public class TemplateServiceTest : TestBase
     {
         var templateResponse = await this.client.Templates.Retrieve(
             "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            new(),
+            new() { XApiKey = "", XSenderID = "00000000-0000-0000-0000-000000000000" },
             TestContext.Current.CancellationToken
         );
         templateResponse.Validate();
@@ -182,7 +184,13 @@ public class TemplateServiceTest : TestBase
     public async Task List_Works()
     {
         var templates = await this.client.Templates.List(
-            new() { Page = 0, PageSize = 0 },
+            new()
+            {
+                Page = 0,
+                PageSize = 0,
+                XApiKey = "",
+                XSenderID = "00000000-0000-0000-0000-000000000000",
+            },
             TestContext.Current.CancellationToken
         );
         templates.Validate();
@@ -193,7 +201,7 @@ public class TemplateServiceTest : TestBase
     {
         await this.client.Templates.Delete(
             "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            new(),
+            new() { XApiKey = "", XSenderID = "00000000-0000-0000-0000-000000000000" },
             TestContext.Current.CancellationToken
         );
     }

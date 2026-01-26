@@ -8,7 +8,12 @@ public class NumberLookupServiceTest : TestBase
     public async Task Retrieve_Works()
     {
         var numberLookup = await this.client.NumberLookup.Retrieve(
-            new() { PhoneNumber = "phoneNumber" },
+            new()
+            {
+                PhoneNumber = "phoneNumber",
+                XApiKey = "",
+                XSenderID = "00000000-0000-0000-0000-000000000000",
+            },
             TestContext.Current.CancellationToken
         );
         numberLookup.Validate();

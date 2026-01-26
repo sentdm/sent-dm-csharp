@@ -61,12 +61,10 @@ public sealed class TemplateService : ITemplateService
     /// <inheritdoc/>
     public Task<TemplateResponse> Retrieve(
         string id,
-        TemplateRetrieveParams? parameters = null,
+        TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        parameters ??= new();
-
         return this.Retrieve(parameters with { ID = id }, cancellationToken);
     }
 
@@ -94,12 +92,10 @@ public sealed class TemplateService : ITemplateService
     /// <inheritdoc/>
     public async Task Delete(
         string id,
-        TemplateDeleteParams? parameters = null,
+        TemplateDeleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        parameters ??= new();
-
         await this.Delete(parameters with { ID = id }, cancellationToken).ConfigureAwait(false);
     }
 }
@@ -184,12 +180,10 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
     /// <inheritdoc/>
     public Task<HttpResponse<TemplateResponse>> Retrieve(
         string id,
-        TemplateRetrieveParams? parameters = null,
+        TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        parameters ??= new();
-
         return this.Retrieve(parameters with { ID = id }, cancellationToken);
     }
 
@@ -243,12 +237,10 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
     /// <inheritdoc/>
     public Task<HttpResponse> Delete(
         string id,
-        TemplateDeleteParams? parameters = null,
+        TemplateDeleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        parameters ??= new();
-
         return this.Delete(parameters with { ID = id }, cancellationToken);
     }
 }
