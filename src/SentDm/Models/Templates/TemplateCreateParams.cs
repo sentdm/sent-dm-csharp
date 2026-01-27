@@ -41,26 +41,6 @@ public record class TemplateCreateParams : ParamsBase
         init { this._rawBodyData.Set("definition", value); }
     }
 
-    public required string XApiKey
-    {
-        get
-        {
-            this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNotNullClass<string>("x-api-key");
-        }
-        init { this._rawHeaderData.Set("x-api-key", value); }
-    }
-
-    public required string XSenderID
-    {
-        get
-        {
-            this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNotNullClass<string>("x-sender-id");
-        }
-        init { this._rawHeaderData.Set("x-sender-id", value); }
-    }
-
     /// <summary>
     /// The template category (e.g., MARKETING, UTILITY, AUTHENTICATION). Can only
     /// be set when creating a new template. If not provided, will be auto-generated

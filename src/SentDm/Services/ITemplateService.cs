@@ -51,7 +51,7 @@ public interface ITemplateService
     /// <inheritdoc cref="Retrieve(TemplateRetrieveParams, CancellationToken)"/>
     Task<TemplateResponse> Retrieve(
         string id,
-        TemplateRetrieveParams parameters,
+        TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -79,7 +79,7 @@ public interface ITemplateService
     /// <inheritdoc cref="Delete(TemplateDeleteParams, CancellationToken)"/>
     Task Delete(
         string id,
-        TemplateDeleteParams parameters,
+        TemplateDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }
@@ -118,7 +118,7 @@ public interface ITemplateServiceWithRawResponse
     /// <inheritdoc cref="Retrieve(TemplateRetrieveParams, CancellationToken)"/>
     Task<HttpResponse<TemplateResponse>> Retrieve(
         string id,
-        TemplateRetrieveParams parameters,
+        TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -143,7 +143,7 @@ public interface ITemplateServiceWithRawResponse
     /// <inheritdoc cref="Delete(TemplateDeleteParams, CancellationToken)"/>
     Task<HttpResponse> Delete(
         string id,
-        TemplateDeleteParams parameters,
+        TemplateDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }

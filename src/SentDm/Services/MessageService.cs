@@ -49,10 +49,12 @@ public sealed class MessageService : IMessageService
     /// <inheritdoc/>
     public Task<MessageRetrieveResponse> Retrieve(
         string id,
-        MessageRetrieveParams parameters,
+        MessageRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.Retrieve(parameters with { ID = id }, cancellationToken);
     }
 
@@ -136,10 +138,12 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     /// <inheritdoc/>
     public Task<HttpResponse<MessageRetrieveResponse>> Retrieve(
         string id,
-        MessageRetrieveParams parameters,
+        MessageRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.Retrieve(parameters with { ID = id }, cancellationToken);
     }
 

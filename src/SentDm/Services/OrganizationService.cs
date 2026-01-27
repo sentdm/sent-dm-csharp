@@ -71,10 +71,12 @@ public sealed class OrganizationService : IOrganizationService
     /// <inheritdoc/>
     public Task<OrganizationRetrieveProfilesResponse> RetrieveProfiles(
         string orgID,
-        OrganizationRetrieveProfilesParams parameters,
+        OrganizationRetrieveProfilesParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.RetrieveProfiles(parameters with { OrgID = orgID }, cancellationToken);
     }
 }
@@ -171,10 +173,12 @@ public sealed class OrganizationServiceWithRawResponse : IOrganizationServiceWit
     /// <inheritdoc/>
     public Task<HttpResponse<OrganizationRetrieveProfilesResponse>> RetrieveProfiles(
         string orgID,
-        OrganizationRetrieveProfilesParams parameters,
+        OrganizationRetrieveProfilesParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.RetrieveProfiles(parameters with { OrgID = orgID }, cancellationToken);
     }
 }
