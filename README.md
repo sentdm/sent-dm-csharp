@@ -7,7 +7,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 ## Installation
 
 ```bash
-git clone git@github.com:stainless-sdks/sent-dm-csharp.git
+git clone git@github.com:sentdm/sent-dm-csharp.git
 dotnet add reference sent-dm-csharp/src/SentDm
 ```
 
@@ -259,4 +259,4 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/sent-dm-csharp/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/sentdm/sent-dm-csharp/issues) with questions, bugs, or suggestions.
