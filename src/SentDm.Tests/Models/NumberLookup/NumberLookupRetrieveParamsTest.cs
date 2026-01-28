@@ -20,13 +20,7 @@ public class NumberLookupRetrieveParamsTest : TestBase
     {
         NumberLookupRetrieveParams parameters = new() { PhoneNumber = "phoneNumber" };
 
-        var url = parameters.Url(
-            new()
-            {
-                AdminAuthScheme = "My Admin Auth Scheme",
-                CustomerAuthScheme = "My Customer Auth Scheme",
-            }
-        );
+        var url = parameters.Url(new() { ApiKey = "My API Key", SenderID = "My Sender ID" });
 
         Assert.Equal(new Uri("https://api.sent.dm/v2/number-lookup?phoneNumber=phoneNumber"), url);
     }

@@ -7,7 +7,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 ## Installation
 
 ```bash
-git clone git@github.com:sentdm/sent-dm-csharp.git
+git clone git@github.com:stainless-sdks/sent-dm-csharp.git
 dotnet add reference sent-dm-csharp/src/SentDm
 ```
 
@@ -20,14 +20,23 @@ This library requires .NET Standard 2.0 or later.
 See the [`examples`](examples) directory for complete and runnable examples.
 
 ```csharp
+using System.Collections.Generic;
 using SentDm;
-using SentDm.Models.Templates;
+using SentDm.Models.Messages;
 
 SentDmClient client = new();
 
-TemplateDeleteParams parameters = new() { ID = "REPLACE_ME" };
+MessageSendToPhoneParams parameters = new()
+{
+    PhoneNumber = "+1234567890",
+    TemplateID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+    TemplateVariables = new Dictionary<string, string>()
+    {
+        { "name", "John Doe" }, { "order_id", "12345" }
+    },
+};
 
-await client.Templates.Delete(parameters);
+await client.Messages.SendToPhone(parameters);
 ```
 
 ## Client configuration
@@ -37,7 +46,7 @@ Configure the client using environment variables:
 ```csharp
 using SentDm;
 
-// Configured using the SENT_DM_ADMIN_AUTH_SCHEME, SENT_DM_CUSTOMER_AUTH_SCHEME and SENT_DM_BASE_URL environment variables
+// Configured using the SENT_DM_API_KEY, SENT_DM_SENDER_ID and SENT_DM_BASE_URL environment variables
 SentDmClient client = new();
 ```
 
@@ -48,8 +57,8 @@ using SentDm;
 
 SentDmClient client = new()
 {
-    AdminAuthScheme = "My Admin Auth Scheme",
-    CustomerAuthScheme = "My Customer Auth Scheme",
+    ApiKey = "My API Key",
+    SenderID = "My Sender ID",
 };
 ```
 
@@ -57,11 +66,11 @@ Or using a combination of the two approaches.
 
 See this table for the available options:
 
-| Property             | Environment variable           | Required | Default value           |
-| -------------------- | ------------------------------ | -------- | ----------------------- |
-| `AdminAuthScheme`    | `SENT_DM_ADMIN_AUTH_SCHEME`    | true     | -                       |
-| `CustomerAuthScheme` | `SENT_DM_CUSTOMER_AUTH_SCHEME` | true     | -                       |
-| `BaseUrl`            | `SENT_DM_BASE_URL`             | true     | `"https://api.sent.dm"` |
+| Property   | Environment variable | Required | Default value           |
+| ---------- | -------------------- | -------- | ----------------------- |
+| `ApiKey`   | `SENT_DM_API_KEY`    | true     | -                       |
+| `SenderID` | `SENT_DM_SENDER_ID`  | true     | -                       |
+| `BaseUrl`  | `SENT_DM_BASE_URL`   | true     | `"https://api.sent.dm"` |
 
 ### Modifying configuration
 
@@ -78,7 +87,7 @@ await client
             Timeout = TimeSpan.FromSeconds(42),
         }
     )
-    .Templates.Delete(parameters);
+    .Messages.SendToPhone(parameters);
 ```
 
 Using a [`with` expression](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/with-expression) makes it easy to construct the modified options.
@@ -98,7 +107,7 @@ The SDK defines methods that deserialize responses into instances of C# classes.
 To access this data, prefix any HTTP method call on a client or service with `WithRawResponse`:
 
 ```csharp
-var response = await client.WithRawResponse.Templates.Delete(parameters);
+var response = await client.WithRawResponse.Messages.SendToPhone(parameters);
 var statusCode = response.StatusCode;
 var headers = response.Headers;
 ```
@@ -174,7 +183,7 @@ await client
     .WithOptions(options =>
         options with { MaxRetries = 3 }
     )
-    .Templates.Delete(parameters);
+    .Messages.SendToPhone(parameters);
 ```
 
 ### Timeouts
@@ -199,7 +208,7 @@ await client
     .WithOptions(options =>
         options with { Timeout = TimeSpan.FromSeconds(42) }
     )
-    .Templates.Delete(parameters);
+    .Messages.SendToPhone(parameters);
 ```
 
 ## Undocumented API functionality
@@ -250,4 +259,4 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/sentdm/sent-dm-csharp/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/sent-dm-csharp/issues) with questions, bugs, or suggestions.

@@ -106,13 +106,7 @@ public class UserInviteParamsTest : TestBase
     {
         UserInviteParams parameters = new() { CustomerID = "550e8400-e29b-41d4-a716-446655440000" };
 
-        var url = parameters.Url(
-            new()
-            {
-                AdminAuthScheme = "My Admin Auth Scheme",
-                CustomerAuthScheme = "My Customer Auth Scheme",
-            }
-        );
+        var url = parameters.Url(new() { ApiKey = "My API Key", SenderID = "My Sender ID" });
 
         Assert.Equal(
             new Uri(

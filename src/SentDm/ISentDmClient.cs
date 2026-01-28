@@ -36,9 +36,15 @@ public interface ISentDmClient : IDisposable
     /// <inheritdoc cref="ClientOptions.Timeout" />
     TimeSpan? Timeout { get; init; }
 
-    string AdminAuthScheme { get; init; }
+    /// <summary>
+    /// Customer API key for authentication
+    /// </summary>
+    string ApiKey { get; init; }
 
-    string CustomerAuthScheme { get; init; }
+    /// <summary>
+    /// Customer sender ID (GUID) identifying the customer account
+    /// </summary>
+    string SenderID { get; init; }
 
     /// <summary>
     /// Returns a view of this service that provides access to raw HTTP responses
@@ -84,9 +90,15 @@ public interface ISentDmClientWithRawResponse : IDisposable
     /// <inheritdoc cref="ClientOptions.Timeout" />
     TimeSpan? Timeout { get; init; }
 
-    string AdminAuthScheme { get; init; }
+    /// <summary>
+    /// Customer API key for authentication
+    /// </summary>
+    string ApiKey { get; init; }
 
-    string CustomerAuthScheme { get; init; }
+    /// <summary>
+    /// Customer sender ID (GUID) identifying the customer account
+    /// </summary>
+    string SenderID { get; init; }
 
     /// <summary>
     /// Returns a view of this service with the given option modifications applied.

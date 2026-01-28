@@ -77,13 +77,7 @@ public class MessageSendToPhoneParamsTest : TestBase
             TemplateID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
         };
 
-        var url = parameters.Url(
-            new()
-            {
-                AdminAuthScheme = "My Admin Auth Scheme",
-                CustomerAuthScheme = "My Customer Auth Scheme",
-            }
-        );
+        var url = parameters.Url(new() { ApiKey = "My API Key", SenderID = "My Sender ID" });
 
         Assert.Equal(new Uri("https://api.sent.dm/v2/messages/phone"), url);
     }

@@ -12,9 +12,9 @@ public class CustomerUserTest : TestBase
     {
         var model = new CustomerUser
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Email = "email",
             InvitationSentAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             InvitationToken = "invitationToken",
@@ -26,9 +26,9 @@ public class CustomerUserTest : TestBase
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
-        string expectedID = "id";
+        string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
-        string expectedCustomerID = "customerId";
+        string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedEmail = "email";
         DateTimeOffset expectedInvitationSentAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedInvitationToken = "invitationToken";
@@ -60,9 +60,9 @@ public class CustomerUserTest : TestBase
     {
         var model = new CustomerUser
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Email = "email",
             InvitationSentAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             InvitationToken = "invitationToken",
@@ -88,9 +88,9 @@ public class CustomerUserTest : TestBase
     {
         var model = new CustomerUser
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Email = "email",
             InvitationSentAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             InvitationToken = "invitationToken",
@@ -109,9 +109,9 @@ public class CustomerUserTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        string expectedID = "id";
+        string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
-        string expectedCustomerID = "customerId";
+        string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedEmail = "email";
         DateTimeOffset expectedInvitationSentAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedInvitationToken = "invitationToken";
@@ -143,9 +143,9 @@ public class CustomerUserTest : TestBase
     {
         var model = new CustomerUser
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Email = "email",
             InvitationSentAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             InvitationToken = "invitationToken",
@@ -269,9 +269,9 @@ public class CustomerUserTest : TestBase
     {
         var model = new CustomerUser
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Email = "email",
             Name = "name",
             Role = "role",
@@ -295,9 +295,9 @@ public class CustomerUserTest : TestBase
     {
         var model = new CustomerUser
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Email = "email",
             Name = "name",
             Role = "role",
@@ -312,9 +312,9 @@ public class CustomerUserTest : TestBase
     {
         var model = new CustomerUser
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Email = "email",
             Name = "name",
             Role = "role",
@@ -344,9 +344,9 @@ public class CustomerUserTest : TestBase
     {
         var model = new CustomerUser
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Email = "email",
             Name = "name",
             Role = "role",
@@ -367,9 +367,9 @@ public class CustomerUserTest : TestBase
     {
         var model = new CustomerUser
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Email = "email",
             InvitationSentAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             InvitationToken = "invitationToken",

@@ -22,13 +22,7 @@ public class ContactListParamsTest : TestBase
     {
         ContactListParams parameters = new() { Page = 0, PageSize = 0 };
 
-        var url = parameters.Url(
-            new()
-            {
-                AdminAuthScheme = "My Admin Auth Scheme",
-                CustomerAuthScheme = "My Customer Auth Scheme",
-            }
-        );
+        var url = parameters.Url(new() { ApiKey = "My API Key", SenderID = "My Sender ID" });
 
         Assert.Equal(new Uri("https://api.sent.dm/v2/contacts?page=0&pageSize=0"), url);
     }

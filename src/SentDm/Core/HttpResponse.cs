@@ -43,7 +43,7 @@ public class HttpResponse : IDisposable
 
     public override bool Equals(object? obj)
     {
-        if (obj is not global::SentDm.Core.HttpResponse other)
+        if (obj is not HttpResponse other)
         {
             return false;
         }
@@ -109,7 +109,7 @@ public class HttpResponse : IDisposable
     }
 }
 
-public sealed class HttpResponse<T> : global::SentDm.Core.HttpResponse
+public sealed class HttpResponse<T> : HttpResponse
 {
     readonly Func<Threading::CancellationToken, Task<T>> _deserialize;
 
@@ -120,7 +120,7 @@ public sealed class HttpResponse<T> : global::SentDm.Core.HttpResponse
 
     [SetsRequiredMembers]
     internal HttpResponse(
-        global::SentDm.Core.HttpResponse response,
+        HttpResponse response,
         Func<Threading::CancellationToken, Task<T>> deserialize
     )
         : this(deserialize)
@@ -139,7 +139,7 @@ public sealed class HttpResponse<T> : global::SentDm.Core.HttpResponse
     }
 }
 
-public sealed class StreamingHttpResponse<T> : global::SentDm.Core.HttpResponse
+public sealed class StreamingHttpResponse<T> : HttpResponse
 {
     readonly Func<Threading::CancellationToken, IAsyncEnumerable<T>> _enumerate;
 
@@ -152,7 +152,7 @@ public sealed class StreamingHttpResponse<T> : global::SentDm.Core.HttpResponse
 
     [SetsRequiredMembers]
     internal StreamingHttpResponse(
-        global::SentDm.Core.HttpResponse response,
+        HttpResponse response,
         Func<Threading::CancellationToken, IAsyncEnumerable<T>> enumerate
     )
         : this(enumerate)
