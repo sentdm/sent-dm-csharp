@@ -13,12 +13,12 @@ public class MessageRetrieveResponseTest : TestBase
     {
         var model = new MessageRetrieveResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
-            ContactID = "contactId",
+            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CorrectedPrice = 0,
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Events =
             [
                 new()
@@ -40,16 +40,16 @@ public class MessageRetrieveResponseTest : TestBase
             RegionCode = "regionCode",
             Status = "status",
             TemplateCategory = "templateCategory",
-            TemplateID = "templateId",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "templateName",
         };
 
-        string expectedID = "id";
+        string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedChannel = "channel";
-        string expectedContactID = "contactId";
+        string expectedContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         double expectedCorrectedPrice = 0;
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
-        string expectedCustomerID = "customerId";
+        string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         List<Event> expectedEvents =
         [
             new()
@@ -71,7 +71,7 @@ public class MessageRetrieveResponseTest : TestBase
         string expectedRegionCode = "regionCode";
         string expectedStatus = "status";
         string expectedTemplateCategory = "templateCategory";
-        string expectedTemplateID = "templateId";
+        string expectedTemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedTemplateName = "templateName";
 
         Assert.Equal(expectedID, model.ID);
@@ -101,12 +101,12 @@ public class MessageRetrieveResponseTest : TestBase
     {
         var model = new MessageRetrieveResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
-            ContactID = "contactId",
+            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CorrectedPrice = 0,
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Events =
             [
                 new()
@@ -128,7 +128,7 @@ public class MessageRetrieveResponseTest : TestBase
             RegionCode = "regionCode",
             Status = "status",
             TemplateCategory = "templateCategory",
-            TemplateID = "templateId",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "templateName",
         };
 
@@ -146,12 +146,12 @@ public class MessageRetrieveResponseTest : TestBase
     {
         var model = new MessageRetrieveResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
-            ContactID = "contactId",
+            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CorrectedPrice = 0,
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Events =
             [
                 new()
@@ -173,7 +173,7 @@ public class MessageRetrieveResponseTest : TestBase
             RegionCode = "regionCode",
             Status = "status",
             TemplateCategory = "templateCategory",
-            TemplateID = "templateId",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "templateName",
         };
 
@@ -184,12 +184,12 @@ public class MessageRetrieveResponseTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        string expectedID = "id";
+        string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedChannel = "channel";
-        string expectedContactID = "contactId";
+        string expectedContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         double expectedCorrectedPrice = 0;
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
-        string expectedCustomerID = "customerId";
+        string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         List<Event> expectedEvents =
         [
             new()
@@ -211,7 +211,7 @@ public class MessageRetrieveResponseTest : TestBase
         string expectedRegionCode = "regionCode";
         string expectedStatus = "status";
         string expectedTemplateCategory = "templateCategory";
-        string expectedTemplateID = "templateId";
+        string expectedTemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedTemplateName = "templateName";
 
         Assert.Equal(expectedID, deserialized.ID);
@@ -241,12 +241,12 @@ public class MessageRetrieveResponseTest : TestBase
     {
         var model = new MessageRetrieveResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
-            ContactID = "contactId",
+            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CorrectedPrice = 0,
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Events =
             [
                 new()
@@ -268,7 +268,7 @@ public class MessageRetrieveResponseTest : TestBase
             RegionCode = "regionCode",
             Status = "status",
             TemplateCategory = "templateCategory",
-            TemplateID = "templateId",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "templateName",
         };
 
@@ -297,7 +297,7 @@ public class MessageRetrieveResponseTest : TestBase
                 Footer = "footer",
                 Header = "header",
             },
-            TemplateID = "templateId",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         Assert.Null(model.ID);
@@ -346,7 +346,7 @@ public class MessageRetrieveResponseTest : TestBase
                 Footer = "footer",
                 Header = "header",
             },
-            TemplateID = "templateId",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         model.Validate();
@@ -374,7 +374,7 @@ public class MessageRetrieveResponseTest : TestBase
                 Footer = "footer",
                 Header = "header",
             },
-            TemplateID = "templateId",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
             // Null should be interpreted as omitted for these properties
             ID = null,
@@ -436,7 +436,7 @@ public class MessageRetrieveResponseTest : TestBase
                 Footer = "footer",
                 Header = "header",
             },
-            TemplateID = "templateId",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
             // Null should be interpreted as omitted for these properties
             ID = null,
@@ -460,11 +460,11 @@ public class MessageRetrieveResponseTest : TestBase
     {
         var model = new MessageRetrieveResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
-            ContactID = "contactId",
+            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             PhoneNumber = "phoneNumber",
             PhoneNumberInternational = "phoneNumberInternational",
             RegionCode = "regionCode",
@@ -488,11 +488,11 @@ public class MessageRetrieveResponseTest : TestBase
     {
         var model = new MessageRetrieveResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
-            ContactID = "contactId",
+            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             PhoneNumber = "phoneNumber",
             PhoneNumberInternational = "phoneNumberInternational",
             RegionCode = "regionCode",
@@ -509,11 +509,11 @@ public class MessageRetrieveResponseTest : TestBase
     {
         var model = new MessageRetrieveResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
-            ContactID = "contactId",
+            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             PhoneNumber = "phoneNumber",
             PhoneNumberInternational = "phoneNumberInternational",
             RegionCode = "regionCode",
@@ -542,11 +542,11 @@ public class MessageRetrieveResponseTest : TestBase
     {
         var model = new MessageRetrieveResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
-            ContactID = "contactId",
+            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             PhoneNumber = "phoneNumber",
             PhoneNumberInternational = "phoneNumberInternational",
             RegionCode = "regionCode",
@@ -568,12 +568,12 @@ public class MessageRetrieveResponseTest : TestBase
     {
         var model = new MessageRetrieveResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
-            ContactID = "contactId",
+            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CorrectedPrice = 0,
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "customerId",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Events =
             [
                 new()
@@ -595,7 +595,7 @@ public class MessageRetrieveResponseTest : TestBase
             RegionCode = "regionCode",
             Status = "status",
             TemplateCategory = "templateCategory",
-            TemplateID = "templateId",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "templateName",
         };
 

@@ -52,17 +52,17 @@ public sealed class SentDmClient : ISentDmClient
     }
 
     /// <inheritdoc/>
-    public string AdminAuthScheme
+    public string ApiKey
     {
-        get { return this._options.AdminAuthScheme; }
-        init { this._options.AdminAuthScheme = value; }
+        get { return this._options.ApiKey; }
+        init { this._options.ApiKey = value; }
     }
 
     /// <inheritdoc/>
-    public string CustomerAuthScheme
+    public string SenderID
     {
-        get { return this._options.CustomerAuthScheme; }
-        init { this._options.CustomerAuthScheme = value; }
+        get { return this._options.SenderID; }
+        init { this._options.SenderID = value; }
     }
 
     readonly Lazy<ISentDmClientWithRawResponse> _withRawResponse;
@@ -182,17 +182,17 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
     }
 
     /// <inheritdoc/>
-    public string AdminAuthScheme
+    public string ApiKey
     {
-        get { return this._options.AdminAuthScheme; }
-        init { this._options.AdminAuthScheme = value; }
+        get { return this._options.ApiKey; }
+        init { this._options.ApiKey = value; }
     }
 
     /// <inheritdoc/>
-    public string CustomerAuthScheme
+    public string SenderID
     {
-        get { return this._options.CustomerAuthScheme; }
-        init { this._options.CustomerAuthScheme = value; }
+        get { return this._options.SenderID; }
+        init { this._options.SenderID = value; }
     }
 
     /// <inheritdoc/>

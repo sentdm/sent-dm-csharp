@@ -13,12 +13,12 @@ public class OrganizationRetrieveProfilesResponseTest : TestBase
     {
         var model = new OrganizationRetrieveProfilesResponse
         {
-            OrganizationID = "organizationId",
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Profiles =
             [
                 new()
                 {
-                    ID = "id",
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                     Icon = "icon",
@@ -28,12 +28,12 @@ public class OrganizationRetrieveProfilesResponseTest : TestBase
             ],
         };
 
-        string expectedOrganizationID = "organizationId";
+        string expectedOrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         List<ProfileSummary> expectedProfiles =
         [
             new()
             {
-                ID = "id",
+                ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
                 Icon = "icon",
@@ -56,12 +56,12 @@ public class OrganizationRetrieveProfilesResponseTest : TestBase
     {
         var model = new OrganizationRetrieveProfilesResponse
         {
-            OrganizationID = "organizationId",
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Profiles =
             [
                 new()
                 {
-                    ID = "id",
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                     Icon = "icon",
@@ -85,12 +85,12 @@ public class OrganizationRetrieveProfilesResponseTest : TestBase
     {
         var model = new OrganizationRetrieveProfilesResponse
         {
-            OrganizationID = "organizationId",
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Profiles =
             [
                 new()
                 {
-                    ID = "id",
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                     Icon = "icon",
@@ -107,12 +107,12 @@ public class OrganizationRetrieveProfilesResponseTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        string expectedOrganizationID = "organizationId";
+        string expectedOrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         List<ProfileSummary> expectedProfiles =
         [
             new()
             {
-                ID = "id",
+                ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
                 Icon = "icon",
@@ -135,12 +135,12 @@ public class OrganizationRetrieveProfilesResponseTest : TestBase
     {
         var model = new OrganizationRetrieveProfilesResponse
         {
-            OrganizationID = "organizationId",
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Profiles =
             [
                 new()
                 {
-                    ID = "id",
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                     Icon = "icon",
@@ -206,12 +206,12 @@ public class OrganizationRetrieveProfilesResponseTest : TestBase
     {
         var model = new OrganizationRetrieveProfilesResponse
         {
-            OrganizationID = "organizationId",
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Profiles =
             [
                 new()
                 {
-                    ID = "id",
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                     Icon = "icon",

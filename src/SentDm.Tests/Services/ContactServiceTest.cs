@@ -28,7 +28,7 @@ public class ContactServiceTest : TestBase
     public async Task RetrieveID_Works()
     {
         var contactListItem = await this.client.Contacts.RetrieveID(
-            new() { ID = "id" },
+            new() { ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e" },
             TestContext.Current.CancellationToken
         );
         contactListItem.Validate();

@@ -30,13 +30,7 @@ public class MessageSendQuickMessageParamsTest : TestBase
             PhoneNumber = "+1234567890",
         };
 
-        var url = parameters.Url(
-            new()
-            {
-                AdminAuthScheme = "My Admin Auth Scheme",
-                CustomerAuthScheme = "My Customer Auth Scheme",
-            }
-        );
+        var url = parameters.Url(new() { ApiKey = "My API Key", SenderID = "My Sender ID" });
 
         Assert.Equal(new Uri("https://api.sent.dm/v2/messages/quick-message"), url);
     }

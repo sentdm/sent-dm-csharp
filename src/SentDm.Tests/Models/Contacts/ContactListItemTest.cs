@@ -11,7 +11,7 @@ public class ContactListItemTest : TestBase
     {
         var model = new ContactListItem
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AvailableChannels = "availableChannels",
             CountryCode = "countryCode",
             DefaultChannel = "defaultChannel",
@@ -23,7 +23,7 @@ public class ContactListItemTest : TestBase
             RegionCode = "regionCode",
         };
 
-        string expectedID = "id";
+        string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedAvailableChannels = "availableChannels";
         string expectedCountryCode = "countryCode";
         string expectedDefaultChannel = "defaultChannel";
@@ -51,7 +51,7 @@ public class ContactListItemTest : TestBase
     {
         var model = new ContactListItem
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AvailableChannels = "availableChannels",
             CountryCode = "countryCode",
             DefaultChannel = "defaultChannel",
@@ -77,7 +77,7 @@ public class ContactListItemTest : TestBase
     {
         var model = new ContactListItem
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AvailableChannels = "availableChannels",
             CountryCode = "countryCode",
             DefaultChannel = "defaultChannel",
@@ -96,7 +96,7 @@ public class ContactListItemTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        string expectedID = "id";
+        string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedAvailableChannels = "availableChannels";
         string expectedCountryCode = "countryCode";
         string expectedDefaultChannel = "defaultChannel";
@@ -124,7 +124,7 @@ public class ContactListItemTest : TestBase
     {
         var model = new ContactListItem
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AvailableChannels = "availableChannels",
             CountryCode = "countryCode",
             DefaultChannel = "defaultChannel",
@@ -240,7 +240,7 @@ public class ContactListItemTest : TestBase
     {
         var model = new ContactListItem
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AvailableChannels = "availableChannels",
             CountryCode = "countryCode",
             DefaultChannel = "defaultChannel",

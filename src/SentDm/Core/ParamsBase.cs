@@ -196,13 +196,13 @@ public abstract record class ParamsBase
             request.Headers.Add(header.Key, header.Value);
         }
 
-        if (options.AdminAuthScheme != null)
+        if (options.ApiKey != null)
         {
-            request.Headers.Add("x-api-key", options.AdminAuthScheme);
+            request.Headers.Add("x-api-key", options.ApiKey);
         }
-        if (options.CustomerAuthScheme != null)
+        if (options.SenderID != null)
         {
-            request.Headers.Add("x-sender-id", options.CustomerAuthScheme);
+            request.Headers.Add("x-sender-id", options.SenderID);
         }
         request.Headers.Add(
             "X-Stainless-Timeout",

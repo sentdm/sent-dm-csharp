@@ -12,7 +12,7 @@ public class TemplateResponseTest : TestBase
     {
         var model = new TemplateResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Definition = new()
@@ -174,7 +174,7 @@ public class TemplateResponseTest : TestBase
             WhatsappTemplateName = "whatsappTemplateName",
         };
 
-        string expectedID = "id";
+        string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedCategory = "category";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         TemplateDefinition expectedDefinition = new()
@@ -353,7 +353,7 @@ public class TemplateResponseTest : TestBase
     {
         var model = new TemplateResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Definition = new()
@@ -529,7 +529,7 @@ public class TemplateResponseTest : TestBase
     {
         var model = new TemplateResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Definition = new()
@@ -698,7 +698,7 @@ public class TemplateResponseTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        string expectedID = "id";
+        string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedCategory = "category";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         TemplateDefinition expectedDefinition = new()
@@ -877,7 +877,7 @@ public class TemplateResponseTest : TestBase
     {
         var model = new TemplateResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Definition = new()
@@ -1153,7 +1153,7 @@ public class TemplateResponseTest : TestBase
     {
         var model = new TemplateResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Definition = new()
@@ -1323,7 +1323,7 @@ public class TemplateResponseTest : TestBase
     {
         var model = new TemplateResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Definition = new()
@@ -1492,7 +1492,7 @@ public class TemplateResponseTest : TestBase
     {
         var model = new TemplateResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Definition = new()
@@ -1664,7 +1664,7 @@ public class TemplateResponseTest : TestBase
     {
         var model = new TemplateResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Definition = new()
@@ -1835,7 +1835,7 @@ public class TemplateResponseTest : TestBase
     {
         var model = new TemplateResponse
         {
-            ID = "id",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Definition = new()
