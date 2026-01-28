@@ -3,7 +3,7 @@
     <!-- Metadata -->
     <AssemblyTitle>Sent Dm C#</AssemblyTitle>
     <AssemblyName>SentDm</AssemblyName>
-    <VersionPrefix>0.0.1</VersionPrefix>
+    <VersionPrefix>0.0.2</VersionPrefix>
     <Description>The official .NET library for the Sent Dm API.</Description>
     <OutputType>Library</OutputType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
