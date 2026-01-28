@@ -1,8 +1,10 @@
 # Sent Dm C# API Library
 
-The Sent Dm C# SDK provides convenient access to the Sent Dm REST API from applications written in C#.
+The Sent Dm C# SDK provides convenient access to the [Sent Dm REST API](https://docs.sent.dm) from applications written in C#.
 
 It is generated with [Stainless](https://www.stainless.com/).
+
+The REST API documentation can be found on [docs.sent.dm](https://docs.sent.dm).
 
 ## Installation
 
