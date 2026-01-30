@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1 (2026-01-30)
+
+Full Changelog: [v0.3.0...v0.3.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.3.0...v0.3.1)
+
+### Chores
+
+* **internal:** ignore stainless-internal artifacts ([290c1a5](https://github.com/sentdm/sent-dm-csharp/commit/290c1a5959e7edb23fb98205bba5554bd8bdd7cb))
+
 ## 0.3.0 (2026-01-28)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.2.0...v0.3.0)
