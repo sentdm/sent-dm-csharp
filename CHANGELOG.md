@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1 (2026-02-12)
+
+Full Changelog: [v0.4.0...v0.4.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.4.0...v0.4.1)
+
+### Bug Fixes
+
+* **client:** improve behaviour for comma-delimited binary content in multipart requests ([a19ffd6](https://github.com/sentdm/sent-dm-csharp/commit/a19ffd64313e969b998ab210947beed2ac9f2c5f))
+
 ## 0.4.0 (2026-02-10)
 
 Full Changelog: [v0.3.1...v0.4.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.3.1...v0.4.0)
