@@ -11,12 +11,12 @@ namespace Sentdm.Models.Templates;
 [JsonConverter(typeof(JsonModelConverter<TemplateListResponse, TemplateListResponseFromRaw>))]
 public sealed record class TemplateListResponse : JsonModel
 {
-    public IReadOnlyList<TemplateResponse>? Items
+    public IReadOnlyList<TemplateResponseV2>? Items
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<TemplateResponse>>("items");
+            return this._rawData.GetNullableStruct<ImmutableArray<TemplateResponseV2>>("items");
         }
         init
         {
@@ -25,7 +25,7 @@ public sealed record class TemplateListResponse : JsonModel
                 return;
             }
 
-            this._rawData.Set<ImmutableArray<TemplateResponse>?>(
+            this._rawData.Set<ImmutableArray<TemplateResponseV2>?>(
                 "items",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );

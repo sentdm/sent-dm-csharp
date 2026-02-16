@@ -79,12 +79,6 @@ public sealed class SentDmClient : ISentDmClient
         return new SentDmClient(modifier(this._options));
     }
 
-    readonly Lazy<ITemplateService> _templates;
-    public ITemplateService Templates
-    {
-        get { return _templates.Value; }
-    }
-
     readonly Lazy<IContactService> _contacts;
     public IContactService Contacts
     {
@@ -97,16 +91,16 @@ public sealed class SentDmClient : ISentDmClient
         get { return _messages.Value; }
     }
 
+    readonly Lazy<ITemplateService> _templates;
+    public ITemplateService Templates
+    {
+        get { return _templates.Value; }
+    }
+
     readonly Lazy<INumberLookupService> _numberLookup;
     public INumberLookupService NumberLookup
     {
         get { return _numberLookup.Value; }
-    }
-
-    readonly Lazy<IOrganizationService> _organizations;
-    public IOrganizationService Organizations
-    {
-        get { return _organizations.Value; }
     }
 
     public void Dispose() => this.HttpClient.Dispose();
@@ -116,11 +110,10 @@ public sealed class SentDmClient : ISentDmClient
         _options = new();
 
         _withRawResponse = new(() => new SentDmClientWithRawResponse(this._options));
-        _templates = new(() => new TemplateService(this));
         _contacts = new(() => new ContactService(this));
         _messages = new(() => new MessageService(this));
+        _templates = new(() => new TemplateService(this));
         _numberLookup = new(() => new NumberLookupService(this));
-        _organizations = new(() => new OrganizationService(this));
     }
 
     public SentDmClient(ClientOptions options)
@@ -201,12 +194,6 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
         return new SentDmClientWithRawResponse(modifier(this._options));
     }
 
-    readonly Lazy<ITemplateServiceWithRawResponse> _templates;
-    public ITemplateServiceWithRawResponse Templates
-    {
-        get { return _templates.Value; }
-    }
-
     readonly Lazy<IContactServiceWithRawResponse> _contacts;
     public IContactServiceWithRawResponse Contacts
     {
@@ -219,16 +206,16 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
         get { return _messages.Value; }
     }
 
+    readonly Lazy<ITemplateServiceWithRawResponse> _templates;
+    public ITemplateServiceWithRawResponse Templates
+    {
+        get { return _templates.Value; }
+    }
+
     readonly Lazy<INumberLookupServiceWithRawResponse> _numberLookup;
     public INumberLookupServiceWithRawResponse NumberLookup
     {
         get { return _numberLookup.Value; }
-    }
-
-    readonly Lazy<IOrganizationServiceWithRawResponse> _organizations;
-    public IOrganizationServiceWithRawResponse Organizations
-    {
-        get { return _organizations.Value; }
     }
 
     /// <inheritdoc/>
@@ -425,11 +412,10 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
     {
         _options = new();
 
-        _templates = new(() => new TemplateServiceWithRawResponse(this));
         _contacts = new(() => new ContactServiceWithRawResponse(this));
         _messages = new(() => new MessageServiceWithRawResponse(this));
+        _templates = new(() => new TemplateServiceWithRawResponse(this));
         _numberLookup = new(() => new NumberLookupServiceWithRawResponse(this));
-        _organizations = new(() => new OrganizationServiceWithRawResponse(this));
     }
 
     public SentDmClientWithRawResponse(ClientOptions options)

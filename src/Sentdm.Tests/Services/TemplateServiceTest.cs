@@ -7,7 +7,7 @@ public class TemplateServiceTest : TestBase
     [Fact(Skip = "Prism tests are disabled")]
     public async Task Create_Works()
     {
-        var templateResponse = await this.client.Templates.Create(
+        var templateResponseV2 = await this.client.Templates.Create(
             new()
             {
                 Definition = new()
@@ -164,18 +164,18 @@ public class TemplateServiceTest : TestBase
             },
             TestContext.Current.CancellationToken
         );
-        templateResponse.Validate();
+        templateResponseV2.Validate();
     }
 
     [Fact(Skip = "Prism tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var templateResponse = await this.client.Templates.Retrieve(
+        var templateResponseV2 = await this.client.Templates.Retrieve(
             "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
             new(),
             TestContext.Current.CancellationToken
         );
-        templateResponse.Validate();
+        templateResponseV2.Validate();
     }
 
     [Fact(Skip = "Prism tests are disabled")]
