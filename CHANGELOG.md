@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2026-02-16)
+
+Full Changelog: [v0.4.1...v0.5.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.4.1...v0.5.0)
+
+### Features
+
+* **client:** add equality and tostring for multipart data ([6687740](https://github.com/sentdm/sent-dm-csharp/commit/66877400d3374218d3960dd463bc8418397341af))
+
 ## 0.4.1 (2026-02-12)
 
 Full Changelog: [v0.4.0...v0.4.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.4.0...v0.4.1)
