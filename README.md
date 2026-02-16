@@ -101,7 +101,7 @@ The `WithOptions` method does not affect the original client or service.
 
 To send a request to the Sent Dm API, build an instance of some `Params` class and pass it to the corresponding client method. When the response is received, it will be deserialized into an instance of a C# class.
 
-For example, `client.Templates.Create` should be called with an instance of `TemplateCreateParams`, and it will return an instance of `Task<TemplateResponse>`.
+For example, `client.Contacts.List` should be called with an instance of `ContactListParams`, and it will return an instance of `Task<ContactListResponse>`.
 
 ## Raw responses
 
@@ -121,10 +121,10 @@ For non-streaming responses, you can deserialize the response into an instance o
 
 ```csharp
 using System;
-using Sentdm.Models.Templates;
+using Sentdm.Models.Contacts;
 
-var response = await client.WithRawResponse.Templates.Create(parameters);
-TemplateResponse deserialized = await response.Deserialize();
+var response = await client.WithRawResponse.Contacts.List(parameters);
+ContactListResponse deserialized = await response.Deserialize();
 Console.WriteLine(deserialized);
 ```
 
@@ -227,8 +227,8 @@ By default, the SDK will not throw an exception in this case. It will throw `Sen
 If you would prefer to check that the response is completely well-typed upfront, then either call `Validate`:
 
 ```csharp
-var templateResponse = client.Templates.Create(parameters);
-templateResponse.Validate();
+var contacts = client.Contacts.List(parameters);
+contacts.Validate();
 ```
 
 Or configure the client using the `ResponseValidation` option:
@@ -244,13 +244,13 @@ Or configure a single method call using [`WithOptions`](#modifying-configuration
 ```csharp
 using System;
 
-var templateResponse = await client
+var contacts = await client
     .WithOptions(options =>
         options with { ResponseValidation = true }
     )
-    .Templates.Create(parameters);
+    .Contacts.List(parameters);
 
-Console.WriteLine(templateResponse);
+Console.WriteLine(contacts);
 ```
 
 ## Semantic versioning

@@ -11,8 +11,8 @@ namespace Sentdm.Models.Templates;
 /// <summary>
 /// Represents a message template with comprehensive metadata including definition structure
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<TemplateResponse, TemplateResponseFromRaw>))]
-public sealed record class TemplateResponse : JsonModel
+[JsonConverter(typeof(JsonModelConverter<TemplateResponseV2, TemplateResponseV2FromRaw>))]
+public sealed record class TemplateResponseV2 : JsonModel
 {
     /// <summary>
     /// The unique identifier of the template
@@ -253,29 +253,29 @@ public sealed record class TemplateResponse : JsonModel
         _ = this.WhatsappTemplateName;
     }
 
-    public TemplateResponse() { }
+    public TemplateResponseV2() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateResponse(TemplateResponse templateResponse)
-        : base(templateResponse) { }
+    public TemplateResponseV2(TemplateResponseV2 templateResponseV2)
+        : base(templateResponseV2) { }
 #pragma warning restore CS8618
 
-    public TemplateResponse(IReadOnlyDictionary<string, JsonElement> rawData)
+    public TemplateResponseV2(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateResponse(FrozenDictionary<string, JsonElement> rawData)
+    TemplateResponseV2(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="TemplateResponseFromRaw.FromRawUnchecked"/>
-    public static TemplateResponse FromRawUnchecked(
+    /// <inheritdoc cref="TemplateResponseV2FromRaw.FromRawUnchecked"/>
+    public static TemplateResponseV2 FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -283,9 +283,9 @@ public sealed record class TemplateResponse : JsonModel
     }
 }
 
-class TemplateResponseFromRaw : IFromRawJson<TemplateResponse>
+class TemplateResponseV2FromRaw : IFromRawJson<TemplateResponseV2>
 {
     /// <inheritdoc/>
-    public TemplateResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        TemplateResponse.FromRawUnchecked(rawData);
+    public TemplateResponseV2 FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        TemplateResponseV2.FromRawUnchecked(rawData);
 }
