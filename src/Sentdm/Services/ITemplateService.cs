@@ -33,7 +33,7 @@ public interface ITemplateService
     /// Optionally submits the template for WhatsApp review. The customer ID is extracted
     /// from the authentication token.
     /// </summary>
-    Task<TemplateResponse> Create(
+    Task<TemplateResponseV2> Create(
         TemplateCreateParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -43,13 +43,13 @@ public interface ITemplateService
     /// customer with comprehensive template definitions including headers, body,
     /// footer, and interactive buttons. The customer ID is extracted from the authentication token.
     /// </summary>
-    Task<TemplateResponse> Retrieve(
+    Task<TemplateResponseV2> Retrieve(
         TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(TemplateRetrieveParams, CancellationToken)"/>
-    Task<TemplateResponse> Retrieve(
+    Task<TemplateResponseV2> Retrieve(
         string id,
         TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -101,7 +101,7 @@ public interface ITemplateServiceWithRawResponse
     /// Returns a raw HTTP response for `post /v2/templates`, but is otherwise the
     /// same as <see cref="ITemplateService.Create(TemplateCreateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<TemplateResponse>> Create(
+    Task<HttpResponse<TemplateResponseV2>> Create(
         TemplateCreateParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -110,13 +110,13 @@ public interface ITemplateServiceWithRawResponse
     /// Returns a raw HTTP response for `get /v2/templates/{id}`, but is otherwise the
     /// same as <see cref="ITemplateService.Retrieve(TemplateRetrieveParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<TemplateResponse>> Retrieve(
+    Task<HttpResponse<TemplateResponseV2>> Retrieve(
         TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(TemplateRetrieveParams, CancellationToken)"/>
-    Task<HttpResponse<TemplateResponse>> Retrieve(
+    Task<HttpResponse<TemplateResponseV2>> Retrieve(
         string id,
         TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default

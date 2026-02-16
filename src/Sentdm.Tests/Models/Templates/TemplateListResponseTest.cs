@@ -185,7 +185,7 @@ public class TemplateListResponseTest : TestBase
             TotalPages = 0,
         };
 
-        List<TemplateResponse> expectedItems =
+        List<TemplateResponseV2> expectedItems =
         [
             new()
             {
@@ -738,7 +738,7 @@ public class TemplateListResponseTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        List<TemplateResponse> expectedItems =
+        List<TemplateResponseV2> expectedItems =
         [
             new()
             {

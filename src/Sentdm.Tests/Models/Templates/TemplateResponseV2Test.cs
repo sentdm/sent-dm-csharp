@@ -5,12 +5,12 @@ using Sentdm.Models.Templates;
 
 namespace Sentdm.Tests.Models.Templates;
 
-public class TemplateResponseTest : TestBase
+public class TemplateResponseV2Test : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
@@ -351,7 +351,7 @@ public class TemplateResponseTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
@@ -516,7 +516,7 @@ public class TemplateResponseTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateResponse>(
+        var deserialized = JsonSerializer.Deserialize<TemplateResponseV2>(
             json,
             ModelBase.SerializerOptions
         );
@@ -527,7 +527,7 @@ public class TemplateResponseTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
@@ -692,7 +692,7 @@ public class TemplateResponseTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateResponse>(
+        var deserialized = JsonSerializer.Deserialize<TemplateResponseV2>(
             element,
             ModelBase.SerializerOptions
         );
@@ -875,7 +875,7 @@ public class TemplateResponseTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
@@ -1045,7 +1045,7 @@ public class TemplateResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
@@ -1075,7 +1075,7 @@ public class TemplateResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
@@ -1086,7 +1086,7 @@ public class TemplateResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
@@ -1128,7 +1128,7 @@ public class TemplateResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
@@ -1151,7 +1151,7 @@ public class TemplateResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
@@ -1321,7 +1321,7 @@ public class TemplateResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
@@ -1490,7 +1490,7 @@ public class TemplateResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
@@ -1662,7 +1662,7 @@ public class TemplateResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
@@ -1833,7 +1833,7 @@ public class TemplateResponseTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new TemplateResponse
+        var model = new TemplateResponseV2
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
@@ -1997,7 +1997,7 @@ public class TemplateResponseTest : TestBase
             WhatsappTemplateName = "whatsappTemplateName",
         };
 
-        TemplateResponse copied = new(model);
+        TemplateResponseV2 copied = new(model);
 
         Assert.Equal(model, copied);
     }

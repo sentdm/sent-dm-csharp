@@ -35,7 +35,7 @@ public sealed class TemplateService : ITemplateService
     }
 
     /// <inheritdoc/>
-    public async Task<TemplateResponse> Create(
+    public async Task<TemplateResponseV2> Create(
         TemplateCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -47,7 +47,7 @@ public sealed class TemplateService : ITemplateService
     }
 
     /// <inheritdoc/>
-    public async Task<TemplateResponse> Retrieve(
+    public async Task<TemplateResponseV2> Retrieve(
         TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -59,7 +59,7 @@ public sealed class TemplateService : ITemplateService
     }
 
     /// <inheritdoc/>
-    public Task<TemplateResponse> Retrieve(
+    public Task<TemplateResponseV2> Retrieve(
         string id,
         TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -121,7 +121,7 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<TemplateResponse>> Create(
+    public async Task<HttpResponse<TemplateResponseV2>> Create(
         TemplateCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -136,20 +136,20 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
             response,
             async (token) =>
             {
-                var templateResponse = await response
-                    .Deserialize<TemplateResponse>(token)
+                var templateResponseV2 = await response
+                    .Deserialize<TemplateResponseV2>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    templateResponse.Validate();
+                    templateResponseV2.Validate();
                 }
-                return templateResponse;
+                return templateResponseV2;
             }
         );
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<TemplateResponse>> Retrieve(
+    public async Task<HttpResponse<TemplateResponseV2>> Retrieve(
         TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -169,20 +169,20 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
             response,
             async (token) =>
             {
-                var templateResponse = await response
-                    .Deserialize<TemplateResponse>(token)
+                var templateResponseV2 = await response
+                    .Deserialize<TemplateResponseV2>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    templateResponse.Validate();
+                    templateResponseV2.Validate();
                 }
-                return templateResponse;
+                return templateResponseV2;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<TemplateResponse>> Retrieve(
+    public Task<HttpResponse<TemplateResponseV2>> Retrieve(
         string id,
         TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default

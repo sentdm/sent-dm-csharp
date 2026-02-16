@@ -84,7 +84,8 @@ public record struct ClientOptions()
     public TimeSpan? Timeout { get; set; }
 
     /// <summary>
-    /// Customer API key for authentication
+    /// Customer API key for authentication. Use `sk_live_*` keys for production
+    /// and `sk_test_*` keys for sandbox/testing. Pass via the `x-api-key` header.
     /// </summary>
     Lazy<string> _apiKey = new(() =>
         Environment.GetEnvironmentVariable("SENT_DM_API_KEY")
@@ -95,7 +96,8 @@ public record struct ClientOptions()
     );
 
     /// <summary>
-    /// Customer API key for authentication
+    /// Customer API key for authentication. Use `sk_live_*` keys for production
+    /// and `sk_test_*` keys for sandbox/testing. Pass via the `x-api-key` header.
     /// </summary>
     public string ApiKey
     {
@@ -104,7 +106,8 @@ public record struct ClientOptions()
     }
 
     /// <summary>
-    /// Customer sender ID (GUID) identifying the customer account
+    /// Customer sender ID (UUID) identifying the customer account. Obtain this from
+    /// your account settings. Pass via the `x-sender-id` header.
     /// </summary>
     Lazy<string> _senderID = new(() =>
         Environment.GetEnvironmentVariable("SENT_DM_SENDER_ID")
@@ -115,7 +118,8 @@ public record struct ClientOptions()
     );
 
     /// <summary>
-    /// Customer sender ID (GUID) identifying the customer account
+    /// Customer sender ID (UUID) identifying the customer account. Obtain this from
+    /// your account settings. Pass via the `x-sender-id` header.
     /// </summary>
     public string SenderID
     {

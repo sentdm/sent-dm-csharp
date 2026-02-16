@@ -37,12 +37,14 @@ public interface ISentDmClient : IDisposable
     TimeSpan? Timeout { get; init; }
 
     /// <summary>
-    /// Customer API key for authentication
+    /// Customer API key for authentication. Use `sk_live_*` keys for production
+    /// and `sk_test_*` keys for sandbox/testing. Pass via the `x-api-key` header.
     /// </summary>
     string ApiKey { get; init; }
 
     /// <summary>
-    /// Customer sender ID (GUID) identifying the customer account
+    /// Customer sender ID (UUID) identifying the customer account. Obtain this from
+    /// your account settings. Pass via the `x-sender-id` header.
     /// </summary>
     string SenderID { get; init; }
 
@@ -59,15 +61,13 @@ public interface ISentDmClient : IDisposable
     /// </summary>
     ISentDmClient WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
-    ITemplateService Templates { get; }
-
     IContactService Contacts { get; }
 
     IMessageService Messages { get; }
 
-    INumberLookupService NumberLookup { get; }
+    ITemplateService Templates { get; }
 
-    IOrganizationService Organizations { get; }
+    INumberLookupService NumberLookup { get; }
 }
 
 /// <summary>
@@ -91,12 +91,14 @@ public interface ISentDmClientWithRawResponse : IDisposable
     TimeSpan? Timeout { get; init; }
 
     /// <summary>
-    /// Customer API key for authentication
+    /// Customer API key for authentication. Use `sk_live_*` keys for production
+    /// and `sk_test_*` keys for sandbox/testing. Pass via the `x-api-key` header.
     /// </summary>
     string ApiKey { get; init; }
 
     /// <summary>
-    /// Customer sender ID (GUID) identifying the customer account
+    /// Customer sender ID (UUID) identifying the customer account. Obtain this from
+    /// your account settings. Pass via the `x-sender-id` header.
     /// </summary>
     string SenderID { get; init; }
 
@@ -107,15 +109,13 @@ public interface ISentDmClientWithRawResponse : IDisposable
     /// </summary>
     ISentDmClientWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
-    ITemplateServiceWithRawResponse Templates { get; }
-
     IContactServiceWithRawResponse Contacts { get; }
 
     IMessageServiceWithRawResponse Messages { get; }
 
-    INumberLookupServiceWithRawResponse NumberLookup { get; }
+    ITemplateServiceWithRawResponse Templates { get; }
 
-    IOrganizationServiceWithRawResponse Organizations { get; }
+    INumberLookupServiceWithRawResponse NumberLookup { get; }
 
     /// <summary>
     /// Sends a request to the Sent Dm REST API.
