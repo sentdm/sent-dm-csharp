@@ -89,7 +89,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
         string expectedTermsAndConditionsLink = "termsAndConditionsLink";
         string expectedType = "type";
         string expectedUpstreamCnpID = "upstreamCnpId";
-        List<IntersectionMember1UseCase> expectedUseCases =
+        List<UseCase> expectedUseCases =
         [
             new()
             {
@@ -287,7 +287,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
         string expectedTermsAndConditionsLink = "termsAndConditionsLink";
         string expectedType = "type";
         string expectedUpstreamCnpID = "upstreamCnpId";
-        List<IntersectionMember1UseCase> expectedUseCases =
+        List<UseCase> expectedUseCases =
         [
             new()
             {
@@ -964,7 +964,7 @@ public class IntersectionMember1Test : TestBase
         string expectedTermsAndConditionsLink = "termsAndConditionsLink";
         string expectedType = "type";
         string expectedUpstreamCnpID = "upstreamCnpId";
-        List<IntersectionMember1UseCase> expectedUseCases =
+        List<UseCase> expectedUseCases =
         [
             new()
             {
@@ -1150,7 +1150,7 @@ public class IntersectionMember1Test : TestBase
         string expectedTermsAndConditionsLink = "termsAndConditionsLink";
         string expectedType = "type";
         string expectedUpstreamCnpID = "upstreamCnpId";
-        List<IntersectionMember1UseCase> expectedUseCases =
+        List<UseCase> expectedUseCases =
         [
             new()
             {
@@ -1832,12 +1832,12 @@ public class StatusTest : TestBase
     }
 }
 
-public class IntersectionMember1UseCaseTest : TestBase
+public class UseCaseTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new IntersectionMember1UseCase
+        var model = new UseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1874,7 +1874,7 @@ public class IntersectionMember1UseCaseTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new IntersectionMember1UseCase
+        var model = new UseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1886,10 +1886,7 @@ public class IntersectionMember1UseCaseTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<IntersectionMember1UseCase>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<UseCase>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -1897,7 +1894,7 @@ public class IntersectionMember1UseCaseTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new IntersectionMember1UseCase
+        var model = new UseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1909,7 +1906,7 @@ public class IntersectionMember1UseCaseTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<IntersectionMember1UseCase>(
+        var deserialized = JsonSerializer.Deserialize<UseCase>(
             element,
             ModelBase.SerializerOptions
         );
@@ -1941,7 +1938,7 @@ public class IntersectionMember1UseCaseTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new IntersectionMember1UseCase
+        var model = new UseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1958,10 +1955,7 @@ public class IntersectionMember1UseCaseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new IntersectionMember1UseCase
-        {
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-        };
+        var model = new UseCase { UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z") };
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
@@ -1980,10 +1974,7 @@ public class IntersectionMember1UseCaseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new IntersectionMember1UseCase
-        {
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-        };
+        var model = new UseCase { UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z") };
 
         model.Validate();
     }
@@ -1991,7 +1982,7 @@ public class IntersectionMember1UseCaseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new IntersectionMember1UseCase
+        var model = new UseCase
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
@@ -2021,7 +2012,7 @@ public class IntersectionMember1UseCaseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new IntersectionMember1UseCase
+        var model = new UseCase
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
@@ -2040,7 +2031,7 @@ public class IntersectionMember1UseCaseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new IntersectionMember1UseCase
+        var model = new UseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -2057,7 +2048,7 @@ public class IntersectionMember1UseCaseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new IntersectionMember1UseCase
+        var model = new UseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -2073,7 +2064,7 @@ public class IntersectionMember1UseCaseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new IntersectionMember1UseCase
+        var model = new UseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -2092,7 +2083,7 @@ public class IntersectionMember1UseCaseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new IntersectionMember1UseCase
+        var model = new UseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -2110,7 +2101,7 @@ public class IntersectionMember1UseCaseTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new IntersectionMember1UseCase
+        var model = new UseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -2121,18 +2112,18 @@ public class IntersectionMember1UseCaseTest : TestBase
             SampleMessages = ["string"],
         };
 
-        IntersectionMember1UseCase copied = new(model);
+        UseCase copied = new(model);
 
         Assert.Equal(model, copied);
     }
 }
 
-public class IntersectionMember1UseCaseIntersectionMember1Test : TestBase
+public class UseCaseIntersectionMember1Test : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new IntersectionMember1UseCaseIntersectionMember1
+        var model = new UseCaseIntersectionMember1
         {
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2160,7 +2151,7 @@ public class IntersectionMember1UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new IntersectionMember1UseCaseIntersectionMember1
+        var model = new UseCaseIntersectionMember1
         {
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2169,11 +2160,10 @@ public class IntersectionMember1UseCaseIntersectionMember1Test : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<IntersectionMember1UseCaseIntersectionMember1>(
-                json,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<UseCaseIntersectionMember1>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -2181,7 +2171,7 @@ public class IntersectionMember1UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new IntersectionMember1UseCaseIntersectionMember1
+        var model = new UseCaseIntersectionMember1
         {
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2190,11 +2180,10 @@ public class IntersectionMember1UseCaseIntersectionMember1Test : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<IntersectionMember1UseCaseIntersectionMember1>(
-                element,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<UseCaseIntersectionMember1>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedCampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -2217,7 +2206,7 @@ public class IntersectionMember1UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new IntersectionMember1UseCaseIntersectionMember1
+        var model = new UseCaseIntersectionMember1
         {
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2231,7 +2220,7 @@ public class IntersectionMember1UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new IntersectionMember1UseCaseIntersectionMember1 { };
+        var model = new UseCaseIntersectionMember1 { };
 
         Assert.Null(model.CampaignID);
         Assert.False(model.RawData.ContainsKey("campaignId"));
@@ -2246,7 +2235,7 @@ public class IntersectionMember1UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new IntersectionMember1UseCaseIntersectionMember1 { };
+        var model = new UseCaseIntersectionMember1 { };
 
         model.Validate();
     }
@@ -2254,7 +2243,7 @@ public class IntersectionMember1UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new IntersectionMember1UseCaseIntersectionMember1
+        var model = new UseCaseIntersectionMember1
         {
             // Null should be interpreted as omitted for these properties
             CampaignID = null,
@@ -2276,7 +2265,7 @@ public class IntersectionMember1UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new IntersectionMember1UseCaseIntersectionMember1
+        var model = new UseCaseIntersectionMember1
         {
             // Null should be interpreted as omitted for these properties
             CampaignID = null,
@@ -2291,7 +2280,7 @@ public class IntersectionMember1UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new IntersectionMember1UseCaseIntersectionMember1
+        var model = new UseCaseIntersectionMember1
         {
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2299,7 +2288,7 @@ public class IntersectionMember1UseCaseIntersectionMember1Test : TestBase
             SampleMessages = ["string"],
         };
 
-        IntersectionMember1UseCaseIntersectionMember1 copied = new(model);
+        UseCaseIntersectionMember1 copied = new(model);
 
         Assert.Equal(model, copied);
     }

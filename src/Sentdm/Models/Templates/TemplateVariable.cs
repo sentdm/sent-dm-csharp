@@ -46,12 +46,12 @@ public sealed record class TemplateVariable : JsonModel
         }
     }
 
-    public TemplateVariableProps? Props
+    public Props? Props
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<TemplateVariableProps>("props");
+            return this._rawData.GetNullableClass<Props>("props");
         }
         init
         {
@@ -128,8 +128,8 @@ class TemplateVariableFromRaw : IFromRawJson<TemplateVariable>
         TemplateVariable.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(typeof(JsonModelConverter<TemplateVariableProps, TemplateVariablePropsFromRaw>))]
-public sealed record class TemplateVariableProps : JsonModel
+[JsonConverter(typeof(JsonModelConverter<Props, PropsFromRaw>))]
+public sealed record class Props : JsonModel
 {
     public string? Alt
     {
@@ -202,40 +202,37 @@ public sealed record class TemplateVariableProps : JsonModel
         _ = this.VariableType;
     }
 
-    public TemplateVariableProps() { }
+    public Props() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateVariableProps(TemplateVariableProps templateVariableProps)
-        : base(templateVariableProps) { }
+    public Props(Props props)
+        : base(props) { }
 #pragma warning restore CS8618
 
-    public TemplateVariableProps(IReadOnlyDictionary<string, JsonElement> rawData)
+    public Props(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateVariableProps(FrozenDictionary<string, JsonElement> rawData)
+    Props(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="TemplateVariablePropsFromRaw.FromRawUnchecked"/>
-    public static TemplateVariableProps FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="PropsFromRaw.FromRawUnchecked"/>
+    public static Props FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class TemplateVariablePropsFromRaw : IFromRawJson<TemplateVariableProps>
+class PropsFromRaw : IFromRawJson<Props>
 {
     /// <inheritdoc/>
-    public TemplateVariableProps FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => TemplateVariableProps.FromRawUnchecked(rawData);
+    public Props FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Props.FromRawUnchecked(rawData);
 }

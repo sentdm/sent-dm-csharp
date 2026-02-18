@@ -56,19 +56,20 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// List of use cases with sample messages
     /// </summary>
-    public required IReadOnlyList<UseCase> UseCases
+    public required IReadOnlyList<SentDmServicesEndpointsCustomerApIv3ContractsRequestsCampaignsCampaignUseCaseData> UseCases
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<UseCase>>("useCases");
+            return this._rawData.GetNotNullStruct<
+                ImmutableArray<SentDmServicesEndpointsCustomerApIv3ContractsRequestsCampaignsCampaignUseCaseData>
+            >("useCases");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<UseCase>>(
-                "useCases",
-                ImmutableArray.ToImmutableArray(value)
-            );
+            this._rawData.Set<
+                ImmutableArray<SentDmServicesEndpointsCustomerApIv3ContractsRequestsCampaignsCampaignUseCaseData>
+            >("useCases", ImmutableArray.ToImmutableArray(value));
         }
     }
 
@@ -243,86 +244,4 @@ class CampaignDataFromRaw : IFromRawJson<CampaignData>
     /// <inheritdoc/>
     public CampaignData FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         CampaignData.FromRawUnchecked(rawData);
-}
-
-/// <summary>
-/// Campaign use case with sample messages
-/// </summary>
-[JsonConverter(typeof(JsonModelConverter<UseCase, UseCaseFromRaw>))]
-public sealed record class UseCase : JsonModel
-{
-    /// <summary>
-    /// US messaging use case category
-    /// </summary>
-    public required ApiEnum<string, MessagingUseCaseUs> MessagingUseCaseUs
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, MessagingUseCaseUs>>(
-                "messagingUseCaseUs"
-            );
-        }
-        init { this._rawData.Set("messagingUseCaseUs", value); }
-    }
-
-    /// <summary>
-    /// Sample messages for this use case (1-5 messages, max 1024 characters each)
-    /// </summary>
-    public required IReadOnlyList<string> SampleMessages
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("sampleMessages");
-        }
-        init
-        {
-            this._rawData.Set<ImmutableArray<string>>(
-                "sampleMessages",
-                ImmutableArray.ToImmutableArray(value)
-            );
-        }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        this.MessagingUseCaseUs.Validate();
-        _ = this.SampleMessages;
-    }
-
-    public UseCase() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public UseCase(UseCase useCase)
-        : base(useCase) { }
-#pragma warning restore CS8618
-
-    public UseCase(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    UseCase(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="UseCaseFromRaw.FromRawUnchecked"/>
-    public static UseCase FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class UseCaseFromRaw : IFromRawJson<UseCase>
-{
-    /// <inheritdoc/>
-    public UseCase FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        UseCase.FromRawUnchecked(rawData);
 }
