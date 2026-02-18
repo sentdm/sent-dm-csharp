@@ -5,6 +5,38 @@ namespace Sentdm.Tests.Services;
 public class ContactServiceTest : TestBase
 {
     [Fact(Skip = "Prism tests are disabled")]
+    public async Task Create_Works()
+    {
+        var apiResponseContact = await this.client.Contacts.Create(
+            new(),
+            TestContext.Current.CancellationToken
+        );
+        apiResponseContact.Validate();
+    }
+
+    [Fact(Skip = "Prism tests are disabled")]
+    public async Task Retrieve_Works()
+    {
+        var apiResponseContact = await this.client.Contacts.Retrieve(
+            "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+            new(),
+            TestContext.Current.CancellationToken
+        );
+        apiResponseContact.Validate();
+    }
+
+    [Fact(Skip = "Prism tests are disabled")]
+    public async Task Update_Works()
+    {
+        var apiResponseContact = await this.client.Contacts.Update(
+            "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+            new(),
+            TestContext.Current.CancellationToken
+        );
+        apiResponseContact.Validate();
+    }
+
+    [Fact(Skip = "Prism tests are disabled")]
     public async Task List_Works()
     {
         var contacts = await this.client.Contacts.List(
@@ -15,22 +47,12 @@ public class ContactServiceTest : TestBase
     }
 
     [Fact(Skip = "Prism tests are disabled")]
-    public async Task RetrieveByPhone_Works()
+    public async Task Delete_Works()
     {
-        var contactListItem = await this.client.Contacts.RetrieveByPhone(
-            new() { PhoneNumber = "phoneNumber" },
+        await this.client.Contacts.Delete(
+            "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+            new() { Body = new() { TestMode = false } },
             TestContext.Current.CancellationToken
         );
-        contactListItem.Validate();
-    }
-
-    [Fact(Skip = "Prism tests are disabled")]
-    public async Task RetrieveID_Works()
-    {
-        var contactListItem = await this.client.Contacts.RetrieveID(
-            new() { ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e" },
-            TestContext.Current.CancellationToken
-        );
-        contactListItem.Validate();
     }
 }

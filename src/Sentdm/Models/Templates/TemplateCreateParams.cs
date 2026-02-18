@@ -10,11 +10,8 @@ using Sentdm.Core;
 namespace Sentdm.Models.Templates;
 
 /// <summary>
-/// Creates a new message template for the authenticated customer with comprehensive
-/// template definitions including headers, body, footer, and interactive buttons.
-/// Supports automatic metadata generation using AI (display name, language, category).
-/// Optionally submits the template for WhatsApp review. The customer ID is extracted
-/// from the authentication token.
+/// Creates a new message template with header, body, footer, and buttons. The template
+/// can be submitted for review immediately or saved as draft for later submission.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -29,22 +26,8 @@ public record class TemplateCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Template definition containing header, body, footer, and buttons
-    /// </summary>
-    public required TemplateDefinition Definition
-    {
-        get
-        {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<TemplateDefinition>("definition");
-        }
-        init { this._rawBodyData.Set("definition", value); }
-    }
-
-    /// <summary>
-    /// The template category (e.g., MARKETING, UTILITY, AUTHENTICATION). Can only
-    /// be set when creating a new template. If not provided, will be auto-generated
-    /// using AI.
+    /// Template category: MARKETING, UTILITY, AUTHENTICATION (optional, auto-detected
+    /// if not provided)
     /// </summary>
     public string? Category
     {
@@ -57,8 +40,41 @@ public record class TemplateCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// The template language code (e.g., en_US, es_ES). Can only be set when creating
-    /// a new template. If not provided, will be auto-detected using AI.
+    /// Source of template creation (default: from-api)
+    /// </summary>
+    public string? CreationSource
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("creation_source");
+        }
+        init { this._rawBodyData.Set("creation_source", value); }
+    }
+
+    /// <summary>
+    /// Template definition including header, body, footer, and buttons
+    /// </summary>
+    public TemplateDefinition? Definition
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<TemplateDefinition>("definition");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("definition", value);
+        }
+    }
+
+    /// <summary>
+    /// Template language code (e.g., en_US) (optional, auto-detected if not provided)
     /// </summary>
     public string? Language
     {
@@ -71,15 +87,14 @@ public record class TemplateCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// When false, the template will be saved as draft. When true, the template will
-    /// be submitted for review.
+    /// Whether to submit the template for review after creation (default: false)
     /// </summary>
     public bool? SubmitForReview
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("submitForReview");
+            return this._rawBodyData.GetNullableStruct<bool>("submit_for_review");
         }
         init
         {
@@ -88,7 +103,47 @@ public record class TemplateCreateParams : ParamsBase
                 return;
             }
 
-            this._rawBodyData.Set("submitForReview", value);
+            this._rawBodyData.Set("submit_for_review", value);
+        }
+    }
+
+    /// <summary>
+    /// Test mode flag - when true, the operation is simulated without side effects
+    /// Useful for testing integrations without actual execution
+    /// </summary>
+    public bool? TestMode
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("test_mode");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("test_mode", value);
+        }
+    }
+
+    public string? IdempotencyKey
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("Idempotency-Key");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("Idempotency-Key", value);
         }
     }
 
@@ -172,7 +227,7 @@ public record class TemplateCreateParams : ParamsBase
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v2/templates")
+        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v3/templates")
         {
             Query = this.QueryString(options),
         }.Uri;

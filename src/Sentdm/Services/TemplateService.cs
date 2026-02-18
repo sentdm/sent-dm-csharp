@@ -35,8 +35,8 @@ public sealed class TemplateService : ITemplateService
     }
 
     /// <inheritdoc/>
-    public async Task<TemplateResponseV2> Create(
-        TemplateCreateParams parameters,
+    public async Task<ApiResponseTemplate> Create(
+        TemplateCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -47,7 +47,7 @@ public sealed class TemplateService : ITemplateService
     }
 
     /// <inheritdoc/>
-    public async Task<TemplateResponseV2> Retrieve(
+    public async Task<ApiResponseTemplate> Retrieve(
         TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -59,7 +59,7 @@ public sealed class TemplateService : ITemplateService
     }
 
     /// <inheritdoc/>
-    public Task<TemplateResponseV2> Retrieve(
+    public Task<ApiResponseTemplate> Retrieve(
         string id,
         TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -68,6 +68,30 @@ public sealed class TemplateService : ITemplateService
         parameters ??= new();
 
         return this.Retrieve(parameters with { ID = id }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<ApiResponseTemplate> Update(
+        TemplateUpdateParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Update(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<ApiResponseTemplate> Update(
+        string id,
+        TemplateUpdateParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Update(parameters with { ID = id }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -121,11 +145,13 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<TemplateResponseV2>> Create(
-        TemplateCreateParams parameters,
+    public async Task<HttpResponse<ApiResponseTemplate>> Create(
+        TemplateCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         HttpRequest<TemplateCreateParams> request = new()
         {
             Method = HttpMethod.Post,
@@ -136,20 +162,20 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
             response,
             async (token) =>
             {
-                var templateResponseV2 = await response
-                    .Deserialize<TemplateResponseV2>(token)
+                var apiResponseTemplate = await response
+                    .Deserialize<ApiResponseTemplate>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    templateResponseV2.Validate();
+                    apiResponseTemplate.Validate();
                 }
-                return templateResponseV2;
+                return apiResponseTemplate;
             }
         );
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<TemplateResponseV2>> Retrieve(
+    public async Task<HttpResponse<ApiResponseTemplate>> Retrieve(
         TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -169,20 +195,20 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
             response,
             async (token) =>
             {
-                var templateResponseV2 = await response
-                    .Deserialize<TemplateResponseV2>(token)
+                var apiResponseTemplate = await response
+                    .Deserialize<ApiResponseTemplate>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    templateResponseV2.Validate();
+                    apiResponseTemplate.Validate();
                 }
-                return templateResponseV2;
+                return apiResponseTemplate;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<TemplateResponseV2>> Retrieve(
+    public Task<HttpResponse<ApiResponseTemplate>> Retrieve(
         string id,
         TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -191,6 +217,51 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
         parameters ??= new();
 
         return this.Retrieve(parameters with { ID = id }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<ApiResponseTemplate>> Update(
+        TemplateUpdateParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        if (parameters.ID == null)
+        {
+            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+        }
+
+        HttpRequest<TemplateUpdateParams> request = new()
+        {
+            Method = HttpMethod.Put,
+            Params = parameters,
+        };
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var apiResponseTemplate = await response
+                    .Deserialize<ApiResponseTemplate>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    apiResponseTemplate.Validate();
+                }
+                return apiResponseTemplate;
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public Task<HttpResponse<ApiResponseTemplate>> Update(
+        string id,
+        TemplateUpdateParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Update(parameters with { ID = id }, cancellationToken);
     }
 
     /// <inheritdoc/>

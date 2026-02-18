@@ -20,10 +20,10 @@ public class TemplateRetrieveParamsTest : TestBase
     {
         TemplateRetrieveParams parameters = new() { ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key", SenderID = "My Sender ID" });
+        var url = parameters.Url(new() { ApiKey = "My API Key" });
 
         Assert.Equal(
-            new Uri("https://api.sent.dm/v2/templates/7ba7b820-9dad-11d1-80b4-00c04fd430c8"),
+            new Uri("https://api.sent.dm/v3/templates/7ba7b820-9dad-11d1-80b4-00c04fd430c8"),
             url
         );
     }

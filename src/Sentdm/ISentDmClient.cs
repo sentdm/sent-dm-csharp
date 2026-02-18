@@ -43,12 +43,6 @@ public interface ISentDmClient : IDisposable
     string ApiKey { get; init; }
 
     /// <summary>
-    /// Customer sender ID (UUID) identifying the customer account. Obtain this from
-    /// your account settings. Pass via the `x-sender-id` header.
-    /// </summary>
-    string SenderID { get; init; }
-
-    /// <summary>
     /// Returns a view of this service that provides access to raw HTTP responses
     /// for each method.
     /// </summary>
@@ -61,13 +55,23 @@ public interface ISentDmClient : IDisposable
     /// </summary>
     ISentDmClient WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
-    IContactService Contacts { get; }
+    IWebhookService Webhooks { get; }
 
-    IMessageService Messages { get; }
+    IUserService Users { get; }
 
     ITemplateService Templates { get; }
 
-    INumberLookupService NumberLookup { get; }
+    IProfileService Profiles { get; }
+
+    IMessageService Messages { get; }
+
+    ILookupService Lookup { get; }
+
+    IContactService Contacts { get; }
+
+    IBrandService Brands { get; }
+
+    IMeService Me { get; }
 }
 
 /// <summary>
@@ -97,25 +101,29 @@ public interface ISentDmClientWithRawResponse : IDisposable
     string ApiKey { get; init; }
 
     /// <summary>
-    /// Customer sender ID (UUID) identifying the customer account. Obtain this from
-    /// your account settings. Pass via the `x-sender-id` header.
-    /// </summary>
-    string SenderID { get; init; }
-
-    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
     ISentDmClientWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
-    IContactServiceWithRawResponse Contacts { get; }
+    IWebhookServiceWithRawResponse Webhooks { get; }
 
-    IMessageServiceWithRawResponse Messages { get; }
+    IUserServiceWithRawResponse Users { get; }
 
     ITemplateServiceWithRawResponse Templates { get; }
 
-    INumberLookupServiceWithRawResponse NumberLookup { get; }
+    IProfileServiceWithRawResponse Profiles { get; }
+
+    IMessageServiceWithRawResponse Messages { get; }
+
+    ILookupServiceWithRawResponse Lookup { get; }
+
+    IContactServiceWithRawResponse Contacts { get; }
+
+    IBrandServiceWithRawResponse Brands { get; }
+
+    IMeServiceWithRawResponse Me { get; }
 
     /// <summary>
     /// Sends a request to the Sent Dm REST API.

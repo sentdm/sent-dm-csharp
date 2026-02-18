@@ -76,11 +76,11 @@ public class TemplateListParamsTest : TestBase
             Status = "status",
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key", SenderID = "My Sender ID" });
+        var url = parameters.Url(new() { ApiKey = "My API Key" });
 
         Assert.Equal(
             new Uri(
-                "https://api.sent.dm/v2/templates?page=0&pageSize=0&category=category&search=search&status=status"
+                "https://api.sent.dm/v3/templates?page=0&pageSize=0&category=category&search=search&status=status"
             ),
             url
         );

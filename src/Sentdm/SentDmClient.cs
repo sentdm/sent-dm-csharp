@@ -58,13 +58,6 @@ public sealed class SentDmClient : ISentDmClient
         init { this._options.ApiKey = value; }
     }
 
-    /// <inheritdoc/>
-    public string SenderID
-    {
-        get { return this._options.SenderID; }
-        init { this._options.SenderID = value; }
-    }
-
     readonly Lazy<ISentDmClientWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
@@ -79,16 +72,16 @@ public sealed class SentDmClient : ISentDmClient
         return new SentDmClient(modifier(this._options));
     }
 
-    readonly Lazy<IContactService> _contacts;
-    public IContactService Contacts
+    readonly Lazy<IWebhookService> _webhooks;
+    public IWebhookService Webhooks
     {
-        get { return _contacts.Value; }
+        get { return _webhooks.Value; }
     }
 
-    readonly Lazy<IMessageService> _messages;
-    public IMessageService Messages
+    readonly Lazy<IUserService> _users;
+    public IUserService Users
     {
-        get { return _messages.Value; }
+        get { return _users.Value; }
     }
 
     readonly Lazy<ITemplateService> _templates;
@@ -97,10 +90,40 @@ public sealed class SentDmClient : ISentDmClient
         get { return _templates.Value; }
     }
 
-    readonly Lazy<INumberLookupService> _numberLookup;
-    public INumberLookupService NumberLookup
+    readonly Lazy<IProfileService> _profiles;
+    public IProfileService Profiles
     {
-        get { return _numberLookup.Value; }
+        get { return _profiles.Value; }
+    }
+
+    readonly Lazy<IMessageService> _messages;
+    public IMessageService Messages
+    {
+        get { return _messages.Value; }
+    }
+
+    readonly Lazy<ILookupService> _lookup;
+    public ILookupService Lookup
+    {
+        get { return _lookup.Value; }
+    }
+
+    readonly Lazy<IContactService> _contacts;
+    public IContactService Contacts
+    {
+        get { return _contacts.Value; }
+    }
+
+    readonly Lazy<IBrandService> _brands;
+    public IBrandService Brands
+    {
+        get { return _brands.Value; }
+    }
+
+    readonly Lazy<IMeService> _me;
+    public IMeService Me
+    {
+        get { return _me.Value; }
     }
 
     public void Dispose() => this.HttpClient.Dispose();
@@ -110,10 +133,15 @@ public sealed class SentDmClient : ISentDmClient
         _options = new();
 
         _withRawResponse = new(() => new SentDmClientWithRawResponse(this._options));
-        _contacts = new(() => new ContactService(this));
-        _messages = new(() => new MessageService(this));
+        _webhooks = new(() => new WebhookService(this));
+        _users = new(() => new UserService(this));
         _templates = new(() => new TemplateService(this));
-        _numberLookup = new(() => new NumberLookupService(this));
+        _profiles = new(() => new ProfileService(this));
+        _messages = new(() => new MessageService(this));
+        _lookup = new(() => new LookupService(this));
+        _contacts = new(() => new ContactService(this));
+        _brands = new(() => new BrandService(this));
+        _me = new(() => new MeService(this));
     }
 
     public SentDmClient(ClientOptions options)
@@ -136,6 +164,8 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
         get { return _threadLocalRandom.Value!; }
     }
 #endif
+
+    internal static HttpMethod PatchMethod = new("PATCH");
 
     readonly ClientOptions _options;
 
@@ -182,28 +212,21 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
     }
 
     /// <inheritdoc/>
-    public string SenderID
-    {
-        get { return this._options.SenderID; }
-        init { this._options.SenderID = value; }
-    }
-
-    /// <inheritdoc/>
     public ISentDmClientWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
         return new SentDmClientWithRawResponse(modifier(this._options));
     }
 
-    readonly Lazy<IContactServiceWithRawResponse> _contacts;
-    public IContactServiceWithRawResponse Contacts
+    readonly Lazy<IWebhookServiceWithRawResponse> _webhooks;
+    public IWebhookServiceWithRawResponse Webhooks
     {
-        get { return _contacts.Value; }
+        get { return _webhooks.Value; }
     }
 
-    readonly Lazy<IMessageServiceWithRawResponse> _messages;
-    public IMessageServiceWithRawResponse Messages
+    readonly Lazy<IUserServiceWithRawResponse> _users;
+    public IUserServiceWithRawResponse Users
     {
-        get { return _messages.Value; }
+        get { return _users.Value; }
     }
 
     readonly Lazy<ITemplateServiceWithRawResponse> _templates;
@@ -212,10 +235,40 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
         get { return _templates.Value; }
     }
 
-    readonly Lazy<INumberLookupServiceWithRawResponse> _numberLookup;
-    public INumberLookupServiceWithRawResponse NumberLookup
+    readonly Lazy<IProfileServiceWithRawResponse> _profiles;
+    public IProfileServiceWithRawResponse Profiles
     {
-        get { return _numberLookup.Value; }
+        get { return _profiles.Value; }
+    }
+
+    readonly Lazy<IMessageServiceWithRawResponse> _messages;
+    public IMessageServiceWithRawResponse Messages
+    {
+        get { return _messages.Value; }
+    }
+
+    readonly Lazy<ILookupServiceWithRawResponse> _lookup;
+    public ILookupServiceWithRawResponse Lookup
+    {
+        get { return _lookup.Value; }
+    }
+
+    readonly Lazy<IContactServiceWithRawResponse> _contacts;
+    public IContactServiceWithRawResponse Contacts
+    {
+        get { return _contacts.Value; }
+    }
+
+    readonly Lazy<IBrandServiceWithRawResponse> _brands;
+    public IBrandServiceWithRawResponse Brands
+    {
+        get { return _brands.Value; }
+    }
+
+    readonly Lazy<IMeServiceWithRawResponse> _me;
+    public IMeServiceWithRawResponse Me
+    {
+        get { return _me.Value; }
     }
 
     /// <inheritdoc/>
@@ -412,10 +465,15 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
     {
         _options = new();
 
-        _contacts = new(() => new ContactServiceWithRawResponse(this));
-        _messages = new(() => new MessageServiceWithRawResponse(this));
+        _webhooks = new(() => new WebhookServiceWithRawResponse(this));
+        _users = new(() => new UserServiceWithRawResponse(this));
         _templates = new(() => new TemplateServiceWithRawResponse(this));
-        _numberLookup = new(() => new NumberLookupServiceWithRawResponse(this));
+        _profiles = new(() => new ProfileServiceWithRawResponse(this));
+        _messages = new(() => new MessageServiceWithRawResponse(this));
+        _lookup = new(() => new LookupServiceWithRawResponse(this));
+        _contacts = new(() => new ContactServiceWithRawResponse(this));
+        _brands = new(() => new BrandServiceWithRawResponse(this));
+        _me = new(() => new MeServiceWithRawResponse(this));
     }
 
     public SentDmClientWithRawResponse(ClientOptions options)

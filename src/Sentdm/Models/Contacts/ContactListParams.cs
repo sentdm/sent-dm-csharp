@@ -10,8 +10,7 @@ namespace Sentdm.Models.Contacts;
 
 /// <summary>
 /// Retrieves a paginated list of contacts for the authenticated customer. Supports
-/// server-side pagination with configurable page size. The customer ID is extracted
-/// from the authentication token.
+/// filtering by search term, channel, or phone number.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -20,7 +19,7 @@ namespace Sentdm.Models.Contacts;
 public record class ContactListParams : ParamsBase
 {
     /// <summary>
-    /// The page number (zero-indexed). Default is 0.
+    /// Page number (1-indexed)
     /// </summary>
     public required int Page
     {
@@ -32,9 +31,6 @@ public record class ContactListParams : ParamsBase
         init { this._rawQueryData.Set("page", value); }
     }
 
-    /// <summary>
-    /// The number of items per page. Default is 20.
-    /// </summary>
     public required int PageSize
     {
         get
@@ -43,6 +39,45 @@ public record class ContactListParams : ParamsBase
             return this._rawQueryData.GetNotNullStruct<int>("pageSize");
         }
         init { this._rawQueryData.Set("pageSize", value); }
+    }
+
+    /// <summary>
+    /// Optional channel filter (sms, whatsapp)
+    /// </summary>
+    public string? Channel
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("channel");
+        }
+        init { this._rawQueryData.Set("channel", value); }
+    }
+
+    /// <summary>
+    /// Optional phone number filter (alternative to list view)
+    /// </summary>
+    public string? Phone
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("phone");
+        }
+        init { this._rawQueryData.Set("phone", value); }
+    }
+
+    /// <summary>
+    /// Optional search term for filtering contacts
+    /// </summary>
+    public string? Search
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("search");
+        }
+        init { this._rawQueryData.Set("search", value); }
     }
 
     public ContactListParams() { }
@@ -114,7 +149,7 @@ public record class ContactListParams : ParamsBase
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v2/contacts")
+        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v3/contacts")
         {
             Query = this.QueryString(options),
         }.Uri;

@@ -9,10 +9,8 @@ using Sentdm.Core;
 namespace Sentdm.Models.Templates;
 
 /// <summary>
-/// Retrieves all message templates available for the authenticated customer with
-/// comprehensive template definitions including headers, body, footer, and interactive
-/// buttons. Supports advanced filtering by search term, status, and category, plus
-/// pagination. The customer ID is extracted from the authentication token.
+/// Retrieves a paginated list of message templates for the authenticated customer.
+/// Supports filtering by status, category, and search term.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -21,7 +19,7 @@ namespace Sentdm.Models.Templates;
 public record class TemplateListParams : ParamsBase
 {
     /// <summary>
-    /// The page number (zero-indexed). Default is 0.
+    /// Page number (1-indexed)
     /// </summary>
     public required int Page
     {
@@ -33,9 +31,6 @@ public record class TemplateListParams : ParamsBase
         init { this._rawQueryData.Set("page", value); }
     }
 
-    /// <summary>
-    /// The number of items per page (1-1000). Default is 100.
-    /// </summary>
     public required int PageSize
     {
         get
@@ -47,7 +42,7 @@ public record class TemplateListParams : ParamsBase
     }
 
     /// <summary>
-    /// Optional filter by template category (e.g., MARKETING, UTILITY, AUTHENTICATION)
+    /// Optional category filter: MARKETING, UTILITY, AUTHENTICATION
     /// </summary>
     public string? Category
     {
@@ -60,7 +55,7 @@ public record class TemplateListParams : ParamsBase
     }
 
     /// <summary>
-    /// Optional search term to filter templates by name or content
+    /// Optional search term for filtering templates
     /// </summary>
     public string? Search
     {
@@ -73,7 +68,7 @@ public record class TemplateListParams : ParamsBase
     }
 
     /// <summary>
-    /// Optional filter by template status (e.g., APPROVED, PENDING, REJECTED, DRAFT)
+    /// Optional status filter: APPROVED, PENDING, REJECTED
     /// </summary>
     public string? Status
     {
@@ -154,7 +149,7 @@ public record class TemplateListParams : ParamsBase
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v2/templates")
+        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v3/templates")
         {
             Query = this.QueryString(options),
         }.Uri;

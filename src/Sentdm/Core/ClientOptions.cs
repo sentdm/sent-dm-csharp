@@ -104,26 +104,4 @@ public record struct ClientOptions()
         readonly get { return _apiKey.Value; }
         set { _apiKey = new(() => value); }
     }
-
-    /// <summary>
-    /// Customer sender ID (UUID) identifying the customer account. Obtain this from
-    /// your account settings. Pass via the `x-sender-id` header.
-    /// </summary>
-    Lazy<string> _senderID = new(() =>
-        Environment.GetEnvironmentVariable("SENT_DM_SENDER_ID")
-        ?? throw new SentDmInvalidDataException(
-            string.Format("{0} cannot be null", nameof(SenderID)),
-            new ArgumentNullException(nameof(SenderID))
-        )
-    );
-
-    /// <summary>
-    /// Customer sender ID (UUID) identifying the customer account. Obtain this from
-    /// your account settings. Pass via the `x-sender-id` header.
-    /// </summary>
-    public string SenderID
-    {
-        readonly get { return _senderID.Value; }
-        set { _senderID = new(() => value); }
-    }
 }

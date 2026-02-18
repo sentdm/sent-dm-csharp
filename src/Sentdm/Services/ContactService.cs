@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
+using Sentdm.Exceptions;
 using Sentdm.Models.Contacts;
 
 namespace Sentdm.Services;
@@ -34,6 +35,66 @@ public sealed class ContactService : IContactService
     }
 
     /// <inheritdoc/>
+    public async Task<ApiResponseContact> Create(
+        ContactCreateParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Create(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<ApiResponseContact> Retrieve(
+        ContactRetrieveParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Retrieve(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<ApiResponseContact> Retrieve(
+        string id,
+        ContactRetrieveParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Retrieve(parameters with { ID = id }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<ApiResponseContact> Update(
+        ContactUpdateParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Update(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<ApiResponseContact> Update(
+        string id,
+        ContactUpdateParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Update(parameters with { ID = id }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
     public async Task<ContactListResponse> List(
         ContactListParams parameters,
         CancellationToken cancellationToken = default
@@ -46,27 +107,22 @@ public sealed class ContactService : IContactService
     }
 
     /// <inheritdoc/>
-    public async Task<ContactListItem> RetrieveByPhone(
-        ContactRetrieveByPhoneParams parameters,
+    public Task Delete(
+        ContactDeleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.RetrieveByPhone(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Delete(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<ContactListItem> RetrieveID(
-        ContactRetrieveIDParams parameters,
+    public async Task Delete(
+        string id,
+        ContactDeleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.RetrieveID(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        await this.Delete(parameters with { ID = id }, cancellationToken).ConfigureAwait(false);
     }
 }
 
@@ -84,6 +140,126 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     public ContactServiceWithRawResponse(ISentDmClientWithRawResponse client)
     {
         _client = client;
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<ApiResponseContact>> Create(
+        ContactCreateParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        HttpRequest<ContactCreateParams> request = new()
+        {
+            Method = HttpMethod.Post,
+            Params = parameters,
+        };
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var apiResponseContact = await response
+                    .Deserialize<ApiResponseContact>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    apiResponseContact.Validate();
+                }
+                return apiResponseContact;
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<ApiResponseContact>> Retrieve(
+        ContactRetrieveParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        if (parameters.ID == null)
+        {
+            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+        }
+
+        HttpRequest<ContactRetrieveParams> request = new()
+        {
+            Method = HttpMethod.Get,
+            Params = parameters,
+        };
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var apiResponseContact = await response
+                    .Deserialize<ApiResponseContact>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    apiResponseContact.Validate();
+                }
+                return apiResponseContact;
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public Task<HttpResponse<ApiResponseContact>> Retrieve(
+        string id,
+        ContactRetrieveParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Retrieve(parameters with { ID = id }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<ApiResponseContact>> Update(
+        ContactUpdateParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        if (parameters.ID == null)
+        {
+            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+        }
+
+        HttpRequest<ContactUpdateParams> request = new()
+        {
+            Method = SentDmClientWithRawResponse.PatchMethod,
+            Params = parameters,
+        };
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var apiResponseContact = await response
+                    .Deserialize<ApiResponseContact>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    apiResponseContact.Validate();
+                }
+                return apiResponseContact;
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public Task<HttpResponse<ApiResponseContact>> Update(
+        string id,
+        ContactUpdateParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Update(parameters with { ID = id }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -115,58 +291,31 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ContactListItem>> RetrieveByPhone(
-        ContactRetrieveByPhoneParams parameters,
+    public Task<HttpResponse> Delete(
+        ContactDeleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        HttpRequest<ContactRetrieveByPhoneParams> request = new()
+        if (parameters.ID == null)
         {
-            Method = HttpMethod.Get,
+            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+        }
+
+        HttpRequest<ContactDeleteParams> request = new()
+        {
+            Method = HttpMethod.Delete,
             Params = parameters,
         };
-        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var contactListItem = await response
-                    .Deserialize<ContactListItem>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    contactListItem.Validate();
-                }
-                return contactListItem;
-            }
-        );
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ContactListItem>> RetrieveID(
-        ContactRetrieveIDParams parameters,
+    public Task<HttpResponse> Delete(
+        string id,
+        ContactDeleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        HttpRequest<ContactRetrieveIDParams> request = new()
-        {
-            Method = HttpMethod.Get,
-            Params = parameters,
-        };
-        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var contactListItem = await response
-                    .Deserialize<ContactListItem>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    contactListItem.Validate();
-                }
-                return contactListItem;
-            }
-        );
+        return this.Delete(parameters with { ID = id }, cancellationToken);
     }
 }

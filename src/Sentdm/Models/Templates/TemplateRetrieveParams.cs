@@ -9,9 +9,8 @@ using Sentdm.Core;
 namespace Sentdm.Models.Templates;
 
 /// <summary>
-/// Retrieves a specific message template by its unique identifier for the authenticated
-/// customer with comprehensive template definitions including headers, body, footer,
-/// and interactive buttons. The customer ID is extracted from the authentication token.
+/// Retrieves a specific template by its ID. Returns template details including name,
+/// category, language, status, and definition.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -96,7 +95,7 @@ public record class TemplateRetrieveParams : ParamsBase
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v2/templates/{0}", this.ID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v3/templates/{0}", this.ID)
         )
         {
             Query = this.QueryString(options),

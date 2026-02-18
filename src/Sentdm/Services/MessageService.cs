@@ -35,54 +35,63 @@ public sealed class MessageService : IMessageService
     }
 
     /// <inheritdoc/>
-    public async Task<MessageRetrieveResponse> Retrieve(
-        MessageRetrieveParams parameters,
+    public async Task<MessageRetrieveActivitiesResponse> RetrieveActivities(
+        MessageRetrieveActivitiesParams parameters,
         CancellationToken cancellationToken = default
     )
     {
         using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
+            .WithRawResponse.RetrieveActivities(parameters, cancellationToken)
             .ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task<MessageRetrieveResponse> Retrieve(
+    public Task<MessageRetrieveActivitiesResponse> RetrieveActivities(
         string id,
-        MessageRetrieveParams? parameters = null,
+        MessageRetrieveActivitiesParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { ID = id }, cancellationToken);
+        return this.RetrieveActivities(parameters with { ID = id }, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public Task SendQuickMessage(
-        MessageSendQuickMessageParams parameters,
+    public async Task<MessageRetrieveStatusResponse> RetrieveStatus(
+        MessageRetrieveStatusParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return this.WithRawResponse.SendQuickMessage(parameters, cancellationToken);
+        using var response = await this
+            .WithRawResponse.RetrieveStatus(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task SendToContact(
-        MessageSendToContactParams parameters,
+    public Task<MessageRetrieveStatusResponse> RetrieveStatus(
+        string id,
+        MessageRetrieveStatusParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        return this.WithRawResponse.SendToContact(parameters, cancellationToken);
+        parameters ??= new();
+
+        return this.RetrieveStatus(parameters with { ID = id }, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public Task SendToPhone(
-        MessageSendToPhoneParams parameters,
+    public async Task<MessageSendResponse> Send(
+        MessageSendParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        return this.WithRawResponse.SendToPhone(parameters, cancellationToken);
+        using var response = await this
+            .WithRawResponse.Send(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 }
 
@@ -103,8 +112,8 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<MessageRetrieveResponse>> Retrieve(
-        MessageRetrieveParams parameters,
+    public async Task<HttpResponse<MessageRetrieveActivitiesResponse>> RetrieveActivities(
+        MessageRetrieveActivitiesParams parameters,
         CancellationToken cancellationToken = default
     )
     {
@@ -113,7 +122,7 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
             throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
         }
 
-        HttpRequest<MessageRetrieveParams> request = new()
+        HttpRequest<MessageRetrieveActivitiesParams> request = new()
         {
             Method = HttpMethod.Get,
             Params = parameters,
@@ -123,69 +132,102 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
             response,
             async (token) =>
             {
-                var message = await response
-                    .Deserialize<MessageRetrieveResponse>(token)
+                var deserializedResponse = await response
+                    .Deserialize<MessageRetrieveActivitiesResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    message.Validate();
+                    deserializedResponse.Validate();
                 }
-                return message;
+                return deserializedResponse;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<MessageRetrieveResponse>> Retrieve(
+    public Task<HttpResponse<MessageRetrieveActivitiesResponse>> RetrieveActivities(
         string id,
-        MessageRetrieveParams? parameters = null,
+        MessageRetrieveActivitiesParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { ID = id }, cancellationToken);
+        return this.RetrieveActivities(parameters with { ID = id }, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse> SendQuickMessage(
-        MessageSendQuickMessageParams parameters,
+    public async Task<HttpResponse<MessageRetrieveStatusResponse>> RetrieveStatus(
+        MessageRetrieveStatusParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        HttpRequest<MessageSendQuickMessageParams> request = new()
+        if (parameters.ID == null)
+        {
+            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+        }
+
+        HttpRequest<MessageRetrieveStatusParams> request = new()
+        {
+            Method = HttpMethod.Get,
+            Params = parameters,
+        };
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var deserializedResponse = await response
+                    .Deserialize<MessageRetrieveStatusResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    deserializedResponse.Validate();
+                }
+                return deserializedResponse;
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public Task<HttpResponse<MessageRetrieveStatusResponse>> RetrieveStatus(
+        string id,
+        MessageRetrieveStatusParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.RetrieveStatus(parameters with { ID = id }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<MessageSendResponse>> Send(
+        MessageSendParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        HttpRequest<MessageSendParams> request = new()
         {
             Method = HttpMethod.Post,
             Params = parameters,
         };
-        return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
-    public Task<HttpResponse> SendToContact(
-        MessageSendToContactParams parameters,
-        CancellationToken cancellationToken = default
-    )
-    {
-        HttpRequest<MessageSendToContactParams> request = new()
-        {
-            Method = HttpMethod.Post,
-            Params = parameters,
-        };
-        return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
-    public Task<HttpResponse> SendToPhone(
-        MessageSendToPhoneParams parameters,
-        CancellationToken cancellationToken = default
-    )
-    {
-        HttpRequest<MessageSendToPhoneParams> request = new()
-        {
-            Method = HttpMethod.Post,
-            Params = parameters,
-        };
-        return this._client.Execute(request, cancellationToken);
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var deserializedResponse = await response
+                    .Deserialize<MessageSendResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    deserializedResponse.Validate();
+                }
+                return deserializedResponse;
+            }
+        );
     }
 }

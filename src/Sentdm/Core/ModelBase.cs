@@ -1,5 +1,7 @@
 using System.Text.Json;
 using Sentdm.Exceptions;
+using Sentdm.Models.Brands;
+using Campaigns = Sentdm.Models.Brands.Campaigns;
 
 namespace Sentdm.Core;
 
@@ -17,7 +19,18 @@ public abstract record class ModelBase
 
     internal static readonly JsonSerializerOptions SerializerOptions = new()
     {
-        Converters = { new FrozenDictionaryConverterFactory() },
+        Converters =
+        {
+            new FrozenDictionaryConverterFactory(),
+            new ApiEnumConverter<string, EntityType>(),
+            new ApiEnumConverter<string, IdentityStatus>(),
+            new ApiEnumConverter<string, Status>(),
+            new ApiEnumConverter<string, TcrBrandRelationship>(),
+            new ApiEnumConverter<string, TcrVertical>(),
+            new ApiEnumConverter<string, Campaigns::MessagingUseCaseUs>(),
+            new ApiEnumConverter<string, Campaigns::SharingStatus>(),
+            new ApiEnumConverter<string, Campaigns::Status>(),
+        },
     };
 
     internal static readonly JsonSerializerOptions ToStringSerializerOptions = new(

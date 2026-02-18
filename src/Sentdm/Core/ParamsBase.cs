@@ -200,10 +200,6 @@ public abstract record class ParamsBase
         {
             request.Headers.Add("x-api-key", options.ApiKey);
         }
-        if (options.SenderID != null)
-        {
-            request.Headers.Add("x-sender-id", options.SenderID);
-        }
         request.Headers.Add(
             "X-Stainless-Timeout",
             (options.Timeout ?? ClientOptions.DefaultTimeout).TotalSeconds.ToString()
