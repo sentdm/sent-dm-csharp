@@ -6,7 +6,7 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <Copyright>Copyright 2026 Sent Dm</Copyright>
     <PackageProjectUrl>https://docs.sent.dm</PackageProjectUrl>
-    <RepositoryUrl>https://www.github.com/sentdm/sent-dm-csharp</RepositoryUrl>
+    <RepositoryUrl>https://www.github.com/stainless-sdks/sent-dm-csharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
     <!-- Documentation-->
