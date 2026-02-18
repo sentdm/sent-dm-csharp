@@ -8,10 +8,9 @@ The REST API documentation can be found on [docs.sent.dm](https://docs.sent.dm).
 
 ## Installation
 
-Install the package from [NuGet](https://www.nuget.org/packages/Sentdm):
-
 ```bash
-dotnet add package Sentdm
+git clone git@github.com:stainless-sdks/sent-dm-csharp.git
+dotnet add reference sent-dm-csharp/src/SentDm
 ```
 
 ## Requirements
@@ -23,23 +22,37 @@ This library requires .NET Standard 2.0 or later.
 See the [`examples`](examples) directory for complete and runnable examples.
 
 ```csharp
+using System;
 using System.Collections.Generic;
-using Sentdm;
-using Sentdm.Models.Messages;
+using SentDm;
+using SentDm.Models.Messages;
 
 SentDmClient client = new();
 
-MessageSendToPhoneParams parameters = new()
+MessageSendParams parameters = new()
 {
-    PhoneNumber = "+1234567890",
-    TemplateID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-    TemplateVariables = new Dictionary<string, string>()
+    Channel =
+    [
+        "sms", "whatsapp"
+    ],
+    Template = new()
     {
-        { "name", "John Doe" }, { "order_id", "12345" }
+        ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+        Name = "order_confirmation",
+        Parameters = new Dictionary<string, string>()
+        {
+            { "name", "John Doe" }, { "order_id", "12345" }
+        },
     },
+    To =
+    [
+        "+14155551234", "+14155555678"
+    ],
 };
 
-await client.Messages.SendToPhone(parameters);
+var response = await client.Messages.Send(parameters);
+
+Console.WriteLine(response);
 ```
 
 ## Client configuration
@@ -47,33 +60,28 @@ await client.Messages.SendToPhone(parameters);
 Configure the client using environment variables:
 
 ```csharp
-using Sentdm;
+using SentDm;
 
-// Configured using the SENT_DM_API_KEY, SENT_DM_SENDER_ID and SENT_DM_BASE_URL environment variables
+// Configured using the SENT_DM_API_KEY and SENT_DM_BASE_URL environment variables
 SentDmClient client = new();
 ```
 
 Or manually:
 
 ```csharp
-using Sentdm;
+using SentDm;
 
-SentDmClient client = new()
-{
-    ApiKey = "My API Key",
-    SenderID = "My Sender ID",
-};
+SentDmClient client = new() { ApiKey = "My API Key" };
 ```
 
 Or using a combination of the two approaches.
 
 See this table for the available options:
 
-| Property   | Environment variable | Required | Default value           |
-| ---------- | -------------------- | -------- | ----------------------- |
-| `ApiKey`   | `SENT_DM_API_KEY`    | true     | -                       |
-| `SenderID` | `SENT_DM_SENDER_ID`  | true     | -                       |
-| `BaseUrl`  | `SENT_DM_BASE_URL`   | true     | `"https://api.sent.dm"` |
+| Property  | Environment variable | Required | Default value           |
+| --------- | -------------------- | -------- | ----------------------- |
+| `ApiKey`  | `SENT_DM_API_KEY`    | true     | -                       |
+| `BaseUrl` | `SENT_DM_BASE_URL`   | true     | `"https://api.sent.dm"` |
 
 ### Modifying configuration
 
@@ -82,7 +90,7 @@ To temporarily use a modified client configuration, while reusing the same conne
 ```csharp
 using System;
 
-await client
+var response = await client
     .WithOptions(options =>
         options with
         {
@@ -90,7 +98,9 @@ await client
             Timeout = TimeSpan.FromSeconds(42),
         }
     )
-    .Messages.SendToPhone(parameters);
+    .Messages.Send(parameters);
+
+Console.WriteLine(response);
 ```
 
 Using a [`with` expression](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/with-expression) makes it easy to construct the modified options.
@@ -101,7 +111,7 @@ The `WithOptions` method does not affect the original client or service.
 
 To send a request to the Sent Dm API, build an instance of some `Params` class and pass it to the corresponding client method. When the response is received, it will be deserialized into an instance of a C# class.
 
-For example, `client.Contacts.List` should be called with an instance of `ContactListParams`, and it will return an instance of `Task<ContactListResponse>`.
+For example, `client.Messages.Send` should be called with an instance of `MessageSendParams`, and it will return an instance of `Task<MessageSendResponse>`.
 
 ## Raw responses
 
@@ -110,7 +120,7 @@ The SDK defines methods that deserialize responses into instances of C# classes.
 To access this data, prefix any HTTP method call on a client or service with `WithRawResponse`:
 
 ```csharp
-var response = await client.WithRawResponse.Messages.SendToPhone(parameters);
+var response = await client.WithRawResponse.Messages.Send();
 var statusCode = response.StatusCode;
 var headers = response.Headers;
 ```
@@ -121,10 +131,10 @@ For non-streaming responses, you can deserialize the response into an instance o
 
 ```csharp
 using System;
-using Sentdm.Models.Contacts;
+using SentDm.Models.Messages;
 
-var response = await client.WithRawResponse.Contacts.List(parameters);
-ContactListResponse deserialized = await response.Deserialize();
+var response = await client.WithRawResponse.Messages.Send();
+MessageSendResponse deserialized = await response.Deserialize();
 Console.WriteLine(deserialized);
 ```
 
@@ -174,7 +184,7 @@ The API may also explicitly instruct the SDK to retry or not retry a request.
 To set a custom number of retries, configure the client using the `MaxRetries` method:
 
 ```csharp
-using Sentdm;
+using SentDm;
 
 SentDmClient client = new() { MaxRetries = 3 };
 ```
@@ -182,11 +192,15 @@ SentDmClient client = new() { MaxRetries = 3 };
 Or configure a single method call using [`WithOptions`](#modifying-configuration):
 
 ```csharp
-await client
+using System;
+
+var response = await client
     .WithOptions(options =>
         options with { MaxRetries = 3 }
     )
-    .Messages.SendToPhone(parameters);
+    .Messages.Send(parameters);
+
+Console.WriteLine(response);
 ```
 
 ### Timeouts
@@ -197,7 +211,7 @@ To set a custom timeout, configure the client using the `Timeout` option:
 
 ```csharp
 using System;
-using Sentdm;
+using SentDm;
 
 SentDmClient client = new() { Timeout = TimeSpan.FromSeconds(42) };
 ```
@@ -207,11 +221,13 @@ Or configure a single method call using [`WithOptions`](#modifying-configuration
 ```csharp
 using System;
 
-await client
+var response = await client
     .WithOptions(options =>
         options with { Timeout = TimeSpan.FromSeconds(42) }
     )
-    .Messages.SendToPhone(parameters);
+    .Messages.Send(parameters);
+
+Console.WriteLine(response);
 ```
 
 ## Undocumented API functionality
@@ -227,14 +243,14 @@ By default, the SDK will not throw an exception in this case. It will throw `Sen
 If you would prefer to check that the response is completely well-typed upfront, then either call `Validate`:
 
 ```csharp
-var contacts = client.Contacts.List(parameters);
-contacts.Validate();
+var response = client.Messages.Send();
+response.Validate();
 ```
 
 Or configure the client using the `ResponseValidation` option:
 
 ```csharp
-using Sentdm;
+using SentDm;
 
 SentDmClient client = new() { ResponseValidation = true };
 ```
@@ -244,13 +260,13 @@ Or configure a single method call using [`WithOptions`](#modifying-configuration
 ```csharp
 using System;
 
-var contacts = await client
+var response = await client
     .WithOptions(options =>
         options with { ResponseValidation = true }
     )
-    .Contacts.List(parameters);
+    .Messages.Send(parameters);
 
-Console.WriteLine(contacts);
+Console.WriteLine(response);
 ```
 
 ## Semantic versioning
@@ -262,4 +278,4 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/sentdm/sent-dm-csharp/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/sent-dm-csharp/issues) with questions, bugs, or suggestions.
