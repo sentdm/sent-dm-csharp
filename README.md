@@ -8,9 +8,10 @@ The REST API documentation can be found on [docs.sent.dm](https://docs.sent.dm).
 
 ## Installation
 
+Install the package from [NuGet](https://www.nuget.org/packages/Sentdm):
+
 ```bash
-git clone git@github.com:stainless-sdks/sent-dm-csharp.git
-dotnet add reference sent-dm-csharp/src/SentDm
+dotnet add package Sentdm
 ```
 
 ## Requirements
@@ -24,8 +25,8 @@ See the [`examples`](examples) directory for complete and runnable examples.
 ```csharp
 using System;
 using System.Collections.Generic;
-using SentDm;
-using SentDm.Models.Messages;
+using Sentdm;
+using Sentdm.Models.Messages;
 
 SentDmClient client = new();
 
@@ -60,7 +61,7 @@ Console.WriteLine(response);
 Configure the client using environment variables:
 
 ```csharp
-using SentDm;
+using Sentdm;
 
 // Configured using the SENT_DM_API_KEY and SENT_DM_BASE_URL environment variables
 SentDmClient client = new();
@@ -69,7 +70,7 @@ SentDmClient client = new();
 Or manually:
 
 ```csharp
-using SentDm;
+using Sentdm;
 
 SentDmClient client = new() { ApiKey = "My API Key" };
 ```
@@ -131,7 +132,7 @@ For non-streaming responses, you can deserialize the response into an instance o
 
 ```csharp
 using System;
-using SentDm.Models.Messages;
+using Sentdm.Models.Messages;
 
 var response = await client.WithRawResponse.Messages.Send();
 MessageSendResponse deserialized = await response.Deserialize();
@@ -184,7 +185,7 @@ The API may also explicitly instruct the SDK to retry or not retry a request.
 To set a custom number of retries, configure the client using the `MaxRetries` method:
 
 ```csharp
-using SentDm;
+using Sentdm;
 
 SentDmClient client = new() { MaxRetries = 3 };
 ```
@@ -211,7 +212,7 @@ To set a custom timeout, configure the client using the `Timeout` option:
 
 ```csharp
 using System;
-using SentDm;
+using Sentdm;
 
 SentDmClient client = new() { Timeout = TimeSpan.FromSeconds(42) };
 ```
@@ -250,7 +251,7 @@ response.Validate();
 Or configure the client using the `ResponseValidation` option:
 
 ```csharp
-using SentDm;
+using Sentdm;
 
 SentDmClient client = new() { ResponseValidation = true };
 ```
@@ -278,4 +279,4 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/sent-dm-csharp/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/sentdm/sent-dm-csharp/issues) with questions, bugs, or suggestions.
