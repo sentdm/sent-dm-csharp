@@ -372,14 +372,12 @@ public sealed record class TcrCampaignWithUseCases : JsonModel
         init { this._rawData.Set("upstreamCnpId", value); }
     }
 
-    public IReadOnlyList<IntersectionMember1UseCase>? UseCases
+    public IReadOnlyList<UseCase>? UseCases
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<IntersectionMember1UseCase>>(
-                "useCases"
-            );
+            return this._rawData.GetNullableStruct<ImmutableArray<UseCase>>("useCases");
         }
         init
         {
@@ -388,7 +386,7 @@ public sealed record class TcrCampaignWithUseCases : JsonModel
                 return;
             }
 
-            this._rawData.Set<ImmutableArray<IntersectionMember1UseCase>?>(
+            this._rawData.Set<ImmutableArray<UseCase>?>(
                 "useCases",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -793,14 +791,12 @@ public sealed record class IntersectionMember1 : JsonModel
         init { this._rawData.Set("upstreamCnpId", value); }
     }
 
-    public IReadOnlyList<IntersectionMember1UseCase>? UseCases
+    public IReadOnlyList<UseCase>? UseCases
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<IntersectionMember1UseCase>>(
-                "useCases"
-            );
+            return this._rawData.GetNullableStruct<ImmutableArray<UseCase>>("useCases");
         }
         init
         {
@@ -809,7 +805,7 @@ public sealed record class IntersectionMember1 : JsonModel
                 return;
             }
 
-            this._rawData.Set<ImmutableArray<IntersectionMember1UseCase>?>(
+            this._rawData.Set<ImmutableArray<UseCase>?>(
                 "useCases",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -979,10 +975,8 @@ sealed class StatusConverter : JsonConverter<Status>
     }
 }
 
-[JsonConverter(
-    typeof(JsonModelConverter<IntersectionMember1UseCase, IntersectionMember1UseCaseFromRaw>)
-)]
-public sealed record class IntersectionMember1UseCase : JsonModel
+[JsonConverter(typeof(JsonModelConverter<UseCase, UseCaseFromRaw>))]
+public sealed record class UseCase : JsonModel
 {
     /// <summary>
     /// Unique identifier
@@ -1110,14 +1104,12 @@ public sealed record class IntersectionMember1UseCase : JsonModel
         }
     }
 
-    public static implicit operator BaseDto(
-        IntersectionMember1UseCase intersectionMember1UseCase
-    ) =>
+    public static implicit operator BaseDto(UseCase useCase) =>
         new()
         {
-            ID = intersectionMember1UseCase.ID,
-            CreatedAt = intersectionMember1UseCase.CreatedAt,
-            UpdatedAt = intersectionMember1UseCase.UpdatedAt,
+            ID = useCase.ID,
+            CreatedAt = useCase.CreatedAt,
+            UpdatedAt = useCase.UpdatedAt,
         };
 
     /// <inheritdoc/>
@@ -1132,51 +1124,45 @@ public sealed record class IntersectionMember1UseCase : JsonModel
         _ = this.SampleMessages;
     }
 
-    public IntersectionMember1UseCase() { }
+    public UseCase() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public IntersectionMember1UseCase(IntersectionMember1UseCase intersectionMember1UseCase)
-        : base(intersectionMember1UseCase) { }
+    public UseCase(UseCase useCase)
+        : base(useCase) { }
 #pragma warning restore CS8618
 
-    public IntersectionMember1UseCase(IReadOnlyDictionary<string, JsonElement> rawData)
+    public UseCase(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    IntersectionMember1UseCase(FrozenDictionary<string, JsonElement> rawData)
+    UseCase(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IntersectionMember1UseCaseFromRaw.FromRawUnchecked"/>
-    public static IntersectionMember1UseCase FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="UseCaseFromRaw.FromRawUnchecked"/>
+    public static UseCase FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class IntersectionMember1UseCaseFromRaw : IFromRawJson<IntersectionMember1UseCase>
+class UseCaseFromRaw : IFromRawJson<UseCase>
 {
     /// <inheritdoc/>
-    public IntersectionMember1UseCase FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => IntersectionMember1UseCase.FromRawUnchecked(rawData);
+    public UseCase FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        UseCase.FromRawUnchecked(rawData);
 }
 
 [JsonConverter(
-    typeof(JsonModelConverter<
-        IntersectionMember1UseCaseIntersectionMember1,
-        IntersectionMember1UseCaseIntersectionMember1FromRaw
-    >)
+    typeof(JsonModelConverter<UseCaseIntersectionMember1, UseCaseIntersectionMember1FromRaw>)
 )]
-public sealed record class IntersectionMember1UseCaseIntersectionMember1 : JsonModel
+public sealed record class UseCaseIntersectionMember1 : JsonModel
 {
     public string? CampaignID
     {
@@ -1264,33 +1250,29 @@ public sealed record class IntersectionMember1UseCaseIntersectionMember1 : JsonM
         _ = this.SampleMessages;
     }
 
-    public IntersectionMember1UseCaseIntersectionMember1() { }
+    public UseCaseIntersectionMember1() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public IntersectionMember1UseCaseIntersectionMember1(
-        IntersectionMember1UseCaseIntersectionMember1 intersectionMember1UseCaseIntersectionMember1
-    )
-        : base(intersectionMember1UseCaseIntersectionMember1) { }
+    public UseCaseIntersectionMember1(UseCaseIntersectionMember1 useCaseIntersectionMember1)
+        : base(useCaseIntersectionMember1) { }
 #pragma warning restore CS8618
 
-    public IntersectionMember1UseCaseIntersectionMember1(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    public UseCaseIntersectionMember1(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    IntersectionMember1UseCaseIntersectionMember1(FrozenDictionary<string, JsonElement> rawData)
+    UseCaseIntersectionMember1(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IntersectionMember1UseCaseIntersectionMember1FromRaw.FromRawUnchecked"/>
-    public static IntersectionMember1UseCaseIntersectionMember1 FromRawUnchecked(
+    /// <inheritdoc cref="UseCaseIntersectionMember1FromRaw.FromRawUnchecked"/>
+    public static UseCaseIntersectionMember1 FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -1298,11 +1280,10 @@ public sealed record class IntersectionMember1UseCaseIntersectionMember1 : JsonM
     }
 }
 
-class IntersectionMember1UseCaseIntersectionMember1FromRaw
-    : IFromRawJson<IntersectionMember1UseCaseIntersectionMember1>
+class UseCaseIntersectionMember1FromRaw : IFromRawJson<UseCaseIntersectionMember1>
 {
     /// <inheritdoc/>
-    public IntersectionMember1UseCaseIntersectionMember1 FromRawUnchecked(
+    public UseCaseIntersectionMember1 FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => IntersectionMember1UseCaseIntersectionMember1.FromRawUnchecked(rawData);
+    ) => UseCaseIntersectionMember1.FromRawUnchecked(rawData);
 }
