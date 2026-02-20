@@ -4,7 +4,7 @@ namespace Sentdm.Tests.Services;
 
 public class ProfileServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var apiResponseOfProfileDetail = await this.client.Profiles.Create(
@@ -14,7 +14,7 @@ public class ProfileServiceTest : TestBase
         apiResponseOfProfileDetail.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var apiResponseOfProfileDetail = await this.client.Profiles.Retrieve(
@@ -25,7 +25,7 @@ public class ProfileServiceTest : TestBase
         apiResponseOfProfileDetail.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var apiResponseOfProfileDetail = await this.client.Profiles.Update(
@@ -36,7 +36,7 @@ public class ProfileServiceTest : TestBase
         apiResponseOfProfileDetail.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var profiles = await this.client.Profiles.List(
@@ -46,7 +46,7 @@ public class ProfileServiceTest : TestBase
         profiles.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Profiles.Delete(
@@ -56,7 +56,7 @@ public class ProfileServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Complete_Works()
     {
         await this.client.Profiles.Complete(

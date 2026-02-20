@@ -4,7 +4,7 @@ namespace Sentdm.Tests.Services;
 
 public class WebhookServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var apiResponseWebhook = await this.client.Webhooks.Create(
@@ -14,7 +14,7 @@ public class WebhookServiceTest : TestBase
         apiResponseWebhook.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var apiResponseWebhook = await this.client.Webhooks.Retrieve(
@@ -25,7 +25,7 @@ public class WebhookServiceTest : TestBase
         apiResponseWebhook.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var apiResponseWebhook = await this.client.Webhooks.Update(
@@ -36,7 +36,7 @@ public class WebhookServiceTest : TestBase
         apiResponseWebhook.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var webhooks = await this.client.Webhooks.List(
@@ -46,7 +46,7 @@ public class WebhookServiceTest : TestBase
         webhooks.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Webhooks.Delete(
@@ -56,7 +56,7 @@ public class WebhookServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListEventTypes_Works()
     {
         var response = await this.client.Webhooks.ListEventTypes(
@@ -66,7 +66,7 @@ public class WebhookServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListEvents_Works()
     {
         var response = await this.client.Webhooks.ListEvents(
@@ -77,7 +77,7 @@ public class WebhookServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task RotateSecret_Works()
     {
         var response = await this.client.Webhooks.RotateSecret(
@@ -88,7 +88,7 @@ public class WebhookServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Test_Works()
     {
         var response = await this.client.Webhooks.Test(
@@ -99,7 +99,7 @@ public class WebhookServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ToggleStatus_Works()
     {
         var apiResponseWebhook = await this.client.Webhooks.ToggleStatus(
