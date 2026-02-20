@@ -4,7 +4,7 @@ namespace Sentdm.Tests.Services;
 
 public class TemplateServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var apiResponseTemplate = await this.client.Templates.Create(
@@ -14,7 +14,7 @@ public class TemplateServiceTest : TestBase
         apiResponseTemplate.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var apiResponseTemplate = await this.client.Templates.Retrieve(
@@ -25,7 +25,7 @@ public class TemplateServiceTest : TestBase
         apiResponseTemplate.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var apiResponseTemplate = await this.client.Templates.Update(
@@ -36,7 +36,7 @@ public class TemplateServiceTest : TestBase
         apiResponseTemplate.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var templates = await this.client.Templates.List(
@@ -46,7 +46,7 @@ public class TemplateServiceTest : TestBase
         templates.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Templates.Delete(
