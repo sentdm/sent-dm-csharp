@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.7.1 (2026-02-21)
+
+Full Changelog: [v0.7.0...v0.7.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.7.0...v0.7.1)
+
+### Chores
+
+* **internal:** remove mock server code ([6b5a7a5](https://github.com/sentdm/sent-dm-csharp/commit/6b5a7a587af18240353f76cb6fd9f263eacbe41c))
+* update mock server docs ([bb4e746](https://github.com/sentdm/sent-dm-csharp/commit/bb4e746a34e472259b4a7a78d64ea7a4a97a09d0))
+
+
+### Refactors
+
+* **internal:** default headers ([af7d5a8](https://github.com/sentdm/sent-dm-csharp/commit/af7d5a8814d93f2e4fa0f64e102bda2535aaf0eb))
+
 ## 0.7.0 (2026-02-18)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.6.0...v0.7.0)
