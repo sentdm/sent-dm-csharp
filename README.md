@@ -158,8 +158,6 @@ The SDK throws custom unchecked exception types:
 
 Additionally, all 4xx errors inherit from `SentDm4xxException`.
 
-false
-
 - `SentDmIOException`: I/O networking errors.
 
 - `SentDmInvalidDataException`: Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
