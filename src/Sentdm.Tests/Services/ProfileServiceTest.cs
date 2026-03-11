@@ -57,9 +57,9 @@ public class ProfileServiceTest : TestBase
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
-    public async Task Complete_Works()
+    public async Task CompleteSetup_Works()
     {
-        await this.client.Profiles.Complete(
+        await this.client.Profiles.CompleteSetup(
             "660e8400-e29b-41d4-a716-446655440000",
             new() { WebHookUrl = "https://your-app.com/webhook/profile-complete" },
             TestContext.Current.CancellationToken

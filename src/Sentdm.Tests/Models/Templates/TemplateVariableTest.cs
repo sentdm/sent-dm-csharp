@@ -28,7 +28,7 @@ public class TemplateVariableTest : TestBase
 
         int expectedID = 0;
         string expectedName = "name";
-        Props expectedProps = new()
+        TemplateVariableProps expectedProps = new()
         {
             Alt = "alt",
             MediaType = "mediaType",
@@ -104,7 +104,7 @@ public class TemplateVariableTest : TestBase
 
         int expectedID = 0;
         string expectedName = "name";
-        Props expectedProps = new()
+        TemplateVariableProps expectedProps = new()
         {
             Alt = "alt",
             MediaType = "mediaType",
@@ -231,12 +231,12 @@ public class TemplateVariableTest : TestBase
     }
 }
 
-public class PropsTest : TestBase
+public class TemplateVariablePropsTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Props
+        var model = new TemplateVariableProps
         {
             Alt = "alt",
             MediaType = "mediaType",
@@ -267,7 +267,7 @@ public class PropsTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Props
+        var model = new TemplateVariableProps
         {
             Alt = "alt",
             MediaType = "mediaType",
@@ -279,7 +279,10 @@ public class PropsTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Props>(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<TemplateVariableProps>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -287,7 +290,7 @@ public class PropsTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Props
+        var model = new TemplateVariableProps
         {
             Alt = "alt",
             MediaType = "mediaType",
@@ -299,7 +302,10 @@ public class PropsTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Props>(element, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<TemplateVariableProps>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedAlt = "alt";
@@ -322,7 +328,7 @@ public class PropsTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Props
+        var model = new TemplateVariableProps
         {
             Alt = "alt",
             MediaType = "mediaType",
@@ -339,7 +345,7 @@ public class PropsTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Props { };
+        var model = new TemplateVariableProps { };
 
         Assert.Null(model.Alt);
         Assert.False(model.RawData.ContainsKey("alt"));
@@ -360,7 +366,7 @@ public class PropsTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Props { };
+        var model = new TemplateVariableProps { };
 
         model.Validate();
     }
@@ -368,7 +374,7 @@ public class PropsTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new Props
+        var model = new TemplateVariableProps
         {
             Alt = null,
             MediaType = null,
@@ -398,7 +404,7 @@ public class PropsTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Props
+        var model = new TemplateVariableProps
         {
             Alt = null,
             MediaType = null,
@@ -415,7 +421,7 @@ public class PropsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Props
+        var model = new TemplateVariableProps
         {
             Alt = "alt",
             MediaType = "mediaType",
@@ -426,7 +432,7 @@ public class PropsTest : TestBase
             VariableType = "variableType",
         };
 
-        Props copied = new(model);
+        TemplateVariableProps copied = new(model);
 
         Assert.Equal(model, copied);
     }

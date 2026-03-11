@@ -138,12 +138,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// List of contacts
     /// </summary>
-    public IReadOnlyList<Contact>? Contacts
+    public IReadOnlyList<ContactResponse>? Contacts
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Contact>>("contacts");
+            return this._rawData.GetNullableStruct<ImmutableArray<ContactResponse>>("contacts");
         }
         init
         {
@@ -152,7 +152,7 @@ public sealed record class Data : JsonModel
                 return;
             }
 
-            this._rawData.Set<ImmutableArray<Contact>?>(
+            this._rawData.Set<ImmutableArray<ContactResponse>?>(
                 "contacts",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );

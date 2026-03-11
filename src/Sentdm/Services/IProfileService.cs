@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
 using Sentdm.Models.Profiles;
+using Sentdm.Services.Profiles;
 
 namespace Sentdm.Services;
 
@@ -28,6 +29,8 @@ public interface IProfileService
     /// <para>The original service is not modified.</para>
     /// </summary>
     IProfileService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    ICampaignService Campaigns { get; }
 
     /// <summary>
     /// Creates a new sender profile within an organization. Profiles represent different
@@ -162,15 +165,15 @@ public interface IProfileService
     /// destination country (IsMain=true) → SUBMITTED                 - Otherwise
     /// → COMPLETED</para>
     /// </summary>
-    Task<JsonElement> Complete(
-        ProfileCompleteParams parameters,
+    Task<JsonElement> CompleteSetup(
+        ProfileCompleteSetupParams parameters,
         CancellationToken cancellationToken = default
     );
 
-    /// <inheritdoc cref="Complete(ProfileCompleteParams, CancellationToken)"/>
-    Task<JsonElement> Complete(
+    /// <inheritdoc cref="CompleteSetup(ProfileCompleteSetupParams, CancellationToken)"/>
+    Task<JsonElement> CompleteSetup(
         string profileID,
-        ProfileCompleteParams parameters,
+        ProfileCompleteSetupParams parameters,
         CancellationToken cancellationToken = default
     );
 }
@@ -187,6 +190,8 @@ public interface IProfileServiceWithRawResponse
     /// <para>The original service is not modified.</para>
     /// </summary>
     IProfileServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    ICampaignServiceWithRawResponse Campaigns { get; }
 
     /// <summary>
     /// Returns a raw HTTP response for `post /v3/profiles`, but is otherwise the
@@ -256,17 +261,17 @@ public interface IProfileServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for `post /v3/profiles/{profileId}/complete`, but is otherwise the
-    /// same as <see cref="IProfileService.Complete(ProfileCompleteParams, CancellationToken)"/>.
+    /// same as <see cref="IProfileService.CompleteSetup(ProfileCompleteSetupParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<JsonElement>> Complete(
-        ProfileCompleteParams parameters,
+    Task<HttpResponse<JsonElement>> CompleteSetup(
+        ProfileCompleteSetupParams parameters,
         CancellationToken cancellationToken = default
     );
 
-    /// <inheritdoc cref="Complete(ProfileCompleteParams, CancellationToken)"/>
-    Task<HttpResponse<JsonElement>> Complete(
+    /// <inheritdoc cref="CompleteSetup(ProfileCompleteSetupParams, CancellationToken)"/>
+    Task<HttpResponse<JsonElement>> CompleteSetup(
         string profileID,
-        ProfileCompleteParams parameters,
+        ProfileCompleteSetupParams parameters,
         CancellationToken cancellationToken = default
     );
 }

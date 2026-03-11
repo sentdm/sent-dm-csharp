@@ -31,7 +31,7 @@ public interface IContactService
     /// <summary>
     /// Creates a new contact by phone number and associates it with the authenticated customer.
     /// </summary>
-    Task<ApiResponseContact> Create(
+    Task<ApiResponseOfContact> Create(
         ContactCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -40,13 +40,13 @@ public interface IContactService
     /// Retrieves a specific contact by their unique identifier. Returns detailed
     /// contact information including phone formats, available channels, and opt-out status.
     /// </summary>
-    Task<ApiResponseContact> Retrieve(
+    Task<ApiResponseOfContact> Retrieve(
         ContactRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(ContactRetrieveParams, CancellationToken)"/>
-    Task<ApiResponseContact> Retrieve(
+    Task<ApiResponseOfContact> Retrieve(
         string id,
         ContactRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -56,13 +56,13 @@ public interface IContactService
     /// Updates a contact's default channel and/or opt-out status. Inherited contacts
     /// cannot be updated.
     /// </summary>
-    Task<ApiResponseContact> Update(
+    Task<ApiResponseOfContact> Update(
         ContactUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(ContactUpdateParams, CancellationToken)"/>
-    Task<ApiResponseContact> Update(
+    Task<ApiResponseOfContact> Update(
         string id,
         ContactUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -108,7 +108,7 @@ public interface IContactServiceWithRawResponse
     /// Returns a raw HTTP response for `post /v3/contacts`, but is otherwise the
     /// same as <see cref="IContactService.Create(ContactCreateParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseContact>> Create(
+    Task<HttpResponse<ApiResponseOfContact>> Create(
         ContactCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -117,13 +117,13 @@ public interface IContactServiceWithRawResponse
     /// Returns a raw HTTP response for `get /v3/contacts/{id}`, but is otherwise the
     /// same as <see cref="IContactService.Retrieve(ContactRetrieveParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseContact>> Retrieve(
+    Task<HttpResponse<ApiResponseOfContact>> Retrieve(
         ContactRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(ContactRetrieveParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseContact>> Retrieve(
+    Task<HttpResponse<ApiResponseOfContact>> Retrieve(
         string id,
         ContactRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -133,13 +133,13 @@ public interface IContactServiceWithRawResponse
     /// Returns a raw HTTP response for `patch /v3/contacts/{id}`, but is otherwise the
     /// same as <see cref="IContactService.Update(ContactUpdateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseContact>> Update(
+    Task<HttpResponse<ApiResponseOfContact>> Update(
         ContactUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(ContactUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseContact>> Update(
+    Task<HttpResponse<ApiResponseOfContact>> Update(
         string id,
         ContactUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
