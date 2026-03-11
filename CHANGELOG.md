@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.7.1 (2026-03-11)
+
+Full Changelog: [v0.7.0...v0.7.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.7.0...v0.7.1)
+
+### Chores
+
+* **docs:** add undocumented parameters to readme ([53b1f40](https://github.com/sentdm/sent-dm-csharp/commit/53b1f40eb820fe9fc9c902260e3d0914f488c501))
+* **internal:** codegen related update ([6079fe5](https://github.com/sentdm/sent-dm-csharp/commit/6079fe5436bd06c9a52a00193d6be9c3d85dc172))
+* **tests:** add tests for retry logic ([04f5606](https://github.com/sentdm/sent-dm-csharp/commit/04f56063116172b4976fd75d4335c8c53dc9803d))
+
+
+### Documentation
+
+* remove typo in README.md ([4a84a8b](https://github.com/sentdm/sent-dm-csharp/commit/4a84a8bd4efee6a78c11375fc1ac6104ca165121))
+
 ## 0.7.0 (2026-02-18)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.6.0...v0.7.0)
