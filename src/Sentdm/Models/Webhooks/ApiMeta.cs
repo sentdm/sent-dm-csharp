@@ -36,19 +36,6 @@ public sealed record class ApiMeta : JsonModel
     }
 
     /// <summary>
-    /// Response time in milliseconds (optional)
-    /// </summary>
-    public long? ResponseTimeMs
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("response_time_ms");
-        }
-        init { this._rawData.Set("response_time_ms", value); }
-    }
-
-    /// <summary>
     /// Server timestamp when the response was generated
     /// </summary>
     public DateTimeOffset? Timestamp
@@ -94,7 +81,6 @@ public sealed record class ApiMeta : JsonModel
     public override void Validate()
     {
         _ = this.RequestID;
-        _ = this.ResponseTimeMs;
         _ = this.Timestamp;
         _ = this.Version;
     }

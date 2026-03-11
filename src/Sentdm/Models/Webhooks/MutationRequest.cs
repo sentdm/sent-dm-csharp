@@ -11,15 +11,15 @@ namespace Sentdm.Models.Webhooks;
 public sealed record class MutationRequest : JsonModel
 {
     /// <summary>
-    /// Test mode flag - when true, the operation is simulated without side effects
+    /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
-    public bool? TestMode
+    public bool? Sandbox
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("test_mode");
+            return this._rawData.GetNullableStruct<bool>("sandbox");
         }
         init
         {
@@ -28,14 +28,14 @@ public sealed record class MutationRequest : JsonModel
                 return;
             }
 
-            this._rawData.Set("test_mode", value);
+            this._rawData.Set("sandbox", value);
         }
     }
 
     /// <inheritdoc/>
     public override void Validate()
     {
-        _ = this.TestMode;
+        _ = this.Sandbox;
     }
 
     public MutationRequest() { }

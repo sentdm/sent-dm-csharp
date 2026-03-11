@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
+using Sentdm.Models.Brands;
 
 namespace Sentdm.Models.Profiles;
 
@@ -33,6 +34,110 @@ public sealed record class ProfileDetail : JsonModel
 
             this._rawData.Set("id", value);
         }
+    }
+
+    /// <summary>
+    /// Whether contacts are shared across profiles in the organization
+    /// </summary>
+    public bool? AllowContactSharing
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("allow_contact_sharing");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("allow_contact_sharing", value);
+        }
+    }
+
+    /// <summary>
+    /// Whether number changes are allowed during onboarding
+    /// </summary>
+    public bool? AllowNumberChangeDuringOnboarding
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("allow_number_change_during_onboarding");
+        }
+        init { this._rawData.Set("allow_number_change_during_onboarding", value); }
+    }
+
+    /// <summary>
+    /// Whether templates are shared across profiles in the organization
+    /// </summary>
+    public bool? AllowTemplateSharing
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("allow_template_sharing");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("allow_template_sharing", value);
+        }
+    }
+
+    /// <summary>
+    /// Billing contact for this profile. Present when billing_model is "profile"
+    /// or "profile_and_organization".
+    /// </summary>
+    public ProfileDetailBillingContact? BillingContact
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ProfileDetailBillingContact>("billing_contact");
+        }
+        init { this._rawData.Set("billing_contact", value); }
+    }
+
+    /// <summary>
+    /// Billing model: profile, organization, or profile_and_organization
+    /// </summary>
+    public string? BillingModel
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("billing_model");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("billing_model", value);
+        }
+    }
+
+    /// <summary>
+    /// Brand associated with this profile. Null if no brand has been configured
+    /// yet. Includes KYC information and TCR registration status.
+    /// </summary>
+    public BrandWithKyc? Brand
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<BrandWithKyc>("brand");
+        }
+        init { this._rawData.Set("brand", value); }
     }
 
     /// <summary>
@@ -93,241 +198,6 @@ public sealed record class ProfileDetail : JsonModel
             return this._rawData.GetNullableClass<string>("icon");
         }
         init { this._rawData.Set("icon", value); }
-    }
-
-    /// <summary>
-    /// Profile name
-    /// </summary>
-    public string? Name
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("name", value);
-        }
-    }
-
-    /// <summary>
-    /// Parent organization ID
-    /// </summary>
-    public string? OrganizationID
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("organization_id");
-        }
-        init { this._rawData.Set("organization_id", value); }
-    }
-
-    /// <summary>
-    /// Profile configuration settings
-    /// </summary>
-    public Settings? Settings
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Settings>("settings");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("settings", value);
-        }
-    }
-
-    /// <summary>
-    /// Profile short name (abbreviation)
-    /// </summary>
-    public string? ShortName
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("short_name");
-        }
-        init { this._rawData.Set("short_name", value); }
-    }
-
-    /// <summary>
-    /// Profile setup status: incomplete, pending_review, approved, rejected
-    /// </summary>
-    public string? Status
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("status");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("status", value);
-        }
-    }
-
-    /// <summary>
-    /// When the profile was last updated
-    /// </summary>
-    public DateTimeOffset? UpdatedAt
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("updated_at");
-        }
-        init { this._rawData.Set("updated_at", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.ID;
-        _ = this.CreatedAt;
-        _ = this.Description;
-        _ = this.Email;
-        _ = this.Icon;
-        _ = this.Name;
-        _ = this.OrganizationID;
-        this.Settings?.Validate();
-        _ = this.ShortName;
-        _ = this.Status;
-        _ = this.UpdatedAt;
-    }
-
-    public ProfileDetail() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public ProfileDetail(ProfileDetail profileDetail)
-        : base(profileDetail) { }
-#pragma warning restore CS8618
-
-    public ProfileDetail(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    ProfileDetail(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="ProfileDetailFromRaw.FromRawUnchecked"/>
-    public static ProfileDetail FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class ProfileDetailFromRaw : IFromRawJson<ProfileDetail>
-{
-    /// <inheritdoc/>
-    public ProfileDetail FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        ProfileDetail.FromRawUnchecked(rawData);
-}
-
-/// <summary>
-/// Profile configuration settings
-/// </summary>
-[JsonConverter(typeof(JsonModelConverter<Settings, SettingsFromRaw>))]
-public sealed record class Settings : JsonModel
-{
-    /// <summary>
-    /// Whether contacts are shared across profiles in the organization
-    /// </summary>
-    public bool? AllowContactSharing
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("allow_contact_sharing");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("allow_contact_sharing", value);
-        }
-    }
-
-    /// <summary>
-    /// Whether number changes are allowed during onboarding
-    /// </summary>
-    public bool? AllowNumberChangeDuringOnboarding
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("allow_number_change_during_onboarding");
-        }
-        init { this._rawData.Set("allow_number_change_during_onboarding", value); }
-    }
-
-    /// <summary>
-    /// Whether templates are shared across profiles in the organization
-    /// </summary>
-    public bool? AllowTemplateSharing
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("allow_template_sharing");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("allow_template_sharing", value);
-        }
-    }
-
-    /// <summary>
-    /// Billing model: profile, organization, or profile_and_organization
-    /// </summary>
-    public string? BillingModel
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("billing_model");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("billing_model", value);
-        }
     }
 
     /// <summary>
@@ -415,6 +285,40 @@ public sealed record class Settings : JsonModel
     }
 
     /// <summary>
+    /// Profile name
+    /// </summary>
+    public string? Name
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("name");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("name", value);
+        }
+    }
+
+    /// <summary>
+    /// Parent organization ID
+    /// </summary>
+    public string? OrganizationID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("organization_id");
+        }
+        init { this._rawData.Set("organization_id", value); }
+    }
+
+    /// <summary>
     /// Direct SMS phone number
     /// </summary>
     public string? SendingPhoneNumber
@@ -454,6 +358,68 @@ public sealed record class Settings : JsonModel
     }
 
     /// <summary>
+    /// Profile short name/abbreviation. 3–11 characters: letters, numbers, and spaces
+    /// only, with at least one letter.
+    /// </summary>
+    public string? ShortName
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("short_name");
+        }
+        init { this._rawData.Set("short_name", value); }
+    }
+
+    /// <summary>
+    /// Profile setup status: incomplete, pending_review, approved, rejected
+    /// </summary>
+    public string? Status
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("status");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("status", value);
+        }
+    }
+
+    /// <summary>
+    /// When the profile was last updated
+    /// </summary>
+    public DateTimeOffset? UpdatedAt
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<DateTimeOffset>("updated_at");
+        }
+        init { this._rawData.Set("updated_at", value); }
+    }
+
+    /// <summary>
+    /// WhatsApp Business Account ID associated with this profile. Present whether
+    /// the WABA is inherited from the organization or configured directly.
+    /// </summary>
+    public string? WabaID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("waba_id");
+        }
+        init { this._rawData.Set("waba_id", value); }
+    }
+
+    /// <summary>
     /// Direct WhatsApp phone number
     /// </summary>
     public string? WhatsappPhoneNumber
@@ -469,51 +435,159 @@ public sealed record class Settings : JsonModel
     /// <inheritdoc/>
     public override void Validate()
     {
+        _ = this.ID;
         _ = this.AllowContactSharing;
         _ = this.AllowNumberChangeDuringOnboarding;
         _ = this.AllowTemplateSharing;
+        this.BillingContact?.Validate();
         _ = this.BillingModel;
+        this.Brand?.Validate();
+        _ = this.CreatedAt;
+        _ = this.Description;
+        _ = this.Email;
+        _ = this.Icon;
         _ = this.InheritContacts;
         _ = this.InheritTcrBrand;
         _ = this.InheritTcrCampaign;
         _ = this.InheritTemplates;
+        _ = this.Name;
+        _ = this.OrganizationID;
         _ = this.SendingPhoneNumber;
         _ = this.SendingPhoneNumberProfileID;
         _ = this.SendingWhatsappNumberProfileID;
+        _ = this.ShortName;
+        _ = this.Status;
+        _ = this.UpdatedAt;
+        _ = this.WabaID;
         _ = this.WhatsappPhoneNumber;
     }
 
-    public Settings() { }
+    public ProfileDetail() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Settings(Settings settings)
-        : base(settings) { }
+    public ProfileDetail(ProfileDetail profileDetail)
+        : base(profileDetail) { }
 #pragma warning restore CS8618
 
-    public Settings(IReadOnlyDictionary<string, JsonElement> rawData)
+    public ProfileDetail(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Settings(FrozenDictionary<string, JsonElement> rawData)
+    ProfileDetail(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="SettingsFromRaw.FromRawUnchecked"/>
-    public static Settings FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="ProfileDetailFromRaw.FromRawUnchecked"/>
+    public static ProfileDetail FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class SettingsFromRaw : IFromRawJson<Settings>
+class ProfileDetailFromRaw : IFromRawJson<ProfileDetail>
 {
     /// <inheritdoc/>
-    public Settings FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Settings.FromRawUnchecked(rawData);
+    public ProfileDetail FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        ProfileDetail.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Billing contact for this profile. Present when billing_model is "profile" or "profile_and_organization".
+/// </summary>
+[JsonConverter(
+    typeof(JsonModelConverter<ProfileDetailBillingContact, ProfileDetailBillingContactFromRaw>)
+)]
+public sealed record class ProfileDetailBillingContact : JsonModel
+{
+    public string? Address
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("address");
+        }
+        init { this._rawData.Set("address", value); }
+    }
+
+    public string? Email
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("email");
+        }
+        init { this._rawData.Set("email", value); }
+    }
+
+    public string? Name
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("name");
+        }
+        init { this._rawData.Set("name", value); }
+    }
+
+    public string? Phone
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("phone");
+        }
+        init { this._rawData.Set("phone", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Address;
+        _ = this.Email;
+        _ = this.Name;
+        _ = this.Phone;
+    }
+
+    public ProfileDetailBillingContact() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public ProfileDetailBillingContact(ProfileDetailBillingContact profileDetailBillingContact)
+        : base(profileDetailBillingContact) { }
+#pragma warning restore CS8618
+
+    public ProfileDetailBillingContact(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    ProfileDetailBillingContact(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="ProfileDetailBillingContactFromRaw.FromRawUnchecked"/>
+    public static ProfileDetailBillingContact FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class ProfileDetailBillingContactFromRaw : IFromRawJson<ProfileDetailBillingContact>
+{
+    /// <inheritdoc/>
+    public ProfileDetailBillingContact FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => ProfileDetailBillingContact.FromRawUnchecked(rawData);
 }

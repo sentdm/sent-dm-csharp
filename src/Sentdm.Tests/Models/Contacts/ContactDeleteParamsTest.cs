@@ -1,4 +1,5 @@
 using System;
+using System.Net.Http;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Contacts;
@@ -13,14 +14,46 @@ public class ContactDeleteParamsTest : TestBase
         var parameters = new ContactDeleteParams
         {
             ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            Body = new() { TestMode = false },
+            Body = new() { Sandbox = false },
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
-        Body expectedBody = new() { TestMode = false };
+        Body expectedBody = new() { Sandbox = false };
+        string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedID, parameters.ID);
         Assert.Equal(expectedBody, parameters.Body);
+        Assert.Equal(expectedXProfileID, parameters.XProfileID);
+    }
+
+    [Fact]
+    public void OptionalNonNullableParamsUnsetAreNotSet_Works()
+    {
+        var parameters = new ContactDeleteParams
+        {
+            ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+            Body = new() { Sandbox = false },
+        };
+
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+    }
+
+    [Fact]
+    public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
+    {
+        var parameters = new ContactDeleteParams
+        {
+            ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+            Body = new() { Sandbox = false },
+
+            // Null should be interpreted as omitted for these properties
+            XProfileID = null,
+        };
+
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
@@ -29,7 +62,7 @@ public class ContactDeleteParamsTest : TestBase
         ContactDeleteParams parameters = new()
         {
             ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            Body = new() { TestMode = false },
+            Body = new() { Sandbox = false },
         };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
@@ -41,12 +74,32 @@ public class ContactDeleteParamsTest : TestBase
     }
 
     [Fact]
+    public void AddHeadersToRequest_Works()
+    {
+        HttpRequestMessage requestMessage = new();
+        ContactDeleteParams parameters = new()
+        {
+            ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+            Body = new() { Sandbox = false },
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        };
+
+        parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
+
+        Assert.Equal(
+            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+            requestMessage.Headers.GetValues("x-profile-id")
+        );
+    }
+
+    [Fact]
     public void CopyConstructor_Works()
     {
         var parameters = new ContactDeleteParams
         {
             ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            Body = new() { TestMode = false },
+            Body = new() { Sandbox = false },
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         ContactDeleteParams copied = new(parameters);
@@ -60,17 +113,17 @@ public class BodyTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Body { TestMode = false };
+        var model = new Body { Sandbox = false };
 
-        bool expectedTestMode = false;
+        bool expectedSandbox = false;
 
-        Assert.Equal(expectedTestMode, model.TestMode);
+        Assert.Equal(expectedSandbox, model.Sandbox);
     }
 
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Body { TestMode = false };
+        var model = new Body { Sandbox = false };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<Body>(json, ModelBase.SerializerOptions);
@@ -81,21 +134,21 @@ public class BodyTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Body { TestMode = false };
+        var model = new Body { Sandbox = false };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<Body>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        bool expectedTestMode = false;
+        bool expectedSandbox = false;
 
-        Assert.Equal(expectedTestMode, deserialized.TestMode);
+        Assert.Equal(expectedSandbox, deserialized.Sandbox);
     }
 
     [Fact]
     public void Validation_Works()
     {
-        var model = new Body { TestMode = false };
+        var model = new Body { Sandbox = false };
 
         model.Validate();
     }
@@ -105,8 +158,8 @@ public class BodyTest : TestBase
     {
         var model = new Body { };
 
-        Assert.Null(model.TestMode);
-        Assert.False(model.RawData.ContainsKey("test_mode"));
+        Assert.Null(model.Sandbox);
+        Assert.False(model.RawData.ContainsKey("sandbox"));
     }
 
     [Fact]
@@ -123,11 +176,11 @@ public class BodyTest : TestBase
         var model = new Body
         {
             // Null should be interpreted as omitted for these properties
-            TestMode = null,
+            Sandbox = null,
         };
 
-        Assert.Null(model.TestMode);
-        Assert.False(model.RawData.ContainsKey("test_mode"));
+        Assert.Null(model.Sandbox);
+        Assert.False(model.RawData.ContainsKey("sandbox"));
     }
 
     [Fact]
@@ -136,7 +189,7 @@ public class BodyTest : TestBase
         var model = new Body
         {
             // Null should be interpreted as omitted for these properties
-            TestMode = null,
+            Sandbox = null,
         };
 
         model.Validate();
@@ -145,7 +198,7 @@ public class BodyTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Body { TestMode = false };
+        var model = new Body { Sandbox = false };
 
         Body copied = new(model);
 

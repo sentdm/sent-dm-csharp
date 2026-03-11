@@ -46,15 +46,15 @@ public record class ContactCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Test mode flag - when true, the operation is simulated without side effects
+    /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
-    public bool? TestMode
+    public bool? Sandbox
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("test_mode");
+            return this._rawBodyData.GetNullableStruct<bool>("sandbox");
         }
         init
         {
@@ -63,7 +63,7 @@ public record class ContactCreateParams : ParamsBase
                 return;
             }
 
-            this._rawBodyData.Set("test_mode", value);
+            this._rawBodyData.Set("sandbox", value);
         }
     }
 
@@ -82,6 +82,24 @@ public record class ContactCreateParams : ParamsBase
             }
 
             this._rawHeaderData.Set("Idempotency-Key", value);
+        }
+    }
+
+    public string? XProfileID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("x-profile-id", value);
         }
     }
 

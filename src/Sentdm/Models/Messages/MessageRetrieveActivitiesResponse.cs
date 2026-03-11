@@ -241,16 +241,16 @@ class DataFromRaw : IFromRawJson<Data>
 public sealed record class Activity : JsonModel
 {
     /// <summary>
-    /// Additional content or payload for the activity (e.g., channel response)
+    /// Active contact markup applied on top of the channel cost, formatted to 4 decimal places.
     /// </summary>
-    public string? Content
+    public string? ActiveContactPrice
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("content");
+            return this._rawData.GetNullableClass<string>("active_contact_price");
         }
-        init { this._rawData.Set("content", value); }
+        init { this._rawData.Set("active_contact_price", value); }
     }
 
     /// <summary>
@@ -272,6 +272,20 @@ public sealed record class Activity : JsonModel
 
             this._rawData.Set("description", value);
         }
+    }
+
+    /// <summary>
+    /// Channel cost for this activity (e.g., SMS/WhatsApp provider cost), formatted
+    /// to 4 decimal places.
+    /// </summary>
+    public string? Price
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("price");
+        }
+        init { this._rawData.Set("price", value); }
     }
 
     /// <summary>
@@ -319,8 +333,9 @@ public sealed record class Activity : JsonModel
     /// <inheritdoc/>
     public override void Validate()
     {
-        _ = this.Content;
+        _ = this.ActiveContactPrice;
         _ = this.Description;
+        _ = this.Price;
         _ = this.Status;
         _ = this.Timestamp;
     }

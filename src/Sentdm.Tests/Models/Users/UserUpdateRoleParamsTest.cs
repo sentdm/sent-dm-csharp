@@ -11,42 +11,39 @@ public class UserUpdateRoleParamsTest : TestBase
     {
         var parameters = new UserUpdateRoleParams
         {
-            UserID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            UserID = "userId",
             Role = "billing",
-            TestMode = false,
-            UserIDValue = "aa0e8400-e29b-41d4-a716-446655440005",
+            Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        string expectedUserID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedUserID = "userId";
         string expectedRole = "billing";
-        bool expectedTestMode = false;
-        string expectedUserIDValue = "aa0e8400-e29b-41d4-a716-446655440005";
+        bool expectedSandbox = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
+        string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedUserID, parameters.UserID);
         Assert.Equal(expectedRole, parameters.Role);
-        Assert.Equal(expectedTestMode, parameters.TestMode);
-        Assert.Equal(expectedUserIDValue, parameters.UserIDValue);
+        Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
+        Assert.Equal(expectedXProfileID, parameters.XProfileID);
     }
 
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new UserUpdateRoleParams
-        {
-            UserID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        };
+        var parameters = new UserUpdateRoleParams { UserID = "userId" };
 
         Assert.Null(parameters.Role);
         Assert.False(parameters.RawBodyData.ContainsKey("role"));
-        Assert.Null(parameters.TestMode);
-        Assert.False(parameters.RawBodyData.ContainsKey("test_mode"));
-        Assert.Null(parameters.UserIDValue);
-        Assert.False(parameters.RawBodyData.ContainsKey("user_id"));
+        Assert.Null(parameters.Sandbox);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
         Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
@@ -54,36 +51,33 @@ public class UserUpdateRoleParamsTest : TestBase
     {
         var parameters = new UserUpdateRoleParams
         {
-            UserID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            UserID = "userId",
 
             // Null should be interpreted as omitted for these properties
             Role = null,
-            TestMode = null,
-            UserIDValue = null,
+            Sandbox = null,
             IdempotencyKey = null,
+            XProfileID = null,
         };
 
         Assert.Null(parameters.Role);
         Assert.False(parameters.RawBodyData.ContainsKey("role"));
-        Assert.Null(parameters.TestMode);
-        Assert.False(parameters.RawBodyData.ContainsKey("test_mode"));
-        Assert.Null(parameters.UserIDValue);
-        Assert.False(parameters.RawBodyData.ContainsKey("user_id"));
+        Assert.Null(parameters.Sandbox);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
         Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
     public void Url_Works()
     {
-        UserUpdateRoleParams parameters = new() { UserID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e" };
+        UserUpdateRoleParams parameters = new() { UserID = "userId" };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri("https://api.sent.dm/v3/users/182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
-            url
-        );
+        Assert.Equal(new Uri("https://api.sent.dm/v3/users/userId"), url);
     }
 
     [Fact]
@@ -92,13 +86,18 @@ public class UserUpdateRoleParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         UserUpdateRoleParams parameters = new()
         {
-            UserID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            UserID = "userId",
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
 
         Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));
+        Assert.Equal(
+            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+            requestMessage.Headers.GetValues("x-profile-id")
+        );
     }
 
     [Fact]
@@ -106,11 +105,11 @@ public class UserUpdateRoleParamsTest : TestBase
     {
         var parameters = new UserUpdateRoleParams
         {
-            UserID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            UserID = "userId",
             Role = "billing",
-            TestMode = false,
-            UserIDValue = "aa0e8400-e29b-41d4-a716-446655440005",
+            Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         UserUpdateRoleParams copied = new(parameters);

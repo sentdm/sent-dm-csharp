@@ -19,6 +19,24 @@ namespace Sentdm.Models.Users;
 /// </summary>
 public record class UserListParams : ParamsBase
 {
+    public string? XProfileID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("x-profile-id", value);
+        }
+    }
+
     public UserListParams() { }
 
 #pragma warning disable CS8618

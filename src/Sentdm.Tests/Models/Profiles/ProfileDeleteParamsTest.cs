@@ -1,4 +1,7 @@
 using System;
+using System.Net.Http;
+using System.Text.Json;
+using Sentdm.Core;
 using Sentdm.Models.Profiles;
 
 namespace Sentdm.Tests.Models.Profiles;
@@ -10,18 +13,18 @@ public class ProfileDeleteParamsTest : TestBase
     {
         var parameters = new ProfileDeleteParams
         {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ProfileIDValue = "770e8400-e29b-41d4-a716-446655440002",
-            TestMode = false,
+            ProfileID = "profileId",
+            Body = new() { Sandbox = false },
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        string expectedProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        string expectedProfileIDValue = "770e8400-e29b-41d4-a716-446655440002";
-        bool expectedTestMode = false;
+        string expectedProfileID = "profileId";
+        Body expectedBody = new() { Sandbox = false };
+        string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedProfileID, parameters.ProfileID);
-        Assert.Equal(expectedProfileIDValue, parameters.ProfileIDValue);
-        Assert.Equal(expectedTestMode, parameters.TestMode);
+        Assert.Equal(expectedBody, parameters.Body);
+        Assert.Equal(expectedXProfileID, parameters.XProfileID);
     }
 
     [Fact]
@@ -29,13 +32,12 @@ public class ProfileDeleteParamsTest : TestBase
     {
         var parameters = new ProfileDeleteParams
         {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ProfileID = "profileId",
+            Body = new() { Sandbox = false },
         };
 
-        Assert.Null(parameters.ProfileIDValue);
-        Assert.False(parameters.RawBodyData.ContainsKey("profile_id"));
-        Assert.Null(parameters.TestMode);
-        Assert.False(parameters.RawBodyData.ContainsKey("test_mode"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
@@ -43,17 +45,15 @@ public class ProfileDeleteParamsTest : TestBase
     {
         var parameters = new ProfileDeleteParams
         {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ProfileID = "profileId",
+            Body = new() { Sandbox = false },
 
             // Null should be interpreted as omitted for these properties
-            ProfileIDValue = null,
-            TestMode = null,
+            XProfileID = null,
         };
 
-        Assert.Null(parameters.ProfileIDValue);
-        Assert.False(parameters.RawBodyData.ContainsKey("profile_id"));
-        Assert.Null(parameters.TestMode);
-        Assert.False(parameters.RawBodyData.ContainsKey("test_mode"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
@@ -61,14 +61,31 @@ public class ProfileDeleteParamsTest : TestBase
     {
         ProfileDeleteParams parameters = new()
         {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ProfileID = "profileId",
+            Body = new() { Sandbox = false },
         };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
+        Assert.Equal(new Uri("https://api.sent.dm/v3/profiles/profileId"), url);
+    }
+
+    [Fact]
+    public void AddHeadersToRequest_Works()
+    {
+        HttpRequestMessage requestMessage = new();
+        ProfileDeleteParams parameters = new()
+        {
+            ProfileID = "profileId",
+            Body = new() { Sandbox = false },
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        };
+
+        parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
+
         Assert.Equal(
-            new Uri("https://api.sent.dm/v3/profiles/182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
-            url
+            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+            requestMessage.Headers.GetValues("x-profile-id")
         );
     }
 
@@ -77,13 +94,111 @@ public class ProfileDeleteParamsTest : TestBase
     {
         var parameters = new ProfileDeleteParams
         {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ProfileIDValue = "770e8400-e29b-41d4-a716-446655440002",
-            TestMode = false,
+            ProfileID = "profileId",
+            Body = new() { Sandbox = false },
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         ProfileDeleteParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
+    }
+}
+
+public class BodyTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new Body { Sandbox = false };
+
+        bool expectedSandbox = false;
+
+        Assert.Equal(expectedSandbox, model.Sandbox);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new Body { Sandbox = false };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Body>(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new Body { Sandbox = false };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Body>(element, ModelBase.SerializerOptions);
+        Assert.NotNull(deserialized);
+
+        bool expectedSandbox = false;
+
+        Assert.Equal(expectedSandbox, deserialized.Sandbox);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new Body { Sandbox = false };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Body { };
+
+        Assert.Null(model.Sandbox);
+        Assert.False(model.RawData.ContainsKey("sandbox"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Body { };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new Body
+        {
+            // Null should be interpreted as omitted for these properties
+            Sandbox = null,
+        };
+
+        Assert.Null(model.Sandbox);
+        Assert.False(model.RawData.ContainsKey("sandbox"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Body
+        {
+            // Null should be interpreted as omitted for these properties
+            Sandbox = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Body { Sandbox = false };
+
+        Body copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }

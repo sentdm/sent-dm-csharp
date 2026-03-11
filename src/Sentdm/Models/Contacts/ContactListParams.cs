@@ -31,14 +31,17 @@ public record class ContactListParams : ParamsBase
         init { this._rawQueryData.Set("page", value); }
     }
 
+    /// <summary>
+    /// Number of items per page
+    /// </summary>
     public required int PageSize
     {
         get
         {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNotNullStruct<int>("pageSize");
+            return this._rawQueryData.GetNotNullStruct<int>("page_size");
         }
-        init { this._rawQueryData.Set("pageSize", value); }
+        init { this._rawQueryData.Set("page_size", value); }
     }
 
     /// <summary>
@@ -78,6 +81,24 @@ public record class ContactListParams : ParamsBase
             return this._rawQueryData.GetNullableClass<string>("search");
         }
         init { this._rawQueryData.Set("search", value); }
+    }
+
+    public string? XProfileID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("x-profile-id", value);
+        }
     }
 
     public ContactListParams() { }

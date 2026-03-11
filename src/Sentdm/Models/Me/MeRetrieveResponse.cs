@@ -137,7 +137,7 @@ class MeRetrieveResponseFromRaw : IFromRawJson<MeRetrieveResponse>
 public sealed record class Data : JsonModel
 {
     /// <summary>
-    /// Customer ID (organization or profile)
+    /// Customer ID (organization, account, or profile)
     /// </summary>
     public string? ID
     {
@@ -154,6 +154,27 @@ public sealed record class Data : JsonModel
             }
 
             this._rawData.Set("id", value);
+        }
+    }
+
+    /// <summary>
+    /// Messaging channel configuration
+    /// </summary>
+    public Channels? Channels
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Channels>("channels");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("channels", value);
         }
     }
 
@@ -192,6 +213,19 @@ public sealed record class Data : JsonModel
     }
 
     /// <summary>
+    /// Contact email address
+    /// </summary>
+    public string? Email
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("email");
+        }
+        init { this._rawData.Set("email", value); }
+    }
+
+    /// <summary>
     /// Account icon URL
     /// </summary>
     public string? Icon
@@ -226,7 +260,20 @@ public sealed record class Data : JsonModel
     }
 
     /// <summary>
-    /// List of profiles (only for organization type)
+    /// Organization ID (only for profile type — the parent organization)
+    /// </summary>
+    public string? OrganizationID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("organization_id");
+        }
+        init { this._rawData.Set("organization_id", value); }
+    }
+
+    /// <summary>
+    /// List of profiles (populated for organization type, empty for user and profile types)
     /// </summary>
     public IReadOnlyList<Profile>? Profiles
     {
@@ -237,6 +284,11 @@ public sealed record class Data : JsonModel
         }
         init
         {
+            if (value == null)
+            {
+                return;
+            }
+
             this._rawData.Set<ImmutableArray<Profile>?>(
                 "profiles",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -258,6 +310,19 @@ public sealed record class Data : JsonModel
     }
 
     /// <summary>
+    /// Short name / abbreviation (only for profile type)
+    /// </summary>
+    public string? ShortName
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("short_name");
+        }
+        init { this._rawData.Set("short_name", value); }
+    }
+
+    /// <summary>
     /// Profile status (only for profile type): incomplete, pending_review, approved, etc.
     /// </summary>
     public string? Status
@@ -270,20 +335,47 @@ public sealed record class Data : JsonModel
         init { this._rawData.Set("status", value); }
     }
 
+    /// <summary>
+    /// Account type: "organization" (has profiles), "user" (no profiles), or "profile"
+    /// (child of an organization)
+    /// </summary>
+    public string? Type
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("type");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("type", value);
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
         _ = this.ID;
+        this.Channels?.Validate();
         _ = this.CreatedAt;
         _ = this.Description;
+        _ = this.Email;
         _ = this.Icon;
         _ = this.Name;
+        _ = this.OrganizationID;
         foreach (var item in this.Profiles ?? [])
         {
             item.Validate();
         }
         this.Settings?.Validate();
+        _ = this.ShortName;
         _ = this.Status;
+        _ = this.Type;
     }
 
     public Data() { }
@@ -319,6 +411,378 @@ class DataFromRaw : IFromRawJson<Data>
     /// <inheritdoc/>
     public Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         Data.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Messaging channel configuration
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Channels, ChannelsFromRaw>))]
+public sealed record class Channels : JsonModel
+{
+    /// <summary>
+    /// RCS channel (provider: vibes)
+    /// </summary>
+    public Rcs? Rcs
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Rcs>("rcs");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("rcs", value);
+        }
+    }
+
+    /// <summary>
+    /// SMS channel (providers: telnyx, sinch)
+    /// </summary>
+    public Sms? Sms
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Sms>("sms");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("sms", value);
+        }
+    }
+
+    /// <summary>
+    /// WhatsApp Business channel (provider: meta)
+    /// </summary>
+    public Whatsapp? Whatsapp
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Whatsapp>("whatsapp");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("whatsapp", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        this.Rcs?.Validate();
+        this.Sms?.Validate();
+        this.Whatsapp?.Validate();
+    }
+
+    public Channels() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Channels(Channels channels)
+        : base(channels) { }
+#pragma warning restore CS8618
+
+    public Channels(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Channels(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="ChannelsFromRaw.FromRawUnchecked"/>
+    public static Channels FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class ChannelsFromRaw : IFromRawJson<Channels>
+{
+    /// <inheritdoc/>
+    public Channels FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Channels.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// RCS channel (provider: vibes)
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Rcs, RcsFromRaw>))]
+public sealed record class Rcs : JsonModel
+{
+    /// <summary>
+    /// Whether RCS is configured for this account
+    /// </summary>
+    public bool? Configured
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("configured");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("configured", value);
+        }
+    }
+
+    /// <summary>
+    /// RCS-enabled phone number in E.164 format
+    /// </summary>
+    public string? PhoneNumber
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("phone_number");
+        }
+        init { this._rawData.Set("phone_number", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Configured;
+        _ = this.PhoneNumber;
+    }
+
+    public Rcs() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Rcs(Rcs rcs)
+        : base(rcs) { }
+#pragma warning restore CS8618
+
+    public Rcs(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Rcs(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="RcsFromRaw.FromRawUnchecked"/>
+    public static Rcs FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class RcsFromRaw : IFromRawJson<Rcs>
+{
+    /// <inheritdoc/>
+    public Rcs FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Rcs.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// SMS channel (providers: telnyx, sinch)
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Sms, SmsFromRaw>))]
+public sealed record class Sms : JsonModel
+{
+    /// <summary>
+    /// Whether SMS is configured for this account
+    /// </summary>
+    public bool? Configured
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("configured");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("configured", value);
+        }
+    }
+
+    /// <summary>
+    /// Sending phone number in E.164 format
+    /// </summary>
+    public string? PhoneNumber
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("phone_number");
+        }
+        init { this._rawData.Set("phone_number", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Configured;
+        _ = this.PhoneNumber;
+    }
+
+    public Sms() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Sms(Sms sms)
+        : base(sms) { }
+#pragma warning restore CS8618
+
+    public Sms(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Sms(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="SmsFromRaw.FromRawUnchecked"/>
+    public static Sms FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class SmsFromRaw : IFromRawJson<Sms>
+{
+    /// <inheritdoc/>
+    public Sms FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Sms.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// WhatsApp Business channel (provider: meta)
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Whatsapp, WhatsappFromRaw>))]
+public sealed record class Whatsapp : JsonModel
+{
+    /// <summary>
+    /// WhatsApp Business display name
+    /// </summary>
+    public string? BusinessName
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("business_name");
+        }
+        init { this._rawData.Set("business_name", value); }
+    }
+
+    /// <summary>
+    /// Whether WhatsApp is configured for this account
+    /// </summary>
+    public bool? Configured
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("configured");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("configured", value);
+        }
+    }
+
+    /// <summary>
+    /// WhatsApp phone number in E.164 format
+    /// </summary>
+    public string? PhoneNumber
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("phone_number");
+        }
+        init { this._rawData.Set("phone_number", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.BusinessName;
+        _ = this.Configured;
+        _ = this.PhoneNumber;
+    }
+
+    public Whatsapp() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Whatsapp(Whatsapp whatsapp)
+        : base(whatsapp) { }
+#pragma warning restore CS8618
+
+    public Whatsapp(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Whatsapp(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="WhatsappFromRaw.FromRawUnchecked"/>
+    public static Whatsapp FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class WhatsappFromRaw : IFromRawJson<Whatsapp>
+{
+    /// <inheritdoc/>
+    public Whatsapp FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Whatsapp.FromRawUnchecked(rawData);
 }
 
 /// <summary>

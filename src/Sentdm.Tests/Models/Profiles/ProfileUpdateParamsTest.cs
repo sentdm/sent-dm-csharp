@@ -1,5 +1,8 @@
 using System;
 using System.Net.Http;
+using System.Text.Json;
+using Sentdm.Core;
+using Sentdm.Models.Brands;
 using Sentdm.Models.Profiles;
 
 namespace Sentdm.Tests.Models.Profiles;
@@ -11,11 +14,55 @@ public class ProfileUpdateParamsTest : TestBase
     {
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ProfileID = "profileId",
             AllowContactSharing = true,
             AllowNumberChangeDuringOnboarding = null,
             AllowTemplateSharing = null,
+            BillingContact = new()
+            {
+                Email = "dev@stainless.com",
+                Name = "x",
+                Address = "address",
+                Phone = "phone",
+            },
             BillingModel = "organization",
+            Brand = new()
+            {
+                Compliance = new()
+                {
+                    BrandRelationship = TcrBrandRelationship.SmallAccount,
+                    Vertical = TcrVertical.Professional,
+                    DestinationCountries = [new() { ID = "US", IsMain = false }],
+                    ExpectedMessagingVolume = "10000",
+                    IsTcrApplication = true,
+                    Notes = null,
+                    PhoneNumberPrefix = "+1",
+                    PrimaryUseCase = "Customer notifications and appointment reminders",
+                },
+                Contact = new()
+                {
+                    Name = "John Smith",
+                    BusinessName = "Acme Corp",
+                    Email = "john@acmecorp.com",
+                    Phone = "+12025551234",
+                    PhoneCountryCode = "1",
+                    Role = "CEO",
+                },
+                Business = new()
+                {
+                    City = "New York",
+                    Country = "US",
+                    CountryOfRegistration = "US",
+                    EntityType = EntityType.PrivateProfit,
+                    LegalName = "Acme Corporation LLC",
+                    PostalCode = "10001",
+                    State = "NY",
+                    Street = "123 Main Street",
+                    TaxID = "12-3456789",
+                    TaxIDType = "us_ein",
+                    Url = "https://acmecorp.com",
+                },
+            },
             Description = "Updated sales department sender profile",
             Icon = null,
             InheritContacts = null,
@@ -23,30 +70,91 @@ public class ProfileUpdateParamsTest : TestBase
             InheritTcrCampaign = null,
             InheritTemplates = null,
             Name = "Sales Team - Updated",
-            ProfileIDValue = "770e8400-e29b-41d4-a716-446655440002",
+            PaymentDetails = new()
+            {
+                CardNumber = "3216699102256101",
+                Cvc = "3216",
+                Expiry = "11/66",
+                ZipCode = "x",
+            },
+            Sandbox = false,
             SendingPhoneNumber = null,
             SendingPhoneNumberProfileID = null,
             SendingWhatsappNumberProfileID = null,
-            ShortName = null,
-            TestMode = false,
+            ShortName = "SALES",
             WhatsappPhoneNumber = null,
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        string expectedProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedProfileID = "profileId";
         bool expectedAllowContactSharing = true;
+        ProfileUpdateParamsBillingContact expectedBillingContact = new()
+        {
+            Email = "dev@stainless.com",
+            Name = "x",
+            Address = "address",
+            Phone = "phone",
+        };
         string expectedBillingModel = "organization";
+        BrandData expectedBrand = new()
+        {
+            Compliance = new()
+            {
+                BrandRelationship = TcrBrandRelationship.SmallAccount,
+                Vertical = TcrVertical.Professional,
+                DestinationCountries = [new() { ID = "US", IsMain = false }],
+                ExpectedMessagingVolume = "10000",
+                IsTcrApplication = true,
+                Notes = null,
+                PhoneNumberPrefix = "+1",
+                PrimaryUseCase = "Customer notifications and appointment reminders",
+            },
+            Contact = new()
+            {
+                Name = "John Smith",
+                BusinessName = "Acme Corp",
+                Email = "john@acmecorp.com",
+                Phone = "+12025551234",
+                PhoneCountryCode = "1",
+                Role = "CEO",
+            },
+            Business = new()
+            {
+                City = "New York",
+                Country = "US",
+                CountryOfRegistration = "US",
+                EntityType = EntityType.PrivateProfit,
+                LegalName = "Acme Corporation LLC",
+                PostalCode = "10001",
+                State = "NY",
+                Street = "123 Main Street",
+                TaxID = "12-3456789",
+                TaxIDType = "us_ein",
+                Url = "https://acmecorp.com",
+            },
+        };
         string expectedDescription = "Updated sales department sender profile";
         string expectedName = "Sales Team - Updated";
-        string expectedProfileIDValue = "770e8400-e29b-41d4-a716-446655440002";
-        bool expectedTestMode = false;
+        ProfileUpdateParamsPaymentDetails expectedPaymentDetails = new()
+        {
+            CardNumber = "3216699102256101",
+            Cvc = "3216",
+            Expiry = "11/66",
+            ZipCode = "x",
+        };
+        bool expectedSandbox = false;
+        string expectedShortName = "SALES";
         string expectedIdempotencyKey = "req_abc123_retry1";
+        string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedProfileID, parameters.ProfileID);
         Assert.Equal(expectedAllowContactSharing, parameters.AllowContactSharing);
         Assert.Null(parameters.AllowNumberChangeDuringOnboarding);
         Assert.Null(parameters.AllowTemplateSharing);
+        Assert.Equal(expectedBillingContact, parameters.BillingContact);
         Assert.Equal(expectedBillingModel, parameters.BillingModel);
+        Assert.Equal(expectedBrand, parameters.Brand);
         Assert.Equal(expectedDescription, parameters.Description);
         Assert.Null(parameters.Icon);
         Assert.Null(parameters.InheritContacts);
@@ -54,14 +162,15 @@ public class ProfileUpdateParamsTest : TestBase
         Assert.Null(parameters.InheritTcrCampaign);
         Assert.Null(parameters.InheritTemplates);
         Assert.Equal(expectedName, parameters.Name);
-        Assert.Equal(expectedProfileIDValue, parameters.ProfileIDValue);
+        Assert.Equal(expectedPaymentDetails, parameters.PaymentDetails);
+        Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Null(parameters.SendingPhoneNumber);
         Assert.Null(parameters.SendingPhoneNumberProfileID);
         Assert.Null(parameters.SendingWhatsappNumberProfileID);
-        Assert.Null(parameters.ShortName);
-        Assert.Equal(expectedTestMode, parameters.TestMode);
+        Assert.Equal(expectedShortName, parameters.ShortName);
         Assert.Null(parameters.WhatsappPhoneNumber);
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
+        Assert.Equal(expectedXProfileID, parameters.XProfileID);
     }
 
     [Fact]
@@ -69,11 +178,55 @@ public class ProfileUpdateParamsTest : TestBase
     {
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ProfileID = "profileId",
             AllowContactSharing = true,
             AllowNumberChangeDuringOnboarding = null,
             AllowTemplateSharing = null,
+            BillingContact = new()
+            {
+                Email = "dev@stainless.com",
+                Name = "x",
+                Address = "address",
+                Phone = "phone",
+            },
             BillingModel = "organization",
+            Brand = new()
+            {
+                Compliance = new()
+                {
+                    BrandRelationship = TcrBrandRelationship.SmallAccount,
+                    Vertical = TcrVertical.Professional,
+                    DestinationCountries = [new() { ID = "US", IsMain = false }],
+                    ExpectedMessagingVolume = "10000",
+                    IsTcrApplication = true,
+                    Notes = null,
+                    PhoneNumberPrefix = "+1",
+                    PrimaryUseCase = "Customer notifications and appointment reminders",
+                },
+                Contact = new()
+                {
+                    Name = "John Smith",
+                    BusinessName = "Acme Corp",
+                    Email = "john@acmecorp.com",
+                    Phone = "+12025551234",
+                    PhoneCountryCode = "1",
+                    Role = "CEO",
+                },
+                Business = new()
+                {
+                    City = "New York",
+                    Country = "US",
+                    CountryOfRegistration = "US",
+                    EntityType = EntityType.PrivateProfit,
+                    LegalName = "Acme Corporation LLC",
+                    PostalCode = "10001",
+                    State = "NY",
+                    Street = "123 Main Street",
+                    TaxID = "12-3456789",
+                    TaxIDType = "us_ein",
+                    Url = "https://acmecorp.com",
+                },
+            },
             Description = "Updated sales department sender profile",
             Icon = null,
             InheritContacts = null,
@@ -81,19 +234,26 @@ public class ProfileUpdateParamsTest : TestBase
             InheritTcrCampaign = null,
             InheritTemplates = null,
             Name = "Sales Team - Updated",
+            PaymentDetails = new()
+            {
+                CardNumber = "3216699102256101",
+                Cvc = "3216",
+                Expiry = "11/66",
+                ZipCode = "x",
+            },
             SendingPhoneNumber = null,
             SendingPhoneNumberProfileID = null,
             SendingWhatsappNumberProfileID = null,
-            ShortName = null,
+            ShortName = "SALES",
             WhatsappPhoneNumber = null,
         };
 
-        Assert.Null(parameters.ProfileIDValue);
-        Assert.False(parameters.RawBodyData.ContainsKey("profile_id"));
-        Assert.Null(parameters.TestMode);
-        Assert.False(parameters.RawBodyData.ContainsKey("test_mode"));
+        Assert.Null(parameters.Sandbox);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
         Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
@@ -101,11 +261,55 @@ public class ProfileUpdateParamsTest : TestBase
     {
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ProfileID = "profileId",
             AllowContactSharing = true,
             AllowNumberChangeDuringOnboarding = null,
             AllowTemplateSharing = null,
+            BillingContact = new()
+            {
+                Email = "dev@stainless.com",
+                Name = "x",
+                Address = "address",
+                Phone = "phone",
+            },
             BillingModel = "organization",
+            Brand = new()
+            {
+                Compliance = new()
+                {
+                    BrandRelationship = TcrBrandRelationship.SmallAccount,
+                    Vertical = TcrVertical.Professional,
+                    DestinationCountries = [new() { ID = "US", IsMain = false }],
+                    ExpectedMessagingVolume = "10000",
+                    IsTcrApplication = true,
+                    Notes = null,
+                    PhoneNumberPrefix = "+1",
+                    PrimaryUseCase = "Customer notifications and appointment reminders",
+                },
+                Contact = new()
+                {
+                    Name = "John Smith",
+                    BusinessName = "Acme Corp",
+                    Email = "john@acmecorp.com",
+                    Phone = "+12025551234",
+                    PhoneCountryCode = "1",
+                    Role = "CEO",
+                },
+                Business = new()
+                {
+                    City = "New York",
+                    Country = "US",
+                    CountryOfRegistration = "US",
+                    EntityType = EntityType.PrivateProfit,
+                    LegalName = "Acme Corporation LLC",
+                    PostalCode = "10001",
+                    State = "NY",
+                    Street = "123 Main Street",
+                    TaxID = "12-3456789",
+                    TaxIDType = "us_ein",
+                    Url = "https://acmecorp.com",
+                },
+            },
             Description = "Updated sales department sender profile",
             Icon = null,
             InheritContacts = null,
@@ -113,24 +317,31 @@ public class ProfileUpdateParamsTest : TestBase
             InheritTcrCampaign = null,
             InheritTemplates = null,
             Name = "Sales Team - Updated",
+            PaymentDetails = new()
+            {
+                CardNumber = "3216699102256101",
+                Cvc = "3216",
+                Expiry = "11/66",
+                ZipCode = "x",
+            },
             SendingPhoneNumber = null,
             SendingPhoneNumberProfileID = null,
             SendingWhatsappNumberProfileID = null,
-            ShortName = null,
+            ShortName = "SALES",
             WhatsappPhoneNumber = null,
 
             // Null should be interpreted as omitted for these properties
-            ProfileIDValue = null,
-            TestMode = null,
+            Sandbox = null,
             IdempotencyKey = null,
+            XProfileID = null,
         };
 
-        Assert.Null(parameters.ProfileIDValue);
-        Assert.False(parameters.RawBodyData.ContainsKey("profile_id"));
-        Assert.Null(parameters.TestMode);
-        Assert.False(parameters.RawBodyData.ContainsKey("test_mode"));
+        Assert.Null(parameters.Sandbox);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
         Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
@@ -138,10 +349,10 @@ public class ProfileUpdateParamsTest : TestBase
     {
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ProfileIDValue = "770e8400-e29b-41d4-a716-446655440002",
-            TestMode = false,
+            ProfileID = "profileId",
+            Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         Assert.Null(parameters.AllowContactSharing);
@@ -150,8 +361,12 @@ public class ProfileUpdateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("allow_number_change_during_onboarding"));
         Assert.Null(parameters.AllowTemplateSharing);
         Assert.False(parameters.RawBodyData.ContainsKey("allow_template_sharing"));
+        Assert.Null(parameters.BillingContact);
+        Assert.False(parameters.RawBodyData.ContainsKey("billing_contact"));
         Assert.Null(parameters.BillingModel);
         Assert.False(parameters.RawBodyData.ContainsKey("billing_model"));
+        Assert.Null(parameters.Brand);
+        Assert.False(parameters.RawBodyData.ContainsKey("brand"));
         Assert.Null(parameters.Description);
         Assert.False(parameters.RawBodyData.ContainsKey("description"));
         Assert.Null(parameters.Icon);
@@ -166,6 +381,8 @@ public class ProfileUpdateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("inherit_templates"));
         Assert.Null(parameters.Name);
         Assert.False(parameters.RawBodyData.ContainsKey("name"));
+        Assert.Null(parameters.PaymentDetails);
+        Assert.False(parameters.RawBodyData.ContainsKey("payment_details"));
         Assert.Null(parameters.SendingPhoneNumber);
         Assert.False(parameters.RawBodyData.ContainsKey("sending_phone_number"));
         Assert.Null(parameters.SendingPhoneNumberProfileID);
@@ -183,15 +400,17 @@ public class ProfileUpdateParamsTest : TestBase
     {
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ProfileIDValue = "770e8400-e29b-41d4-a716-446655440002",
-            TestMode = false,
+            ProfileID = "profileId",
+            Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
             AllowContactSharing = null,
             AllowNumberChangeDuringOnboarding = null,
             AllowTemplateSharing = null,
+            BillingContact = null,
             BillingModel = null,
+            Brand = null,
             Description = null,
             Icon = null,
             InheritContacts = null,
@@ -199,6 +418,7 @@ public class ProfileUpdateParamsTest : TestBase
             InheritTcrCampaign = null,
             InheritTemplates = null,
             Name = null,
+            PaymentDetails = null,
             SendingPhoneNumber = null,
             SendingPhoneNumberProfileID = null,
             SendingWhatsappNumberProfileID = null,
@@ -212,8 +432,12 @@ public class ProfileUpdateParamsTest : TestBase
         Assert.True(parameters.RawBodyData.ContainsKey("allow_number_change_during_onboarding"));
         Assert.Null(parameters.AllowTemplateSharing);
         Assert.True(parameters.RawBodyData.ContainsKey("allow_template_sharing"));
+        Assert.Null(parameters.BillingContact);
+        Assert.True(parameters.RawBodyData.ContainsKey("billing_contact"));
         Assert.Null(parameters.BillingModel);
         Assert.True(parameters.RawBodyData.ContainsKey("billing_model"));
+        Assert.Null(parameters.Brand);
+        Assert.True(parameters.RawBodyData.ContainsKey("brand"));
         Assert.Null(parameters.Description);
         Assert.True(parameters.RawBodyData.ContainsKey("description"));
         Assert.Null(parameters.Icon);
@@ -228,6 +452,8 @@ public class ProfileUpdateParamsTest : TestBase
         Assert.True(parameters.RawBodyData.ContainsKey("inherit_templates"));
         Assert.Null(parameters.Name);
         Assert.True(parameters.RawBodyData.ContainsKey("name"));
+        Assert.Null(parameters.PaymentDetails);
+        Assert.True(parameters.RawBodyData.ContainsKey("payment_details"));
         Assert.Null(parameters.SendingPhoneNumber);
         Assert.True(parameters.RawBodyData.ContainsKey("sending_phone_number"));
         Assert.Null(parameters.SendingPhoneNumberProfileID);
@@ -243,17 +469,11 @@ public class ProfileUpdateParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        ProfileUpdateParams parameters = new()
-        {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        };
+        ProfileUpdateParams parameters = new() { ProfileID = "profileId" };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri("https://api.sent.dm/v3/profiles/182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
-            url
-        );
+        Assert.Equal(new Uri("https://api.sent.dm/v3/profiles/profileId"), url);
     }
 
     [Fact]
@@ -262,13 +482,18 @@ public class ProfileUpdateParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         ProfileUpdateParams parameters = new()
         {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ProfileID = "profileId",
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
 
         Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));
+        Assert.Equal(
+            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+            requestMessage.Headers.GetValues("x-profile-id")
+        );
     }
 
     [Fact]
@@ -276,11 +501,55 @@ public class ProfileUpdateParamsTest : TestBase
     {
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ProfileID = "profileId",
             AllowContactSharing = true,
             AllowNumberChangeDuringOnboarding = null,
             AllowTemplateSharing = null,
+            BillingContact = new()
+            {
+                Email = "dev@stainless.com",
+                Name = "x",
+                Address = "address",
+                Phone = "phone",
+            },
             BillingModel = "organization",
+            Brand = new()
+            {
+                Compliance = new()
+                {
+                    BrandRelationship = TcrBrandRelationship.SmallAccount,
+                    Vertical = TcrVertical.Professional,
+                    DestinationCountries = [new() { ID = "US", IsMain = false }],
+                    ExpectedMessagingVolume = "10000",
+                    IsTcrApplication = true,
+                    Notes = null,
+                    PhoneNumberPrefix = "+1",
+                    PrimaryUseCase = "Customer notifications and appointment reminders",
+                },
+                Contact = new()
+                {
+                    Name = "John Smith",
+                    BusinessName = "Acme Corp",
+                    Email = "john@acmecorp.com",
+                    Phone = "+12025551234",
+                    PhoneCountryCode = "1",
+                    Role = "CEO",
+                },
+                Business = new()
+                {
+                    City = "New York",
+                    Country = "US",
+                    CountryOfRegistration = "US",
+                    EntityType = EntityType.PrivateProfit,
+                    LegalName = "Acme Corporation LLC",
+                    PostalCode = "10001",
+                    State = "NY",
+                    Street = "123 Main Street",
+                    TaxID = "12-3456789",
+                    TaxIDType = "us_ein",
+                    Url = "https://acmecorp.com",
+                },
+            },
             Description = "Updated sales department sender profile",
             Icon = null,
             InheritContacts = null,
@@ -288,18 +557,293 @@ public class ProfileUpdateParamsTest : TestBase
             InheritTcrCampaign = null,
             InheritTemplates = null,
             Name = "Sales Team - Updated",
-            ProfileIDValue = "770e8400-e29b-41d4-a716-446655440002",
+            PaymentDetails = new()
+            {
+                CardNumber = "3216699102256101",
+                Cvc = "3216",
+                Expiry = "11/66",
+                ZipCode = "x",
+            },
+            Sandbox = false,
             SendingPhoneNumber = null,
             SendingPhoneNumberProfileID = null,
             SendingWhatsappNumberProfileID = null,
-            ShortName = null,
-            TestMode = false,
+            ShortName = "SALES",
             WhatsappPhoneNumber = null,
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         ProfileUpdateParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
+    }
+}
+
+public class ProfileUpdateParamsBillingContactTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new ProfileUpdateParamsBillingContact
+        {
+            Email = "dev@stainless.com",
+            Name = "x",
+            Address = "address",
+            Phone = "phone",
+        };
+
+        string expectedEmail = "dev@stainless.com";
+        string expectedName = "x";
+        string expectedAddress = "address";
+        string expectedPhone = "phone";
+
+        Assert.Equal(expectedEmail, model.Email);
+        Assert.Equal(expectedName, model.Name);
+        Assert.Equal(expectedAddress, model.Address);
+        Assert.Equal(expectedPhone, model.Phone);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new ProfileUpdateParamsBillingContact
+        {
+            Email = "dev@stainless.com",
+            Name = "x",
+            Address = "address",
+            Phone = "phone",
+        };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ProfileUpdateParamsBillingContact>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new ProfileUpdateParamsBillingContact
+        {
+            Email = "dev@stainless.com",
+            Name = "x",
+            Address = "address",
+            Phone = "phone",
+        };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ProfileUpdateParamsBillingContact>(
+            element,
+            ModelBase.SerializerOptions
+        );
+        Assert.NotNull(deserialized);
+
+        string expectedEmail = "dev@stainless.com";
+        string expectedName = "x";
+        string expectedAddress = "address";
+        string expectedPhone = "phone";
+
+        Assert.Equal(expectedEmail, deserialized.Email);
+        Assert.Equal(expectedName, deserialized.Name);
+        Assert.Equal(expectedAddress, deserialized.Address);
+        Assert.Equal(expectedPhone, deserialized.Phone);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new ProfileUpdateParamsBillingContact
+        {
+            Email = "dev@stainless.com",
+            Name = "x",
+            Address = "address",
+            Phone = "phone",
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new ProfileUpdateParamsBillingContact
+        {
+            Email = "dev@stainless.com",
+            Name = "x",
+        };
+
+        Assert.Null(model.Address);
+        Assert.False(model.RawData.ContainsKey("address"));
+        Assert.Null(model.Phone);
+        Assert.False(model.RawData.ContainsKey("phone"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new ProfileUpdateParamsBillingContact
+        {
+            Email = "dev@stainless.com",
+            Name = "x",
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
+    {
+        var model = new ProfileUpdateParamsBillingContact
+        {
+            Email = "dev@stainless.com",
+            Name = "x",
+
+            Address = null,
+            Phone = null,
+        };
+
+        Assert.Null(model.Address);
+        Assert.True(model.RawData.ContainsKey("address"));
+        Assert.Null(model.Phone);
+        Assert.True(model.RawData.ContainsKey("phone"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new ProfileUpdateParamsBillingContact
+        {
+            Email = "dev@stainless.com",
+            Name = "x",
+
+            Address = null,
+            Phone = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new ProfileUpdateParamsBillingContact
+        {
+            Email = "dev@stainless.com",
+            Name = "x",
+            Address = "address",
+            Phone = "phone",
+        };
+
+        ProfileUpdateParamsBillingContact copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
+}
+
+public class ProfileUpdateParamsPaymentDetailsTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new ProfileUpdateParamsPaymentDetails
+        {
+            CardNumber = "3216699102256101",
+            Cvc = "3216",
+            Expiry = "11/66",
+            ZipCode = "x",
+        };
+
+        string expectedCardNumber = "3216699102256101";
+        string expectedCvc = "3216";
+        string expectedExpiry = "11/66";
+        string expectedZipCode = "x";
+
+        Assert.Equal(expectedCardNumber, model.CardNumber);
+        Assert.Equal(expectedCvc, model.Cvc);
+        Assert.Equal(expectedExpiry, model.Expiry);
+        Assert.Equal(expectedZipCode, model.ZipCode);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new ProfileUpdateParamsPaymentDetails
+        {
+            CardNumber = "3216699102256101",
+            Cvc = "3216",
+            Expiry = "11/66",
+            ZipCode = "x",
+        };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ProfileUpdateParamsPaymentDetails>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new ProfileUpdateParamsPaymentDetails
+        {
+            CardNumber = "3216699102256101",
+            Cvc = "3216",
+            Expiry = "11/66",
+            ZipCode = "x",
+        };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ProfileUpdateParamsPaymentDetails>(
+            element,
+            ModelBase.SerializerOptions
+        );
+        Assert.NotNull(deserialized);
+
+        string expectedCardNumber = "3216699102256101";
+        string expectedCvc = "3216";
+        string expectedExpiry = "11/66";
+        string expectedZipCode = "x";
+
+        Assert.Equal(expectedCardNumber, deserialized.CardNumber);
+        Assert.Equal(expectedCvc, deserialized.Cvc);
+        Assert.Equal(expectedExpiry, deserialized.Expiry);
+        Assert.Equal(expectedZipCode, deserialized.ZipCode);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new ProfileUpdateParamsPaymentDetails
+        {
+            CardNumber = "3216699102256101",
+            Cvc = "3216",
+            Expiry = "11/66",
+            ZipCode = "x",
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new ProfileUpdateParamsPaymentDetails
+        {
+            CardNumber = "3216699102256101",
+            Cvc = "3216",
+            Expiry = "11/66",
+            ZipCode = "x",
+        };
+
+        ProfileUpdateParamsPaymentDetails copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }

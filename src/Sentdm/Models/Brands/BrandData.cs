@@ -11,10 +11,98 @@ using Sentdm.Exceptions;
 namespace Sentdm.Models.Brands;
 
 /// <summary>
-/// Brand and KYC data
+/// Brand and KYC data grouped into contact, business, and compliance sections
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<BrandData, BrandDataFromRaw>))]
 public sealed record class BrandData : JsonModel
+{
+    /// <summary>
+    /// Compliance and TCR-related information
+    /// </summary>
+    public required Compliance Compliance
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<Compliance>("compliance");
+        }
+        init { this._rawData.Set("compliance", value); }
+    }
+
+    /// <summary>
+    /// Contact information for the brand
+    /// </summary>
+    public required Contact Contact
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<Contact>("contact");
+        }
+        init { this._rawData.Set("contact", value); }
+    }
+
+    /// <summary>
+    /// Business details and address information
+    /// </summary>
+    public Business? Business
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Business>("business");
+        }
+        init { this._rawData.Set("business", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        this.Compliance.Validate();
+        this.Contact.Validate();
+        this.Business?.Validate();
+    }
+
+    public BrandData() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public BrandData(BrandData brandData)
+        : base(brandData) { }
+#pragma warning restore CS8618
+
+    public BrandData(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    BrandData(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="BrandDataFromRaw.FromRawUnchecked"/>
+    public static BrandData FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class BrandDataFromRaw : IFromRawJson<BrandData>
+{
+    /// <inheritdoc/>
+    public BrandData FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        BrandData.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Compliance and TCR-related information
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Compliance, ComplianceFromRaw>))]
+public sealed record class Compliance : JsonModel
 {
     /// <summary>
     /// Brand relationship level with TCR (required for TCR)
@@ -32,19 +120,6 @@ public sealed record class BrandData : JsonModel
     }
 
     /// <summary>
-    /// Primary contact name (required)
-    /// </summary>
-    public required string ContactName
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("contactName");
-        }
-        init { this._rawData.Set("contactName", value); }
-    }
-
-    /// <summary>
     /// Business vertical/industry category (required for TCR)
     /// </summary>
     public required ApiEnum<string, TcrVertical> Vertical
@@ -55,149 +130,6 @@ public sealed record class BrandData : JsonModel
             return this._rawData.GetNotNullClass<ApiEnum<string, TcrVertical>>("vertical");
         }
         init { this._rawData.Set("vertical", value); }
-    }
-
-    /// <summary>
-    /// Brand name for KYC submission
-    /// </summary>
-    public string? BrandName
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("brandName");
-        }
-        init { this._rawData.Set("brandName", value); }
-    }
-
-    /// <summary>
-    /// Legal business name
-    /// </summary>
-    public string? BusinessLegalName
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("businessLegalName");
-        }
-        init { this._rawData.Set("businessLegalName", value); }
-    }
-
-    /// <summary>
-    /// Business/brand name
-    /// </summary>
-    public string? BusinessName
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("businessName");
-        }
-        init { this._rawData.Set("businessName", value); }
-    }
-
-    /// <summary>
-    /// Contact's role in the business
-    /// </summary>
-    public string? BusinessRole
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("businessRole");
-        }
-        init { this._rawData.Set("businessRole", value); }
-    }
-
-    /// <summary>
-    /// Business website URL
-    /// </summary>
-    public string? BusinessUrl
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("businessUrl");
-        }
-        init { this._rawData.Set("businessUrl", value); }
-    }
-
-    /// <summary>
-    /// City
-    /// </summary>
-    public string? City
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("city");
-        }
-        init { this._rawData.Set("city", value); }
-    }
-
-    /// <summary>
-    /// Contact email address
-    /// </summary>
-    public string? ContactEmail
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("contactEmail");
-        }
-        init { this._rawData.Set("contactEmail", value); }
-    }
-
-    /// <summary>
-    /// Contact phone number in E.164 format
-    /// </summary>
-    public string? ContactPhone
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("contactPhone");
-        }
-        init { this._rawData.Set("contactPhone", value); }
-    }
-
-    /// <summary>
-    /// Contact phone country code (e.g., "1" for US)
-    /// </summary>
-    public string? ContactPhoneCountryCode
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("contactPhoneCountryCode");
-        }
-        init { this._rawData.Set("contactPhoneCountryCode", value); }
-    }
-
-    /// <summary>
-    /// Country code (e.g., US, CA)
-    /// </summary>
-    public string? Country
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("country");
-        }
-        init { this._rawData.Set("country", value); }
-    }
-
-    /// <summary>
-    /// Country where the business is registered
-    /// </summary>
-    public string? CountryOfRegistration
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("countryOfRegistration");
-        }
-        init { this._rawData.Set("countryOfRegistration", value); }
     }
 
     /// <summary>
@@ -219,19 +151,6 @@ public sealed record class BrandData : JsonModel
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
         }
-    }
-
-    /// <summary>
-    /// Business entity type
-    /// </summary>
-    public ApiEnum<string, EntityType>? EntityType
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiEnum<string, EntityType>>("entityType");
-        }
-        init { this._rawData.Set("entityType", value); }
     }
 
     /// <summary>
@@ -287,19 +206,6 @@ public sealed record class BrandData : JsonModel
     }
 
     /// <summary>
-    /// Postal/ZIP code
-    /// </summary>
-    public string? PostalCode
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("postalCode");
-        }
-        init { this._rawData.Set("postalCode", value); }
-    }
-
-    /// <summary>
     /// Primary messaging use case description
     /// </summary>
     public string? PrimaryUseCase
@@ -310,6 +216,278 @@ public sealed record class BrandData : JsonModel
             return this._rawData.GetNullableClass<string>("primaryUseCase");
         }
         init { this._rawData.Set("primaryUseCase", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        this.BrandRelationship.Validate();
+        this.Vertical.Validate();
+        foreach (var item in this.DestinationCountries ?? [])
+        {
+            item.Validate();
+        }
+        _ = this.ExpectedMessagingVolume;
+        _ = this.IsTcrApplication;
+        _ = this.Notes;
+        _ = this.PhoneNumberPrefix;
+        _ = this.PrimaryUseCase;
+    }
+
+    public Compliance() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Compliance(Compliance compliance)
+        : base(compliance) { }
+#pragma warning restore CS8618
+
+    public Compliance(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Compliance(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="ComplianceFromRaw.FromRawUnchecked"/>
+    public static Compliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class ComplianceFromRaw : IFromRawJson<Compliance>
+{
+    /// <inheritdoc/>
+    public Compliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Compliance.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Contact information for the brand
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Contact, ContactFromRaw>))]
+public sealed record class Contact : JsonModel
+{
+    /// <summary>
+    /// Primary contact name (required)
+    /// </summary>
+    public required string Name
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("name");
+        }
+        init { this._rawData.Set("name", value); }
+    }
+
+    /// <summary>
+    /// Business/brand name
+    /// </summary>
+    public string? BusinessName
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("businessName");
+        }
+        init { this._rawData.Set("businessName", value); }
+    }
+
+    /// <summary>
+    /// Contact email address
+    /// </summary>
+    public string? Email
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("email");
+        }
+        init { this._rawData.Set("email", value); }
+    }
+
+    /// <summary>
+    /// Contact phone number in E.164 format
+    /// </summary>
+    public string? Phone
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("phone");
+        }
+        init { this._rawData.Set("phone", value); }
+    }
+
+    /// <summary>
+    /// Contact phone country code (e.g., "1" for US)
+    /// </summary>
+    public string? PhoneCountryCode
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("phoneCountryCode");
+        }
+        init { this._rawData.Set("phoneCountryCode", value); }
+    }
+
+    /// <summary>
+    /// Contact's role in the business
+    /// </summary>
+    public string? Role
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("role");
+        }
+        init { this._rawData.Set("role", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Name;
+        _ = this.BusinessName;
+        _ = this.Email;
+        _ = this.Phone;
+        _ = this.PhoneCountryCode;
+        _ = this.Role;
+    }
+
+    public Contact() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Contact(Contact contact)
+        : base(contact) { }
+#pragma warning restore CS8618
+
+    public Contact(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Contact(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="ContactFromRaw.FromRawUnchecked"/>
+    public static Contact FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+
+    [SetsRequiredMembers]
+    public Contact(string name)
+        : this()
+    {
+        this.Name = name;
+    }
+}
+
+class ContactFromRaw : IFromRawJson<Contact>
+{
+    /// <inheritdoc/>
+    public Contact FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Contact.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Business details and address information
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Business, BusinessFromRaw>))]
+public sealed record class Business : JsonModel
+{
+    /// <summary>
+    /// City
+    /// </summary>
+    public string? City
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("city");
+        }
+        init { this._rawData.Set("city", value); }
+    }
+
+    /// <summary>
+    /// Country code (e.g., US, CA)
+    /// </summary>
+    public string? Country
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("country");
+        }
+        init { this._rawData.Set("country", value); }
+    }
+
+    /// <summary>
+    /// Country where the business is registered
+    /// </summary>
+    public string? CountryOfRegistration
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("countryOfRegistration");
+        }
+        init { this._rawData.Set("countryOfRegistration", value); }
+    }
+
+    /// <summary>
+    /// Business entity type
+    /// </summary>
+    public ApiEnum<string, EntityType>? EntityType
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ApiEnum<string, EntityType>>("entityType");
+        }
+        init { this._rawData.Set("entityType", value); }
+    }
+
+    /// <summary>
+    /// Legal business name
+    /// </summary>
+    public string? LegalName
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("legalName");
+        }
+        init { this._rawData.Set("legalName", value); }
+    }
+
+    /// <summary>
+    /// Postal/ZIP code
+    /// </summary>
+    public string? PostalCode
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("postalCode");
+        }
+        init { this._rawData.Set("postalCode", value); }
     }
 
     /// <summary>
@@ -364,73 +542,68 @@ public sealed record class BrandData : JsonModel
         init { this._rawData.Set("taxIdType", value); }
     }
 
+    /// <summary>
+    /// Business website URL
+    /// </summary>
+    public string? Url
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("url");
+        }
+        init { this._rawData.Set("url", value); }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
-        this.BrandRelationship.Validate();
-        _ = this.ContactName;
-        this.Vertical.Validate();
-        _ = this.BrandName;
-        _ = this.BusinessLegalName;
-        _ = this.BusinessName;
-        _ = this.BusinessRole;
-        _ = this.BusinessUrl;
         _ = this.City;
-        _ = this.ContactEmail;
-        _ = this.ContactPhone;
-        _ = this.ContactPhoneCountryCode;
         _ = this.Country;
         _ = this.CountryOfRegistration;
-        foreach (var item in this.DestinationCountries ?? [])
-        {
-            item.Validate();
-        }
         this.EntityType?.Validate();
-        _ = this.ExpectedMessagingVolume;
-        _ = this.IsTcrApplication;
-        _ = this.Notes;
-        _ = this.PhoneNumberPrefix;
+        _ = this.LegalName;
         _ = this.PostalCode;
-        _ = this.PrimaryUseCase;
         _ = this.State;
         _ = this.Street;
         _ = this.TaxID;
         _ = this.TaxIDType;
+        _ = this.Url;
     }
 
-    public BrandData() { }
+    public Business() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public BrandData(BrandData brandData)
-        : base(brandData) { }
+    public Business(Business business)
+        : base(business) { }
 #pragma warning restore CS8618
 
-    public BrandData(IReadOnlyDictionary<string, JsonElement> rawData)
+    public Business(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    BrandData(FrozenDictionary<string, JsonElement> rawData)
+    Business(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="BrandDataFromRaw.FromRawUnchecked"/>
-    public static BrandData FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="BusinessFromRaw.FromRawUnchecked"/>
+    public static Business FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class BrandDataFromRaw : IFromRawJson<BrandData>
+class BusinessFromRaw : IFromRawJson<Business>
 {
     /// <inheritdoc/>
-    public BrandData FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        BrandData.FromRawUnchecked(rawData);
+    public Business FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Business.FromRawUnchecked(rawData);
 }
 
 /// <summary>

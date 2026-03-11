@@ -19,6 +19,24 @@ public record class WebhookRetrieveParams : ParamsBase
 {
     public string? ID { get; init; }
 
+    public string? XProfileID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("x-profile-id", value);
+        }
+    }
+
     public WebhookRetrieveParams() { }
 
 #pragma warning disable CS8618

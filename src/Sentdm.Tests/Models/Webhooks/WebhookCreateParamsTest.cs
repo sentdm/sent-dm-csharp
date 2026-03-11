@@ -16,18 +16,20 @@ public class WebhookCreateParamsTest : TestBase
             EndpointUrl = "https://example.com/webhooks/orders",
             EventTypes = ["messages", "templates"],
             RetryCount = 3,
-            TestMode = false,
+            Sandbox = false,
             TimeoutSeconds = 30,
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedDisplayName = "Order Notifications";
         string expectedEndpointUrl = "https://example.com/webhooks/orders";
         List<string> expectedEventTypes = ["messages", "templates"];
         int expectedRetryCount = 3;
-        bool expectedTestMode = false;
+        bool expectedSandbox = false;
         int expectedTimeoutSeconds = 30;
         string expectedIdempotencyKey = "req_abc123_retry1";
+        string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedDisplayName, parameters.DisplayName);
         Assert.Equal(expectedEndpointUrl, parameters.EndpointUrl);
@@ -38,9 +40,10 @@ public class WebhookCreateParamsTest : TestBase
             Assert.Equal(expectedEventTypes[i], parameters.EventTypes[i]);
         }
         Assert.Equal(expectedRetryCount, parameters.RetryCount);
-        Assert.Equal(expectedTestMode, parameters.TestMode);
+        Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedTimeoutSeconds, parameters.TimeoutSeconds);
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
+        Assert.Equal(expectedXProfileID, parameters.XProfileID);
     }
 
     [Fact]
@@ -56,12 +59,14 @@ public class WebhookCreateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("event_types"));
         Assert.Null(parameters.RetryCount);
         Assert.False(parameters.RawBodyData.ContainsKey("retry_count"));
-        Assert.Null(parameters.TestMode);
-        Assert.False(parameters.RawBodyData.ContainsKey("test_mode"));
+        Assert.Null(parameters.Sandbox);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.TimeoutSeconds);
         Assert.False(parameters.RawBodyData.ContainsKey("timeout_seconds"));
         Assert.Null(parameters.IdempotencyKey);
         Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
@@ -74,9 +79,10 @@ public class WebhookCreateParamsTest : TestBase
             EndpointUrl = null,
             EventTypes = null,
             RetryCount = null,
-            TestMode = null,
+            Sandbox = null,
             TimeoutSeconds = null,
             IdempotencyKey = null,
+            XProfileID = null,
         };
 
         Assert.Null(parameters.DisplayName);
@@ -87,12 +93,14 @@ public class WebhookCreateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("event_types"));
         Assert.Null(parameters.RetryCount);
         Assert.False(parameters.RawBodyData.ContainsKey("retry_count"));
-        Assert.Null(parameters.TestMode);
-        Assert.False(parameters.RawBodyData.ContainsKey("test_mode"));
+        Assert.Null(parameters.Sandbox);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.TimeoutSeconds);
         Assert.False(parameters.RawBodyData.ContainsKey("timeout_seconds"));
         Assert.Null(parameters.IdempotencyKey);
         Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
@@ -109,11 +117,19 @@ public class WebhookCreateParamsTest : TestBase
     public void AddHeadersToRequest_Works()
     {
         HttpRequestMessage requestMessage = new();
-        WebhookCreateParams parameters = new() { IdempotencyKey = "req_abc123_retry1" };
+        WebhookCreateParams parameters = new()
+        {
+            IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        };
 
         parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
 
         Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));
+        Assert.Equal(
+            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+            requestMessage.Headers.GetValues("x-profile-id")
+        );
     }
 
     [Fact]
@@ -125,9 +141,10 @@ public class WebhookCreateParamsTest : TestBase
             EndpointUrl = "https://example.com/webhooks/orders",
             EventTypes = ["messages", "templates"],
             RetryCount = 3,
-            TestMode = false,
+            Sandbox = false,
             TimeoutSeconds = 30,
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         WebhookCreateParams copied = new(parameters);
