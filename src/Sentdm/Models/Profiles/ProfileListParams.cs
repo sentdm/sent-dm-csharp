@@ -9,9 +9,9 @@ using Sentdm.Core;
 namespace Sentdm.Models.Profiles;
 
 /// <summary>
-/// Retrieves all sender profiles within an organization. Profiles represent different
-/// brands, departments, or use cases within an organization, each with their own
-/// messaging configuration.
+/// Retrieves all sender profiles within an organization, including brand information
+/// for each profile. Profiles represent different brands, departments, or use cases
+/// within an organization, each with their own messaging configuration.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -19,6 +19,24 @@ namespace Sentdm.Models.Profiles;
 /// </summary>
 public record class ProfileListParams : ParamsBase
 {
+    public string? XProfileID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("x-profile-id", value);
+        }
+    }
+
     public ProfileListParams() { }
 
 #pragma warning disable CS8618

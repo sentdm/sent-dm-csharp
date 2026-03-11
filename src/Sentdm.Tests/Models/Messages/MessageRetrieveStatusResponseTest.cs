@@ -17,6 +17,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                ActiveContactPrice = 0,
                 Channel = "channel",
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -56,7 +57,6 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -66,6 +66,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
         MessageRetrieveStatusResponseData expectedData = new()
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ActiveContactPrice = 0,
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -105,7 +106,6 @@ public class MessageRetrieveStatusResponseTest : TestBase
         Webhooks::ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
-            ResponseTimeMs = 0,
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Version = "version",
         };
@@ -125,6 +125,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                ActiveContactPrice = 0,
                 Channel = "channel",
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -164,7 +165,6 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -188,6 +188,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                ActiveContactPrice = 0,
                 Channel = "channel",
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -227,7 +228,6 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -244,6 +244,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
         MessageRetrieveStatusResponseData expectedData = new()
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ActiveContactPrice = 0,
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -283,7 +284,6 @@ public class MessageRetrieveStatusResponseTest : TestBase
         Webhooks::ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
-            ResponseTimeMs = 0,
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Version = "version",
         };
@@ -303,6 +303,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                ActiveContactPrice = 0,
                 Channel = "channel",
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -342,7 +343,6 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -360,6 +360,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                ActiveContactPrice = 0,
                 Channel = "channel",
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -412,6 +413,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                ActiveContactPrice = 0,
                 Channel = "channel",
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -461,6 +463,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                ActiveContactPrice = 0,
                 Channel = "channel",
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -517,6 +520,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                ActiveContactPrice = 0,
                 Channel = "channel",
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -570,7 +574,6 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -591,7 +594,6 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -609,7 +611,6 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -633,7 +634,6 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -654,6 +654,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                ActiveContactPrice = 0,
                 Channel = "channel",
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -693,7 +694,6 @@ public class MessageRetrieveStatusResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -714,6 +714,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         var model = new MessageRetrieveStatusResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ActiveContactPrice = 0,
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -745,6 +746,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        double expectedActiveContactPrice = 0;
         string expectedChannel = "channel";
         string expectedContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
@@ -775,6 +777,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         string expectedTemplateName = "template_name";
 
         Assert.Equal(expectedID, model.ID);
+        Assert.Equal(expectedActiveContactPrice, model.ActiveContactPrice);
         Assert.Equal(expectedChannel, model.Channel);
         Assert.Equal(expectedContactID, model.ContactID);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
@@ -802,6 +805,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         var model = new MessageRetrieveStatusResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ActiveContactPrice = 0,
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -847,6 +851,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         var model = new MessageRetrieveStatusResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ActiveContactPrice = 0,
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -885,6 +890,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        double expectedActiveContactPrice = 0;
         string expectedChannel = "channel";
         string expectedContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
@@ -915,6 +921,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         string expectedTemplateName = "template_name";
 
         Assert.Equal(expectedID, deserialized.ID);
+        Assert.Equal(expectedActiveContactPrice, deserialized.ActiveContactPrice);
         Assert.Equal(expectedChannel, deserialized.Channel);
         Assert.Equal(expectedContactID, deserialized.ContactID);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
@@ -942,6 +949,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         var model = new MessageRetrieveStatusResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ActiveContactPrice = 0,
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -980,6 +988,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
+            ActiveContactPrice = 0,
             Events =
             [
                 new()
@@ -1029,6 +1038,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
+            ActiveContactPrice = 0,
             Events =
             [
                 new()
@@ -1057,6 +1067,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
+            ActiveContactPrice = 0,
             Events =
             [
                 new()
@@ -1119,6 +1130,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
+            ActiveContactPrice = 0,
             Events =
             [
                 new()
@@ -1173,6 +1185,8 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             TemplateName = "template_name",
         };
 
+        Assert.Null(model.ActiveContactPrice);
+        Assert.False(model.RawData.ContainsKey("active_contact_price"));
         Assert.Null(model.Events);
         Assert.False(model.RawData.ContainsKey("events"));
         Assert.Null(model.MessageBody);
@@ -1221,12 +1235,15 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             TemplateCategory = "template_category",
             TemplateName = "template_name",
 
+            ActiveContactPrice = null,
             Events = null,
             MessageBody = null,
             Price = null,
             TemplateID = null,
         };
 
+        Assert.Null(model.ActiveContactPrice);
+        Assert.True(model.RawData.ContainsKey("active_contact_price"));
         Assert.Null(model.Events);
         Assert.True(model.RawData.ContainsKey("events"));
         Assert.Null(model.MessageBody);
@@ -1254,6 +1271,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             TemplateCategory = "template_category",
             TemplateName = "template_name",
 
+            ActiveContactPrice = null,
             Events = null,
             MessageBody = null,
             Price = null,
@@ -1269,6 +1287,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         var model = new MessageRetrieveStatusResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ActiveContactPrice = 0,
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),

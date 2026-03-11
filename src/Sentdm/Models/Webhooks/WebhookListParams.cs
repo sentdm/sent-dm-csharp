@@ -32,9 +32,9 @@ public record class WebhookListParams : ParamsBase
         get
         {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNotNullStruct<int>("pageSize");
+            return this._rawQueryData.GetNotNullStruct<int>("page_size");
         }
-        init { this._rawQueryData.Set("pageSize", value); }
+        init { this._rawQueryData.Set("page_size", value); }
     }
 
     public bool? IsActive
@@ -42,9 +42,9 @@ public record class WebhookListParams : ParamsBase
         get
         {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<bool>("isActive");
+            return this._rawQueryData.GetNullableStruct<bool>("is_active");
         }
-        init { this._rawQueryData.Set("isActive", value); }
+        init { this._rawQueryData.Set("is_active", value); }
     }
 
     public string? Search
@@ -55,6 +55,24 @@ public record class WebhookListParams : ParamsBase
             return this._rawQueryData.GetNullableClass<string>("search");
         }
         init { this._rawQueryData.Set("search", value); }
+    }
+
+    public string? XProfileID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("x-profile-id", value);
+        }
     }
 
     public WebhookListParams() { }

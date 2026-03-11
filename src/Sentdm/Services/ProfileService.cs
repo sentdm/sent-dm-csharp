@@ -119,12 +119,10 @@ public sealed class ProfileService : IProfileService
     /// <inheritdoc/>
     public async Task Delete(
         string profileID,
-        ProfileDeleteParams? parameters = null,
+        ProfileDeleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        parameters ??= new();
-
         await this.Delete(parameters with { ProfileID = profileID }, cancellationToken)
             .ConfigureAwait(false);
     }
@@ -340,12 +338,10 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     /// <inheritdoc/>
     public Task<HttpResponse> Delete(
         string profileID,
-        ProfileDeleteParams? parameters = null,
+        ProfileDeleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        parameters ??= new();
-
         return this.Delete(parameters with { ProfileID = profileID }, cancellationToken);
     }
 

@@ -17,10 +17,23 @@ public class MeRetrieveResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channels = new()
+                {
+                    Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Whatsapp = new()
+                    {
+                        BusinessName = "business_name",
+                        Configured = true,
+                        PhoneNumber = "phone_number",
+                    },
+                },
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
+                Email = "email",
                 Icon = "icon",
                 Name = "name",
+                OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Profiles =
                 [
                     new()
@@ -55,7 +68,9 @@ public class MeRetrieveResponseTest : TestBase
                     InheritTcrCampaign = true,
                     InheritTemplates = true,
                 },
+                ShortName = "short_name",
                 Status = "status",
+                Type = "type",
             },
             Error = new()
             {
@@ -67,7 +82,6 @@ public class MeRetrieveResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -77,10 +91,23 @@ public class MeRetrieveResponseTest : TestBase
         Data expectedData = new()
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Channels = new()
+            {
+                Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                Whatsapp = new()
+                {
+                    BusinessName = "business_name",
+                    Configured = true,
+                    PhoneNumber = "phone_number",
+                },
+            },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            Email = "email",
             Icon = "icon",
             Name = "name",
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Profiles =
             [
                 new()
@@ -115,7 +142,9 @@ public class MeRetrieveResponseTest : TestBase
                 InheritTcrCampaign = true,
                 InheritTemplates = true,
             },
+            ShortName = "short_name",
             Status = "status",
+            Type = "type",
         };
         Webhooks::ApiError expectedError = new()
         {
@@ -127,7 +156,6 @@ public class MeRetrieveResponseTest : TestBase
         Webhooks::ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
-            ResponseTimeMs = 0,
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Version = "version",
         };
@@ -147,10 +175,23 @@ public class MeRetrieveResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channels = new()
+                {
+                    Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Whatsapp = new()
+                    {
+                        BusinessName = "business_name",
+                        Configured = true,
+                        PhoneNumber = "phone_number",
+                    },
+                },
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
+                Email = "email",
                 Icon = "icon",
                 Name = "name",
+                OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Profiles =
                 [
                     new()
@@ -185,7 +226,9 @@ public class MeRetrieveResponseTest : TestBase
                     InheritTcrCampaign = true,
                     InheritTemplates = true,
                 },
+                ShortName = "short_name",
                 Status = "status",
+                Type = "type",
             },
             Error = new()
             {
@@ -197,7 +240,6 @@ public class MeRetrieveResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -221,10 +263,23 @@ public class MeRetrieveResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channels = new()
+                {
+                    Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Whatsapp = new()
+                    {
+                        BusinessName = "business_name",
+                        Configured = true,
+                        PhoneNumber = "phone_number",
+                    },
+                },
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
+                Email = "email",
                 Icon = "icon",
                 Name = "name",
+                OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Profiles =
                 [
                     new()
@@ -259,7 +314,9 @@ public class MeRetrieveResponseTest : TestBase
                     InheritTcrCampaign = true,
                     InheritTemplates = true,
                 },
+                ShortName = "short_name",
                 Status = "status",
+                Type = "type",
             },
             Error = new()
             {
@@ -271,7 +328,6 @@ public class MeRetrieveResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -288,10 +344,23 @@ public class MeRetrieveResponseTest : TestBase
         Data expectedData = new()
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Channels = new()
+            {
+                Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                Whatsapp = new()
+                {
+                    BusinessName = "business_name",
+                    Configured = true,
+                    PhoneNumber = "phone_number",
+                },
+            },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            Email = "email",
             Icon = "icon",
             Name = "name",
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Profiles =
             [
                 new()
@@ -326,7 +395,9 @@ public class MeRetrieveResponseTest : TestBase
                 InheritTcrCampaign = true,
                 InheritTemplates = true,
             },
+            ShortName = "short_name",
             Status = "status",
+            Type = "type",
         };
         Webhooks::ApiError expectedError = new()
         {
@@ -338,7 +409,6 @@ public class MeRetrieveResponseTest : TestBase
         Webhooks::ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
-            ResponseTimeMs = 0,
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Version = "version",
         };
@@ -358,10 +428,23 @@ public class MeRetrieveResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channels = new()
+                {
+                    Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Whatsapp = new()
+                    {
+                        BusinessName = "business_name",
+                        Configured = true,
+                        PhoneNumber = "phone_number",
+                    },
+                },
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
+                Email = "email",
                 Icon = "icon",
                 Name = "name",
+                OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Profiles =
                 [
                     new()
@@ -396,7 +479,9 @@ public class MeRetrieveResponseTest : TestBase
                     InheritTcrCampaign = true,
                     InheritTemplates = true,
                 },
+                ShortName = "short_name",
                 Status = "status",
+                Type = "type",
             },
             Error = new()
             {
@@ -408,7 +493,6 @@ public class MeRetrieveResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -426,10 +510,23 @@ public class MeRetrieveResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channels = new()
+                {
+                    Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Whatsapp = new()
+                    {
+                        BusinessName = "business_name",
+                        Configured = true,
+                        PhoneNumber = "phone_number",
+                    },
+                },
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
+                Email = "email",
                 Icon = "icon",
                 Name = "name",
+                OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Profiles =
                 [
                     new()
@@ -464,7 +561,9 @@ public class MeRetrieveResponseTest : TestBase
                     InheritTcrCampaign = true,
                     InheritTemplates = true,
                 },
+                ShortName = "short_name",
                 Status = "status",
+                Type = "type",
             },
             Error = new()
             {
@@ -489,10 +588,23 @@ public class MeRetrieveResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channels = new()
+                {
+                    Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Whatsapp = new()
+                    {
+                        BusinessName = "business_name",
+                        Configured = true,
+                        PhoneNumber = "phone_number",
+                    },
+                },
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
+                Email = "email",
                 Icon = "icon",
                 Name = "name",
+                OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Profiles =
                 [
                     new()
@@ -527,7 +639,9 @@ public class MeRetrieveResponseTest : TestBase
                     InheritTcrCampaign = true,
                     InheritTemplates = true,
                 },
+                ShortName = "short_name",
                 Status = "status",
+                Type = "type",
             },
             Error = new()
             {
@@ -549,10 +663,23 @@ public class MeRetrieveResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channels = new()
+                {
+                    Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Whatsapp = new()
+                    {
+                        BusinessName = "business_name",
+                        Configured = true,
+                        PhoneNumber = "phone_number",
+                    },
+                },
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
+                Email = "email",
                 Icon = "icon",
                 Name = "name",
+                OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Profiles =
                 [
                     new()
@@ -587,7 +714,9 @@ public class MeRetrieveResponseTest : TestBase
                     InheritTcrCampaign = true,
                     InheritTemplates = true,
                 },
+                ShortName = "short_name",
                 Status = "status",
+                Type = "type",
             },
             Error = new()
             {
@@ -616,10 +745,23 @@ public class MeRetrieveResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channels = new()
+                {
+                    Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Whatsapp = new()
+                    {
+                        BusinessName = "business_name",
+                        Configured = true,
+                        PhoneNumber = "phone_number",
+                    },
+                },
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
+                Email = "email",
                 Icon = "icon",
                 Name = "name",
+                OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Profiles =
                 [
                     new()
@@ -654,7 +796,9 @@ public class MeRetrieveResponseTest : TestBase
                     InheritTcrCampaign = true,
                     InheritTemplates = true,
                 },
+                ShortName = "short_name",
                 Status = "status",
+                Type = "type",
             },
             Error = new()
             {
@@ -680,7 +824,6 @@ public class MeRetrieveResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -701,7 +844,6 @@ public class MeRetrieveResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -719,7 +861,6 @@ public class MeRetrieveResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -743,7 +884,6 @@ public class MeRetrieveResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -764,10 +904,23 @@ public class MeRetrieveResponseTest : TestBase
             Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channels = new()
+                {
+                    Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                    Whatsapp = new()
+                    {
+                        BusinessName = "business_name",
+                        Configured = true,
+                        PhoneNumber = "phone_number",
+                    },
+                },
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
+                Email = "email",
                 Icon = "icon",
                 Name = "name",
+                OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Profiles =
                 [
                     new()
@@ -802,7 +955,9 @@ public class MeRetrieveResponseTest : TestBase
                     InheritTcrCampaign = true,
                     InheritTemplates = true,
                 },
+                ShortName = "short_name",
                 Status = "status",
+                Type = "type",
             },
             Error = new()
             {
@@ -814,7 +969,6 @@ public class MeRetrieveResponseTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -835,10 +989,23 @@ public class DataTest : TestBase
         var model = new Data
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Channels = new()
+            {
+                Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                Whatsapp = new()
+                {
+                    BusinessName = "business_name",
+                    Configured = true,
+                    PhoneNumber = "phone_number",
+                },
+            },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            Email = "email",
             Icon = "icon",
             Name = "name",
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Profiles =
             [
                 new()
@@ -873,14 +1040,29 @@ public class DataTest : TestBase
                 InheritTcrCampaign = true,
                 InheritTemplates = true,
             },
+            ShortName = "short_name",
             Status = "status",
+            Type = "type",
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        Channels expectedChannels = new()
+        {
+            Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+            Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+            Whatsapp = new()
+            {
+                BusinessName = "business_name",
+                Configured = true,
+                PhoneNumber = "phone_number",
+            },
+        };
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedDescription = "description";
+        string expectedEmail = "email";
         string expectedIcon = "icon";
         string expectedName = "name";
+        string expectedOrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         List<Profile> expectedProfiles =
         [
             new()
@@ -915,13 +1097,18 @@ public class DataTest : TestBase
             InheritTcrCampaign = true,
             InheritTemplates = true,
         };
+        string expectedShortName = "short_name";
         string expectedStatus = "status";
+        string expectedType = "type";
 
         Assert.Equal(expectedID, model.ID);
+        Assert.Equal(expectedChannels, model.Channels);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedDescription, model.Description);
+        Assert.Equal(expectedEmail, model.Email);
         Assert.Equal(expectedIcon, model.Icon);
         Assert.Equal(expectedName, model.Name);
+        Assert.Equal(expectedOrganizationID, model.OrganizationID);
         Assert.NotNull(model.Profiles);
         Assert.Equal(expectedProfiles.Count, model.Profiles.Count);
         for (int i = 0; i < expectedProfiles.Count; i++)
@@ -929,7 +1116,9 @@ public class DataTest : TestBase
             Assert.Equal(expectedProfiles[i], model.Profiles[i]);
         }
         Assert.Equal(expectedSettings, model.Settings);
+        Assert.Equal(expectedShortName, model.ShortName);
         Assert.Equal(expectedStatus, model.Status);
+        Assert.Equal(expectedType, model.Type);
     }
 
     [Fact]
@@ -938,10 +1127,23 @@ public class DataTest : TestBase
         var model = new Data
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Channels = new()
+            {
+                Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                Whatsapp = new()
+                {
+                    BusinessName = "business_name",
+                    Configured = true,
+                    PhoneNumber = "phone_number",
+                },
+            },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            Email = "email",
             Icon = "icon",
             Name = "name",
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Profiles =
             [
                 new()
@@ -976,7 +1178,9 @@ public class DataTest : TestBase
                 InheritTcrCampaign = true,
                 InheritTemplates = true,
             },
+            ShortName = "short_name",
             Status = "status",
+            Type = "type",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -991,10 +1195,23 @@ public class DataTest : TestBase
         var model = new Data
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Channels = new()
+            {
+                Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                Whatsapp = new()
+                {
+                    BusinessName = "business_name",
+                    Configured = true,
+                    PhoneNumber = "phone_number",
+                },
+            },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            Email = "email",
             Icon = "icon",
             Name = "name",
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Profiles =
             [
                 new()
@@ -1029,7 +1246,9 @@ public class DataTest : TestBase
                 InheritTcrCampaign = true,
                 InheritTemplates = true,
             },
+            ShortName = "short_name",
             Status = "status",
+            Type = "type",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -1037,10 +1256,23 @@ public class DataTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        Channels expectedChannels = new()
+        {
+            Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+            Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+            Whatsapp = new()
+            {
+                BusinessName = "business_name",
+                Configured = true,
+                PhoneNumber = "phone_number",
+            },
+        };
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedDescription = "description";
+        string expectedEmail = "email";
         string expectedIcon = "icon";
         string expectedName = "name";
+        string expectedOrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         List<Profile> expectedProfiles =
         [
             new()
@@ -1075,13 +1307,18 @@ public class DataTest : TestBase
             InheritTcrCampaign = true,
             InheritTemplates = true,
         };
+        string expectedShortName = "short_name";
         string expectedStatus = "status";
+        string expectedType = "type";
 
         Assert.Equal(expectedID, deserialized.ID);
+        Assert.Equal(expectedChannels, deserialized.Channels);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedDescription, deserialized.Description);
+        Assert.Equal(expectedEmail, deserialized.Email);
         Assert.Equal(expectedIcon, deserialized.Icon);
         Assert.Equal(expectedName, deserialized.Name);
+        Assert.Equal(expectedOrganizationID, deserialized.OrganizationID);
         Assert.NotNull(deserialized.Profiles);
         Assert.Equal(expectedProfiles.Count, deserialized.Profiles.Count);
         for (int i = 0; i < expectedProfiles.Count; i++)
@@ -1089,7 +1326,9 @@ public class DataTest : TestBase
             Assert.Equal(expectedProfiles[i], deserialized.Profiles[i]);
         }
         Assert.Equal(expectedSettings, deserialized.Settings);
+        Assert.Equal(expectedShortName, deserialized.ShortName);
         Assert.Equal(expectedStatus, deserialized.Status);
+        Assert.Equal(expectedType, deserialized.Type);
     }
 
     [Fact]
@@ -1098,10 +1337,23 @@ public class DataTest : TestBase
         var model = new Data
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Channels = new()
+            {
+                Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                Whatsapp = new()
+                {
+                    BusinessName = "business_name",
+                    Configured = true,
+                    PhoneNumber = "phone_number",
+                },
+            },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            Email = "email",
             Icon = "icon",
             Name = "name",
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Profiles =
             [
                 new()
@@ -1136,7 +1388,9 @@ public class DataTest : TestBase
                 InheritTcrCampaign = true,
                 InheritTemplates = true,
             },
+            ShortName = "short_name",
             Status = "status",
+            Type = "type",
         };
 
         model.Validate();
@@ -1148,31 +1402,9 @@ public class DataTest : TestBase
         var model = new Data
         {
             Description = "description",
+            Email = "email",
             Icon = "icon",
-            Profiles =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    Icon = "icon",
-                    Name = "name",
-                    Role = "role",
-                    Settings = new()
-                    {
-                        AllowContactSharing = true,
-                        AllowTemplateSharing = true,
-                        BillingModel = "billing_model",
-                        InheritContacts = true,
-                        InheritTcrBrand = true,
-                        InheritTcrCampaign = true,
-                        InheritTemplates = true,
-                    },
-                    ShortName = "short_name",
-                    Status = "status",
-                },
-            ],
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -1183,15 +1415,22 @@ public class DataTest : TestBase
                 InheritTcrCampaign = true,
                 InheritTemplates = true,
             },
+            ShortName = "short_name",
             Status = "status",
         };
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
+        Assert.Null(model.Channels);
+        Assert.False(model.RawData.ContainsKey("channels"));
         Assert.Null(model.CreatedAt);
         Assert.False(model.RawData.ContainsKey("created_at"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+        Assert.Null(model.Profiles);
+        Assert.False(model.RawData.ContainsKey("profiles"));
+        Assert.Null(model.Type);
+        Assert.False(model.RawData.ContainsKey("type"));
     }
 
     [Fact]
@@ -1200,31 +1439,9 @@ public class DataTest : TestBase
         var model = new Data
         {
             Description = "description",
+            Email = "email",
             Icon = "icon",
-            Profiles =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    Icon = "icon",
-                    Name = "name",
-                    Role = "role",
-                    Settings = new()
-                    {
-                        AllowContactSharing = true,
-                        AllowTemplateSharing = true,
-                        BillingModel = "billing_model",
-                        InheritContacts = true,
-                        InheritTcrBrand = true,
-                        InheritTcrCampaign = true,
-                        InheritTemplates = true,
-                    },
-                    ShortName = "short_name",
-                    Status = "status",
-                },
-            ],
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -1235,6 +1452,7 @@ public class DataTest : TestBase
                 InheritTcrCampaign = true,
                 InheritTemplates = true,
             },
+            ShortName = "short_name",
             Status = "status",
         };
 
@@ -1247,31 +1465,9 @@ public class DataTest : TestBase
         var model = new Data
         {
             Description = "description",
+            Email = "email",
             Icon = "icon",
-            Profiles =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    Icon = "icon",
-                    Name = "name",
-                    Role = "role",
-                    Settings = new()
-                    {
-                        AllowContactSharing = true,
-                        AllowTemplateSharing = true,
-                        BillingModel = "billing_model",
-                        InheritContacts = true,
-                        InheritTcrBrand = true,
-                        InheritTcrCampaign = true,
-                        InheritTemplates = true,
-                    },
-                    ShortName = "short_name",
-                    Status = "status",
-                },
-            ],
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -1282,20 +1478,30 @@ public class DataTest : TestBase
                 InheritTcrCampaign = true,
                 InheritTemplates = true,
             },
+            ShortName = "short_name",
             Status = "status",
 
             // Null should be interpreted as omitted for these properties
             ID = null,
+            Channels = null,
             CreatedAt = null,
             Name = null,
+            Profiles = null,
+            Type = null,
         };
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
+        Assert.Null(model.Channels);
+        Assert.False(model.RawData.ContainsKey("channels"));
         Assert.Null(model.CreatedAt);
         Assert.False(model.RawData.ContainsKey("created_at"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+        Assert.Null(model.Profiles);
+        Assert.False(model.RawData.ContainsKey("profiles"));
+        Assert.Null(model.Type);
+        Assert.False(model.RawData.ContainsKey("type"));
     }
 
     [Fact]
@@ -1304,31 +1510,9 @@ public class DataTest : TestBase
         var model = new Data
         {
             Description = "description",
+            Email = "email",
             Icon = "icon",
-            Profiles =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    Icon = "icon",
-                    Name = "name",
-                    Role = "role",
-                    Settings = new()
-                    {
-                        AllowContactSharing = true,
-                        AllowTemplateSharing = true,
-                        BillingModel = "billing_model",
-                        InheritContacts = true,
-                        InheritTcrBrand = true,
-                        InheritTcrCampaign = true,
-                        InheritTemplates = true,
-                    },
-                    ShortName = "short_name",
-                    Status = "status",
-                },
-            ],
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -1339,12 +1523,16 @@ public class DataTest : TestBase
                 InheritTcrCampaign = true,
                 InheritTemplates = true,
             },
+            ShortName = "short_name",
             Status = "status",
 
             // Null should be interpreted as omitted for these properties
             ID = null,
+            Channels = null,
             CreatedAt = null,
             Name = null,
+            Profiles = null,
+            Type = null,
         };
 
         model.Validate();
@@ -1356,18 +1544,58 @@ public class DataTest : TestBase
         var model = new Data
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Channels = new()
+            {
+                Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                Whatsapp = new()
+                {
+                    BusinessName = "business_name",
+                    Configured = true,
+                    PhoneNumber = "phone_number",
+                },
+            },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Name = "name",
+            Profiles =
+            [
+                new()
+                {
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
+                    Icon = "icon",
+                    Name = "name",
+                    Role = "role",
+                    Settings = new()
+                    {
+                        AllowContactSharing = true,
+                        AllowTemplateSharing = true,
+                        BillingModel = "billing_model",
+                        InheritContacts = true,
+                        InheritTcrBrand = true,
+                        InheritTcrCampaign = true,
+                        InheritTemplates = true,
+                    },
+                    ShortName = "short_name",
+                    Status = "status",
+                },
+            ],
+            Type = "type",
         };
 
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
+        Assert.Null(model.Email);
+        Assert.False(model.RawData.ContainsKey("email"));
         Assert.Null(model.Icon);
         Assert.False(model.RawData.ContainsKey("icon"));
-        Assert.Null(model.Profiles);
-        Assert.False(model.RawData.ContainsKey("profiles"));
+        Assert.Null(model.OrganizationID);
+        Assert.False(model.RawData.ContainsKey("organization_id"));
         Assert.Null(model.Settings);
         Assert.False(model.RawData.ContainsKey("settings"));
+        Assert.Null(model.ShortName);
+        Assert.False(model.RawData.ContainsKey("short_name"));
         Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
     }
@@ -1378,8 +1606,44 @@ public class DataTest : TestBase
         var model = new Data
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Channels = new()
+            {
+                Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                Whatsapp = new()
+                {
+                    BusinessName = "business_name",
+                    Configured = true,
+                    PhoneNumber = "phone_number",
+                },
+            },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Name = "name",
+            Profiles =
+            [
+                new()
+                {
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
+                    Icon = "icon",
+                    Name = "name",
+                    Role = "role",
+                    Settings = new()
+                    {
+                        AllowContactSharing = true,
+                        AllowTemplateSharing = true,
+                        BillingModel = "billing_model",
+                        InheritContacts = true,
+                        InheritTcrBrand = true,
+                        InheritTcrCampaign = true,
+                        InheritTemplates = true,
+                    },
+                    ShortName = "short_name",
+                    Status = "status",
+                },
+            ],
+            Type = "type",
         };
 
         model.Validate();
@@ -1391,24 +1655,66 @@ public class DataTest : TestBase
         var model = new Data
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Channels = new()
+            {
+                Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                Whatsapp = new()
+                {
+                    BusinessName = "business_name",
+                    Configured = true,
+                    PhoneNumber = "phone_number",
+                },
+            },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Name = "name",
+            Profiles =
+            [
+                new()
+                {
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
+                    Icon = "icon",
+                    Name = "name",
+                    Role = "role",
+                    Settings = new()
+                    {
+                        AllowContactSharing = true,
+                        AllowTemplateSharing = true,
+                        BillingModel = "billing_model",
+                        InheritContacts = true,
+                        InheritTcrBrand = true,
+                        InheritTcrCampaign = true,
+                        InheritTemplates = true,
+                    },
+                    ShortName = "short_name",
+                    Status = "status",
+                },
+            ],
+            Type = "type",
 
             Description = null,
+            Email = null,
             Icon = null,
-            Profiles = null,
+            OrganizationID = null,
             Settings = null,
+            ShortName = null,
             Status = null,
         };
 
         Assert.Null(model.Description);
         Assert.True(model.RawData.ContainsKey("description"));
+        Assert.Null(model.Email);
+        Assert.True(model.RawData.ContainsKey("email"));
         Assert.Null(model.Icon);
         Assert.True(model.RawData.ContainsKey("icon"));
-        Assert.Null(model.Profiles);
-        Assert.True(model.RawData.ContainsKey("profiles"));
+        Assert.Null(model.OrganizationID);
+        Assert.True(model.RawData.ContainsKey("organization_id"));
         Assert.Null(model.Settings);
         Assert.True(model.RawData.ContainsKey("settings"));
+        Assert.Null(model.ShortName);
+        Assert.True(model.RawData.ContainsKey("short_name"));
         Assert.Null(model.Status);
         Assert.True(model.RawData.ContainsKey("status"));
     }
@@ -1419,13 +1725,51 @@ public class DataTest : TestBase
         var model = new Data
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Channels = new()
+            {
+                Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                Whatsapp = new()
+                {
+                    BusinessName = "business_name",
+                    Configured = true,
+                    PhoneNumber = "phone_number",
+                },
+            },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Name = "name",
+            Profiles =
+            [
+                new()
+                {
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
+                    Icon = "icon",
+                    Name = "name",
+                    Role = "role",
+                    Settings = new()
+                    {
+                        AllowContactSharing = true,
+                        AllowTemplateSharing = true,
+                        BillingModel = "billing_model",
+                        InheritContacts = true,
+                        InheritTcrBrand = true,
+                        InheritTcrCampaign = true,
+                        InheritTemplates = true,
+                    },
+                    ShortName = "short_name",
+                    Status = "status",
+                },
+            ],
+            Type = "type",
 
             Description = null,
+            Email = null,
             Icon = null,
-            Profiles = null,
+            OrganizationID = null,
             Settings = null,
+            ShortName = null,
             Status = null,
         };
 
@@ -1438,10 +1782,23 @@ public class DataTest : TestBase
         var model = new Data
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Channels = new()
+            {
+                Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+                Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+                Whatsapp = new()
+                {
+                    BusinessName = "business_name",
+                    Configured = true,
+                    PhoneNumber = "phone_number",
+                },
+            },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            Email = "email",
             Icon = "icon",
             Name = "name",
+            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Profiles =
             [
                 new()
@@ -1476,10 +1833,683 @@ public class DataTest : TestBase
                 InheritTcrCampaign = true,
                 InheritTemplates = true,
             },
+            ShortName = "short_name",
             Status = "status",
+            Type = "type",
         };
 
         Data copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
+}
+
+public class ChannelsTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new Channels
+        {
+            Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+            Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+            Whatsapp = new()
+            {
+                BusinessName = "business_name",
+                Configured = true,
+                PhoneNumber = "phone_number",
+            },
+        };
+
+        Rcs expectedRcs = new() { Configured = true, PhoneNumber = "phone_number" };
+        Sms expectedSms = new() { Configured = true, PhoneNumber = "phone_number" };
+        Whatsapp expectedWhatsapp = new()
+        {
+            BusinessName = "business_name",
+            Configured = true,
+            PhoneNumber = "phone_number",
+        };
+
+        Assert.Equal(expectedRcs, model.Rcs);
+        Assert.Equal(expectedSms, model.Sms);
+        Assert.Equal(expectedWhatsapp, model.Whatsapp);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new Channels
+        {
+            Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+            Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+            Whatsapp = new()
+            {
+                BusinessName = "business_name",
+                Configured = true,
+                PhoneNumber = "phone_number",
+            },
+        };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Channels>(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new Channels
+        {
+            Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+            Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+            Whatsapp = new()
+            {
+                BusinessName = "business_name",
+                Configured = true,
+                PhoneNumber = "phone_number",
+            },
+        };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Channels>(
+            element,
+            ModelBase.SerializerOptions
+        );
+        Assert.NotNull(deserialized);
+
+        Rcs expectedRcs = new() { Configured = true, PhoneNumber = "phone_number" };
+        Sms expectedSms = new() { Configured = true, PhoneNumber = "phone_number" };
+        Whatsapp expectedWhatsapp = new()
+        {
+            BusinessName = "business_name",
+            Configured = true,
+            PhoneNumber = "phone_number",
+        };
+
+        Assert.Equal(expectedRcs, deserialized.Rcs);
+        Assert.Equal(expectedSms, deserialized.Sms);
+        Assert.Equal(expectedWhatsapp, deserialized.Whatsapp);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new Channels
+        {
+            Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+            Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+            Whatsapp = new()
+            {
+                BusinessName = "business_name",
+                Configured = true,
+                PhoneNumber = "phone_number",
+            },
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Channels { };
+
+        Assert.Null(model.Rcs);
+        Assert.False(model.RawData.ContainsKey("rcs"));
+        Assert.Null(model.Sms);
+        Assert.False(model.RawData.ContainsKey("sms"));
+        Assert.Null(model.Whatsapp);
+        Assert.False(model.RawData.ContainsKey("whatsapp"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Channels { };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new Channels
+        {
+            // Null should be interpreted as omitted for these properties
+            Rcs = null,
+            Sms = null,
+            Whatsapp = null,
+        };
+
+        Assert.Null(model.Rcs);
+        Assert.False(model.RawData.ContainsKey("rcs"));
+        Assert.Null(model.Sms);
+        Assert.False(model.RawData.ContainsKey("sms"));
+        Assert.Null(model.Whatsapp);
+        Assert.False(model.RawData.ContainsKey("whatsapp"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Channels
+        {
+            // Null should be interpreted as omitted for these properties
+            Rcs = null,
+            Sms = null,
+            Whatsapp = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Channels
+        {
+            Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
+            Sms = new() { Configured = true, PhoneNumber = "phone_number" },
+            Whatsapp = new()
+            {
+                BusinessName = "business_name",
+                Configured = true,
+                PhoneNumber = "phone_number",
+            },
+        };
+
+        Channels copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
+}
+
+public class RcsTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new Rcs { Configured = true, PhoneNumber = "phone_number" };
+
+        bool expectedConfigured = true;
+        string expectedPhoneNumber = "phone_number";
+
+        Assert.Equal(expectedConfigured, model.Configured);
+        Assert.Equal(expectedPhoneNumber, model.PhoneNumber);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new Rcs { Configured = true, PhoneNumber = "phone_number" };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Rcs>(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new Rcs { Configured = true, PhoneNumber = "phone_number" };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Rcs>(element, ModelBase.SerializerOptions);
+        Assert.NotNull(deserialized);
+
+        bool expectedConfigured = true;
+        string expectedPhoneNumber = "phone_number";
+
+        Assert.Equal(expectedConfigured, deserialized.Configured);
+        Assert.Equal(expectedPhoneNumber, deserialized.PhoneNumber);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new Rcs { Configured = true, PhoneNumber = "phone_number" };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Rcs { PhoneNumber = "phone_number" };
+
+        Assert.Null(model.Configured);
+        Assert.False(model.RawData.ContainsKey("configured"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Rcs { PhoneNumber = "phone_number" };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new Rcs
+        {
+            PhoneNumber = "phone_number",
+
+            // Null should be interpreted as omitted for these properties
+            Configured = null,
+        };
+
+        Assert.Null(model.Configured);
+        Assert.False(model.RawData.ContainsKey("configured"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Rcs
+        {
+            PhoneNumber = "phone_number",
+
+            // Null should be interpreted as omitted for these properties
+            Configured = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Rcs { Configured = true };
+
+        Assert.Null(model.PhoneNumber);
+        Assert.False(model.RawData.ContainsKey("phone_number"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Rcs { Configured = true };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
+    {
+        var model = new Rcs
+        {
+            Configured = true,
+
+            PhoneNumber = null,
+        };
+
+        Assert.Null(model.PhoneNumber);
+        Assert.True(model.RawData.ContainsKey("phone_number"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Rcs
+        {
+            Configured = true,
+
+            PhoneNumber = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Rcs { Configured = true, PhoneNumber = "phone_number" };
+
+        Rcs copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
+}
+
+public class SmsTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new Sms { Configured = true, PhoneNumber = "phone_number" };
+
+        bool expectedConfigured = true;
+        string expectedPhoneNumber = "phone_number";
+
+        Assert.Equal(expectedConfigured, model.Configured);
+        Assert.Equal(expectedPhoneNumber, model.PhoneNumber);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new Sms { Configured = true, PhoneNumber = "phone_number" };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Sms>(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new Sms { Configured = true, PhoneNumber = "phone_number" };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Sms>(element, ModelBase.SerializerOptions);
+        Assert.NotNull(deserialized);
+
+        bool expectedConfigured = true;
+        string expectedPhoneNumber = "phone_number";
+
+        Assert.Equal(expectedConfigured, deserialized.Configured);
+        Assert.Equal(expectedPhoneNumber, deserialized.PhoneNumber);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new Sms { Configured = true, PhoneNumber = "phone_number" };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Sms { PhoneNumber = "phone_number" };
+
+        Assert.Null(model.Configured);
+        Assert.False(model.RawData.ContainsKey("configured"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Sms { PhoneNumber = "phone_number" };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new Sms
+        {
+            PhoneNumber = "phone_number",
+
+            // Null should be interpreted as omitted for these properties
+            Configured = null,
+        };
+
+        Assert.Null(model.Configured);
+        Assert.False(model.RawData.ContainsKey("configured"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Sms
+        {
+            PhoneNumber = "phone_number",
+
+            // Null should be interpreted as omitted for these properties
+            Configured = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Sms { Configured = true };
+
+        Assert.Null(model.PhoneNumber);
+        Assert.False(model.RawData.ContainsKey("phone_number"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Sms { Configured = true };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
+    {
+        var model = new Sms
+        {
+            Configured = true,
+
+            PhoneNumber = null,
+        };
+
+        Assert.Null(model.PhoneNumber);
+        Assert.True(model.RawData.ContainsKey("phone_number"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Sms
+        {
+            Configured = true,
+
+            PhoneNumber = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Sms { Configured = true, PhoneNumber = "phone_number" };
+
+        Sms copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
+}
+
+public class WhatsappTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new Whatsapp
+        {
+            BusinessName = "business_name",
+            Configured = true,
+            PhoneNumber = "phone_number",
+        };
+
+        string expectedBusinessName = "business_name";
+        bool expectedConfigured = true;
+        string expectedPhoneNumber = "phone_number";
+
+        Assert.Equal(expectedBusinessName, model.BusinessName);
+        Assert.Equal(expectedConfigured, model.Configured);
+        Assert.Equal(expectedPhoneNumber, model.PhoneNumber);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new Whatsapp
+        {
+            BusinessName = "business_name",
+            Configured = true,
+            PhoneNumber = "phone_number",
+        };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Whatsapp>(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new Whatsapp
+        {
+            BusinessName = "business_name",
+            Configured = true,
+            PhoneNumber = "phone_number",
+        };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Whatsapp>(
+            element,
+            ModelBase.SerializerOptions
+        );
+        Assert.NotNull(deserialized);
+
+        string expectedBusinessName = "business_name";
+        bool expectedConfigured = true;
+        string expectedPhoneNumber = "phone_number";
+
+        Assert.Equal(expectedBusinessName, deserialized.BusinessName);
+        Assert.Equal(expectedConfigured, deserialized.Configured);
+        Assert.Equal(expectedPhoneNumber, deserialized.PhoneNumber);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new Whatsapp
+        {
+            BusinessName = "business_name",
+            Configured = true,
+            PhoneNumber = "phone_number",
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Whatsapp { BusinessName = "business_name", PhoneNumber = "phone_number" };
+
+        Assert.Null(model.Configured);
+        Assert.False(model.RawData.ContainsKey("configured"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Whatsapp { BusinessName = "business_name", PhoneNumber = "phone_number" };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new Whatsapp
+        {
+            BusinessName = "business_name",
+            PhoneNumber = "phone_number",
+
+            // Null should be interpreted as omitted for these properties
+            Configured = null,
+        };
+
+        Assert.Null(model.Configured);
+        Assert.False(model.RawData.ContainsKey("configured"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Whatsapp
+        {
+            BusinessName = "business_name",
+            PhoneNumber = "phone_number",
+
+            // Null should be interpreted as omitted for these properties
+            Configured = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Whatsapp { Configured = true };
+
+        Assert.Null(model.BusinessName);
+        Assert.False(model.RawData.ContainsKey("business_name"));
+        Assert.Null(model.PhoneNumber);
+        Assert.False(model.RawData.ContainsKey("phone_number"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Whatsapp { Configured = true };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
+    {
+        var model = new Whatsapp
+        {
+            Configured = true,
+
+            BusinessName = null,
+            PhoneNumber = null,
+        };
+
+        Assert.Null(model.BusinessName);
+        Assert.True(model.RawData.ContainsKey("business_name"));
+        Assert.Null(model.PhoneNumber);
+        Assert.True(model.RawData.ContainsKey("phone_number"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Whatsapp
+        {
+            Configured = true,
+
+            BusinessName = null,
+            PhoneNumber = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Whatsapp
+        {
+            BusinessName = "business_name",
+            Configured = true,
+            PhoneNumber = "phone_number",
+        };
+
+        Whatsapp copied = new(model);
 
         Assert.Equal(model, copied);
     }

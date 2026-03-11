@@ -31,14 +31,17 @@ public record class TemplateListParams : ParamsBase
         init { this._rawQueryData.Set("page", value); }
     }
 
+    /// <summary>
+    /// Number of items per page
+    /// </summary>
     public required int PageSize
     {
         get
         {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNotNullStruct<int>("pageSize");
+            return this._rawQueryData.GetNotNullStruct<int>("page_size");
         }
-        init { this._rawQueryData.Set("pageSize", value); }
+        init { this._rawQueryData.Set("page_size", value); }
     }
 
     /// <summary>
@@ -52,6 +55,19 @@ public record class TemplateListParams : ParamsBase
             return this._rawQueryData.GetNullableClass<string>("category");
         }
         init { this._rawQueryData.Set("category", value); }
+    }
+
+    /// <summary>
+    /// Optional filter by welcome playground flag
+    /// </summary>
+    public bool? IsWelcomePlayground
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<bool>("is_welcome_playground");
+        }
+        init { this._rawQueryData.Set("is_welcome_playground", value); }
     }
 
     /// <summary>
@@ -78,6 +94,24 @@ public record class TemplateListParams : ParamsBase
             return this._rawQueryData.GetNullableClass<string>("status");
         }
         init { this._rawQueryData.Set("status", value); }
+    }
+
+    public string? XProfileID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("x-profile-id", value);
+        }
     }
 
     public TemplateListParams() { }

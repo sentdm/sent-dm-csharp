@@ -9,9 +9,19 @@ using Sentdm.Core;
 namespace Sentdm.Models.Me;
 
 /// <summary>
-/// Returns the account associated with the API key. For organization API keys, returns
-/// the organization with its profiles. For profile API keys, returns the profile
-/// with its settings.
+/// Returns the account associated with the provided API key. The response includes
+/// account identity, contact information, messaging channel configuration, and —
+/// depending on the account type — either a list of child profiles or the profile's
+/// own settings.
+///
+/// <para>**Account types:** - `organization` — Has child profiles. The `profiles`
+/// array is populated. - `user` — Standalone account with no profiles. - `profile`
+/// — Child of an organization. Includes `organization_id`, `short_name`, `status`,
+/// and `settings`.</para>
+///
+/// <para>**Channels:** The `channels` object always includes `sms`, `whatsapp`,
+/// and `rcs`. Each channel has a `configured` boolean. Configured channels expose
+/// additional details such as `phone_number`.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -19,6 +29,24 @@ namespace Sentdm.Models.Me;
 /// </summary>
 public record class MeRetrieveParams : ParamsBase
 {
+    public string? XProfileID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("x-profile-id", value);
+        }
+    }
+
     public MeRetrieveParams() { }
 
 #pragma warning disable CS8618

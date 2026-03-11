@@ -29,9 +29,19 @@ public interface IMeService
     IMeService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns the account associated with the API key. For organization API keys,
-    /// returns the organization with its profiles. For profile API keys, returns
-    /// the profile with its settings.
+    /// Returns the account associated with the provided API key. The response includes
+    /// account identity, contact information, messaging channel configuration, and
+    /// — depending on the account type — either a list of child profiles or the profile's
+    /// own settings.
+    ///
+    /// <para>**Account types:** - `organization` — Has child profiles. The `profiles`
+    /// array is populated. - `user` — Standalone account with no profiles. - `profile`
+    /// — Child of an organization. Includes `organization_id`, `short_name`, `status`,
+    /// and `settings`.</para>
+    ///
+    /// <para>**Channels:** The `channels` object always includes `sms`, `whatsapp`,
+    /// and `rcs`. Each channel has a `configured` boolean. Configured channels expose
+    /// additional details such as `phone_number`.</para>
     /// </summary>
     Task<MeRetrieveResponse> Retrieve(
         MeRetrieveParams? parameters = null,

@@ -33,6 +33,39 @@ public interface IProfileService
     /// Creates a new sender profile within an organization. Profiles represent different
     /// brands, departments, or use cases, each with their own messaging configuration
     /// and settings. Requires admin role in the organization.
+    ///
+    /// <para>## WhatsApp Business Account</para>
+    ///
+    /// <para>Every profile must be linked to a WhatsApp Business Account. There are
+    /// two ways to do this:</para>
+    ///
+    /// <para>**1. Inherit from organization (default)** — Omit the `whatsapp_business_account`
+    /// field. The profile will share the organization's WhatsApp Business Account,
+    /// which must have been set up via WhatsApp Embedded Signup. This is the recommended
+    /// path for most use cases.</para>
+    ///
+    /// <para>**2. Direct credentials** — Provide a `whatsapp_business_account` object
+    /// with `waba_id`, `phone_number_id`, and `access_token`. Use this when the profile
+    /// needs its own independent WhatsApp Business Account. Obtain these from Meta
+    /// Business Manager by creating a System User with `whatsapp_business_messaging`
+    /// and `whatsapp_business_management` permissions.</para>
+    ///
+    /// <para>If the `whatsapp_business_account` field is omitted and the organization
+    /// has no WhatsApp Business Account configured, the request will be rejected
+    /// with HTTP 422.</para>
+    ///
+    /// <para>## Brand</para>
+    ///
+    /// <para>Include the optional `brand` field to create the brand for this profile
+    /// at the same time. Cannot be used when `inherit_tcr_brand` is `true`.</para>
+    ///
+    /// <para>## Payment Details</para>
+    ///
+    /// <para>When `billing_model` is `"profile"` or `"profile_and_organization"`
+    /// you may include a `payment_details` object containing the card number, expiry
+    /// (MM/YY), CVC, and billing ZIP code. Payment details are **never stored**
+    /// on our servers and are forwarded directly to the payment processor. Providing
+    /// `payment_details` when `billing_model` is `"organization"` is not allowed.</para>
     /// </summary>
     Task<ApiResponseOfProfileDetail> Create(
         ProfileCreateParams? parameters = null,
@@ -40,7 +73,8 @@ public interface IProfileService
     );
 
     /// <summary>
-    /// Retrieves detailed information about a specific sender profile within an organization.
+    /// Retrieves detailed information about a specific sender profile within an
+    /// organization, including brand and KYC information if a brand has been configured.
     /// </summary>
     Task<ApiResponseOfProfileDetail> Retrieve(
         ProfileRetrieveParams parameters,
@@ -57,6 +91,22 @@ public interface IProfileService
     /// <summary>
     /// Updates a profile's configuration and settings. Requires admin role in the
     /// organization. Only provided fields will be updated (partial update).
+    ///
+    /// <para>## Brand Management</para>
+    ///
+    /// <para>Include the optional `brand` field to create or update the brand associated
+    /// with this profile. The brand holds KYC and TCR compliance data (legal business
+    /// info, contact details, messaging vertical). Once a brand has been submitted
+    /// to TCR it cannot be modified. Setting `inherit_tcr_brand: true` and providing
+    /// `brand` in the same request is not allowed.</para>
+    ///
+    /// <para>## Payment Details</para>
+    ///
+    /// <para>When `billing_model` is `"profile"` or `"profile_and_organization"`
+    /// you may include a `payment_details` object containing the card number, expiry
+    /// (MM/YY), CVC, and billing ZIP code. Payment details are **never stored**
+    /// on our servers and are forwarded directly to the payment processor. Providing
+    /// `payment_details` when `billing_model` is `"organization"` is not allowed.</para>
     /// </summary>
     Task<ApiResponseOfProfileDetail> Update(
         ProfileUpdateParams parameters,
@@ -71,9 +121,9 @@ public interface IProfileService
     );
 
     /// <summary>
-    /// Retrieves all sender profiles within an organization. Profiles represent different
-    /// brands, departments, or use cases within an organization, each with their
-    /// own messaging configuration.
+    /// Retrieves all sender profiles within an organization, including brand information
+    /// for each profile. Profiles represent different brands, departments, or use
+    /// cases within an organization, each with their own messaging configuration.
     /// </summary>
     Task<ProfileListResponse> List(
         ProfileListParams? parameters = null,
@@ -89,7 +139,7 @@ public interface IProfileService
     /// <inheritdoc cref="Delete(ProfileDeleteParams, CancellationToken)"/>
     Task Delete(
         string profileID,
-        ProfileDeleteParams? parameters = null,
+        ProfileDeleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
@@ -200,7 +250,7 @@ public interface IProfileServiceWithRawResponse
     /// <inheritdoc cref="Delete(ProfileDeleteParams, CancellationToken)"/>
     Task<HttpResponse> Delete(
         string profileID,
-        ProfileDeleteParams? parameters = null,
+        ProfileDeleteParams parameters,
         CancellationToken cancellationToken = default
     );
 

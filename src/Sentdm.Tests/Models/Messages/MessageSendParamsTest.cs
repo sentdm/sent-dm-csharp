@@ -15,6 +15,7 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
+            Sandbox = false,
             Template = new()
             {
                 ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
@@ -25,12 +26,13 @@ public class MessageSendParamsTest : TestBase
                     { "order_id", "12345" },
                 },
             },
-            TestMode = false,
             To = ["+14155551234", "+14155555678"],
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         List<string> expectedChannel = ["sms", "whatsapp"];
+        bool expectedSandbox = false;
         Template expectedTemplate = new()
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
@@ -41,9 +43,9 @@ public class MessageSendParamsTest : TestBase
                 { "order_id", "12345" },
             },
         };
-        bool expectedTestMode = false;
         List<string> expectedTo = ["+14155551234", "+14155555678"];
         string expectedIdempotencyKey = "req_abc123_retry1";
+        string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.NotNull(parameters.Channel);
         Assert.Equal(expectedChannel.Count, parameters.Channel.Count);
@@ -51,8 +53,8 @@ public class MessageSendParamsTest : TestBase
         {
             Assert.Equal(expectedChannel[i], parameters.Channel[i]);
         }
+        Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedTemplate, parameters.Template);
-        Assert.Equal(expectedTestMode, parameters.TestMode);
         Assert.NotNull(parameters.To);
         Assert.Equal(expectedTo.Count, parameters.To.Count);
         for (int i = 0; i < expectedTo.Count; i++)
@@ -60,6 +62,7 @@ public class MessageSendParamsTest : TestBase
             Assert.Equal(expectedTo[i], parameters.To[i]);
         }
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
+        Assert.Equal(expectedXProfileID, parameters.XProfileID);
     }
 
     [Fact]
@@ -67,14 +70,16 @@ public class MessageSendParamsTest : TestBase
     {
         var parameters = new MessageSendParams { Channel = ["sms", "whatsapp"] };
 
+        Assert.Null(parameters.Sandbox);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.Template);
         Assert.False(parameters.RawBodyData.ContainsKey("template"));
-        Assert.Null(parameters.TestMode);
-        Assert.False(parameters.RawBodyData.ContainsKey("test_mode"));
         Assert.Null(parameters.To);
         Assert.False(parameters.RawBodyData.ContainsKey("to"));
         Assert.Null(parameters.IdempotencyKey);
         Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
@@ -85,20 +90,23 @@ public class MessageSendParamsTest : TestBase
             Channel = ["sms", "whatsapp"],
 
             // Null should be interpreted as omitted for these properties
+            Sandbox = null,
             Template = null,
-            TestMode = null,
             To = null,
             IdempotencyKey = null,
+            XProfileID = null,
         };
 
+        Assert.Null(parameters.Sandbox);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.Template);
         Assert.False(parameters.RawBodyData.ContainsKey("template"));
-        Assert.Null(parameters.TestMode);
-        Assert.False(parameters.RawBodyData.ContainsKey("test_mode"));
         Assert.Null(parameters.To);
         Assert.False(parameters.RawBodyData.ContainsKey("to"));
         Assert.Null(parameters.IdempotencyKey);
         Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
@@ -106,6 +114,7 @@ public class MessageSendParamsTest : TestBase
     {
         var parameters = new MessageSendParams
         {
+            Sandbox = false,
             Template = new()
             {
                 ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
@@ -116,9 +125,9 @@ public class MessageSendParamsTest : TestBase
                     { "order_id", "12345" },
                 },
             },
-            TestMode = false,
             To = ["+14155551234", "+14155555678"],
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         Assert.Null(parameters.Channel);
@@ -130,6 +139,7 @@ public class MessageSendParamsTest : TestBase
     {
         var parameters = new MessageSendParams
         {
+            Sandbox = false,
             Template = new()
             {
                 ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
@@ -140,9 +150,9 @@ public class MessageSendParamsTest : TestBase
                     { "order_id", "12345" },
                 },
             },
-            TestMode = false,
             To = ["+14155551234", "+14155555678"],
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
             Channel = null,
         };
@@ -165,11 +175,19 @@ public class MessageSendParamsTest : TestBase
     public void AddHeadersToRequest_Works()
     {
         HttpRequestMessage requestMessage = new();
-        MessageSendParams parameters = new() { IdempotencyKey = "req_abc123_retry1" };
+        MessageSendParams parameters = new()
+        {
+            IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        };
 
         parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
 
         Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));
+        Assert.Equal(
+            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+            requestMessage.Headers.GetValues("x-profile-id")
+        );
     }
 
     [Fact]
@@ -178,6 +196,7 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
+            Sandbox = false,
             Template = new()
             {
                 ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
@@ -188,9 +207,9 @@ public class MessageSendParamsTest : TestBase
                     { "order_id", "12345" },
                 },
             },
-            TestMode = false,
             To = ["+14155551234", "+14155555678"],
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         MessageSendParams copied = new(parameters);

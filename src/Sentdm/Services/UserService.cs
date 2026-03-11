@@ -91,12 +91,10 @@ public sealed class UserService : IUserService
     /// <inheritdoc/>
     public async Task Remove(
         string userID,
-        UserRemoveParams? parameters = null,
+        UserRemoveParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        parameters ??= new();
-
         await this.Remove(parameters with { UserID = userID }, cancellationToken)
             .ConfigureAwait(false);
     }
@@ -269,12 +267,10 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
     /// <inheritdoc/>
     public Task<HttpResponse> Remove(
         string userID,
-        UserRemoveParams? parameters = null,
+        UserRemoveParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        parameters ??= new();
-
         return this.Remove(parameters with { UserID = userID }, cancellationToken);
     }
 

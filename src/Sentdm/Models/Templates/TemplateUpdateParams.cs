@@ -80,6 +80,28 @@ public record class TemplateUpdateParams : ParamsBase
     }
 
     /// <summary>
+    /// Sandbox flag - when true, the operation is simulated without side effects
+    /// Useful for testing integrations without actual execution
+    /// </summary>
+    public bool? Sandbox
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("sandbox");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("sandbox", value);
+        }
+    }
+
+    /// <summary>
     /// Whether to submit the template for review after updating (default: false)
     /// </summary>
     public bool? SubmitForReview
@@ -100,28 +122,6 @@ public record class TemplateUpdateParams : ParamsBase
         }
     }
 
-    /// <summary>
-    /// Test mode flag - when true, the operation is simulated without side effects
-    /// Useful for testing integrations without actual execution
-    /// </summary>
-    public bool? TestMode
-    {
-        get
-        {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("test_mode");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawBodyData.Set("test_mode", value);
-        }
-    }
-
     public string? IdempotencyKey
     {
         get
@@ -137,6 +137,24 @@ public record class TemplateUpdateParams : ParamsBase
             }
 
             this._rawHeaderData.Set("Idempotency-Key", value);
+        }
+    }
+
+    public string? XProfileID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("x-profile-id", value);
         }
     }
 

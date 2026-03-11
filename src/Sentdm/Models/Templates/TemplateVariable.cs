@@ -151,6 +151,16 @@ public sealed record class Props : JsonModel
         init { this._rawData.Set("mediaType", value); }
     }
 
+    public string? Regex
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("regex");
+        }
+        init { this._rawData.Set("regex", value); }
+    }
+
     public string? Sample
     {
         get
@@ -196,6 +206,7 @@ public sealed record class Props : JsonModel
     {
         _ = this.Alt;
         _ = this.MediaType;
+        _ = this.Regex;
         _ = this.Sample;
         _ = this.ShortUrl;
         _ = this.Url;

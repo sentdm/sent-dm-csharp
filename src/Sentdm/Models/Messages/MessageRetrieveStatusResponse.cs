@@ -164,6 +164,16 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
+    public double? ActiveContactPrice
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<double>("active_contact_price");
+        }
+        init { this._rawData.Set("active_contact_price", value); }
+    }
+
     public string? Channel
     {
         get
@@ -400,6 +410,7 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
     public override void Validate()
     {
         _ = this.ID;
+        _ = this.ActiveContactPrice;
         _ = this.Channel;
         _ = this.ContactID;
         _ = this.CreatedAt;

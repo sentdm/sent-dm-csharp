@@ -17,6 +17,7 @@ public class TemplateVariableTest : TestBase
             {
                 Alt = "alt",
                 MediaType = "mediaType",
+                Regex = "regex",
                 Sample = "sample",
                 ShortUrl = "shortUrl",
                 Url = "url",
@@ -31,6 +32,7 @@ public class TemplateVariableTest : TestBase
         {
             Alt = "alt",
             MediaType = "mediaType",
+            Regex = "regex",
             Sample = "sample",
             ShortUrl = "shortUrl",
             Url = "url",
@@ -55,6 +57,7 @@ public class TemplateVariableTest : TestBase
             {
                 Alt = "alt",
                 MediaType = "mediaType",
+                Regex = "regex",
                 Sample = "sample",
                 ShortUrl = "shortUrl",
                 Url = "url",
@@ -83,6 +86,7 @@ public class TemplateVariableTest : TestBase
             {
                 Alt = "alt",
                 MediaType = "mediaType",
+                Regex = "regex",
                 Sample = "sample",
                 ShortUrl = "shortUrl",
                 Url = "url",
@@ -104,6 +108,7 @@ public class TemplateVariableTest : TestBase
         {
             Alt = "alt",
             MediaType = "mediaType",
+            Regex = "regex",
             Sample = "sample",
             ShortUrl = "shortUrl",
             Url = "url",
@@ -128,6 +133,7 @@ public class TemplateVariableTest : TestBase
             {
                 Alt = "alt",
                 MediaType = "mediaType",
+                Regex = "regex",
                 Sample = "sample",
                 ShortUrl = "shortUrl",
                 Url = "url",
@@ -210,6 +216,7 @@ public class TemplateVariableTest : TestBase
             {
                 Alt = "alt",
                 MediaType = "mediaType",
+                Regex = "regex",
                 Sample = "sample",
                 ShortUrl = "shortUrl",
                 Url = "url",
@@ -233,6 +240,7 @@ public class PropsTest : TestBase
         {
             Alt = "alt",
             MediaType = "mediaType",
+            Regex = "regex",
             Sample = "sample",
             ShortUrl = "shortUrl",
             Url = "url",
@@ -241,6 +249,7 @@ public class PropsTest : TestBase
 
         string expectedAlt = "alt";
         string expectedMediaType = "mediaType";
+        string expectedRegex = "regex";
         string expectedSample = "sample";
         string expectedShortUrl = "shortUrl";
         string expectedUrl = "url";
@@ -248,6 +257,7 @@ public class PropsTest : TestBase
 
         Assert.Equal(expectedAlt, model.Alt);
         Assert.Equal(expectedMediaType, model.MediaType);
+        Assert.Equal(expectedRegex, model.Regex);
         Assert.Equal(expectedSample, model.Sample);
         Assert.Equal(expectedShortUrl, model.ShortUrl);
         Assert.Equal(expectedUrl, model.Url);
@@ -261,6 +271,7 @@ public class PropsTest : TestBase
         {
             Alt = "alt",
             MediaType = "mediaType",
+            Regex = "regex",
             Sample = "sample",
             ShortUrl = "shortUrl",
             Url = "url",
@@ -280,6 +291,7 @@ public class PropsTest : TestBase
         {
             Alt = "alt",
             MediaType = "mediaType",
+            Regex = "regex",
             Sample = "sample",
             ShortUrl = "shortUrl",
             Url = "url",
@@ -292,6 +304,7 @@ public class PropsTest : TestBase
 
         string expectedAlt = "alt";
         string expectedMediaType = "mediaType";
+        string expectedRegex = "regex";
         string expectedSample = "sample";
         string expectedShortUrl = "shortUrl";
         string expectedUrl = "url";
@@ -299,6 +312,7 @@ public class PropsTest : TestBase
 
         Assert.Equal(expectedAlt, deserialized.Alt);
         Assert.Equal(expectedMediaType, deserialized.MediaType);
+        Assert.Equal(expectedRegex, deserialized.Regex);
         Assert.Equal(expectedSample, deserialized.Sample);
         Assert.Equal(expectedShortUrl, deserialized.ShortUrl);
         Assert.Equal(expectedUrl, deserialized.Url);
@@ -312,6 +326,7 @@ public class PropsTest : TestBase
         {
             Alt = "alt",
             MediaType = "mediaType",
+            Regex = "regex",
             Sample = "sample",
             ShortUrl = "shortUrl",
             Url = "url",
@@ -330,6 +345,8 @@ public class PropsTest : TestBase
         Assert.False(model.RawData.ContainsKey("alt"));
         Assert.Null(model.MediaType);
         Assert.False(model.RawData.ContainsKey("mediaType"));
+        Assert.Null(model.Regex);
+        Assert.False(model.RawData.ContainsKey("regex"));
         Assert.Null(model.Sample);
         Assert.False(model.RawData.ContainsKey("sample"));
         Assert.Null(model.ShortUrl);
@@ -355,6 +372,7 @@ public class PropsTest : TestBase
         {
             Alt = null,
             MediaType = null,
+            Regex = null,
             Sample = null,
             ShortUrl = null,
             Url = null,
@@ -365,6 +383,8 @@ public class PropsTest : TestBase
         Assert.True(model.RawData.ContainsKey("alt"));
         Assert.Null(model.MediaType);
         Assert.True(model.RawData.ContainsKey("mediaType"));
+        Assert.Null(model.Regex);
+        Assert.True(model.RawData.ContainsKey("regex"));
         Assert.Null(model.Sample);
         Assert.True(model.RawData.ContainsKey("sample"));
         Assert.Null(model.ShortUrl);
@@ -382,6 +402,7 @@ public class PropsTest : TestBase
         {
             Alt = null,
             MediaType = null,
+            Regex = null,
             Sample = null,
             ShortUrl = null,
             Url = null,
@@ -398,6 +419,7 @@ public class PropsTest : TestBase
         {
             Alt = "alt",
             MediaType = "mediaType",
+            Regex = "regex",
             Sample = "sample",
             ShortUrl = "shortUrl",
             Url = "url",

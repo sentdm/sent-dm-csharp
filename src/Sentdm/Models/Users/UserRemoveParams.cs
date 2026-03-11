@@ -5,7 +5,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Sentdm.Core;
+using Sentdm.Models.Webhooks;
 
 namespace Sentdm.Models.Users;
 
@@ -28,36 +30,24 @@ public record class UserRemoveParams : ParamsBase
     public string? UserID { get; init; }
 
     /// <summary>
-    /// Test mode flag - when true, the operation is simulated without side effects
-    /// Useful for testing integrations without actual execution
+    /// Request to remove a user from an organization
     /// </summary>
-    public bool? TestMode
+    public required global::Sentdm.Models.Users.Body Body
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("test_mode");
+            return this._rawBodyData.GetNotNullClass<global::Sentdm.Models.Users.Body>("body");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawBodyData.Set("test_mode", value);
-        }
+        init { this._rawBodyData.Set("body", value); }
     }
 
-    /// <summary>
-    /// User ID from route parameter
-    /// </summary>
-    public string? UserIDValue
+    public string? XProfileID
     {
         get
         {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("user_id");
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
         }
         init
         {
@@ -66,7 +56,7 @@ public record class UserRemoveParams : ParamsBase
                 return;
             }
 
-            this._rawBodyData.Set("user_id", value);
+            this._rawHeaderData.Set("x-profile-id", value);
         }
     }
 
@@ -184,4 +174,84 @@ public record class UserRemoveParams : ParamsBase
     {
         return 0;
     }
+}
+
+/// <summary>
+/// Request to remove a user from an organization
+/// </summary>
+[JsonConverter(
+    typeof(JsonModelConverter<
+        global::Sentdm.Models.Users.Body,
+        global::Sentdm.Models.Users.BodyFromRaw
+    >)
+)]
+public sealed record class Body : JsonModel
+{
+    /// <summary>
+    /// Sandbox flag - when true, the operation is simulated without side effects
+    /// Useful for testing integrations without actual execution
+    /// </summary>
+    public bool? Sandbox
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("sandbox");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("sandbox", value);
+        }
+    }
+
+    public static implicit operator MutationRequest(global::Sentdm.Models.Users.Body body) =>
+        new() { Sandbox = body.Sandbox };
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Sandbox;
+    }
+
+    public Body() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Body(global::Sentdm.Models.Users.Body body)
+        : base(body) { }
+#pragma warning restore CS8618
+
+    public Body(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Body(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="global::Sentdm.Models.Users.BodyFromRaw.FromRawUnchecked"/>
+    public static global::Sentdm.Models.Users.Body FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class BodyFromRaw : IFromRawJson<global::Sentdm.Models.Users.Body>
+{
+    /// <inheritdoc/>
+    public global::Sentdm.Models.Users.Body FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => global::Sentdm.Models.Users.Body.FromRawUnchecked(rawData);
 }

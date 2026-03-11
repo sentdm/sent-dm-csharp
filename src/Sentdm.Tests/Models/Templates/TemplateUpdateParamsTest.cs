@@ -31,6 +31,7 @@ public class TemplateUpdateParamsTest : TestBase
                                 {
                                     Alt = "alt",
                                     MediaType = "mediaType",
+                                    Regex = "regex",
                                     Sample = "sample",
                                     ShortUrl = "shortUrl",
                                     Url = "url",
@@ -54,6 +55,7 @@ public class TemplateUpdateParamsTest : TestBase
                                 {
                                     Alt = "alt",
                                     MediaType = "mediaType",
+                                    Regex = "regex",
                                     Sample = "sample",
                                     ShortUrl = "shortUrl",
                                     Url = "url",
@@ -77,6 +79,7 @@ public class TemplateUpdateParamsTest : TestBase
                                 {
                                     Alt = "alt",
                                     MediaType = "mediaType",
+                                    Regex = "regex",
                                     Sample = "sample",
                                     ShortUrl = "shortUrl",
                                     Url = "url",
@@ -130,6 +133,7 @@ public class TemplateUpdateParamsTest : TestBase
                             {
                                 Alt = "alt",
                                 MediaType = "mediaType",
+                                Regex = "regex",
                                 Sample = "sample",
                                 ShortUrl = "shortUrl",
                                 Url = "url",
@@ -153,6 +157,7 @@ public class TemplateUpdateParamsTest : TestBase
                             {
                                 Alt = "alt",
                                 MediaType = "mediaType",
+                                Regex = "regex",
                                 Sample = "sample",
                                 ShortUrl = "shortUrl",
                                 Url = "url",
@@ -165,9 +170,10 @@ public class TemplateUpdateParamsTest : TestBase
             },
             Language = null,
             Name = "Updated Welcome Message",
+            Sandbox = false,
             SubmitForReview = false,
-            TestMode = false,
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8";
@@ -190,6 +196,7 @@ public class TemplateUpdateParamsTest : TestBase
                             {
                                 Alt = "alt",
                                 MediaType = "mediaType",
+                                Regex = "regex",
                                 Sample = "sample",
                                 ShortUrl = "shortUrl",
                                 Url = "url",
@@ -213,6 +220,7 @@ public class TemplateUpdateParamsTest : TestBase
                             {
                                 Alt = "alt",
                                 MediaType = "mediaType",
+                                Regex = "regex",
                                 Sample = "sample",
                                 ShortUrl = "shortUrl",
                                 Url = "url",
@@ -236,6 +244,7 @@ public class TemplateUpdateParamsTest : TestBase
                             {
                                 Alt = "alt",
                                 MediaType = "mediaType",
+                                Regex = "regex",
                                 Sample = "sample",
                                 ShortUrl = "shortUrl",
                                 Url = "url",
@@ -289,6 +298,7 @@ public class TemplateUpdateParamsTest : TestBase
                         {
                             Alt = "alt",
                             MediaType = "mediaType",
+                            Regex = "regex",
                             Sample = "sample",
                             ShortUrl = "shortUrl",
                             Url = "url",
@@ -312,6 +322,7 @@ public class TemplateUpdateParamsTest : TestBase
                         {
                             Alt = "alt",
                             MediaType = "mediaType",
+                            Regex = "regex",
                             Sample = "sample",
                             ShortUrl = "shortUrl",
                             Url = "url",
@@ -323,18 +334,20 @@ public class TemplateUpdateParamsTest : TestBase
             },
         };
         string expectedName = "Updated Welcome Message";
+        bool expectedSandbox = false;
         bool expectedSubmitForReview = false;
-        bool expectedTestMode = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
+        string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedID, parameters.ID);
         Assert.Equal(expectedCategory, parameters.Category);
         Assert.Equal(expectedDefinition, parameters.Definition);
         Assert.Null(parameters.Language);
         Assert.Equal(expectedName, parameters.Name);
+        Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedSubmitForReview, parameters.SubmitForReview);
-        Assert.Equal(expectedTestMode, parameters.TestMode);
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
+        Assert.Equal(expectedXProfileID, parameters.XProfileID);
     }
 
     [Fact]
@@ -362,6 +375,7 @@ public class TemplateUpdateParamsTest : TestBase
                                 {
                                     Alt = "alt",
                                     MediaType = "mediaType",
+                                    Regex = "regex",
                                     Sample = "sample",
                                     ShortUrl = "shortUrl",
                                     Url = "url",
@@ -385,6 +399,7 @@ public class TemplateUpdateParamsTest : TestBase
                                 {
                                     Alt = "alt",
                                     MediaType = "mediaType",
+                                    Regex = "regex",
                                     Sample = "sample",
                                     ShortUrl = "shortUrl",
                                     Url = "url",
@@ -408,6 +423,7 @@ public class TemplateUpdateParamsTest : TestBase
                                 {
                                     Alt = "alt",
                                     MediaType = "mediaType",
+                                    Regex = "regex",
                                     Sample = "sample",
                                     ShortUrl = "shortUrl",
                                     Url = "url",
@@ -461,6 +477,7 @@ public class TemplateUpdateParamsTest : TestBase
                             {
                                 Alt = "alt",
                                 MediaType = "mediaType",
+                                Regex = "regex",
                                 Sample = "sample",
                                 ShortUrl = "shortUrl",
                                 Url = "url",
@@ -484,6 +501,7 @@ public class TemplateUpdateParamsTest : TestBase
                             {
                                 Alt = "alt",
                                 MediaType = "mediaType",
+                                Regex = "regex",
                                 Sample = "sample",
                                 ShortUrl = "shortUrl",
                                 Url = "url",
@@ -498,12 +516,14 @@ public class TemplateUpdateParamsTest : TestBase
             Name = "Updated Welcome Message",
         };
 
+        Assert.Null(parameters.Sandbox);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.SubmitForReview);
         Assert.False(parameters.RawBodyData.ContainsKey("submit_for_review"));
-        Assert.Null(parameters.TestMode);
-        Assert.False(parameters.RawBodyData.ContainsKey("test_mode"));
         Assert.Null(parameters.IdempotencyKey);
         Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
@@ -531,6 +551,7 @@ public class TemplateUpdateParamsTest : TestBase
                                 {
                                     Alt = "alt",
                                     MediaType = "mediaType",
+                                    Regex = "regex",
                                     Sample = "sample",
                                     ShortUrl = "shortUrl",
                                     Url = "url",
@@ -554,6 +575,7 @@ public class TemplateUpdateParamsTest : TestBase
                                 {
                                     Alt = "alt",
                                     MediaType = "mediaType",
+                                    Regex = "regex",
                                     Sample = "sample",
                                     ShortUrl = "shortUrl",
                                     Url = "url",
@@ -577,6 +599,7 @@ public class TemplateUpdateParamsTest : TestBase
                                 {
                                     Alt = "alt",
                                     MediaType = "mediaType",
+                                    Regex = "regex",
                                     Sample = "sample",
                                     ShortUrl = "shortUrl",
                                     Url = "url",
@@ -630,6 +653,7 @@ public class TemplateUpdateParamsTest : TestBase
                             {
                                 Alt = "alt",
                                 MediaType = "mediaType",
+                                Regex = "regex",
                                 Sample = "sample",
                                 ShortUrl = "shortUrl",
                                 Url = "url",
@@ -653,6 +677,7 @@ public class TemplateUpdateParamsTest : TestBase
                             {
                                 Alt = "alt",
                                 MediaType = "mediaType",
+                                Regex = "regex",
                                 Sample = "sample",
                                 ShortUrl = "shortUrl",
                                 Url = "url",
@@ -667,17 +692,20 @@ public class TemplateUpdateParamsTest : TestBase
             Name = "Updated Welcome Message",
 
             // Null should be interpreted as omitted for these properties
+            Sandbox = null,
             SubmitForReview = null,
-            TestMode = null,
             IdempotencyKey = null,
+            XProfileID = null,
         };
 
+        Assert.Null(parameters.Sandbox);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.SubmitForReview);
         Assert.False(parameters.RawBodyData.ContainsKey("submit_for_review"));
-        Assert.Null(parameters.TestMode);
-        Assert.False(parameters.RawBodyData.ContainsKey("test_mode"));
         Assert.Null(parameters.IdempotencyKey);
         Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
 
     [Fact]
@@ -686,9 +714,10 @@ public class TemplateUpdateParamsTest : TestBase
         var parameters = new TemplateUpdateParams
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            Sandbox = false,
             SubmitForReview = false,
-            TestMode = false,
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         Assert.Null(parameters.Category);
@@ -707,9 +736,10 @@ public class TemplateUpdateParamsTest : TestBase
         var parameters = new TemplateUpdateParams
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            Sandbox = false,
             SubmitForReview = false,
-            TestMode = false,
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
             Category = null,
             Definition = null,
@@ -748,11 +778,16 @@ public class TemplateUpdateParamsTest : TestBase
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
 
         Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));
+        Assert.Equal(
+            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+            requestMessage.Headers.GetValues("x-profile-id")
+        );
     }
 
     [Fact]
@@ -780,6 +815,7 @@ public class TemplateUpdateParamsTest : TestBase
                                 {
                                     Alt = "alt",
                                     MediaType = "mediaType",
+                                    Regex = "regex",
                                     Sample = "sample",
                                     ShortUrl = "shortUrl",
                                     Url = "url",
@@ -803,6 +839,7 @@ public class TemplateUpdateParamsTest : TestBase
                                 {
                                     Alt = "alt",
                                     MediaType = "mediaType",
+                                    Regex = "regex",
                                     Sample = "sample",
                                     ShortUrl = "shortUrl",
                                     Url = "url",
@@ -826,6 +863,7 @@ public class TemplateUpdateParamsTest : TestBase
                                 {
                                     Alt = "alt",
                                     MediaType = "mediaType",
+                                    Regex = "regex",
                                     Sample = "sample",
                                     ShortUrl = "shortUrl",
                                     Url = "url",
@@ -879,6 +917,7 @@ public class TemplateUpdateParamsTest : TestBase
                             {
                                 Alt = "alt",
                                 MediaType = "mediaType",
+                                Regex = "regex",
                                 Sample = "sample",
                                 ShortUrl = "shortUrl",
                                 Url = "url",
@@ -902,6 +941,7 @@ public class TemplateUpdateParamsTest : TestBase
                             {
                                 Alt = "alt",
                                 MediaType = "mediaType",
+                                Regex = "regex",
                                 Sample = "sample",
                                 ShortUrl = "shortUrl",
                                 Url = "url",
@@ -914,9 +954,10 @@ public class TemplateUpdateParamsTest : TestBase
             },
             Language = null,
             Name = "Updated Welcome Message",
+            Sandbox = false,
             SubmitForReview = false,
-            TestMode = false,
             IdempotencyKey = "req_abc123_retry1",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         TemplateUpdateParams copied = new(parameters);

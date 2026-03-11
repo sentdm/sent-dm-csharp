@@ -1,8 +1,5 @@
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Sentdm.Core;
-using Sentdm.Models.Lookup;
 
 namespace Sentdm.Services;
 
@@ -25,22 +22,6 @@ public interface ILookupService
     /// <para>The original service is not modified.</para>
     /// </summary>
     ILookupService WithOptions(Func<ClientOptions, ClientOptions> modifier);
-
-    /// <summary>
-    /// Validates a phone number and retrieves formatting, country, and timezone
-    /// information from the internal index. Provider-agnostic and works for all customers.
-    /// </summary>
-    Task<LookupRetrievePhoneInfoResponse> RetrievePhoneInfo(
-        LookupRetrievePhoneInfoParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="RetrievePhoneInfo(LookupRetrievePhoneInfoParams, CancellationToken)"/>
-    Task<LookupRetrievePhoneInfoResponse> RetrievePhoneInfo(
-        string phoneNumber,
-        LookupRetrievePhoneInfoParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
 }
 
 /// <summary>
@@ -55,20 +36,4 @@ public interface ILookupServiceWithRawResponse
     /// <para>The original service is not modified.</para>
     /// </summary>
     ILookupServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
-
-    /// <summary>
-    /// Returns a raw HTTP response for `get /v3/lookup/number/{phoneNumber}`, but is otherwise the
-    /// same as <see cref="ILookupService.RetrievePhoneInfo(LookupRetrievePhoneInfoParams, CancellationToken)"/>.
-    /// </summary>
-    Task<HttpResponse<LookupRetrievePhoneInfoResponse>> RetrievePhoneInfo(
-        LookupRetrievePhoneInfoParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="RetrievePhoneInfo(LookupRetrievePhoneInfoParams, CancellationToken)"/>
-    Task<HttpResponse<LookupRetrievePhoneInfoResponse>> RetrievePhoneInfo(
-        string phoneNumber,
-        LookupRetrievePhoneInfoParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
 }

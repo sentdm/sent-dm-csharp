@@ -24,6 +24,7 @@ public class SentDmServicesCommonContractsPocOsTemplateHeaderTest : TestBase
                     {
                         Alt = "alt",
                         MediaType = "mediaType",
+                        Regex = "regex",
                         Sample = "sample",
                         ShortUrl = "shortUrl",
                         Url = "url",
@@ -46,6 +47,7 @@ public class SentDmServicesCommonContractsPocOsTemplateHeaderTest : TestBase
                 {
                     Alt = "alt",
                     MediaType = "mediaType",
+                    Regex = "regex",
                     Sample = "sample",
                     ShortUrl = "shortUrl",
                     Url = "url",
@@ -82,6 +84,7 @@ public class SentDmServicesCommonContractsPocOsTemplateHeaderTest : TestBase
                     {
                         Alt = "alt",
                         MediaType = "mediaType",
+                        Regex = "regex",
                         Sample = "sample",
                         ShortUrl = "shortUrl",
                         Url = "url",
@@ -119,6 +122,7 @@ public class SentDmServicesCommonContractsPocOsTemplateHeaderTest : TestBase
                     {
                         Alt = "alt",
                         MediaType = "mediaType",
+                        Regex = "regex",
                         Sample = "sample",
                         ShortUrl = "shortUrl",
                         Url = "url",
@@ -149,6 +153,7 @@ public class SentDmServicesCommonContractsPocOsTemplateHeaderTest : TestBase
                 {
                     Alt = "alt",
                     MediaType = "mediaType",
+                    Regex = "regex",
                     Sample = "sample",
                     ShortUrl = "shortUrl",
                     Url = "url",
@@ -185,6 +190,7 @@ public class SentDmServicesCommonContractsPocOsTemplateHeaderTest : TestBase
                     {
                         Alt = "alt",
                         MediaType = "mediaType",
+                        Regex = "regex",
                         Sample = "sample",
                         ShortUrl = "shortUrl",
                         Url = "url",
@@ -214,6 +220,7 @@ public class SentDmServicesCommonContractsPocOsTemplateHeaderTest : TestBase
                     {
                         Alt = "alt",
                         MediaType = "mediaType",
+                        Regex = "regex",
                         Sample = "sample",
                         ShortUrl = "shortUrl",
                         Url = "url",
@@ -244,6 +251,7 @@ public class SentDmServicesCommonContractsPocOsTemplateHeaderTest : TestBase
                     {
                         Alt = "alt",
                         MediaType = "mediaType",
+                        Regex = "regex",
                         Sample = "sample",
                         ShortUrl = "shortUrl",
                         Url = "url",
@@ -273,6 +281,7 @@ public class SentDmServicesCommonContractsPocOsTemplateHeaderTest : TestBase
                     {
                         Alt = "alt",
                         MediaType = "mediaType",
+                        Regex = "regex",
                         Sample = "sample",
                         ShortUrl = "shortUrl",
                         Url = "url",
@@ -306,6 +315,7 @@ public class SentDmServicesCommonContractsPocOsTemplateHeaderTest : TestBase
                     {
                         Alt = "alt",
                         MediaType = "mediaType",
+                        Regex = "regex",
                         Sample = "sample",
                         ShortUrl = "shortUrl",
                         Url = "url",
@@ -389,6 +399,7 @@ public class SentDmServicesCommonContractsPocOsTemplateHeaderTest : TestBase
                     {
                         Alt = "alt",
                         MediaType = "mediaType",
+                        Regex = "regex",
                         Sample = "sample",
                         ShortUrl = "shortUrl",
                         Url = "url",
