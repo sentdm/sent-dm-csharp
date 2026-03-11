@@ -1,7 +1,7 @@
 using System.Text.Json;
 using Sentdm.Exceptions;
-using Sentdm.Models.Brands;
-using Campaigns = Sentdm.Models.Brands.Campaigns;
+using Sentdm.Models.Profiles;
+using Campaigns = Sentdm.Models.Profiles.Campaigns;
 
 namespace Sentdm.Core;
 

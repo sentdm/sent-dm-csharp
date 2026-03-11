@@ -2,7 +2,6 @@ using System;
 using System.Net.Http;
 using System.Text.Json;
 using Sentdm.Core;
-using Sentdm.Models.Brands;
 using Sentdm.Models.Profiles;
 
 namespace Sentdm.Tests.Models.Profiles;
@@ -89,7 +88,7 @@ public class ProfileCreateParamsTest : TestBase
 
         bool expectedAllowContactSharing = true;
         bool expectedAllowTemplateSharing = false;
-        BillingContact expectedBillingContact = new()
+        BillingContactInfo expectedBillingContact = new()
         {
             Email = "billing@acmecorp.com",
             Name = "Acme Corp",
@@ -97,7 +96,7 @@ public class ProfileCreateParamsTest : TestBase
             Phone = "+12025551234",
         };
         string expectedBillingModel = "profile";
-        BrandData expectedBrand = new()
+        BrandsBrandData expectedBrand = new()
         {
             Compliance = new()
             {
@@ -560,266 +559,6 @@ public class ProfileCreateParamsTest : TestBase
         ProfileCreateParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
-    }
-}
-
-public class BillingContactTest : TestBase
-{
-    [Fact]
-    public void FieldRoundtrip_Works()
-    {
-        var model = new BillingContact
-        {
-            Email = "billing@acmecorp.com",
-            Name = "Acme Corp",
-            Address = "123 Main Street, New York, NY 10001, US",
-            Phone = "+12025551234",
-        };
-
-        string expectedEmail = "billing@acmecorp.com";
-        string expectedName = "Acme Corp";
-        string expectedAddress = "123 Main Street, New York, NY 10001, US";
-        string expectedPhone = "+12025551234";
-
-        Assert.Equal(expectedEmail, model.Email);
-        Assert.Equal(expectedName, model.Name);
-        Assert.Equal(expectedAddress, model.Address);
-        Assert.Equal(expectedPhone, model.Phone);
-    }
-
-    [Fact]
-    public void SerializationRoundtrip_Works()
-    {
-        var model = new BillingContact
-        {
-            Email = "billing@acmecorp.com",
-            Name = "Acme Corp",
-            Address = "123 Main Street, New York, NY 10001, US",
-            Phone = "+12025551234",
-        };
-
-        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BillingContact>(
-            json,
-            ModelBase.SerializerOptions
-        );
-
-        Assert.Equal(model, deserialized);
-    }
-
-    [Fact]
-    public void FieldRoundtripThroughSerialization_Works()
-    {
-        var model = new BillingContact
-        {
-            Email = "billing@acmecorp.com",
-            Name = "Acme Corp",
-            Address = "123 Main Street, New York, NY 10001, US",
-            Phone = "+12025551234",
-        };
-
-        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BillingContact>(
-            element,
-            ModelBase.SerializerOptions
-        );
-        Assert.NotNull(deserialized);
-
-        string expectedEmail = "billing@acmecorp.com";
-        string expectedName = "Acme Corp";
-        string expectedAddress = "123 Main Street, New York, NY 10001, US";
-        string expectedPhone = "+12025551234";
-
-        Assert.Equal(expectedEmail, deserialized.Email);
-        Assert.Equal(expectedName, deserialized.Name);
-        Assert.Equal(expectedAddress, deserialized.Address);
-        Assert.Equal(expectedPhone, deserialized.Phone);
-    }
-
-    [Fact]
-    public void Validation_Works()
-    {
-        var model = new BillingContact
-        {
-            Email = "billing@acmecorp.com",
-            Name = "Acme Corp",
-            Address = "123 Main Street, New York, NY 10001, US",
-            Phone = "+12025551234",
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
-    {
-        var model = new BillingContact { Email = "billing@acmecorp.com", Name = "Acme Corp" };
-
-        Assert.Null(model.Address);
-        Assert.False(model.RawData.ContainsKey("address"));
-        Assert.Null(model.Phone);
-        Assert.False(model.RawData.ContainsKey("phone"));
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesUnsetValidation_Works()
-    {
-        var model = new BillingContact { Email = "billing@acmecorp.com", Name = "Acme Corp" };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
-    {
-        var model = new BillingContact
-        {
-            Email = "billing@acmecorp.com",
-            Name = "Acme Corp",
-
-            Address = null,
-            Phone = null,
-        };
-
-        Assert.Null(model.Address);
-        Assert.True(model.RawData.ContainsKey("address"));
-        Assert.Null(model.Phone);
-        Assert.True(model.RawData.ContainsKey("phone"));
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesSetToNullValidation_Works()
-    {
-        var model = new BillingContact
-        {
-            Email = "billing@acmecorp.com",
-            Name = "Acme Corp",
-
-            Address = null,
-            Phone = null,
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void CopyConstructor_Works()
-    {
-        var model = new BillingContact
-        {
-            Email = "billing@acmecorp.com",
-            Name = "Acme Corp",
-            Address = "123 Main Street, New York, NY 10001, US",
-            Phone = "+12025551234",
-        };
-
-        BillingContact copied = new(model);
-
-        Assert.Equal(model, copied);
-    }
-}
-
-public class PaymentDetailsTest : TestBase
-{
-    [Fact]
-    public void FieldRoundtrip_Works()
-    {
-        var model = new PaymentDetails
-        {
-            CardNumber = "4111111111111111",
-            Cvc = "123",
-            Expiry = "09/27",
-            ZipCode = "10001",
-        };
-
-        string expectedCardNumber = "4111111111111111";
-        string expectedCvc = "123";
-        string expectedExpiry = "09/27";
-        string expectedZipCode = "10001";
-
-        Assert.Equal(expectedCardNumber, model.CardNumber);
-        Assert.Equal(expectedCvc, model.Cvc);
-        Assert.Equal(expectedExpiry, model.Expiry);
-        Assert.Equal(expectedZipCode, model.ZipCode);
-    }
-
-    [Fact]
-    public void SerializationRoundtrip_Works()
-    {
-        var model = new PaymentDetails
-        {
-            CardNumber = "4111111111111111",
-            Cvc = "123",
-            Expiry = "09/27",
-            ZipCode = "10001",
-        };
-
-        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PaymentDetails>(
-            json,
-            ModelBase.SerializerOptions
-        );
-
-        Assert.Equal(model, deserialized);
-    }
-
-    [Fact]
-    public void FieldRoundtripThroughSerialization_Works()
-    {
-        var model = new PaymentDetails
-        {
-            CardNumber = "4111111111111111",
-            Cvc = "123",
-            Expiry = "09/27",
-            ZipCode = "10001",
-        };
-
-        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PaymentDetails>(
-            element,
-            ModelBase.SerializerOptions
-        );
-        Assert.NotNull(deserialized);
-
-        string expectedCardNumber = "4111111111111111";
-        string expectedCvc = "123";
-        string expectedExpiry = "09/27";
-        string expectedZipCode = "10001";
-
-        Assert.Equal(expectedCardNumber, deserialized.CardNumber);
-        Assert.Equal(expectedCvc, deserialized.Cvc);
-        Assert.Equal(expectedExpiry, deserialized.Expiry);
-        Assert.Equal(expectedZipCode, deserialized.ZipCode);
-    }
-
-    [Fact]
-    public void Validation_Works()
-    {
-        var model = new PaymentDetails
-        {
-            CardNumber = "4111111111111111",
-            Cvc = "123",
-            Expiry = "09/27",
-            ZipCode = "10001",
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void CopyConstructor_Works()
-    {
-        var model = new PaymentDetails
-        {
-            CardNumber = "4111111111111111",
-            Cvc = "123",
-            Expiry = "09/27",
-            ZipCode = "10001",
-        };
-
-        PaymentDetails copied = new(model);
-
-        Assert.Equal(model, copied);
     }
 }
 

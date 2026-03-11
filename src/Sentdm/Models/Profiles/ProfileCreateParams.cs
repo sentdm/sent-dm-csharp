@@ -7,7 +7,6 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
-using Sentdm.Models.Brands;
 
 namespace Sentdm.Models.Profiles;
 
@@ -107,12 +106,12 @@ public record class ProfileCreateParams : ParamsBase
     /// or "profile_and_organization". Identifies who receives invoices and who is
     /// responsible for payment.
     /// </summary>
-    public BillingContact? BillingContact
+    public BillingContactInfo? BillingContact
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<BillingContact>("billing_contact");
+            return this._rawBodyData.GetNullableClass<BillingContactInfo>("billing_contact");
         }
         init { this._rawBodyData.Set("billing_contact", value); }
     }
@@ -139,12 +138,12 @@ public record class ProfileCreateParams : ParamsBase
     /// the brand associated with this profile. Cannot be set when inherit_tcr_brand
     /// is true.
     /// </summary>
-    public BrandData? Brand
+    public BrandsBrandData? Brand
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<BrandData>("brand");
+            return this._rawBodyData.GetNullableClass<BrandsBrandData>("brand");
         }
         init { this._rawBodyData.Set("brand", value); }
     }
@@ -462,215 +461,6 @@ public record class ProfileCreateParams : ParamsBase
     {
         return 0;
     }
-}
-
-/// <summary>
-/// Billing contact for this profile. Required when billing_model is "profile" or
-/// "profile_and_organization". Identifies who receives invoices and who is responsible
-/// for payment.
-/// </summary>
-[JsonConverter(typeof(JsonModelConverter<BillingContact, BillingContactFromRaw>))]
-public sealed record class BillingContact : JsonModel
-{
-    /// <summary>
-    /// Email address where invoices will be sent (required)
-    /// </summary>
-    public required string Email
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("email");
-        }
-        init { this._rawData.Set("email", value); }
-    }
-
-    /// <summary>
-    /// Full name of the billing contact or company (required)
-    /// </summary>
-    public required string Name
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("name");
-        }
-        init { this._rawData.Set("name", value); }
-    }
-
-    /// <summary>
-    /// Billing address (optional). Free-form text including street, city, state,
-    /// postal code, and country.
-    /// </summary>
-    public string? Address
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("address");
-        }
-        init { this._rawData.Set("address", value); }
-    }
-
-    /// <summary>
-    /// Phone number for the billing contact (optional)
-    /// </summary>
-    public string? Phone
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phone");
-        }
-        init { this._rawData.Set("phone", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.Email;
-        _ = this.Name;
-        _ = this.Address;
-        _ = this.Phone;
-    }
-
-    public BillingContact() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public BillingContact(BillingContact billingContact)
-        : base(billingContact) { }
-#pragma warning restore CS8618
-
-    public BillingContact(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    BillingContact(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="BillingContactFromRaw.FromRawUnchecked"/>
-    public static BillingContact FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class BillingContactFromRaw : IFromRawJson<BillingContact>
-{
-    /// <inheritdoc/>
-    public BillingContact FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        BillingContact.FromRawUnchecked(rawData);
-}
-
-/// <summary>
-/// Payment card details for this profile (optional). Accepted when billing_model
-/// is "profile" or "profile_and_organization". Not persisted on our servers — forwarded
-/// to the payment processor.
-/// </summary>
-[JsonConverter(typeof(JsonModelConverter<PaymentDetails, PaymentDetailsFromRaw>))]
-public sealed record class PaymentDetails : JsonModel
-{
-    /// <summary>
-    /// Card number (digits only, 13–19 characters)
-    /// </summary>
-    public required string CardNumber
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("card_number");
-        }
-        init { this._rawData.Set("card_number", value); }
-    }
-
-    /// <summary>
-    /// Card security code (3–4 digits)
-    /// </summary>
-    public required string Cvc
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("cvc");
-        }
-        init { this._rawData.Set("cvc", value); }
-    }
-
-    /// <summary>
-    /// Card expiry date in MM/YY format (e.g. "09/27")
-    /// </summary>
-    public required string Expiry
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("expiry");
-        }
-        init { this._rawData.Set("expiry", value); }
-    }
-
-    /// <summary>
-    /// Billing ZIP / postal code associated with the card
-    /// </summary>
-    public required string ZipCode
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("zip_code");
-        }
-        init { this._rawData.Set("zip_code", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.CardNumber;
-        _ = this.Cvc;
-        _ = this.Expiry;
-        _ = this.ZipCode;
-    }
-
-    public PaymentDetails() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public PaymentDetails(PaymentDetails paymentDetails)
-        : base(paymentDetails) { }
-#pragma warning restore CS8618
-
-    public PaymentDetails(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    PaymentDetails(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="PaymentDetailsFromRaw.FromRawUnchecked"/>
-    public static PaymentDetails FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class PaymentDetailsFromRaw : IFromRawJson<PaymentDetails>
-{
-    /// <inheritdoc/>
-    public PaymentDetails FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        PaymentDetails.FromRawUnchecked(rawData);
 }
 
 /// <summary>

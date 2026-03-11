@@ -63,13 +63,11 @@ public interface ISentDmClient : IDisposable
 
     IProfileService Profiles { get; }
 
+    INumberService Numbers { get; }
+
     IMessageService Messages { get; }
 
-    ILookupService Lookup { get; }
-
     IContactService Contacts { get; }
-
-    IBrandService Brands { get; }
 
     IMeService Me { get; }
 }
@@ -115,13 +113,11 @@ public interface ISentDmClientWithRawResponse : IDisposable
 
     IProfileServiceWithRawResponse Profiles { get; }
 
+    INumberServiceWithRawResponse Numbers { get; }
+
     IMessageServiceWithRawResponse Messages { get; }
 
-    ILookupServiceWithRawResponse Lookup { get; }
-
     IContactServiceWithRawResponse Contacts { get; }
-
-    IBrandServiceWithRawResponse Brands { get; }
 
     IMeServiceWithRawResponse Me { get; }
 

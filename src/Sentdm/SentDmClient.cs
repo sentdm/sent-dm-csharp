@@ -96,28 +96,22 @@ public sealed class SentDmClient : ISentDmClient
         get { return _profiles.Value; }
     }
 
+    readonly Lazy<INumberService> _numbers;
+    public INumberService Numbers
+    {
+        get { return _numbers.Value; }
+    }
+
     readonly Lazy<IMessageService> _messages;
     public IMessageService Messages
     {
         get { return _messages.Value; }
     }
 
-    readonly Lazy<ILookupService> _lookup;
-    public ILookupService Lookup
-    {
-        get { return _lookup.Value; }
-    }
-
     readonly Lazy<IContactService> _contacts;
     public IContactService Contacts
     {
         get { return _contacts.Value; }
-    }
-
-    readonly Lazy<IBrandService> _brands;
-    public IBrandService Brands
-    {
-        get { return _brands.Value; }
     }
 
     readonly Lazy<IMeService> _me;
@@ -137,10 +131,9 @@ public sealed class SentDmClient : ISentDmClient
         _users = new(() => new UserService(this));
         _templates = new(() => new TemplateService(this));
         _profiles = new(() => new ProfileService(this));
+        _numbers = new(() => new NumberService(this));
         _messages = new(() => new MessageService(this));
-        _lookup = new(() => new LookupService(this));
         _contacts = new(() => new ContactService(this));
-        _brands = new(() => new BrandService(this));
         _me = new(() => new MeService(this));
     }
 
@@ -241,28 +234,22 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
         get { return _profiles.Value; }
     }
 
+    readonly Lazy<INumberServiceWithRawResponse> _numbers;
+    public INumberServiceWithRawResponse Numbers
+    {
+        get { return _numbers.Value; }
+    }
+
     readonly Lazy<IMessageServiceWithRawResponse> _messages;
     public IMessageServiceWithRawResponse Messages
     {
         get { return _messages.Value; }
     }
 
-    readonly Lazy<ILookupServiceWithRawResponse> _lookup;
-    public ILookupServiceWithRawResponse Lookup
-    {
-        get { return _lookup.Value; }
-    }
-
     readonly Lazy<IContactServiceWithRawResponse> _contacts;
     public IContactServiceWithRawResponse Contacts
     {
         get { return _contacts.Value; }
-    }
-
-    readonly Lazy<IBrandServiceWithRawResponse> _brands;
-    public IBrandServiceWithRawResponse Brands
-    {
-        get { return _brands.Value; }
     }
 
     readonly Lazy<IMeServiceWithRawResponse> _me;
@@ -473,10 +460,9 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
         _users = new(() => new UserServiceWithRawResponse(this));
         _templates = new(() => new TemplateServiceWithRawResponse(this));
         _profiles = new(() => new ProfileServiceWithRawResponse(this));
+        _numbers = new(() => new NumberServiceWithRawResponse(this));
         _messages = new(() => new MessageServiceWithRawResponse(this));
-        _lookup = new(() => new LookupServiceWithRawResponse(this));
         _contacts = new(() => new ContactServiceWithRawResponse(this));
-        _brands = new(() => new BrandServiceWithRawResponse(this));
         _me = new(() => new MeServiceWithRawResponse(this));
     }
 

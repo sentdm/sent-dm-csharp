@@ -733,7 +733,7 @@ public class DataTest : TestBase
             },
         };
 
-        List<Contact> expectedContacts =
+        List<ContactResponse> expectedContacts =
         [
             new()
             {
@@ -854,7 +854,7 @@ public class DataTest : TestBase
         var deserialized = JsonSerializer.Deserialize<Data>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        List<Contact> expectedContacts =
+        List<ContactResponse> expectedContacts =
         [
             new()
             {

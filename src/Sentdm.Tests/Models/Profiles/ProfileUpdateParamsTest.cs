@@ -1,8 +1,5 @@
 using System;
 using System.Net.Http;
-using System.Text.Json;
-using Sentdm.Core;
-using Sentdm.Models.Brands;
 using Sentdm.Models.Profiles;
 
 namespace Sentdm.Tests.Models.Profiles;
@@ -89,7 +86,7 @@ public class ProfileUpdateParamsTest : TestBase
 
         string expectedProfileID = "profileId";
         bool expectedAllowContactSharing = true;
-        ProfileUpdateParamsBillingContact expectedBillingContact = new()
+        BillingContactInfo expectedBillingContact = new()
         {
             Email = "dev@stainless.com",
             Name = "x",
@@ -97,7 +94,7 @@ public class ProfileUpdateParamsTest : TestBase
             Phone = "phone",
         };
         string expectedBillingModel = "organization";
-        BrandData expectedBrand = new()
+        BrandsBrandData expectedBrand = new()
         {
             Compliance = new()
             {
@@ -136,7 +133,7 @@ public class ProfileUpdateParamsTest : TestBase
         };
         string expectedDescription = "Updated sales department sender profile";
         string expectedName = "Sales Team - Updated";
-        ProfileUpdateParamsPaymentDetails expectedPaymentDetails = new()
+        PaymentDetails expectedPaymentDetails = new()
         {
             CardNumber = "3216699102256101",
             Cvc = "3216",
@@ -577,273 +574,5 @@ public class ProfileUpdateParamsTest : TestBase
         ProfileUpdateParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
-    }
-}
-
-public class ProfileUpdateParamsBillingContactTest : TestBase
-{
-    [Fact]
-    public void FieldRoundtrip_Works()
-    {
-        var model = new ProfileUpdateParamsBillingContact
-        {
-            Email = "dev@stainless.com",
-            Name = "x",
-            Address = "address",
-            Phone = "phone",
-        };
-
-        string expectedEmail = "dev@stainless.com";
-        string expectedName = "x";
-        string expectedAddress = "address";
-        string expectedPhone = "phone";
-
-        Assert.Equal(expectedEmail, model.Email);
-        Assert.Equal(expectedName, model.Name);
-        Assert.Equal(expectedAddress, model.Address);
-        Assert.Equal(expectedPhone, model.Phone);
-    }
-
-    [Fact]
-    public void SerializationRoundtrip_Works()
-    {
-        var model = new ProfileUpdateParamsBillingContact
-        {
-            Email = "dev@stainless.com",
-            Name = "x",
-            Address = "address",
-            Phone = "phone",
-        };
-
-        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ProfileUpdateParamsBillingContact>(
-            json,
-            ModelBase.SerializerOptions
-        );
-
-        Assert.Equal(model, deserialized);
-    }
-
-    [Fact]
-    public void FieldRoundtripThroughSerialization_Works()
-    {
-        var model = new ProfileUpdateParamsBillingContact
-        {
-            Email = "dev@stainless.com",
-            Name = "x",
-            Address = "address",
-            Phone = "phone",
-        };
-
-        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ProfileUpdateParamsBillingContact>(
-            element,
-            ModelBase.SerializerOptions
-        );
-        Assert.NotNull(deserialized);
-
-        string expectedEmail = "dev@stainless.com";
-        string expectedName = "x";
-        string expectedAddress = "address";
-        string expectedPhone = "phone";
-
-        Assert.Equal(expectedEmail, deserialized.Email);
-        Assert.Equal(expectedName, deserialized.Name);
-        Assert.Equal(expectedAddress, deserialized.Address);
-        Assert.Equal(expectedPhone, deserialized.Phone);
-    }
-
-    [Fact]
-    public void Validation_Works()
-    {
-        var model = new ProfileUpdateParamsBillingContact
-        {
-            Email = "dev@stainless.com",
-            Name = "x",
-            Address = "address",
-            Phone = "phone",
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
-    {
-        var model = new ProfileUpdateParamsBillingContact
-        {
-            Email = "dev@stainless.com",
-            Name = "x",
-        };
-
-        Assert.Null(model.Address);
-        Assert.False(model.RawData.ContainsKey("address"));
-        Assert.Null(model.Phone);
-        Assert.False(model.RawData.ContainsKey("phone"));
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesUnsetValidation_Works()
-    {
-        var model = new ProfileUpdateParamsBillingContact
-        {
-            Email = "dev@stainless.com",
-            Name = "x",
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
-    {
-        var model = new ProfileUpdateParamsBillingContact
-        {
-            Email = "dev@stainless.com",
-            Name = "x",
-
-            Address = null,
-            Phone = null,
-        };
-
-        Assert.Null(model.Address);
-        Assert.True(model.RawData.ContainsKey("address"));
-        Assert.Null(model.Phone);
-        Assert.True(model.RawData.ContainsKey("phone"));
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesSetToNullValidation_Works()
-    {
-        var model = new ProfileUpdateParamsBillingContact
-        {
-            Email = "dev@stainless.com",
-            Name = "x",
-
-            Address = null,
-            Phone = null,
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void CopyConstructor_Works()
-    {
-        var model = new ProfileUpdateParamsBillingContact
-        {
-            Email = "dev@stainless.com",
-            Name = "x",
-            Address = "address",
-            Phone = "phone",
-        };
-
-        ProfileUpdateParamsBillingContact copied = new(model);
-
-        Assert.Equal(model, copied);
-    }
-}
-
-public class ProfileUpdateParamsPaymentDetailsTest : TestBase
-{
-    [Fact]
-    public void FieldRoundtrip_Works()
-    {
-        var model = new ProfileUpdateParamsPaymentDetails
-        {
-            CardNumber = "3216699102256101",
-            Cvc = "3216",
-            Expiry = "11/66",
-            ZipCode = "x",
-        };
-
-        string expectedCardNumber = "3216699102256101";
-        string expectedCvc = "3216";
-        string expectedExpiry = "11/66";
-        string expectedZipCode = "x";
-
-        Assert.Equal(expectedCardNumber, model.CardNumber);
-        Assert.Equal(expectedCvc, model.Cvc);
-        Assert.Equal(expectedExpiry, model.Expiry);
-        Assert.Equal(expectedZipCode, model.ZipCode);
-    }
-
-    [Fact]
-    public void SerializationRoundtrip_Works()
-    {
-        var model = new ProfileUpdateParamsPaymentDetails
-        {
-            CardNumber = "3216699102256101",
-            Cvc = "3216",
-            Expiry = "11/66",
-            ZipCode = "x",
-        };
-
-        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ProfileUpdateParamsPaymentDetails>(
-            json,
-            ModelBase.SerializerOptions
-        );
-
-        Assert.Equal(model, deserialized);
-    }
-
-    [Fact]
-    public void FieldRoundtripThroughSerialization_Works()
-    {
-        var model = new ProfileUpdateParamsPaymentDetails
-        {
-            CardNumber = "3216699102256101",
-            Cvc = "3216",
-            Expiry = "11/66",
-            ZipCode = "x",
-        };
-
-        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ProfileUpdateParamsPaymentDetails>(
-            element,
-            ModelBase.SerializerOptions
-        );
-        Assert.NotNull(deserialized);
-
-        string expectedCardNumber = "3216699102256101";
-        string expectedCvc = "3216";
-        string expectedExpiry = "11/66";
-        string expectedZipCode = "x";
-
-        Assert.Equal(expectedCardNumber, deserialized.CardNumber);
-        Assert.Equal(expectedCvc, deserialized.Cvc);
-        Assert.Equal(expectedExpiry, deserialized.Expiry);
-        Assert.Equal(expectedZipCode, deserialized.ZipCode);
-    }
-
-    [Fact]
-    public void Validation_Works()
-    {
-        var model = new ProfileUpdateParamsPaymentDetails
-        {
-            CardNumber = "3216699102256101",
-            Cvc = "3216",
-            Expiry = "11/66",
-            ZipCode = "x",
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void CopyConstructor_Works()
-    {
-        var model = new ProfileUpdateParamsPaymentDetails
-        {
-            CardNumber = "3216699102256101",
-            Cvc = "3216",
-            Expiry = "11/66",
-            ZipCode = "x",
-        };
-
-        ProfileUpdateParamsPaymentDetails copied = new(model);
-
-        Assert.Equal(model, copied);
     }
 }

@@ -215,7 +215,8 @@ public sealed record class Body : JsonModel
         }
     }
 
-    public static implicit operator MutationRequest(Body body) => new() { Sandbox = body.Sandbox };
+    public static implicit operator MutationRequestBase(Body body) =>
+        new() { Sandbox = body.Sandbox };
 
     /// <inheritdoc/>
     public override void Validate()
