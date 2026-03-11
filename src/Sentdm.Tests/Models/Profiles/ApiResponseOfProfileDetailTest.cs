@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
-using Sentdm.Models.Brands;
 using Sentdm.Models.Profiles;
 using Sentdm.Models.Webhooks;
 

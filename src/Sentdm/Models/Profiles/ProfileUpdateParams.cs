@@ -5,9 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Sentdm.Core;
-using Sentdm.Models.Brands;
 
 namespace Sentdm.Models.Profiles;
 
@@ -91,14 +89,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// or "profile_and_organization" and no billing contact has been configured yet.
     /// Identifies who receives invoices and who is responsible for payment.
     /// </summary>
-    public ProfileUpdateParamsBillingContact? BillingContact
+    public BillingContactInfo? BillingContact
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<ProfileUpdateParamsBillingContact>(
-                "billing_contact"
-            );
+            return this._rawBodyData.GetNullableClass<BillingContactInfo>("billing_contact");
         }
         init { this._rawBodyData.Set("billing_contact", value); }
     }
@@ -125,12 +121,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// or updates the brand associated with this profile. Cannot be set when inherit_tcr_brand
     /// is true. Once a brand has been submitted to TCR it cannot be modified.
     /// </summary>
-    public BrandData? Brand
+    public BrandsBrandData? Brand
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<BrandData>("brand");
+            return this._rawBodyData.GetNullableClass<BrandsBrandData>("brand");
         }
         init { this._rawBodyData.Set("brand", value); }
     }
@@ -231,14 +227,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// is "profile" or "profile_and_organization". Not persisted on our servers —
     /// forwarded to the payment processor.
     /// </summary>
-    public ProfileUpdateParamsPaymentDetails? PaymentDetails
+    public PaymentDetails? PaymentDetails
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<ProfileUpdateParamsPaymentDetails>(
-                "payment_details"
-            );
+            return this._rawBodyData.GetNullableClass<PaymentDetails>("payment_details");
         }
         init { this._rawBodyData.Set("payment_details", value); }
     }
@@ -483,233 +477,4 @@ public record class ProfileUpdateParams : ParamsBase
     {
         return 0;
     }
-}
-
-/// <summary>
-/// Billing contact for this profile. Required when billing_model is "profile" or
-/// "profile_and_organization" and no billing contact has been configured yet. Identifies
-/// who receives invoices and who is responsible for payment.
-/// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        ProfileUpdateParamsBillingContact,
-        ProfileUpdateParamsBillingContactFromRaw
-    >)
-)]
-public sealed record class ProfileUpdateParamsBillingContact : JsonModel
-{
-    /// <summary>
-    /// Email address where invoices will be sent (required)
-    /// </summary>
-    public required string Email
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("email");
-        }
-        init { this._rawData.Set("email", value); }
-    }
-
-    /// <summary>
-    /// Full name of the billing contact or company (required)
-    /// </summary>
-    public required string Name
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("name");
-        }
-        init { this._rawData.Set("name", value); }
-    }
-
-    /// <summary>
-    /// Billing address (optional). Free-form text including street, city, state,
-    /// postal code, and country.
-    /// </summary>
-    public string? Address
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("address");
-        }
-        init { this._rawData.Set("address", value); }
-    }
-
-    /// <summary>
-    /// Phone number for the billing contact (optional)
-    /// </summary>
-    public string? Phone
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phone");
-        }
-        init { this._rawData.Set("phone", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.Email;
-        _ = this.Name;
-        _ = this.Address;
-        _ = this.Phone;
-    }
-
-    public ProfileUpdateParamsBillingContact() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public ProfileUpdateParamsBillingContact(
-        ProfileUpdateParamsBillingContact profileUpdateParamsBillingContact
-    )
-        : base(profileUpdateParamsBillingContact) { }
-#pragma warning restore CS8618
-
-    public ProfileUpdateParamsBillingContact(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    ProfileUpdateParamsBillingContact(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="ProfileUpdateParamsBillingContactFromRaw.FromRawUnchecked"/>
-    public static ProfileUpdateParamsBillingContact FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class ProfileUpdateParamsBillingContactFromRaw : IFromRawJson<ProfileUpdateParamsBillingContact>
-{
-    /// <inheritdoc/>
-    public ProfileUpdateParamsBillingContact FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ProfileUpdateParamsBillingContact.FromRawUnchecked(rawData);
-}
-
-/// <summary>
-/// Payment card details for this profile (optional). Accepted when billing_model
-/// is "profile" or "profile_and_organization". Not persisted on our servers — forwarded
-/// to the payment processor.
-/// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        ProfileUpdateParamsPaymentDetails,
-        ProfileUpdateParamsPaymentDetailsFromRaw
-    >)
-)]
-public sealed record class ProfileUpdateParamsPaymentDetails : JsonModel
-{
-    /// <summary>
-    /// Card number (digits only, 13–19 characters)
-    /// </summary>
-    public required string CardNumber
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("card_number");
-        }
-        init { this._rawData.Set("card_number", value); }
-    }
-
-    /// <summary>
-    /// Card security code (3–4 digits)
-    /// </summary>
-    public required string Cvc
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("cvc");
-        }
-        init { this._rawData.Set("cvc", value); }
-    }
-
-    /// <summary>
-    /// Card expiry date in MM/YY format (e.g. "09/27")
-    /// </summary>
-    public required string Expiry
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("expiry");
-        }
-        init { this._rawData.Set("expiry", value); }
-    }
-
-    /// <summary>
-    /// Billing ZIP / postal code associated with the card
-    /// </summary>
-    public required string ZipCode
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("zip_code");
-        }
-        init { this._rawData.Set("zip_code", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.CardNumber;
-        _ = this.Cvc;
-        _ = this.Expiry;
-        _ = this.ZipCode;
-    }
-
-    public ProfileUpdateParamsPaymentDetails() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public ProfileUpdateParamsPaymentDetails(
-        ProfileUpdateParamsPaymentDetails profileUpdateParamsPaymentDetails
-    )
-        : base(profileUpdateParamsPaymentDetails) { }
-#pragma warning restore CS8618
-
-    public ProfileUpdateParamsPaymentDetails(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    ProfileUpdateParamsPaymentDetails(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="ProfileUpdateParamsPaymentDetailsFromRaw.FromRawUnchecked"/>
-    public static ProfileUpdateParamsPaymentDetails FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class ProfileUpdateParamsPaymentDetailsFromRaw : IFromRawJson<ProfileUpdateParamsPaymentDetails>
-{
-    /// <inheritdoc/>
-    public ProfileUpdateParamsPaymentDetails FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ProfileUpdateParamsPaymentDetails.FromRawUnchecked(rawData);
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Sentdm.Core;
 using Sentdm.Exceptions;
 using Sentdm.Models.Profiles;
+using Sentdm.Services.Profiles;
 
 namespace Sentdm.Services;
 
@@ -33,6 +34,13 @@ public sealed class ProfileService : IProfileService
         _client = client;
 
         _withRawResponse = new(() => new ProfileServiceWithRawResponse(client.WithRawResponse));
+        _campaigns = new(() => new CampaignService(client));
+    }
+
+    readonly Lazy<ICampaignService> _campaigns;
+    public ICampaignService Campaigns
+    {
+        get { return _campaigns.Value; }
     }
 
     /// <inheritdoc/>
@@ -128,25 +136,25 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public async Task<JsonElement> Complete(
-        ProfileCompleteParams parameters,
+    public async Task<JsonElement> CompleteSetup(
+        ProfileCompleteSetupParams parameters,
         CancellationToken cancellationToken = default
     )
     {
         using var response = await this
-            .WithRawResponse.Complete(parameters, cancellationToken)
+            .WithRawResponse.CompleteSetup(parameters, cancellationToken)
             .ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task<JsonElement> Complete(
+    public Task<JsonElement> CompleteSetup(
         string profileID,
-        ProfileCompleteParams parameters,
+        ProfileCompleteSetupParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return this.Complete(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.CompleteSetup(parameters with { ProfileID = profileID }, cancellationToken);
     }
 }
 
@@ -164,6 +172,14 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     public ProfileServiceWithRawResponse(ISentDmClientWithRawResponse client)
     {
         _client = client;
+
+        _campaigns = new(() => new CampaignServiceWithRawResponse(client));
+    }
+
+    readonly Lazy<ICampaignServiceWithRawResponse> _campaigns;
+    public ICampaignServiceWithRawResponse Campaigns
+    {
+        get { return _campaigns.Value; }
     }
 
     /// <inheritdoc/>
@@ -346,8 +362,8 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<JsonElement>> Complete(
-        ProfileCompleteParams parameters,
+    public async Task<HttpResponse<JsonElement>> CompleteSetup(
+        ProfileCompleteSetupParams parameters,
         CancellationToken cancellationToken = default
     )
     {
@@ -356,7 +372,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             throw new SentDmInvalidDataException("'parameters.ProfileID' cannot be null");
         }
 
-        HttpRequest<ProfileCompleteParams> request = new()
+        HttpRequest<ProfileCompleteSetupParams> request = new()
         {
             Method = HttpMethod.Post,
             Params = parameters,
@@ -372,12 +388,12 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<JsonElement>> Complete(
+    public Task<HttpResponse<JsonElement>> CompleteSetup(
         string profileID,
-        ProfileCompleteParams parameters,
+        ProfileCompleteSetupParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return this.Complete(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.CompleteSetup(parameters with { ProfileID = profileID }, cancellationToken);
     }
 }
