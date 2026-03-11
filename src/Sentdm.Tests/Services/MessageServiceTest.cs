@@ -4,7 +4,7 @@ namespace Sentdm.Tests.Services;
 
 public class MessageServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task RetrieveActivities_Works()
     {
         var response = await this.client.Messages.RetrieveActivities(
@@ -15,7 +15,7 @@ public class MessageServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task RetrieveStatus_Works()
     {
         var response = await this.client.Messages.RetrieveStatus(
@@ -26,7 +26,7 @@ public class MessageServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Send_Works()
     {
         var response = await this.client.Messages.Send(

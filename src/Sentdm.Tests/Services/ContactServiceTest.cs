@@ -4,7 +4,7 @@ namespace Sentdm.Tests.Services;
 
 public class ContactServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var apiResponseContact = await this.client.Contacts.Create(
@@ -14,7 +14,7 @@ public class ContactServiceTest : TestBase
         apiResponseContact.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var apiResponseContact = await this.client.Contacts.Retrieve(
@@ -25,7 +25,7 @@ public class ContactServiceTest : TestBase
         apiResponseContact.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var apiResponseContact = await this.client.Contacts.Update(
@@ -36,7 +36,7 @@ public class ContactServiceTest : TestBase
         apiResponseContact.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var contacts = await this.client.Contacts.List(
@@ -46,7 +46,7 @@ public class ContactServiceTest : TestBase
         contacts.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Contacts.Delete(

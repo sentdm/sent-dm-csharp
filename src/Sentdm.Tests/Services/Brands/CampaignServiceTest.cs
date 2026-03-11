@@ -5,7 +5,7 @@ namespace Sentdm.Tests.Services.Brands;
 
 public class CampaignServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var apiResponseTcrCampaignWithUseCases = await this.client.Brands.Campaigns.Create(
@@ -47,7 +47,7 @@ public class CampaignServiceTest : TestBase
         apiResponseTcrCampaignWithUseCases.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var apiResponseTcrCampaignWithUseCases = await this.client.Brands.Campaigns.Update(
@@ -89,7 +89,7 @@ public class CampaignServiceTest : TestBase
         apiResponseTcrCampaignWithUseCases.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var campaigns = await this.client.Brands.Campaigns.List(
@@ -100,7 +100,7 @@ public class CampaignServiceTest : TestBase
         campaigns.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Brands.Campaigns.Delete(

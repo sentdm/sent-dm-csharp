@@ -5,7 +5,7 @@ namespace Sentdm.Tests.Services;
 
 public class BrandServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var apiResponseBrandWithKyc = await this.client.Brands.Create(
@@ -46,7 +46,7 @@ public class BrandServiceTest : TestBase
         apiResponseBrandWithKyc.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var apiResponseBrandWithKyc = await this.client.Brands.Update(
@@ -88,14 +88,14 @@ public class BrandServiceTest : TestBase
         apiResponseBrandWithKyc.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var brands = await this.client.Brands.List(new(), TestContext.Current.CancellationToken);
         brands.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Brands.Delete(

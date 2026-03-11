@@ -4,7 +4,7 @@ namespace Sentdm.Tests.Services;
 
 public class UserServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var apiResponseOfUser = await this.client.Users.Retrieve(
@@ -15,14 +15,14 @@ public class UserServiceTest : TestBase
         apiResponseOfUser.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var users = await this.client.Users.List(new(), TestContext.Current.CancellationToken);
         users.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Invite_Works()
     {
         var apiResponseOfUser = await this.client.Users.Invite(
@@ -32,7 +32,7 @@ public class UserServiceTest : TestBase
         apiResponseOfUser.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Remove_Works()
     {
         await this.client.Users.Remove(
@@ -42,7 +42,7 @@ public class UserServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task UpdateRole_Works()
     {
         var apiResponseOfUser = await this.client.Users.UpdateRole(
