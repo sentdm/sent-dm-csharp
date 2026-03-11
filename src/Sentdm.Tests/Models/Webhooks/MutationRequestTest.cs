@@ -9,17 +9,17 @@ public class MutationRequestTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new MutationRequest { TestMode = false };
+        var model = new MutationRequest { Sandbox = false };
 
-        bool expectedTestMode = false;
+        bool expectedSandbox = false;
 
-        Assert.Equal(expectedTestMode, model.TestMode);
+        Assert.Equal(expectedSandbox, model.Sandbox);
     }
 
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new MutationRequest { TestMode = false };
+        var model = new MutationRequest { Sandbox = false };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<MutationRequest>(
@@ -33,7 +33,7 @@ public class MutationRequestTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new MutationRequest { TestMode = false };
+        var model = new MutationRequest { Sandbox = false };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<MutationRequest>(
@@ -42,15 +42,15 @@ public class MutationRequestTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        bool expectedTestMode = false;
+        bool expectedSandbox = false;
 
-        Assert.Equal(expectedTestMode, deserialized.TestMode);
+        Assert.Equal(expectedSandbox, deserialized.Sandbox);
     }
 
     [Fact]
     public void Validation_Works()
     {
-        var model = new MutationRequest { TestMode = false };
+        var model = new MutationRequest { Sandbox = false };
 
         model.Validate();
     }
@@ -60,8 +60,8 @@ public class MutationRequestTest : TestBase
     {
         var model = new MutationRequest { };
 
-        Assert.Null(model.TestMode);
-        Assert.False(model.RawData.ContainsKey("test_mode"));
+        Assert.Null(model.Sandbox);
+        Assert.False(model.RawData.ContainsKey("sandbox"));
     }
 
     [Fact]
@@ -78,11 +78,11 @@ public class MutationRequestTest : TestBase
         var model = new MutationRequest
         {
             // Null should be interpreted as omitted for these properties
-            TestMode = null,
+            Sandbox = null,
         };
 
-        Assert.Null(model.TestMode);
-        Assert.False(model.RawData.ContainsKey("test_mode"));
+        Assert.Null(model.Sandbox);
+        Assert.False(model.RawData.ContainsKey("sandbox"));
     }
 
     [Fact]
@@ -91,7 +91,7 @@ public class MutationRequestTest : TestBase
         var model = new MutationRequest
         {
             // Null should be interpreted as omitted for these properties
-            TestMode = null,
+            Sandbox = null,
         };
 
         model.Validate();
@@ -100,7 +100,7 @@ public class MutationRequestTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new MutationRequest { TestMode = false };
+        var model = new MutationRequest { Sandbox = false };
 
         MutationRequest copied = new(model);
 

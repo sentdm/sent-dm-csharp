@@ -51,7 +51,7 @@ public class ContactServiceTest : TestBase
     {
         await this.client.Contacts.Delete(
             "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            new() { Body = new() { TestMode = false } },
+            new() { Body = new() { Sandbox = false } },
             TestContext.Current.CancellationToken
         );
     }

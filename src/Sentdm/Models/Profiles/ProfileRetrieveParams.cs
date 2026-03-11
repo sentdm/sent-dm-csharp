@@ -9,7 +9,8 @@ using Sentdm.Core;
 namespace Sentdm.Models.Profiles;
 
 /// <summary>
-/// Retrieves detailed information about a specific sender profile within an organization.
+/// Retrieves detailed information about a specific sender profile within an organization,
+/// including brand and KYC information if a brand has been configured.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -18,6 +19,24 @@ namespace Sentdm.Models.Profiles;
 public record class ProfileRetrieveParams : ParamsBase
 {
     public string? ProfileID { get; init; }
+
+    public string? XProfileID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("x-profile-id", value);
+        }
+    }
 
     public ProfileRetrieveParams() { }
 

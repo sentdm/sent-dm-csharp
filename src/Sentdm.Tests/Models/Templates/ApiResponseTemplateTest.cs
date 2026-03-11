@@ -37,7 +37,6 @@ public class ApiResponseTemplateTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -67,7 +66,6 @@ public class ApiResponseTemplateTest : TestBase
         ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
-            ResponseTimeMs = 0,
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Version = "version",
         };
@@ -107,7 +105,6 @@ public class ApiResponseTemplateTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -151,7 +148,6 @@ public class ApiResponseTemplateTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -188,7 +184,6 @@ public class ApiResponseTemplateTest : TestBase
         ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
-            ResponseTimeMs = 0,
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Version = "version",
         };
@@ -228,7 +223,6 @@ public class ApiResponseTemplateTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -380,7 +374,6 @@ public class ApiResponseTemplateTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -401,7 +394,6 @@ public class ApiResponseTemplateTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -419,7 +411,6 @@ public class ApiResponseTemplateTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -443,7 +434,6 @@ public class ApiResponseTemplateTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },
@@ -484,7 +474,6 @@ public class ApiResponseTemplateTest : TestBase
             Meta = new()
             {
                 RequestID = "request_id",
-                ResponseTimeMs = 0,
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
             },

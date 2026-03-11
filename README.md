@@ -282,7 +282,7 @@ MessageSendParams parameters = new
 {
     // Documented properties can still be added here.
     // In case of conflict, these parameters take precedence over the custom parameters.
-    TestMode = false
+    Sandbox = false
 };
 ```
 

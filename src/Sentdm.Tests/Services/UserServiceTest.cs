@@ -8,7 +8,7 @@ public class UserServiceTest : TestBase
     public async Task Retrieve_Works()
     {
         var apiResponseOfUser = await this.client.Users.Retrieve(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            "userId",
             new(),
             TestContext.Current.CancellationToken
         );
@@ -36,8 +36,8 @@ public class UserServiceTest : TestBase
     public async Task Remove_Works()
     {
         await this.client.Users.Remove(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            new(),
+            "userId",
+            new() { Body = new() { Sandbox = false } },
             TestContext.Current.CancellationToken
         );
     }
@@ -46,7 +46,7 @@ public class UserServiceTest : TestBase
     public async Task UpdateRole_Works()
     {
         var apiResponseOfUser = await this.client.Users.UpdateRole(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            "userId",
             new(),
             TestContext.Current.CancellationToken
         );

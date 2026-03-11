@@ -17,6 +17,24 @@ namespace Sentdm.Models.Webhooks;
 /// </summary>
 public record class WebhookListEventTypesParams : ParamsBase
 {
+    public string? XProfileID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("x-profile-id", value);
+        }
+    }
+
     public WebhookListEventTypesParams() { }
 
 #pragma warning disable CS8618

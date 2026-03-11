@@ -13,18 +13,15 @@ public class ApiMetaTest : TestBase
         var model = new ApiMeta
         {
             RequestID = "request_id",
-            ResponseTimeMs = 0,
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Version = "version",
         };
 
         string expectedRequestID = "request_id";
-        long expectedResponseTimeMs = 0;
         DateTimeOffset expectedTimestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedVersion = "version";
 
         Assert.Equal(expectedRequestID, model.RequestID);
-        Assert.Equal(expectedResponseTimeMs, model.ResponseTimeMs);
         Assert.Equal(expectedTimestamp, model.Timestamp);
         Assert.Equal(expectedVersion, model.Version);
     }
@@ -35,7 +32,6 @@ public class ApiMetaTest : TestBase
         var model = new ApiMeta
         {
             RequestID = "request_id",
-            ResponseTimeMs = 0,
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Version = "version",
         };
@@ -52,7 +48,6 @@ public class ApiMetaTest : TestBase
         var model = new ApiMeta
         {
             RequestID = "request_id",
-            ResponseTimeMs = 0,
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Version = "version",
         };
@@ -65,12 +60,10 @@ public class ApiMetaTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedRequestID = "request_id";
-        long expectedResponseTimeMs = 0;
         DateTimeOffset expectedTimestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedVersion = "version";
 
         Assert.Equal(expectedRequestID, deserialized.RequestID);
-        Assert.Equal(expectedResponseTimeMs, deserialized.ResponseTimeMs);
         Assert.Equal(expectedTimestamp, deserialized.Timestamp);
         Assert.Equal(expectedVersion, deserialized.Version);
     }
@@ -81,7 +74,6 @@ public class ApiMetaTest : TestBase
         var model = new ApiMeta
         {
             RequestID = "request_id",
-            ResponseTimeMs = 0,
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Version = "version",
         };
@@ -92,7 +84,7 @@ public class ApiMetaTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new ApiMeta { ResponseTimeMs = 0 };
+        var model = new ApiMeta { };
 
         Assert.Null(model.RequestID);
         Assert.False(model.RawData.ContainsKey("request_id"));
@@ -105,7 +97,7 @@ public class ApiMetaTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new ApiMeta { ResponseTimeMs = 0 };
+        var model = new ApiMeta { };
 
         model.Validate();
     }
@@ -115,8 +107,6 @@ public class ApiMetaTest : TestBase
     {
         var model = new ApiMeta
         {
-            ResponseTimeMs = 0,
-
             // Null should be interpreted as omitted for these properties
             RequestID = null,
             Timestamp = null,
@@ -136,70 +126,10 @@ public class ApiMetaTest : TestBase
     {
         var model = new ApiMeta
         {
-            ResponseTimeMs = 0,
-
             // Null should be interpreted as omitted for these properties
             RequestID = null,
             Timestamp = null,
             Version = null,
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
-    {
-        var model = new ApiMeta
-        {
-            RequestID = "request_id",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Version = "version",
-        };
-
-        Assert.Null(model.ResponseTimeMs);
-        Assert.False(model.RawData.ContainsKey("response_time_ms"));
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesUnsetValidation_Works()
-    {
-        var model = new ApiMeta
-        {
-            RequestID = "request_id",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Version = "version",
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
-    {
-        var model = new ApiMeta
-        {
-            RequestID = "request_id",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Version = "version",
-
-            ResponseTimeMs = null,
-        };
-
-        Assert.Null(model.ResponseTimeMs);
-        Assert.True(model.RawData.ContainsKey("response_time_ms"));
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesSetToNullValidation_Works()
-    {
-        var model = new ApiMeta
-        {
-            RequestID = "request_id",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Version = "version",
-
-            ResponseTimeMs = null,
         };
 
         model.Validate();
@@ -211,7 +141,6 @@ public class ApiMetaTest : TestBase
         var model = new ApiMeta
         {
             RequestID = "request_id",
-            ResponseTimeMs = 0,
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Version = "version",
         };

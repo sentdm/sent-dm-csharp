@@ -82,7 +82,7 @@ public class WebhookServiceTest : TestBase
     {
         var response = await this.client.Webhooks.RotateSecret(
             "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
-            new() { Body = new() { TestMode = false } },
+            new() { Body = new() { Sandbox = false } },
             TestContext.Current.CancellationToken
         );
         response.Validate();

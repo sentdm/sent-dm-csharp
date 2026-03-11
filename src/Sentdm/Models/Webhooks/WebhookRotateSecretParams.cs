@@ -55,6 +55,24 @@ public record class WebhookRotateSecretParams : ParamsBase
         }
     }
 
+    public string? XProfileID
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawHeaderData.Set("x-profile-id", value);
+        }
+    }
+
     public WebhookRotateSecretParams() { }
 
 #pragma warning disable CS8618
@@ -176,15 +194,15 @@ public record class WebhookRotateSecretParams : ParamsBase
 public sealed record class Body : JsonModel
 {
     /// <summary>
-    /// Test mode flag - when true, the operation is simulated without side effects
+    /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
-    public bool? TestMode
+    public bool? Sandbox
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("test_mode");
+            return this._rawData.GetNullableStruct<bool>("sandbox");
         }
         init
         {
@@ -193,17 +211,16 @@ public sealed record class Body : JsonModel
                 return;
             }
 
-            this._rawData.Set("test_mode", value);
+            this._rawData.Set("sandbox", value);
         }
     }
 
-    public static implicit operator MutationRequest(Body body) =>
-        new() { TestMode = body.TestMode };
+    public static implicit operator MutationRequest(Body body) => new() { Sandbox = body.Sandbox };
 
     /// <inheritdoc/>
     public override void Validate()
     {
-        _ = this.TestMode;
+        _ = this.Sandbox;
     }
 
     public Body() { }
