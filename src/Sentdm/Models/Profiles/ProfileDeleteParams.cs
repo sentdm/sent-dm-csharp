@@ -210,7 +210,7 @@ public sealed record class Body : JsonModel
         }
     }
 
-    public static implicit operator MutationRequestBase(global::Sentdm.Models.Profiles.Body body) =>
+    public static implicit operator MutationRequest(global::Sentdm.Models.Profiles.Body body) =>
         new() { Sandbox = body.Sandbox };
 
     /// <inheritdoc/>

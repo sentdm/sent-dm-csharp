@@ -1441,7 +1441,7 @@ public class BrandTest : TestBase
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        Business expectedBusiness = new()
+        BrandBusiness expectedBusiness = new()
         {
             City = "city",
             Country = "country",
@@ -1455,7 +1455,7 @@ public class BrandTest : TestBase
             TaxIDType = "tax_id_type",
             Url = "url",
         };
-        Compliance expectedCompliance = new()
+        BrandCompliance expectedCompliance = new()
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -1466,7 +1466,7 @@ public class BrandTest : TestBase
             PrimaryUseCase = "primary_use_case",
             Vertical = TcrVertical.Professional,
         };
-        Contact expectedContact = new()
+        BrandContact expectedContact = new()
         {
             BusinessName = "business_name",
             Email = "email",
@@ -1617,7 +1617,7 @@ public class BrandTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        Business expectedBusiness = new()
+        BrandBusiness expectedBusiness = new()
         {
             City = "city",
             Country = "country",
@@ -1631,7 +1631,7 @@ public class BrandTest : TestBase
             TaxIDType = "tax_id_type",
             Url = "url",
         };
-        Compliance expectedCompliance = new()
+        BrandCompliance expectedCompliance = new()
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -1642,7 +1642,7 @@ public class BrandTest : TestBase
             PrimaryUseCase = "primary_use_case",
             Vertical = TcrVertical.Professional,
         };
-        Contact expectedContact = new()
+        BrandContact expectedContact = new()
         {
             BusinessName = "business_name",
             Email = "email",
@@ -2137,12 +2137,12 @@ public class BrandTest : TestBase
     }
 }
 
-public class BusinessTest : TestBase
+public class BrandBusinessTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Business
+        var model = new BrandBusiness
         {
             City = "city",
             Country = "country",
@@ -2185,7 +2185,7 @@ public class BusinessTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Business
+        var model = new BrandBusiness
         {
             City = "city",
             Country = "country",
@@ -2201,7 +2201,10 @@ public class BusinessTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Business>(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<BrandBusiness>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -2209,7 +2212,7 @@ public class BusinessTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Business
+        var model = new BrandBusiness
         {
             City = "city",
             Country = "country",
@@ -2225,7 +2228,7 @@ public class BusinessTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Business>(
+        var deserialized = JsonSerializer.Deserialize<BrandBusiness>(
             element,
             ModelBase.SerializerOptions
         );
@@ -2259,7 +2262,7 @@ public class BusinessTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Business
+        var model = new BrandBusiness
         {
             City = "city",
             Country = "country",
@@ -2280,7 +2283,7 @@ public class BusinessTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Business { };
+        var model = new BrandBusiness { };
 
         Assert.Null(model.City);
         Assert.False(model.RawData.ContainsKey("city"));
@@ -2309,7 +2312,7 @@ public class BusinessTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Business { };
+        var model = new BrandBusiness { };
 
         model.Validate();
     }
@@ -2317,7 +2320,7 @@ public class BusinessTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new Business
+        var model = new BrandBusiness
         {
             City = null,
             Country = null,
@@ -2359,7 +2362,7 @@ public class BusinessTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Business
+        var model = new BrandBusiness
         {
             City = null,
             Country = null,
@@ -2380,7 +2383,7 @@ public class BusinessTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Business
+        var model = new BrandBusiness
         {
             City = "city",
             Country = "country",
@@ -2395,18 +2398,18 @@ public class BusinessTest : TestBase
             Url = "url",
         };
 
-        Business copied = new(model);
+        BrandBusiness copied = new(model);
 
         Assert.Equal(model, copied);
     }
 }
 
-public class ComplianceTest : TestBase
+public class BrandComplianceTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -2449,7 +2452,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -2462,7 +2465,7 @@ public class ComplianceTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Compliance>(
+        var deserialized = JsonSerializer.Deserialize<BrandCompliance>(
             json,
             ModelBase.SerializerOptions
         );
@@ -2473,7 +2476,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -2486,7 +2489,7 @@ public class ComplianceTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Compliance>(
+        var deserialized = JsonSerializer.Deserialize<BrandCompliance>(
             element,
             ModelBase.SerializerOptions
         );
@@ -2523,7 +2526,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -2541,7 +2544,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             ExpectedMessagingVolume = "expected_messaging_volume",
@@ -2560,7 +2563,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             ExpectedMessagingVolume = "expected_messaging_volume",
@@ -2576,7 +2579,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             ExpectedMessagingVolume = "expected_messaging_volume",
@@ -2599,7 +2602,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             ExpectedMessagingVolume = "expected_messaging_volume",
@@ -2619,7 +2622,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             DestinationCountries = [new() { ID = "id", IsMain = true }],
             IsTcrApplication = true,
@@ -2642,7 +2645,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             DestinationCountries = [new() { ID = "id", IsMain = true }],
             IsTcrApplication = true,
@@ -2654,7 +2657,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             DestinationCountries = [new() { ID = "id", IsMain = true }],
             IsTcrApplication = true,
@@ -2684,7 +2687,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             DestinationCountries = [new() { ID = "id", IsMain = true }],
             IsTcrApplication = true,
@@ -2703,7 +2706,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -2715,18 +2718,18 @@ public class ComplianceTest : TestBase
             Vertical = TcrVertical.Professional,
         };
 
-        Compliance copied = new(model);
+        BrandCompliance copied = new(model);
 
         Assert.Equal(model, copied);
     }
 }
 
-public class ContactTest : TestBase
+public class BrandContactTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Contact
+        var model = new BrandContact
         {
             BusinessName = "business_name",
             Email = "email",
@@ -2754,7 +2757,7 @@ public class ContactTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Contact
+        var model = new BrandContact
         {
             BusinessName = "business_name",
             Email = "email",
@@ -2765,7 +2768,10 @@ public class ContactTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Contact>(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<BrandContact>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -2773,7 +2779,7 @@ public class ContactTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Contact
+        var model = new BrandContact
         {
             BusinessName = "business_name",
             Email = "email",
@@ -2784,7 +2790,7 @@ public class ContactTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Contact>(
+        var deserialized = JsonSerializer.Deserialize<BrandContact>(
             element,
             ModelBase.SerializerOptions
         );
@@ -2808,7 +2814,7 @@ public class ContactTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Contact
+        var model = new BrandContact
         {
             BusinessName = "business_name",
             Email = "email",
@@ -2824,7 +2830,7 @@ public class ContactTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Contact
+        var model = new BrandContact
         {
             BusinessName = "business_name",
             Email = "email",
@@ -2840,7 +2846,7 @@ public class ContactTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Contact
+        var model = new BrandContact
         {
             BusinessName = "business_name",
             Email = "email",
@@ -2855,7 +2861,7 @@ public class ContactTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new Contact
+        var model = new BrandContact
         {
             BusinessName = "business_name",
             Email = "email",
@@ -2874,7 +2880,7 @@ public class ContactTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Contact
+        var model = new BrandContact
         {
             BusinessName = "business_name",
             Email = "email",
@@ -2892,7 +2898,7 @@ public class ContactTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Contact { Name = "name" };
+        var model = new BrandContact { Name = "name" };
 
         Assert.Null(model.BusinessName);
         Assert.False(model.RawData.ContainsKey("business_name"));
@@ -2909,7 +2915,7 @@ public class ContactTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Contact { Name = "name" };
+        var model = new BrandContact { Name = "name" };
 
         model.Validate();
     }
@@ -2917,7 +2923,7 @@ public class ContactTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new Contact
+        var model = new BrandContact
         {
             Name = "name",
 
@@ -2943,7 +2949,7 @@ public class ContactTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Contact
+        var model = new BrandContact
         {
             Name = "name",
 
@@ -2960,7 +2966,7 @@ public class ContactTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Contact
+        var model = new BrandContact
         {
             BusinessName = "business_name",
             Email = "email",
@@ -2970,7 +2976,7 @@ public class ContactTest : TestBase
             Role = "role",
         };
 
-        Contact copied = new(model);
+        BrandContact copied = new(model);
 
         Assert.Equal(model, copied);
     }
