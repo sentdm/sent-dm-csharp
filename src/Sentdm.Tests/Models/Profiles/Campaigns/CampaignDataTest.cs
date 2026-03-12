@@ -37,7 +37,7 @@ public class CampaignDataTest : TestBase
         string expectedDescription = "x";
         string expectedName = "x";
         string expectedType = "x";
-        List<UseCase> expectedUseCases =
+        List<SentDmServicesEndpointsCustomerApIv3ContractsRequestsCampaignsCampaignUseCaseData> expectedUseCases =
         [
             new()
             {
@@ -147,7 +147,7 @@ public class CampaignDataTest : TestBase
         string expectedDescription = "x";
         string expectedName = "x";
         string expectedType = "x";
-        List<UseCase> expectedUseCases =
+        List<SentDmServicesEndpointsCustomerApIv3ContractsRequestsCampaignsCampaignUseCaseData> expectedUseCases =
         [
             new()
             {
@@ -380,99 +380,6 @@ public class CampaignDataTest : TestBase
         };
 
         CampaignData copied = new(model);
-
-        Assert.Equal(model, copied);
-    }
-}
-
-public class UseCaseTest : TestBase
-{
-    [Fact]
-    public void FieldRoundtrip_Works()
-    {
-        var model = new UseCase
-        {
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
-        };
-
-        ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs =
-            MessagingUseCaseUs.Marketing;
-        List<string> expectedSampleMessages = ["string"];
-
-        Assert.Equal(expectedMessagingUseCaseUs, model.MessagingUseCaseUs);
-        Assert.Equal(expectedSampleMessages.Count, model.SampleMessages.Count);
-        for (int i = 0; i < expectedSampleMessages.Count; i++)
-        {
-            Assert.Equal(expectedSampleMessages[i], model.SampleMessages[i]);
-        }
-    }
-
-    [Fact]
-    public void SerializationRoundtrip_Works()
-    {
-        var model = new UseCase
-        {
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
-        };
-
-        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UseCase>(json, ModelBase.SerializerOptions);
-
-        Assert.Equal(model, deserialized);
-    }
-
-    [Fact]
-    public void FieldRoundtripThroughSerialization_Works()
-    {
-        var model = new UseCase
-        {
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
-        };
-
-        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UseCase>(
-            element,
-            ModelBase.SerializerOptions
-        );
-        Assert.NotNull(deserialized);
-
-        ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs =
-            MessagingUseCaseUs.Marketing;
-        List<string> expectedSampleMessages = ["string"];
-
-        Assert.Equal(expectedMessagingUseCaseUs, deserialized.MessagingUseCaseUs);
-        Assert.Equal(expectedSampleMessages.Count, deserialized.SampleMessages.Count);
-        for (int i = 0; i < expectedSampleMessages.Count; i++)
-        {
-            Assert.Equal(expectedSampleMessages[i], deserialized.SampleMessages[i]);
-        }
-    }
-
-    [Fact]
-    public void Validation_Works()
-    {
-        var model = new UseCase
-        {
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void CopyConstructor_Works()
-    {
-        var model = new UseCase
-        {
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
-        };
-
-        UseCase copied = new(model);
 
         Assert.Equal(model, copied);
     }
