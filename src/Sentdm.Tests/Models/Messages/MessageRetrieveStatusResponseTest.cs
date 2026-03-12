@@ -96,7 +96,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
         };
-        Webhooks::ApiError expectedError = new()
+        Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
@@ -274,7 +274,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
         };
-        Webhooks::ApiError expectedError = new()
+        Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },

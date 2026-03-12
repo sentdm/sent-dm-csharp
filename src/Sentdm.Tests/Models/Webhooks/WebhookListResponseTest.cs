@@ -91,7 +91,7 @@ public class WebhookListResponseTest : TestBase
                 },
             ],
         };
-        ApiError expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
@@ -263,7 +263,7 @@ public class WebhookListResponseTest : TestBase
                 },
             ],
         };
-        ApiError expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },

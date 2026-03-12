@@ -30,12 +30,12 @@ public sealed record class WebhookListResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ApiError? Error
+    public ErrorDetail? Error
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiError>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>("error");
         }
         init { this._rawData.Set("error", value); }
     }
