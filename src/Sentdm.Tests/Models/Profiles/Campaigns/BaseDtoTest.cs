@@ -1,9 +1,9 @@
 using System;
 using System.Text.Json;
 using Sentdm.Core;
-using Sentdm.Models;
+using Sentdm.Models.Profiles.Campaigns;
 
-namespace Sentdm.Tests.Models;
+namespace Sentdm.Tests.Models.Profiles.Campaigns;
 
 public class BaseDtoTest : TestBase
 {

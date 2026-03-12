@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
 
-namespace Sentdm.Models;
+namespace Sentdm.Models.Profiles.Campaigns;
 
 [JsonConverter(typeof(JsonModelConverter<BaseDto, BaseDtoFromRaw>))]
 public sealed record class BaseDto : JsonModel

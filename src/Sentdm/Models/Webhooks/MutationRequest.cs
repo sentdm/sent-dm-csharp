@@ -7,8 +7,8 @@ using Sentdm.Core;
 
 namespace Sentdm.Models.Webhooks;
 
-[JsonConverter(typeof(JsonModelConverter<MutationRequestBase, MutationRequestBaseFromRaw>))]
-public sealed record class MutationRequestBase : JsonModel
+[JsonConverter(typeof(JsonModelConverter<MutationRequest, MutationRequestFromRaw>))]
+public sealed record class MutationRequest : JsonModel
 {
     /// <summary>
     /// Sandbox flag - when true, the operation is simulated without side effects
@@ -38,39 +38,37 @@ public sealed record class MutationRequestBase : JsonModel
         _ = this.Sandbox;
     }
 
-    public MutationRequestBase() { }
+    public MutationRequest() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MutationRequestBase(MutationRequestBase mutationRequestBase)
-        : base(mutationRequestBase) { }
+    public MutationRequest(MutationRequest mutationRequest)
+        : base(mutationRequest) { }
 #pragma warning restore CS8618
 
-    public MutationRequestBase(IReadOnlyDictionary<string, JsonElement> rawData)
+    public MutationRequest(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MutationRequestBase(FrozenDictionary<string, JsonElement> rawData)
+    MutationRequest(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="MutationRequestBaseFromRaw.FromRawUnchecked"/>
-    public static MutationRequestBase FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="MutationRequestFromRaw.FromRawUnchecked"/>
+    public static MutationRequest FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class MutationRequestBaseFromRaw : IFromRawJson<MutationRequestBase>
+class MutationRequestFromRaw : IFromRawJson<MutationRequest>
 {
     /// <inheritdoc/>
-    public MutationRequestBase FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        MutationRequestBase.FromRawUnchecked(rawData);
+    public MutationRequest FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        MutationRequest.FromRawUnchecked(rawData);
 }
