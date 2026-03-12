@@ -1160,9 +1160,13 @@ class UseCaseFromRaw : IFromRawJson<UseCase>
 }
 
 [JsonConverter(
-    typeof(JsonModelConverter<UseCaseIntersectionMember1, UseCaseIntersectionMember1FromRaw>)
+    typeof(JsonModelConverter<
+        SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties,
+        SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoPropertiesFromRaw
+    >)
 )]
-public sealed record class UseCaseIntersectionMember1 : JsonModel
+public sealed record class SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties
+    : JsonModel
 {
     public string? CampaignID
     {
@@ -1250,29 +1254,35 @@ public sealed record class UseCaseIntersectionMember1 : JsonModel
         _ = this.SampleMessages;
     }
 
-    public UseCaseIntersectionMember1() { }
+    public SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public UseCaseIntersectionMember1(UseCaseIntersectionMember1 useCaseIntersectionMember1)
-        : base(useCaseIntersectionMember1) { }
+    public SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties(
+        SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties sentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties
+    )
+        : base(sentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties) { }
 #pragma warning restore CS8618
 
-    public UseCaseIntersectionMember1(IReadOnlyDictionary<string, JsonElement> rawData)
+    public SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    UseCaseIntersectionMember1(FrozenDictionary<string, JsonElement> rawData)
+    SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties(
+        FrozenDictionary<string, JsonElement> rawData
+    )
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="UseCaseIntersectionMember1FromRaw.FromRawUnchecked"/>
-    public static UseCaseIntersectionMember1 FromRawUnchecked(
+    /// <inheritdoc cref="SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoPropertiesFromRaw.FromRawUnchecked"/>
+    public static SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -1280,10 +1290,11 @@ public sealed record class UseCaseIntersectionMember1 : JsonModel
     }
 }
 
-class UseCaseIntersectionMember1FromRaw : IFromRawJson<UseCaseIntersectionMember1>
+class SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoPropertiesFromRaw
+    : IFromRawJson<SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties>
 {
     /// <inheritdoc/>
-    public UseCaseIntersectionMember1 FromRawUnchecked(
+    public SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => UseCaseIntersectionMember1.FromRawUnchecked(rawData);
+    ) => SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties.FromRawUnchecked(rawData);
 }

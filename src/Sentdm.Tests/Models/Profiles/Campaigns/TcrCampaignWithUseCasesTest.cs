@@ -2118,12 +2118,12 @@ public class UseCaseTest : TestBase
     }
 }
 
-public class UseCaseIntersectionMember1Test : TestBase
+public class SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoPropertiesTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new UseCaseIntersectionMember1
+        var model = new SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties
         {
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2151,7 +2151,7 @@ public class UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new UseCaseIntersectionMember1
+        var model = new SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties
         {
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2160,10 +2160,11 @@ public class UseCaseIntersectionMember1Test : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UseCaseIntersectionMember1>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized =
+            JsonSerializer.Deserialize<SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties>(
+                json,
+                ModelBase.SerializerOptions
+            );
 
         Assert.Equal(model, deserialized);
     }
@@ -2171,7 +2172,7 @@ public class UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new UseCaseIntersectionMember1
+        var model = new SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties
         {
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2180,10 +2181,11 @@ public class UseCaseIntersectionMember1Test : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UseCaseIntersectionMember1>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized =
+            JsonSerializer.Deserialize<SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties>(
+                element,
+                ModelBase.SerializerOptions
+            );
         Assert.NotNull(deserialized);
 
         string expectedCampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -2206,7 +2208,7 @@ public class UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new UseCaseIntersectionMember1
+        var model = new SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties
         {
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2220,7 +2222,7 @@ public class UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new UseCaseIntersectionMember1 { };
+        var model = new SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties { };
 
         Assert.Null(model.CampaignID);
         Assert.False(model.RawData.ContainsKey("campaignId"));
@@ -2235,7 +2237,7 @@ public class UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new UseCaseIntersectionMember1 { };
+        var model = new SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties { };
 
         model.Validate();
     }
@@ -2243,7 +2245,7 @@ public class UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new UseCaseIntersectionMember1
+        var model = new SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties
         {
             // Null should be interpreted as omitted for these properties
             CampaignID = null,
@@ -2265,7 +2267,7 @@ public class UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new UseCaseIntersectionMember1
+        var model = new SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties
         {
             // Null should be interpreted as omitted for these properties
             CampaignID = null,
@@ -2280,7 +2282,7 @@ public class UseCaseIntersectionMember1Test : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new UseCaseIntersectionMember1
+        var model = new SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties
         {
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2288,7 +2290,7 @@ public class UseCaseIntersectionMember1Test : TestBase
             SampleMessages = ["string"],
         };
 
-        UseCaseIntersectionMember1 copied = new(model);
+        SentDmServicesCommonContractsDataTcrCampaignUseCaseDtoProperties copied = new(model);
 
         Assert.Equal(model, copied);
     }
