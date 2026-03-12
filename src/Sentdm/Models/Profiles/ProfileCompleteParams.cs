@@ -31,7 +31,7 @@ namespace Sentdm.Models.Profiles;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
-public record class ProfileCompleteSetupParams : ParamsBase
+public record class ProfileCompleteParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();
     public IReadOnlyDictionary<string, JsonElement> RawBodyData
@@ -112,20 +112,20 @@ public record class ProfileCompleteSetupParams : ParamsBase
         }
     }
 
-    public ProfileCompleteSetupParams() { }
+    public ProfileCompleteParams() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ProfileCompleteSetupParams(ProfileCompleteSetupParams profileCompleteSetupParams)
-        : base(profileCompleteSetupParams)
+    public ProfileCompleteParams(ProfileCompleteParams profileCompleteParams)
+        : base(profileCompleteParams)
     {
-        this.ProfileID = profileCompleteSetupParams.ProfileID;
+        this.ProfileID = profileCompleteParams.ProfileID;
 
-        this._rawBodyData = new(profileCompleteSetupParams._rawBodyData);
+        this._rawBodyData = new(profileCompleteParams._rawBodyData);
     }
 #pragma warning restore CS8618
 
-    public ProfileCompleteSetupParams(
+    public ProfileCompleteParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -138,7 +138,7 @@ public record class ProfileCompleteSetupParams : ParamsBase
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ProfileCompleteSetupParams(
+    ProfileCompleteParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData
@@ -151,7 +151,7 @@ public record class ProfileCompleteSetupParams : ParamsBase
 #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
-    public static ProfileCompleteSetupParams FromRawUnchecked(
+    public static ProfileCompleteParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -182,7 +182,7 @@ public record class ProfileCompleteSetupParams : ParamsBase
             ModelBase.ToStringSerializerOptions
         );
 
-    public virtual bool Equals(ProfileCompleteSetupParams? other)
+    public virtual bool Equals(ProfileCompleteParams? other)
     {
         if (other == null)
         {

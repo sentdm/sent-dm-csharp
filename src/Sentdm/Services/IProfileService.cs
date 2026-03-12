@@ -165,15 +165,15 @@ public interface IProfileService
     /// destination country (IsMain=true) → SUBMITTED                 - Otherwise
     /// → COMPLETED</para>
     /// </summary>
-    Task<JsonElement> CompleteSetup(
-        ProfileCompleteSetupParams parameters,
+    Task<JsonElement> Complete(
+        ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
-    /// <inheritdoc cref="CompleteSetup(ProfileCompleteSetupParams, CancellationToken)"/>
-    Task<JsonElement> CompleteSetup(
+    /// <inheritdoc cref="Complete(ProfileCompleteParams, CancellationToken)"/>
+    Task<JsonElement> Complete(
         string profileID,
-        ProfileCompleteSetupParams parameters,
+        ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     );
 }
@@ -261,17 +261,17 @@ public interface IProfileServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for `post /v3/profiles/{profileId}/complete`, but is otherwise the
-    /// same as <see cref="IProfileService.CompleteSetup(ProfileCompleteSetupParams, CancellationToken)"/>.
+    /// same as <see cref="IProfileService.Complete(ProfileCompleteParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<JsonElement>> CompleteSetup(
-        ProfileCompleteSetupParams parameters,
+    Task<HttpResponse<JsonElement>> Complete(
+        ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
-    /// <inheritdoc cref="CompleteSetup(ProfileCompleteSetupParams, CancellationToken)"/>
-    Task<HttpResponse<JsonElement>> CompleteSetup(
+    /// <inheritdoc cref="Complete(ProfileCompleteParams, CancellationToken)"/>
+    Task<HttpResponse<JsonElement>> Complete(
         string profileID,
-        ProfileCompleteSetupParams parameters,
+        ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     );
 }

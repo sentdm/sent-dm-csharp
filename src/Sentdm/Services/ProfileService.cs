@@ -136,25 +136,25 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public async Task<JsonElement> CompleteSetup(
-        ProfileCompleteSetupParams parameters,
+    public async Task<JsonElement> Complete(
+        ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
         using var response = await this
-            .WithRawResponse.CompleteSetup(parameters, cancellationToken)
+            .WithRawResponse.Complete(parameters, cancellationToken)
             .ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task<JsonElement> CompleteSetup(
+    public Task<JsonElement> Complete(
         string profileID,
-        ProfileCompleteSetupParams parameters,
+        ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return this.CompleteSetup(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.Complete(parameters with { ProfileID = profileID }, cancellationToken);
     }
 }
 
@@ -362,8 +362,8 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<JsonElement>> CompleteSetup(
-        ProfileCompleteSetupParams parameters,
+    public async Task<HttpResponse<JsonElement>> Complete(
+        ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
@@ -372,7 +372,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             throw new SentDmInvalidDataException("'parameters.ProfileID' cannot be null");
         }
 
-        HttpRequest<ProfileCompleteSetupParams> request = new()
+        HttpRequest<ProfileCompleteParams> request = new()
         {
             Method = HttpMethod.Post,
             Params = parameters,
@@ -388,12 +388,12 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<JsonElement>> CompleteSetup(
+    public Task<HttpResponse<JsonElement>> Complete(
         string profileID,
-        ProfileCompleteSetupParams parameters,
+        ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return this.CompleteSetup(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.Complete(parameters with { ProfileID = profileID }, cancellationToken);
     }
 }

@@ -618,12 +618,12 @@ public sealed record class Brand : JsonModel
     /// <summary>
     /// Business details and address information
     /// </summary>
-    public Business? Business
+    public BrandBusiness? Business
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Business>("business");
+            return this._rawData.GetNullableClass<BrandBusiness>("business");
         }
         init { this._rawData.Set("business", value); }
     }
@@ -631,12 +631,12 @@ public sealed record class Brand : JsonModel
     /// <summary>
     /// Compliance and TCR-related information
     /// </summary>
-    public Compliance? Compliance
+    public BrandCompliance? Compliance
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Compliance>("compliance");
+            return this._rawData.GetNullableClass<BrandCompliance>("compliance");
         }
         init { this._rawData.Set("compliance", value); }
     }
@@ -644,12 +644,12 @@ public sealed record class Brand : JsonModel
     /// <summary>
     /// Contact information for the brand
     /// </summary>
-    public Contact? Contact
+    public BrandContact? Contact
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Contact>("contact");
+            return this._rawData.GetNullableClass<BrandContact>("contact");
         }
         init { this._rawData.Set("contact", value); }
     }
@@ -861,8 +861,8 @@ class BrandFromRaw : IFromRawJson<Brand>
 /// <summary>
 /// Business details and address information
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<Business, BusinessFromRaw>))]
-public sealed record class Business : JsonModel
+[JsonConverter(typeof(JsonModelConverter<BrandBusiness, BrandBusinessFromRaw>))]
+public sealed record class BrandBusiness : JsonModel
 {
     /// <summary>
     /// City
@@ -1023,46 +1023,46 @@ public sealed record class Business : JsonModel
         _ = this.Url;
     }
 
-    public Business() { }
+    public BrandBusiness() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Business(Business business)
-        : base(business) { }
+    public BrandBusiness(BrandBusiness brandBusiness)
+        : base(brandBusiness) { }
 #pragma warning restore CS8618
 
-    public Business(IReadOnlyDictionary<string, JsonElement> rawData)
+    public BrandBusiness(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Business(FrozenDictionary<string, JsonElement> rawData)
+    BrandBusiness(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="BusinessFromRaw.FromRawUnchecked"/>
-    public static Business FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="BrandBusinessFromRaw.FromRawUnchecked"/>
+    public static BrandBusiness FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class BusinessFromRaw : IFromRawJson<Business>
+class BrandBusinessFromRaw : IFromRawJson<BrandBusiness>
 {
     /// <inheritdoc/>
-    public Business FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Business.FromRawUnchecked(rawData);
+    public BrandBusiness FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        BrandBusiness.FromRawUnchecked(rawData);
 }
 
 /// <summary>
 /// Compliance and TCR-related information
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<Compliance, ComplianceFromRaw>))]
-public sealed record class Compliance : JsonModel
+[JsonConverter(typeof(JsonModelConverter<BrandCompliance, BrandComplianceFromRaw>))]
+public sealed record class BrandCompliance : JsonModel
 {
     public ApiEnum<string, TcrBrandRelationship>? BrandRelationship
     {
@@ -1201,46 +1201,46 @@ public sealed record class Compliance : JsonModel
         this.Vertical?.Validate();
     }
 
-    public Compliance() { }
+    public BrandCompliance() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Compliance(Compliance compliance)
-        : base(compliance) { }
+    public BrandCompliance(BrandCompliance brandCompliance)
+        : base(brandCompliance) { }
 #pragma warning restore CS8618
 
-    public Compliance(IReadOnlyDictionary<string, JsonElement> rawData)
+    public BrandCompliance(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Compliance(FrozenDictionary<string, JsonElement> rawData)
+    BrandCompliance(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="ComplianceFromRaw.FromRawUnchecked"/>
-    public static Compliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="BrandComplianceFromRaw.FromRawUnchecked"/>
+    public static BrandCompliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class ComplianceFromRaw : IFromRawJson<Compliance>
+class BrandComplianceFromRaw : IFromRawJson<BrandCompliance>
 {
     /// <inheritdoc/>
-    public Compliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Compliance.FromRawUnchecked(rawData);
+    public BrandCompliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        BrandCompliance.FromRawUnchecked(rawData);
 }
 
 /// <summary>
 /// Contact information for the brand
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<Contact, ContactFromRaw>))]
-public sealed record class Contact : JsonModel
+[JsonConverter(typeof(JsonModelConverter<BrandContact, BrandContactFromRaw>))]
+public sealed record class BrandContact : JsonModel
 {
     /// <summary>
     /// Business/brand name
@@ -1339,39 +1339,39 @@ public sealed record class Contact : JsonModel
         _ = this.Role;
     }
 
-    public Contact() { }
+    public BrandContact() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Contact(Contact contact)
-        : base(contact) { }
+    public BrandContact(BrandContact brandContact)
+        : base(brandContact) { }
 #pragma warning restore CS8618
 
-    public Contact(IReadOnlyDictionary<string, JsonElement> rawData)
+    public BrandContact(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Contact(FrozenDictionary<string, JsonElement> rawData)
+    BrandContact(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="ContactFromRaw.FromRawUnchecked"/>
-    public static Contact FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="BrandContactFromRaw.FromRawUnchecked"/>
+    public static BrandContact FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class ContactFromRaw : IFromRawJson<Contact>
+class BrandContactFromRaw : IFromRawJson<BrandContact>
 {
     /// <inheritdoc/>
-    public Contact FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Contact.FromRawUnchecked(rawData);
+    public BrandContact FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        BrandContact.FromRawUnchecked(rawData);
 }
 
 [JsonConverter(typeof(IdentityStatusConverter))]

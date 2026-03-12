@@ -4,12 +4,12 @@ using Sentdm.Models.Profiles;
 
 namespace Sentdm.Tests.Models.Profiles;
 
-public class ProfileCompleteSetupParamsTest : TestBase
+public class ProfileCompleteParamsTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new ProfileCompleteSetupParams
+        var parameters = new ProfileCompleteParams
         {
             ProfileID = "660e8400-e29b-41d4-a716-446655440000",
             WebHookUrl = "https://your-app.com/webhook/profile-complete",
@@ -34,7 +34,7 @@ public class ProfileCompleteSetupParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new ProfileCompleteSetupParams
+        var parameters = new ProfileCompleteParams
         {
             ProfileID = "660e8400-e29b-41d4-a716-446655440000",
             WebHookUrl = "https://your-app.com/webhook/profile-complete",
@@ -51,7 +51,7 @@ public class ProfileCompleteSetupParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
-        var parameters = new ProfileCompleteSetupParams
+        var parameters = new ProfileCompleteParams
         {
             ProfileID = "660e8400-e29b-41d4-a716-446655440000",
             WebHookUrl = "https://your-app.com/webhook/profile-complete",
@@ -73,7 +73,7 @@ public class ProfileCompleteSetupParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        ProfileCompleteSetupParams parameters = new()
+        ProfileCompleteParams parameters = new()
         {
             ProfileID = "660e8400-e29b-41d4-a716-446655440000",
             WebHookUrl = "https://your-app.com/webhook/profile-complete",
@@ -93,7 +93,7 @@ public class ProfileCompleteSetupParamsTest : TestBase
     public void AddHeadersToRequest_Works()
     {
         HttpRequestMessage requestMessage = new();
-        ProfileCompleteSetupParams parameters = new()
+        ProfileCompleteParams parameters = new()
         {
             ProfileID = "660e8400-e29b-41d4-a716-446655440000",
             WebHookUrl = "https://your-app.com/webhook/profile-complete",
@@ -113,7 +113,7 @@ public class ProfileCompleteSetupParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new ProfileCompleteSetupParams
+        var parameters = new ProfileCompleteParams
         {
             ProfileID = "660e8400-e29b-41d4-a716-446655440000",
             WebHookUrl = "https://your-app.com/webhook/profile-complete",
@@ -122,7 +122,7 @@ public class ProfileCompleteSetupParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        ProfileCompleteSetupParams copied = new(parameters);
+        ProfileCompleteParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
     }
