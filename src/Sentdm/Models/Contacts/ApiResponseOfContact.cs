@@ -15,7 +15,7 @@ namespace Sentdm.Models.Contacts;
 public sealed record class ApiResponseOfContact : JsonModel
 {
     /// <summary>
-    /// The response data (null if error)
+    /// Contact response for v3 API Uses snake_case for JSON property names
     /// </summary>
     public ContactResponse? Data
     {
@@ -28,7 +28,7 @@ public sealed record class ApiResponseOfContact : JsonModel
     }
 
     /// <summary>
-    /// Error details (null if successful)
+    /// Error information
     /// </summary>
     public ApiError? Error
     {
@@ -41,7 +41,7 @@ public sealed record class ApiResponseOfContact : JsonModel
     }
 
     /// <summary>
-    /// Metadata about the request and response
+    /// Request and response metadata
     /// </summary>
     public ApiMeta? Meta
     {

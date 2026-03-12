@@ -20,9 +20,6 @@ namespace Sentdm.Models.Profiles;
 public sealed record class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo
     : JsonModel
 {
-    /// <summary>
-    /// Brand relationship level with TCR (required for TCR)
-    /// </summary>
     public required ApiEnum<string, TcrBrandRelationship> BrandRelationship
     {
         get
@@ -35,9 +32,6 @@ public sealed record class SentDmServicesEndpointsCustomerApIv3ContractsRequests
         init { this._rawData.Set("brandRelationship", value); }
     }
 
-    /// <summary>
-    /// Business vertical/industry category (required for TCR)
-    /// </summary>
     public required ApiEnum<string, TcrVertical> Vertical
     {
         get

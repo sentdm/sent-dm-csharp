@@ -85,9 +85,8 @@ public record class ProfileUpdateParams : ParamsBase
     }
 
     /// <summary>
-    /// Billing contact for this profile. Required when billing_model is "profile"
-    /// or "profile_and_organization" and no billing contact has been configured yet.
-    /// Identifies who receives invoices and who is responsible for payment.
+    /// Billing contact information for a profile. Required when billing_model is
+    /// "profile" or "profile_and_organization".
     /// </summary>
     public BillingContactInfo? BillingContact
     {
@@ -117,9 +116,7 @@ public record class ProfileUpdateParams : ParamsBase
     }
 
     /// <summary>
-    /// Brand and KYC information for this profile (optional). When provided, creates
-    /// or updates the brand associated with this profile. Cannot be set when inherit_tcr_brand
-    /// is true. Once a brand has been submitted to TCR it cannot be modified.
+    /// Brand and KYC data grouped into contact, business, and compliance sections
     /// </summary>
     public BrandsBrandData? Brand
     {
@@ -223,9 +220,9 @@ public record class ProfileUpdateParams : ParamsBase
     }
 
     /// <summary>
-    /// Payment card details for this profile (optional). Accepted when billing_model
-    /// is "profile" or "profile_and_organization". Not persisted on our servers —
-    /// forwarded to the payment processor.
+    /// Payment card details for a profile. Accepted when billing_model is "profile"
+    /// or "profile_and_organization". These details are not stored on our servers
+    /// and will be forwarded to the payment processor.
     /// </summary>
     public PaymentDetails? PaymentDetails
     {

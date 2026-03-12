@@ -29,7 +29,7 @@ public sealed record class WebhookRotateSecretResponse : JsonModel
     }
 
     /// <summary>
-    /// Error details (null if successful)
+    /// Error information
     /// </summary>
     public ApiError? Error
     {
@@ -42,7 +42,7 @@ public sealed record class WebhookRotateSecretResponse : JsonModel
     }
 
     /// <summary>
-    /// Metadata about the request and response
+    /// Request and response metadata
     /// </summary>
     public ApiMeta? Meta
     {

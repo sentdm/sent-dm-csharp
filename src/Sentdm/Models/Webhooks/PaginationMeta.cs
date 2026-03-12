@@ -14,7 +14,7 @@ namespace Sentdm.Models.Webhooks;
 public sealed record class PaginationMeta : JsonModel
 {
     /// <summary>
-    /// Cursor-based pagination (optional)
+    /// Cursor-based pagination pointers
     /// </summary>
     public Cursors? Cursors
     {
@@ -178,7 +178,7 @@ class PaginationMetaFromRaw : IFromRawJson<PaginationMeta>
 }
 
 /// <summary>
-/// Cursor-based pagination (optional)
+/// Cursor-based pagination pointers
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Cursors, CursorsFromRaw>))]
 public sealed record class Cursors : JsonModel

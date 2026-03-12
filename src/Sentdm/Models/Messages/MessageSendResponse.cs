@@ -16,7 +16,7 @@ namespace Sentdm.Models.Messages;
 public sealed record class MessageSendResponse : JsonModel
 {
     /// <summary>
-    /// The response data (null if error)
+    /// Response for the multi-recipient send message endpoint
     /// </summary>
     public MessageSendResponseData? Data
     {
@@ -29,7 +29,7 @@ public sealed record class MessageSendResponse : JsonModel
     }
 
     /// <summary>
-    /// Error details (null if successful)
+    /// Error information
     /// </summary>
     public ApiError? Error
     {
@@ -42,7 +42,7 @@ public sealed record class MessageSendResponse : JsonModel
     }
 
     /// <summary>
-    /// Metadata about the request and response
+    /// Request and response metadata
     /// </summary>
     public ApiMeta? Meta
     {
@@ -130,7 +130,7 @@ class MessageSendResponseFromRaw : IFromRawJson<MessageSendResponse>
 }
 
 /// <summary>
-/// The response data (null if error)
+/// Response for the multi-recipient send message endpoint
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<MessageSendResponseData, MessageSendResponseDataFromRaw>))]
 public sealed record class MessageSendResponseData : JsonModel

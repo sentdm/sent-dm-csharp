@@ -22,7 +22,7 @@ namespace Sentdm.Models.Messages;
 public sealed record class MessageRetrieveActivitiesResponse : JsonModel
 {
     /// <summary>
-    /// The response data (null if error)
+    /// Response for GET /messages/{id}/activities
     /// </summary>
     public Data? Data
     {
@@ -35,7 +35,7 @@ public sealed record class MessageRetrieveActivitiesResponse : JsonModel
     }
 
     /// <summary>
-    /// Error details (null if successful)
+    /// Error information
     /// </summary>
     public Webhooks::ApiError? Error
     {
@@ -48,7 +48,7 @@ public sealed record class MessageRetrieveActivitiesResponse : JsonModel
     }
 
     /// <summary>
-    /// Metadata about the request and response
+    /// Request and response metadata
     /// </summary>
     public Webhooks::ApiMeta? Meta
     {
@@ -139,7 +139,7 @@ class MessageRetrieveActivitiesResponseFromRaw : IFromRawJson<MessageRetrieveAct
 }
 
 /// <summary>
-/// The response data (null if error)
+/// Response for GET /messages/{id}/activities
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Data, DataFromRaw>))]
 public sealed record class Data : JsonModel

@@ -73,7 +73,7 @@ public record class MessageSendParams : ParamsBase
     }
 
     /// <summary>
-    /// Template reference (by id or name, with optional parameters)
+    /// SDK-style template reference: resolve by ID or by name, with optional parameters.
     /// </summary>
     public Template? Template
     {
@@ -264,7 +264,7 @@ public record class MessageSendParams : ParamsBase
 }
 
 /// <summary>
-/// Template reference (by id or name, with optional parameters)
+/// SDK-style template reference: resolve by ID or by name, with optional parameters.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Template, TemplateFromRaw>))]
 public sealed record class Template : JsonModel

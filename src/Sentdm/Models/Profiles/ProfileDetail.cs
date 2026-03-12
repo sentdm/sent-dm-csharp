@@ -93,8 +93,7 @@ public sealed record class ProfileDetail : JsonModel
     }
 
     /// <summary>
-    /// Billing contact for this profile. Present when billing_model is "profile"
-    /// or "profile_and_organization".
+    /// Billing contact info returned in profile responses
     /// </summary>
     public BillingContact? BillingContact
     {
@@ -128,8 +127,8 @@ public sealed record class ProfileDetail : JsonModel
     }
 
     /// <summary>
-    /// Brand associated with this profile. Null if no brand has been configured
-    /// yet. Includes KYC information and TCR registration status.
+    /// Brand response with nested contact, business, and compliance sections — mirrors
+    /// the request structure.
     /// </summary>
     public Brand? Brand
     {
@@ -499,7 +498,7 @@ class ProfileDetailFromRaw : IFromRawJson<ProfileDetail>
 }
 
 /// <summary>
-/// Billing contact for this profile. Present when billing_model is "profile" or "profile_and_organization".
+/// Billing contact info returned in profile responses
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<BillingContact, BillingContactFromRaw>))]
 public sealed record class BillingContact : JsonModel
@@ -589,8 +588,8 @@ class BillingContactFromRaw : IFromRawJson<BillingContact>
 }
 
 /// <summary>
-/// Brand associated with this profile. Null if no brand has been configured yet.
-/// Includes KYC information and TCR registration status.
+/// Brand response with nested contact, business, and compliance sections — mirrors
+/// the request structure.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Brand, BrandFromRaw>))]
 public sealed record class Brand : JsonModel
@@ -689,9 +688,6 @@ public sealed record class Brand : JsonModel
         init { this._rawData.Set("csp_id", value); }
     }
 
-    /// <summary>
-    /// TCR brand identity verification status
-    /// </summary>
     public ApiEnum<string, IdentityStatus>? IdentityStatus
     {
         get
@@ -725,9 +721,6 @@ public sealed record class Brand : JsonModel
         }
     }
 
-    /// <summary>
-    /// TCR brand status
-    /// </summary>
     public ApiEnum<string, Status>? Status
     {
         get
@@ -1071,9 +1064,6 @@ class BusinessFromRaw : IFromRawJson<Business>
 [JsonConverter(typeof(JsonModelConverter<Compliance, ComplianceFromRaw>))]
 public sealed record class Compliance : JsonModel
 {
-    /// <summary>
-    /// Brand relationship level with TCR
-    /// </summary>
     public ApiEnum<string, TcrBrandRelationship>? BrandRelationship
     {
         get
@@ -1185,9 +1175,6 @@ public sealed record class Compliance : JsonModel
         init { this._rawData.Set("primary_use_case", value); }
     }
 
-    /// <summary>
-    /// Business vertical/industry category
-    /// </summary>
     public ApiEnum<string, TcrVertical>? Vertical
     {
         get
@@ -1387,9 +1374,6 @@ class ContactFromRaw : IFromRawJson<Contact>
         Contact.FromRawUnchecked(rawData);
 }
 
-/// <summary>
-/// TCR brand identity verification status
-/// </summary>
 [JsonConverter(typeof(IdentityStatusConverter))]
 public enum IdentityStatus
 {
@@ -1440,9 +1424,6 @@ sealed class IdentityStatusConverter : JsonConverter<IdentityStatus>
     }
 }
 
-/// <summary>
-/// TCR brand status
-/// </summary>
 [JsonConverter(typeof(StatusConverter))]
 public enum Status
 {
