@@ -16,7 +16,7 @@ namespace Sentdm.Models.Users;
 public sealed record class UserListResponse : JsonModel
 {
     /// <summary>
-    /// The response data (null if error)
+    /// List of users response
     /// </summary>
     public Data? Data
     {
@@ -29,7 +29,7 @@ public sealed record class UserListResponse : JsonModel
     }
 
     /// <summary>
-    /// Error details (null if successful)
+    /// Error information
     /// </summary>
     public Webhooks::ApiError? Error
     {
@@ -42,7 +42,7 @@ public sealed record class UserListResponse : JsonModel
     }
 
     /// <summary>
-    /// Metadata about the request and response
+    /// Request and response metadata
     /// </summary>
     public Webhooks::ApiMeta? Meta
     {
@@ -130,7 +130,7 @@ class UserListResponseFromRaw : IFromRawJson<UserListResponse>
 }
 
 /// <summary>
-/// The response data (null if error)
+/// List of users response
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Data, DataFromRaw>))]
 public sealed record class Data : JsonModel

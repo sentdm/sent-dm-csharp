@@ -28,7 +28,7 @@ public sealed record class NumberLookupResponse : JsonModel
     }
 
     /// <summary>
-    /// Error details (null if successful)
+    /// Error information
     /// </summary>
     public Webhooks::ApiError? Error
     {
@@ -41,7 +41,7 @@ public sealed record class NumberLookupResponse : JsonModel
     }
 
     /// <summary>
-    /// Metadata about the request and response
+    /// Request and response metadata
     /// </summary>
     public Webhooks::ApiMeta? Meta
     {

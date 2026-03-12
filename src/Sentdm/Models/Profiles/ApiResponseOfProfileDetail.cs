@@ -17,7 +17,7 @@ namespace Sentdm.Models.Profiles;
 public sealed record class ApiResponseOfProfileDetail : JsonModel
 {
     /// <summary>
-    /// The response data (null if error)
+    /// Detailed profile response for v3 API
     /// </summary>
     public ProfileDetail? Data
     {
@@ -30,7 +30,7 @@ public sealed record class ApiResponseOfProfileDetail : JsonModel
     }
 
     /// <summary>
-    /// Error details (null if successful)
+    /// Error information
     /// </summary>
     public ApiError? Error
     {
@@ -43,7 +43,7 @@ public sealed record class ApiResponseOfProfileDetail : JsonModel
     }
 
     /// <summary>
-    /// Metadata about the request and response
+    /// Request and response metadata
     /// </summary>
     public ApiMeta? Meta
     {

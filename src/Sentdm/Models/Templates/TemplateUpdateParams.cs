@@ -41,7 +41,8 @@ public record class TemplateUpdateParams : ParamsBase
     }
 
     /// <summary>
-    /// Template definition including header, body, footer, and buttons
+    /// Complete definition of a message template including header, body, footer,
+    /// and buttons
     /// </summary>
     public TemplateDefinition? Definition
     {

@@ -15,7 +15,7 @@ namespace Sentdm.Models.Templates;
 public sealed record class ApiResponseTemplate : JsonModel
 {
     /// <summary>
-    /// The response data (null if error)
+    /// Template response for v3 API
     /// </summary>
     public Template? Data
     {
@@ -28,7 +28,7 @@ public sealed record class ApiResponseTemplate : JsonModel
     }
 
     /// <summary>
-    /// Error details (null if successful)
+    /// Error information
     /// </summary>
     public ApiError? Error
     {
@@ -41,7 +41,7 @@ public sealed record class ApiResponseTemplate : JsonModel
     }
 
     /// <summary>
-    /// Metadata about the request and response
+    /// Request and response metadata
     /// </summary>
     public ApiMeta? Meta
     {

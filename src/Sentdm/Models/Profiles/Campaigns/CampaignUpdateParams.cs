@@ -30,7 +30,7 @@ public record class CampaignUpdateParams : ParamsBase
     public string? CampaignID { get; init; }
 
     /// <summary>
-    /// Campaign data
+    /// Campaign data for create or update operation
     /// </summary>
     public required CampaignData Campaign
     {
