@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.12.1 (2026-03-12)
+
+Full Changelog: [v0.12.0...v0.12.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.12.0...v0.12.1)
+
+### Chores
+
+* **client:** update formatting ([236e8cc](https://github.com/sentdm/sent-dm-csharp/commit/236e8cc96b98c2822f530799bffa4cf2f4295e5d))
+
 ## 0.12.0 (2026-03-12)
 
 Full Changelog: [v0.11.0...v0.12.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.11.0...v0.12.0)
