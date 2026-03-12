@@ -34,12 +34,12 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public Webhooks::ApiError? Error
+    public Webhooks::ErrorDetail? Error
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ApiError>("error");
+            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>("error");
         }
         init { this._rawData.Set("error", value); }
     }

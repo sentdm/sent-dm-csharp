@@ -31,7 +31,7 @@ public class WebhookTestResponseTest : TestBase
         };
 
         WebhookTestResponseData expectedData = new() { Message = "message", Success = true };
-        ApiError expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
@@ -113,7 +113,7 @@ public class WebhookTestResponseTest : TestBase
         Assert.NotNull(deserialized);
 
         WebhookTestResponseData expectedData = new() { Message = "message", Success = true };
-        ApiError expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
