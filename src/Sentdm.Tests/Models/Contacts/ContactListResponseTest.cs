@@ -94,7 +94,7 @@ public class ContactListResponseTest : TestBase
                 TotalPages = 0,
             },
         };
-        Webhooks::ApiError expectedError = new()
+        Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
@@ -269,7 +269,7 @@ public class ContactListResponseTest : TestBase
                 TotalPages = 0,
             },
         };
-        Webhooks::ApiError expectedError = new()
+        Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },

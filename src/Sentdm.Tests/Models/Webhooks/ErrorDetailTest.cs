@@ -5,12 +5,12 @@ using Sentdm.Models.Webhooks;
 
 namespace Sentdm.Tests.Models.Webhooks;
 
-public class ApiErrorTest : TestBase
+public class ErrorDetailTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new ApiError
+        var model = new ErrorDetail
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
@@ -43,7 +43,7 @@ public class ApiErrorTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new ApiError
+        var model = new ErrorDetail
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
@@ -52,7 +52,10 @@ public class ApiErrorTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiError>(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ErrorDetail>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -60,7 +63,7 @@ public class ApiErrorTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new ApiError
+        var model = new ErrorDetail
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
@@ -69,7 +72,7 @@ public class ApiErrorTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiError>(
+        var deserialized = JsonSerializer.Deserialize<ErrorDetail>(
             element,
             ModelBase.SerializerOptions
         );
@@ -100,7 +103,7 @@ public class ApiErrorTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new ApiError
+        var model = new ErrorDetail
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
@@ -114,7 +117,7 @@ public class ApiErrorTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new ApiError
+        var model = new ErrorDetail
         {
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
@@ -129,7 +132,7 @@ public class ApiErrorTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new ApiError
+        var model = new ErrorDetail
         {
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
@@ -141,7 +144,7 @@ public class ApiErrorTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new ApiError
+        var model = new ErrorDetail
         {
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
@@ -160,7 +163,7 @@ public class ApiErrorTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new ApiError
+        var model = new ErrorDetail
         {
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
@@ -176,7 +179,7 @@ public class ApiErrorTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new ApiError { Code = "code", Message = "message" };
+        var model = new ErrorDetail { Code = "code", Message = "message" };
 
         Assert.Null(model.Details);
         Assert.False(model.RawData.ContainsKey("details"));
@@ -187,7 +190,7 @@ public class ApiErrorTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new ApiError { Code = "code", Message = "message" };
+        var model = new ErrorDetail { Code = "code", Message = "message" };
 
         model.Validate();
     }
@@ -195,7 +198,7 @@ public class ApiErrorTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new ApiError
+        var model = new ErrorDetail
         {
             Code = "code",
             Message = "message",
@@ -213,7 +216,7 @@ public class ApiErrorTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new ApiError
+        var model = new ErrorDetail
         {
             Code = "code",
             Message = "message",
@@ -228,7 +231,7 @@ public class ApiErrorTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new ApiError
+        var model = new ErrorDetail
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
@@ -236,7 +239,7 @@ public class ApiErrorTest : TestBase
             Message = "message",
         };
 
-        ApiError copied = new(model);
+        ErrorDetail copied = new(model);
 
         Assert.Equal(model, copied);
     }

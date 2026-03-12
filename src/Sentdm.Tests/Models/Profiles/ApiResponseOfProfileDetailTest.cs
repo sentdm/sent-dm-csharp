@@ -192,7 +192,7 @@ public class ApiResponseOfProfileDetailTest : TestBase
             WabaID = "waba_id",
             WhatsappPhoneNumber = "whatsapp_phone_number",
         };
-        ApiError expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
@@ -514,7 +514,7 @@ public class ApiResponseOfProfileDetailTest : TestBase
             WabaID = "waba_id",
             WhatsappPhoneNumber = "whatsapp_phone_number",
         };
-        ApiError expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },

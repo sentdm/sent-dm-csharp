@@ -11,8 +11,8 @@ namespace Sentdm.Models.Webhooks;
 /// <summary>
 /// Error information
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<ApiError, ApiErrorFromRaw>))]
-public sealed record class ApiError : JsonModel
+[JsonConverter(typeof(JsonModelConverter<ErrorDetail, ErrorDetailFromRaw>))]
+public sealed record class ErrorDetail : JsonModel
 {
     /// <summary>
     /// Machine-readable error code (e.g., "RESOURCE_001")
@@ -115,37 +115,37 @@ public sealed record class ApiError : JsonModel
         _ = this.Message;
     }
 
-    public ApiError() { }
+    public ErrorDetail() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ApiError(ApiError apiError)
-        : base(apiError) { }
+    public ErrorDetail(ErrorDetail errorDetail)
+        : base(errorDetail) { }
 #pragma warning restore CS8618
 
-    public ApiError(IReadOnlyDictionary<string, JsonElement> rawData)
+    public ErrorDetail(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ApiError(FrozenDictionary<string, JsonElement> rawData)
+    ErrorDetail(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="ApiErrorFromRaw.FromRawUnchecked"/>
-    public static ApiError FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="ErrorDetailFromRaw.FromRawUnchecked"/>
+    public static ErrorDetail FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class ApiErrorFromRaw : IFromRawJson<ApiError>
+class ErrorDetailFromRaw : IFromRawJson<ErrorDetail>
 {
     /// <inheritdoc/>
-    public ApiError FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        ApiError.FromRawUnchecked(rawData);
+    public ErrorDetail FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        ErrorDetail.FromRawUnchecked(rawData);
 }

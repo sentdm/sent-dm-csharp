@@ -31,7 +31,7 @@ public class WebhookRotateSecretResponseTest : TestBase
         };
 
         WebhookRotateSecretResponseData expectedData = new() { SigningSecret = "signing_secret" };
-        ApiError expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
@@ -113,7 +113,7 @@ public class WebhookRotateSecretResponseTest : TestBase
         Assert.NotNull(deserialized);
 
         WebhookRotateSecretResponseData expectedData = new() { SigningSecret = "signing_secret" };
-        ApiError expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
