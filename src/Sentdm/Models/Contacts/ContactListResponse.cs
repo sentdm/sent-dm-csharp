@@ -16,7 +16,7 @@ namespace Sentdm.Models.Contacts;
 public sealed record class ContactListResponse : JsonModel
 {
     /// <summary>
-    /// The response data (null if error)
+    /// Paginated list of contacts response
     /// </summary>
     public Data? Data
     {
@@ -29,7 +29,7 @@ public sealed record class ContactListResponse : JsonModel
     }
 
     /// <summary>
-    /// Error details (null if successful)
+    /// Error information
     /// </summary>
     public Webhooks::ApiError? Error
     {
@@ -42,7 +42,7 @@ public sealed record class ContactListResponse : JsonModel
     }
 
     /// <summary>
-    /// Metadata about the request and response
+    /// Request and response metadata
     /// </summary>
     public Webhooks::ApiMeta? Meta
     {
@@ -130,7 +130,7 @@ class ContactListResponseFromRaw : IFromRawJson<ContactListResponse>
 }
 
 /// <summary>
-/// The response data (null if error)
+/// Paginated list of contacts response
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Data, DataFromRaw>))]
 public sealed record class Data : JsonModel
@@ -160,7 +160,7 @@ public sealed record class Data : JsonModel
     }
 
     /// <summary>
-    /// Pagination metadata
+    /// Pagination metadata for list responses
     /// </summary>
     public Webhooks::PaginationMeta? Pagination
     {

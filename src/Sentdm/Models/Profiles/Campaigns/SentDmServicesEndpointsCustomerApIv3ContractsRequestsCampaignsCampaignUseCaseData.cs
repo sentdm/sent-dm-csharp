@@ -20,9 +20,6 @@ namespace Sentdm.Models.Profiles.Campaigns;
 public sealed record class SentDmServicesEndpointsCustomerApIv3ContractsRequestsCampaignsCampaignUseCaseData
     : JsonModel
 {
-    /// <summary>
-    /// US messaging use case category
-    /// </summary>
     public required ApiEnum<string, MessagingUseCaseUs> MessagingUseCaseUs
     {
         get

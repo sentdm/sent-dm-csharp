@@ -16,7 +16,7 @@ namespace Sentdm.Models.Templates;
 public sealed record class TemplateListResponse : JsonModel
 {
     /// <summary>
-    /// The response data (null if error)
+    /// Paginated list of templates
     /// </summary>
     public Data? Data
     {
@@ -29,7 +29,7 @@ public sealed record class TemplateListResponse : JsonModel
     }
 
     /// <summary>
-    /// Error details (null if successful)
+    /// Error information
     /// </summary>
     public Webhooks::ApiError? Error
     {
@@ -42,7 +42,7 @@ public sealed record class TemplateListResponse : JsonModel
     }
 
     /// <summary>
-    /// Metadata about the request and response
+    /// Request and response metadata
     /// </summary>
     public Webhooks::ApiMeta? Meta
     {
@@ -131,13 +131,13 @@ class TemplateListResponseFromRaw : IFromRawJson<TemplateListResponse>
 }
 
 /// <summary>
-/// The response data (null if error)
+/// Paginated list of templates
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Data, DataFromRaw>))]
 public sealed record class Data : JsonModel
 {
     /// <summary>
-    /// Pagination metadata
+    /// Pagination metadata for list responses
     /// </summary>
     public Webhooks::PaginationMeta? Pagination
     {

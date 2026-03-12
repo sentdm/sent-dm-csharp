@@ -17,7 +17,9 @@ namespace Sentdm.Models.Me;
 public sealed record class MeRetrieveResponse : JsonModel
 {
     /// <summary>
-    /// The response data (null if error)
+    /// Account response for GET /v3/me endpoint. Returns organization (with profiles),
+    /// user (standalone), or profile (child of an organization) data depending on
+    /// the API key type. Always includes messaging channel configuration.
     /// </summary>
     public Data? Data
     {
@@ -30,7 +32,7 @@ public sealed record class MeRetrieveResponse : JsonModel
     }
 
     /// <summary>
-    /// Error details (null if successful)
+    /// Error information
     /// </summary>
     public Webhooks::ApiError? Error
     {
@@ -43,7 +45,7 @@ public sealed record class MeRetrieveResponse : JsonModel
     }
 
     /// <summary>
-    /// Metadata about the request and response
+    /// Request and response metadata
     /// </summary>
     public Webhooks::ApiMeta? Meta
     {
@@ -131,7 +133,9 @@ class MeRetrieveResponseFromRaw : IFromRawJson<MeRetrieveResponse>
 }
 
 /// <summary>
-/// The response data (null if error)
+/// Account response for GET /v3/me endpoint. Returns organization (with profiles),
+/// user (standalone), or profile (child of an organization) data depending on the
+/// API key type. Always includes messaging channel configuration.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Data, DataFromRaw>))]
 public sealed record class Data : JsonModel
@@ -158,7 +162,8 @@ public sealed record class Data : JsonModel
     }
 
     /// <summary>
-    /// Messaging channel configuration
+    /// Messaging channel configuration. All three channels are always present. Each
+    /// channel has a "configured" flag; configured channels expose additional details.
     /// </summary>
     public Channels? Channels
     {
@@ -297,7 +302,7 @@ public sealed record class Data : JsonModel
     }
 
     /// <summary>
-    /// Profile settings (only for profile type)
+    /// Profile configuration settings
     /// </summary>
     public ProfileSettings? Settings
     {
@@ -414,13 +419,14 @@ class DataFromRaw : IFromRawJson<Data>
 }
 
 /// <summary>
-/// Messaging channel configuration
+/// Messaging channel configuration. All three channels are always present. Each
+/// channel has a "configured" flag; configured channels expose additional details.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Channels, ChannelsFromRaw>))]
 public sealed record class Channels : JsonModel
 {
     /// <summary>
-    /// RCS channel (provider: vibes)
+    /// RCS channel configuration. When configured, includes the RCS phone number.
     /// </summary>
     public Rcs? Rcs
     {
@@ -441,7 +447,7 @@ public sealed record class Channels : JsonModel
     }
 
     /// <summary>
-    /// SMS channel (providers: telnyx, sinch)
+    /// SMS channel configuration. When configured, includes the sending phone number.
     /// </summary>
     public Sms? Sms
     {
@@ -462,7 +468,8 @@ public sealed record class Channels : JsonModel
     }
 
     /// <summary>
-    /// WhatsApp Business channel (provider: meta)
+    /// WhatsApp Business channel configuration. When configured, includes the WhatsApp
+    /// phone number and business name.
     /// </summary>
     public Whatsapp? Whatsapp
     {
@@ -526,7 +533,7 @@ class ChannelsFromRaw : IFromRawJson<Channels>
 }
 
 /// <summary>
-/// RCS channel (provider: vibes)
+/// RCS channel configuration. When configured, includes the RCS phone number.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Rcs, RcsFromRaw>))]
 public sealed record class Rcs : JsonModel
@@ -608,7 +615,7 @@ class RcsFromRaw : IFromRawJson<Rcs>
 }
 
 /// <summary>
-/// SMS channel (providers: telnyx, sinch)
+/// SMS channel configuration. When configured, includes the sending phone number.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Sms, SmsFromRaw>))]
 public sealed record class Sms : JsonModel
@@ -690,7 +697,8 @@ class SmsFromRaw : IFromRawJson<Sms>
 }
 
 /// <summary>
-/// WhatsApp Business channel (provider: meta)
+/// WhatsApp Business channel configuration. When configured, includes the WhatsApp
+/// phone number and business name.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Whatsapp, WhatsappFromRaw>))]
 public sealed record class Whatsapp : JsonModel

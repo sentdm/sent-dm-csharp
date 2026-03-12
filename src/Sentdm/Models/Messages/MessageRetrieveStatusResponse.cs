@@ -19,7 +19,7 @@ namespace Sentdm.Models.Messages;
 public sealed record class MessageRetrieveStatusResponse : JsonModel
 {
     /// <summary>
-    /// The response data (null if error)
+    /// Message response for v3 API — same shape as v2 with snake_case JSON conventions
     /// </summary>
     public MessageRetrieveStatusResponseData? Data
     {
@@ -32,7 +32,7 @@ public sealed record class MessageRetrieveStatusResponse : JsonModel
     }
 
     /// <summary>
-    /// Error details (null if successful)
+    /// Error information
     /// </summary>
     public ApiError? Error
     {
@@ -45,7 +45,7 @@ public sealed record class MessageRetrieveStatusResponse : JsonModel
     }
 
     /// <summary>
-    /// Metadata about the request and response
+    /// Request and response metadata
     /// </summary>
     public ApiMeta? Meta
     {
@@ -136,7 +136,7 @@ class MessageRetrieveStatusResponseFromRaw : IFromRawJson<MessageRetrieveStatusR
 }
 
 /// <summary>
-/// The response data (null if error)
+/// Message response for v3 API — same shape as v2 with snake_case JSON conventions
 /// </summary>
 [JsonConverter(
     typeof(JsonModelConverter<

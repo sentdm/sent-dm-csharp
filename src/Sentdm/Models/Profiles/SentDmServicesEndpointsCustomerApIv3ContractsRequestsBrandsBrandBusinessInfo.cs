@@ -60,9 +60,6 @@ public sealed record class SentDmServicesEndpointsCustomerApIv3ContractsRequests
         init { this._rawData.Set("countryOfRegistration", value); }
     }
 
-    /// <summary>
-    /// Business entity type
-    /// </summary>
     public ApiEnum<string, EntityType>? EntityType
     {
         get
@@ -228,9 +225,6 @@ class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessIn
         );
 }
 
-/// <summary>
-/// Business entity type
-/// </summary>
 [JsonConverter(typeof(EntityTypeConverter))]
 public enum EntityType
 {

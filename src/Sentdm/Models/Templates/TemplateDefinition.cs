@@ -15,8 +15,7 @@ namespace Sentdm.Models.Templates;
 public sealed record class TemplateDefinition : JsonModel
 {
     /// <summary>
-    /// Required template body with content for different channels (multi-channel,
-    /// SMS-specific, or WhatsApp-specific)
+    /// Body section of a message template with channel-specific content
     /// </summary>
     public required SentDmServicesCommonContractsPocOsTemplateBody Body
     {
@@ -31,7 +30,7 @@ public sealed record class TemplateDefinition : JsonModel
     }
 
     /// <summary>
-    /// Configuration specific to AUTHENTICATION category templates (optional)
+    /// Configuration for AUTHENTICATION category templates
     /// </summary>
     public SentDmServicesCommonContractsPocOsAuthenticationConfig? AuthenticationConfig
     {
@@ -80,7 +79,7 @@ public sealed record class TemplateDefinition : JsonModel
     }
 
     /// <summary>
-    /// Optional template footer with optional variables
+    /// Footer section of a message template
     /// </summary>
     public SentDmServicesCommonContractsPocOsTemplateFooter? Footer
     {
@@ -95,7 +94,7 @@ public sealed record class TemplateDefinition : JsonModel
     }
 
     /// <summary>
-    /// Optional template header with optional variables
+    /// Header section of a message template
     /// </summary>
     public SentDmServicesCommonContractsPocOsTemplateHeader? Header
     {

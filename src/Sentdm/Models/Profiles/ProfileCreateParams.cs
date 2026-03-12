@@ -102,9 +102,8 @@ public record class ProfileCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Billing contact for this profile. Required when billing_model is "profile"
-    /// or "profile_and_organization". Identifies who receives invoices and who is
-    /// responsible for payment.
+    /// Billing contact information for a profile. Required when billing_model is
+    /// "profile" or "profile_and_organization".
     /// </summary>
     public BillingContactInfo? BillingContact
     {
@@ -134,9 +133,7 @@ public record class ProfileCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Brand and KYC information for this profile (optional). When provided, creates
-    /// the brand associated with this profile. Cannot be set when inherit_tcr_brand
-    /// is true.
+    /// Brand and KYC data grouped into contact, business, and compliance sections
     /// </summary>
     public BrandsBrandData? Brand
     {
@@ -248,9 +245,9 @@ public record class ProfileCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Payment card details for this profile (optional). Accepted when billing_model
-    /// is "profile" or "profile_and_organization". Not persisted on our servers —
-    /// forwarded to the payment processor.
+    /// Payment card details for a profile. Accepted when billing_model is "profile"
+    /// or "profile_and_organization". These details are not stored on our servers
+    /// and will be forwarded to the payment processor.
     /// </summary>
     public PaymentDetails? PaymentDetails
     {
@@ -300,10 +297,10 @@ public record class ProfileCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Direct WhatsApp Business Account credentials for this profile. When provided,
-    /// the profile uses its own WhatsApp Business Account instead of inheriting from
-    /// the organization. When omitted, the profile inherits the organization's WhatsApp
-    /// Business Account (requires the organization to have completed WhatsApp Embedded Signup).
+    /// Direct WhatsApp Business Account credentials for a profile. Use this when
+    /// the profile should have its own WhatsApp Business Account instead of inheriting
+    /// from the organization. Credentials must be obtained from Meta Business Manager
+    /// by creating a System User with whatsapp_business_messaging and whatsapp_business_management scopes.
     /// </summary>
     public WhatsappBusinessAccount? WhatsappBusinessAccount
     {
@@ -464,10 +461,10 @@ public record class ProfileCreateParams : ParamsBase
 }
 
 /// <summary>
-/// Direct WhatsApp Business Account credentials for this profile. When provided,
-/// the profile uses its own WhatsApp Business Account instead of inheriting from
-/// the organization. When omitted, the profile inherits the organization's WhatsApp
-/// Business Account (requires the organization to have completed WhatsApp Embedded Signup).
+/// Direct WhatsApp Business Account credentials for a profile. Use this when the
+/// profile should have its own WhatsApp Business Account instead of inheriting from
+/// the organization. Credentials must be obtained from Meta Business Manager by creating
+/// a System User with whatsapp_business_messaging and whatsapp_business_management scopes.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<WhatsappBusinessAccount, WhatsappBusinessAccountFromRaw>))]
 public sealed record class WhatsappBusinessAccount : JsonModel

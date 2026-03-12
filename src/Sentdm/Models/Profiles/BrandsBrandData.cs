@@ -14,7 +14,7 @@ namespace Sentdm.Models.Profiles;
 public sealed record class BrandsBrandData : JsonModel
 {
     /// <summary>
-    /// Compliance and TCR-related information
+    /// Compliance and TCR information for brand registration
     /// </summary>
     public required SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo Compliance
     {
@@ -29,7 +29,7 @@ public sealed record class BrandsBrandData : JsonModel
     }
 
     /// <summary>
-    /// Contact information for the brand
+    /// Contact information for brand KYC
     /// </summary>
     public required SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo Contact
     {
@@ -44,7 +44,7 @@ public sealed record class BrandsBrandData : JsonModel
     }
 
     /// <summary>
-    /// Business details and address information
+    /// Business details and address for brand KYC
     /// </summary>
     public SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo? Business
     {

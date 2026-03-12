@@ -28,7 +28,7 @@ public record class CampaignCreateParams : ParamsBase
     public string? ProfileID { get; init; }
 
     /// <summary>
-    /// Campaign data
+    /// Campaign data for create or update operation
     /// </summary>
     public required CampaignData Campaign
     {
