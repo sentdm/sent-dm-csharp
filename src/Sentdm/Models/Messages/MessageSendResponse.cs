@@ -136,19 +136,6 @@ class MessageSendResponseFromRaw : IFromRawJson<MessageSendResponse>
 public sealed record class MessageSendResponseData : JsonModel
 {
     /// <summary>
-    /// Resolved template body text
-    /// </summary>
-    public string? Body
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("body");
-        }
-        init { this._rawData.Set("body", value); }
-    }
-
-    /// <summary>
     /// Per-recipient message results
     /// </summary>
     public IReadOnlyList<Recipient>? Recipients
@@ -238,7 +225,6 @@ public sealed record class MessageSendResponseData : JsonModel
     /// <inheritdoc/>
     public override void Validate()
     {
-        _ = this.Body;
         foreach (var item in this.Recipients ?? [])
         {
             item.Validate();
@@ -292,6 +278,19 @@ class MessageSendResponseDataFromRaw : IFromRawJson<MessageSendResponseData>
 [JsonConverter(typeof(JsonModelConverter<Recipient, RecipientFromRaw>))]
 public sealed record class Recipient : JsonModel
 {
+    /// <summary>
+    /// Resolved template body text for this recipient's channel, or null for auto-detect
+    /// </summary>
+    public string? Body
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("body");
+        }
+        init { this._rawData.Set("body", value); }
+    }
+
     /// <summary>
     /// Channel this message will be sent on (e.g. "sms", "whatsapp"), or null for auto-detect
     /// </summary>
@@ -350,6 +349,7 @@ public sealed record class Recipient : JsonModel
     /// <inheritdoc/>
     public override void Validate()
     {
+        _ = this.Body;
         _ = this.Channel;
         _ = this.MessageID;
         _ = this.To;
