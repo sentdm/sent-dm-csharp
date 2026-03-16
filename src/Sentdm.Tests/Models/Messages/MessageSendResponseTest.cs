@@ -16,11 +16,11 @@ public class MessageSendResponseTest : TestBase
         {
             Data = new()
             {
-                Body = "body",
                 Recipients =
                 [
                     new()
                     {
+                        Body = "body",
                         Channel = "channel",
                         MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         To = "to",
@@ -48,11 +48,11 @@ public class MessageSendResponseTest : TestBase
 
         MessageSendResponseData expectedData = new()
         {
-            Body = "body",
             Recipients =
             [
                 new()
                 {
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     To = "to",
@@ -90,11 +90,11 @@ public class MessageSendResponseTest : TestBase
         {
             Data = new()
             {
-                Body = "body",
                 Recipients =
                 [
                     new()
                     {
+                        Body = "body",
                         Channel = "channel",
                         MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         To = "to",
@@ -136,11 +136,11 @@ public class MessageSendResponseTest : TestBase
         {
             Data = new()
             {
-                Body = "body",
                 Recipients =
                 [
                     new()
                     {
+                        Body = "body",
                         Channel = "channel",
                         MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         To = "to",
@@ -175,11 +175,11 @@ public class MessageSendResponseTest : TestBase
 
         MessageSendResponseData expectedData = new()
         {
-            Body = "body",
             Recipients =
             [
                 new()
                 {
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     To = "to",
@@ -217,11 +217,11 @@ public class MessageSendResponseTest : TestBase
         {
             Data = new()
             {
-                Body = "body",
                 Recipients =
                 [
                     new()
                     {
+                        Body = "body",
                         Channel = "channel",
                         MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         To = "to",
@@ -257,11 +257,11 @@ public class MessageSendResponseTest : TestBase
         {
             Data = new()
             {
-                Body = "body",
                 Recipients =
                 [
                     new()
                     {
+                        Body = "body",
                         Channel = "channel",
                         MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         To = "to",
@@ -293,11 +293,11 @@ public class MessageSendResponseTest : TestBase
         {
             Data = new()
             {
-                Body = "body",
                 Recipients =
                 [
                     new()
                     {
+                        Body = "body",
                         Channel = "channel",
                         MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         To = "to",
@@ -326,11 +326,11 @@ public class MessageSendResponseTest : TestBase
         {
             Data = new()
             {
-                Body = "body",
                 Recipients =
                 [
                     new()
                     {
+                        Body = "body",
                         Channel = "channel",
                         MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         To = "to",
@@ -366,11 +366,11 @@ public class MessageSendResponseTest : TestBase
         {
             Data = new()
             {
-                Body = "body",
                 Recipients =
                 [
                     new()
                     {
+                        Body = "body",
                         Channel = "channel",
                         MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         To = "to",
@@ -483,11 +483,11 @@ public class MessageSendResponseTest : TestBase
         {
             Data = new()
             {
-                Body = "body",
                 Recipients =
                 [
                     new()
                     {
+                        Body = "body",
                         Channel = "channel",
                         MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         To = "to",
@@ -526,11 +526,11 @@ public class MessageSendResponseDataTest : TestBase
     {
         var model = new MessageSendResponseData
         {
-            Body = "body",
             Recipients =
             [
                 new()
                 {
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     To = "to",
@@ -541,11 +541,11 @@ public class MessageSendResponseDataTest : TestBase
             TemplateName = "template_name",
         };
 
-        string expectedBody = "body";
         List<Recipient> expectedRecipients =
         [
             new()
             {
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 To = "to",
@@ -555,7 +555,6 @@ public class MessageSendResponseDataTest : TestBase
         string expectedTemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedTemplateName = "template_name";
 
-        Assert.Equal(expectedBody, model.Body);
         Assert.NotNull(model.Recipients);
         Assert.Equal(expectedRecipients.Count, model.Recipients.Count);
         for (int i = 0; i < expectedRecipients.Count; i++)
@@ -572,11 +571,11 @@ public class MessageSendResponseDataTest : TestBase
     {
         var model = new MessageSendResponseData
         {
-            Body = "body",
             Recipients =
             [
                 new()
                 {
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     To = "to",
@@ -601,11 +600,11 @@ public class MessageSendResponseDataTest : TestBase
     {
         var model = new MessageSendResponseData
         {
-            Body = "body",
             Recipients =
             [
                 new()
                 {
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     To = "to",
@@ -623,11 +622,11 @@ public class MessageSendResponseDataTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        string expectedBody = "body";
         List<Recipient> expectedRecipients =
         [
             new()
             {
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 To = "to",
@@ -637,7 +636,6 @@ public class MessageSendResponseDataTest : TestBase
         string expectedTemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedTemplateName = "template_name";
 
-        Assert.Equal(expectedBody, deserialized.Body);
         Assert.NotNull(deserialized.Recipients);
         Assert.Equal(expectedRecipients.Count, deserialized.Recipients.Count);
         for (int i = 0; i < expectedRecipients.Count; i++)
@@ -654,11 +652,11 @@ public class MessageSendResponseDataTest : TestBase
     {
         var model = new MessageSendResponseData
         {
-            Body = "body",
             Recipients =
             [
                 new()
                 {
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     To = "to",
@@ -675,7 +673,7 @@ public class MessageSendResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new MessageSendResponseData { Body = "body" };
+        var model = new MessageSendResponseData { };
 
         Assert.Null(model.Recipients);
         Assert.False(model.RawData.ContainsKey("recipients"));
@@ -690,7 +688,7 @@ public class MessageSendResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new MessageSendResponseData { Body = "body" };
+        var model = new MessageSendResponseData { };
 
         model.Validate();
     }
@@ -700,8 +698,6 @@ public class MessageSendResponseDataTest : TestBase
     {
         var model = new MessageSendResponseData
         {
-            Body = "body",
-
             // Null should be interpreted as omitted for these properties
             Recipients = null,
             Status = null,
@@ -724,8 +720,6 @@ public class MessageSendResponseDataTest : TestBase
     {
         var model = new MessageSendResponseData
         {
-            Body = "body",
-
             // Null should be interpreted as omitted for these properties
             Recipients = null,
             Status = null,
@@ -737,109 +731,15 @@ public class MessageSendResponseDataTest : TestBase
     }
 
     [Fact]
-    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
-    {
-        var model = new MessageSendResponseData
-        {
-            Recipients =
-            [
-                new()
-                {
-                    Channel = "channel",
-                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    To = "to",
-                },
-            ],
-            Status = "status",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
-        };
-
-        Assert.Null(model.Body);
-        Assert.False(model.RawData.ContainsKey("body"));
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesUnsetValidation_Works()
-    {
-        var model = new MessageSendResponseData
-        {
-            Recipients =
-            [
-                new()
-                {
-                    Channel = "channel",
-                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    To = "to",
-                },
-            ],
-            Status = "status",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
-    {
-        var model = new MessageSendResponseData
-        {
-            Recipients =
-            [
-                new()
-                {
-                    Channel = "channel",
-                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    To = "to",
-                },
-            ],
-            Status = "status",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
-
-            Body = null,
-        };
-
-        Assert.Null(model.Body);
-        Assert.True(model.RawData.ContainsKey("body"));
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesSetToNullValidation_Works()
-    {
-        var model = new MessageSendResponseData
-        {
-            Recipients =
-            [
-                new()
-                {
-                    Channel = "channel",
-                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    To = "to",
-                },
-            ],
-            Status = "status",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
-
-            Body = null,
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
     public void CopyConstructor_Works()
     {
         var model = new MessageSendResponseData
         {
-            Body = "body",
             Recipients =
             [
                 new()
                 {
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     To = "to",
@@ -863,15 +763,18 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
+            Body = "body",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             To = "to",
         };
 
+        string expectedBody = "body";
         string expectedChannel = "channel";
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedTo = "to";
 
+        Assert.Equal(expectedBody, model.Body);
         Assert.Equal(expectedChannel, model.Channel);
         Assert.Equal(expectedMessageID, model.MessageID);
         Assert.Equal(expectedTo, model.To);
@@ -882,6 +785,7 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
+            Body = "body",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             To = "to",
@@ -898,6 +802,7 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
+            Body = "body",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             To = "to",
@@ -910,10 +815,12 @@ public class RecipientTest : TestBase
         );
         Assert.NotNull(deserialized);
 
+        string expectedBody = "body";
         string expectedChannel = "channel";
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedTo = "to";
 
+        Assert.Equal(expectedBody, deserialized.Body);
         Assert.Equal(expectedChannel, deserialized.Channel);
         Assert.Equal(expectedMessageID, deserialized.MessageID);
         Assert.Equal(expectedTo, deserialized.To);
@@ -924,6 +831,7 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
+            Body = "body",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             To = "to",
@@ -935,7 +843,7 @@ public class RecipientTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Recipient { Channel = "channel" };
+        var model = new Recipient { Body = "body", Channel = "channel" };
 
         Assert.Null(model.MessageID);
         Assert.False(model.RawData.ContainsKey("message_id"));
@@ -946,7 +854,7 @@ public class RecipientTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Recipient { Channel = "channel" };
+        var model = new Recipient { Body = "body", Channel = "channel" };
 
         model.Validate();
     }
@@ -956,6 +864,7 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
+            Body = "body",
             Channel = "channel",
 
             // Null should be interpreted as omitted for these properties
@@ -974,6 +883,7 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
+            Body = "body",
             Channel = "channel",
 
             // Null should be interpreted as omitted for these properties
@@ -989,6 +899,8 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient { MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", To = "to" };
 
+        Assert.Null(model.Body);
+        Assert.False(model.RawData.ContainsKey("body"));
         Assert.Null(model.Channel);
         Assert.False(model.RawData.ContainsKey("channel"));
     }
@@ -1009,9 +921,12 @@ public class RecipientTest : TestBase
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             To = "to",
 
+            Body = null,
             Channel = null,
         };
 
+        Assert.Null(model.Body);
+        Assert.True(model.RawData.ContainsKey("body"));
         Assert.Null(model.Channel);
         Assert.True(model.RawData.ContainsKey("channel"));
     }
@@ -1024,6 +939,7 @@ public class RecipientTest : TestBase
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             To = "to",
 
+            Body = null,
             Channel = null,
         };
 
@@ -1035,6 +951,7 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
+            Body = "body",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             To = "to",
