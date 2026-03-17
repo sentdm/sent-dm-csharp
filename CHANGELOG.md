@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.13.1 (2026-03-17)
+
+Full Changelog: [v0.13.0...v0.13.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.13.0...v0.13.1)
+
+### Bug Fixes
+
+* **docs:** make xml syntactically correct ([e377b83](https://github.com/sentdm/sent-dm-csharp/commit/e377b837ee8c424042bb241c3369111d719e5312))
+
+
+### Chores
+
+* **internal:** tweak CI branches ([6745e46](https://github.com/sentdm/sent-dm-csharp/commit/6745e464a9a75670a041dc3d7bda9b5eb3b59b08))
+
 ## 0.13.0 (2026-03-16)
 
 Full Changelog: [v0.12.1...v0.13.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.12.1...v0.13.0)
