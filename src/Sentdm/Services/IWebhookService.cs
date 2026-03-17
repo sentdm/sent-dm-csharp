@@ -110,8 +110,8 @@ public interface IWebhookService
     );
 
     /// <summary>
-    /// Generates a new signing secret for the specified webhook. The old secret
-    /// is immediately invalidated.
+    /// Generates a new signing secret for the specified webhook. The old secret is
+    /// immediately invalidated.
     /// </summary>
     Task<WebhookRotateSecretResponse> RotateSecret(
         WebhookRotateSecretParams parameters,
@@ -170,7 +170,7 @@ public interface IWebhookServiceWithRawResponse
     IWebhookServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /v3/webhooks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /v3/webhooks</c>, but is otherwise the
     /// same as <see cref="IWebhookService.Create(WebhookCreateParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseWebhook>> Create(
@@ -179,7 +179,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/webhooks/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/webhooks/{id}</c>, but is otherwise the
     /// same as <see cref="IWebhookService.Retrieve(WebhookRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseWebhook>> Retrieve(
@@ -195,7 +195,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /v3/webhooks/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /v3/webhooks/{id}</c>, but is otherwise the
     /// same as <see cref="IWebhookService.Update(WebhookUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseWebhook>> Update(
@@ -211,7 +211,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/webhooks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/webhooks</c>, but is otherwise the
     /// same as <see cref="IWebhookService.List(WebhookListParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<WebhookListResponse>> List(
@@ -220,7 +220,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /v3/webhooks/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /v3/webhooks/{id}</c>, but is otherwise the
     /// same as <see cref="IWebhookService.Delete(WebhookDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(
@@ -236,7 +236,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/webhooks/event-types`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/webhooks/event-types</c>, but is otherwise the
     /// same as <see cref="IWebhookService.ListEventTypes(WebhookListEventTypesParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<WebhookListEventTypesResponse>> ListEventTypes(
@@ -245,7 +245,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/webhooks/{id}/events`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/webhooks/{id}/events</c>, but is otherwise the
     /// same as <see cref="IWebhookService.ListEvents(WebhookListEventsParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<WebhookListEventsResponse>> ListEvents(
@@ -261,7 +261,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /v3/webhooks/{id}/rotate-secret`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /v3/webhooks/{id}/rotate-secret</c>, but is otherwise the
     /// same as <see cref="IWebhookService.RotateSecret(WebhookRotateSecretParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<WebhookRotateSecretResponse>> RotateSecret(
@@ -277,7 +277,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /v3/webhooks/{id}/test`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /v3/webhooks/{id}/test</c>, but is otherwise the
     /// same as <see cref="IWebhookService.Test(WebhookTestParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<WebhookTestResponse>> Test(
@@ -293,7 +293,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `patch /v3/webhooks/{id}/toggle-status`, but is otherwise the
+    /// Returns a raw HTTP response for <c>patch /v3/webhooks/{id}/toggle-status</c>, but is otherwise the
     /// same as <see cref="IWebhookService.ToggleStatus(WebhookToggleStatusParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseWebhook>> ToggleStatus(

@@ -33,19 +33,19 @@ public interface IProfileService
     ICampaignService Campaigns { get; }
 
     /// <summary>
-    /// Creates a new sender profile within an organization. Profiles represent different
-    /// brands, departments, or use cases, each with their own messaging configuration
-    /// and settings. Requires admin role in the organization.
+    /// Creates a new sender profile within an organization. Profiles represent
+    /// different brands, departments, or use cases, each with their own messaging
+    /// configuration and settings. Requires admin role in the organization.
     ///
     /// <para>## WhatsApp Business Account</para>
     ///
-    /// <para>Every profile must be linked to a WhatsApp Business Account. There are
-    /// two ways to do this:</para>
+    /// <para>Every profile must be linked to a WhatsApp Business Account. There are two
+    /// ways to do this:</para>
     ///
-    /// <para>**1. Inherit from organization (default)** — Omit the `whatsapp_business_account`
-    /// field. The profile will share the organization's WhatsApp Business Account,
-    /// which must have been set up via WhatsApp Embedded Signup. This is the recommended
-    /// path for most use cases.</para>
+    /// <para>**1. Inherit from organization (default)** — Omit the
+    /// `whatsapp_business_account` field. The profile will share the organization's
+    /// WhatsApp Business Account, which must have been set up via WhatsApp Embedded
+    /// Signup. This is the recommended path for most use cases.</para>
     ///
     /// <para>**2. Direct credentials** — Provide a `whatsapp_business_account` object
     /// with `waba_id`, `phone_number_id`, and `access_token`. Use this when the profile
@@ -54,20 +54,20 @@ public interface IProfileService
     /// and `whatsapp_business_management` permissions.</para>
     ///
     /// <para>If the `whatsapp_business_account` field is omitted and the organization
-    /// has no WhatsApp Business Account configured, the request will be rejected
-    /// with HTTP 422.</para>
+    /// has no WhatsApp Business Account configured, the request will be rejected with
+    /// HTTP 422.</para>
     ///
     /// <para>## Brand</para>
     ///
-    /// <para>Include the optional `brand` field to create the brand for this profile
-    /// at the same time. Cannot be used when `inherit_tcr_brand` is `true`.</para>
+    /// <para>Include the optional `brand` field to create the brand for this profile at
+    /// the same time. Cannot be used when `inherit_tcr_brand` is `true`.</para>
     ///
     /// <para>## Payment Details</para>
     ///
-    /// <para>When `billing_model` is `"profile"` or `"profile_and_organization"`
-    /// you may include a `payment_details` object containing the card number, expiry
-    /// (MM/YY), CVC, and billing ZIP code. Payment details are **never stored**
-    /// on our servers and are forwarded directly to the payment processor. Providing
+    /// <para>When `billing_model` is `"profile"` or `"profile_and_organization"` you
+    /// may include a `payment_details` object containing the card number, expiry
+    /// (MM/YY), CVC, and billing ZIP code. Payment details are **never stored** on our
+    /// servers and are forwarded directly to the payment processor. Providing
     /// `payment_details` when `billing_model` is `"organization"` is not allowed.</para>
     /// </summary>
     Task<ApiResponseOfProfileDetail> Create(
@@ -77,7 +77,8 @@ public interface IProfileService
 
     /// <summary>
     /// Retrieves detailed information about a specific sender profile within an
-    /// organization, including brand and KYC information if a brand has been configured.
+    /// organization, including brand and KYC information if a brand has been
+    /// configured.
     /// </summary>
     Task<ApiResponseOfProfileDetail> Retrieve(
         ProfileRetrieveParams parameters,
@@ -97,18 +98,18 @@ public interface IProfileService
     ///
     /// <para>## Brand Management</para>
     ///
-    /// <para>Include the optional `brand` field to create or update the brand associated
-    /// with this profile. The brand holds KYC and TCR compliance data (legal business
-    /// info, contact details, messaging vertical). Once a brand has been submitted
-    /// to TCR it cannot be modified. Setting `inherit_tcr_brand: true` and providing
-    /// `brand` in the same request is not allowed.</para>
+    /// <para>Include the optional `brand` field to create or update the brand
+    /// associated with this profile. The brand holds KYC and TCR compliance data (legal
+    /// business info, contact details, messaging vertical). Once a brand has been
+    /// submitted to TCR it cannot be modified. Setting `inherit_tcr_brand: true` and
+    /// providing `brand` in the same request is not allowed.</para>
     ///
     /// <para>## Payment Details</para>
     ///
-    /// <para>When `billing_model` is `"profile"` or `"profile_and_organization"`
-    /// you may include a `payment_details` object containing the card number, expiry
-    /// (MM/YY), CVC, and billing ZIP code. Payment details are **never stored**
-    /// on our servers and are forwarded directly to the payment processor. Providing
+    /// <para>When `billing_model` is `"profile"` or `"profile_and_organization"` you
+    /// may include a `payment_details` object containing the card number, expiry
+    /// (MM/YY), CVC, and billing ZIP code. Payment details are **never stored** on our
+    /// servers and are forwarded directly to the payment processor. Providing
     /// `payment_details` when `billing_model` is `"organization"` is not allowed.</para>
     /// </summary>
     Task<ApiResponseOfProfileDetail> Update(
@@ -124,9 +125,10 @@ public interface IProfileService
     );
 
     /// <summary>
-    /// Retrieves all sender profiles within an organization, including brand information
-    /// for each profile. Profiles represent different brands, departments, or use
-    /// cases within an organization, each with their own messaging configuration.
+    /// Retrieves all sender profiles within an organization, including brand
+    /// information for each profile. Profiles represent different brands, departments,
+    /// or use cases within an organization, each with their own messaging
+    /// configuration.
     /// </summary>
     Task<ProfileListResponse> List(
         ProfileListParams? parameters = null,
@@ -134,8 +136,8 @@ public interface IProfileService
     );
 
     /// <summary>
-    /// Soft deletes a sender profile. The profile will be marked as deleted but data
-    /// is retained. Requires admin role in the organization.
+    /// Soft deletes a sender profile. The profile will be marked as deleted but data is
+    /// retained. Requires admin role in the organization.
     /// </summary>
     Task Delete(ProfileDeleteParams parameters, CancellationToken cancellationToken = default);
 
@@ -154,16 +156,16 @@ public interface IProfileService
     ///
     /// <para>                Prerequisites:                 - Profile must be completed
     ///                 - If inheritTcrBrand=false: Profile must have existing brand
-    ///                 - If inheritTcrBrand=true: Parent must have existing brand
-    ///                 - If TCR application: Must have at least one campaign (own
-    /// or inherited)                 - If inheritTcrCampaign=false: Profile should
-    /// have campaigns                 - If inheritTcrCampaign=true: Parent must have campaigns</para>
+    ///             - If inheritTcrBrand=true: Parent must have existing brand
+    ///       - If TCR application: Must have at least one campaign (own or inherited)
+    ///               - If inheritTcrCampaign=false: Profile should have campaigns
+    ///           - If inheritTcrCampaign=true: Parent must have campaigns</para>
     ///
     /// <para>                Status Logic:                 - If both SMS and WhatsApp
-    /// channels are missing → SUBMITTED                 - If TCR application and
-    /// not inheriting brand/campaigns → SUBMITTED                 - If non-TCR with
-    /// destination country (IsMain=true) → SUBMITTED                 - Otherwise
-    /// → COMPLETED</para>
+    /// channels are missing → SUBMITTED                 - If TCR application and not
+    /// inheriting brand/campaigns → SUBMITTED                 - If non-TCR with
+    /// destination country (IsMain=true) → SUBMITTED                 - Otherwise →
+    /// COMPLETED</para>
     /// </summary>
     Task<JsonElement> Complete(
         ProfileCompleteParams parameters,
@@ -194,7 +196,7 @@ public interface IProfileServiceWithRawResponse
     ICampaignServiceWithRawResponse Campaigns { get; }
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /v3/profiles`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /v3/profiles</c>, but is otherwise the
     /// same as <see cref="IProfileService.Create(ProfileCreateParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfProfileDetail>> Create(
@@ -203,7 +205,7 @@ public interface IProfileServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/profiles/{profileId}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/profiles/{profileId}</c>, but is otherwise the
     /// same as <see cref="IProfileService.Retrieve(ProfileRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfProfileDetail>> Retrieve(
@@ -219,7 +221,7 @@ public interface IProfileServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `patch /v3/profiles/{profileId}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>patch /v3/profiles/{profileId}</c>, but is otherwise the
     /// same as <see cref="IProfileService.Update(ProfileUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfProfileDetail>> Update(
@@ -235,7 +237,7 @@ public interface IProfileServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/profiles`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/profiles</c>, but is otherwise the
     /// same as <see cref="IProfileService.List(ProfileListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ProfileListResponse>> List(
@@ -244,7 +246,7 @@ public interface IProfileServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /v3/profiles/{profileId}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /v3/profiles/{profileId}</c>, but is otherwise the
     /// same as <see cref="IProfileService.Delete(ProfileDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(
@@ -260,7 +262,7 @@ public interface IProfileServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /v3/profiles/{profileId}/complete`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /v3/profiles/{profileId}/complete</c>, but is otherwise the
     /// same as <see cref="IProfileService.Complete(ProfileCompleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<JsonElement>> Complete(

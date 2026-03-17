@@ -61,11 +61,11 @@ public interface IMessageService
     );
 
     /// <summary>
-    /// Sends a message to one or more recipients using a template. Supports multi-channel
-    /// broadcast — when multiple channels are specified (e.g. ["sms", "whatsapp"]),
-    /// a separate message is created for each (recipient, channel) pair. Returns
-    /// immediately with per-recipient message IDs for async tracking via webhooks
-    /// or the GET /messages/{id} endpoint.
+    /// Sends a message to one or more recipients using a template. Supports
+    /// multi-channel broadcast — when multiple channels are specified (e.g. ["sms",
+    /// "whatsapp"]), a separate message is created for each (recipient, channel) pair.
+    /// Returns immediately with per-recipient message IDs for async tracking via
+    /// webhooks or the GET /messages/{id} endpoint.
     /// </summary>
     Task<MessageSendResponse> Send(
         MessageSendParams? parameters = null,
@@ -87,7 +87,7 @@ public interface IMessageServiceWithRawResponse
     IMessageServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/messages/{id}/activities`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/messages/{id}/activities</c>, but is otherwise the
     /// same as <see cref="IMessageService.RetrieveActivities(MessageRetrieveActivitiesParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<MessageRetrieveActivitiesResponse>> RetrieveActivities(
@@ -103,7 +103,7 @@ public interface IMessageServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/messages/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/messages/{id}</c>, but is otherwise the
     /// same as <see cref="IMessageService.RetrieveStatus(MessageRetrieveStatusParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<MessageRetrieveStatusResponse>> RetrieveStatus(
@@ -119,7 +119,7 @@ public interface IMessageServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /v3/messages`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /v3/messages</c>, but is otherwise the
     /// same as <see cref="IMessageService.Send(MessageSendParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<MessageSendResponse>> Send(

@@ -60,7 +60,7 @@ public interface INumberServiceWithRawResponse
     INumberServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/numbers/lookup/{phoneNumber}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/numbers/lookup/{phoneNumber}</c>, but is otherwise the
     /// same as <see cref="INumberService.Lookup(NumberLookupParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<NumberLookupResponse>> Lookup(
