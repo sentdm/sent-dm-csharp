@@ -30,8 +30,8 @@ public interface IMeService
 
     /// <summary>
     /// Returns the account associated with the provided API key. The response includes
-    /// account identity, contact information, messaging channel configuration, and
-    /// — depending on the account type — either a list of child profiles or the profile's
+    /// account identity, contact information, messaging channel configuration, and —
+    /// depending on the account type — either a list of child profiles or the profile's
     /// own settings.
     ///
     /// <para>**Account types:** - `organization` — Has child profiles. The `profiles`
@@ -39,8 +39,8 @@ public interface IMeService
     /// — Child of an organization. Includes `organization_id`, `short_name`, `status`,
     /// and `settings`.</para>
     ///
-    /// <para>**Channels:** The `channels` object always includes `sms`, `whatsapp`,
-    /// and `rcs`. Each channel has a `configured` boolean. Configured channels expose
+    /// <para>**Channels:** The `channels` object always includes `sms`, `whatsapp`, and
+    /// `rcs`. Each channel has a `configured` boolean. Configured channels expose
     /// additional details such as `phone_number`.</para>
     /// </summary>
     Task<MeRetrieveResponse> Retrieve(
@@ -63,7 +63,7 @@ public interface IMeServiceWithRawResponse
     IMeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/me`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/me</c>, but is otherwise the
     /// same as <see cref="IMeService.Retrieve(MeRetrieveParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<MeRetrieveResponse>> Retrieve(

@@ -45,8 +45,8 @@ public interface IUserService
     );
 
     /// <summary>
-    /// Retrieves all users who have access to the organization or profile identified
-    /// by the API key, including their roles and status. Shows invited users (pending
+    /// Retrieves all users who have access to the organization or profile identified by
+    /// the API key, including their roles and status. Shows invited users (pending
     /// acceptance) and active users. Requires developer role or higher.
     /// </summary>
     Task<UserListResponse> List(
@@ -65,8 +65,8 @@ public interface IUserService
     );
 
     /// <summary>
-    /// Removes a user's access to an organization or profile. Requires admin role.
-    /// You cannot remove yourself or remove the last admin.
+    /// Removes a user's access to an organization or profile. Requires admin role. You
+    /// cannot remove yourself or remove the last admin.
     /// </summary>
     Task Remove(UserRemoveParams parameters, CancellationToken cancellationToken = default);
 
@@ -78,8 +78,8 @@ public interface IUserService
     );
 
     /// <summary>
-    /// Updates a user's role in the organization or profile. Requires admin role.
-    /// You cannot change your own role or demote the last admin.
+    /// Updates a user's role in the organization or profile. Requires admin role. You
+    /// cannot change your own role or demote the last admin.
     /// </summary>
     Task<ApiResponseOfUser> UpdateRole(
         UserUpdateRoleParams parameters,
@@ -108,7 +108,7 @@ public interface IUserServiceWithRawResponse
     IUserServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/users/{userId}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/users/{userId}</c>, but is otherwise the
     /// same as <see cref="IUserService.Retrieve(UserRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfUser>> Retrieve(
@@ -124,7 +124,7 @@ public interface IUserServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/users`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/users</c>, but is otherwise the
     /// same as <see cref="IUserService.List(UserListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<UserListResponse>> List(
@@ -133,7 +133,7 @@ public interface IUserServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /v3/users`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /v3/users</c>, but is otherwise the
     /// same as <see cref="IUserService.Invite(UserInviteParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfUser>> Invite(
@@ -142,7 +142,7 @@ public interface IUserServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /v3/users/{userId}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /v3/users/{userId}</c>, but is otherwise the
     /// same as <see cref="IUserService.Remove(UserRemoveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Remove(
@@ -158,7 +158,7 @@ public interface IUserServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `patch /v3/users/{userId}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>patch /v3/users/{userId}</c>, but is otherwise the
     /// same as <see cref="IUserService.UpdateRole(UserUpdateRoleParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfUser>> UpdateRole(
