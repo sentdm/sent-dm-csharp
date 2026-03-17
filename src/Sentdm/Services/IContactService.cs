@@ -29,7 +29,8 @@ public interface IContactService
     IContactService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Creates a new contact by phone number and associates it with the authenticated customer.
+    /// Creates a new contact by phone number and associates it with the authenticated
+    /// customer.
     /// </summary>
     Task<ApiResponseOfContact> Create(
         ContactCreateParams? parameters = null,
@@ -38,7 +39,8 @@ public interface IContactService
 
     /// <summary>
     /// Retrieves a specific contact by their unique identifier. Returns detailed
-    /// contact information including phone formats, available channels, and opt-out status.
+    /// contact information including phone formats, available channels, and opt-out
+    /// status.
     /// </summary>
     Task<ApiResponseOfContact> Retrieve(
         ContactRetrieveParams parameters,
@@ -78,8 +80,8 @@ public interface IContactService
     );
 
     /// <summary>
-    /// Dissociates a contact from the authenticated customer. Inherited contacts
-    /// cannot be deleted.
+    /// Dissociates a contact from the authenticated customer. Inherited contacts cannot
+    /// be deleted.
     /// </summary>
     Task Delete(ContactDeleteParams parameters, CancellationToken cancellationToken = default);
 
@@ -105,7 +107,7 @@ public interface IContactServiceWithRawResponse
     IContactServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /v3/contacts`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /v3/contacts</c>, but is otherwise the
     /// same as <see cref="IContactService.Create(ContactCreateParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfContact>> Create(
@@ -114,7 +116,7 @@ public interface IContactServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/contacts/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/contacts/{id}</c>, but is otherwise the
     /// same as <see cref="IContactService.Retrieve(ContactRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfContact>> Retrieve(
@@ -130,7 +132,7 @@ public interface IContactServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `patch /v3/contacts/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>patch /v3/contacts/{id}</c>, but is otherwise the
     /// same as <see cref="IContactService.Update(ContactUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfContact>> Update(
@@ -146,7 +148,7 @@ public interface IContactServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/contacts`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/contacts</c>, but is otherwise the
     /// same as <see cref="IContactService.List(ContactListParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ContactListResponse>> List(
@@ -155,7 +157,7 @@ public interface IContactServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /v3/contacts/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /v3/contacts/{id}</c>, but is otherwise the
     /// same as <see cref="IContactService.Delete(ContactDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(

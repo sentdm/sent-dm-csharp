@@ -61,8 +61,8 @@ public interface ICampaignService
     );
 
     /// <summary>
-    /// Retrieves all campaigns linked to the profile's brand, including use cases
-    /// and sample messages. Returns inherited campaigns if inherit_tcr_campaign=true.
+    /// Retrieves all campaigns linked to the profile's brand, including use cases and
+    /// sample messages. Returns inherited campaigns if inherit_tcr_campaign=true.
     /// </summary>
     Task<CampaignListResponse> List(
         CampaignListParams parameters,
@@ -104,7 +104,7 @@ public interface ICampaignServiceWithRawResponse
     ICampaignServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /v3/profiles/{profileId}/campaigns`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /v3/profiles/{profileId}/campaigns</c>, but is otherwise the
     /// same as <see cref="ICampaignService.Create(CampaignCreateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfTcrCampaignWithUseCases>> Create(
@@ -120,7 +120,7 @@ public interface ICampaignServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /v3/profiles/{profileId}/campaigns/{campaignId}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /v3/profiles/{profileId}/campaigns/{campaignId}</c>, but is otherwise the
     /// same as <see cref="ICampaignService.Update(CampaignUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfTcrCampaignWithUseCases>> Update(
@@ -136,7 +136,7 @@ public interface ICampaignServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/profiles/{profileId}/campaigns`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/profiles/{profileId}/campaigns</c>, but is otherwise the
     /// same as <see cref="ICampaignService.List(CampaignListParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<CampaignListResponse>> List(
@@ -152,7 +152,7 @@ public interface ICampaignServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /v3/profiles/{profileId}/campaigns/{campaignId}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /v3/profiles/{profileId}/campaigns/{campaignId}</c>, but is otherwise the
     /// same as <see cref="ICampaignService.Delete(CampaignDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(

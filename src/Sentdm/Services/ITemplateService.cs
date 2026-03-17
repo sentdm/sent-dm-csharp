@@ -30,7 +30,8 @@ public interface ITemplateService
 
     /// <summary>
     /// Creates a new message template with header, body, footer, and buttons. The
-    /// template can be submitted for review immediately or saved as draft for later submission.
+    /// template can be submitted for review immediately or saved as draft for later
+    /// submission.
     /// </summary>
     Task<ApiResponseTemplate> Create(
         TemplateCreateParams? parameters = null,
@@ -106,7 +107,7 @@ public interface ITemplateServiceWithRawResponse
     ITemplateServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /v3/templates`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /v3/templates</c>, but is otherwise the
     /// same as <see cref="ITemplateService.Create(TemplateCreateParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseTemplate>> Create(
@@ -115,7 +116,7 @@ public interface ITemplateServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/templates/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/templates/{id}</c>, but is otherwise the
     /// same as <see cref="ITemplateService.Retrieve(TemplateRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseTemplate>> Retrieve(
@@ -131,7 +132,7 @@ public interface ITemplateServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /v3/templates/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /v3/templates/{id}</c>, but is otherwise the
     /// same as <see cref="ITemplateService.Update(TemplateUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseTemplate>> Update(
@@ -147,7 +148,7 @@ public interface ITemplateServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /v3/templates`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /v3/templates</c>, but is otherwise the
     /// same as <see cref="ITemplateService.List(TemplateListParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TemplateListResponse>> List(
@@ -156,7 +157,7 @@ public interface ITemplateServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /v3/templates/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /v3/templates/{id}</c>, but is otherwise the
     /// same as <see cref="ITemplateService.Delete(TemplateDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(
