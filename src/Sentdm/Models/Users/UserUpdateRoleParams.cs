@@ -135,12 +135,14 @@ public record class UserUpdateRoleParams : ParamsBase
     UserUpdateRoleParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, JsonElement> rawBodyData
+        FrozenDictionary<string, JsonElement> rawBodyData,
+        string userID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
+        this.UserID = userID;
     }
 #pragma warning restore CS8618
 
@@ -148,13 +150,15 @@ public record class UserUpdateRoleParams : ParamsBase
     public static UserUpdateRoleParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        IReadOnlyDictionary<string, JsonElement> rawBodyData,
+        string userID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            FrozenDictionary.ToFrozenDictionary(rawBodyData)
+            FrozenDictionary.ToFrozenDictionary(rawBodyData),
+            userID
         );
     }
 
