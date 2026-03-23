@@ -289,7 +289,7 @@ public sealed record class Activity : JsonModel
     }
 
     /// <summary>
-    /// Activity status (e.g., QUEUED, PROCESSED, SENT, DELIVERED, FAILED)
+    /// Activity status (e.g., QUEUED, PROCESSED, ROUTED, SENT, DELIVERED, FAILED)
     /// </summary>
     public string? Status
     {
