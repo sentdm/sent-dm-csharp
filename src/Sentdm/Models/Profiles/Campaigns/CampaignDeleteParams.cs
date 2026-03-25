@@ -21,11 +21,7 @@ namespace Sentdm.Models.Profiles.Campaigns;
 /// </summary>
 public record class CampaignDeleteParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
-        get { return this._rawBodyData.Freeze(); }
-    }
+    public JsonElement RawBodyData { get; private init; }
 
     public required string ProfileID { get; init; }
 
@@ -38,12 +34,12 @@ public record class CampaignDeleteParams : ParamsBase
     {
         get
         {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<global::Sentdm.Models.Profiles.Campaigns.Body>(
-                "body"
+            return WrappedJsonSerializer.GetNotNullClass<global::Sentdm.Models.Profiles.Campaigns.Body>(
+                this.RawBodyData,
+                "RawBodyData"
             );
         }
-        init { this._rawBodyData.Set("body", value); }
+        init { this.RawBodyData = JsonSerializer.SerializeToElement(value); }
     }
 
     public string? XProfileID
@@ -74,19 +70,19 @@ public record class CampaignDeleteParams : ParamsBase
         this.ProfileID = campaignDeleteParams.ProfileID;
         this.CampaignID = campaignDeleteParams.CampaignID;
 
-        this._rawBodyData = new(campaignDeleteParams._rawBodyData);
+        this.RawBodyData = campaignDeleteParams.RawBodyData;
     }
 #pragma warning restore CS8618
 
     public CampaignDeleteParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
+        this.RawBodyData = rawBodyData;
     }
 
 #pragma warning disable CS8618
@@ -94,12 +90,16 @@ public record class CampaignDeleteParams : ParamsBase
     CampaignDeleteParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData,
+        string profileID,
+        string campaignID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
+        this.RawBodyData = rawBodyData;
+        this.ProfileID = profileID;
+        this.CampaignID = campaignID;
     }
 #pragma warning restore CS8618
 
@@ -107,13 +107,17 @@ public record class CampaignDeleteParams : ParamsBase
     public static CampaignDeleteParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData,
+        string profileID,
+        string campaignID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            FrozenDictionary.ToFrozenDictionary(rawBodyData)
+            rawBodyData,
+            profileID,
+            campaignID
         );
     }
 
@@ -130,7 +134,7 @@ public record class CampaignDeleteParams : ParamsBase
                     ["QueryData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
                     ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this.RawBodyData),
                 }
             ),
             ModelBase.ToStringSerializerOptions
@@ -146,7 +150,7 @@ public record class CampaignDeleteParams : ParamsBase
             && (this.CampaignID?.Equals(other.CampaignID) ?? other.CampaignID == null)
             && this._rawHeaderData.Equals(other._rawHeaderData)
             && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+            && this.RawBodyData.Equals(other.RawBodyData);
     }
 
     public override Uri Url(ClientOptions options)

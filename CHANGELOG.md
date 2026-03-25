@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.14.0 (2026-03-25)
+
+Full Changelog: [v0.13.1...v0.14.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.13.1...v0.14.0)
+
+### Features
+
+* **api:** api update ([545ec2a](https://github.com/sentdm/sent-dm-csharp/commit/545ec2a4994d241fddf9eee13978c2d3c76a0de1))
+* **api:** api update ([1b0cb5c](https://github.com/sentdm/sent-dm-csharp/commit/1b0cb5c21dbc252c8fc71e9aede5a9659acdcd7d))
+
+
+### Bug Fixes
+
+* **client:** handle path params correctly in `FromRawUnchecked` ([5945e33](https://github.com/sentdm/sent-dm-csharp/commit/5945e333cee59abc74c88ac7f1cffd0d75ea4526))
+* **client:** handle root bodies in requests properly ([b46a3ac](https://github.com/sentdm/sent-dm-csharp/commit/b46a3ac3bd05f78ad3e3fb9ca2e33cf65ac6a91e))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([20a98ab](https://github.com/sentdm/sent-dm-csharp/commit/20a98abe8e5121bc37c099239fc7ba57ddd95f9d))
+* **internal:** update gitignore ([c998676](https://github.com/sentdm/sent-dm-csharp/commit/c99867657c87f509ad16b58c0fea272bd8c50a09))
+
 ## 0.13.1 (2026-03-17)
 
 Full Changelog: [v0.13.0...v0.13.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.13.0...v0.13.1)

@@ -160,7 +160,8 @@ public sealed record class MessageSendResponseData : JsonModel
     }
 
     /// <summary>
-    /// Overall request status (e.g. "accepted")
+    /// Overall request status: "QUEUED" when the batch has been accepted and published
+    /// to Kafka.
     /// </summary>
     public string? Status
     {

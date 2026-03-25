@@ -21,11 +21,7 @@ namespace Sentdm.Models.Profiles;
 /// </summary>
 public record class ProfileDeleteParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
-        get { return this._rawBodyData.Freeze(); }
-    }
+    public JsonElement RawBodyData { get; private init; }
 
     public string? ProfileID { get; init; }
 
@@ -36,10 +32,12 @@ public record class ProfileDeleteParams : ParamsBase
     {
         get
         {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<global::Sentdm.Models.Profiles.Body>("body");
+            return WrappedJsonSerializer.GetNotNullClass<global::Sentdm.Models.Profiles.Body>(
+                this.RawBodyData,
+                "RawBodyData"
+            );
         }
-        init { this._rawBodyData.Set("body", value); }
+        init { this.RawBodyData = JsonSerializer.SerializeToElement(value); }
     }
 
     public string? XProfileID
@@ -69,19 +67,19 @@ public record class ProfileDeleteParams : ParamsBase
     {
         this.ProfileID = profileDeleteParams.ProfileID;
 
-        this._rawBodyData = new(profileDeleteParams._rawBodyData);
+        this.RawBodyData = profileDeleteParams.RawBodyData;
     }
 #pragma warning restore CS8618
 
     public ProfileDeleteParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
+        this.RawBodyData = rawBodyData;
     }
 
 #pragma warning disable CS8618
@@ -89,12 +87,14 @@ public record class ProfileDeleteParams : ParamsBase
     ProfileDeleteParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData,
+        string profileID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
+        this.RawBodyData = rawBodyData;
+        this.ProfileID = profileID;
     }
 #pragma warning restore CS8618
 
@@ -102,13 +102,15 @@ public record class ProfileDeleteParams : ParamsBase
     public static ProfileDeleteParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData,
+        string profileID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            FrozenDictionary.ToFrozenDictionary(rawBodyData)
+            rawBodyData,
+            profileID
         );
     }
 
@@ -124,7 +126,7 @@ public record class ProfileDeleteParams : ParamsBase
                     ["QueryData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
                     ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this.RawBodyData),
                 }
             ),
             ModelBase.ToStringSerializerOptions
@@ -139,7 +141,7 @@ public record class ProfileDeleteParams : ParamsBase
         return (this.ProfileID?.Equals(other.ProfileID) ?? other.ProfileID == null)
             && this._rawHeaderData.Equals(other._rawHeaderData)
             && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+            && this.RawBodyData.Equals(other.RawBodyData);
     }
 
     public override Uri Url(ClientOptions options)
