@@ -18,7 +18,7 @@ public sealed class MeService : IMeService
         get { return _withRawResponse.Value; }
     }
 
-    readonly ISentDmClient _client;
+    readonly ISentClient _client;
 
     /// <inheritdoc/>
     public IMeService WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -26,7 +26,7 @@ public sealed class MeService : IMeService
         return new MeService(this._client.WithOptions(modifier));
     }
 
-    public MeService(ISentDmClient client)
+    public MeService(ISentClient client)
     {
         _client = client;
 
@@ -49,7 +49,7 @@ public sealed class MeService : IMeService
 /// <inheritdoc/>
 public sealed class MeServiceWithRawResponse : IMeServiceWithRawResponse
 {
-    readonly ISentDmClientWithRawResponse _client;
+    readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
     public IMeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -57,7 +57,7 @@ public sealed class MeServiceWithRawResponse : IMeServiceWithRawResponse
         return new MeServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public MeServiceWithRawResponse(ISentDmClientWithRawResponse client)
+    public MeServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
     }

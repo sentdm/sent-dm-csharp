@@ -95,7 +95,7 @@ sealed class MultipartJsonDictionary
         }
         if (!_rawData.TryGetValue(key, out MultipartJsonElement element))
         {
-            throw new SentDmInvalidDataException($"'{key}' cannot be absent");
+            throw new SentInvalidDataException($"'{key}' cannot be absent");
         }
         T? deserialized = WrappedMultipartJsonSerializer.GetNotNullClass<T>(element, key);
         _deserializedData[key] = deserialized;
@@ -111,7 +111,7 @@ sealed class MultipartJsonDictionary
         }
         if (!_rawData.TryGetValue(key, out MultipartJsonElement element))
         {
-            throw new SentDmInvalidDataException($"'{key}' cannot be absent");
+            throw new SentInvalidDataException($"'{key}' cannot be absent");
         }
         T deserialized = WrappedMultipartJsonSerializer.GetNotNullStruct<T>(element, key);
         _deserializedData[key] = deserialized;

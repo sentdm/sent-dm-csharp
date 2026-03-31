@@ -38,7 +38,7 @@ public record class ApiEnum<TRaw, TEnum>
     /// any known enum member, and you want to know that value. For example, if the SDK is on an older
     /// version than the API, then the API may respond with new members that the SDK is unaware of.</para>
     ///
-    /// <exception cref="SentDmInvalidDataException">
+    /// <exception cref="SentInvalidDataException">
     /// Thrown when this instance's raw value isn't of type <typeparamref name="TRaw"/>. Use
     /// <see cref="Json"/> to access the raw value.
     /// </exception>
@@ -48,11 +48,11 @@ public record class ApiEnum<TRaw, TEnum>
         try
         {
             return JsonSerializer.Deserialize<TRaw>(this.Json, ModelBase.SerializerOptions)
-                ?? throw new SentDmInvalidDataException($"{nameof(this.Json)} cannot be null");
+                ?? throw new SentInvalidDataException($"{nameof(this.Json)} cannot be null");
         }
         catch (JsonException e)
         {
-            throw new SentDmInvalidDataException(
+            throw new SentInvalidDataException(
                 $"{this.Json} must be of type {typeof(TRaw).FullName}",
                 e
             );
@@ -70,11 +70,11 @@ public record class ApiEnum<TRaw, TEnum>
         try
         {
             return JsonSerializer.Deserialize<TEnum?>(this.Json, ModelBase.SerializerOptions)
-                ?? throw new SentDmInvalidDataException($"{nameof(this.Json)} cannot be null");
+                ?? throw new SentInvalidDataException($"{nameof(this.Json)} cannot be null");
         }
         catch (JsonException e)
         {
-            throw new SentDmInvalidDataException(
+            throw new SentInvalidDataException(
                 $"{this.Json} must be of type {typeof(TRaw).FullName}",
                 e
             );
@@ -84,7 +84,7 @@ public record class ApiEnum<TRaw, TEnum>
     /// <summary>
     /// Verifies that this instance's raw value is a member of <typeparamref name="TEnum"/>.
     ///
-    /// <exception cref="SentDmInvalidDataException">
+    /// <exception cref="SentInvalidDataException">
     /// Thrown when this instance's raw value isn't a member of <typeparamref name="TEnum"/>.
     /// </exception>
     /// </summary>
@@ -92,7 +92,7 @@ public record class ApiEnum<TRaw, TEnum>
     {
         if (!Enum.IsDefined(typeof(TEnum), Value()))
         {
-            throw new SentDmInvalidDataException("Invalid enum value");
+            throw new SentInvalidDataException("Invalid enum value");
         }
     }
 

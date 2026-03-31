@@ -12,7 +12,7 @@ using Sentdm.Services;
 namespace Sentdm;
 
 /// <inheritdoc/>
-public sealed class SentDmClient : ISentDmClient
+public sealed class SentClient : ISentClient
 {
     readonly ClientOptions _options;
 
@@ -58,18 +58,18 @@ public sealed class SentDmClient : ISentDmClient
         init { this._options.ApiKey = value; }
     }
 
-    readonly Lazy<ISentDmClientWithRawResponse> _withRawResponse;
+    readonly Lazy<ISentClientWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public ISentDmClientWithRawResponse WithRawResponse
+    public ISentClientWithRawResponse WithRawResponse
     {
         get { return _withRawResponse.Value; }
     }
 
     /// <inheritdoc/>
-    public ISentDmClient WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public ISentClient WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new SentDmClient(modifier(this._options));
+        return new SentClient(modifier(this._options));
     }
 
     readonly Lazy<IWebhookService> _webhooks;
@@ -122,11 +122,11 @@ public sealed class SentDmClient : ISentDmClient
 
     public void Dispose() => this.HttpClient.Dispose();
 
-    public SentDmClient()
+    public SentClient()
     {
         _options = new();
 
-        _withRawResponse = new(() => new SentDmClientWithRawResponse(this._options));
+        _withRawResponse = new(() => new SentClientWithRawResponse(this._options));
         _webhooks = new(() => new WebhookService(this));
         _users = new(() => new UserService(this));
         _templates = new(() => new TemplateService(this));
@@ -137,7 +137,7 @@ public sealed class SentDmClient : ISentDmClient
         _me = new(() => new MeService(this));
     }
 
-    public SentDmClient(ClientOptions options)
+    public SentClient(ClientOptions options)
         : this()
     {
         _options = options;
@@ -145,7 +145,7 @@ public sealed class SentDmClient : ISentDmClient
 }
 
 /// <inheritdoc/>
-public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
+public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
 {
 #if NET
     static readonly Random Random = Random.Shared;
@@ -205,9 +205,9 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
     }
 
     /// <inheritdoc/>
-    public ISentDmClientWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public ISentClientWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new SentDmClientWithRawResponse(modifier(this._options));
+        return new SentClientWithRawResponse(modifier(this._options));
     }
 
     readonly Lazy<IWebhookServiceWithRawResponse> _webhooks;
@@ -292,14 +292,14 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
 
                 try
                 {
-                    throw SentDmExceptionFactory.CreateApiException(
+                    throw SentExceptionFactory.CreateApiException(
                         response.StatusCode,
                         await response.ReadAsString(cancellationToken).ConfigureAwait(false)
                     );
                 }
                 catch (HttpRequestException e)
                 {
-                    throw new SentDmIOException("I/O Exception", e);
+                    throw new SentIOException("I/O Exception", e);
                 }
                 finally
                 {
@@ -352,7 +352,7 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
         }
         catch (HttpRequestException e)
         {
-            throw new SentDmIOException("I/O exception", e);
+            throw new SentIOException("I/O exception", e);
         }
         return new() { RawMessage = responseMessage, CancellationToken = cts.Token };
     }
@@ -447,12 +447,12 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
 
     static bool ShouldRetry(Exception e)
     {
-        return e is IOException || e is SentDmIOException;
+        return e is IOException || e is SentIOException;
     }
 
     public void Dispose() => this.HttpClient.Dispose();
 
-    public SentDmClientWithRawResponse()
+    public SentClientWithRawResponse()
     {
         _options = new();
 
@@ -466,7 +466,7 @@ public sealed class SentDmClientWithRawResponse : ISentDmClientWithRawResponse
         _me = new(() => new MeServiceWithRawResponse(this));
     }
 
-    public SentDmClientWithRawResponse(ClientOptions options)
+    public SentClientWithRawResponse(ClientOptions options)
         : this()
     {
         _options = options;

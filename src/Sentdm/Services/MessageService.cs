@@ -19,7 +19,7 @@ public sealed class MessageService : IMessageService
         get { return _withRawResponse.Value; }
     }
 
-    readonly ISentDmClient _client;
+    readonly ISentClient _client;
 
     /// <inheritdoc/>
     public IMessageService WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -27,7 +27,7 @@ public sealed class MessageService : IMessageService
         return new MessageService(this._client.WithOptions(modifier));
     }
 
-    public MessageService(ISentDmClient client)
+    public MessageService(ISentClient client)
     {
         _client = client;
 
@@ -98,7 +98,7 @@ public sealed class MessageService : IMessageService
 /// <inheritdoc/>
 public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawResponse
 {
-    readonly ISentDmClientWithRawResponse _client;
+    readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
     public IMessageServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -106,7 +106,7 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
         return new MessageServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public MessageServiceWithRawResponse(ISentDmClientWithRawResponse client)
+    public MessageServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
     }
@@ -119,7 +119,7 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<MessageRetrieveActivitiesParams> request = new()
@@ -164,7 +164,7 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<MessageRetrieveStatusParams> request = new()

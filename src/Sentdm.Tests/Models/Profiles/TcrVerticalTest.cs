@@ -47,7 +47,7 @@ public class TcrVerticalTest : TestBase
         );
 
         Assert.NotNull(value);
-        Assert.Throws<SentDmInvalidDataException>(() => value.Validate());
+        Assert.Throws<SentInvalidDataException>(() => value.Validate());
     }
 
     [Theory]

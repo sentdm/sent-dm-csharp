@@ -8,7 +8,7 @@ using Sentdm.Services;
 namespace Sentdm;
 
 /// <summary>
-/// A client for interacting with the Sent Dm REST API.
+/// A client for interacting with the Sent REST API.
 ///
 /// <para>This client performs best when you create a single instance and reuse it
 /// for all interactions with the REST API. This is because each client holds its
@@ -19,7 +19,7 @@ namespace Sentdm;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
-public interface ISentDmClient : IDisposable
+public interface ISentClient : IDisposable
 {
     /// <inheritdoc cref="ClientOptions.HttpClient" />
     HttpClient HttpClient { get; init; }
@@ -46,14 +46,14 @@ public interface ISentDmClient : IDisposable
     /// Returns a view of this service that provides access to raw HTTP responses
     /// for each method.
     /// </summary>
-    ISentDmClientWithRawResponse WithRawResponse { get; }
+    ISentClientWithRawResponse WithRawResponse { get; }
 
     /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    ISentDmClient WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ISentClient WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     IWebhookService Webhooks { get; }
 
@@ -73,9 +73,9 @@ public interface ISentDmClient : IDisposable
 }
 
 /// <summary>
-/// A view of <see cref="ISentDmClient"/> that provides access to raw HTTP responses for each method.
+/// A view of <see cref="ISentClient"/> that provides access to raw HTTP responses for each method.
 /// </summary>
-public interface ISentDmClientWithRawResponse : IDisposable
+public interface ISentClientWithRawResponse : IDisposable
 {
     /// <inheritdoc cref="ClientOptions.HttpClient" />
     HttpClient HttpClient { get; init; }
@@ -103,7 +103,7 @@ public interface ISentDmClientWithRawResponse : IDisposable
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    ISentDmClientWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ISentClientWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     IWebhookServiceWithRawResponse Webhooks { get; }
 
@@ -122,7 +122,7 @@ public interface ISentDmClientWithRawResponse : IDisposable
     IMeServiceWithRawResponse Me { get; }
 
     /// <summary>
-    /// Sends a request to the Sent Dm REST API.
+    /// Sends a request to the Sent REST API.
     /// </summary>
     Task<HttpResponse> Execute<T>(
         HttpRequest<T> request,

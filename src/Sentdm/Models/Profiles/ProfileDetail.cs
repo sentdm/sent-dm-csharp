@@ -1415,7 +1415,7 @@ sealed class IdentityStatusConverter : JsonConverter<IdentityStatus>
                 IdentityStatus.Unverified => "UNVERIFIED",
                 IdentityStatus.Verified => "VERIFIED",
                 IdentityStatus.VettedVerified => "VETTED_VERIFIED",
-                _ => throw new SentDmInvalidDataException(
+                _ => throw new SentInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
             },
@@ -1458,7 +1458,7 @@ sealed class StatusConverter : JsonConverter<Status>
                 Status.Active => "ACTIVE",
                 Status.Inactive => "INACTIVE",
                 Status.Suspended => "SUSPENDED",
-                _ => throw new SentDmInvalidDataException(
+                _ => throw new SentInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
             },

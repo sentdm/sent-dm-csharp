@@ -19,7 +19,7 @@ public sealed class CampaignService : ICampaignService
         get { return _withRawResponse.Value; }
     }
 
-    readonly ISentDmClient _client;
+    readonly ISentClient _client;
 
     /// <inheritdoc/>
     public ICampaignService WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -27,7 +27,7 @@ public sealed class CampaignService : ICampaignService
         return new CampaignService(this._client.WithOptions(modifier));
     }
 
-    public CampaignService(ISentDmClient client)
+    public CampaignService(ISentClient client)
     {
         _client = client;
 
@@ -126,7 +126,7 @@ public sealed class CampaignService : ICampaignService
 /// <inheritdoc/>
 public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResponse
 {
-    readonly ISentDmClientWithRawResponse _client;
+    readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
     public ICampaignServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -134,7 +134,7 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
         return new CampaignServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public CampaignServiceWithRawResponse(ISentDmClientWithRawResponse client)
+    public CampaignServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
     }
@@ -147,7 +147,7 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     {
         if (parameters.ProfileID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ProfileID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ProfileID' cannot be null");
         }
 
         HttpRequest<CampaignCreateParams> request = new()
@@ -190,7 +190,7 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     {
         if (parameters.CampaignID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.CampaignID' cannot be null");
+            throw new SentInvalidDataException("'parameters.CampaignID' cannot be null");
         }
 
         HttpRequest<CampaignUpdateParams> request = new()
@@ -233,7 +233,7 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     {
         if (parameters.ProfileID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ProfileID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ProfileID' cannot be null");
         }
 
         HttpRequest<CampaignListParams> request = new()
@@ -278,7 +278,7 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     {
         if (parameters.CampaignID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.CampaignID' cannot be null");
+            throw new SentInvalidDataException("'parameters.CampaignID' cannot be null");
         }
 
         HttpRequest<CampaignDeleteParams> request = new()

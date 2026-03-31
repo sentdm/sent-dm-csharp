@@ -21,7 +21,7 @@ public sealed class ProfileService : IProfileService
         get { return _withRawResponse.Value; }
     }
 
-    readonly ISentDmClient _client;
+    readonly ISentClient _client;
 
     /// <inheritdoc/>
     public IProfileService WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -29,7 +29,7 @@ public sealed class ProfileService : IProfileService
         return new ProfileService(this._client.WithOptions(modifier));
     }
 
-    public ProfileService(ISentDmClient client)
+    public ProfileService(ISentClient client)
     {
         _client = client;
 
@@ -161,7 +161,7 @@ public sealed class ProfileService : IProfileService
 /// <inheritdoc/>
 public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawResponse
 {
-    readonly ISentDmClientWithRawResponse _client;
+    readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
     public IProfileServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -169,7 +169,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
         return new ProfileServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public ProfileServiceWithRawResponse(ISentDmClientWithRawResponse client)
+    public ProfileServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
 
@@ -220,7 +220,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     {
         if (parameters.ProfileID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ProfileID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ProfileID' cannot be null");
         }
 
         HttpRequest<ProfileRetrieveParams> request = new()
@@ -265,12 +265,12 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     {
         if (parameters.ProfileID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ProfileID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ProfileID' cannot be null");
         }
 
         HttpRequest<ProfileUpdateParams> request = new()
         {
-            Method = SentDmClientWithRawResponse.PatchMethod,
+            Method = SentClientWithRawResponse.PatchMethod,
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
@@ -340,7 +340,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     {
         if (parameters.ProfileID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ProfileID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ProfileID' cannot be null");
         }
 
         HttpRequest<ProfileDeleteParams> request = new()
@@ -369,7 +369,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     {
         if (parameters.ProfileID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ProfileID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ProfileID' cannot be null");
         }
 
         HttpRequest<ProfileCompleteParams> request = new()

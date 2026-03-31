@@ -3,7 +3,7 @@ using System.Net.Http;
 
 namespace Sentdm.Exceptions;
 
-public class SentDmIOException : SentDmException
+public class SentIOException : SentException
 {
     public new HttpRequestException InnerException
     {
@@ -17,6 +17,6 @@ public class SentDmIOException : SentDmException
         }
     }
 
-    public SentDmIOException(string message, HttpRequestException? innerException = null)
+    public SentIOException(string message, HttpRequestException? innerException = null)
         : base(message, innerException) { }
 }
