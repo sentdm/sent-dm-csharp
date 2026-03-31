@@ -66,7 +66,7 @@ public class RetriesTest : TestBase
 
         var httpClient = new HttpClient(handlerMock.Object);
 
-        SentDmClient client = new() { HttpClient = httpClient, MaxRetries = 2 };
+        SentClient client = new() { HttpClient = httpClient, MaxRetries = 2 };
 
         var resp = await client.WithRawResponse.Execute(
             new HttpRequest<BlankParams> { Method = HttpMethod.Get, Params = new() },
@@ -127,7 +127,7 @@ public class RetriesTest : TestBase
 
         var httpClient = new HttpClient(handlerMock.Object);
 
-        SentDmClient client = new() { HttpClient = httpClient, MaxRetries = 2 };
+        SentClient client = new() { HttpClient = httpClient, MaxRetries = 2 };
 
         var resp = await client.WithRawResponse.Execute(
             new HttpRequest<BlankParams> { Method = HttpMethod.Get, Params = new() },
@@ -207,7 +207,7 @@ public class RetriesTest : TestBase
 
         var httpClient = new HttpClient(handlerMock.Object);
 
-        SentDmClient client = new() { HttpClient = httpClient, MaxRetries = 2 };
+        SentClient client = new() { HttpClient = httpClient, MaxRetries = 2 };
 
         var resp = await client.WithRawResponse.Execute(
             new HttpRequest<ParamsWithOverwrittenRetryHeader>
@@ -265,7 +265,7 @@ public class RetriesTest : TestBase
 
         var httpClient = new HttpClient(handlerMock.Object);
 
-        SentDmClient client = new() { HttpClient = httpClient, MaxRetries = 1 };
+        SentClient client = new() { HttpClient = httpClient, MaxRetries = 1 };
 
         var resp = await client.WithRawResponse.Execute(
             new HttpRequest<BlankParams> { Method = HttpMethod.Get, Params = new() },
@@ -319,7 +319,7 @@ public class RetriesTest : TestBase
 
         var httpClient = new HttpClient(handlerMock.Object);
 
-        SentDmClient client = new() { HttpClient = httpClient, MaxRetries = 2 };
+        SentClient client = new() { HttpClient = httpClient, MaxRetries = 2 };
 
         var resp = await client.WithRawResponse.Execute(
             new HttpRequest<BlankParams> { Method = HttpMethod.Get, Params = new() },

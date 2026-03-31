@@ -2,56 +2,56 @@ using System.Net;
 
 namespace Sentdm.Exceptions;
 
-public class SentDmExceptionFactory
+public class SentExceptionFactory
 {
-    public static SentDmApiException CreateApiException(
+    public static SentApiException CreateApiException(
         HttpStatusCode statusCode,
         string responseBody
     )
     {
         return (int)statusCode switch
         {
-            400 => new SentDmBadRequestException()
+            400 => new SentBadRequestException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            401 => new SentDmUnauthorizedException()
+            401 => new SentUnauthorizedException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            403 => new SentDmForbiddenException()
+            403 => new SentForbiddenException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            404 => new SentDmNotFoundException()
+            404 => new SentNotFoundException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            422 => new SentDmUnprocessableEntityException()
+            422 => new SentUnprocessableEntityException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            429 => new SentDmRateLimitException()
+            429 => new SentRateLimitException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            >= 400 and <= 499 => new SentDm4xxException()
+            >= 400 and <= 499 => new Sent4xxException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            >= 500 and <= 599 => new SentDm5xxException()
+            >= 500 and <= 599 => new Sent5xxException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            _ => new SentDmUnexpectedStatusCodeException()
+            _ => new SentUnexpectedStatusCodeException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,

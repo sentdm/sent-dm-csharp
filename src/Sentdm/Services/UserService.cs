@@ -19,7 +19,7 @@ public sealed class UserService : IUserService
         get { return _withRawResponse.Value; }
     }
 
-    readonly ISentDmClient _client;
+    readonly ISentClient _client;
 
     /// <inheritdoc/>
     public IUserService WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -27,7 +27,7 @@ public sealed class UserService : IUserService
         return new UserService(this._client.WithOptions(modifier));
     }
 
-    public UserService(ISentDmClient client)
+    public UserService(ISentClient client)
     {
         _client = client;
 
@@ -127,7 +127,7 @@ public sealed class UserService : IUserService
 /// <inheritdoc/>
 public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
 {
-    readonly ISentDmClientWithRawResponse _client;
+    readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
     public IUserServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -135,7 +135,7 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
         return new UserServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public UserServiceWithRawResponse(ISentDmClientWithRawResponse client)
+    public UserServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
     }
@@ -148,7 +148,7 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
     {
         if (parameters.UserID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.UserID' cannot be null");
+            throw new SentInvalidDataException("'parameters.UserID' cannot be null");
         }
 
         HttpRequest<UserRetrieveParams> request = new()
@@ -253,7 +253,7 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
     {
         if (parameters.UserID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.UserID' cannot be null");
+            throw new SentInvalidDataException("'parameters.UserID' cannot be null");
         }
 
         HttpRequest<UserRemoveParams> request = new()
@@ -282,12 +282,12 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
     {
         if (parameters.UserID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.UserID' cannot be null");
+            throw new SentInvalidDataException("'parameters.UserID' cannot be null");
         }
 
         HttpRequest<UserUpdateRoleParams> request = new()
         {
-            Method = SentDmClientWithRawResponse.PatchMethod,
+            Method = SentClientWithRawResponse.PatchMethod,
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);

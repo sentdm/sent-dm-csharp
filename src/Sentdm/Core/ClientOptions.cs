@@ -25,7 +25,7 @@ public record struct ClientOptions()
     public HttpClient HttpClient { get; set; } = new();
 
     Lazy<string> _baseUrl = new(() =>
-        Environment.GetEnvironmentVariable("SENT_DM_BASE_URL") ?? EnvironmentUrl.Production
+        Environment.GetEnvironmentVariable("SENT_BASE_URL") ?? EnvironmentUrl.Production
     );
 
     /// <summary>
@@ -47,7 +47,7 @@ public record struct ClientOptions()
     ///
     /// <para>Note that when set to true, the response body is only validated if the response is
     /// deserialized. Methods that don't eagerly deserialize the response, such as those on
-    /// <see cref="ISentDmClient.WithRawResponse"/>, don't perform validation until deserialization
+    /// <see cref="ISentClient.WithRawResponse"/>, don't perform validation until deserialization
     /// is triggered.</para>
     /// </summary>
     public bool ResponseValidation { get; set; } = false;
@@ -89,7 +89,7 @@ public record struct ClientOptions()
     /// </summary>
     Lazy<string> _apiKey = new(() =>
         Environment.GetEnvironmentVariable("SENT_DM_API_KEY")
-        ?? throw new SentDmInvalidDataException(
+        ?? throw new SentInvalidDataException(
             string.Format("{0} cannot be null", nameof(ApiKey)),
             new ArgumentNullException(nameof(ApiKey))
         )

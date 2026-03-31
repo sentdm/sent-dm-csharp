@@ -1,6 +1,6 @@
-# Sent Dm C# API Library
+# Sent C# API Library
 
-The Sent Dm C# SDK provides convenient access to the [Sent Dm REST API](https://docs.sent.dm) from applications written in C#.
+The Sent C# SDK provides convenient access to the [Sent REST API](https://docs.sent.dm) from applications written in C#.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using Sentdm;
 using Sentdm.Models.Messages;
 
-SentDmClient client = new();
+SentClient client = new();
 
 MessageSendParams parameters = new()
 {
@@ -63,8 +63,8 @@ Configure the client using environment variables:
 ```csharp
 using Sentdm;
 
-// Configured using the SENT_DM_API_KEY and SENT_DM_BASE_URL environment variables
-SentDmClient client = new();
+// Configured using the SENT_DM_API_KEY and SENT_BASE_URL environment variables
+SentClient client = new();
 ```
 
 Or manually:
@@ -72,7 +72,7 @@ Or manually:
 ```csharp
 using Sentdm;
 
-SentDmClient client = new() { ApiKey = "My API Key" };
+SentClient client = new() { ApiKey = "My API Key" };
 ```
 
 Or using a combination of the two approaches.
@@ -82,7 +82,7 @@ See this table for the available options:
 | Property  | Environment variable | Required | Default value           |
 | --------- | -------------------- | -------- | ----------------------- |
 | `ApiKey`  | `SENT_DM_API_KEY`    | true     | -                       |
-| `BaseUrl` | `SENT_DM_BASE_URL`   | true     | `"https://api.sent.dm"` |
+| `BaseUrl` | `SENT_BASE_URL`      | true     | `"https://api.sent.dm"` |
 
 ### Modifying configuration
 
@@ -110,7 +110,7 @@ The `WithOptions` method does not affect the original client or service.
 
 ## Requests and responses
 
-To send a request to the Sent Dm API, build an instance of some `Params` class and pass it to the corresponding client method. When the response is received, it will be deserialized into an instance of a C# class.
+To send a request to the Sent API, build an instance of some `Params` class and pass it to the corresponding client method. When the response is received, it will be deserialized into an instance of a C# class.
 
 For example, `client.Messages.Send` should be called with an instance of `MessageSendParams`, and it will return an instance of `Task<MessageSendResponse>`.
 
@@ -143,26 +143,26 @@ Console.WriteLine(deserialized);
 
 The SDK throws custom unchecked exception types:
 
-- `SentDmApiException`: Base class for API errors. See this table for which exception subclass is thrown for each HTTP status code:
+- `SentApiException`: Base class for API errors. See this table for which exception subclass is thrown for each HTTP status code:
 
-| Status | Exception                             |
-| ------ | ------------------------------------- |
-| 400    | `SentDmBadRequestException`           |
-| 401    | `SentDmUnauthorizedException`         |
-| 403    | `SentDmForbiddenException`            |
-| 404    | `SentDmNotFoundException`             |
-| 422    | `SentDmUnprocessableEntityException`  |
-| 429    | `SentDmRateLimitException`            |
-| 5xx    | `SentDm5xxException`                  |
-| others | `SentDmUnexpectedStatusCodeException` |
+| Status | Exception                           |
+| ------ | ----------------------------------- |
+| 400    | `SentBadRequestException`           |
+| 401    | `SentUnauthorizedException`         |
+| 403    | `SentForbiddenException`            |
+| 404    | `SentNotFoundException`             |
+| 422    | `SentUnprocessableEntityException`  |
+| 429    | `SentRateLimitException`            |
+| 5xx    | `Sent5xxException`                  |
+| others | `SentUnexpectedStatusCodeException` |
 
-Additionally, all 4xx errors inherit from `SentDm4xxException`.
+Additionally, all 4xx errors inherit from `Sent4xxException`.
 
-- `SentDmIOException`: I/O networking errors.
+- `SentIOException`: I/O networking errors.
 
-- `SentDmInvalidDataException`: Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
+- `SentInvalidDataException`: Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
 
-- `SentDmException`: Base class for all exceptions.
+- `SentException`: Base class for all exceptions.
 
 ## Network options
 
@@ -185,7 +185,7 @@ To set a custom number of retries, configure the client using the `MaxRetries` m
 ```csharp
 using Sentdm;
 
-SentDmClient client = new() { MaxRetries = 3 };
+SentClient client = new() { MaxRetries = 3 };
 ```
 
 Or configure a single method call using [`WithOptions`](#modifying-configuration):
@@ -212,7 +212,7 @@ To set a custom timeout, configure the client using the `Timeout` option:
 using System;
 using Sentdm;
 
-SentDmClient client = new() { Timeout = TimeSpan.FromSeconds(42) };
+SentClient client = new() { Timeout = TimeSpan.FromSeconds(42) };
 ```
 
 Or configure a single method call using [`WithOptions`](#modifying-configuration):
@@ -246,7 +246,7 @@ var httpClient = new HttpClient
     }
 );
 
-SentDmClient client = new() { HttpClient = httpClient };
+SentClient client = new() { HttpClient = httpClient };
 ```
 
 ## Undocumented API functionality
@@ -369,7 +369,7 @@ if (response.RawData.TryGetValue("my_custom_key", out JsonElement value))
 
 In rare cases, the API may return a response that doesn't match the expected type. For example, the SDK may expect a property to contain a `string`, but the API could return something else.
 
-By default, the SDK will not throw an exception in this case. It will throw `SentDmInvalidDataException` only if you directly access the property.
+By default, the SDK will not throw an exception in this case. It will throw `SentInvalidDataException` only if you directly access the property.
 
 If you would prefer to check that the response is completely well-typed upfront, then either call `Validate`:
 
@@ -383,7 +383,7 @@ Or configure the client using the `ResponseValidation` option:
 ```csharp
 using Sentdm;
 
-SentDmClient client = new() { ResponseValidation = true };
+SentClient client = new() { ResponseValidation = true };
 ```
 
 Or configure a single method call using [`WithOptions`](#modifying-configuration):

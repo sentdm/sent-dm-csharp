@@ -19,7 +19,7 @@ public sealed class WebhookService : IWebhookService
         get { return _withRawResponse.Value; }
     }
 
-    readonly ISentDmClient _client;
+    readonly ISentClient _client;
 
     /// <inheritdoc/>
     public IWebhookService WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -27,7 +27,7 @@ public sealed class WebhookService : IWebhookService
         return new WebhookService(this._client.WithOptions(modifier));
     }
 
-    public WebhookService(ISentDmClient client)
+    public WebhookService(ISentClient client)
     {
         _client = client;
 
@@ -235,7 +235,7 @@ public sealed class WebhookService : IWebhookService
 /// <inheritdoc/>
 public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawResponse
 {
-    readonly ISentDmClientWithRawResponse _client;
+    readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
     public IWebhookServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -243,7 +243,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
         return new WebhookServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public WebhookServiceWithRawResponse(ISentDmClientWithRawResponse client)
+    public WebhookServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
     }
@@ -286,7 +286,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<WebhookRetrieveParams> request = new()
@@ -331,7 +331,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<WebhookUpdateParams> request = new()
@@ -404,7 +404,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<WebhookDeleteParams> request = new()
@@ -465,7 +465,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<WebhookListEventsParams> request = new()
@@ -508,7 +508,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<WebhookRotateSecretParams> request = new()
@@ -551,7 +551,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<WebhookTestParams> request = new()
@@ -596,12 +596,12 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<WebhookToggleStatusParams> request = new()
         {
-            Method = SentDmClientWithRawResponse.PatchMethod,
+            Method = SentClientWithRawResponse.PatchMethod,
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);

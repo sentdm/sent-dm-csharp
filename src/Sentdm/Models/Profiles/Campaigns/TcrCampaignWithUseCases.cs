@@ -923,7 +923,7 @@ sealed class SharingStatusConverter : JsonConverter<SharingStatus>
                 SharingStatus.Pending => "PENDING",
                 SharingStatus.Accepted => "ACCEPTED",
                 SharingStatus.Declined => "DECLINED",
-                _ => throw new SentDmInvalidDataException(
+                _ => throw new SentInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
             },
@@ -966,7 +966,7 @@ sealed class StatusConverter : JsonConverter<Status>
                 Status.SentCreated => "SENT_CREATED",
                 Status.Active => "ACTIVE",
                 Status.Expired => "EXPIRED",
-                _ => throw new SentDmInvalidDataException(
+                _ => throw new SentInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
             },

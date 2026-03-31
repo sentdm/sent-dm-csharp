@@ -73,7 +73,7 @@ sealed class MessagingUseCaseUsConverter : JsonConverter<MessagingUseCaseUs>
                 MessagingUseCaseUs.PollingVoting => "POLLING_VOTING",
                 MessagingUseCaseUs.PublicServiceAnnouncement => "PUBLIC_SERVICE_ANNOUNCEMENT",
                 MessagingUseCaseUs.LowVolume => "LOW_VOLUME",
-                _ => throw new SentDmInvalidDataException(
+                _ => throw new SentInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
             },

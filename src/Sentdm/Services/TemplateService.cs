@@ -19,7 +19,7 @@ public sealed class TemplateService : ITemplateService
         get { return _withRawResponse.Value; }
     }
 
-    readonly ISentDmClient _client;
+    readonly ISentClient _client;
 
     /// <inheritdoc/>
     public ITemplateService WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -27,7 +27,7 @@ public sealed class TemplateService : ITemplateService
         return new TemplateService(this._client.WithOptions(modifier));
     }
 
-    public TemplateService(ISentDmClient client)
+    public TemplateService(ISentClient client)
     {
         _client = client;
 
@@ -131,7 +131,7 @@ public sealed class TemplateService : ITemplateService
 /// <inheritdoc/>
 public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResponse
 {
-    readonly ISentDmClientWithRawResponse _client;
+    readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
     public ITemplateServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -139,7 +139,7 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
         return new TemplateServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public TemplateServiceWithRawResponse(ISentDmClientWithRawResponse client)
+    public TemplateServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
     }
@@ -182,7 +182,7 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<TemplateRetrieveParams> request = new()
@@ -227,7 +227,7 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<TemplateUpdateParams> request = new()
@@ -300,7 +300,7 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<TemplateDeleteParams> request = new()

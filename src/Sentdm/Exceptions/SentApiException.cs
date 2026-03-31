@@ -4,7 +4,7 @@ using System.Net.Http;
 
 namespace Sentdm.Exceptions;
 
-public class SentDmApiException : SentDmException
+public class SentApiException : SentException
 {
     public new HttpRequestException InnerException
     {
@@ -18,10 +18,10 @@ public class SentDmApiException : SentDmException
         }
     }
 
-    public SentDmApiException(string message, HttpRequestException? innerException = null)
+    public SentApiException(string message, HttpRequestException? innerException = null)
         : base(message, innerException) { }
 
-    protected SentDmApiException(HttpRequestException? innerException)
+    protected SentApiException(HttpRequestException? innerException)
         : base(innerException) { }
 
     public required HttpStatusCode StatusCode { get; init; }

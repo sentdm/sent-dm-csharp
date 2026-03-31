@@ -17,14 +17,11 @@ sealed class WrappedJsonSerializer
         {
             deserialized =
                 JsonSerializer.Deserialize<T>(element, ModelBase.SerializerOptions)
-                ?? throw new SentDmInvalidDataException($"'{name}' cannot be null");
+                ?? throw new SentInvalidDataException($"'{name}' cannot be null");
         }
         catch (JsonException e)
         {
-            throw new SentDmInvalidDataException(
-                $"'{name}' must be of type {typeof(T).FullName}",
-                e
-            );
+            throw new SentInvalidDataException($"'{name}' must be of type {typeof(T).FullName}", e);
         }
         return deserialized;
     }
@@ -37,14 +34,11 @@ sealed class WrappedJsonSerializer
         {
             deserialized =
                 JsonSerializer.Deserialize<T?>(element, ModelBase.SerializerOptions)
-                ?? throw new SentDmInvalidDataException($"'{name}' cannot be null");
+                ?? throw new SentInvalidDataException($"'{name}' cannot be null");
         }
         catch (JsonException e)
         {
-            throw new SentDmInvalidDataException(
-                $"'{name}' must be of type {typeof(T).FullName}",
-                e
-            );
+            throw new SentInvalidDataException($"'{name}' must be of type {typeof(T).FullName}", e);
         }
         return deserialized;
     }
@@ -59,10 +53,7 @@ sealed class WrappedJsonSerializer
         }
         catch (JsonException e)
         {
-            throw new SentDmInvalidDataException(
-                $"'{name}' must be of type {typeof(T).FullName}",
-                e
-            );
+            throw new SentInvalidDataException($"'{name}' must be of type {typeof(T).FullName}", e);
         }
         return deserialized;
     }
@@ -77,10 +68,7 @@ sealed class WrappedJsonSerializer
         }
         catch (JsonException e)
         {
-            throw new SentDmInvalidDataException(
-                $"'{name}' must be of type {typeof(T).FullName}",
-                e
-            );
+            throw new SentInvalidDataException($"'{name}' must be of type {typeof(T).FullName}", e);
         }
         return deserialized;
     }

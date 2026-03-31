@@ -303,7 +303,7 @@ public class EntityTypeTest : TestBase
         );
 
         Assert.NotNull(value);
-        Assert.Throws<SentDmInvalidDataException>(() => value.Validate());
+        Assert.Throws<SentInvalidDataException>(() => value.Validate());
     }
 
     [Theory]
