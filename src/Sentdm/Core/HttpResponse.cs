@@ -68,11 +68,11 @@ public class HttpResponse : IDisposable
                         cts.Token
                     )
                     .ConfigureAwait(false)
-                ?? throw new SentDmInvalidDataException("Response cannot be null");
+                ?? throw new SentInvalidDataException("Response cannot be null");
         }
         catch (HttpRequestException e)
         {
-            throw new SentDmIOException("I/O Exception", e);
+            throw new SentIOException("I/O Exception", e);
         }
     }
 

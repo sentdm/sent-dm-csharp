@@ -269,7 +269,7 @@ sealed class EntityTypeConverter : JsonConverter<EntityType>
                 EntityType.NonProfit => "NON_PROFIT",
                 EntityType.SoleProprietor => "SOLE_PROPRIETOR",
                 EntityType.Government => "GOVERNMENT",
-                _ => throw new SentDmInvalidDataException(
+                _ => throw new SentInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
             },

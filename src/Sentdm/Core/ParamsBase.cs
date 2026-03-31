@@ -206,7 +206,7 @@ public abstract record class ParamsBase
         );
     }
 
-    static string GetUserAgent() => $"{typeof(SentDmClient).Name}/C# {GetPackageVersion()}";
+    static string GetUserAgent() => $"{typeof(SentClient).Name}/C# {GetPackageVersion()}";
 
     static string GetPackageVersion() =>
         Assembly

@@ -1,10 +1,10 @@
 <Project>
   <PropertyGroup>
-    <Authors>Sent Dm</Authors>
-    <Company>Sent Dm</Company>
+    <Authors>Sent</Authors>
+    <Company>Sent</Company>
     <PackageTags>sdk;api;http;library</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <Copyright>Copyright 2026 Sent Dm</Copyright>
+    <Copyright>Copyright 2026 Sent</Copyright>
     <PackageProjectUrl>https://docs.sent.dm</PackageProjectUrl>
     <RepositoryUrl>https://www.github.com/sentdm/sent-dm-csharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

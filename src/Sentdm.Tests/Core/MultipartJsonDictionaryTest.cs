@@ -121,7 +121,7 @@ public class MultipartJsonDictionaryTest : TestBase
     {
         var dict = new MultipartJsonDictionary();
 
-        var exception = Assert.Throws<SentDmInvalidDataException>(() =>
+        var exception = Assert.Throws<SentInvalidDataException>(() =>
             dict.GetNotNullClass<string>("missing")
         );
         Assert.Contains("'missing' cannot be absent", exception.Message);
@@ -137,7 +137,7 @@ public class MultipartJsonDictionaryTest : TestBase
             }
         );
 
-        var exception = Assert.Throws<SentDmInvalidDataException>(() =>
+        var exception = Assert.Throws<SentInvalidDataException>(() =>
             dict.GetNotNullClass<string>("nullable")
         );
         Assert.Contains("'nullable' cannot be null", exception.Message);
@@ -149,7 +149,7 @@ public class MultipartJsonDictionaryTest : TestBase
         var dict = new MultipartJsonDictionary();
         dict.Set("number", 42);
 
-        var exception = Assert.Throws<SentDmInvalidDataException>(() =>
+        var exception = Assert.Throws<SentInvalidDataException>(() =>
             dict.GetNotNullClass<string>("number")
         );
         Assert.Contains("'number' must be of type", exception.Message);
@@ -171,7 +171,7 @@ public class MultipartJsonDictionaryTest : TestBase
     {
         var dict = new MultipartJsonDictionary();
 
-        var exception = Assert.Throws<SentDmInvalidDataException>(() =>
+        var exception = Assert.Throws<SentInvalidDataException>(() =>
             dict.GetNotNullStruct<int>("missing")
         );
         Assert.Contains("'missing' cannot be absent", exception.Message);
@@ -187,7 +187,7 @@ public class MultipartJsonDictionaryTest : TestBase
             }
         );
 
-        var exception = Assert.Throws<SentDmInvalidDataException>(() =>
+        var exception = Assert.Throws<SentInvalidDataException>(() =>
             dict.GetNotNullStruct<int>("nullable")
         );
         Assert.Contains("'nullable' cannot be null", exception.Message);
@@ -199,7 +199,7 @@ public class MultipartJsonDictionaryTest : TestBase
         var dict = new MultipartJsonDictionary();
         dict.Set("text", "not a number");
 
-        var exception = Assert.Throws<SentDmInvalidDataException>(() =>
+        var exception = Assert.Throws<SentInvalidDataException>(() =>
             dict.GetNotNullStruct<int>("text")
         );
         Assert.Contains("'text' must be of type", exception.Message);
@@ -259,7 +259,7 @@ public class MultipartJsonDictionaryTest : TestBase
         var dict = new MultipartJsonDictionary();
         dict.Set("number", 42);
 
-        var exception = Assert.Throws<SentDmInvalidDataException>(() =>
+        var exception = Assert.Throws<SentInvalidDataException>(() =>
             dict.GetNullableClass<string>("number")
         );
         Assert.Contains("'number' must be of type", exception.Message);
@@ -307,7 +307,7 @@ public class MultipartJsonDictionaryTest : TestBase
         var dict = new MultipartJsonDictionary();
         dict.Set("text", "not a number");
 
-        var exception = Assert.Throws<SentDmInvalidDataException>(() =>
+        var exception = Assert.Throws<SentInvalidDataException>(() =>
             dict.GetNullableStruct<int>("text")
         );
         Assert.Contains("'text' must be of type", exception.Message);

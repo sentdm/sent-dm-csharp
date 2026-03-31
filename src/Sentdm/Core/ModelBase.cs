@@ -45,7 +45,7 @@ public abstract record class ModelBase
     ///
     /// <para>This is useful for instances constructed from raw JSON data (e.g. deserialized from an API response).</para>
     ///
-    /// <exception cref="SentDmInvalidDataException">
+    /// <exception cref="SentInvalidDataException">
     /// Thrown when the instance does not pass validation.
     /// </exception>
     /// </summary>

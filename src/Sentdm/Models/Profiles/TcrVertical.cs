@@ -103,7 +103,7 @@ sealed class TcrVerticalConverter : JsonConverter<TcrVertical>
                 TcrVertical.Government => "GOVERNMENT",
                 TcrVertical.Technology => "TECHNOLOGY",
                 TcrVertical.Communication => "COMMUNICATION",
-                _ => throw new SentDmInvalidDataException(
+                _ => throw new SentInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
             },

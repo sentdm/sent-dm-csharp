@@ -19,7 +19,7 @@ public sealed class ContactService : IContactService
         get { return _withRawResponse.Value; }
     }
 
-    readonly ISentDmClient _client;
+    readonly ISentClient _client;
 
     /// <inheritdoc/>
     public IContactService WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -27,7 +27,7 @@ public sealed class ContactService : IContactService
         return new ContactService(this._client.WithOptions(modifier));
     }
 
-    public ContactService(ISentDmClient client)
+    public ContactService(ISentClient client)
     {
         _client = client;
 
@@ -129,7 +129,7 @@ public sealed class ContactService : IContactService
 /// <inheritdoc/>
 public sealed class ContactServiceWithRawResponse : IContactServiceWithRawResponse
 {
-    readonly ISentDmClientWithRawResponse _client;
+    readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
     public IContactServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -137,7 +137,7 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
         return new ContactServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public ContactServiceWithRawResponse(ISentDmClientWithRawResponse client)
+    public ContactServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
     }
@@ -180,7 +180,7 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<ContactRetrieveParams> request = new()
@@ -225,12 +225,12 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<ContactUpdateParams> request = new()
         {
-            Method = SentDmClientWithRawResponse.PatchMethod,
+            Method = SentClientWithRawResponse.PatchMethod,
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
@@ -298,7 +298,7 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentDmInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
         }
 
         HttpRequest<ContactDeleteParams> request = new()

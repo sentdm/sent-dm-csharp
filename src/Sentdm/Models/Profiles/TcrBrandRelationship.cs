@@ -49,7 +49,7 @@ sealed class TcrBrandRelationshipConverter : JsonConverter<TcrBrandRelationship>
                 TcrBrandRelationship.LargeAccount => "LARGE_ACCOUNT",
                 TcrBrandRelationship.SmallAccount => "SMALL_ACCOUNT",
                 TcrBrandRelationship.KeyAccount => "KEY_ACCOUNT",
-                _ => throw new SentDmInvalidDataException(
+                _ => throw new SentInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
             },

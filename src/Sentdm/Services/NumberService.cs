@@ -19,7 +19,7 @@ public sealed class NumberService : INumberService
         get { return _withRawResponse.Value; }
     }
 
-    readonly ISentDmClient _client;
+    readonly ISentClient _client;
 
     /// <inheritdoc/>
     public INumberService WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -27,7 +27,7 @@ public sealed class NumberService : INumberService
         return new NumberService(this._client.WithOptions(modifier));
     }
 
-    public NumberService(ISentDmClient client)
+    public NumberService(ISentClient client)
     {
         _client = client;
 
@@ -62,7 +62,7 @@ public sealed class NumberService : INumberService
 /// <inheritdoc/>
 public sealed class NumberServiceWithRawResponse : INumberServiceWithRawResponse
 {
-    readonly ISentDmClientWithRawResponse _client;
+    readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
     public INumberServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
@@ -70,7 +70,7 @@ public sealed class NumberServiceWithRawResponse : INumberServiceWithRawResponse
         return new NumberServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public NumberServiceWithRawResponse(ISentDmClientWithRawResponse client)
+    public NumberServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
     }
@@ -83,7 +83,7 @@ public sealed class NumberServiceWithRawResponse : INumberServiceWithRawResponse
     {
         if (parameters.PhoneNumber == null)
         {
-            throw new SentDmInvalidDataException("'parameters.PhoneNumber' cannot be null");
+            throw new SentInvalidDataException("'parameters.PhoneNumber' cannot be null");
         }
 
         HttpRequest<NumberLookupParams> request = new()
