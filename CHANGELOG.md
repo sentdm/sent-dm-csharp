@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.16.0 (2026-04-03)
+
+Full Changelog: [v0.15.0...v0.16.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.15.0...v0.16.0)
+
+### Features
+
+* **client:** enable gzip decompression ([7267961](https://github.com/sentdm/sent-dm-csharp/commit/7267961b8af120a3a08a521238f26be764a7b430))
+
+
+### Bug Fixes
+
+* **client:** allow cancelling when enumerating over an http response ([64b0397](https://github.com/sentdm/sent-dm-csharp/commit/64b03977ae69a12cd5f61748eb88aaf222e29ee1))
+
 ## 0.15.0 (2026-03-31)
 
 Full Changelog: [v0.14.0...v0.15.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.14.0...v0.15.0)
