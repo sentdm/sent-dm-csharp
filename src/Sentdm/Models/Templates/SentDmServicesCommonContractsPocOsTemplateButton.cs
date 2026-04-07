@@ -19,6 +19,34 @@ namespace Sentdm.Models.Templates;
 public sealed record class SentDmServicesCommonContractsPocOsTemplateButton : JsonModel
 {
     /// <summary>
+    /// Properties specific to the button type
+    /// </summary>
+    public required SentDmServicesCommonContractsPocOsTemplateButtonProps Props
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<SentDmServicesCommonContractsPocOsTemplateButtonProps>(
+                "props"
+            );
+        }
+        init { this._rawData.Set("props", value); }
+    }
+
+    /// <summary>
+    /// The type of button (e.g., QUICK_REPLY, URL, PHONE_NUMBER, VOICE_CALL, COPY_CODE)
+    /// </summary>
+    public required string Type
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("type");
+        }
+        init { this._rawData.Set("type", value); }
+    }
+
+    /// <summary>
     /// The unique identifier of the button (1-based index)
     /// </summary>
     public int? ID
@@ -39,56 +67,12 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateButton : Js
         }
     }
 
-    /// <summary>
-    /// Properties specific to the button type
-    /// </summary>
-    public SentDmServicesCommonContractsPocOsTemplateButtonProps? Props
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<SentDmServicesCommonContractsPocOsTemplateButtonProps>(
-                "props"
-            );
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("props", value);
-        }
-    }
-
-    /// <summary>
-    /// The type of button (e.g., QUICK_REPLY, URL, PHONE_NUMBER, VOICE_CALL, COPY_CODE)
-    /// </summary>
-    public string? Type
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("type");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("type", value);
-        }
-    }
-
     /// <inheritdoc/>
     public override void Validate()
     {
-        _ = this.ID;
-        this.Props?.Validate();
+        this.Props.Validate();
         _ = this.Type;
+        _ = this.ID;
     }
 
     public SentDmServicesCommonContractsPocOsTemplateButton() { }

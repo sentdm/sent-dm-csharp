@@ -25,19 +25,19 @@ public class TemplateUpdateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -49,19 +49,19 @@ public class TemplateUpdateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -73,19 +73,19 @@ public class TemplateUpdateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -99,23 +99,23 @@ public class TemplateUpdateParamsTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
                         Props = new()
                         {
-                            ActiveFor = 0,
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "x",
+                            UrlType = "x",
                             AutofillText = "autofillText",
-                            CountryCode = "countryCode",
-                            OfferCode = "offerCode",
                             OtpType = "otpType",
                             PackageName = "packageName",
-                            PhoneNumber = "phoneNumber",
-                            QuickReplyType = "quickReplyType",
                             SignatureHash = "signatureHash",
-                            Text = "text",
-                            Url = "url",
-                            UrlType = "urlType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
                 DefinitionVersion = "definitionVersion",
@@ -127,19 +127,19 @@ public class TemplateUpdateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -151,19 +151,19 @@ public class TemplateUpdateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -190,19 +190,19 @@ public class TemplateUpdateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -214,19 +214,19 @@ public class TemplateUpdateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -238,19 +238,19 @@ public class TemplateUpdateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -264,23 +264,23 @@ public class TemplateUpdateParamsTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
                     Props = new()
                     {
-                        ActiveFor = 0,
+                        ActiveFor = 1,
+                        CountryCode = "x",
+                        OfferCode = "x",
+                        PhoneNumber = "x",
+                        QuickReplyType = "x",
+                        Text = "text",
+                        Url = "x",
+                        UrlType = "x",
                         AutofillText = "autofillText",
-                        CountryCode = "countryCode",
-                        OfferCode = "offerCode",
                         OtpType = "otpType",
                         PackageName = "packageName",
-                        PhoneNumber = "phoneNumber",
-                        QuickReplyType = "quickReplyType",
                         SignatureHash = "signatureHash",
-                        Text = "text",
-                        Url = "url",
-                        UrlType = "urlType",
                     },
-                    Type = "type",
+                    Type = "x",
+                    ID = 0,
                 },
             ],
             DefinitionVersion = "definitionVersion",
@@ -292,19 +292,19 @@ public class TemplateUpdateParamsTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -316,19 +316,19 @@ public class TemplateUpdateParamsTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -369,19 +369,19 @@ public class TemplateUpdateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -393,19 +393,19 @@ public class TemplateUpdateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -417,19 +417,19 @@ public class TemplateUpdateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -443,23 +443,23 @@ public class TemplateUpdateParamsTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
                         Props = new()
                         {
-                            ActiveFor = 0,
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "x",
+                            UrlType = "x",
                             AutofillText = "autofillText",
-                            CountryCode = "countryCode",
-                            OfferCode = "offerCode",
                             OtpType = "otpType",
                             PackageName = "packageName",
-                            PhoneNumber = "phoneNumber",
-                            QuickReplyType = "quickReplyType",
                             SignatureHash = "signatureHash",
-                            Text = "text",
-                            Url = "url",
-                            UrlType = "urlType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
                 DefinitionVersion = "definitionVersion",
@@ -471,19 +471,19 @@ public class TemplateUpdateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -495,19 +495,19 @@ public class TemplateUpdateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -545,19 +545,19 @@ public class TemplateUpdateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -569,19 +569,19 @@ public class TemplateUpdateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -593,19 +593,19 @@ public class TemplateUpdateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -619,23 +619,23 @@ public class TemplateUpdateParamsTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
                         Props = new()
                         {
-                            ActiveFor = 0,
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "x",
+                            UrlType = "x",
                             AutofillText = "autofillText",
-                            CountryCode = "countryCode",
-                            OfferCode = "offerCode",
                             OtpType = "otpType",
                             PackageName = "packageName",
-                            PhoneNumber = "phoneNumber",
-                            QuickReplyType = "quickReplyType",
                             SignatureHash = "signatureHash",
-                            Text = "text",
-                            Url = "url",
-                            UrlType = "urlType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
                 DefinitionVersion = "definitionVersion",
@@ -647,19 +647,19 @@ public class TemplateUpdateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -671,19 +671,19 @@ public class TemplateUpdateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -809,19 +809,19 @@ public class TemplateUpdateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -833,19 +833,19 @@ public class TemplateUpdateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -857,19 +857,19 @@ public class TemplateUpdateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -883,23 +883,23 @@ public class TemplateUpdateParamsTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
                         Props = new()
                         {
-                            ActiveFor = 0,
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "x",
+                            UrlType = "x",
                             AutofillText = "autofillText",
-                            CountryCode = "countryCode",
-                            OfferCode = "offerCode",
                             OtpType = "otpType",
                             PackageName = "packageName",
-                            PhoneNumber = "phoneNumber",
-                            QuickReplyType = "quickReplyType",
                             SignatureHash = "signatureHash",
-                            Text = "text",
-                            Url = "url",
-                            UrlType = "urlType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
                 DefinitionVersion = "definitionVersion",
@@ -911,19 +911,19 @@ public class TemplateUpdateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -935,19 +935,19 @@ public class TemplateUpdateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
