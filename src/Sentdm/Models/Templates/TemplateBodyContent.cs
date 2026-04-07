@@ -11,22 +11,14 @@ namespace Sentdm.Models.Templates;
 [JsonConverter(typeof(JsonModelConverter<TemplateBodyContent, TemplateBodyContentFromRaw>))]
 public sealed record class TemplateBodyContent : JsonModel
 {
-    public string? Template
+    public required string Template
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("template");
+            return this._rawData.GetNotNullClass<string>("template");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("template", value);
-        }
+        init { this._rawData.Set("template", value); }
     }
 
     public string? Type
@@ -93,6 +85,13 @@ public sealed record class TemplateBodyContent : JsonModel
     )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+
+    [SetsRequiredMembers]
+    public TemplateBodyContent(string template)
+        : this()
+    {
+        this.Template = template;
     }
 }
 

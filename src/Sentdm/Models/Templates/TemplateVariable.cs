@@ -10,6 +10,36 @@ namespace Sentdm.Models.Templates;
 [JsonConverter(typeof(JsonModelConverter<TemplateVariable, TemplateVariableFromRaw>))]
 public sealed record class TemplateVariable : JsonModel
 {
+    public required string Name
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("name");
+        }
+        init { this._rawData.Set("name", value); }
+    }
+
+    public required Props Props
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<Props>("props");
+        }
+        init { this._rawData.Set("props", value); }
+    }
+
+    public required string Type
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("type");
+        }
+        init { this._rawData.Set("type", value); }
+    }
+
     public int? ID
     {
         get
@@ -28,67 +58,13 @@ public sealed record class TemplateVariable : JsonModel
         }
     }
 
-    public string? Name
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("name", value);
-        }
-    }
-
-    public Props? Props
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Props>("props");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("props", value);
-        }
-    }
-
-    public string? Type
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("type");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("type", value);
-        }
-    }
-
     /// <inheritdoc/>
     public override void Validate()
     {
-        _ = this.ID;
         _ = this.Name;
-        this.Props?.Validate();
+        this.Props.Validate();
         _ = this.Type;
+        _ = this.ID;
     }
 
     public TemplateVariable() { }
@@ -131,6 +107,46 @@ class TemplateVariableFromRaw : IFromRawJson<TemplateVariable>
 [JsonConverter(typeof(JsonModelConverter<Props, PropsFromRaw>))]
 public sealed record class Props : JsonModel
 {
+    public required string MediaType
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("mediaType");
+        }
+        init { this._rawData.Set("mediaType", value); }
+    }
+
+    public required string Sample
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("sample");
+        }
+        init { this._rawData.Set("sample", value); }
+    }
+
+    public required string Url
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("url");
+        }
+        init { this._rawData.Set("url", value); }
+    }
+
+    public required string VariableType
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("variableType");
+        }
+        init { this._rawData.Set("variableType", value); }
+    }
+
     public string? Alt
     {
         get
@@ -139,16 +155,6 @@ public sealed record class Props : JsonModel
             return this._rawData.GetNullableClass<string>("alt");
         }
         init { this._rawData.Set("alt", value); }
-    }
-
-    public string? MediaType
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("mediaType");
-        }
-        init { this._rawData.Set("mediaType", value); }
     }
 
     public string? Regex
@@ -161,16 +167,6 @@ public sealed record class Props : JsonModel
         init { this._rawData.Set("regex", value); }
     }
 
-    public string? Sample
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("sample");
-        }
-        init { this._rawData.Set("sample", value); }
-    }
-
     public string? ShortUrl
     {
         get
@@ -181,36 +177,16 @@ public sealed record class Props : JsonModel
         init { this._rawData.Set("shortUrl", value); }
     }
 
-    public string? Url
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("url");
-        }
-        init { this._rawData.Set("url", value); }
-    }
-
-    public string? VariableType
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("variableType");
-        }
-        init { this._rawData.Set("variableType", value); }
-    }
-
     /// <inheritdoc/>
     public override void Validate()
     {
-        _ = this.Alt;
         _ = this.MediaType;
-        _ = this.Regex;
         _ = this.Sample;
-        _ = this.ShortUrl;
         _ = this.Url;
         _ = this.VariableType;
+        _ = this.Alt;
+        _ = this.Regex;
+        _ = this.ShortUrl;
     }
 
     public Props() { }

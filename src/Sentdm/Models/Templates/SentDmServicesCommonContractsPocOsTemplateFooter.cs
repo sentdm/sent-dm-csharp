@@ -22,22 +22,14 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateFooter : Js
     /// <summary>
     /// The footer template text with optional variable placeholders
     /// </summary>
-    public string? Template
+    public required string Template
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("template");
+            return this._rawData.GetNotNullClass<string>("template");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("template", value);
-        }
+        init { this._rawData.Set("template", value); }
     }
 
     /// <summary>
@@ -114,6 +106,13 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateFooter : Js
     )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+
+    [SetsRequiredMembers]
+    public SentDmServicesCommonContractsPocOsTemplateFooter(string template)
+        : this()
+    {
+        this.Template = template;
     }
 }
 

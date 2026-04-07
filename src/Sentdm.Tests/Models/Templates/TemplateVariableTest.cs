@@ -11,39 +11,39 @@ public class TemplateVariableTest : TestBase
     {
         var model = new TemplateVariable
         {
-            ID = 0,
-            Name = "name",
+            Name = "x",
             Props = new()
             {
+                MediaType = "x",
+                Sample = "x",
+                Url = "x",
+                VariableType = "x",
                 Alt = "alt",
-                MediaType = "mediaType",
                 Regex = "regex",
-                Sample = "sample",
                 ShortUrl = "shortUrl",
-                Url = "url",
-                VariableType = "variableType",
             },
-            Type = "type",
+            Type = "x",
+            ID = 0,
         };
 
-        int expectedID = 0;
-        string expectedName = "name";
+        string expectedName = "x";
         Props expectedProps = new()
         {
+            MediaType = "x",
+            Sample = "x",
+            Url = "x",
+            VariableType = "x",
             Alt = "alt",
-            MediaType = "mediaType",
             Regex = "regex",
-            Sample = "sample",
             ShortUrl = "shortUrl",
-            Url = "url",
-            VariableType = "variableType",
         };
-        string expectedType = "type";
+        string expectedType = "x";
+        int expectedID = 0;
 
-        Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedProps, model.Props);
         Assert.Equal(expectedType, model.Type);
+        Assert.Equal(expectedID, model.ID);
     }
 
     [Fact]
@@ -51,19 +51,19 @@ public class TemplateVariableTest : TestBase
     {
         var model = new TemplateVariable
         {
-            ID = 0,
-            Name = "name",
+            Name = "x",
             Props = new()
             {
+                MediaType = "x",
+                Sample = "x",
+                Url = "x",
+                VariableType = "x",
                 Alt = "alt",
-                MediaType = "mediaType",
                 Regex = "regex",
-                Sample = "sample",
                 ShortUrl = "shortUrl",
-                Url = "url",
-                VariableType = "variableType",
             },
-            Type = "type",
+            Type = "x",
+            ID = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -80,19 +80,19 @@ public class TemplateVariableTest : TestBase
     {
         var model = new TemplateVariable
         {
-            ID = 0,
-            Name = "name",
+            Name = "x",
             Props = new()
             {
+                MediaType = "x",
+                Sample = "x",
+                Url = "x",
+                VariableType = "x",
                 Alt = "alt",
-                MediaType = "mediaType",
                 Regex = "regex",
-                Sample = "sample",
                 ShortUrl = "shortUrl",
-                Url = "url",
-                VariableType = "variableType",
             },
-            Type = "type",
+            Type = "x",
+            ID = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -102,24 +102,24 @@ public class TemplateVariableTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        int expectedID = 0;
-        string expectedName = "name";
+        string expectedName = "x";
         Props expectedProps = new()
         {
+            MediaType = "x",
+            Sample = "x",
+            Url = "x",
+            VariableType = "x",
             Alt = "alt",
-            MediaType = "mediaType",
             Regex = "regex",
-            Sample = "sample",
             ShortUrl = "shortUrl",
-            Url = "url",
-            VariableType = "variableType",
         };
-        string expectedType = "type";
+        string expectedType = "x";
+        int expectedID = 0;
 
-        Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedProps, deserialized.Props);
         Assert.Equal(expectedType, deserialized.Type);
+        Assert.Equal(expectedID, deserialized.ID);
     }
 
     [Fact]
@@ -127,19 +127,19 @@ public class TemplateVariableTest : TestBase
     {
         var model = new TemplateVariable
         {
-            ID = 0,
-            Name = "name",
+            Name = "x",
             Props = new()
             {
+                MediaType = "x",
+                Sample = "x",
+                Url = "x",
+                VariableType = "x",
                 Alt = "alt",
-                MediaType = "mediaType",
                 Regex = "regex",
-                Sample = "sample",
                 ShortUrl = "shortUrl",
-                Url = "url",
-                VariableType = "variableType",
             },
-            Type = "type",
+            Type = "x",
+            ID = 0,
         };
 
         model.Validate();
@@ -148,22 +148,44 @@ public class TemplateVariableTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new TemplateVariable { };
+        var model = new TemplateVariable
+        {
+            Name = "x",
+            Props = new()
+            {
+                MediaType = "x",
+                Sample = "x",
+                Url = "x",
+                VariableType = "x",
+                Alt = "alt",
+                Regex = "regex",
+                ShortUrl = "shortUrl",
+            },
+            Type = "x",
+        };
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Props);
-        Assert.False(model.RawData.ContainsKey("props"));
-        Assert.Null(model.Type);
-        Assert.False(model.RawData.ContainsKey("type"));
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new TemplateVariable { };
+        var model = new TemplateVariable
+        {
+            Name = "x",
+            Props = new()
+            {
+                MediaType = "x",
+                Sample = "x",
+                Url = "x",
+                VariableType = "x",
+                Alt = "alt",
+                Regex = "regex",
+                ShortUrl = "shortUrl",
+            },
+            Type = "x",
+        };
 
         model.Validate();
     }
@@ -173,21 +195,25 @@ public class TemplateVariableTest : TestBase
     {
         var model = new TemplateVariable
         {
+            Name = "x",
+            Props = new()
+            {
+                MediaType = "x",
+                Sample = "x",
+                Url = "x",
+                VariableType = "x",
+                Alt = "alt",
+                Regex = "regex",
+                ShortUrl = "shortUrl",
+            },
+            Type = "x",
+
             // Null should be interpreted as omitted for these properties
             ID = null,
-            Name = null,
-            Props = null,
-            Type = null,
         };
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Props);
-        Assert.False(model.RawData.ContainsKey("props"));
-        Assert.Null(model.Type);
-        Assert.False(model.RawData.ContainsKey("type"));
     }
 
     [Fact]
@@ -195,11 +221,21 @@ public class TemplateVariableTest : TestBase
     {
         var model = new TemplateVariable
         {
+            Name = "x",
+            Props = new()
+            {
+                MediaType = "x",
+                Sample = "x",
+                Url = "x",
+                VariableType = "x",
+                Alt = "alt",
+                Regex = "regex",
+                ShortUrl = "shortUrl",
+            },
+            Type = "x",
+
             // Null should be interpreted as omitted for these properties
             ID = null,
-            Name = null,
-            Props = null,
-            Type = null,
         };
 
         model.Validate();
@@ -210,19 +246,19 @@ public class TemplateVariableTest : TestBase
     {
         var model = new TemplateVariable
         {
-            ID = 0,
-            Name = "name",
+            Name = "x",
             Props = new()
             {
+                MediaType = "x",
+                Sample = "x",
+                Url = "x",
+                VariableType = "x",
                 Alt = "alt",
-                MediaType = "mediaType",
                 Regex = "regex",
-                Sample = "sample",
                 ShortUrl = "shortUrl",
-                Url = "url",
-                VariableType = "variableType",
             },
-            Type = "type",
+            Type = "x",
+            ID = 0,
         };
 
         TemplateVariable copied = new(model);
@@ -238,30 +274,30 @@ public class PropsTest : TestBase
     {
         var model = new Props
         {
+            MediaType = "x",
+            Sample = "x",
+            Url = "x",
+            VariableType = "x",
             Alt = "alt",
-            MediaType = "mediaType",
             Regex = "regex",
-            Sample = "sample",
             ShortUrl = "shortUrl",
-            Url = "url",
-            VariableType = "variableType",
         };
 
+        string expectedMediaType = "x";
+        string expectedSample = "x";
+        string expectedUrl = "x";
+        string expectedVariableType = "x";
         string expectedAlt = "alt";
-        string expectedMediaType = "mediaType";
         string expectedRegex = "regex";
-        string expectedSample = "sample";
         string expectedShortUrl = "shortUrl";
-        string expectedUrl = "url";
-        string expectedVariableType = "variableType";
 
-        Assert.Equal(expectedAlt, model.Alt);
         Assert.Equal(expectedMediaType, model.MediaType);
-        Assert.Equal(expectedRegex, model.Regex);
         Assert.Equal(expectedSample, model.Sample);
-        Assert.Equal(expectedShortUrl, model.ShortUrl);
         Assert.Equal(expectedUrl, model.Url);
         Assert.Equal(expectedVariableType, model.VariableType);
+        Assert.Equal(expectedAlt, model.Alt);
+        Assert.Equal(expectedRegex, model.Regex);
+        Assert.Equal(expectedShortUrl, model.ShortUrl);
     }
 
     [Fact]
@@ -269,13 +305,13 @@ public class PropsTest : TestBase
     {
         var model = new Props
         {
+            MediaType = "x",
+            Sample = "x",
+            Url = "x",
+            VariableType = "x",
             Alt = "alt",
-            MediaType = "mediaType",
             Regex = "regex",
-            Sample = "sample",
             ShortUrl = "shortUrl",
-            Url = "url",
-            VariableType = "variableType",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -289,34 +325,34 @@ public class PropsTest : TestBase
     {
         var model = new Props
         {
+            MediaType = "x",
+            Sample = "x",
+            Url = "x",
+            VariableType = "x",
             Alt = "alt",
-            MediaType = "mediaType",
             Regex = "regex",
-            Sample = "sample",
             ShortUrl = "shortUrl",
-            Url = "url",
-            VariableType = "variableType",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<Props>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
+        string expectedMediaType = "x";
+        string expectedSample = "x";
+        string expectedUrl = "x";
+        string expectedVariableType = "x";
         string expectedAlt = "alt";
-        string expectedMediaType = "mediaType";
         string expectedRegex = "regex";
-        string expectedSample = "sample";
         string expectedShortUrl = "shortUrl";
-        string expectedUrl = "url";
-        string expectedVariableType = "variableType";
 
-        Assert.Equal(expectedAlt, deserialized.Alt);
         Assert.Equal(expectedMediaType, deserialized.MediaType);
-        Assert.Equal(expectedRegex, deserialized.Regex);
         Assert.Equal(expectedSample, deserialized.Sample);
-        Assert.Equal(expectedShortUrl, deserialized.ShortUrl);
         Assert.Equal(expectedUrl, deserialized.Url);
         Assert.Equal(expectedVariableType, deserialized.VariableType);
+        Assert.Equal(expectedAlt, deserialized.Alt);
+        Assert.Equal(expectedRegex, deserialized.Regex);
+        Assert.Equal(expectedShortUrl, deserialized.ShortUrl);
     }
 
     [Fact]
@@ -324,13 +360,13 @@ public class PropsTest : TestBase
     {
         var model = new Props
         {
+            MediaType = "x",
+            Sample = "x",
+            Url = "x",
+            VariableType = "x",
             Alt = "alt",
-            MediaType = "mediaType",
             Regex = "regex",
-            Sample = "sample",
             ShortUrl = "shortUrl",
-            Url = "url",
-            VariableType = "variableType",
         };
 
         model.Validate();
@@ -339,28 +375,32 @@ public class PropsTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Props { };
+        var model = new Props
+        {
+            MediaType = "x",
+            Sample = "x",
+            Url = "x",
+            VariableType = "x",
+        };
 
         Assert.Null(model.Alt);
         Assert.False(model.RawData.ContainsKey("alt"));
-        Assert.Null(model.MediaType);
-        Assert.False(model.RawData.ContainsKey("mediaType"));
         Assert.Null(model.Regex);
         Assert.False(model.RawData.ContainsKey("regex"));
-        Assert.Null(model.Sample);
-        Assert.False(model.RawData.ContainsKey("sample"));
         Assert.Null(model.ShortUrl);
         Assert.False(model.RawData.ContainsKey("shortUrl"));
-        Assert.Null(model.Url);
-        Assert.False(model.RawData.ContainsKey("url"));
-        Assert.Null(model.VariableType);
-        Assert.False(model.RawData.ContainsKey("variableType"));
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Props { };
+        var model = new Props
+        {
+            MediaType = "x",
+            Sample = "x",
+            Url = "x",
+            VariableType = "x",
+        };
 
         model.Validate();
     }
@@ -370,29 +410,22 @@ public class PropsTest : TestBase
     {
         var model = new Props
         {
+            MediaType = "x",
+            Sample = "x",
+            Url = "x",
+            VariableType = "x",
+
             Alt = null,
-            MediaType = null,
             Regex = null,
-            Sample = null,
             ShortUrl = null,
-            Url = null,
-            VariableType = null,
         };
 
         Assert.Null(model.Alt);
         Assert.True(model.RawData.ContainsKey("alt"));
-        Assert.Null(model.MediaType);
-        Assert.True(model.RawData.ContainsKey("mediaType"));
         Assert.Null(model.Regex);
         Assert.True(model.RawData.ContainsKey("regex"));
-        Assert.Null(model.Sample);
-        Assert.True(model.RawData.ContainsKey("sample"));
         Assert.Null(model.ShortUrl);
         Assert.True(model.RawData.ContainsKey("shortUrl"));
-        Assert.Null(model.Url);
-        Assert.True(model.RawData.ContainsKey("url"));
-        Assert.Null(model.VariableType);
-        Assert.True(model.RawData.ContainsKey("variableType"));
     }
 
     [Fact]
@@ -400,13 +433,14 @@ public class PropsTest : TestBase
     {
         var model = new Props
         {
+            MediaType = "x",
+            Sample = "x",
+            Url = "x",
+            VariableType = "x",
+
             Alt = null,
-            MediaType = null,
             Regex = null,
-            Sample = null,
             ShortUrl = null,
-            Url = null,
-            VariableType = null,
         };
 
         model.Validate();
@@ -417,13 +451,13 @@ public class PropsTest : TestBase
     {
         var model = new Props
         {
+            MediaType = "x",
+            Sample = "x",
+            Url = "x",
+            VariableType = "x",
             Alt = "alt",
-            MediaType = "mediaType",
             Regex = "regex",
-            Sample = "sample",
             ShortUrl = "shortUrl",
-            Url = "url",
-            VariableType = "variableType",
         };
 
         Props copied = new(model);

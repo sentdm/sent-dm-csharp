@@ -15,14 +15,84 @@ namespace Sentdm.Models.Templates;
 )]
 public sealed record class SentDmServicesCommonContractsPocOsTemplateButtonProps : JsonModel
 {
-    public int? ActiveFor
+    public required int ActiveFor
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("activeFor");
+            return this._rawData.GetNotNullStruct<int>("activeFor");
         }
         init { this._rawData.Set("activeFor", value); }
+    }
+
+    public required string CountryCode
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("countryCode");
+        }
+        init { this._rawData.Set("countryCode", value); }
+    }
+
+    public required string OfferCode
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("offerCode");
+        }
+        init { this._rawData.Set("offerCode", value); }
+    }
+
+    public required string PhoneNumber
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("phoneNumber");
+        }
+        init { this._rawData.Set("phoneNumber", value); }
+    }
+
+    public required string QuickReplyType
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("quickReplyType");
+        }
+        init { this._rawData.Set("quickReplyType", value); }
+    }
+
+    public required string Text
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("text");
+        }
+        init { this._rawData.Set("text", value); }
+    }
+
+    public required string Url
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("url");
+        }
+        init { this._rawData.Set("url", value); }
+    }
+
+    public required string UrlType
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("urlType");
+        }
+        init { this._rawData.Set("urlType", value); }
     }
 
     public string? AutofillText
@@ -33,26 +103,6 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateButtonProps
             return this._rawData.GetNullableClass<string>("autofillText");
         }
         init { this._rawData.Set("autofillText", value); }
-    }
-
-    public string? CountryCode
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("countryCode");
-        }
-        init { this._rawData.Set("countryCode", value); }
-    }
-
-    public string? OfferCode
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("offerCode");
-        }
-        init { this._rawData.Set("offerCode", value); }
     }
 
     public string? OtpType
@@ -75,26 +125,6 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateButtonProps
         init { this._rawData.Set("packageName", value); }
     }
 
-    public string? PhoneNumber
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phoneNumber");
-        }
-        init { this._rawData.Set("phoneNumber", value); }
-    }
-
-    public string? QuickReplyType
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("quickReplyType");
-        }
-        init { this._rawData.Set("quickReplyType", value); }
-    }
-
     public string? SignatureHash
     {
         get
@@ -105,51 +135,21 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateButtonProps
         init { this._rawData.Set("signatureHash", value); }
     }
 
-    public string? Text
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("text");
-        }
-        init { this._rawData.Set("text", value); }
-    }
-
-    public string? Url
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("url");
-        }
-        init { this._rawData.Set("url", value); }
-    }
-
-    public string? UrlType
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("urlType");
-        }
-        init { this._rawData.Set("urlType", value); }
-    }
-
     /// <inheritdoc/>
     public override void Validate()
     {
         _ = this.ActiveFor;
-        _ = this.AutofillText;
         _ = this.CountryCode;
         _ = this.OfferCode;
-        _ = this.OtpType;
-        _ = this.PackageName;
         _ = this.PhoneNumber;
         _ = this.QuickReplyType;
-        _ = this.SignatureHash;
         _ = this.Text;
         _ = this.Url;
         _ = this.UrlType;
+        _ = this.AutofillText;
+        _ = this.OtpType;
+        _ = this.PackageName;
+        _ = this.SignatureHash;
     }
 
     public SentDmServicesCommonContractsPocOsTemplateButtonProps() { }

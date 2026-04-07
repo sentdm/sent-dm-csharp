@@ -25,35 +25,35 @@ public class TemplateCreateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
                                 Name = "name",
                                 Props = new()
                                 {
-                                    Alt = null,
-                                    MediaType = null,
-                                    Regex = null,
+                                    MediaType = "x",
                                     Sample = "John",
-                                    ShortUrl = null,
-                                    Url = null,
+                                    Url = "x",
                                     VariableType = "text",
+                                    Alt = null,
+                                    Regex = null,
+                                    ShortUrl = null,
                                 },
                                 Type = "variable",
+                                ID = 0,
                             },
                             new()
                             {
-                                ID = 1,
                                 Name = "company",
                                 Props = new()
                                 {
-                                    Alt = null,
-                                    MediaType = null,
-                                    Regex = null,
+                                    MediaType = "x",
                                     Sample = "SentDM",
-                                    ShortUrl = null,
-                                    Url = null,
+                                    Url = "x",
                                     VariableType = "text",
+                                    Alt = null,
+                                    Regex = null,
+                                    ShortUrl = null,
                                 },
                                 Type = "variable",
+                                ID = 1,
                             },
                         ],
                     },
@@ -65,19 +65,19 @@ public class TemplateCreateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -89,19 +89,19 @@ public class TemplateCreateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -115,23 +115,23 @@ public class TemplateCreateParamsTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
                         Props = new()
                         {
-                            ActiveFor = 0,
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "x",
+                            UrlType = "x",
                             AutofillText = "autofillText",
-                            CountryCode = "countryCode",
-                            OfferCode = "offerCode",
                             OtpType = "otpType",
                             PackageName = "packageName",
-                            PhoneNumber = "phoneNumber",
-                            QuickReplyType = "quickReplyType",
                             SignatureHash = "signatureHash",
-                            Text = "text",
-                            Url = "url",
-                            UrlType = "urlType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
                 DefinitionVersion = "1.0",
@@ -143,19 +143,19 @@ public class TemplateCreateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -167,19 +167,19 @@ public class TemplateCreateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -204,35 +204,35 @@ public class TemplateCreateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
                             Name = "name",
                             Props = new()
                             {
-                                Alt = null,
-                                MediaType = null,
-                                Regex = null,
+                                MediaType = "x",
                                 Sample = "John",
-                                ShortUrl = null,
-                                Url = null,
+                                Url = "x",
                                 VariableType = "text",
+                                Alt = null,
+                                Regex = null,
+                                ShortUrl = null,
                             },
                             Type = "variable",
+                            ID = 0,
                         },
                         new()
                         {
-                            ID = 1,
                             Name = "company",
                             Props = new()
                             {
-                                Alt = null,
-                                MediaType = null,
-                                Regex = null,
+                                MediaType = "x",
                                 Sample = "SentDM",
-                                ShortUrl = null,
-                                Url = null,
+                                Url = "x",
                                 VariableType = "text",
+                                Alt = null,
+                                Regex = null,
+                                ShortUrl = null,
                             },
                             Type = "variable",
+                            ID = 1,
                         },
                     ],
                 },
@@ -244,19 +244,19 @@ public class TemplateCreateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -268,19 +268,19 @@ public class TemplateCreateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -294,23 +294,23 @@ public class TemplateCreateParamsTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
                     Props = new()
                     {
-                        ActiveFor = 0,
+                        ActiveFor = 1,
+                        CountryCode = "x",
+                        OfferCode = "x",
+                        PhoneNumber = "x",
+                        QuickReplyType = "x",
+                        Text = "text",
+                        Url = "x",
+                        UrlType = "x",
                         AutofillText = "autofillText",
-                        CountryCode = "countryCode",
-                        OfferCode = "offerCode",
                         OtpType = "otpType",
                         PackageName = "packageName",
-                        PhoneNumber = "phoneNumber",
-                        QuickReplyType = "quickReplyType",
                         SignatureHash = "signatureHash",
-                        Text = "text",
-                        Url = "url",
-                        UrlType = "urlType",
                     },
-                    Type = "type",
+                    Type = "x",
+                    ID = 0,
                 },
             ],
             DefinitionVersion = "1.0",
@@ -322,19 +322,19 @@ public class TemplateCreateParamsTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -346,19 +346,19 @@ public class TemplateCreateParamsTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -447,35 +447,35 @@ public class TemplateCreateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
                                 Name = "name",
                                 Props = new()
                                 {
-                                    Alt = null,
-                                    MediaType = null,
-                                    Regex = null,
+                                    MediaType = "x",
                                     Sample = "John",
-                                    ShortUrl = null,
-                                    Url = null,
+                                    Url = "x",
                                     VariableType = "text",
+                                    Alt = null,
+                                    Regex = null,
+                                    ShortUrl = null,
                                 },
                                 Type = "variable",
+                                ID = 0,
                             },
                             new()
                             {
-                                ID = 1,
                                 Name = "company",
                                 Props = new()
                                 {
-                                    Alt = null,
-                                    MediaType = null,
-                                    Regex = null,
+                                    MediaType = "x",
                                     Sample = "SentDM",
-                                    ShortUrl = null,
-                                    Url = null,
+                                    Url = "x",
                                     VariableType = "text",
+                                    Alt = null,
+                                    Regex = null,
+                                    ShortUrl = null,
                                 },
                                 Type = "variable",
+                                ID = 1,
                             },
                         ],
                     },
@@ -487,19 +487,19 @@ public class TemplateCreateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -511,19 +511,19 @@ public class TemplateCreateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -537,23 +537,23 @@ public class TemplateCreateParamsTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
                         Props = new()
                         {
-                            ActiveFor = 0,
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "x",
+                            UrlType = "x",
                             AutofillText = "autofillText",
-                            CountryCode = "countryCode",
-                            OfferCode = "offerCode",
                             OtpType = "otpType",
                             PackageName = "packageName",
-                            PhoneNumber = "phoneNumber",
-                            QuickReplyType = "quickReplyType",
                             SignatureHash = "signatureHash",
-                            Text = "text",
-                            Url = "url",
-                            UrlType = "urlType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
                 DefinitionVersion = "1.0",
@@ -565,19 +565,19 @@ public class TemplateCreateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -589,19 +589,19 @@ public class TemplateCreateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -637,35 +637,35 @@ public class TemplateCreateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
                                 Name = "name",
                                 Props = new()
                                 {
-                                    Alt = null,
-                                    MediaType = null,
-                                    Regex = null,
+                                    MediaType = "x",
                                     Sample = "John",
-                                    ShortUrl = null,
-                                    Url = null,
+                                    Url = "x",
                                     VariableType = "text",
+                                    Alt = null,
+                                    Regex = null,
+                                    ShortUrl = null,
                                 },
                                 Type = "variable",
+                                ID = 0,
                             },
                             new()
                             {
-                                ID = 1,
                                 Name = "company",
                                 Props = new()
                                 {
-                                    Alt = null,
-                                    MediaType = null,
-                                    Regex = null,
+                                    MediaType = "x",
                                     Sample = "SentDM",
-                                    ShortUrl = null,
-                                    Url = null,
+                                    Url = "x",
                                     VariableType = "text",
+                                    Alt = null,
+                                    Regex = null,
+                                    ShortUrl = null,
                                 },
                                 Type = "variable",
+                                ID = 1,
                             },
                         ],
                     },
@@ -677,19 +677,19 @@ public class TemplateCreateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -701,19 +701,19 @@ public class TemplateCreateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -727,23 +727,23 @@ public class TemplateCreateParamsTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
                         Props = new()
                         {
-                            ActiveFor = 0,
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "x",
+                            UrlType = "x",
                             AutofillText = "autofillText",
-                            CountryCode = "countryCode",
-                            OfferCode = "offerCode",
                             OtpType = "otpType",
                             PackageName = "packageName",
-                            PhoneNumber = "phoneNumber",
-                            QuickReplyType = "quickReplyType",
                             SignatureHash = "signatureHash",
-                            Text = "text",
-                            Url = "url",
-                            UrlType = "urlType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
                 DefinitionVersion = "1.0",
@@ -755,19 +755,19 @@ public class TemplateCreateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -779,19 +779,19 @@ public class TemplateCreateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -862,35 +862,35 @@ public class TemplateCreateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
                                 Name = "name",
                                 Props = new()
                                 {
-                                    Alt = null,
-                                    MediaType = null,
-                                    Regex = null,
+                                    MediaType = "x",
                                     Sample = "John",
-                                    ShortUrl = null,
-                                    Url = null,
+                                    Url = "x",
                                     VariableType = "text",
+                                    Alt = null,
+                                    Regex = null,
+                                    ShortUrl = null,
                                 },
                                 Type = "variable",
+                                ID = 0,
                             },
                             new()
                             {
-                                ID = 1,
                                 Name = "company",
                                 Props = new()
                                 {
-                                    Alt = null,
-                                    MediaType = null,
-                                    Regex = null,
+                                    MediaType = "x",
                                     Sample = "SentDM",
-                                    ShortUrl = null,
-                                    Url = null,
+                                    Url = "x",
                                     VariableType = "text",
+                                    Alt = null,
+                                    Regex = null,
+                                    ShortUrl = null,
                                 },
                                 Type = "variable",
+                                ID = 1,
                             },
                         ],
                     },
@@ -902,19 +902,19 @@ public class TemplateCreateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -926,19 +926,19 @@ public class TemplateCreateParamsTest : TestBase
                         [
                             new()
                             {
-                                ID = 0,
-                                Name = "name",
+                                Name = "x",
                                 Props = new()
                                 {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
                                     Alt = "alt",
-                                    MediaType = "mediaType",
                                     Regex = "regex",
-                                    Sample = "sample",
                                     ShortUrl = "shortUrl",
-                                    Url = "url",
-                                    VariableType = "variableType",
                                 },
-                                Type = "type",
+                                Type = "x",
+                                ID = 0,
                             },
                         ],
                     },
@@ -952,23 +952,23 @@ public class TemplateCreateParamsTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
                         Props = new()
                         {
-                            ActiveFor = 0,
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "x",
+                            UrlType = "x",
                             AutofillText = "autofillText",
-                            CountryCode = "countryCode",
-                            OfferCode = "offerCode",
                             OtpType = "otpType",
                             PackageName = "packageName",
-                            PhoneNumber = "phoneNumber",
-                            QuickReplyType = "quickReplyType",
                             SignatureHash = "signatureHash",
-                            Text = "text",
-                            Url = "url",
-                            UrlType = "urlType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
                 DefinitionVersion = "1.0",
@@ -980,19 +980,19 @@ public class TemplateCreateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
@@ -1004,19 +1004,19 @@ public class TemplateCreateParamsTest : TestBase
                     [
                         new()
                         {
-                            ID = 0,
-                            Name = "name",
+                            Name = "x",
                             Props = new()
                             {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
                                 Alt = "alt",
-                                MediaType = "mediaType",
                                 Regex = "regex",
-                                Sample = "sample",
                                 ShortUrl = "shortUrl",
-                                Url = "url",
-                                VariableType = "variableType",
                             },
-                            Type = "type",
+                            Type = "x",
+                            ID = 0,
                         },
                     ],
                 },
