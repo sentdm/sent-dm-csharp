@@ -19,19 +19,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -43,19 +43,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -67,19 +67,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -93,19 +93,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
-                    Name = "name",
+                    Name = "x",
                     Props = new()
                     {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
                         Alt = "alt",
-                        MediaType = "mediaType",
                         Regex = "regex",
-                        Sample = "sample",
                         ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
                     },
-                    Type = "type",
+                    Type = "x",
+                    ID = 0,
                 },
             ],
         };
@@ -117,19 +117,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
-                    Name = "name",
+                    Name = "x",
                     Props = new()
                     {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
                         Alt = "alt",
-                        MediaType = "mediaType",
                         Regex = "regex",
-                        Sample = "sample",
                         ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
                     },
-                    Type = "type",
+                    Type = "x",
+                    ID = 0,
                 },
             ],
         };
@@ -141,19 +141,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
-                    Name = "name",
+                    Name = "x",
                     Props = new()
                     {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
                         Alt = "alt",
-                        MediaType = "mediaType",
                         Regex = "regex",
-                        Sample = "sample",
                         ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
                     },
-                    Type = "type",
+                    Type = "x",
+                    ID = 0,
                 },
             ],
         };
@@ -176,19 +176,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -200,19 +200,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -224,19 +224,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -265,19 +265,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -289,19 +289,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -313,19 +313,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -347,19 +347,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
-                    Name = "name",
+                    Name = "x",
                     Props = new()
                     {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
                         Alt = "alt",
-                        MediaType = "mediaType",
                         Regex = "regex",
-                        Sample = "sample",
                         ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
                     },
-                    Type = "type",
+                    Type = "x",
+                    ID = 0,
                 },
             ],
         };
@@ -371,19 +371,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
-                    Name = "name",
+                    Name = "x",
                     Props = new()
                     {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
                         Alt = "alt",
-                        MediaType = "mediaType",
                         Regex = "regex",
-                        Sample = "sample",
                         ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
                     },
-                    Type = "type",
+                    Type = "x",
+                    ID = 0,
                 },
             ],
         };
@@ -395,19 +395,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
-                    Name = "name",
+                    Name = "x",
                     Props = new()
                     {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
                         Alt = "alt",
-                        MediaType = "mediaType",
                         Regex = "regex",
-                        Sample = "sample",
                         ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
                     },
-                    Type = "type",
+                    Type = "x",
+                    ID = 0,
                 },
             ],
         };
@@ -430,19 +430,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -454,19 +454,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -478,19 +478,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -564,19 +564,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -588,19 +588,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },
@@ -612,19 +612,19 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
                 [
                     new()
                     {
-                        ID = 0,
-                        Name = "name",
+                        Name = "x",
                         Props = new()
                         {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
                             Alt = "alt",
-                            MediaType = "mediaType",
                             Regex = "regex",
-                            Sample = "sample",
                             ShortUrl = "shortUrl",
-                            Url = "url",
-                            VariableType = "variableType",
                         },
-                        Type = "type",
+                        Type = "x",
+                        ID = 0,
                     },
                 ],
             },

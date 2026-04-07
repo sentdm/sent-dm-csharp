@@ -11,46 +11,46 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonTest : TestBase
     {
         var model = new SentDmServicesCommonContractsPocOsTemplateButton
         {
-            ID = 0,
             Props = new()
             {
-                ActiveFor = 0,
+                ActiveFor = 1,
+                CountryCode = "x",
+                OfferCode = "x",
+                PhoneNumber = "x",
+                QuickReplyType = "x",
+                Text = "text",
+                Url = "x",
+                UrlType = "x",
                 AutofillText = "autofillText",
-                CountryCode = "countryCode",
-                OfferCode = "offerCode",
                 OtpType = "otpType",
                 PackageName = "packageName",
-                PhoneNumber = "phoneNumber",
-                QuickReplyType = "quickReplyType",
                 SignatureHash = "signatureHash",
-                Text = "text",
-                Url = "url",
-                UrlType = "urlType",
             },
-            Type = "type",
+            Type = "x",
+            ID = 0,
         };
 
-        int expectedID = 0;
         SentDmServicesCommonContractsPocOsTemplateButtonProps expectedProps = new()
         {
-            ActiveFor = 0,
+            ActiveFor = 1,
+            CountryCode = "x",
+            OfferCode = "x",
+            PhoneNumber = "x",
+            QuickReplyType = "x",
+            Text = "text",
+            Url = "x",
+            UrlType = "x",
             AutofillText = "autofillText",
-            CountryCode = "countryCode",
-            OfferCode = "offerCode",
             OtpType = "otpType",
             PackageName = "packageName",
-            PhoneNumber = "phoneNumber",
-            QuickReplyType = "quickReplyType",
             SignatureHash = "signatureHash",
-            Text = "text",
-            Url = "url",
-            UrlType = "urlType",
         };
-        string expectedType = "type";
+        string expectedType = "x";
+        int expectedID = 0;
 
-        Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedProps, model.Props);
         Assert.Equal(expectedType, model.Type);
+        Assert.Equal(expectedID, model.ID);
     }
 
     [Fact]
@@ -58,23 +58,23 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonTest : TestBase
     {
         var model = new SentDmServicesCommonContractsPocOsTemplateButton
         {
-            ID = 0,
             Props = new()
             {
-                ActiveFor = 0,
+                ActiveFor = 1,
+                CountryCode = "x",
+                OfferCode = "x",
+                PhoneNumber = "x",
+                QuickReplyType = "x",
+                Text = "text",
+                Url = "x",
+                UrlType = "x",
                 AutofillText = "autofillText",
-                CountryCode = "countryCode",
-                OfferCode = "offerCode",
                 OtpType = "otpType",
                 PackageName = "packageName",
-                PhoneNumber = "phoneNumber",
-                QuickReplyType = "quickReplyType",
                 SignatureHash = "signatureHash",
-                Text = "text",
-                Url = "url",
-                UrlType = "urlType",
             },
-            Type = "type",
+            Type = "x",
+            ID = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -92,23 +92,23 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonTest : TestBase
     {
         var model = new SentDmServicesCommonContractsPocOsTemplateButton
         {
-            ID = 0,
             Props = new()
             {
-                ActiveFor = 0,
+                ActiveFor = 1,
+                CountryCode = "x",
+                OfferCode = "x",
+                PhoneNumber = "x",
+                QuickReplyType = "x",
+                Text = "text",
+                Url = "x",
+                UrlType = "x",
                 AutofillText = "autofillText",
-                CountryCode = "countryCode",
-                OfferCode = "offerCode",
                 OtpType = "otpType",
                 PackageName = "packageName",
-                PhoneNumber = "phoneNumber",
-                QuickReplyType = "quickReplyType",
                 SignatureHash = "signatureHash",
-                Text = "text",
-                Url = "url",
-                UrlType = "urlType",
             },
-            Type = "type",
+            Type = "x",
+            ID = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -119,27 +119,27 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonTest : TestBase
             );
         Assert.NotNull(deserialized);
 
-        int expectedID = 0;
         SentDmServicesCommonContractsPocOsTemplateButtonProps expectedProps = new()
         {
-            ActiveFor = 0,
+            ActiveFor = 1,
+            CountryCode = "x",
+            OfferCode = "x",
+            PhoneNumber = "x",
+            QuickReplyType = "x",
+            Text = "text",
+            Url = "x",
+            UrlType = "x",
             AutofillText = "autofillText",
-            CountryCode = "countryCode",
-            OfferCode = "offerCode",
             OtpType = "otpType",
             PackageName = "packageName",
-            PhoneNumber = "phoneNumber",
-            QuickReplyType = "quickReplyType",
             SignatureHash = "signatureHash",
-            Text = "text",
-            Url = "url",
-            UrlType = "urlType",
         };
-        string expectedType = "type";
+        string expectedType = "x";
+        int expectedID = 0;
 
-        Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedProps, deserialized.Props);
         Assert.Equal(expectedType, deserialized.Type);
+        Assert.Equal(expectedID, deserialized.ID);
     }
 
     [Fact]
@@ -147,23 +147,23 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonTest : TestBase
     {
         var model = new SentDmServicesCommonContractsPocOsTemplateButton
         {
-            ID = 0,
             Props = new()
             {
-                ActiveFor = 0,
+                ActiveFor = 1,
+                CountryCode = "x",
+                OfferCode = "x",
+                PhoneNumber = "x",
+                QuickReplyType = "x",
+                Text = "text",
+                Url = "x",
+                UrlType = "x",
                 AutofillText = "autofillText",
-                CountryCode = "countryCode",
-                OfferCode = "offerCode",
                 OtpType = "otpType",
                 PackageName = "packageName",
-                PhoneNumber = "phoneNumber",
-                QuickReplyType = "quickReplyType",
                 SignatureHash = "signatureHash",
-                Text = "text",
-                Url = "url",
-                UrlType = "urlType",
             },
-            Type = "type",
+            Type = "x",
+            ID = 0,
         };
 
         model.Validate();
@@ -172,20 +172,52 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateButton { };
+        var model = new SentDmServicesCommonContractsPocOsTemplateButton
+        {
+            Props = new()
+            {
+                ActiveFor = 1,
+                CountryCode = "x",
+                OfferCode = "x",
+                PhoneNumber = "x",
+                QuickReplyType = "x",
+                Text = "text",
+                Url = "x",
+                UrlType = "x",
+                AutofillText = "autofillText",
+                OtpType = "otpType",
+                PackageName = "packageName",
+                SignatureHash = "signatureHash",
+            },
+            Type = "x",
+        };
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.Props);
-        Assert.False(model.RawData.ContainsKey("props"));
-        Assert.Null(model.Type);
-        Assert.False(model.RawData.ContainsKey("type"));
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateButton { };
+        var model = new SentDmServicesCommonContractsPocOsTemplateButton
+        {
+            Props = new()
+            {
+                ActiveFor = 1,
+                CountryCode = "x",
+                OfferCode = "x",
+                PhoneNumber = "x",
+                QuickReplyType = "x",
+                Text = "text",
+                Url = "x",
+                UrlType = "x",
+                AutofillText = "autofillText",
+                OtpType = "otpType",
+                PackageName = "packageName",
+                SignatureHash = "signatureHash",
+            },
+            Type = "x",
+        };
 
         model.Validate();
     }
@@ -195,18 +227,29 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonTest : TestBase
     {
         var model = new SentDmServicesCommonContractsPocOsTemplateButton
         {
+            Props = new()
+            {
+                ActiveFor = 1,
+                CountryCode = "x",
+                OfferCode = "x",
+                PhoneNumber = "x",
+                QuickReplyType = "x",
+                Text = "text",
+                Url = "x",
+                UrlType = "x",
+                AutofillText = "autofillText",
+                OtpType = "otpType",
+                PackageName = "packageName",
+                SignatureHash = "signatureHash",
+            },
+            Type = "x",
+
             // Null should be interpreted as omitted for these properties
             ID = null,
-            Props = null,
-            Type = null,
         };
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.Props);
-        Assert.False(model.RawData.ContainsKey("props"));
-        Assert.Null(model.Type);
-        Assert.False(model.RawData.ContainsKey("type"));
     }
 
     [Fact]
@@ -214,10 +257,25 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonTest : TestBase
     {
         var model = new SentDmServicesCommonContractsPocOsTemplateButton
         {
+            Props = new()
+            {
+                ActiveFor = 1,
+                CountryCode = "x",
+                OfferCode = "x",
+                PhoneNumber = "x",
+                QuickReplyType = "x",
+                Text = "text",
+                Url = "x",
+                UrlType = "x",
+                AutofillText = "autofillText",
+                OtpType = "otpType",
+                PackageName = "packageName",
+                SignatureHash = "signatureHash",
+            },
+            Type = "x",
+
             // Null should be interpreted as omitted for these properties
             ID = null,
-            Props = null,
-            Type = null,
         };
 
         model.Validate();
@@ -228,23 +286,23 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonTest : TestBase
     {
         var model = new SentDmServicesCommonContractsPocOsTemplateButton
         {
-            ID = 0,
             Props = new()
             {
-                ActiveFor = 0,
+                ActiveFor = 1,
+                CountryCode = "x",
+                OfferCode = "x",
+                PhoneNumber = "x",
+                QuickReplyType = "x",
+                Text = "text",
+                Url = "x",
+                UrlType = "x",
                 AutofillText = "autofillText",
-                CountryCode = "countryCode",
-                OfferCode = "offerCode",
                 OtpType = "otpType",
                 PackageName = "packageName",
-                PhoneNumber = "phoneNumber",
-                QuickReplyType = "quickReplyType",
                 SignatureHash = "signatureHash",
-                Text = "text",
-                Url = "url",
-                UrlType = "urlType",
             },
-            Type = "type",
+            Type = "x",
+            ID = 0,
         };
 
         SentDmServicesCommonContractsPocOsTemplateButton copied = new(model);

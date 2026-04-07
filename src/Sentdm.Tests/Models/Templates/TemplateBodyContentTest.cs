@@ -18,19 +18,19 @@ public class TemplateBodyContentTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
-                    Name = "name",
+                    Name = "x",
                     Props = new()
                     {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
                         Alt = "alt",
-                        MediaType = "mediaType",
                         Regex = "regex",
-                        Sample = "sample",
                         ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
                     },
-                    Type = "type",
+                    Type = "x",
+                    ID = 0,
                 },
             ],
         };
@@ -41,19 +41,19 @@ public class TemplateBodyContentTest : TestBase
         [
             new()
             {
-                ID = 0,
-                Name = "name",
+                Name = "x",
                 Props = new()
                 {
+                    MediaType = "x",
+                    Sample = "x",
+                    Url = "x",
+                    VariableType = "x",
                     Alt = "alt",
-                    MediaType = "mediaType",
                     Regex = "regex",
-                    Sample = "sample",
                     ShortUrl = "shortUrl",
-                    Url = "url",
-                    VariableType = "variableType",
                 },
-                Type = "type",
+                Type = "x",
+                ID = 0,
             },
         ];
 
@@ -78,19 +78,19 @@ public class TemplateBodyContentTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
-                    Name = "name",
+                    Name = "x",
                     Props = new()
                     {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
                         Alt = "alt",
-                        MediaType = "mediaType",
                         Regex = "regex",
-                        Sample = "sample",
                         ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
                     },
-                    Type = "type",
+                    Type = "x",
+                    ID = 0,
                 },
             ],
         };
@@ -115,19 +115,19 @@ public class TemplateBodyContentTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
-                    Name = "name",
+                    Name = "x",
                     Props = new()
                     {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
                         Alt = "alt",
-                        MediaType = "mediaType",
                         Regex = "regex",
-                        Sample = "sample",
                         ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
                     },
-                    Type = "type",
+                    Type = "x",
+                    ID = 0,
                 },
             ],
         };
@@ -145,19 +145,19 @@ public class TemplateBodyContentTest : TestBase
         [
             new()
             {
-                ID = 0,
-                Name = "name",
+                Name = "x",
                 Props = new()
                 {
+                    MediaType = "x",
+                    Sample = "x",
+                    Url = "x",
+                    VariableType = "x",
                     Alt = "alt",
-                    MediaType = "mediaType",
                     Regex = "regex",
-                    Sample = "sample",
                     ShortUrl = "shortUrl",
-                    Url = "url",
-                    VariableType = "variableType",
                 },
-                Type = "type",
+                Type = "x",
+                ID = 0,
             },
         ];
 
@@ -182,149 +182,21 @@ public class TemplateBodyContentTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
-                    Name = "name",
+                    Name = "x",
                     Props = new()
                     {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
                         Alt = "alt",
-                        MediaType = "mediaType",
                         Regex = "regex",
-                        Sample = "sample",
                         ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
                     },
-                    Type = "type",
-                },
-            ],
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
-    {
-        var model = new TemplateBodyContent
-        {
-            Type = "type",
-            Variables =
-            [
-                new()
-                {
+                    Type = "x",
                     ID = 0,
-                    Name = "name",
-                    Props = new()
-                    {
-                        Alt = "alt",
-                        MediaType = "mediaType",
-                        Regex = "regex",
-                        Sample = "sample",
-                        ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
-                    },
-                    Type = "type",
                 },
             ],
-        };
-
-        Assert.Null(model.Template);
-        Assert.False(model.RawData.ContainsKey("template"));
-    }
-
-    [Fact]
-    public void OptionalNonNullablePropertiesUnsetValidation_Works()
-    {
-        var model = new TemplateBodyContent
-        {
-            Type = "type",
-            Variables =
-            [
-                new()
-                {
-                    ID = 0,
-                    Name = "name",
-                    Props = new()
-                    {
-                        Alt = "alt",
-                        MediaType = "mediaType",
-                        Regex = "regex",
-                        Sample = "sample",
-                        ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
-                    },
-                    Type = "type",
-                },
-            ],
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
-    {
-        var model = new TemplateBodyContent
-        {
-            Type = "type",
-            Variables =
-            [
-                new()
-                {
-                    ID = 0,
-                    Name = "name",
-                    Props = new()
-                    {
-                        Alt = "alt",
-                        MediaType = "mediaType",
-                        Regex = "regex",
-                        Sample = "sample",
-                        ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
-                    },
-                    Type = "type",
-                },
-            ],
-
-            // Null should be interpreted as omitted for these properties
-            Template = null,
-        };
-
-        Assert.Null(model.Template);
-        Assert.False(model.RawData.ContainsKey("template"));
-    }
-
-    [Fact]
-    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
-    {
-        var model = new TemplateBodyContent
-        {
-            Type = "type",
-            Variables =
-            [
-                new()
-                {
-                    ID = 0,
-                    Name = "name",
-                    Props = new()
-                    {
-                        Alt = "alt",
-                        MediaType = "mediaType",
-                        Regex = "regex",
-                        Sample = "sample",
-                        ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
-                    },
-                    Type = "type",
-                },
-            ],
-
-            // Null should be interpreted as omitted for these properties
-            Template = null,
         };
 
         model.Validate();
@@ -391,19 +263,19 @@ public class TemplateBodyContentTest : TestBase
             [
                 new()
                 {
-                    ID = 0,
-                    Name = "name",
+                    Name = "x",
                     Props = new()
                     {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
                         Alt = "alt",
-                        MediaType = "mediaType",
                         Regex = "regex",
-                        Sample = "sample",
                         ShortUrl = "shortUrl",
-                        Url = "url",
-                        VariableType = "variableType",
                     },
-                    Type = "type",
+                    Type = "x",
+                    ID = 0,
                 },
             ],
         };
