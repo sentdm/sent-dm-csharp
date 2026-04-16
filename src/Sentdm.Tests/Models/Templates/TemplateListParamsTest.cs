@@ -134,11 +134,13 @@ public class TemplateListParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.sent.dm/v3/templates?page=0&page_size=0&category=category&is_welcome_playground=true&search=search&status=status"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.sent.dm/v3/templates?page=0&page_size=0&category=category&is_welcome_playground=true&search=search&status=status"
+                ),
+                url
+            )
         );
     }
 
