@@ -48,7 +48,9 @@ public class WebhookListEventTypesParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://api.sent.dm/v3/webhooks/event-types"), url);
+        Assert.True(
+            TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/webhooks/event-types"), url)
+        );
     }
 
     [Fact]

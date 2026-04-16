@@ -215,11 +215,13 @@ public class CampaignCreateParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.sent.dm/v3/profiles/770e8400-e29b-41d4-a716-446655440002/campaigns"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.sent.dm/v3/profiles/770e8400-e29b-41d4-a716-446655440002/campaigns"
+                ),
+                url
+            )
         );
     }
 
