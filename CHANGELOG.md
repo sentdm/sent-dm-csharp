@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.17.1 (2026-04-20)
+
+Full Changelog: [v0.17.0...v0.17.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.17.0...v0.17.1)
+
+### Bug Fixes
+
+* **tests:** round-trip urls correctly ([5619e58](https://github.com/sentdm/sent-dm-csharp/commit/5619e5800f335f849ece08f5de3ef995d5cc0029))
+
 ## 0.17.0 (2026-04-07)
 
 Full Changelog: [v0.16.0...v0.17.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.16.0...v0.17.0)

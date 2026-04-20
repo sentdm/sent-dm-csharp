@@ -456,7 +456,7 @@ public class ProfileCreateParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://api.sent.dm/v3/profiles"), url);
+        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/profiles"), url));
     }
 
     [Fact]

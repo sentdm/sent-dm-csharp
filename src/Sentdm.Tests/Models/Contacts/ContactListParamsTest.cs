@@ -123,11 +123,13 @@ public class ContactListParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.sent.dm/v3/contacts?page=0&page_size=0&channel=channel&phone=phone&search=search"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.sent.dm/v3/contacts?page=0&page_size=0&channel=channel&phone=phone&search=search"
+                ),
+                url
+            )
         );
     }
 

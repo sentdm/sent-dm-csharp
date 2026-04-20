@@ -53,7 +53,7 @@ public class ProfileRetrieveParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://api.sent.dm/v3/profiles/profileId"), url);
+        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/profiles/profileId"), url));
     }
 
     [Fact]

@@ -88,7 +88,7 @@ public class UserInviteParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://api.sent.dm/v3/users"), url);
+        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/users"), url));
     }
 
     [Fact]

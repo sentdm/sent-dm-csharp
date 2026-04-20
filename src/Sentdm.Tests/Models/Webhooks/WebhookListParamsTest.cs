@@ -112,11 +112,13 @@ public class WebhookListParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.sent.dm/v3/webhooks?page=0&page_size=0&is_active=true&search=search"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.sent.dm/v3/webhooks?page=0&page_size=0&is_active=true&search=search"
+                ),
+                url
+            )
         );
     }
 
