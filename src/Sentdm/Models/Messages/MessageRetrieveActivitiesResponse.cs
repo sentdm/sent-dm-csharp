@@ -275,6 +275,20 @@ public sealed record class Activity : JsonModel
     }
 
     /// <summary>
+    /// Sender phone number for this activity (the customer's sending number for outbound,
+    /// the external sender for inbound). Null when not reported by the provider.
+    /// </summary>
+    public string? From
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("from");
+        }
+        init { this._rawData.Set("from", value); }
+    }
+
+    /// <summary>
     /// Channel cost for this activity (e.g., SMS/WhatsApp provider cost), formatted
     /// to 4 decimal places.
     /// </summary>
@@ -335,6 +349,7 @@ public sealed record class Activity : JsonModel
     {
         _ = this.ActiveContactPrice;
         _ = this.Description;
+        _ = this.From;
         _ = this.Price;
         _ = this.Status;
         _ = this.Timestamp;

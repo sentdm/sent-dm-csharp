@@ -33,6 +33,10 @@ public class WebhookListResponseTest : TestBase
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
                         EventTypes = ["string"],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -80,6 +84,10 @@ public class WebhookListResponseTest : TestBase
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
                     EventTypes = ["string"],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -137,6 +145,10 @@ public class WebhookListResponseTest : TestBase
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
                         EventTypes = ["string"],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -198,6 +210,10 @@ public class WebhookListResponseTest : TestBase
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
                         EventTypes = ["string"],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -252,6 +268,10 @@ public class WebhookListResponseTest : TestBase
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
                     EventTypes = ["string"],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -309,6 +329,10 @@ public class WebhookListResponseTest : TestBase
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
                         EventTypes = ["string"],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -364,6 +388,10 @@ public class WebhookListResponseTest : TestBase
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
                         EventTypes = ["string"],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -415,6 +443,10 @@ public class WebhookListResponseTest : TestBase
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
                         EventTypes = ["string"],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -463,6 +495,10 @@ public class WebhookListResponseTest : TestBase
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
                         EventTypes = ["string"],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -518,6 +554,10 @@ public class WebhookListResponseTest : TestBase
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
                         EventTypes = ["string"],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -650,6 +690,10 @@ public class WebhookListResponseTest : TestBase
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
                         EventTypes = ["string"],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -708,6 +752,10 @@ public class DataTest : TestBase
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
                     EventTypes = ["string"],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -738,6 +786,10 @@ public class DataTest : TestBase
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DisplayName = "display_name",
                 EndpointUrl = "endpoint_url",
+                EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo", ["string"] },
+                },
                 EventTypes = ["string"],
                 IsActive = true,
                 LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -781,6 +833,10 @@ public class DataTest : TestBase
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
                     EventTypes = ["string"],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -822,6 +878,10 @@ public class DataTest : TestBase
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
                     EventTypes = ["string"],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -856,6 +916,10 @@ public class DataTest : TestBase
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DisplayName = "display_name",
                 EndpointUrl = "endpoint_url",
+                EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo", ["string"] },
+                },
                 EventTypes = ["string"],
                 IsActive = true,
                 LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -899,6 +963,10 @@ public class DataTest : TestBase
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
                     EventTypes = ["string"],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -985,6 +1053,10 @@ public class DataTest : TestBase
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
                     EventTypes = ["string"],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),

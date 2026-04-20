@@ -18,6 +18,10 @@ public class WebhookResponseTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DisplayName = "display_name",
             EndpointUrl = "endpoint_url",
+            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo", ["string"] },
+            },
             EventTypes = ["string"],
             IsActive = true,
             LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -33,6 +37,7 @@ public class WebhookResponseTest : TestBase
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedDisplayName = "display_name";
         string expectedEndpointUrl = "endpoint_url";
+        Dictionary<string, List<string>> expectedEventFilters = new() { { "foo", ["string"] } };
         List<string> expectedEventTypes = ["string"];
         bool expectedIsActive = true;
         DateTimeOffset expectedLastDeliveryAttemptAt = DateTimeOffset.Parse(
@@ -51,6 +56,18 @@ public class WebhookResponseTest : TestBase
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedDisplayName, model.DisplayName);
         Assert.Equal(expectedEndpointUrl, model.EndpointUrl);
+        Assert.NotNull(model.EventFilters);
+        Assert.Equal(expectedEventFilters.Count, model.EventFilters.Count);
+        foreach (var item in expectedEventFilters)
+        {
+            Assert.True(model.EventFilters.TryGetValue(item.Key, out var value));
+
+            Assert.Equal(value.Count, model.EventFilters[item.Key].Count);
+            for (int i = 0; i < value.Count; i++)
+            {
+                Assert.Equal(value[i], model.EventFilters[item.Key][i]);
+            }
+        }
         Assert.NotNull(model.EventTypes);
         Assert.Equal(expectedEventTypes.Count, model.EventTypes.Count);
         for (int i = 0; i < expectedEventTypes.Count; i++)
@@ -76,6 +93,10 @@ public class WebhookResponseTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DisplayName = "display_name",
             EndpointUrl = "endpoint_url",
+            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo", ["string"] },
+            },
             EventTypes = ["string"],
             IsActive = true,
             LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -105,6 +126,10 @@ public class WebhookResponseTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DisplayName = "display_name",
             EndpointUrl = "endpoint_url",
+            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo", ["string"] },
+            },
             EventTypes = ["string"],
             IsActive = true,
             LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -127,6 +152,7 @@ public class WebhookResponseTest : TestBase
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedDisplayName = "display_name";
         string expectedEndpointUrl = "endpoint_url";
+        Dictionary<string, List<string>> expectedEventFilters = new() { { "foo", ["string"] } };
         List<string> expectedEventTypes = ["string"];
         bool expectedIsActive = true;
         DateTimeOffset expectedLastDeliveryAttemptAt = DateTimeOffset.Parse(
@@ -145,6 +171,18 @@ public class WebhookResponseTest : TestBase
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedDisplayName, deserialized.DisplayName);
         Assert.Equal(expectedEndpointUrl, deserialized.EndpointUrl);
+        Assert.NotNull(deserialized.EventFilters);
+        Assert.Equal(expectedEventFilters.Count, deserialized.EventFilters.Count);
+        foreach (var item in expectedEventFilters)
+        {
+            Assert.True(deserialized.EventFilters.TryGetValue(item.Key, out var value));
+
+            Assert.Equal(value.Count, deserialized.EventFilters[item.Key].Count);
+            for (int i = 0; i < value.Count; i++)
+            {
+                Assert.Equal(value[i], deserialized.EventFilters[item.Key][i]);
+            }
+        }
         Assert.NotNull(deserialized.EventTypes);
         Assert.Equal(expectedEventTypes.Count, deserialized.EventTypes.Count);
         for (int i = 0; i < expectedEventTypes.Count; i++)
@@ -170,6 +208,10 @@ public class WebhookResponseTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DisplayName = "display_name",
             EndpointUrl = "endpoint_url",
+            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo", ["string"] },
+            },
             EventTypes = ["string"],
             IsActive = true,
             LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -188,6 +230,10 @@ public class WebhookResponseTest : TestBase
     {
         var model = new WebhookResponse
         {
+            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo", ["string"] },
+            },
             LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SigningSecret = "signing_secret",
@@ -219,6 +265,10 @@ public class WebhookResponseTest : TestBase
     {
         var model = new WebhookResponse
         {
+            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo", ["string"] },
+            },
             LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SigningSecret = "signing_secret",
@@ -233,6 +283,10 @@ public class WebhookResponseTest : TestBase
     {
         var model = new WebhookResponse
         {
+            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo", ["string"] },
+            },
             LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SigningSecret = "signing_secret",
@@ -275,6 +329,10 @@ public class WebhookResponseTest : TestBase
     {
         var model = new WebhookResponse
         {
+            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo", ["string"] },
+            },
             LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SigningSecret = "signing_secret",
@@ -311,6 +369,8 @@ public class WebhookResponseTest : TestBase
             TimeoutSeconds = 0,
         };
 
+        Assert.Null(model.EventFilters);
+        Assert.False(model.RawData.ContainsKey("event_filters"));
         Assert.Null(model.LastDeliveryAttemptAt);
         Assert.False(model.RawData.ContainsKey("last_delivery_attempt_at"));
         Assert.Null(model.LastSuccessfulDeliveryAt);
@@ -355,12 +415,15 @@ public class WebhookResponseTest : TestBase
             RetryCount = 0,
             TimeoutSeconds = 0,
 
+            EventFilters = null,
             LastDeliveryAttemptAt = null,
             LastSuccessfulDeliveryAt = null,
             SigningSecret = null,
             UpdatedAt = null,
         };
 
+        Assert.Null(model.EventFilters);
+        Assert.True(model.RawData.ContainsKey("event_filters"));
         Assert.Null(model.LastDeliveryAttemptAt);
         Assert.True(model.RawData.ContainsKey("last_delivery_attempt_at"));
         Assert.Null(model.LastSuccessfulDeliveryAt);
@@ -386,6 +449,7 @@ public class WebhookResponseTest : TestBase
             RetryCount = 0,
             TimeoutSeconds = 0,
 
+            EventFilters = null,
             LastDeliveryAttemptAt = null,
             LastSuccessfulDeliveryAt = null,
             SigningSecret = null,
@@ -405,6 +469,10 @@ public class WebhookResponseTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DisplayName = "display_name",
             EndpointUrl = "endpoint_url",
+            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo", ["string"] },
+            },
             EventTypes = ["string"],
             IsActive = true,
             LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
