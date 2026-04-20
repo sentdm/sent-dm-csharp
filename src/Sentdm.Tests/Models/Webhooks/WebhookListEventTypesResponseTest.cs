@@ -21,8 +21,10 @@ public class WebhookListEventTypesResponseTest : TestBase
                     {
                         Description = "description",
                         DisplayName = "display_name",
+                        EventTypeValue = "event_type",
                         IsActive = true,
                         Name = "name",
+                        SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                     },
                 ],
             },
@@ -50,8 +52,10 @@ public class WebhookListEventTypesResponseTest : TestBase
                 {
                     Description = "description",
                     DisplayName = "display_name",
+                    EventTypeValue = "event_type",
                     IsActive = true,
                     Name = "name",
+                    SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                 },
             ],
         };
@@ -89,8 +93,10 @@ public class WebhookListEventTypesResponseTest : TestBase
                     {
                         Description = "description",
                         DisplayName = "display_name",
+                        EventTypeValue = "event_type",
                         IsActive = true,
                         Name = "name",
+                        SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                     },
                 ],
             },
@@ -132,8 +138,10 @@ public class WebhookListEventTypesResponseTest : TestBase
                     {
                         Description = "description",
                         DisplayName = "display_name",
+                        EventTypeValue = "event_type",
                         IsActive = true,
                         Name = "name",
+                        SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                     },
                 ],
             },
@@ -168,8 +176,10 @@ public class WebhookListEventTypesResponseTest : TestBase
                 {
                     Description = "description",
                     DisplayName = "display_name",
+                    EventTypeValue = "event_type",
                     IsActive = true,
                     Name = "name",
+                    SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                 },
             ],
         };
@@ -207,8 +217,10 @@ public class WebhookListEventTypesResponseTest : TestBase
                     {
                         Description = "description",
                         DisplayName = "display_name",
+                        EventTypeValue = "event_type",
                         IsActive = true,
                         Name = "name",
+                        SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                     },
                 ],
             },
@@ -244,8 +256,10 @@ public class WebhookListEventTypesResponseTest : TestBase
                     {
                         Description = "description",
                         DisplayName = "display_name",
+                        EventTypeValue = "event_type",
                         IsActive = true,
                         Name = "name",
+                        SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                     },
                 ],
             },
@@ -277,8 +291,10 @@ public class WebhookListEventTypesResponseTest : TestBase
                     {
                         Description = "description",
                         DisplayName = "display_name",
+                        EventTypeValue = "event_type",
                         IsActive = true,
                         Name = "name",
+                        SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                     },
                 ],
             },
@@ -307,8 +323,10 @@ public class WebhookListEventTypesResponseTest : TestBase
                     {
                         Description = "description",
                         DisplayName = "display_name",
+                        EventTypeValue = "event_type",
                         IsActive = true,
                         Name = "name",
+                        SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                     },
                 ],
             },
@@ -344,8 +362,10 @@ public class WebhookListEventTypesResponseTest : TestBase
                     {
                         Description = "description",
                         DisplayName = "display_name",
+                        EventTypeValue = "event_type",
                         IsActive = true,
                         Name = "name",
+                        SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                     },
                 ],
             },
@@ -458,8 +478,10 @@ public class WebhookListEventTypesResponseTest : TestBase
                     {
                         Description = "description",
                         DisplayName = "display_name",
+                        EventTypeValue = "event_type",
                         IsActive = true,
                         Name = "name",
+                        SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                     },
                 ],
             },
@@ -498,8 +520,10 @@ public class WebhookListEventTypesResponseDataTest : TestBase
                 {
                     Description = "description",
                     DisplayName = "display_name",
+                    EventTypeValue = "event_type",
                     IsActive = true,
                     Name = "name",
+                    SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                 },
             ],
         };
@@ -510,8 +534,10 @@ public class WebhookListEventTypesResponseDataTest : TestBase
             {
                 Description = "description",
                 DisplayName = "display_name",
+                EventTypeValue = "event_type",
                 IsActive = true,
                 Name = "name",
+                SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
             },
         ];
 
@@ -534,8 +560,10 @@ public class WebhookListEventTypesResponseDataTest : TestBase
                 {
                     Description = "description",
                     DisplayName = "display_name",
+                    EventTypeValue = "event_type",
                     IsActive = true,
                     Name = "name",
+                    SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                 },
             ],
         };
@@ -560,8 +588,10 @@ public class WebhookListEventTypesResponseDataTest : TestBase
                 {
                     Description = "description",
                     DisplayName = "display_name",
+                    EventTypeValue = "event_type",
                     IsActive = true,
                     Name = "name",
+                    SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                 },
             ],
         };
@@ -579,8 +609,10 @@ public class WebhookListEventTypesResponseDataTest : TestBase
             {
                 Description = "description",
                 DisplayName = "display_name",
+                EventTypeValue = "event_type",
                 IsActive = true,
                 Name = "name",
+                SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
             },
         ];
 
@@ -603,8 +635,10 @@ public class WebhookListEventTypesResponseDataTest : TestBase
                 {
                     Description = "description",
                     DisplayName = "display_name",
+                    EventTypeValue = "event_type",
                     IsActive = true,
                     Name = "name",
+                    SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                 },
             ],
         };
@@ -665,8 +699,10 @@ public class WebhookListEventTypesResponseDataTest : TestBase
                 {
                     Description = "description",
                     DisplayName = "display_name",
+                    EventTypeValue = "event_type",
                     IsActive = true,
                     Name = "name",
+                    SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
                 },
             ],
         };
@@ -686,19 +722,30 @@ public class EventTypeTest : TestBase
         {
             Description = "description",
             DisplayName = "display_name",
+            EventTypeValue = "event_type",
             IsActive = true,
             Name = "name",
+            SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
         };
 
         string expectedDescription = "description";
         string expectedDisplayName = "display_name";
+        string expectedEventTypeValue = "event_type";
         bool expectedIsActive = true;
         string expectedName = "name";
+        List<JsonElement> expectedSubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")];
 
         Assert.Equal(expectedDescription, model.Description);
         Assert.Equal(expectedDisplayName, model.DisplayName);
+        Assert.Equal(expectedEventTypeValue, model.EventTypeValue);
         Assert.Equal(expectedIsActive, model.IsActive);
         Assert.Equal(expectedName, model.Name);
+        Assert.NotNull(model.SubTypes);
+        Assert.Equal(expectedSubTypes.Count, model.SubTypes.Count);
+        for (int i = 0; i < expectedSubTypes.Count; i++)
+        {
+            Assert.True(JsonElement.DeepEquals(expectedSubTypes[i], model.SubTypes[i]));
+        }
     }
 
     [Fact]
@@ -708,8 +755,10 @@ public class EventTypeTest : TestBase
         {
             Description = "description",
             DisplayName = "display_name",
+            EventTypeValue = "event_type",
             IsActive = true,
             Name = "name",
+            SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -725,8 +774,10 @@ public class EventTypeTest : TestBase
         {
             Description = "description",
             DisplayName = "display_name",
+            EventTypeValue = "event_type",
             IsActive = true,
             Name = "name",
+            SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -738,13 +789,22 @@ public class EventTypeTest : TestBase
 
         string expectedDescription = "description";
         string expectedDisplayName = "display_name";
+        string expectedEventTypeValue = "event_type";
         bool expectedIsActive = true;
         string expectedName = "name";
+        List<JsonElement> expectedSubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")];
 
         Assert.Equal(expectedDescription, deserialized.Description);
         Assert.Equal(expectedDisplayName, deserialized.DisplayName);
+        Assert.Equal(expectedEventTypeValue, deserialized.EventTypeValue);
         Assert.Equal(expectedIsActive, deserialized.IsActive);
         Assert.Equal(expectedName, deserialized.Name);
+        Assert.NotNull(deserialized.SubTypes);
+        Assert.Equal(expectedSubTypes.Count, deserialized.SubTypes.Count);
+        for (int i = 0; i < expectedSubTypes.Count; i++)
+        {
+            Assert.True(JsonElement.DeepEquals(expectedSubTypes[i], deserialized.SubTypes[i]));
+        }
     }
 
     [Fact]
@@ -754,8 +814,10 @@ public class EventTypeTest : TestBase
         {
             Description = "description",
             DisplayName = "display_name",
+            EventTypeValue = "event_type",
             IsActive = true,
             Name = "name",
+            SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
         };
 
         model.Validate();
@@ -764,7 +826,12 @@ public class EventTypeTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new EventType { Description = "description" };
+        var model = new EventType
+        {
+            Description = "description",
+            EventTypeValue = "event_type",
+            SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
+        };
 
         Assert.Null(model.DisplayName);
         Assert.False(model.RawData.ContainsKey("display_name"));
@@ -777,7 +844,12 @@ public class EventTypeTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new EventType { Description = "description" };
+        var model = new EventType
+        {
+            Description = "description",
+            EventTypeValue = "event_type",
+            SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
+        };
 
         model.Validate();
     }
@@ -788,6 +860,8 @@ public class EventTypeTest : TestBase
         var model = new EventType
         {
             Description = "description",
+            EventTypeValue = "event_type",
+            SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
 
             // Null should be interpreted as omitted for these properties
             DisplayName = null,
@@ -809,6 +883,8 @@ public class EventTypeTest : TestBase
         var model = new EventType
         {
             Description = "description",
+            EventTypeValue = "event_type",
+            SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
 
             // Null should be interpreted as omitted for these properties
             DisplayName = null,
@@ -831,6 +907,10 @@ public class EventTypeTest : TestBase
 
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
+        Assert.Null(model.EventTypeValue);
+        Assert.False(model.RawData.ContainsKey("event_type"));
+        Assert.Null(model.SubTypes);
+        Assert.False(model.RawData.ContainsKey("sub_types"));
     }
 
     [Fact]
@@ -856,10 +936,16 @@ public class EventTypeTest : TestBase
             Name = "name",
 
             Description = null,
+            EventTypeValue = null,
+            SubTypes = null,
         };
 
         Assert.Null(model.Description);
         Assert.True(model.RawData.ContainsKey("description"));
+        Assert.Null(model.EventTypeValue);
+        Assert.True(model.RawData.ContainsKey("event_type"));
+        Assert.Null(model.SubTypes);
+        Assert.True(model.RawData.ContainsKey("sub_types"));
     }
 
     [Fact]
@@ -872,6 +958,8 @@ public class EventTypeTest : TestBase
             Name = "name",
 
             Description = null,
+            EventTypeValue = null,
+            SubTypes = null,
         };
 
         model.Validate();
@@ -884,8 +972,10 @@ public class EventTypeTest : TestBase
         {
             Description = "description",
             DisplayName = "display_name",
+            EventTypeValue = "event_type",
             IsActive = true,
             Name = "name",
+            SubTypes = [JsonSerializer.Deserialize<JsonElement>("{}")],
         };
 
         EventType copied = new(model);

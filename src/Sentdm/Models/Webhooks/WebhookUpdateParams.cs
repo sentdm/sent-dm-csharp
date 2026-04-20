@@ -63,6 +63,40 @@ public record class WebhookUpdateParams : ParamsBase
         }
     }
 
+    public IReadOnlyDictionary<string, IReadOnlyList<string>>? EventFilters
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            var value = this._rawBodyData.GetNullableClass<
+                FrozenDictionary<string, ImmutableArray<string>>
+            >("event_filters");
+            if (value == null)
+            {
+                return null;
+            }
+
+            return FrozenDictionary.ToFrozenDictionary(
+                value,
+                entry => entry.Key,
+                (entry) => (IReadOnlyList<string>)entry.Value
+            );
+        }
+        init
+        {
+            this._rawBodyData.Set<FrozenDictionary<string, ImmutableArray<string>>?>(
+                "event_filters",
+                value == null
+                    ? null
+                    : FrozenDictionary.ToFrozenDictionary(
+                        value,
+                        entry => entry.Key,
+                        (entry) => ImmutableArray.ToImmutableArray(entry.Value)
+                    )
+            );
+        }
+    }
+
     public IReadOnlyList<string>? EventTypes
     {
         get
