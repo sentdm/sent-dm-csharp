@@ -245,6 +245,16 @@ public sealed record class EventType : JsonModel
         }
     }
 
+    public string? EventTypeValue
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("event_type");
+        }
+        init { this._rawData.Set("event_type", value); }
+    }
+
     public bool? IsActive
     {
         get
@@ -281,13 +291,31 @@ public sealed record class EventType : JsonModel
         }
     }
 
+    public IReadOnlyList<JsonElement>? SubTypes
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<JsonElement>>("sub_types");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<JsonElement>?>(
+                "sub_types",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
         _ = this.Description;
         _ = this.DisplayName;
+        _ = this.EventTypeValue;
         _ = this.IsActive;
         _ = this.Name;
+        _ = this.SubTypes;
     }
 
     public EventType() { }

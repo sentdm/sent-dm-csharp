@@ -22,6 +22,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                     {
                         ActiveContactPrice = "active_contact_price",
                         Description = "description",
+                        From = "from",
                         Price = "price",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -53,6 +54,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 {
                     ActiveContactPrice = "active_contact_price",
                     Description = "description",
+                    From = "from",
                     Price = "price",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -94,6 +96,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                     {
                         ActiveContactPrice = "active_contact_price",
                         Description = "description",
+                        From = "from",
                         Price = "price",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -139,6 +142,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                     {
                         ActiveContactPrice = "active_contact_price",
                         Description = "description",
+                        From = "from",
                         Price = "price",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -177,6 +181,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 {
                     ActiveContactPrice = "active_contact_price",
                     Description = "description",
+                    From = "from",
                     Price = "price",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -218,6 +223,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                     {
                         ActiveContactPrice = "active_contact_price",
                         Description = "description",
+                        From = "from",
                         Price = "price",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -257,6 +263,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                     {
                         ActiveContactPrice = "active_contact_price",
                         Description = "description",
+                        From = "from",
                         Price = "price",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -292,6 +299,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                     {
                         ActiveContactPrice = "active_contact_price",
                         Description = "description",
+                        From = "from",
                         Price = "price",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -324,6 +332,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                     {
                         ActiveContactPrice = "active_contact_price",
                         Description = "description",
+                        From = "from",
                         Price = "price",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -363,6 +372,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                     {
                         ActiveContactPrice = "active_contact_price",
                         Description = "description",
+                        From = "from",
                         Price = "price",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -479,6 +489,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                     {
                         ActiveContactPrice = "active_contact_price",
                         Description = "description",
+                        From = "from",
                         Price = "price",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -521,6 +532,7 @@ public class DataTest : TestBase
                 {
                     ActiveContactPrice = "active_contact_price",
                     Description = "description",
+                    From = "from",
                     Price = "price",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -535,6 +547,7 @@ public class DataTest : TestBase
             {
                 ActiveContactPrice = "active_contact_price",
                 Description = "description",
+                From = "from",
                 Price = "price",
                 Status = "status",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -562,6 +575,7 @@ public class DataTest : TestBase
                 {
                     ActiveContactPrice = "active_contact_price",
                     Description = "description",
+                    From = "from",
                     Price = "price",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -587,6 +601,7 @@ public class DataTest : TestBase
                 {
                     ActiveContactPrice = "active_contact_price",
                     Description = "description",
+                    From = "from",
                     Price = "price",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -605,6 +620,7 @@ public class DataTest : TestBase
             {
                 ActiveContactPrice = "active_contact_price",
                 Description = "description",
+                From = "from",
                 Price = "price",
                 Status = "status",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -632,6 +648,7 @@ public class DataTest : TestBase
                 {
                     ActiveContactPrice = "active_contact_price",
                     Description = "description",
+                    From = "from",
                     Price = "price",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -702,6 +719,7 @@ public class DataTest : TestBase
                 {
                     ActiveContactPrice = "active_contact_price",
                     Description = "description",
+                    From = "from",
                     Price = "price",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -725,6 +743,7 @@ public class ActivityTest : TestBase
         {
             ActiveContactPrice = "active_contact_price",
             Description = "description",
+            From = "from",
             Price = "price",
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -732,12 +751,14 @@ public class ActivityTest : TestBase
 
         string expectedActiveContactPrice = "active_contact_price";
         string expectedDescription = "description";
+        string expectedFrom = "from";
         string expectedPrice = "price";
         string expectedStatus = "status";
         DateTimeOffset expectedTimestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
 
         Assert.Equal(expectedActiveContactPrice, model.ActiveContactPrice);
         Assert.Equal(expectedDescription, model.Description);
+        Assert.Equal(expectedFrom, model.From);
         Assert.Equal(expectedPrice, model.Price);
         Assert.Equal(expectedStatus, model.Status);
         Assert.Equal(expectedTimestamp, model.Timestamp);
@@ -750,6 +771,7 @@ public class ActivityTest : TestBase
         {
             ActiveContactPrice = "active_contact_price",
             Description = "description",
+            From = "from",
             Price = "price",
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -768,6 +790,7 @@ public class ActivityTest : TestBase
         {
             ActiveContactPrice = "active_contact_price",
             Description = "description",
+            From = "from",
             Price = "price",
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -782,12 +805,14 @@ public class ActivityTest : TestBase
 
         string expectedActiveContactPrice = "active_contact_price";
         string expectedDescription = "description";
+        string expectedFrom = "from";
         string expectedPrice = "price";
         string expectedStatus = "status";
         DateTimeOffset expectedTimestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
 
         Assert.Equal(expectedActiveContactPrice, deserialized.ActiveContactPrice);
         Assert.Equal(expectedDescription, deserialized.Description);
+        Assert.Equal(expectedFrom, deserialized.From);
         Assert.Equal(expectedPrice, deserialized.Price);
         Assert.Equal(expectedStatus, deserialized.Status);
         Assert.Equal(expectedTimestamp, deserialized.Timestamp);
@@ -800,6 +825,7 @@ public class ActivityTest : TestBase
         {
             ActiveContactPrice = "active_contact_price",
             Description = "description",
+            From = "from",
             Price = "price",
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -811,7 +837,12 @@ public class ActivityTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Activity { ActiveContactPrice = "active_contact_price", Price = "price" };
+        var model = new Activity
+        {
+            ActiveContactPrice = "active_contact_price",
+            From = "from",
+            Price = "price",
+        };
 
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
@@ -824,7 +855,12 @@ public class ActivityTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Activity { ActiveContactPrice = "active_contact_price", Price = "price" };
+        var model = new Activity
+        {
+            ActiveContactPrice = "active_contact_price",
+            From = "from",
+            Price = "price",
+        };
 
         model.Validate();
     }
@@ -835,6 +871,7 @@ public class ActivityTest : TestBase
         var model = new Activity
         {
             ActiveContactPrice = "active_contact_price",
+            From = "from",
             Price = "price",
 
             // Null should be interpreted as omitted for these properties
@@ -857,6 +894,7 @@ public class ActivityTest : TestBase
         var model = new Activity
         {
             ActiveContactPrice = "active_contact_price",
+            From = "from",
             Price = "price",
 
             // Null should be interpreted as omitted for these properties
@@ -880,6 +918,8 @@ public class ActivityTest : TestBase
 
         Assert.Null(model.ActiveContactPrice);
         Assert.False(model.RawData.ContainsKey("active_contact_price"));
+        Assert.Null(model.From);
+        Assert.False(model.RawData.ContainsKey("from"));
         Assert.Null(model.Price);
         Assert.False(model.RawData.ContainsKey("price"));
     }
@@ -907,11 +947,14 @@ public class ActivityTest : TestBase
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             ActiveContactPrice = null,
+            From = null,
             Price = null,
         };
 
         Assert.Null(model.ActiveContactPrice);
         Assert.True(model.RawData.ContainsKey("active_contact_price"));
+        Assert.Null(model.From);
+        Assert.True(model.RawData.ContainsKey("from"));
         Assert.Null(model.Price);
         Assert.True(model.RawData.ContainsKey("price"));
     }
@@ -926,6 +969,7 @@ public class ActivityTest : TestBase
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             ActiveContactPrice = null,
+            From = null,
             Price = null,
         };
 
@@ -939,6 +983,7 @@ public class ActivityTest : TestBase
         {
             ActiveContactPrice = "active_contact_price",
             Description = "description",
+            From = "from",
             Price = "price",
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),

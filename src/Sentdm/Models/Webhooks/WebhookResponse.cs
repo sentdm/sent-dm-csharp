@@ -102,6 +102,40 @@ public sealed record class WebhookResponse : JsonModel
         }
     }
 
+    public IReadOnlyDictionary<string, IReadOnlyList<string>>? EventFilters
+    {
+        get
+        {
+            this._rawData.Freeze();
+            var value = this._rawData.GetNullableClass<
+                FrozenDictionary<string, ImmutableArray<string>>
+            >("event_filters");
+            if (value == null)
+            {
+                return null;
+            }
+
+            return FrozenDictionary.ToFrozenDictionary(
+                value,
+                entry => entry.Key,
+                (entry) => (IReadOnlyList<string>)entry.Value
+            );
+        }
+        init
+        {
+            this._rawData.Set<FrozenDictionary<string, ImmutableArray<string>>?>(
+                "event_filters",
+                value == null
+                    ? null
+                    : FrozenDictionary.ToFrozenDictionary(
+                        value,
+                        entry => entry.Key,
+                        (entry) => ImmutableArray.ToImmutableArray(entry.Value)
+                    )
+            );
+        }
+    }
+
     public IReadOnlyList<string>? EventTypes
     {
         get
@@ -225,6 +259,7 @@ public sealed record class WebhookResponse : JsonModel
         _ = this.CreatedAt;
         _ = this.DisplayName;
         _ = this.EndpointUrl;
+        _ = this.EventFilters;
         _ = this.EventTypes;
         _ = this.IsActive;
         _ = this.LastDeliveryAttemptAt;
