@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Contacts;
@@ -14,6 +15,7 @@ public class ContactResponseTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AvailableChannels = "available_channels",
+            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             CountryCode = "country_code",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultChannel = "default_channel",
@@ -30,6 +32,7 @@ public class ContactResponseTest : TestBase
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedAvailableChannels = "available_channels";
+        Dictionary<string, string> expectedChannelConsent = new() { { "foo", "string" } };
         string expectedCountryCode = "country_code";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedDefaultChannel = "default_channel";
@@ -45,6 +48,14 @@ public class ContactResponseTest : TestBase
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedAvailableChannels, model.AvailableChannels);
+        Assert.NotNull(model.ChannelConsent);
+        Assert.Equal(expectedChannelConsent.Count, model.ChannelConsent.Count);
+        foreach (var item in expectedChannelConsent)
+        {
+            Assert.True(model.ChannelConsent.TryGetValue(item.Key, out var value));
+
+            Assert.Equal(value, model.ChannelConsent[item.Key]);
+        }
         Assert.Equal(expectedCountryCode, model.CountryCode);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedDefaultChannel, model.DefaultChannel);
@@ -66,6 +77,7 @@ public class ContactResponseTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AvailableChannels = "available_channels",
+            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             CountryCode = "country_code",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultChannel = "default_channel",
@@ -96,6 +108,7 @@ public class ContactResponseTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AvailableChannels = "available_channels",
+            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             CountryCode = "country_code",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultChannel = "default_channel",
@@ -119,6 +132,7 @@ public class ContactResponseTest : TestBase
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedAvailableChannels = "available_channels";
+        Dictionary<string, string> expectedChannelConsent = new() { { "foo", "string" } };
         string expectedCountryCode = "country_code";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedDefaultChannel = "default_channel";
@@ -134,6 +148,14 @@ public class ContactResponseTest : TestBase
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedAvailableChannels, deserialized.AvailableChannels);
+        Assert.NotNull(deserialized.ChannelConsent);
+        Assert.Equal(expectedChannelConsent.Count, deserialized.ChannelConsent.Count);
+        foreach (var item in expectedChannelConsent)
+        {
+            Assert.True(deserialized.ChannelConsent.TryGetValue(item.Key, out var value));
+
+            Assert.Equal(value, deserialized.ChannelConsent[item.Key]);
+        }
         Assert.Equal(expectedCountryCode, deserialized.CountryCode);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedDefaultChannel, deserialized.DefaultChannel);
@@ -155,6 +177,7 @@ public class ContactResponseTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AvailableChannels = "available_channels",
+            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             CountryCode = "country_code",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultChannel = "default_channel",
@@ -177,6 +200,7 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
+            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
@@ -213,6 +237,7 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
+            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
@@ -224,6 +249,7 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
+            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             // Null should be interpreted as omitted for these properties
@@ -275,6 +301,7 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
+            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             // Null should be interpreted as omitted for these properties
@@ -316,6 +343,8 @@ public class ContactResponseTest : TestBase
             RegionCode = "region_code",
         };
 
+        Assert.Null(model.ChannelConsent);
+        Assert.False(model.RawData.ContainsKey("channel_consent"));
         Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updated_at"));
     }
@@ -362,9 +391,12 @@ public class ContactResponseTest : TestBase
             PhoneNumber = "phone_number",
             RegionCode = "region_code",
 
+            ChannelConsent = null,
             UpdatedAt = null,
         };
 
+        Assert.Null(model.ChannelConsent);
+        Assert.True(model.RawData.ContainsKey("channel_consent"));
         Assert.Null(model.UpdatedAt);
         Assert.True(model.RawData.ContainsKey("updated_at"));
     }
@@ -388,6 +420,7 @@ public class ContactResponseTest : TestBase
             PhoneNumber = "phone_number",
             RegionCode = "region_code",
 
+            ChannelConsent = null,
             UpdatedAt = null,
         };
 
@@ -401,6 +434,7 @@ public class ContactResponseTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AvailableChannels = "available_channels",
+            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             CountryCode = "country_code",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultChannel = "default_channel",

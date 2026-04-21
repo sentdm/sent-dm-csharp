@@ -28,6 +28,31 @@ public record class ContactUpdateParams : ParamsBase
     public string? ID { get; init; }
 
     /// <summary>
+    /// Consent status by channel. Keys: "sms", "whatsapp". Values: "opted_in", "opted_out".
+    /// All entries must have the same status — mixed values (e.g., sms: opted_out
+    /// + whatsapp: opted_in) are rejected with 400. The provided status is applied
+    /// to ALL channels regardless of which keys are specified, because consent is
+    /// global across channels. When provided, takes precedence over the opt_out field.
+    /// </summary>
+    public IReadOnlyDictionary<string, string>? ChannelConsent
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<FrozenDictionary<string, string>>(
+                "channel_consent"
+            );
+        }
+        init
+        {
+            this._rawBodyData.Set<FrozenDictionary<string, string>?>(
+                "channel_consent",
+                value == null ? null : FrozenDictionary.ToFrozenDictionary(value)
+            );
+        }
+    }
+
+    /// <summary>
     /// Default messaging channel: "sms" or "whatsapp"
     /// </summary>
     public string? DefaultChannel

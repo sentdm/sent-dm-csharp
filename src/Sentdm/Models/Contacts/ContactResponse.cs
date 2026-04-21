@@ -57,6 +57,29 @@ public sealed record class ContactResponse : JsonModel
     }
 
     /// <summary>
+    /// Consent status by channel. Keys: "sms", "whatsapp". Values: "opted_in", "opted_out".
+    /// All channels will have the same status because consent is global across channels.
+    /// A STOP on any channel opts out of all channels; a START opts in to all.
+    /// </summary>
+    public IReadOnlyDictionary<string, string>? ChannelConsent
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<FrozenDictionary<string, string>>(
+                "channel_consent"
+            );
+        }
+        init
+        {
+            this._rawData.Set<FrozenDictionary<string, string>?>(
+                "channel_consent",
+                value == null ? null : FrozenDictionary.ToFrozenDictionary(value)
+            );
+        }
+    }
+
+    /// <summary>
     /// Country calling code (e.g., 1 for US/Canada)
     /// </summary>
     public string? CountryCode
@@ -305,6 +328,7 @@ public sealed record class ContactResponse : JsonModel
     {
         _ = this.ID;
         _ = this.AvailableChannels;
+        _ = this.ChannelConsent;
         _ = this.CountryCode;
         _ = this.CreatedAt;
         _ = this.DefaultChannel;
