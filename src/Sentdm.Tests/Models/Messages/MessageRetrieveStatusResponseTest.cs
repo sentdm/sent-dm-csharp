@@ -22,6 +22,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Direction = "direction",
                 Events =
                 [
                     new()
@@ -71,6 +72,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Direction = "direction",
             Events =
             [
                 new()
@@ -130,6 +132,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Direction = "direction",
                 Events =
                 [
                     new()
@@ -193,6 +196,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Direction = "direction",
                 Events =
                 [
                     new()
@@ -249,6 +253,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Direction = "direction",
             Events =
             [
                 new()
@@ -308,6 +313,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Direction = "direction",
                 Events =
                 [
                     new()
@@ -365,6 +371,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Direction = "direction",
                 Events =
                 [
                     new()
@@ -418,6 +425,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Direction = "direction",
                 Events =
                 [
                     new()
@@ -468,6 +476,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Direction = "direction",
                 Events =
                 [
                     new()
@@ -525,6 +534,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Direction = "direction",
                 Events =
                 [
                     new()
@@ -659,6 +669,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Direction = "direction",
                 Events =
                 [
                     new()
@@ -719,6 +730,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Direction = "direction",
             Events =
             [
                 new()
@@ -751,6 +763,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         string expectedContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedDirection = "direction";
         List<Event> expectedEvents =
         [
             new()
@@ -782,6 +795,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         Assert.Equal(expectedContactID, model.ContactID);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedCustomerID, model.CustomerID);
+        Assert.Equal(expectedDirection, model.Direction);
         Assert.NotNull(model.Events);
         Assert.Equal(expectedEvents.Count, model.Events.Count);
         for (int i = 0; i < expectedEvents.Count; i++)
@@ -810,6 +824,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Direction = "direction",
             Events =
             [
                 new()
@@ -856,6 +871,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Direction = "direction",
             Events =
             [
                 new()
@@ -895,6 +911,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         string expectedContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedDirection = "direction";
         List<Event> expectedEvents =
         [
             new()
@@ -926,6 +943,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         Assert.Equal(expectedContactID, deserialized.ContactID);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedCustomerID, deserialized.CustomerID);
+        Assert.Equal(expectedDirection, deserialized.Direction);
         Assert.NotNull(deserialized.Events);
         Assert.Equal(expectedEvents.Count, deserialized.Events.Count);
         for (int i = 0; i < expectedEvents.Count; i++)
@@ -954,6 +972,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Direction = "direction",
             Events =
             [
                 new()
@@ -1006,7 +1025,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Header = "header",
             },
             Price = 0,
+            TemplateCategory = "template_category",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            TemplateName = "template_name",
         };
 
         Assert.Null(model.ID);
@@ -1019,6 +1040,8 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         Assert.False(model.RawData.ContainsKey("created_at"));
         Assert.Null(model.CustomerID);
         Assert.False(model.RawData.ContainsKey("customer_id"));
+        Assert.Null(model.Direction);
+        Assert.False(model.RawData.ContainsKey("direction"));
         Assert.Null(model.Phone);
         Assert.False(model.RawData.ContainsKey("phone"));
         Assert.Null(model.PhoneInternational);
@@ -1027,10 +1050,6 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         Assert.False(model.RawData.ContainsKey("region_code"));
         Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
-        Assert.Null(model.TemplateCategory);
-        Assert.False(model.RawData.ContainsKey("template_category"));
-        Assert.Null(model.TemplateName);
-        Assert.False(model.RawData.ContainsKey("template_name"));
     }
 
     [Fact]
@@ -1056,7 +1075,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Header = "header",
             },
             Price = 0,
+            TemplateCategory = "template_category",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            TemplateName = "template_name",
         };
 
         model.Validate();
@@ -1085,7 +1106,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Header = "header",
             },
             Price = 0,
+            TemplateCategory = "template_category",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            TemplateName = "template_name",
 
             // Null should be interpreted as omitted for these properties
             ID = null,
@@ -1093,12 +1116,11 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             ContactID = null,
             CreatedAt = null,
             CustomerID = null,
+            Direction = null,
             Phone = null,
             PhoneInternational = null,
             RegionCode = null,
             Status = null,
-            TemplateCategory = null,
-            TemplateName = null,
         };
 
         Assert.Null(model.ID);
@@ -1111,6 +1133,8 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         Assert.False(model.RawData.ContainsKey("created_at"));
         Assert.Null(model.CustomerID);
         Assert.False(model.RawData.ContainsKey("customer_id"));
+        Assert.Null(model.Direction);
+        Assert.False(model.RawData.ContainsKey("direction"));
         Assert.Null(model.Phone);
         Assert.False(model.RawData.ContainsKey("phone"));
         Assert.Null(model.PhoneInternational);
@@ -1119,10 +1143,6 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         Assert.False(model.RawData.ContainsKey("region_code"));
         Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
-        Assert.Null(model.TemplateCategory);
-        Assert.False(model.RawData.ContainsKey("template_category"));
-        Assert.Null(model.TemplateName);
-        Assert.False(model.RawData.ContainsKey("template_name"));
     }
 
     [Fact]
@@ -1148,7 +1168,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Header = "header",
             },
             Price = 0,
+            TemplateCategory = "template_category",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            TemplateName = "template_name",
 
             // Null should be interpreted as omitted for these properties
             ID = null,
@@ -1156,12 +1178,11 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             ContactID = null,
             CreatedAt = null,
             CustomerID = null,
+            Direction = null,
             Phone = null,
             PhoneInternational = null,
             RegionCode = null,
             Status = null,
-            TemplateCategory = null,
-            TemplateName = null,
         };
 
         model.Validate();
@@ -1177,12 +1198,11 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Direction = "direction",
             Phone = "phone",
             PhoneInternational = "phone_international",
             RegionCode = "region_code",
             Status = "status",
-            TemplateCategory = "template_category",
-            TemplateName = "template_name",
         };
 
         Assert.Null(model.ActiveContactPrice);
@@ -1193,8 +1213,12 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         Assert.False(model.RawData.ContainsKey("message_body"));
         Assert.Null(model.Price);
         Assert.False(model.RawData.ContainsKey("price"));
+        Assert.Null(model.TemplateCategory);
+        Assert.False(model.RawData.ContainsKey("template_category"));
         Assert.Null(model.TemplateID);
         Assert.False(model.RawData.ContainsKey("template_id"));
+        Assert.Null(model.TemplateName);
+        Assert.False(model.RawData.ContainsKey("template_name"));
     }
 
     [Fact]
@@ -1207,12 +1231,11 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Direction = "direction",
             Phone = "phone",
             PhoneInternational = "phone_international",
             RegionCode = "region_code",
             Status = "status",
-            TemplateCategory = "template_category",
-            TemplateName = "template_name",
         };
 
         model.Validate();
@@ -1228,18 +1251,19 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Direction = "direction",
             Phone = "phone",
             PhoneInternational = "phone_international",
             RegionCode = "region_code",
             Status = "status",
-            TemplateCategory = "template_category",
-            TemplateName = "template_name",
 
             ActiveContactPrice = null,
             Events = null,
             MessageBody = null,
             Price = null,
+            TemplateCategory = null,
             TemplateID = null,
+            TemplateName = null,
         };
 
         Assert.Null(model.ActiveContactPrice);
@@ -1250,8 +1274,12 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         Assert.True(model.RawData.ContainsKey("message_body"));
         Assert.Null(model.Price);
         Assert.True(model.RawData.ContainsKey("price"));
+        Assert.Null(model.TemplateCategory);
+        Assert.True(model.RawData.ContainsKey("template_category"));
         Assert.Null(model.TemplateID);
         Assert.True(model.RawData.ContainsKey("template_id"));
+        Assert.Null(model.TemplateName);
+        Assert.True(model.RawData.ContainsKey("template_name"));
     }
 
     [Fact]
@@ -1264,18 +1292,19 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Direction = "direction",
             Phone = "phone",
             PhoneInternational = "phone_international",
             RegionCode = "region_code",
             Status = "status",
-            TemplateCategory = "template_category",
-            TemplateName = "template_name",
 
             ActiveContactPrice = null,
             Events = null,
             MessageBody = null,
             Price = null,
+            TemplateCategory = null,
             TemplateID = null,
+            TemplateName = null,
         };
 
         model.Validate();
@@ -1292,6 +1321,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Direction = "direction",
             Events =
             [
                 new()

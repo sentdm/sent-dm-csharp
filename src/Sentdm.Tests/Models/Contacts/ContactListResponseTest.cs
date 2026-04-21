@@ -22,6 +22,7 @@ public class ContactListResponseTest : TestBase
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         AvailableChannels = "available_channels",
+                        ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                         CountryCode = "country_code",
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DefaultChannel = "default_channel",
@@ -70,6 +71,7 @@ public class ContactListResponseTest : TestBase
                 {
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AvailableChannels = "available_channels",
+                    ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                     CountryCode = "country_code",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DefaultChannel = "default_channel",
@@ -128,6 +130,7 @@ public class ContactListResponseTest : TestBase
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         AvailableChannels = "available_channels",
+                        ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                         CountryCode = "country_code",
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DefaultChannel = "default_channel",
@@ -190,6 +193,7 @@ public class ContactListResponseTest : TestBase
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         AvailableChannels = "available_channels",
+                        ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                         CountryCode = "country_code",
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DefaultChannel = "default_channel",
@@ -245,6 +249,7 @@ public class ContactListResponseTest : TestBase
                 {
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AvailableChannels = "available_channels",
+                    ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                     CountryCode = "country_code",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DefaultChannel = "default_channel",
@@ -303,6 +308,7 @@ public class ContactListResponseTest : TestBase
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         AvailableChannels = "available_channels",
+                        ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                         CountryCode = "country_code",
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DefaultChannel = "default_channel",
@@ -359,6 +365,7 @@ public class ContactListResponseTest : TestBase
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         AvailableChannels = "available_channels",
+                        ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                         CountryCode = "country_code",
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DefaultChannel = "default_channel",
@@ -411,6 +418,7 @@ public class ContactListResponseTest : TestBase
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         AvailableChannels = "available_channels",
+                        ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                         CountryCode = "country_code",
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DefaultChannel = "default_channel",
@@ -460,6 +468,7 @@ public class ContactListResponseTest : TestBase
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         AvailableChannels = "available_channels",
+                        ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                         CountryCode = "country_code",
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DefaultChannel = "default_channel",
@@ -516,6 +525,7 @@ public class ContactListResponseTest : TestBase
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         AvailableChannels = "available_channels",
+                        ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                         CountryCode = "country_code",
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DefaultChannel = "default_channel",
@@ -649,6 +659,7 @@ public class ContactListResponseTest : TestBase
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         AvailableChannels = "available_channels",
+                        ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                         CountryCode = "country_code",
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         DefaultChannel = "default_channel",
@@ -708,6 +719,7 @@ public class DataTest : TestBase
                 {
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AvailableChannels = "available_channels",
+                    ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                     CountryCode = "country_code",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DefaultChannel = "default_channel",
@@ -739,6 +751,7 @@ public class DataTest : TestBase
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AvailableChannels = "available_channels",
+                ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                 CountryCode = "country_code",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DefaultChannel = "default_channel",
@@ -783,6 +796,7 @@ public class DataTest : TestBase
                 {
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AvailableChannels = "available_channels",
+                    ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                     CountryCode = "country_code",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DefaultChannel = "default_channel",
@@ -825,6 +839,7 @@ public class DataTest : TestBase
                 {
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AvailableChannels = "available_channels",
+                    ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                     CountryCode = "country_code",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DefaultChannel = "default_channel",
@@ -860,6 +875,7 @@ public class DataTest : TestBase
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AvailableChannels = "available_channels",
+                ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                 CountryCode = "country_code",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DefaultChannel = "default_channel",
@@ -904,6 +920,7 @@ public class DataTest : TestBase
                 {
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AvailableChannels = "available_channels",
+                    ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                     CountryCode = "country_code",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DefaultChannel = "default_channel",
@@ -991,6 +1008,7 @@ public class DataTest : TestBase
                 {
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AvailableChannels = "available_channels",
+                    ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
                     CountryCode = "country_code",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     DefaultChannel = "default_channel",

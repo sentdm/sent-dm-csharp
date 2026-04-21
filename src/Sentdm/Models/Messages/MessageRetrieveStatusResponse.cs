@@ -246,6 +246,24 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
+    public string? Direction
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("direction");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("direction", value);
+        }
+    }
+
     public IReadOnlyList<global::Sentdm.Models.Messages.Event>? Events
     {
         get
@@ -367,15 +385,7 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
             this._rawData.Freeze();
             return this._rawData.GetNullableClass<string>("template_category");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("template_category", value);
-        }
+        init { this._rawData.Set("template_category", value); }
     }
 
     public string? TemplateID
@@ -395,15 +405,7 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
             this._rawData.Freeze();
             return this._rawData.GetNullableClass<string>("template_name");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("template_name", value);
-        }
+        init { this._rawData.Set("template_name", value); }
     }
 
     /// <inheritdoc/>
@@ -415,6 +417,7 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         _ = this.ContactID;
         _ = this.CreatedAt;
         _ = this.CustomerID;
+        _ = this.Direction;
         foreach (var item in this.Events ?? [])
         {
             item.Validate();
