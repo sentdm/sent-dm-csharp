@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.20.0 (2026-04-28)
+
+Full Changelog: [v0.19.0...v0.20.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.19.0...v0.20.0)
+
+### Features
+
+* support setting headers via env ([8572c56](https://github.com/sentdm/sent-dm-csharp/commit/8572c566d79471203c3357387003485500c14ddd))
+
 ## 0.19.0 (2026-04-21)
 
 Full Changelog: [v0.18.0...v0.19.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.18.0...v0.19.0)
