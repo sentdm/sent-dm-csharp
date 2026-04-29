@@ -144,12 +144,12 @@ class WebhookListEventTypesResponseFromRaw : IFromRawJson<WebhookListEventTypesR
 )]
 public sealed record class WebhookListEventTypesResponseData : JsonModel
 {
-    public IReadOnlyList<EventType>? EventTypes
+    public IReadOnlyList<WebhookEventType>? EventTypes
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<EventType>>("event_types");
+            return this._rawData.GetNullableStruct<ImmutableArray<WebhookEventType>>("event_types");
         }
         init
         {
@@ -158,7 +158,7 @@ public sealed record class WebhookListEventTypesResponseData : JsonModel
                 return;
             }
 
-            this._rawData.Set<ImmutableArray<EventType>?>(
+            this._rawData.Set<ImmutableArray<WebhookEventType>?>(
                 "event_types",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -212,143 +212,4 @@ class WebhookListEventTypesResponseDataFromRaw : IFromRawJson<WebhookListEventTy
     public WebhookListEventTypesResponseData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     ) => WebhookListEventTypesResponseData.FromRawUnchecked(rawData);
-}
-
-[JsonConverter(typeof(JsonModelConverter<EventType, EventTypeFromRaw>))]
-public sealed record class EventType : JsonModel
-{
-    public string? Description
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("description");
-        }
-        init { this._rawData.Set("description", value); }
-    }
-
-    public string? DisplayName
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("display_name");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("display_name", value);
-        }
-    }
-
-    public string? EventTypeValue
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("event_type");
-        }
-        init { this._rawData.Set("event_type", value); }
-    }
-
-    public bool? IsActive
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_active");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("is_active", value);
-        }
-    }
-
-    public string? Name
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("name", value);
-        }
-    }
-
-    public IReadOnlyList<JsonElement>? SubTypes
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<JsonElement>>("sub_types");
-        }
-        init
-        {
-            this._rawData.Set<ImmutableArray<JsonElement>?>(
-                "sub_types",
-                value == null ? null : ImmutableArray.ToImmutableArray(value)
-            );
-        }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.Description;
-        _ = this.DisplayName;
-        _ = this.EventTypeValue;
-        _ = this.IsActive;
-        _ = this.Name;
-        _ = this.SubTypes;
-    }
-
-    public EventType() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public EventType(EventType eventType)
-        : base(eventType) { }
-#pragma warning restore CS8618
-
-    public EventType(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    EventType(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="EventTypeFromRaw.FromRawUnchecked"/>
-    public static EventType FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class EventTypeFromRaw : IFromRawJson<EventType>
-{
-    /// <inheritdoc/>
-    public EventType FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        EventType.FromRawUnchecked(rawData);
 }
