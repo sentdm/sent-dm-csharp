@@ -73,7 +73,7 @@ public interface IUserService
     /// <inheritdoc cref="Remove(UserRemoveParams, CancellationToken)"/>
     Task Remove(
         string userID,
-        UserRemoveParams parameters,
+        UserRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -153,7 +153,7 @@ public interface IUserServiceWithRawResponse
     /// <inheritdoc cref="Remove(UserRemoveParams, CancellationToken)"/>
     Task<HttpResponse> Remove(
         string userID,
-        UserRemoveParams parameters,
+        UserRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 

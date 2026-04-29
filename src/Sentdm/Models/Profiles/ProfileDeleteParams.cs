@@ -5,9 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Sentdm.Core;
-using Sentdm.Models.Webhooks;
 
 namespace Sentdm.Models.Profiles;
 
@@ -21,23 +19,34 @@ namespace Sentdm.Models.Profiles;
 /// </summary>
 public record class ProfileDeleteParams : ParamsBase
 {
-    public JsonElement RawBodyData { get; private init; }
+    readonly JsonDictionary _rawBodyData = new();
+    public IReadOnlyDictionary<string, JsonElement> RawBodyData
+    {
+        get { return this._rawBodyData.Freeze(); }
+    }
 
     public string? ProfileID { get; init; }
 
     /// <summary>
-    /// Request to delete a profile
+    /// Sandbox flag - when true, the operation is simulated without side effects
+    /// Useful for testing integrations without actual execution
     /// </summary>
-    public required global::Sentdm.Models.Profiles.Body Body
+    public bool? Sandbox
     {
         get
         {
-            return WrappedJsonSerializer.GetNotNullClass<global::Sentdm.Models.Profiles.Body>(
-                this.RawBodyData,
-                "RawBodyData"
-            );
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("sandbox");
         }
-        init { this.RawBodyData = JsonSerializer.SerializeToElement(value); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("sandbox", value);
+        }
     }
 
     public string? XProfileID
@@ -67,19 +76,19 @@ public record class ProfileDeleteParams : ParamsBase
     {
         this.ProfileID = profileDeleteParams.ProfileID;
 
-        this.RawBodyData = profileDeleteParams.RawBodyData;
+        this._rawBodyData = new(profileDeleteParams._rawBodyData);
     }
 #pragma warning restore CS8618
 
     public ProfileDeleteParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        JsonElement rawBodyData
+        IReadOnlyDictionary<string, JsonElement> rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this.RawBodyData = rawBodyData;
+        this._rawBodyData = new(rawBodyData);
     }
 
 #pragma warning disable CS8618
@@ -87,13 +96,13 @@ public record class ProfileDeleteParams : ParamsBase
     ProfileDeleteParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        JsonElement rawBodyData,
+        FrozenDictionary<string, JsonElement> rawBodyData,
         string profileID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this.RawBodyData = rawBodyData;
+        this._rawBodyData = new(rawBodyData);
         this.ProfileID = profileID;
     }
 #pragma warning restore CS8618
@@ -102,14 +111,14 @@ public record class ProfileDeleteParams : ParamsBase
     public static ProfileDeleteParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        JsonElement rawBodyData,
+        IReadOnlyDictionary<string, JsonElement> rawBodyData,
         string profileID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            rawBodyData,
+            FrozenDictionary.ToFrozenDictionary(rawBodyData),
             profileID
         );
     }
@@ -126,7 +135,7 @@ public record class ProfileDeleteParams : ParamsBase
                     ["QueryData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
                     ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this.RawBodyData),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
                 }
             ),
             ModelBase.ToStringSerializerOptions
@@ -141,7 +150,7 @@ public record class ProfileDeleteParams : ParamsBase
         return (this.ProfileID?.Equals(other.ProfileID) ?? other.ProfileID == null)
             && this._rawHeaderData.Equals(other._rawHeaderData)
             && this._rawQueryData.Equals(other._rawQueryData)
-            && this.RawBodyData.Equals(other.RawBodyData);
+            && this._rawBodyData.Equals(other._rawBodyData);
     }
 
     public override Uri Url(ClientOptions options)
@@ -177,84 +186,4 @@ public record class ProfileDeleteParams : ParamsBase
     {
         return 0;
     }
-}
-
-/// <summary>
-/// Request to delete a profile
-/// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        global::Sentdm.Models.Profiles.Body,
-        global::Sentdm.Models.Profiles.BodyFromRaw
-    >)
-)]
-public sealed record class Body : JsonModel
-{
-    /// <summary>
-    /// Sandbox flag - when true, the operation is simulated without side effects
-    /// Useful for testing integrations without actual execution
-    /// </summary>
-    public bool? Sandbox
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("sandbox");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("sandbox", value);
-        }
-    }
-
-    public static implicit operator MutationRequest(global::Sentdm.Models.Profiles.Body body) =>
-        new() { Sandbox = body.Sandbox };
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.Sandbox;
-    }
-
-    public Body() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public Body(global::Sentdm.Models.Profiles.Body body)
-        : base(body) { }
-#pragma warning restore CS8618
-
-    public Body(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    Body(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="global::Sentdm.Models.Profiles.BodyFromRaw.FromRawUnchecked"/>
-    public static global::Sentdm.Models.Profiles.Body FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class BodyFromRaw : IFromRawJson<global::Sentdm.Models.Profiles.Body>
-{
-    /// <inheritdoc/>
-    public global::Sentdm.Models.Profiles.Body FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => global::Sentdm.Models.Profiles.Body.FromRawUnchecked(rawData);
 }
