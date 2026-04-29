@@ -118,10 +118,12 @@ public sealed class ContactService : IContactService
     /// <inheritdoc/>
     public async Task Delete(
         string id,
-        ContactDeleteParams parameters,
+        ContactDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         await this.Delete(parameters with { ID = id }, cancellationToken).ConfigureAwait(false);
     }
 }
@@ -312,10 +314,12 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     /// <inheritdoc/>
     public Task<HttpResponse> Delete(
         string id,
-        ContactDeleteParams parameters,
+        ContactDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.Delete(parameters with { ID = id }, cancellationToken);
     }
 }

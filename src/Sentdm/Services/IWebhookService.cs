@@ -121,7 +121,7 @@ public interface IWebhookService
     /// <inheritdoc cref="RotateSecret(WebhookRotateSecretParams, CancellationToken)"/>
     Task<WebhookRotateSecretResponse> RotateSecret(
         string id,
-        WebhookRotateSecretParams parameters,
+        WebhookRotateSecretParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -272,7 +272,7 @@ public interface IWebhookServiceWithRawResponse
     /// <inheritdoc cref="RotateSecret(WebhookRotateSecretParams, CancellationToken)"/>
     Task<HttpResponse<WebhookRotateSecretResponse>> RotateSecret(
         string id,
-        WebhookRotateSecretParams parameters,
+        WebhookRotateSecretParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 

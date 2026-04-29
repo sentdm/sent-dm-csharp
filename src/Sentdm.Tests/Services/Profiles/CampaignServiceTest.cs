@@ -105,11 +105,7 @@ public class CampaignServiceTest : TestBase
     {
         await this.client.Profiles.Campaigns.Delete(
             "b2c3d4e5-f6a7-8901-bcde-f12345678901",
-            new()
-            {
-                ProfileID = "770e8400-e29b-41d4-a716-446655440002",
-                Body = new() { Sandbox = false },
-            },
+            new() { ProfileID = "770e8400-e29b-41d4-a716-446655440002" },
             TestContext.Current.CancellationToken
         );
     }

@@ -88,7 +88,7 @@ public interface IContactService
     /// <inheritdoc cref="Delete(ContactDeleteParams, CancellationToken)"/>
     Task Delete(
         string id,
-        ContactDeleteParams parameters,
+        ContactDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }
@@ -168,7 +168,7 @@ public interface IContactServiceWithRawResponse
     /// <inheritdoc cref="Delete(ContactDeleteParams, CancellationToken)"/>
     Task<HttpResponse> Delete(
         string id,
-        ContactDeleteParams parameters,
+        ContactDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }
