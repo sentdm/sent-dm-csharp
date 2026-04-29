@@ -1,6 +1,5 @@
 using System;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
@@ -127,16 +126,18 @@ public sealed class ProfileService : IProfileService
     /// <inheritdoc/>
     public async Task Delete(
         string profileID,
-        ProfileDeleteParams parameters,
+        ProfileDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         await this.Delete(parameters with { ProfileID = profileID }, cancellationToken)
             .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public async Task<JsonElement> Complete(
+    public async Task<ProfileCompleteResponse> Complete(
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -148,7 +149,7 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public Task<JsonElement> Complete(
+    public Task<ProfileCompleteResponse> Complete(
         string profileID,
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
@@ -354,15 +355,17 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     /// <inheritdoc/>
     public Task<HttpResponse> Delete(
         string profileID,
-        ProfileDeleteParams parameters,
+        ProfileDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.Delete(parameters with { ProfileID = profileID }, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<JsonElement>> Complete(
+    public async Task<HttpResponse<ProfileCompleteResponse>> Complete(
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -382,13 +385,20 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             response,
             async (token) =>
             {
-                return await response.Deserialize<JsonElement>(token).ConfigureAwait(false);
+                var deserializedResponse = await response
+                    .Deserialize<ProfileCompleteResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    deserializedResponse.Validate();
+                }
+                return deserializedResponse;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<JsonElement>> Complete(
+    public Task<HttpResponse<ProfileCompleteResponse>> Complete(
         string profileID,
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default

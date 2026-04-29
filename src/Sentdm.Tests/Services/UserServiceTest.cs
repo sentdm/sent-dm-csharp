@@ -35,11 +35,7 @@ public class UserServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Remove_Works()
     {
-        await this.client.Users.Remove(
-            "userId",
-            new() { Body = new() { Sandbox = false } },
-            TestContext.Current.CancellationToken
-        );
+        await this.client.Users.Remove("userId", new(), TestContext.Current.CancellationToken);
     }
 
     [Fact(Skip = "Mock server tests are disabled")]

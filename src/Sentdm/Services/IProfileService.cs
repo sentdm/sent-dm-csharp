@@ -1,5 +1,4 @@
 using System;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
@@ -144,7 +143,7 @@ public interface IProfileService
     /// <inheritdoc cref="Delete(ProfileDeleteParams, CancellationToken)"/>
     Task Delete(
         string profileID,
-        ProfileDeleteParams parameters,
+        ProfileDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -167,13 +166,13 @@ public interface IProfileService
     /// destination country (IsMain=true) → SUBMITTED                 - Otherwise →
     /// COMPLETED</para>
     /// </summary>
-    Task<JsonElement> Complete(
+    Task<ProfileCompleteResponse> Complete(
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Complete(ProfileCompleteParams, CancellationToken)"/>
-    Task<JsonElement> Complete(
+    Task<ProfileCompleteResponse> Complete(
         string profileID,
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
@@ -257,7 +256,7 @@ public interface IProfileServiceWithRawResponse
     /// <inheritdoc cref="Delete(ProfileDeleteParams, CancellationToken)"/>
     Task<HttpResponse> Delete(
         string profileID,
-        ProfileDeleteParams parameters,
+        ProfileDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -265,13 +264,13 @@ public interface IProfileServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/profiles/{profileId}/complete</c>, but is otherwise the
     /// same as <see cref="IProfileService.Complete(ProfileCompleteParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<JsonElement>> Complete(
+    Task<HttpResponse<ProfileCompleteResponse>> Complete(
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Complete(ProfileCompleteParams, CancellationToken)"/>
-    Task<HttpResponse<JsonElement>> Complete(
+    Task<HttpResponse<ProfileCompleteResponse>> Complete(
         string profileID,
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default

@@ -5,7 +5,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Sentdm.Core;
 
 namespace Sentdm.Models.Webhooks;
@@ -19,14 +18,34 @@ namespace Sentdm.Models.Webhooks;
 /// </summary>
 public record class WebhookRotateSecretParams : ParamsBase
 {
-    public JsonElement RawBodyData { get; private init; }
+    readonly JsonDictionary _rawBodyData = new();
+    public IReadOnlyDictionary<string, JsonElement> RawBodyData
+    {
+        get { return this._rawBodyData.Freeze(); }
+    }
 
     public string? ID { get; init; }
 
-    public required Body Body
+    /// <summary>
+    /// Sandbox flag - when true, the operation is simulated without side effects
+    /// Useful for testing integrations without actual execution
+    /// </summary>
+    public bool? Sandbox
     {
-        get { return WrappedJsonSerializer.GetNotNullClass<Body>(this.RawBodyData, "RawBodyData"); }
-        init { this.RawBodyData = JsonSerializer.SerializeToElement(value); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("sandbox");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("sandbox", value);
+        }
     }
 
     public string? IdempotencyKey
@@ -74,19 +93,19 @@ public record class WebhookRotateSecretParams : ParamsBase
     {
         this.ID = webhookRotateSecretParams.ID;
 
-        this.RawBodyData = webhookRotateSecretParams.RawBodyData;
+        this._rawBodyData = new(webhookRotateSecretParams._rawBodyData);
     }
 #pragma warning restore CS8618
 
     public WebhookRotateSecretParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        JsonElement rawBodyData
+        IReadOnlyDictionary<string, JsonElement> rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this.RawBodyData = rawBodyData;
+        this._rawBodyData = new(rawBodyData);
     }
 
 #pragma warning disable CS8618
@@ -94,13 +113,13 @@ public record class WebhookRotateSecretParams : ParamsBase
     WebhookRotateSecretParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        JsonElement rawBodyData,
+        FrozenDictionary<string, JsonElement> rawBodyData,
         string id
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this.RawBodyData = rawBodyData;
+        this._rawBodyData = new(rawBodyData);
         this.ID = id;
     }
 #pragma warning restore CS8618
@@ -109,14 +128,14 @@ public record class WebhookRotateSecretParams : ParamsBase
     public static WebhookRotateSecretParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        JsonElement rawBodyData,
+        IReadOnlyDictionary<string, JsonElement> rawBodyData,
         string id
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            rawBodyData,
+            FrozenDictionary.ToFrozenDictionary(rawBodyData),
             id
         );
     }
@@ -133,7 +152,7 @@ public record class WebhookRotateSecretParams : ParamsBase
                     ["QueryData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
                     ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this.RawBodyData),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
                 }
             ),
             ModelBase.ToStringSerializerOptions
@@ -148,7 +167,7 @@ public record class WebhookRotateSecretParams : ParamsBase
         return (this.ID?.Equals(other.ID) ?? other.ID == null)
             && this._rawHeaderData.Equals(other._rawHeaderData)
             && this._rawQueryData.Equals(other._rawQueryData)
-            && this.RawBodyData.Equals(other.RawBodyData);
+            && this._rawBodyData.Equals(other._rawBodyData);
     }
 
     public override Uri Url(ClientOptions options)
@@ -184,72 +203,4 @@ public record class WebhookRotateSecretParams : ParamsBase
     {
         return 0;
     }
-}
-
-[JsonConverter(typeof(JsonModelConverter<Body, BodyFromRaw>))]
-public sealed record class Body : JsonModel
-{
-    /// <summary>
-    /// Sandbox flag - when true, the operation is simulated without side effects
-    /// Useful for testing integrations without actual execution
-    /// </summary>
-    public bool? Sandbox
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("sandbox");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("sandbox", value);
-        }
-    }
-
-    public static implicit operator MutationRequest(Body body) => new() { Sandbox = body.Sandbox };
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.Sandbox;
-    }
-
-    public Body() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public Body(Body body)
-        : base(body) { }
-#pragma warning restore CS8618
-
-    public Body(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    Body(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="BodyFromRaw.FromRawUnchecked"/>
-    public static Body FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class BodyFromRaw : IFromRawJson<Body>
-{
-    /// <inheritdoc/>
-    public Body FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Body.FromRawUnchecked(rawData);
 }

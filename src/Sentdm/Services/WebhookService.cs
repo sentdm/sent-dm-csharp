@@ -176,10 +176,12 @@ public sealed class WebhookService : IWebhookService
     /// <inheritdoc/>
     public Task<WebhookRotateSecretResponse> RotateSecret(
         string id,
-        WebhookRotateSecretParams parameters,
+        WebhookRotateSecretParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.RotateSecret(parameters with { ID = id }, cancellationToken);
     }
 
@@ -536,10 +538,12 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     /// <inheritdoc/>
     public Task<HttpResponse<WebhookRotateSecretResponse>> RotateSecret(
         string id,
-        WebhookRotateSecretParams parameters,
+        WebhookRotateSecretParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.RotateSecret(parameters with { ID = id }, cancellationToken);
     }
 
