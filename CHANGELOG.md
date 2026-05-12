@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.22.1 (2026-05-12)
+
+Full Changelog: [v0.22.0...v0.22.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.22.0...v0.22.1)
+
+### Bug Fixes
+
+* **internal:** disable default HttpClient timeout as we have our own ([86292c6](https://github.com/sentdm/sent-dm-csharp/commit/86292c63bc8fab8d23df93ba5073970cbaf8ea26))
+
 ## 0.22.0 (2026-04-29)
 
 Full Changelog: [v0.21.0...v0.22.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.21.0...v0.22.0)
