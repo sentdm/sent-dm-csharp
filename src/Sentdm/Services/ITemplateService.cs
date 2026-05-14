@@ -33,7 +33,7 @@ public interface ITemplateService
     /// template can be submitted for review immediately or saved as draft for later
     /// submission.
     /// </summary>
-    Task<TemplateCreateResponse> Create(
+    Task<ApiResponseTemplate> Create(
         TemplateCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -42,13 +42,13 @@ public interface ITemplateService
     /// Retrieves a specific template by its ID. Returns template details including
     /// name, category, language, status, and definition.
     /// </summary>
-    Task<TemplateRetrieveResponse> Retrieve(
+    Task<ApiResponseTemplate> Retrieve(
         TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(TemplateRetrieveParams, CancellationToken)"/>
-    Task<TemplateRetrieveResponse> Retrieve(
+    Task<ApiResponseTemplate> Retrieve(
         string id,
         TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -58,13 +58,13 @@ public interface ITemplateService
     /// Updates an existing template's name, category, language, definition, or submits
     /// it for review.
     /// </summary>
-    Task<TemplateUpdateResponse> Update(
+    Task<ApiResponseTemplate> Update(
         TemplateUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(TemplateUpdateParams, CancellationToken)"/>
-    Task<TemplateUpdateResponse> Update(
+    Task<ApiResponseTemplate> Update(
         string id,
         TemplateUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -110,7 +110,7 @@ public interface ITemplateServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/templates</c>, but is otherwise the
     /// same as <see cref="ITemplateService.Create(TemplateCreateParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<TemplateCreateResponse>> Create(
+    Task<HttpResponse<ApiResponseTemplate>> Create(
         TemplateCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -119,13 +119,13 @@ public interface ITemplateServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/templates/{id}</c>, but is otherwise the
     /// same as <see cref="ITemplateService.Retrieve(TemplateRetrieveParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<TemplateRetrieveResponse>> Retrieve(
+    Task<HttpResponse<ApiResponseTemplate>> Retrieve(
         TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(TemplateRetrieveParams, CancellationToken)"/>
-    Task<HttpResponse<TemplateRetrieveResponse>> Retrieve(
+    Task<HttpResponse<ApiResponseTemplate>> Retrieve(
         string id,
         TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -135,13 +135,13 @@ public interface ITemplateServiceWithRawResponse
     /// Returns a raw HTTP response for <c>put /v3/templates/{id}</c>, but is otherwise the
     /// same as <see cref="ITemplateService.Update(TemplateUpdateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<TemplateUpdateResponse>> Update(
+    Task<HttpResponse<ApiResponseTemplate>> Update(
         TemplateUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(TemplateUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<TemplateUpdateResponse>> Update(
+    Task<HttpResponse<ApiResponseTemplate>> Update(
         string id,
         TemplateUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
