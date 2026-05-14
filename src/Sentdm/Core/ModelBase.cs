@@ -22,54 +22,14 @@ public abstract record class ModelBase
         Converters =
         {
             new FrozenDictionaryConverterFactory(),
-            new ApiEnumConverter<string, DataBrandComplianceBrandRelationship>(),
-            new ApiEnumConverter<string, DataBrandComplianceVertical>(),
             new ApiEnumConverter<string, IdentityStatus>(),
             new ApiEnumConverter<string, Status>(),
-            new ApiEnumConverter<
-                string,
-                ProfileRetrieveResponseDataBrandComplianceBrandRelationship
-            >(),
-            new ApiEnumConverter<string, ProfileRetrieveResponseDataBrandComplianceVertical>(),
-            new ApiEnumConverter<string, ProfileRetrieveResponseDataBrandIdentityStatus>(),
-            new ApiEnumConverter<string, ProfileRetrieveResponseDataBrandStatus>(),
-            new ApiEnumConverter<
-                string,
-                ProfileUpdateResponseDataBrandComplianceBrandRelationship
-            >(),
-            new ApiEnumConverter<string, ProfileUpdateResponseDataBrandComplianceVertical>(),
-            new ApiEnumConverter<string, ProfileUpdateResponseDataBrandIdentityStatus>(),
-            new ApiEnumConverter<string, ProfileUpdateResponseDataBrandStatus>(),
-            new ApiEnumConverter<string, ProfileBrandComplianceBrandRelationship>(),
-            new ApiEnumConverter<string, ProfileBrandComplianceVertical>(),
-            new ApiEnumConverter<string, ProfileBrandIdentityStatus>(),
-            new ApiEnumConverter<string, ProfileBrandStatus>(),
-            new ApiEnumConverter<string, BrandRelationship>(),
-            new ApiEnumConverter<string, Vertical>(),
             new ApiEnumConverter<string, EntityType>(),
-            new ApiEnumConverter<string, ProfileUpdateParamsBrandComplianceBrandRelationship>(),
-            new ApiEnumConverter<string, ProfileUpdateParamsBrandComplianceVertical>(),
-            new ApiEnumConverter<string, ProfileUpdateParamsBrandBusinessEntityType>(),
+            new ApiEnumConverter<string, TcrBrandRelationship>(),
+            new ApiEnumConverter<string, TcrVertical>(),
+            new ApiEnumConverter<string, Campaigns::MessagingUseCaseUs>(),
             new ApiEnumConverter<string, Campaigns::SharingStatus>(),
             new ApiEnumConverter<string, Campaigns::Status>(),
-            new ApiEnumConverter<string, Campaigns::DataUseCaseMessagingUseCaseUs>(),
-            new ApiEnumConverter<string, Campaigns::CampaignUpdateResponseDataSharingStatus>(),
-            new ApiEnumConverter<string, Campaigns::CampaignUpdateResponseDataStatus>(),
-            new ApiEnumConverter<
-                string,
-                Campaigns::CampaignUpdateResponseDataUseCaseMessagingUseCaseUs
-            >(),
-            new ApiEnumConverter<string, Campaigns::CampaignListResponseDataSharingStatus>(),
-            new ApiEnumConverter<string, Campaigns::CampaignListResponseDataStatus>(),
-            new ApiEnumConverter<
-                string,
-                Campaigns::CampaignListResponseDataUseCaseMessagingUseCaseUs
-            >(),
-            new ApiEnumConverter<string, Campaigns::MessagingUseCaseUs>(),
-            new ApiEnumConverter<
-                string,
-                Campaigns::CampaignUpdateParamsCampaignUseCaseMessagingUseCaseUs
-            >(),
         },
     };
 

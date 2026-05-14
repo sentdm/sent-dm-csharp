@@ -32,13 +32,13 @@ public interface ICampaignService
     /// Creates a new campaign scoped under the brand of the specified profile. Each
     /// campaign must include at least one use case with sample messages.
     /// </summary>
-    Task<CampaignCreateResponse> Create(
+    Task<ApiResponseOfTcrCampaignWithUseCases> Create(
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Create(CampaignCreateParams, CancellationToken)"/>
-    Task<CampaignCreateResponse> Create(
+    Task<ApiResponseOfTcrCampaignWithUseCases> Create(
         string profileID,
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
@@ -48,13 +48,13 @@ public interface ICampaignService
     /// Updates an existing campaign under the brand of the specified profile. Cannot
     /// update campaigns that have already been submitted to TCR.
     /// </summary>
-    Task<CampaignUpdateResponse> Update(
+    Task<ApiResponseOfTcrCampaignWithUseCases> Update(
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(CampaignUpdateParams, CancellationToken)"/>
-    Task<CampaignUpdateResponse> Update(
+    Task<ApiResponseOfTcrCampaignWithUseCases> Update(
         string campaignID,
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
@@ -107,13 +107,13 @@ public interface ICampaignServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/profiles/{profileId}/campaigns</c>, but is otherwise the
     /// same as <see cref="ICampaignService.Create(CampaignCreateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<CampaignCreateResponse>> Create(
+    Task<HttpResponse<ApiResponseOfTcrCampaignWithUseCases>> Create(
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Create(CampaignCreateParams, CancellationToken)"/>
-    Task<HttpResponse<CampaignCreateResponse>> Create(
+    Task<HttpResponse<ApiResponseOfTcrCampaignWithUseCases>> Create(
         string profileID,
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
@@ -123,13 +123,13 @@ public interface ICampaignServiceWithRawResponse
     /// Returns a raw HTTP response for <c>put /v3/profiles/{profileId}/campaigns/{campaignId}</c>, but is otherwise the
     /// same as <see cref="ICampaignService.Update(CampaignUpdateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<CampaignUpdateResponse>> Update(
+    Task<HttpResponse<ApiResponseOfTcrCampaignWithUseCases>> Update(
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(CampaignUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<CampaignUpdateResponse>> Update(
+    Task<HttpResponse<ApiResponseOfTcrCampaignWithUseCases>> Update(
         string campaignID,
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
