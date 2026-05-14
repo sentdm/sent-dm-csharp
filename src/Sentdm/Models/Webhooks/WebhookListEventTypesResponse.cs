@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -32,12 +33,12 @@ public sealed record class WebhookListEventTypesResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
+    public WebhookListEventTypesResponseError? Error
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<WebhookListEventTypesResponseError>("error");
         }
         init { this._rawData.Set("error", value); }
     }
@@ -45,12 +46,12 @@ public sealed record class WebhookListEventTypesResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
+    public WebhookListEventTypesResponseMeta? Meta
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<WebhookListEventTypesResponseMeta>("meta");
         }
         init
         {
@@ -144,12 +145,12 @@ class WebhookListEventTypesResponseFromRaw : IFromRawJson<WebhookListEventTypesR
 )]
 public sealed record class WebhookListEventTypesResponseData : JsonModel
 {
-    public IReadOnlyList<WebhookEventType>? EventTypes
+    public IReadOnlyList<EventType>? EventTypes
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<WebhookEventType>>("event_types");
+            return this._rawData.GetNullableStruct<ImmutableArray<EventType>>("event_types");
         }
         init
         {
@@ -158,7 +159,7 @@ public sealed record class WebhookListEventTypesResponseData : JsonModel
                 return;
             }
 
-            this._rawData.Set<ImmutableArray<WebhookEventType>?>(
+            this._rawData.Set<ImmutableArray<EventType>?>(
                 "event_types",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -212,4 +213,417 @@ class WebhookListEventTypesResponseDataFromRaw : IFromRawJson<WebhookListEventTy
     public WebhookListEventTypesResponseData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     ) => WebhookListEventTypesResponseData.FromRawUnchecked(rawData);
+}
+
+[JsonConverter(typeof(JsonModelConverter<EventType, EventTypeFromRaw>))]
+public sealed record class EventType : JsonModel
+{
+    public string? Description
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("description");
+        }
+        init { this._rawData.Set("description", value); }
+    }
+
+    public string? DisplayName
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("display_name");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("display_name", value);
+        }
+    }
+
+    public string? EventTypeValue
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("event_type");
+        }
+        init { this._rawData.Set("event_type", value); }
+    }
+
+    public bool? IsActive
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_active");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("is_active", value);
+        }
+    }
+
+    public string? Name
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("name");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("name", value);
+        }
+    }
+
+    public IReadOnlyList<JsonElement>? SubTypes
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<JsonElement>>("sub_types");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<JsonElement>?>(
+                "sub_types",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Description;
+        _ = this.DisplayName;
+        _ = this.EventTypeValue;
+        _ = this.IsActive;
+        _ = this.Name;
+        _ = this.SubTypes;
+    }
+
+    public EventType() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public EventType(EventType eventType)
+        : base(eventType) { }
+#pragma warning restore CS8618
+
+    public EventType(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    EventType(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="EventTypeFromRaw.FromRawUnchecked"/>
+    public static EventType FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class EventTypeFromRaw : IFromRawJson<EventType>
+{
+    /// <inheritdoc/>
+    public EventType FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        EventType.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Error information
+/// </summary>
+[JsonConverter(
+    typeof(JsonModelConverter<
+        WebhookListEventTypesResponseError,
+        WebhookListEventTypesResponseErrorFromRaw
+    >)
+)]
+public sealed record class WebhookListEventTypesResponseError : JsonModel
+{
+    /// <summary>
+    /// Machine-readable error code (e.g., "RESOURCE_001")
+    /// </summary>
+    public string? Code
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("code");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("code", value);
+        }
+    }
+
+    /// <summary>
+    /// Additional validation error details (field-level errors)
+    /// </summary>
+    public IReadOnlyDictionary<string, IReadOnlyList<string>>? Details
+    {
+        get
+        {
+            this._rawData.Freeze();
+            var value = this._rawData.GetNullableClass<
+                FrozenDictionary<string, ImmutableArray<string>>
+            >("details");
+            if (value == null)
+            {
+                return null;
+            }
+
+            return FrozenDictionary.ToFrozenDictionary(
+                value,
+                entry => entry.Key,
+                (entry) => (IReadOnlyList<string>)entry.Value
+            );
+        }
+        init
+        {
+            this._rawData.Set<FrozenDictionary<string, ImmutableArray<string>>?>(
+                "details",
+                value == null
+                    ? null
+                    : FrozenDictionary.ToFrozenDictionary(
+                        value,
+                        entry => entry.Key,
+                        (entry) => ImmutableArray.ToImmutableArray(entry.Value)
+                    )
+            );
+        }
+    }
+
+    /// <summary>
+    /// URL to documentation about this error
+    /// </summary>
+    public string? DocUrl
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("doc_url");
+        }
+        init { this._rawData.Set("doc_url", value); }
+    }
+
+    /// <summary>
+    /// Human-readable error message
+    /// </summary>
+    public string? Message
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("message");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("message", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Code;
+        _ = this.Details;
+        _ = this.DocUrl;
+        _ = this.Message;
+    }
+
+    public WebhookListEventTypesResponseError() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public WebhookListEventTypesResponseError(
+        WebhookListEventTypesResponseError webhookListEventTypesResponseError
+    )
+        : base(webhookListEventTypesResponseError) { }
+#pragma warning restore CS8618
+
+    public WebhookListEventTypesResponseError(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    WebhookListEventTypesResponseError(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="WebhookListEventTypesResponseErrorFromRaw.FromRawUnchecked"/>
+    public static WebhookListEventTypesResponseError FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class WebhookListEventTypesResponseErrorFromRaw : IFromRawJson<WebhookListEventTypesResponseError>
+{
+    /// <inheritdoc/>
+    public WebhookListEventTypesResponseError FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => WebhookListEventTypesResponseError.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Request and response metadata
+/// </summary>
+[JsonConverter(
+    typeof(JsonModelConverter<
+        WebhookListEventTypesResponseMeta,
+        WebhookListEventTypesResponseMetaFromRaw
+    >)
+)]
+public sealed record class WebhookListEventTypesResponseMeta : JsonModel
+{
+    /// <summary>
+    /// Unique identifier for this request (for tracing and support)
+    /// </summary>
+    public string? RequestID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("request_id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("request_id", value);
+        }
+    }
+
+    /// <summary>
+    /// Server timestamp when the response was generated
+    /// </summary>
+    public DateTimeOffset? Timestamp
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<DateTimeOffset>("timestamp");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("timestamp", value);
+        }
+    }
+
+    /// <summary>
+    /// API version used for this request
+    /// </summary>
+    public string? Version
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("version");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("version", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.RequestID;
+        _ = this.Timestamp;
+        _ = this.Version;
+    }
+
+    public WebhookListEventTypesResponseMeta() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public WebhookListEventTypesResponseMeta(
+        WebhookListEventTypesResponseMeta webhookListEventTypesResponseMeta
+    )
+        : base(webhookListEventTypesResponseMeta) { }
+#pragma warning restore CS8618
+
+    public WebhookListEventTypesResponseMeta(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    WebhookListEventTypesResponseMeta(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="WebhookListEventTypesResponseMetaFromRaw.FromRawUnchecked"/>
+    public static WebhookListEventTypesResponseMeta FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class WebhookListEventTypesResponseMetaFromRaw : IFromRawJson<WebhookListEventTypesResponseMeta>
+{
+    /// <inheritdoc/>
+    public WebhookListEventTypesResponseMeta FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => WebhookListEventTypesResponseMeta.FromRawUnchecked(rawData);
 }
