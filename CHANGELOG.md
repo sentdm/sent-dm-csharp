@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.23.0 (2026-05-14)
+
+Full Changelog: [v0.22.1...v0.23.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.22.1...v0.23.0)
+
+### Features
+
+* **api:** api update ([aea717d](https://github.com/sentdm/sent-dm-csharp/commit/aea717df7b1d19e3611e1ea38749104afca3c51b))
+
 ## 0.22.1 (2026-05-12)
 
 Full Changelog: [v0.22.0...v0.22.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.22.0...v0.22.1)
