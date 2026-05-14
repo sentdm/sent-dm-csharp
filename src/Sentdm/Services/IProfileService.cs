@@ -69,7 +69,7 @@ public interface IProfileService
     /// servers and are forwarded directly to the payment processor. Providing
     /// `payment_details` when `billing_model` is `"organization"` is not allowed.</para>
     /// </summary>
-    Task<ProfileCreateResponse> Create(
+    Task<ApiResponseOfProfileDetail> Create(
         ProfileCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -79,13 +79,13 @@ public interface IProfileService
     /// organization, including brand and KYC information if a brand has been
     /// configured.
     /// </summary>
-    Task<ProfileRetrieveResponse> Retrieve(
+    Task<ApiResponseOfProfileDetail> Retrieve(
         ProfileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(ProfileRetrieveParams, CancellationToken)"/>
-    Task<ProfileRetrieveResponse> Retrieve(
+    Task<ApiResponseOfProfileDetail> Retrieve(
         string profileID,
         ProfileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -111,13 +111,13 @@ public interface IProfileService
     /// servers and are forwarded directly to the payment processor. Providing
     /// `payment_details` when `billing_model` is `"organization"` is not allowed.</para>
     /// </summary>
-    Task<ProfileUpdateResponse> Update(
+    Task<ApiResponseOfProfileDetail> Update(
         ProfileUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(ProfileUpdateParams, CancellationToken)"/>
-    Task<ProfileUpdateResponse> Update(
+    Task<ApiResponseOfProfileDetail> Update(
         string profileID,
         ProfileUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -198,7 +198,7 @@ public interface IProfileServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/profiles</c>, but is otherwise the
     /// same as <see cref="IProfileService.Create(ProfileCreateParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ProfileCreateResponse>> Create(
+    Task<HttpResponse<ApiResponseOfProfileDetail>> Create(
         ProfileCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -207,13 +207,13 @@ public interface IProfileServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/profiles/{profileId}</c>, but is otherwise the
     /// same as <see cref="IProfileService.Retrieve(ProfileRetrieveParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ProfileRetrieveResponse>> Retrieve(
+    Task<HttpResponse<ApiResponseOfProfileDetail>> Retrieve(
         ProfileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(ProfileRetrieveParams, CancellationToken)"/>
-    Task<HttpResponse<ProfileRetrieveResponse>> Retrieve(
+    Task<HttpResponse<ApiResponseOfProfileDetail>> Retrieve(
         string profileID,
         ProfileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -223,13 +223,13 @@ public interface IProfileServiceWithRawResponse
     /// Returns a raw HTTP response for <c>patch /v3/profiles/{profileId}</c>, but is otherwise the
     /// same as <see cref="IProfileService.Update(ProfileUpdateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ProfileUpdateResponse>> Update(
+    Task<HttpResponse<ApiResponseOfProfileDetail>> Update(
         ProfileUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(ProfileUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<ProfileUpdateResponse>> Update(
+    Task<HttpResponse<ApiResponseOfProfileDetail>> Update(
         string profileID,
         ProfileUpdateParams? parameters = null,
         CancellationToken cancellationToken = default

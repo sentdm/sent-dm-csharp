@@ -7,12 +7,12 @@ public class UserServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var user = await this.client.Users.Retrieve(
+        var apiResponseOfUser = await this.client.Users.Retrieve(
             "userId",
             new(),
             TestContext.Current.CancellationToken
         );
-        user.Validate();
+        apiResponseOfUser.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
@@ -25,8 +25,11 @@ public class UserServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Invite_Works()
     {
-        var response = await this.client.Users.Invite(new(), TestContext.Current.CancellationToken);
-        response.Validate();
+        var apiResponseOfUser = await this.client.Users.Invite(
+            new(),
+            TestContext.Current.CancellationToken
+        );
+        apiResponseOfUser.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
@@ -38,11 +41,11 @@ public class UserServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task UpdateRole_Works()
     {
-        var response = await this.client.Users.UpdateRole(
+        var apiResponseOfUser = await this.client.Users.UpdateRole(
             "userId",
             new(),
             TestContext.Current.CancellationToken
         );
-        response.Validate();
+        apiResponseOfUser.Validate();
     }
 }

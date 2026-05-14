@@ -8,7 +8,7 @@ public class CampaignServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var campaign = await this.client.Profiles.Campaigns.Create(
+        var apiResponseOfTcrCampaignWithUseCases = await this.client.Profiles.Campaigns.Create(
             "770e8400-e29b-41d4-a716-446655440002",
             new()
             {
@@ -44,13 +44,13 @@ public class CampaignServiceTest : TestBase
             },
             TestContext.Current.CancellationToken
         );
-        campaign.Validate();
+        apiResponseOfTcrCampaignWithUseCases.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var campaign = await this.client.Profiles.Campaigns.Update(
+        var apiResponseOfTcrCampaignWithUseCases = await this.client.Profiles.Campaigns.Update(
             "b2c3d4e5-f6a7-8901-bcde-f12345678901",
             new()
             {
@@ -64,8 +64,7 @@ public class CampaignServiceTest : TestBase
                     [
                         new()
                         {
-                            MessagingUseCaseUs =
-                                CampaignUpdateParamsCampaignUseCaseMessagingUseCaseUs.AccountNotification,
+                            MessagingUseCaseUs = MessagingUseCaseUs.AccountNotification,
                             SampleMessages =
                             [
                                 "Hi {name}, your appointment is confirmed for {date} at {time}.",
@@ -87,7 +86,7 @@ public class CampaignServiceTest : TestBase
             },
             TestContext.Current.CancellationToken
         );
-        campaign.Validate();
+        apiResponseOfTcrCampaignWithUseCases.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
