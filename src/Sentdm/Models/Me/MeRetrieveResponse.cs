@@ -6,7 +6,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
-using Webhooks = Sentdm.Models.Webhooks;
 
 namespace Sentdm.Models.Me;
 
@@ -34,12 +33,12 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public Webhooks::ErrorDetail? Error
+    public Error? Error
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>("error");
+            return this._rawData.GetNullableClass<Error>("error");
         }
         init { this._rawData.Set("error", value); }
     }
@@ -47,12 +46,12 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public Webhooks::ApiMeta? Meta
+    public Meta? Meta
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ApiMeta>("meta");
+            return this._rawData.GetNullableClass<Meta>("meta");
         }
         init
         {
@@ -304,12 +303,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Profile configuration settings
     /// </summary>
-    public ProfileSettings? Settings
+    public DataSettings? Settings
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ProfileSettings>("settings");
+            return this._rawData.GetNullableClass<DataSettings>("settings");
         }
         init { this._rawData.Set("settings", value); }
     }
@@ -905,12 +904,12 @@ public sealed record class Profile : JsonModel
     /// <summary>
     /// Profile configuration settings
     /// </summary>
-    public ProfileSettings? Settings
+    public Settings? Settings
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ProfileSettings>("settings");
+            return this._rawData.GetNullableClass<Settings>("settings");
         }
         init
         {
@@ -996,4 +995,546 @@ class ProfileFromRaw : IFromRawJson<Profile>
     /// <inheritdoc/>
     public Profile FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         Profile.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Profile configuration settings
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Settings, SettingsFromRaw>))]
+public sealed record class Settings : JsonModel
+{
+    /// <summary>
+    /// Whether contacts are shared across profiles in the organization
+    /// </summary>
+    public bool? AllowContactSharing
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("allow_contact_sharing");
+        }
+        init { this._rawData.Set("allow_contact_sharing", value); }
+    }
+
+    /// <summary>
+    /// Whether templates are shared across profiles in the organization
+    /// </summary>
+    public bool? AllowTemplateSharing
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("allow_template_sharing");
+        }
+        init { this._rawData.Set("allow_template_sharing", value); }
+    }
+
+    /// <summary>
+    /// Billing model: profile, organization, or profile_and_organization
+    /// </summary>
+    public string? BillingModel
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("billing_model");
+        }
+        init { this._rawData.Set("billing_model", value); }
+    }
+
+    /// <summary>
+    /// Whether this profile inherits contacts from the organization
+    /// </summary>
+    public bool? InheritContacts
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("inherit_contacts");
+        }
+        init { this._rawData.Set("inherit_contacts", value); }
+    }
+
+    /// <summary>
+    /// Whether this profile inherits TCR brand from the organization
+    /// </summary>
+    public bool? InheritTcrBrand
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("inherit_tcr_brand");
+        }
+        init { this._rawData.Set("inherit_tcr_brand", value); }
+    }
+
+    /// <summary>
+    /// Whether this profile inherits TCR campaign from the organization
+    /// </summary>
+    public bool? InheritTcrCampaign
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("inherit_tcr_campaign");
+        }
+        init { this._rawData.Set("inherit_tcr_campaign", value); }
+    }
+
+    /// <summary>
+    /// Whether this profile inherits templates from the organization
+    /// </summary>
+    public bool? InheritTemplates
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("inherit_templates");
+        }
+        init { this._rawData.Set("inherit_templates", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.AllowContactSharing;
+        _ = this.AllowTemplateSharing;
+        _ = this.BillingModel;
+        _ = this.InheritContacts;
+        _ = this.InheritTcrBrand;
+        _ = this.InheritTcrCampaign;
+        _ = this.InheritTemplates;
+    }
+
+    public Settings() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Settings(Settings settings)
+        : base(settings) { }
+#pragma warning restore CS8618
+
+    public Settings(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Settings(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="SettingsFromRaw.FromRawUnchecked"/>
+    public static Settings FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class SettingsFromRaw : IFromRawJson<Settings>
+{
+    /// <inheritdoc/>
+    public Settings FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Settings.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Profile configuration settings
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<DataSettings, DataSettingsFromRaw>))]
+public sealed record class DataSettings : JsonModel
+{
+    /// <summary>
+    /// Whether contacts are shared across profiles in the organization
+    /// </summary>
+    public bool? AllowContactSharing
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("allow_contact_sharing");
+        }
+        init { this._rawData.Set("allow_contact_sharing", value); }
+    }
+
+    /// <summary>
+    /// Whether templates are shared across profiles in the organization
+    /// </summary>
+    public bool? AllowTemplateSharing
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("allow_template_sharing");
+        }
+        init { this._rawData.Set("allow_template_sharing", value); }
+    }
+
+    /// <summary>
+    /// Billing model: profile, organization, or profile_and_organization
+    /// </summary>
+    public string? BillingModel
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("billing_model");
+        }
+        init { this._rawData.Set("billing_model", value); }
+    }
+
+    /// <summary>
+    /// Whether this profile inherits contacts from the organization
+    /// </summary>
+    public bool? InheritContacts
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("inherit_contacts");
+        }
+        init { this._rawData.Set("inherit_contacts", value); }
+    }
+
+    /// <summary>
+    /// Whether this profile inherits TCR brand from the organization
+    /// </summary>
+    public bool? InheritTcrBrand
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("inherit_tcr_brand");
+        }
+        init { this._rawData.Set("inherit_tcr_brand", value); }
+    }
+
+    /// <summary>
+    /// Whether this profile inherits TCR campaign from the organization
+    /// </summary>
+    public bool? InheritTcrCampaign
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("inherit_tcr_campaign");
+        }
+        init { this._rawData.Set("inherit_tcr_campaign", value); }
+    }
+
+    /// <summary>
+    /// Whether this profile inherits templates from the organization
+    /// </summary>
+    public bool? InheritTemplates
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("inherit_templates");
+        }
+        init { this._rawData.Set("inherit_templates", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.AllowContactSharing;
+        _ = this.AllowTemplateSharing;
+        _ = this.BillingModel;
+        _ = this.InheritContacts;
+        _ = this.InheritTcrBrand;
+        _ = this.InheritTcrCampaign;
+        _ = this.InheritTemplates;
+    }
+
+    public DataSettings() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public DataSettings(DataSettings dataSettings)
+        : base(dataSettings) { }
+#pragma warning restore CS8618
+
+    public DataSettings(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    DataSettings(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="DataSettingsFromRaw.FromRawUnchecked"/>
+    public static DataSettings FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class DataSettingsFromRaw : IFromRawJson<DataSettings>
+{
+    /// <inheritdoc/>
+    public DataSettings FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        DataSettings.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Error information
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Error, ErrorFromRaw>))]
+public sealed record class Error : JsonModel
+{
+    /// <summary>
+    /// Machine-readable error code (e.g., "RESOURCE_001")
+    /// </summary>
+    public string? Code
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("code");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("code", value);
+        }
+    }
+
+    /// <summary>
+    /// Additional validation error details (field-level errors)
+    /// </summary>
+    public IReadOnlyDictionary<string, IReadOnlyList<string>>? Details
+    {
+        get
+        {
+            this._rawData.Freeze();
+            var value = this._rawData.GetNullableClass<
+                FrozenDictionary<string, ImmutableArray<string>>
+            >("details");
+            if (value == null)
+            {
+                return null;
+            }
+
+            return FrozenDictionary.ToFrozenDictionary(
+                value,
+                entry => entry.Key,
+                (entry) => (IReadOnlyList<string>)entry.Value
+            );
+        }
+        init
+        {
+            this._rawData.Set<FrozenDictionary<string, ImmutableArray<string>>?>(
+                "details",
+                value == null
+                    ? null
+                    : FrozenDictionary.ToFrozenDictionary(
+                        value,
+                        entry => entry.Key,
+                        (entry) => ImmutableArray.ToImmutableArray(entry.Value)
+                    )
+            );
+        }
+    }
+
+    /// <summary>
+    /// URL to documentation about this error
+    /// </summary>
+    public string? DocUrl
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("doc_url");
+        }
+        init { this._rawData.Set("doc_url", value); }
+    }
+
+    /// <summary>
+    /// Human-readable error message
+    /// </summary>
+    public string? Message
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("message");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("message", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Code;
+        _ = this.Details;
+        _ = this.DocUrl;
+        _ = this.Message;
+    }
+
+    public Error() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Error(Error error)
+        : base(error) { }
+#pragma warning restore CS8618
+
+    public Error(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Error(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="ErrorFromRaw.FromRawUnchecked"/>
+    public static Error FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class ErrorFromRaw : IFromRawJson<Error>
+{
+    /// <inheritdoc/>
+    public Error FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Error.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Request and response metadata
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Meta, MetaFromRaw>))]
+public sealed record class Meta : JsonModel
+{
+    /// <summary>
+    /// Unique identifier for this request (for tracing and support)
+    /// </summary>
+    public string? RequestID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("request_id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("request_id", value);
+        }
+    }
+
+    /// <summary>
+    /// Server timestamp when the response was generated
+    /// </summary>
+    public DateTimeOffset? Timestamp
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<DateTimeOffset>("timestamp");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("timestamp", value);
+        }
+    }
+
+    /// <summary>
+    /// API version used for this request
+    /// </summary>
+    public string? Version
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("version");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("version", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.RequestID;
+        _ = this.Timestamp;
+        _ = this.Version;
+    }
+
+    public Meta() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Meta(Meta meta)
+        : base(meta) { }
+#pragma warning restore CS8618
+
+    public Meta(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Meta(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="MetaFromRaw.FromRawUnchecked"/>
+    public static Meta FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class MetaFromRaw : IFromRawJson<Meta>
+{
+    /// <inheritdoc/>
+    public Meta FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Meta.FromRawUnchecked(rawData);
 }
