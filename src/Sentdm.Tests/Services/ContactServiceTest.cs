@@ -7,33 +7,33 @@ public class ContactServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var apiResponseOfContact = await this.client.Contacts.Create(
+        var contact = await this.client.Contacts.Create(
             new(),
             TestContext.Current.CancellationToken
         );
-        apiResponseOfContact.Validate();
+        contact.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var apiResponseOfContact = await this.client.Contacts.Retrieve(
+        var contact = await this.client.Contacts.Retrieve(
             "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
             new(),
             TestContext.Current.CancellationToken
         );
-        apiResponseOfContact.Validate();
+        contact.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var apiResponseOfContact = await this.client.Contacts.Update(
+        var contact = await this.client.Contacts.Update(
             "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
             new(),
             TestContext.Current.CancellationToken
         );
-        apiResponseOfContact.Validate();
+        contact.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]

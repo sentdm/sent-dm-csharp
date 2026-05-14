@@ -35,7 +35,7 @@ public sealed class UserService : IUserService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfUser> Retrieve(
+    public async Task<UserRetrieveResponse> Retrieve(
         UserRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -47,7 +47,7 @@ public sealed class UserService : IUserService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfUser> Retrieve(
+    public Task<UserRetrieveResponse> Retrieve(
         string userID,
         UserRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -71,7 +71,7 @@ public sealed class UserService : IUserService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfUser> Invite(
+    public async Task<UserInviteResponse> Invite(
         UserInviteParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -102,7 +102,7 @@ public sealed class UserService : IUserService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfUser> UpdateRole(
+    public async Task<UserUpdateRoleResponse> UpdateRole(
         UserUpdateRoleParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -114,7 +114,7 @@ public sealed class UserService : IUserService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfUser> UpdateRole(
+    public Task<UserUpdateRoleResponse> UpdateRole(
         string userID,
         UserUpdateRoleParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -143,7 +143,7 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfUser>> Retrieve(
+    public async Task<HttpResponse<UserRetrieveResponse>> Retrieve(
         UserRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -163,20 +163,20 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
             response,
             async (token) =>
             {
-                var apiResponseOfUser = await response
-                    .Deserialize<ApiResponseOfUser>(token)
+                var user = await response
+                    .Deserialize<UserRetrieveResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfUser.Validate();
+                    user.Validate();
                 }
-                return apiResponseOfUser;
+                return user;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfUser>> Retrieve(
+    public Task<HttpResponse<UserRetrieveResponse>> Retrieve(
         string userID,
         UserRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -218,7 +218,7 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfUser>> Invite(
+    public async Task<HttpResponse<UserInviteResponse>> Invite(
         UserInviteParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -235,14 +235,14 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
             response,
             async (token) =>
             {
-                var apiResponseOfUser = await response
-                    .Deserialize<ApiResponseOfUser>(token)
+                var deserializedResponse = await response
+                    .Deserialize<UserInviteResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfUser.Validate();
+                    deserializedResponse.Validate();
                 }
-                return apiResponseOfUser;
+                return deserializedResponse;
             }
         );
     }
@@ -279,7 +279,7 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfUser>> UpdateRole(
+    public async Task<HttpResponse<UserUpdateRoleResponse>> UpdateRole(
         UserUpdateRoleParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -299,20 +299,20 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
             response,
             async (token) =>
             {
-                var apiResponseOfUser = await response
-                    .Deserialize<ApiResponseOfUser>(token)
+                var deserializedResponse = await response
+                    .Deserialize<UserUpdateRoleResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfUser.Validate();
+                    deserializedResponse.Validate();
                 }
-                return apiResponseOfUser;
+                return deserializedResponse;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfUser>> UpdateRole(
+    public Task<HttpResponse<UserUpdateRoleResponse>> UpdateRole(
         string userID,
         UserUpdateRoleParams? parameters = null,
         CancellationToken cancellationToken = default

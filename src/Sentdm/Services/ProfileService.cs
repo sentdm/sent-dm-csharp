@@ -43,7 +43,7 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfProfileDetail> Create(
+    public async Task<ProfileCreateResponse> Create(
         ProfileCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -55,7 +55,7 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfProfileDetail> Retrieve(
+    public async Task<ProfileRetrieveResponse> Retrieve(
         ProfileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -67,7 +67,7 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfProfileDetail> Retrieve(
+    public Task<ProfileRetrieveResponse> Retrieve(
         string profileID,
         ProfileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -79,7 +79,7 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfProfileDetail> Update(
+    public async Task<ProfileUpdateResponse> Update(
         ProfileUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -91,7 +91,7 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfProfileDetail> Update(
+    public Task<ProfileUpdateResponse> Update(
         string profileID,
         ProfileUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -184,7 +184,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfProfileDetail>> Create(
+    public async Task<HttpResponse<ProfileCreateResponse>> Create(
         ProfileCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -201,20 +201,20 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             response,
             async (token) =>
             {
-                var apiResponseOfProfileDetail = await response
-                    .Deserialize<ApiResponseOfProfileDetail>(token)
+                var profile = await response
+                    .Deserialize<ProfileCreateResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfProfileDetail.Validate();
+                    profile.Validate();
                 }
-                return apiResponseOfProfileDetail;
+                return profile;
             }
         );
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfProfileDetail>> Retrieve(
+    public async Task<HttpResponse<ProfileRetrieveResponse>> Retrieve(
         ProfileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -234,20 +234,20 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             response,
             async (token) =>
             {
-                var apiResponseOfProfileDetail = await response
-                    .Deserialize<ApiResponseOfProfileDetail>(token)
+                var profile = await response
+                    .Deserialize<ProfileRetrieveResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfProfileDetail.Validate();
+                    profile.Validate();
                 }
-                return apiResponseOfProfileDetail;
+                return profile;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfProfileDetail>> Retrieve(
+    public Task<HttpResponse<ProfileRetrieveResponse>> Retrieve(
         string profileID,
         ProfileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -259,7 +259,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfProfileDetail>> Update(
+    public async Task<HttpResponse<ProfileUpdateResponse>> Update(
         ProfileUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -279,20 +279,20 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             response,
             async (token) =>
             {
-                var apiResponseOfProfileDetail = await response
-                    .Deserialize<ApiResponseOfProfileDetail>(token)
+                var profile = await response
+                    .Deserialize<ProfileUpdateResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfProfileDetail.Validate();
+                    profile.Validate();
                 }
-                return apiResponseOfProfileDetail;
+                return profile;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfProfileDetail>> Update(
+    public Task<HttpResponse<ProfileUpdateResponse>> Update(
         string profileID,
         ProfileUpdateParams? parameters = null,
         CancellationToken cancellationToken = default

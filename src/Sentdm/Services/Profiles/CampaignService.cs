@@ -35,7 +35,7 @@ public sealed class CampaignService : ICampaignService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfTcrCampaignWithUseCases> Create(
+    public async Task<CampaignCreateResponse> Create(
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -47,7 +47,7 @@ public sealed class CampaignService : ICampaignService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfTcrCampaignWithUseCases> Create(
+    public Task<CampaignCreateResponse> Create(
         string profileID,
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
@@ -57,7 +57,7 @@ public sealed class CampaignService : ICampaignService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfTcrCampaignWithUseCases> Update(
+    public async Task<CampaignUpdateResponse> Update(
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -69,7 +69,7 @@ public sealed class CampaignService : ICampaignService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfTcrCampaignWithUseCases> Update(
+    public Task<CampaignUpdateResponse> Update(
         string campaignID,
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
@@ -140,7 +140,7 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfTcrCampaignWithUseCases>> Create(
+    public async Task<HttpResponse<CampaignCreateResponse>> Create(
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -160,20 +160,20 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
             response,
             async (token) =>
             {
-                var apiResponseOfTcrCampaignWithUseCases = await response
-                    .Deserialize<ApiResponseOfTcrCampaignWithUseCases>(token)
+                var campaign = await response
+                    .Deserialize<CampaignCreateResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfTcrCampaignWithUseCases.Validate();
+                    campaign.Validate();
                 }
-                return apiResponseOfTcrCampaignWithUseCases;
+                return campaign;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfTcrCampaignWithUseCases>> Create(
+    public Task<HttpResponse<CampaignCreateResponse>> Create(
         string profileID,
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
@@ -183,7 +183,7 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfTcrCampaignWithUseCases>> Update(
+    public async Task<HttpResponse<CampaignUpdateResponse>> Update(
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -203,20 +203,20 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
             response,
             async (token) =>
             {
-                var apiResponseOfTcrCampaignWithUseCases = await response
-                    .Deserialize<ApiResponseOfTcrCampaignWithUseCases>(token)
+                var campaign = await response
+                    .Deserialize<CampaignUpdateResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfTcrCampaignWithUseCases.Validate();
+                    campaign.Validate();
                 }
-                return apiResponseOfTcrCampaignWithUseCases;
+                return campaign;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfTcrCampaignWithUseCases>> Update(
+    public Task<HttpResponse<CampaignUpdateResponse>> Update(
         string campaignID,
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default

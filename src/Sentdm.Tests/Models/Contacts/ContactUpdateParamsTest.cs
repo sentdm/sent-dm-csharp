@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using Sentdm.Models.Contacts;
 
@@ -13,7 +12,6 @@ public class ContactUpdateParamsTest : TestBase
         var parameters = new ContactUpdateParams
         {
             ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             DefaultChannel = "whatsapp",
             OptOut = false,
             Sandbox = false,
@@ -22,7 +20,6 @@ public class ContactUpdateParamsTest : TestBase
         };
 
         string expectedID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
-        Dictionary<string, string> expectedChannelConsent = new() { { "foo", "string" } };
         string expectedDefaultChannel = "whatsapp";
         bool expectedOptOut = false;
         bool expectedSandbox = false;
@@ -30,14 +27,6 @@ public class ContactUpdateParamsTest : TestBase
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedID, parameters.ID);
-        Assert.NotNull(parameters.ChannelConsent);
-        Assert.Equal(expectedChannelConsent.Count, parameters.ChannelConsent.Count);
-        foreach (var item in expectedChannelConsent)
-        {
-            Assert.True(parameters.ChannelConsent.TryGetValue(item.Key, out var value));
-
-            Assert.Equal(value, parameters.ChannelConsent[item.Key]);
-        }
         Assert.Equal(expectedDefaultChannel, parameters.DefaultChannel);
         Assert.Equal(expectedOptOut, parameters.OptOut);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
@@ -51,7 +40,6 @@ public class ContactUpdateParamsTest : TestBase
         var parameters = new ContactUpdateParams
         {
             ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             DefaultChannel = "whatsapp",
             OptOut = false,
         };
@@ -70,7 +58,6 @@ public class ContactUpdateParamsTest : TestBase
         var parameters = new ContactUpdateParams
         {
             ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             DefaultChannel = "whatsapp",
             OptOut = false,
 
@@ -99,8 +86,6 @@ public class ContactUpdateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        Assert.Null(parameters.ChannelConsent);
-        Assert.False(parameters.RawBodyData.ContainsKey("channel_consent"));
         Assert.Null(parameters.DefaultChannel);
         Assert.False(parameters.RawBodyData.ContainsKey("default_channel"));
         Assert.Null(parameters.OptOut);
@@ -117,13 +102,10 @@ public class ContactUpdateParamsTest : TestBase
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
-            ChannelConsent = null,
             DefaultChannel = null,
             OptOut = null,
         };
 
-        Assert.Null(parameters.ChannelConsent);
-        Assert.True(parameters.RawBodyData.ContainsKey("channel_consent"));
         Assert.Null(parameters.DefaultChannel);
         Assert.True(parameters.RawBodyData.ContainsKey("default_channel"));
         Assert.Null(parameters.OptOut);
@@ -171,7 +153,6 @@ public class ContactUpdateParamsTest : TestBase
         var parameters = new ContactUpdateParams
         {
             ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            ChannelConsent = new Dictionary<string, string>() { { "foo", "string" } },
             DefaultChannel = "whatsapp",
             OptOut = false,
             Sandbox = false,

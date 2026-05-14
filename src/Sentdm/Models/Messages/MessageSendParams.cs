@@ -31,8 +31,8 @@ public record class MessageSendParams : ParamsBase
 
     /// <summary>
     /// Channels to broadcast on, e.g. ["whatsapp", "sms"]. Each channel produces
-    /// a separate message per recipient. "sent" = auto-detect, "rcs" = reserved (skipped).
-    /// Defaults to ["sent"] (auto-detect) if omitted.
+    /// a separate message per recipient. "sent" = auto-detect. Defaults to ["sent"]
+    /// (auto-detect) if omitted.
     /// </summary>
     public IReadOnlyList<string>? Channel
     {

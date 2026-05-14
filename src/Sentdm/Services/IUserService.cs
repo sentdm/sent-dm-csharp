@@ -32,13 +32,13 @@ public interface IUserService
     /// Retrieves detailed information about a specific user in an organization or
     /// profile. Requires developer role or higher.
     /// </summary>
-    Task<ApiResponseOfUser> Retrieve(
+    Task<UserRetrieveResponse> Retrieve(
         UserRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(UserRetrieveParams, CancellationToken)"/>
-    Task<ApiResponseOfUser> Retrieve(
+    Task<UserRetrieveResponse> Retrieve(
         string userID,
         UserRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -59,7 +59,7 @@ public interface IUserService
     /// specific role. Requires admin role. The user will receive an invitation email
     /// with a token to accept. Invitation tokens expire after 7 days.
     /// </summary>
-    Task<ApiResponseOfUser> Invite(
+    Task<UserInviteResponse> Invite(
         UserInviteParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -81,13 +81,13 @@ public interface IUserService
     /// Updates a user's role in the organization or profile. Requires admin role. You
     /// cannot change your own role or demote the last admin.
     /// </summary>
-    Task<ApiResponseOfUser> UpdateRole(
+    Task<UserUpdateRoleResponse> UpdateRole(
         UserUpdateRoleParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="UpdateRole(UserUpdateRoleParams, CancellationToken)"/>
-    Task<ApiResponseOfUser> UpdateRole(
+    Task<UserUpdateRoleResponse> UpdateRole(
         string userID,
         UserUpdateRoleParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -111,13 +111,13 @@ public interface IUserServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/users/{userId}</c>, but is otherwise the
     /// same as <see cref="IUserService.Retrieve(UserRetrieveParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfUser>> Retrieve(
+    Task<HttpResponse<UserRetrieveResponse>> Retrieve(
         UserRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(UserRetrieveParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseOfUser>> Retrieve(
+    Task<HttpResponse<UserRetrieveResponse>> Retrieve(
         string userID,
         UserRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -136,7 +136,7 @@ public interface IUserServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/users</c>, but is otherwise the
     /// same as <see cref="IUserService.Invite(UserInviteParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfUser>> Invite(
+    Task<HttpResponse<UserInviteResponse>> Invite(
         UserInviteParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -161,13 +161,13 @@ public interface IUserServiceWithRawResponse
     /// Returns a raw HTTP response for <c>patch /v3/users/{userId}</c>, but is otherwise the
     /// same as <see cref="IUserService.UpdateRole(UserUpdateRoleParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfUser>> UpdateRole(
+    Task<HttpResponse<UserUpdateRoleResponse>> UpdateRole(
         UserUpdateRoleParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="UpdateRole(UserUpdateRoleParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseOfUser>> UpdateRole(
+    Task<HttpResponse<UserUpdateRoleResponse>> UpdateRole(
         string userID,
         UserUpdateRoleParams? parameters = null,
         CancellationToken cancellationToken = default
