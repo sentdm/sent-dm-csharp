@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -95,6 +96,27 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateButtonProps
         init { this._rawData.Set("urlType", value); }
     }
 
+    /// <summary>
+    /// Variables embedded in a dynamic URL button (only when UrlType = dynamic).
+    /// Count is capped by TemplateContentLimits.MaxUrlButtonVariables; the placeholder
+    /// must appear at the end of Url (validated in TemplateDefinitionValidator).
+    /// </summary>
+    public required IReadOnlyList<TemplateVariable> Variables
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<TemplateVariable>>("variables");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<TemplateVariable>>(
+                "variables",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
     public string? AutofillText
     {
         get
@@ -146,6 +168,10 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateButtonProps
         _ = this.Text;
         _ = this.Url;
         _ = this.UrlType;
+        foreach (var item in this.Variables)
+        {
+            item.Validate();
+        }
         _ = this.AutofillText;
         _ = this.OtpType;
         _ = this.PackageName;

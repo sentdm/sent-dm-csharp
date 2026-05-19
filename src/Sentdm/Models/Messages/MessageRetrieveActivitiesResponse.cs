@@ -303,7 +303,8 @@ public sealed record class Activity : JsonModel
     }
 
     /// <summary>
-    /// Activity status (e.g., QUEUED, PROCESSED, ROUTED, SENT, DELIVERED, FAILED)
+    /// Activity status. Outbound: QUEUED, PROCESSED, ROUTED, SENT, DELIVERED, READ,
+    /// FAILED. Inbound (from contact): RECEIVED (terminal).
     /// </summary>
     public string? Status
     {

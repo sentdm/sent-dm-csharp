@@ -131,8 +131,27 @@ public class TemplateUpdateParamsTest : TestBase
                             PhoneNumber = "x",
                             QuickReplyType = "x",
                             Text = "text",
-                            Url = "x",
+                            Url = "url",
                             UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
                             AutofillText = "autofillText",
                             OtpType = "otpType",
                             PackageName = "packageName",
@@ -320,8 +339,27 @@ public class TemplateUpdateParamsTest : TestBase
                         PhoneNumber = "x",
                         QuickReplyType = "x",
                         Text = "text",
-                        Url = "x",
+                        Url = "url",
                         UrlType = "x",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
                         AutofillText = "autofillText",
                         OtpType = "otpType",
                         PackageName = "packageName",
@@ -523,8 +561,27 @@ public class TemplateUpdateParamsTest : TestBase
                             PhoneNumber = "x",
                             QuickReplyType = "x",
                             Text = "text",
-                            Url = "x",
+                            Url = "url",
                             UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
                             AutofillText = "autofillText",
                             OtpType = "otpType",
                             PackageName = "packageName",
@@ -723,8 +780,27 @@ public class TemplateUpdateParamsTest : TestBase
                             PhoneNumber = "x",
                             QuickReplyType = "x",
                             Text = "text",
-                            Url = "x",
+                            Url = "url",
                             UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
                             AutofillText = "autofillText",
                             OtpType = "otpType",
                             PackageName = "packageName",
@@ -1013,8 +1089,27 @@ public class TemplateUpdateParamsTest : TestBase
                             PhoneNumber = "x",
                             QuickReplyType = "x",
                             Text = "text",
-                            Url = "x",
+                            Url = "url",
                             UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
                             AutofillText = "autofillText",
                             OtpType = "otpType",
                             PackageName = "packageName",
