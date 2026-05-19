@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Templates;
@@ -17,8 +18,27 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
             PhoneNumber = "x",
             QuickReplyType = "x",
             Text = "text",
-            Url = "x",
+            Url = "url",
             UrlType = "x",
+            Variables =
+            [
+                new()
+                {
+                    Name = "x",
+                    Props = new()
+                    {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
+                        Alt = "alt",
+                        Regex = "regex",
+                        ShortUrl = "shortUrl",
+                    },
+                    Type = "x",
+                    ID = 0,
+                },
+            ],
             AutofillText = "autofillText",
             OtpType = "otpType",
             PackageName = "packageName",
@@ -31,8 +51,27 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
         string expectedPhoneNumber = "x";
         string expectedQuickReplyType = "x";
         string expectedText = "text";
-        string expectedUrl = "x";
+        string expectedUrl = "url";
         string expectedUrlType = "x";
+        List<TemplateVariable> expectedVariables =
+        [
+            new()
+            {
+                Name = "x",
+                Props = new()
+                {
+                    MediaType = "x",
+                    Sample = "x",
+                    Url = "x",
+                    VariableType = "x",
+                    Alt = "alt",
+                    Regex = "regex",
+                    ShortUrl = "shortUrl",
+                },
+                Type = "x",
+                ID = 0,
+            },
+        ];
         string expectedAutofillText = "autofillText";
         string expectedOtpType = "otpType";
         string expectedPackageName = "packageName";
@@ -46,6 +85,11 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
         Assert.Equal(expectedText, model.Text);
         Assert.Equal(expectedUrl, model.Url);
         Assert.Equal(expectedUrlType, model.UrlType);
+        Assert.Equal(expectedVariables.Count, model.Variables.Count);
+        for (int i = 0; i < expectedVariables.Count; i++)
+        {
+            Assert.Equal(expectedVariables[i], model.Variables[i]);
+        }
         Assert.Equal(expectedAutofillText, model.AutofillText);
         Assert.Equal(expectedOtpType, model.OtpType);
         Assert.Equal(expectedPackageName, model.PackageName);
@@ -63,8 +107,27 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
             PhoneNumber = "x",
             QuickReplyType = "x",
             Text = "text",
-            Url = "x",
+            Url = "url",
             UrlType = "x",
+            Variables =
+            [
+                new()
+                {
+                    Name = "x",
+                    Props = new()
+                    {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
+                        Alt = "alt",
+                        Regex = "regex",
+                        ShortUrl = "shortUrl",
+                    },
+                    Type = "x",
+                    ID = 0,
+                },
+            ],
             AutofillText = "autofillText",
             OtpType = "otpType",
             PackageName = "packageName",
@@ -92,8 +155,27 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
             PhoneNumber = "x",
             QuickReplyType = "x",
             Text = "text",
-            Url = "x",
+            Url = "url",
             UrlType = "x",
+            Variables =
+            [
+                new()
+                {
+                    Name = "x",
+                    Props = new()
+                    {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
+                        Alt = "alt",
+                        Regex = "regex",
+                        ShortUrl = "shortUrl",
+                    },
+                    Type = "x",
+                    ID = 0,
+                },
+            ],
             AutofillText = "autofillText",
             OtpType = "otpType",
             PackageName = "packageName",
@@ -114,8 +196,27 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
         string expectedPhoneNumber = "x";
         string expectedQuickReplyType = "x";
         string expectedText = "text";
-        string expectedUrl = "x";
+        string expectedUrl = "url";
         string expectedUrlType = "x";
+        List<TemplateVariable> expectedVariables =
+        [
+            new()
+            {
+                Name = "x",
+                Props = new()
+                {
+                    MediaType = "x",
+                    Sample = "x",
+                    Url = "x",
+                    VariableType = "x",
+                    Alt = "alt",
+                    Regex = "regex",
+                    ShortUrl = "shortUrl",
+                },
+                Type = "x",
+                ID = 0,
+            },
+        ];
         string expectedAutofillText = "autofillText";
         string expectedOtpType = "otpType";
         string expectedPackageName = "packageName";
@@ -129,6 +230,11 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
         Assert.Equal(expectedText, deserialized.Text);
         Assert.Equal(expectedUrl, deserialized.Url);
         Assert.Equal(expectedUrlType, deserialized.UrlType);
+        Assert.Equal(expectedVariables.Count, deserialized.Variables.Count);
+        for (int i = 0; i < expectedVariables.Count; i++)
+        {
+            Assert.Equal(expectedVariables[i], deserialized.Variables[i]);
+        }
         Assert.Equal(expectedAutofillText, deserialized.AutofillText);
         Assert.Equal(expectedOtpType, deserialized.OtpType);
         Assert.Equal(expectedPackageName, deserialized.PackageName);
@@ -146,8 +252,27 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
             PhoneNumber = "x",
             QuickReplyType = "x",
             Text = "text",
-            Url = "x",
+            Url = "url",
             UrlType = "x",
+            Variables =
+            [
+                new()
+                {
+                    Name = "x",
+                    Props = new()
+                    {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
+                        Alt = "alt",
+                        Regex = "regex",
+                        ShortUrl = "shortUrl",
+                    },
+                    Type = "x",
+                    ID = 0,
+                },
+            ],
             AutofillText = "autofillText",
             OtpType = "otpType",
             PackageName = "packageName",
@@ -168,8 +293,27 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
             PhoneNumber = "x",
             QuickReplyType = "x",
             Text = "text",
-            Url = "x",
+            Url = "url",
             UrlType = "x",
+            Variables =
+            [
+                new()
+                {
+                    Name = "x",
+                    Props = new()
+                    {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
+                        Alt = "alt",
+                        Regex = "regex",
+                        ShortUrl = "shortUrl",
+                    },
+                    Type = "x",
+                    ID = 0,
+                },
+            ],
         };
 
         Assert.Null(model.AutofillText);
@@ -193,8 +337,27 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
             PhoneNumber = "x",
             QuickReplyType = "x",
             Text = "text",
-            Url = "x",
+            Url = "url",
             UrlType = "x",
+            Variables =
+            [
+                new()
+                {
+                    Name = "x",
+                    Props = new()
+                    {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
+                        Alt = "alt",
+                        Regex = "regex",
+                        ShortUrl = "shortUrl",
+                    },
+                    Type = "x",
+                    ID = 0,
+                },
+            ],
         };
 
         model.Validate();
@@ -211,8 +374,27 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
             PhoneNumber = "x",
             QuickReplyType = "x",
             Text = "text",
-            Url = "x",
+            Url = "url",
             UrlType = "x",
+            Variables =
+            [
+                new()
+                {
+                    Name = "x",
+                    Props = new()
+                    {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
+                        Alt = "alt",
+                        Regex = "regex",
+                        ShortUrl = "shortUrl",
+                    },
+                    Type = "x",
+                    ID = 0,
+                },
+            ],
 
             AutofillText = null,
             OtpType = null,
@@ -241,8 +423,27 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
             PhoneNumber = "x",
             QuickReplyType = "x",
             Text = "text",
-            Url = "x",
+            Url = "url",
             UrlType = "x",
+            Variables =
+            [
+                new()
+                {
+                    Name = "x",
+                    Props = new()
+                    {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
+                        Alt = "alt",
+                        Regex = "regex",
+                        ShortUrl = "shortUrl",
+                    },
+                    Type = "x",
+                    ID = 0,
+                },
+            ],
 
             AutofillText = null,
             OtpType = null,
@@ -264,8 +465,27 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
             PhoneNumber = "x",
             QuickReplyType = "x",
             Text = "text",
-            Url = "x",
+            Url = "url",
             UrlType = "x",
+            Variables =
+            [
+                new()
+                {
+                    Name = "x",
+                    Props = new()
+                    {
+                        MediaType = "x",
+                        Sample = "x",
+                        Url = "x",
+                        VariableType = "x",
+                        Alt = "alt",
+                        Regex = "regex",
+                        ShortUrl = "shortUrl",
+                    },
+                    Type = "x",
+                    ID = 0,
+                },
+            ],
             AutofillText = "autofillText",
             OtpType = "otpType",
             PackageName = "packageName",
