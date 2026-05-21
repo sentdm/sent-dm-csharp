@@ -127,15 +127,7 @@ public sealed record class TcrCampaignWithUseCases : JsonModel
             this._rawData.Freeze();
             return this._rawData.GetNullableStruct<bool>("dcaElectionsComplete");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("dcaElectionsComplete", value);
-        }
+        init { this._rawData.Set("dcaElectionsComplete", value); }
     }
 
     public DateTimeOffset? DcaElectionsCompletedAt
@@ -576,15 +568,7 @@ public sealed record class IntersectionMember1 : JsonModel
             this._rawData.Freeze();
             return this._rawData.GetNullableStruct<bool>("dcaElectionsComplete");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("dcaElectionsComplete", value);
-        }
+        init { this._rawData.Set("dcaElectionsComplete", value); }
     }
 
     public DateTimeOffset? DcaElectionsCompletedAt

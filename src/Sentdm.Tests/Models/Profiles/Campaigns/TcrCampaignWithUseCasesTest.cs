@@ -422,6 +422,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
             CspID = "cspId",
+            DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
@@ -449,8 +450,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.False(model.RawData.ContainsKey("createdAt"));
         Assert.Null(model.CustomerID);
         Assert.False(model.RawData.ContainsKey("customerId"));
-        Assert.Null(model.DcaElectionsComplete);
-        Assert.False(model.RawData.ContainsKey("dcaElectionsComplete"));
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
         Assert.Null(model.Name);
@@ -473,6 +472,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
             CspID = "cspId",
+            DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
@@ -507,6 +507,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
             CspID = "cspId",
+            DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
@@ -531,7 +532,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = null,
             CreatedAt = null,
             CustomerID = null,
-            DcaElectionsComplete = null,
             Description = null,
             Name = null,
             SubmittedToTcr = null,
@@ -545,8 +545,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.False(model.RawData.ContainsKey("createdAt"));
         Assert.Null(model.CustomerID);
         Assert.False(model.RawData.ContainsKey("customerId"));
-        Assert.Null(model.DcaElectionsComplete);
-        Assert.False(model.RawData.ContainsKey("dcaElectionsComplete"));
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
         Assert.Null(model.Name);
@@ -569,6 +567,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
             CspID = "cspId",
+            DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
@@ -593,7 +592,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = null,
             CreatedAt = null,
             CustomerID = null,
-            DcaElectionsComplete = null,
             Description = null,
             Name = null,
             SubmittedToTcr = null,
@@ -612,7 +610,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DcaElectionsComplete = true,
             Description = "description",
             Name = "name",
             SubmittedToTcr = true,
@@ -642,6 +639,8 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.False(model.RawData.ContainsKey("cost"));
         Assert.Null(model.CspID);
         Assert.False(model.RawData.ContainsKey("cspId"));
+        Assert.Null(model.DcaElectionsComplete);
+        Assert.False(model.RawData.ContainsKey("dcaElectionsComplete"));
         Assert.Null(model.DcaElectionsCompletedAt);
         Assert.False(model.RawData.ContainsKey("dcaElectionsCompletedAt"));
         Assert.Null(model.HelpKeywords);
@@ -690,7 +689,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DcaElectionsComplete = true,
             Description = "description",
             Name = "name",
             SubmittedToTcr = true,
@@ -721,7 +719,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DcaElectionsComplete = true,
             Description = "description",
             Name = "name",
             SubmittedToTcr = true,
@@ -745,6 +742,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             BrandID = null,
             Cost = null,
             CspID = null,
+            DcaElectionsComplete = null,
             DcaElectionsCompletedAt = null,
             HelpKeywords = null,
             HelpMessage = null,
@@ -776,6 +774,8 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.True(model.RawData.ContainsKey("cost"));
         Assert.Null(model.CspID);
         Assert.True(model.RawData.ContainsKey("cspId"));
+        Assert.Null(model.DcaElectionsComplete);
+        Assert.True(model.RawData.ContainsKey("dcaElectionsComplete"));
         Assert.Null(model.DcaElectionsCompletedAt);
         Assert.True(model.RawData.ContainsKey("dcaElectionsCompletedAt"));
         Assert.Null(model.HelpKeywords);
@@ -824,7 +824,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DcaElectionsComplete = true,
             Description = "description",
             Name = "name",
             SubmittedToTcr = true,
@@ -848,6 +847,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             BrandID = null,
             Cost = null,
             CspID = null,
+            DcaElectionsComplete = null,
             DcaElectionsCompletedAt = null,
             HelpKeywords = null,
             HelpMessage = null,
@@ -1320,6 +1320,7 @@ public class IntersectionMember1Test : TestBase
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
             CspID = "cspId",
+            DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
@@ -1343,8 +1344,6 @@ public class IntersectionMember1Test : TestBase
 
         Assert.Null(model.CustomerID);
         Assert.False(model.RawData.ContainsKey("customerId"));
-        Assert.Null(model.DcaElectionsComplete);
-        Assert.False(model.RawData.ContainsKey("dcaElectionsComplete"));
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
         Assert.Null(model.Name);
@@ -1366,6 +1365,7 @@ public class IntersectionMember1Test : TestBase
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
             CspID = "cspId",
+            DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
@@ -1399,6 +1399,7 @@ public class IntersectionMember1Test : TestBase
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
             CspID = "cspId",
+            DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
@@ -1421,7 +1422,6 @@ public class IntersectionMember1Test : TestBase
 
             // Null should be interpreted as omitted for these properties
             CustomerID = null,
-            DcaElectionsComplete = null,
             Description = null,
             Name = null,
             SubmittedToTcr = null,
@@ -1431,8 +1431,6 @@ public class IntersectionMember1Test : TestBase
 
         Assert.Null(model.CustomerID);
         Assert.False(model.RawData.ContainsKey("customerId"));
-        Assert.Null(model.DcaElectionsComplete);
-        Assert.False(model.RawData.ContainsKey("dcaElectionsComplete"));
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
         Assert.Null(model.Name);
@@ -1454,6 +1452,7 @@ public class IntersectionMember1Test : TestBase
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
             CspID = "cspId",
+            DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
@@ -1476,7 +1475,6 @@ public class IntersectionMember1Test : TestBase
 
             // Null should be interpreted as omitted for these properties
             CustomerID = null,
-            DcaElectionsComplete = null,
             Description = null,
             Name = null,
             SubmittedToTcr = null,
@@ -1493,7 +1491,6 @@ public class IntersectionMember1Test : TestBase
         var model = new IntersectionMember1
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DcaElectionsComplete = true,
             Description = "description",
             Name = "name",
             SubmittedToTcr = true,
@@ -1521,6 +1518,8 @@ public class IntersectionMember1Test : TestBase
         Assert.False(model.RawData.ContainsKey("cost"));
         Assert.Null(model.CspID);
         Assert.False(model.RawData.ContainsKey("cspId"));
+        Assert.Null(model.DcaElectionsComplete);
+        Assert.False(model.RawData.ContainsKey("dcaElectionsComplete"));
         Assert.Null(model.DcaElectionsCompletedAt);
         Assert.False(model.RawData.ContainsKey("dcaElectionsCompletedAt"));
         Assert.Null(model.HelpKeywords);
@@ -1567,7 +1566,6 @@ public class IntersectionMember1Test : TestBase
         var model = new IntersectionMember1
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DcaElectionsComplete = true,
             Description = "description",
             Name = "name",
             SubmittedToTcr = true,
@@ -1596,7 +1594,6 @@ public class IntersectionMember1Test : TestBase
         var model = new IntersectionMember1
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DcaElectionsComplete = true,
             Description = "description",
             Name = "name",
             SubmittedToTcr = true,
@@ -1619,6 +1616,7 @@ public class IntersectionMember1Test : TestBase
             BrandID = null,
             Cost = null,
             CspID = null,
+            DcaElectionsComplete = null,
             DcaElectionsCompletedAt = null,
             HelpKeywords = null,
             HelpMessage = null,
@@ -1648,6 +1646,8 @@ public class IntersectionMember1Test : TestBase
         Assert.True(model.RawData.ContainsKey("cost"));
         Assert.Null(model.CspID);
         Assert.True(model.RawData.ContainsKey("cspId"));
+        Assert.Null(model.DcaElectionsComplete);
+        Assert.True(model.RawData.ContainsKey("dcaElectionsComplete"));
         Assert.Null(model.DcaElectionsCompletedAt);
         Assert.True(model.RawData.ContainsKey("dcaElectionsCompletedAt"));
         Assert.Null(model.HelpKeywords);
@@ -1694,7 +1694,6 @@ public class IntersectionMember1Test : TestBase
         var model = new IntersectionMember1
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DcaElectionsComplete = true,
             Description = "description",
             Name = "name",
             SubmittedToTcr = true,
@@ -1717,6 +1716,7 @@ public class IntersectionMember1Test : TestBase
             BrandID = null,
             Cost = null,
             CspID = null,
+            DcaElectionsComplete = null,
             DcaElectionsCompletedAt = null,
             HelpKeywords = null,
             HelpMessage = null,
