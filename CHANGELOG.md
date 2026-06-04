@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.25.1 (2026-06-04)
+
+Full Changelog: [v0.25.0...v0.25.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.25.0...v0.25.1)
+
+### Bug Fixes
+
+* **csharp:** resolve ambiguity in parsing query strings ([8c3b2c7](https://github.com/sentdm/sent-dm-csharp/commit/8c3b2c760e4be30a002e1600871f11b33fe01ae0))
+
 ## 0.25.0 (2026-05-21)
 
 Full Changelog: [v0.24.0...v0.25.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.24.0...v0.25.0)
