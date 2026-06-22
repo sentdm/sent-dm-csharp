@@ -158,6 +158,30 @@ public sealed record class TcrCampaignWithUseCases : JsonModel
         }
     }
 
+    /// <summary>
+    /// True when this campaign already has a billing transaction of reference type
+    ///             TCR_CAMPAIGN_SUBMISSION (the one-time submission fee was charged).
+    /// Populated only by the             campaigns-list path; defaults false on
+    /// other responses.
+    /// </summary>
+    public bool? HasSubmissionTransaction
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("hasSubmissionTransaction");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("hasSubmissionTransaction", value);
+        }
+    }
+
     public string? HelpKeywords
     {
         get
@@ -435,6 +459,7 @@ public sealed record class TcrCampaignWithUseCases : JsonModel
         _ = this.DcaElectionsComplete;
         _ = this.DcaElectionsCompletedAt;
         _ = this.Description;
+        _ = this.HasSubmissionTransaction;
         _ = this.HelpKeywords;
         _ = this.HelpMessage;
         _ = this.KycSubmissionFormID;
@@ -596,6 +621,30 @@ public sealed record class IntersectionMember1 : JsonModel
             }
 
             this._rawData.Set("description", value);
+        }
+    }
+
+    /// <summary>
+    /// True when this campaign already has a billing transaction of reference type
+    ///             TCR_CAMPAIGN_SUBMISSION (the one-time submission fee was charged).
+    /// Populated only by the             campaigns-list path; defaults false on
+    /// other responses.
+    /// </summary>
+    public bool? HasSubmissionTransaction
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("hasSubmissionTransaction");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("hasSubmissionTransaction", value);
         }
     }
 
@@ -865,6 +914,7 @@ public sealed record class IntersectionMember1 : JsonModel
         _ = this.DcaElectionsComplete;
         _ = this.DcaElectionsCompletedAt;
         _ = this.Description;
+        _ = this.HasSubmissionTransaction;
         _ = this.HelpKeywords;
         _ = this.HelpMessage;
         _ = this.KycSubmissionFormID;
