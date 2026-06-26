@@ -26,6 +26,7 @@ public class MessageSendParamsTest : TestBase
                     { "order_id", "12345" },
                 },
             },
+            Text = null,
             To = ["+14155551234", "+14155555678"],
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -55,6 +56,7 @@ public class MessageSendParamsTest : TestBase
         }
         Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedTemplate, parameters.Template);
+        Assert.Null(parameters.Text);
         Assert.NotNull(parameters.To);
         Assert.Equal(expectedTo.Count, parameters.To.Count);
         for (int i = 0; i < expectedTo.Count; i++)
@@ -68,12 +70,24 @@ public class MessageSendParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new MessageSendParams { Channel = ["sms", "whatsapp"] };
+        var parameters = new MessageSendParams
+        {
+            Channel = ["sms", "whatsapp"],
+            Template = new()
+            {
+                ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+                Name = "order_confirmation",
+                Parameters = new Dictionary<string, string>()
+                {
+                    { "name", "John Doe" },
+                    { "order_id", "12345" },
+                },
+            },
+            Text = null,
+        };
 
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.Template);
-        Assert.False(parameters.RawBodyData.ContainsKey("template"));
         Assert.Null(parameters.To);
         Assert.False(parameters.RawBodyData.ContainsKey("to"));
         Assert.Null(parameters.IdempotencyKey);
@@ -88,10 +102,20 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
+            Template = new()
+            {
+                ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+                Name = "order_confirmation",
+                Parameters = new Dictionary<string, string>()
+                {
+                    { "name", "John Doe" },
+                    { "order_id", "12345" },
+                },
+            },
+            Text = null,
 
             // Null should be interpreted as omitted for these properties
             Sandbox = null,
-            Template = null,
             To = null,
             IdempotencyKey = null,
             XProfileID = null,
@@ -99,8 +123,6 @@ public class MessageSendParamsTest : TestBase
 
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.Template);
-        Assert.False(parameters.RawBodyData.ContainsKey("template"));
         Assert.Null(parameters.To);
         Assert.False(parameters.RawBodyData.ContainsKey("to"));
         Assert.Null(parameters.IdempotencyKey);
@@ -115,16 +137,6 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Sandbox = false,
-            Template = new()
-            {
-                ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-                Name = "order_confirmation",
-                Parameters = new Dictionary<string, string>()
-                {
-                    { "name", "John Doe" },
-                    { "order_id", "12345" },
-                },
-            },
             To = ["+14155551234", "+14155555678"],
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -132,6 +144,10 @@ public class MessageSendParamsTest : TestBase
 
         Assert.Null(parameters.Channel);
         Assert.False(parameters.RawBodyData.ContainsKey("channel"));
+        Assert.Null(parameters.Template);
+        Assert.False(parameters.RawBodyData.ContainsKey("template"));
+        Assert.Null(parameters.Text);
+        Assert.False(parameters.RawBodyData.ContainsKey("text"));
     }
 
     [Fact]
@@ -140,25 +156,21 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Sandbox = false,
-            Template = new()
-            {
-                ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-                Name = "order_confirmation",
-                Parameters = new Dictionary<string, string>()
-                {
-                    { "name", "John Doe" },
-                    { "order_id", "12345" },
-                },
-            },
             To = ["+14155551234", "+14155555678"],
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
             Channel = null,
+            Template = null,
+            Text = null,
         };
 
         Assert.Null(parameters.Channel);
         Assert.True(parameters.RawBodyData.ContainsKey("channel"));
+        Assert.Null(parameters.Template);
+        Assert.True(parameters.RawBodyData.ContainsKey("template"));
+        Assert.Null(parameters.Text);
+        Assert.True(parameters.RawBodyData.ContainsKey("text"));
     }
 
     [Fact]
@@ -207,6 +219,7 @@ public class MessageSendParamsTest : TestBase
                     { "order_id", "12345" },
                 },
             },
+            Text = null,
             To = ["+14155551234", "+14155555678"],
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
