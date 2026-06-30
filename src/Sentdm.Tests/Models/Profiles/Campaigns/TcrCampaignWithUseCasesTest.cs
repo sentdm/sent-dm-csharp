@@ -25,6 +25,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -74,6 +75,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             "2019-12-27T18:11:19.117Z"
         );
         string expectedDescription = "description";
+        bool expectedHasSubmissionTransaction = true;
         string expectedHelpKeywords = "helpKeywords";
         string expectedHelpMessage = "helpMessage";
         string expectedKycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -120,6 +122,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.Equal(expectedDcaElectionsComplete, model.DcaElectionsComplete);
         Assert.Equal(expectedDcaElectionsCompletedAt, model.DcaElectionsCompletedAt);
         Assert.Equal(expectedDescription, model.Description);
+        Assert.Equal(expectedHasSubmissionTransaction, model.HasSubmissionTransaction);
         Assert.Equal(expectedHelpKeywords, model.HelpKeywords);
         Assert.Equal(expectedHelpMessage, model.HelpMessage);
         Assert.Equal(expectedKycSubmissionFormID, model.KycSubmissionFormID);
@@ -165,6 +168,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -226,6 +230,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -282,6 +287,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             "2019-12-27T18:11:19.117Z"
         );
         string expectedDescription = "description";
+        bool expectedHasSubmissionTransaction = true;
         string expectedHelpKeywords = "helpKeywords";
         string expectedHelpMessage = "helpMessage";
         string expectedKycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -328,6 +334,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.Equal(expectedDcaElectionsComplete, deserialized.DcaElectionsComplete);
         Assert.Equal(expectedDcaElectionsCompletedAt, deserialized.DcaElectionsCompletedAt);
         Assert.Equal(expectedDescription, deserialized.Description);
+        Assert.Equal(expectedHasSubmissionTransaction, deserialized.HasSubmissionTransaction);
         Assert.Equal(expectedHelpKeywords, deserialized.HelpKeywords);
         Assert.Equal(expectedHelpMessage, deserialized.HelpMessage);
         Assert.Equal(expectedKycSubmissionFormID, deserialized.KycSubmissionFormID);
@@ -373,6 +380,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -452,6 +460,8 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.False(model.RawData.ContainsKey("customerId"));
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
+        Assert.Null(model.HasSubmissionTransaction);
+        Assert.False(model.RawData.ContainsKey("hasSubmissionTransaction"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.SubmittedToTcr);
@@ -533,6 +543,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             CreatedAt = null,
             CustomerID = null,
             Description = null,
+            HasSubmissionTransaction = null,
             Name = null,
             SubmittedToTcr = null,
             Type = null,
@@ -547,6 +558,8 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.False(model.RawData.ContainsKey("customerId"));
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
+        Assert.Null(model.HasSubmissionTransaction);
+        Assert.False(model.RawData.ContainsKey("hasSubmissionTransaction"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.SubmittedToTcr);
@@ -593,6 +606,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             CreatedAt = null,
             CustomerID = null,
             Description = null,
+            HasSubmissionTransaction = null,
             Name = null,
             SubmittedToTcr = null,
             Type = null,
@@ -611,6 +625,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
+            HasSubmissionTransaction = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -690,6 +705,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
+            HasSubmissionTransaction = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -720,6 +736,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
+            HasSubmissionTransaction = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -825,6 +842,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
+            HasSubmissionTransaction = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -888,6 +906,7 @@ public class TcrCampaignWithUseCasesTest : TestBase
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -945,6 +964,7 @@ public class IntersectionMember1Test : TestBase
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -991,6 +1011,7 @@ public class IntersectionMember1Test : TestBase
             "2019-12-27T18:11:19.117Z"
         );
         string expectedDescription = "description";
+        bool expectedHasSubmissionTransaction = true;
         string expectedHelpKeywords = "helpKeywords";
         string expectedHelpMessage = "helpMessage";
         string expectedKycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -1034,6 +1055,7 @@ public class IntersectionMember1Test : TestBase
         Assert.Equal(expectedDcaElectionsComplete, model.DcaElectionsComplete);
         Assert.Equal(expectedDcaElectionsCompletedAt, model.DcaElectionsCompletedAt);
         Assert.Equal(expectedDescription, model.Description);
+        Assert.Equal(expectedHasSubmissionTransaction, model.HasSubmissionTransaction);
         Assert.Equal(expectedHelpKeywords, model.HelpKeywords);
         Assert.Equal(expectedHelpMessage, model.HelpMessage);
         Assert.Equal(expectedKycSubmissionFormID, model.KycSubmissionFormID);
@@ -1076,6 +1098,7 @@ public class IntersectionMember1Test : TestBase
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1134,6 +1157,7 @@ public class IntersectionMember1Test : TestBase
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1187,6 +1211,7 @@ public class IntersectionMember1Test : TestBase
             "2019-12-27T18:11:19.117Z"
         );
         string expectedDescription = "description";
+        bool expectedHasSubmissionTransaction = true;
         string expectedHelpKeywords = "helpKeywords";
         string expectedHelpMessage = "helpMessage";
         string expectedKycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -1230,6 +1255,7 @@ public class IntersectionMember1Test : TestBase
         Assert.Equal(expectedDcaElectionsComplete, deserialized.DcaElectionsComplete);
         Assert.Equal(expectedDcaElectionsCompletedAt, deserialized.DcaElectionsCompletedAt);
         Assert.Equal(expectedDescription, deserialized.Description);
+        Assert.Equal(expectedHasSubmissionTransaction, deserialized.HasSubmissionTransaction);
         Assert.Equal(expectedHelpKeywords, deserialized.HelpKeywords);
         Assert.Equal(expectedHelpMessage, deserialized.HelpMessage);
         Assert.Equal(expectedKycSubmissionFormID, deserialized.KycSubmissionFormID);
@@ -1272,6 +1298,7 @@ public class IntersectionMember1Test : TestBase
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1346,6 +1373,8 @@ public class IntersectionMember1Test : TestBase
         Assert.False(model.RawData.ContainsKey("customerId"));
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
+        Assert.Null(model.HasSubmissionTransaction);
+        Assert.False(model.RawData.ContainsKey("hasSubmissionTransaction"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.SubmittedToTcr);
@@ -1423,6 +1452,7 @@ public class IntersectionMember1Test : TestBase
             // Null should be interpreted as omitted for these properties
             CustomerID = null,
             Description = null,
+            HasSubmissionTransaction = null,
             Name = null,
             SubmittedToTcr = null,
             Type = null,
@@ -1433,6 +1463,8 @@ public class IntersectionMember1Test : TestBase
         Assert.False(model.RawData.ContainsKey("customerId"));
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
+        Assert.Null(model.HasSubmissionTransaction);
+        Assert.False(model.RawData.ContainsKey("hasSubmissionTransaction"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.SubmittedToTcr);
@@ -1476,6 +1508,7 @@ public class IntersectionMember1Test : TestBase
             // Null should be interpreted as omitted for these properties
             CustomerID = null,
             Description = null,
+            HasSubmissionTransaction = null,
             Name = null,
             SubmittedToTcr = null,
             Type = null,
@@ -1492,6 +1525,7 @@ public class IntersectionMember1Test : TestBase
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
+            HasSubmissionTransaction = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -1567,6 +1601,7 @@ public class IntersectionMember1Test : TestBase
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
+            HasSubmissionTransaction = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -1595,6 +1630,7 @@ public class IntersectionMember1Test : TestBase
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
+            HasSubmissionTransaction = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -1695,6 +1731,7 @@ public class IntersectionMember1Test : TestBase
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
+            HasSubmissionTransaction = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -1754,6 +1791,7 @@ public class IntersectionMember1Test : TestBase
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

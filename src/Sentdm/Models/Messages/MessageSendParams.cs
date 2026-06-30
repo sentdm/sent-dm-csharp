@@ -82,15 +82,20 @@ public record class MessageSendParams : ParamsBase
             this._rawBodyData.Freeze();
             return this._rawBodyData.GetNullableClass<Template>("template");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
+        init { this._rawBodyData.Set("template", value); }
+    }
 
-            this._rawBodyData.Set("template", value);
+    /// <summary>
+    /// Plain-text (free-form) message body. Provide either Template or this.
+    /// </summary>
+    public string? Text
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("text");
         }
+        init { this._rawBodyData.Set("text", value); }
     }
 
     /// <summary>
