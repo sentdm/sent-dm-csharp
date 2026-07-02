@@ -27,9 +27,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 [
                     new()
                     {
-                        Description = "description",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        Description = "description",
                     },
                 ],
                 MessageBody = new()
@@ -86,9 +86,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
             [
                 new()
                 {
-                    Description = "description",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
                 },
             ],
             MessageBody = new()
@@ -155,9 +155,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 [
                     new()
                     {
-                        Description = "description",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        Description = "description",
                     },
                 ],
                 MessageBody = new()
@@ -228,9 +228,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 [
                     new()
                     {
-                        Description = "description",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        Description = "description",
                     },
                 ],
                 MessageBody = new()
@@ -294,9 +294,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
             [
                 new()
                 {
-                    Description = "description",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
                 },
             ],
             MessageBody = new()
@@ -363,9 +363,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 [
                     new()
                     {
-                        Description = "description",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        Description = "description",
                     },
                 ],
                 MessageBody = new()
@@ -430,9 +430,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 [
                     new()
                     {
-                        Description = "description",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        Description = "description",
                     },
                 ],
                 MessageBody = new()
@@ -493,9 +493,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 [
                     new()
                     {
-                        Description = "description",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        Description = "description",
                     },
                 ],
                 MessageBody = new()
@@ -553,9 +553,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 [
                     new()
                     {
-                        Description = "description",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        Description = "description",
                     },
                 ],
                 MessageBody = new()
@@ -620,9 +620,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 [
                     new()
                     {
-                        Description = "description",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        Description = "description",
                     },
                 ],
                 MessageBody = new()
@@ -764,9 +764,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 [
                     new()
                     {
-                        Description = "description",
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        Description = "description",
                     },
                 ],
                 MessageBody = new()
@@ -834,9 +834,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             [
                 new()
                 {
-                    Description = "description",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
                 },
             ],
             MessageBody = new()
@@ -876,9 +876,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         [
             new()
             {
-                Description = "description",
                 Status = "status",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Description = "description",
             },
         ];
         MessageBody expectedMessageBody = new()
@@ -946,9 +946,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             [
                 new()
                 {
-                    Description = "description",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
                 },
             ],
             MessageBody = new()
@@ -1002,9 +1002,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             [
                 new()
                 {
-                    Description = "description",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
                 },
             ],
             MessageBody = new()
@@ -1051,9 +1051,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         [
             new()
             {
-                Description = "description",
                 Status = "status",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Description = "description",
             },
         ];
         MessageBody expectedMessageBody = new()
@@ -1121,9 +1121,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             [
                 new()
                 {
-                    Description = "description",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
                 },
             ],
             MessageBody = new()
@@ -1165,9 +1165,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             [
                 new()
                 {
-                    Description = "description",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
                 },
             ],
             MessageBody = new()
@@ -1224,9 +1224,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             [
                 new()
                 {
-                    Description = "description",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
                 },
             ],
             MessageBody = new()
@@ -1264,9 +1264,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             [
                 new()
                 {
-                    Description = "description",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
                 },
             ],
             MessageBody = new()
@@ -1335,9 +1335,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             [
                 new()
                 {
-                    Description = "description",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
                 },
             ],
             MessageBody = new()
@@ -1515,9 +1515,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             [
                 new()
                 {
-                    Description = "description",
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Description = "description",
                 },
             ],
             MessageBody = new()
@@ -1559,18 +1559,18 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Description = "description",
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
         };
 
-        string expectedDescription = "description";
         string expectedStatus = "status";
         DateTimeOffset expectedTimestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedDescription = "description";
 
-        Assert.Equal(expectedDescription, model.Description);
         Assert.Equal(expectedStatus, model.Status);
         Assert.Equal(expectedTimestamp, model.Timestamp);
+        Assert.Equal(expectedDescription, model.Description);
     }
 
     [Fact]
@@ -1578,9 +1578,9 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Description = "description",
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -1594,22 +1594,22 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Description = "description",
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<Event>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        string expectedDescription = "description";
         string expectedStatus = "status";
         DateTimeOffset expectedTimestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedDescription = "description";
 
-        Assert.Equal(expectedDescription, deserialized.Description);
         Assert.Equal(expectedStatus, deserialized.Status);
         Assert.Equal(expectedTimestamp, deserialized.Timestamp);
+        Assert.Equal(expectedDescription, deserialized.Description);
     }
 
     [Fact]
@@ -1617,61 +1617,9 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Description = "description",
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
-    {
-        var model = new Event { Description = "description" };
-
-        Assert.Null(model.Status);
-        Assert.False(model.RawData.ContainsKey("status"));
-        Assert.Null(model.Timestamp);
-        Assert.False(model.RawData.ContainsKey("timestamp"));
-    }
-
-    [Fact]
-    public void OptionalNonNullablePropertiesUnsetValidation_Works()
-    {
-        var model = new Event { Description = "description" };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
-    {
-        var model = new Event
-        {
             Description = "description",
-
-            // Null should be interpreted as omitted for these properties
-            Status = null,
-            Timestamp = null,
-        };
-
-        Assert.Null(model.Status);
-        Assert.False(model.RawData.ContainsKey("status"));
-        Assert.Null(model.Timestamp);
-        Assert.False(model.RawData.ContainsKey("timestamp"));
-    }
-
-    [Fact]
-    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
-    {
-        var model = new Event
-        {
-            Description = "description",
-
-            // Null should be interpreted as omitted for these properties
-            Status = null,
-            Timestamp = null,
         };
 
         model.Validate();
@@ -1736,9 +1684,9 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Description = "description",
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
         };
 
         Event copied = new(model);

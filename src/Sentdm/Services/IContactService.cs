@@ -33,7 +33,7 @@ public interface IContactService
     /// customer.
     /// </summary>
     Task<ApiResponseOfContact> Create(
-        ContactCreateParams? parameters = null,
+        ContactCreateParams parameters,
         CancellationToken cancellationToken = default
     );
 
@@ -108,10 +108,10 @@ public interface IContactServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for <c>post /v3/contacts</c>, but is otherwise the
-    /// same as <see cref="IContactService.Create(ContactCreateParams?, CancellationToken)"/>.
+    /// same as <see cref="IContactService.Create(ContactCreateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfContact>> Create(
-        ContactCreateParams? parameters = null,
+        ContactCreateParams parameters,
         CancellationToken cancellationToken = default
     );
 
