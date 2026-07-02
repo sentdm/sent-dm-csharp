@@ -36,7 +36,7 @@ public sealed class ContactService : IContactService
 
     /// <inheritdoc/>
     public async Task<ApiResponseOfContact> Create(
-        ContactCreateParams? parameters = null,
+        ContactCreateParams parameters,
         CancellationToken cancellationToken = default
     )
     {
@@ -146,12 +146,10 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
 
     /// <inheritdoc/>
     public async Task<HttpResponse<ApiResponseOfContact>> Create(
-        ContactCreateParams? parameters = null,
+        ContactCreateParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        parameters ??= new();
-
         HttpRequest<ContactCreateParams> request = new()
         {
             Method = HttpMethod.Post,

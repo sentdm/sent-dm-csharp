@@ -31,10 +31,8 @@ public class ContactCreateParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new ContactCreateParams { };
+        var parameters = new ContactCreateParams { PhoneNumber = "+1234567890" };
 
-        Assert.Null(parameters.PhoneNumber);
-        Assert.False(parameters.RawBodyData.ContainsKey("phone_number"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -48,15 +46,14 @@ public class ContactCreateParamsTest : TestBase
     {
         var parameters = new ContactCreateParams
         {
+            PhoneNumber = "+1234567890",
+
             // Null should be interpreted as omitted for these properties
-            PhoneNumber = null,
             Sandbox = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
-        Assert.Null(parameters.PhoneNumber);
-        Assert.False(parameters.RawBodyData.ContainsKey("phone_number"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -68,7 +65,7 @@ public class ContactCreateParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        ContactCreateParams parameters = new();
+        ContactCreateParams parameters = new() { PhoneNumber = "+1234567890" };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
@@ -81,6 +78,7 @@ public class ContactCreateParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         ContactCreateParams parameters = new()
         {
+            PhoneNumber = "+1234567890",
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };

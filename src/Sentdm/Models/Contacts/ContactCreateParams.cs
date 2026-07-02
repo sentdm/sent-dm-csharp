@@ -27,22 +27,14 @@ public record class ContactCreateParams : ParamsBase
     /// <summary>
     /// Phone number of the contact to create
     /// </summary>
-    public string? PhoneNumber
+    public required string PhoneNumber
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("phone_number");
+            return this._rawBodyData.GetNotNullClass<string>("phone_number");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawBodyData.Set("phone_number", value);
-        }
+        init { this._rawBodyData.Set("phone_number", value); }
     }
 
     /// <summary>

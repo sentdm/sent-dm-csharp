@@ -62,6 +62,36 @@ public sealed record class TcrCampaignWithUseCases : JsonModel
         init { this._rawData.Set("updatedAt", value); }
     }
 
+    public required string Description
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("description");
+        }
+        init { this._rawData.Set("description", value); }
+    }
+
+    public required string Name
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("name");
+        }
+        init { this._rawData.Set("name", value); }
+    }
+
+    public required string Type
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("type");
+        }
+        init { this._rawData.Set("type", value); }
+    }
+
     public DateTimeOffset? BilledDate
     {
         get
@@ -140,24 +170,6 @@ public sealed record class TcrCampaignWithUseCases : JsonModel
         init { this._rawData.Set("dcaElectionsCompletedAt", value); }
     }
 
-    public string? Description
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("description");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("description", value);
-        }
-    }
-
     /// <summary>
     /// True when this campaign already has a billing transaction of reference type
     ///             TCR_CAMPAIGN_SUBMISSION (the one-time submission fee was charged).
@@ -220,24 +232,6 @@ public sealed record class TcrCampaignWithUseCases : JsonModel
             return this._rawData.GetNullableClass<string>("messageFlow");
         }
         init { this._rawData.Set("messageFlow", value); }
-    }
-
-    public string? Name
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("name", value);
-        }
     }
 
     public string? OptinKeywords
@@ -388,24 +382,6 @@ public sealed record class TcrCampaignWithUseCases : JsonModel
         init { this._rawData.Set("termsAndConditionsLink", value); }
     }
 
-    public string? Type
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("type");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("type", value);
-        }
-    }
-
     public string? UpstreamCnpID
     {
         get
@@ -451,6 +427,9 @@ public sealed record class TcrCampaignWithUseCases : JsonModel
         _ = this.ID;
         _ = this.CreatedAt;
         _ = this.UpdatedAt;
+        _ = this.Description;
+        _ = this.Name;
+        _ = this.Type;
         _ = this.BilledDate;
         _ = this.BrandID;
         _ = this.Cost;
@@ -458,13 +437,11 @@ public sealed record class TcrCampaignWithUseCases : JsonModel
         _ = this.CustomerID;
         _ = this.DcaElectionsComplete;
         _ = this.DcaElectionsCompletedAt;
-        _ = this.Description;
         _ = this.HasSubmissionTransaction;
         _ = this.HelpKeywords;
         _ = this.HelpMessage;
         _ = this.KycSubmissionFormID;
         _ = this.MessageFlow;
-        _ = this.Name;
         _ = this.OptinKeywords;
         _ = this.OptinMessage;
         _ = this.OptoutKeywords;
@@ -479,7 +456,6 @@ public sealed record class TcrCampaignWithUseCases : JsonModel
         _ = this.TcrSyncError;
         _ = this.TelnyxCampaignID;
         _ = this.TermsAndConditionsLink;
-        _ = this.Type;
         _ = this.UpstreamCnpID;
         foreach (var item in this.UseCases ?? [])
         {
@@ -528,6 +504,36 @@ class TcrCampaignWithUseCasesFromRaw : IFromRawJson<TcrCampaignWithUseCases>
 [JsonConverter(typeof(JsonModelConverter<IntersectionMember1, IntersectionMember1FromRaw>))]
 public sealed record class IntersectionMember1 : JsonModel
 {
+    public required string Description
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("description");
+        }
+        init { this._rawData.Set("description", value); }
+    }
+
+    public required string Name
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("name");
+        }
+        init { this._rawData.Set("name", value); }
+    }
+
+    public required string Type
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("type");
+        }
+        init { this._rawData.Set("type", value); }
+    }
+
     public DateTimeOffset? BilledDate
     {
         get
@@ -606,24 +612,6 @@ public sealed record class IntersectionMember1 : JsonModel
         init { this._rawData.Set("dcaElectionsCompletedAt", value); }
     }
 
-    public string? Description
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("description");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("description", value);
-        }
-    }
-
     /// <summary>
     /// True when this campaign already has a billing transaction of reference type
     ///             TCR_CAMPAIGN_SUBMISSION (the one-time submission fee was charged).
@@ -686,24 +674,6 @@ public sealed record class IntersectionMember1 : JsonModel
             return this._rawData.GetNullableClass<string>("messageFlow");
         }
         init { this._rawData.Set("messageFlow", value); }
-    }
-
-    public string? Name
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("name", value);
-        }
     }
 
     public string? OptinKeywords
@@ -854,24 +824,6 @@ public sealed record class IntersectionMember1 : JsonModel
         init { this._rawData.Set("termsAndConditionsLink", value); }
     }
 
-    public string? Type
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("type");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("type", value);
-        }
-    }
-
     public string? UpstreamCnpID
     {
         get
@@ -906,6 +858,9 @@ public sealed record class IntersectionMember1 : JsonModel
     /// <inheritdoc/>
     public override void Validate()
     {
+        _ = this.Description;
+        _ = this.Name;
+        _ = this.Type;
         _ = this.BilledDate;
         _ = this.BrandID;
         _ = this.Cost;
@@ -913,13 +868,11 @@ public sealed record class IntersectionMember1 : JsonModel
         _ = this.CustomerID;
         _ = this.DcaElectionsComplete;
         _ = this.DcaElectionsCompletedAt;
-        _ = this.Description;
         _ = this.HasSubmissionTransaction;
         _ = this.HelpKeywords;
         _ = this.HelpMessage;
         _ = this.KycSubmissionFormID;
         _ = this.MessageFlow;
-        _ = this.Name;
         _ = this.OptinKeywords;
         _ = this.OptinMessage;
         _ = this.OptoutKeywords;
@@ -934,7 +887,6 @@ public sealed record class IntersectionMember1 : JsonModel
         _ = this.TcrSyncError;
         _ = this.TelnyxCampaignID;
         _ = this.TermsAndConditionsLink;
-        _ = this.Type;
         _ = this.UpstreamCnpID;
         foreach (var item in this.UseCases ?? [])
         {
@@ -1121,6 +1073,22 @@ public sealed record class UseCase : JsonModel
         init { this._rawData.Set("updatedAt", value); }
     }
 
+    public required IReadOnlyList<string> SampleMessages
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("sampleMessages");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<string>>(
+                "sampleMessages",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
     public string? CampaignID
     {
         get
@@ -1177,27 +1145,6 @@ public sealed record class UseCase : JsonModel
         }
     }
 
-    public IReadOnlyList<string>? SampleMessages
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("sampleMessages");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set<ImmutableArray<string>?>(
-                "sampleMessages",
-                value == null ? null : ImmutableArray.ToImmutableArray(value)
-            );
-        }
-    }
-
     public static implicit operator BaseDto(UseCase useCase) =>
         new()
         {
@@ -1212,10 +1159,10 @@ public sealed record class UseCase : JsonModel
         _ = this.ID;
         _ = this.CreatedAt;
         _ = this.UpdatedAt;
+        _ = this.SampleMessages;
         _ = this.CampaignID;
         _ = this.CustomerID;
         this.MessagingUseCaseUs?.Validate();
-        _ = this.SampleMessages;
     }
 
     public UseCase() { }
@@ -1244,6 +1191,13 @@ public sealed record class UseCase : JsonModel
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
+
+    [SetsRequiredMembers]
+    public UseCase(IReadOnlyList<string> sampleMessages)
+        : this()
+    {
+        this.SampleMessages = sampleMessages;
+    }
 }
 
 class UseCaseFromRaw : IFromRawJson<UseCase>
@@ -1261,6 +1215,22 @@ class UseCaseFromRaw : IFromRawJson<UseCase>
 )]
 public sealed record class SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties : JsonModel
 {
+    public required IReadOnlyList<string> SampleMessages
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("sampleMessages");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<string>>(
+                "sampleMessages",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
     public string? CampaignID
     {
         get
@@ -1317,34 +1287,13 @@ public sealed record class SentDmServicesCommonEntitiesTcrCampaignUseCasePropert
         }
     }
 
-    public IReadOnlyList<string>? SampleMessages
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("sampleMessages");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set<ImmutableArray<string>?>(
-                "sampleMessages",
-                value == null ? null : ImmutableArray.ToImmutableArray(value)
-            );
-        }
-    }
-
     /// <inheritdoc/>
     public override void Validate()
     {
+        _ = this.SampleMessages;
         _ = this.CampaignID;
         _ = this.CustomerID;
         this.MessagingUseCaseUs?.Validate();
-        _ = this.SampleMessages;
     }
 
     public SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties() { }
@@ -1380,6 +1329,15 @@ public sealed record class SentDmServicesCommonEntitiesTcrCampaignUseCasePropert
     )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+
+    [SetsRequiredMembers]
+    public SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties(
+        IReadOnlyList<string> sampleMessages
+    )
+        : this()
+    {
+        this.SampleMessages = sampleMessages;
     }
 }
 

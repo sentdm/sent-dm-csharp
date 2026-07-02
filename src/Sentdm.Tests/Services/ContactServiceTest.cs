@@ -8,7 +8,7 @@ public class ContactServiceTest : TestBase
     public async Task Create_Works()
     {
         var apiResponseOfContact = await this.client.Contacts.Create(
-            new(),
+            new() { PhoneNumber = "+1234567890" },
             TestContext.Current.CancellationToken
         );
         apiResponseOfContact.Validate();
