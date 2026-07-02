@@ -484,6 +484,26 @@ class MessageRetrieveStatusResponseDataFromRaw : IFromRawJson<MessageRetrieveSta
 )]
 public sealed record class Event : JsonModel
 {
+    public required string Status
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("status");
+        }
+        init { this._rawData.Set("status", value); }
+    }
+
+    public required DateTimeOffset Timestamp
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<DateTimeOffset>("timestamp");
+        }
+        init { this._rawData.Set("timestamp", value); }
+    }
+
     public string? Description
     {
         get
@@ -494,48 +514,12 @@ public sealed record class Event : JsonModel
         init { this._rawData.Set("description", value); }
     }
 
-    public string? Status
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("status");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("status", value);
-        }
-    }
-
-    public DateTimeOffset? Timestamp
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("timestamp");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("timestamp", value);
-        }
-    }
-
     /// <inheritdoc/>
     public override void Validate()
     {
-        _ = this.Description;
         _ = this.Status;
         _ = this.Timestamp;
+        _ = this.Description;
     }
 
     public Event() { }

@@ -17,6 +17,9 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -24,13 +27,11 @@ public class TcrCampaignWithUseCasesTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessageFlow = "messageFlow",
-            Name = "name",
             OptinKeywords = "optinKeywords",
             OptinMessage = "optinMessage",
             OptoutKeywords = "optoutKeywords",
@@ -45,7 +46,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
             TcrSyncError = "tcrSyncError",
             TelnyxCampaignID = "telnyxCampaignId",
             TermsAndConditionsLink = "termsAndConditionsLink",
-            Type = "type",
             UpstreamCnpID = "upstreamCnpId",
             UseCases =
             [
@@ -54,10 +54,10 @@ public class TcrCampaignWithUseCasesTest : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -65,6 +65,9 @@ public class TcrCampaignWithUseCasesTest : TestBase
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedDescription = "description";
+        string expectedName = "name";
+        string expectedType = "type";
         DateTimeOffset expectedBilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedBrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         double expectedCost = 0;
@@ -74,13 +77,11 @@ public class TcrCampaignWithUseCasesTest : TestBase
         DateTimeOffset expectedDcaElectionsCompletedAt = DateTimeOffset.Parse(
             "2019-12-27T18:11:19.117Z"
         );
-        string expectedDescription = "description";
         bool expectedHasSubmissionTransaction = true;
         string expectedHelpKeywords = "helpKeywords";
         string expectedHelpMessage = "helpMessage";
         string expectedKycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedMessageFlow = "messageFlow";
-        string expectedName = "name";
         string expectedOptinKeywords = "optinKeywords";
         string expectedOptinMessage = "optinMessage";
         string expectedOptoutKeywords = "optoutKeywords";
@@ -95,7 +96,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
         string expectedTcrSyncError = "tcrSyncError";
         string expectedTelnyxCampaignID = "telnyxCampaignId";
         string expectedTermsAndConditionsLink = "termsAndConditionsLink";
-        string expectedType = "type";
         string expectedUpstreamCnpID = "upstreamCnpId";
         List<UseCase> expectedUseCases =
         [
@@ -104,16 +104,19 @@ public class TcrCampaignWithUseCasesTest : TestBase
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                SampleMessages = ["string"],
                 CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                SampleMessages = ["string"],
             },
         ];
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedUpdatedAt, model.UpdatedAt);
+        Assert.Equal(expectedDescription, model.Description);
+        Assert.Equal(expectedName, model.Name);
+        Assert.Equal(expectedType, model.Type);
         Assert.Equal(expectedBilledDate, model.BilledDate);
         Assert.Equal(expectedBrandID, model.BrandID);
         Assert.Equal(expectedCost, model.Cost);
@@ -121,13 +124,11 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.Equal(expectedCustomerID, model.CustomerID);
         Assert.Equal(expectedDcaElectionsComplete, model.DcaElectionsComplete);
         Assert.Equal(expectedDcaElectionsCompletedAt, model.DcaElectionsCompletedAt);
-        Assert.Equal(expectedDescription, model.Description);
         Assert.Equal(expectedHasSubmissionTransaction, model.HasSubmissionTransaction);
         Assert.Equal(expectedHelpKeywords, model.HelpKeywords);
         Assert.Equal(expectedHelpMessage, model.HelpMessage);
         Assert.Equal(expectedKycSubmissionFormID, model.KycSubmissionFormID);
         Assert.Equal(expectedMessageFlow, model.MessageFlow);
-        Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedOptinKeywords, model.OptinKeywords);
         Assert.Equal(expectedOptinMessage, model.OptinMessage);
         Assert.Equal(expectedOptoutKeywords, model.OptoutKeywords);
@@ -142,7 +143,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.Equal(expectedTcrSyncError, model.TcrSyncError);
         Assert.Equal(expectedTelnyxCampaignID, model.TelnyxCampaignID);
         Assert.Equal(expectedTermsAndConditionsLink, model.TermsAndConditionsLink);
-        Assert.Equal(expectedType, model.Type);
         Assert.Equal(expectedUpstreamCnpID, model.UpstreamCnpID);
         Assert.NotNull(model.UseCases);
         Assert.Equal(expectedUseCases.Count, model.UseCases.Count);
@@ -160,6 +160,9 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -167,13 +170,11 @@ public class TcrCampaignWithUseCasesTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessageFlow = "messageFlow",
-            Name = "name",
             OptinKeywords = "optinKeywords",
             OptinMessage = "optinMessage",
             OptoutKeywords = "optoutKeywords",
@@ -188,7 +189,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
             TcrSyncError = "tcrSyncError",
             TelnyxCampaignID = "telnyxCampaignId",
             TermsAndConditionsLink = "termsAndConditionsLink",
-            Type = "type",
             UpstreamCnpID = "upstreamCnpId",
             UseCases =
             [
@@ -197,10 +197,10 @@ public class TcrCampaignWithUseCasesTest : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -222,6 +222,9 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -229,13 +232,11 @@ public class TcrCampaignWithUseCasesTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessageFlow = "messageFlow",
-            Name = "name",
             OptinKeywords = "optinKeywords",
             OptinMessage = "optinMessage",
             OptoutKeywords = "optoutKeywords",
@@ -250,7 +251,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
             TcrSyncError = "tcrSyncError",
             TelnyxCampaignID = "telnyxCampaignId",
             TermsAndConditionsLink = "termsAndConditionsLink",
-            Type = "type",
             UpstreamCnpID = "upstreamCnpId",
             UseCases =
             [
@@ -259,10 +259,10 @@ public class TcrCampaignWithUseCasesTest : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -277,6 +277,9 @@ public class TcrCampaignWithUseCasesTest : TestBase
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedDescription = "description";
+        string expectedName = "name";
+        string expectedType = "type";
         DateTimeOffset expectedBilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedBrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         double expectedCost = 0;
@@ -286,13 +289,11 @@ public class TcrCampaignWithUseCasesTest : TestBase
         DateTimeOffset expectedDcaElectionsCompletedAt = DateTimeOffset.Parse(
             "2019-12-27T18:11:19.117Z"
         );
-        string expectedDescription = "description";
         bool expectedHasSubmissionTransaction = true;
         string expectedHelpKeywords = "helpKeywords";
         string expectedHelpMessage = "helpMessage";
         string expectedKycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedMessageFlow = "messageFlow";
-        string expectedName = "name";
         string expectedOptinKeywords = "optinKeywords";
         string expectedOptinMessage = "optinMessage";
         string expectedOptoutKeywords = "optoutKeywords";
@@ -307,7 +308,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
         string expectedTcrSyncError = "tcrSyncError";
         string expectedTelnyxCampaignID = "telnyxCampaignId";
         string expectedTermsAndConditionsLink = "termsAndConditionsLink";
-        string expectedType = "type";
         string expectedUpstreamCnpID = "upstreamCnpId";
         List<UseCase> expectedUseCases =
         [
@@ -316,16 +316,19 @@ public class TcrCampaignWithUseCasesTest : TestBase
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                SampleMessages = ["string"],
                 CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                SampleMessages = ["string"],
             },
         ];
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedUpdatedAt, deserialized.UpdatedAt);
+        Assert.Equal(expectedDescription, deserialized.Description);
+        Assert.Equal(expectedName, deserialized.Name);
+        Assert.Equal(expectedType, deserialized.Type);
         Assert.Equal(expectedBilledDate, deserialized.BilledDate);
         Assert.Equal(expectedBrandID, deserialized.BrandID);
         Assert.Equal(expectedCost, deserialized.Cost);
@@ -333,13 +336,11 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.Equal(expectedCustomerID, deserialized.CustomerID);
         Assert.Equal(expectedDcaElectionsComplete, deserialized.DcaElectionsComplete);
         Assert.Equal(expectedDcaElectionsCompletedAt, deserialized.DcaElectionsCompletedAt);
-        Assert.Equal(expectedDescription, deserialized.Description);
         Assert.Equal(expectedHasSubmissionTransaction, deserialized.HasSubmissionTransaction);
         Assert.Equal(expectedHelpKeywords, deserialized.HelpKeywords);
         Assert.Equal(expectedHelpMessage, deserialized.HelpMessage);
         Assert.Equal(expectedKycSubmissionFormID, deserialized.KycSubmissionFormID);
         Assert.Equal(expectedMessageFlow, deserialized.MessageFlow);
-        Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedOptinKeywords, deserialized.OptinKeywords);
         Assert.Equal(expectedOptinMessage, deserialized.OptinMessage);
         Assert.Equal(expectedOptoutKeywords, deserialized.OptoutKeywords);
@@ -354,7 +355,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.Equal(expectedTcrSyncError, deserialized.TcrSyncError);
         Assert.Equal(expectedTelnyxCampaignID, deserialized.TelnyxCampaignID);
         Assert.Equal(expectedTermsAndConditionsLink, deserialized.TermsAndConditionsLink);
-        Assert.Equal(expectedType, deserialized.Type);
         Assert.Equal(expectedUpstreamCnpID, deserialized.UpstreamCnpID);
         Assert.NotNull(deserialized.UseCases);
         Assert.Equal(expectedUseCases.Count, deserialized.UseCases.Count);
@@ -372,6 +372,9 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -379,13 +382,11 @@ public class TcrCampaignWithUseCasesTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessageFlow = "messageFlow",
-            Name = "name",
             OptinKeywords = "optinKeywords",
             OptinMessage = "optinMessage",
             OptoutKeywords = "optoutKeywords",
@@ -400,7 +401,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
             TcrSyncError = "tcrSyncError",
             TelnyxCampaignID = "telnyxCampaignId",
             TermsAndConditionsLink = "termsAndConditionsLink",
-            Type = "type",
             UpstreamCnpID = "upstreamCnpId",
             UseCases =
             [
@@ -409,10 +409,10 @@ public class TcrCampaignWithUseCasesTest : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -426,6 +426,9 @@ public class TcrCampaignWithUseCasesTest : TestBase
         var model = new TcrCampaignWithUseCases
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -458,16 +461,10 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.False(model.RawData.ContainsKey("createdAt"));
         Assert.Null(model.CustomerID);
         Assert.False(model.RawData.ContainsKey("customerId"));
-        Assert.Null(model.Description);
-        Assert.False(model.RawData.ContainsKey("description"));
         Assert.Null(model.HasSubmissionTransaction);
         Assert.False(model.RawData.ContainsKey("hasSubmissionTransaction"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.SubmittedToTcr);
         Assert.False(model.RawData.ContainsKey("submittedToTCR"));
-        Assert.Null(model.Type);
-        Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.UseCases);
         Assert.False(model.RawData.ContainsKey("useCases"));
     }
@@ -478,6 +475,9 @@ public class TcrCampaignWithUseCasesTest : TestBase
         var model = new TcrCampaignWithUseCases
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -513,6 +513,9 @@ public class TcrCampaignWithUseCasesTest : TestBase
         var model = new TcrCampaignWithUseCases
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -542,11 +545,8 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = null,
             CreatedAt = null,
             CustomerID = null,
-            Description = null,
             HasSubmissionTransaction = null,
-            Name = null,
             SubmittedToTcr = null,
-            Type = null,
             UseCases = null,
         };
 
@@ -556,16 +556,10 @@ public class TcrCampaignWithUseCasesTest : TestBase
         Assert.False(model.RawData.ContainsKey("createdAt"));
         Assert.Null(model.CustomerID);
         Assert.False(model.RawData.ContainsKey("customerId"));
-        Assert.Null(model.Description);
-        Assert.False(model.RawData.ContainsKey("description"));
         Assert.Null(model.HasSubmissionTransaction);
         Assert.False(model.RawData.ContainsKey("hasSubmissionTransaction"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.SubmittedToTcr);
         Assert.False(model.RawData.ContainsKey("submittedToTCR"));
-        Assert.Null(model.Type);
-        Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.UseCases);
         Assert.False(model.RawData.ContainsKey("useCases"));
     }
@@ -576,6 +570,9 @@ public class TcrCampaignWithUseCasesTest : TestBase
         var model = new TcrCampaignWithUseCases
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -605,11 +602,8 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = null,
             CreatedAt = null,
             CustomerID = null,
-            Description = null,
             HasSubmissionTransaction = null,
-            Name = null,
             SubmittedToTcr = null,
-            Type = null,
             UseCases = null,
         };
 
@@ -623,12 +617,12 @@ public class TcrCampaignWithUseCasesTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
-            HasSubmissionTransaction = true,
             Name = "name",
-            SubmittedToTcr = true,
             Type = "type",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            HasSubmissionTransaction = true,
+            SubmittedToTcr = true,
             UseCases =
             [
                 new()
@@ -636,10 +630,10 @@ public class TcrCampaignWithUseCasesTest : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -703,12 +697,12 @@ public class TcrCampaignWithUseCasesTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
-            HasSubmissionTransaction = true,
             Name = "name",
-            SubmittedToTcr = true,
             Type = "type",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            HasSubmissionTransaction = true,
+            SubmittedToTcr = true,
             UseCases =
             [
                 new()
@@ -716,10 +710,10 @@ public class TcrCampaignWithUseCasesTest : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -734,12 +728,12 @@ public class TcrCampaignWithUseCasesTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
-            HasSubmissionTransaction = true,
             Name = "name",
-            SubmittedToTcr = true,
             Type = "type",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            HasSubmissionTransaction = true,
+            SubmittedToTcr = true,
             UseCases =
             [
                 new()
@@ -747,10 +741,10 @@ public class TcrCampaignWithUseCasesTest : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
 
@@ -840,12 +834,12 @@ public class TcrCampaignWithUseCasesTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
-            HasSubmissionTransaction = true,
             Name = "name",
-            SubmittedToTcr = true,
             Type = "type",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            HasSubmissionTransaction = true,
+            SubmittedToTcr = true,
             UseCases =
             [
                 new()
@@ -853,10 +847,10 @@ public class TcrCampaignWithUseCasesTest : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
 
@@ -898,6 +892,9 @@ public class TcrCampaignWithUseCasesTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -905,13 +902,11 @@ public class TcrCampaignWithUseCasesTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessageFlow = "messageFlow",
-            Name = "name",
             OptinKeywords = "optinKeywords",
             OptinMessage = "optinMessage",
             OptoutKeywords = "optoutKeywords",
@@ -926,7 +921,6 @@ public class TcrCampaignWithUseCasesTest : TestBase
             TcrSyncError = "tcrSyncError",
             TelnyxCampaignID = "telnyxCampaignId",
             TermsAndConditionsLink = "termsAndConditionsLink",
-            Type = "type",
             UpstreamCnpID = "upstreamCnpId",
             UseCases =
             [
@@ -935,10 +929,10 @@ public class TcrCampaignWithUseCasesTest : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -956,6 +950,9 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -963,13 +960,11 @@ public class IntersectionMember1Test : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessageFlow = "messageFlow",
-            Name = "name",
             OptinKeywords = "optinKeywords",
             OptinMessage = "optinMessage",
             OptoutKeywords = "optoutKeywords",
@@ -984,7 +979,6 @@ public class IntersectionMember1Test : TestBase
             TcrSyncError = "tcrSyncError",
             TelnyxCampaignID = "telnyxCampaignId",
             TermsAndConditionsLink = "termsAndConditionsLink",
-            Type = "type",
             UpstreamCnpID = "upstreamCnpId",
             UseCases =
             [
@@ -993,14 +987,17 @@ public class IntersectionMember1Test : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
 
+        string expectedDescription = "description";
+        string expectedName = "name";
+        string expectedType = "type";
         DateTimeOffset expectedBilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedBrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         double expectedCost = 0;
@@ -1010,13 +1007,11 @@ public class IntersectionMember1Test : TestBase
         DateTimeOffset expectedDcaElectionsCompletedAt = DateTimeOffset.Parse(
             "2019-12-27T18:11:19.117Z"
         );
-        string expectedDescription = "description";
         bool expectedHasSubmissionTransaction = true;
         string expectedHelpKeywords = "helpKeywords";
         string expectedHelpMessage = "helpMessage";
         string expectedKycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedMessageFlow = "messageFlow";
-        string expectedName = "name";
         string expectedOptinKeywords = "optinKeywords";
         string expectedOptinMessage = "optinMessage";
         string expectedOptoutKeywords = "optoutKeywords";
@@ -1031,7 +1026,6 @@ public class IntersectionMember1Test : TestBase
         string expectedTcrSyncError = "tcrSyncError";
         string expectedTelnyxCampaignID = "telnyxCampaignId";
         string expectedTermsAndConditionsLink = "termsAndConditionsLink";
-        string expectedType = "type";
         string expectedUpstreamCnpID = "upstreamCnpId";
         List<UseCase> expectedUseCases =
         [
@@ -1040,13 +1034,16 @@ public class IntersectionMember1Test : TestBase
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                SampleMessages = ["string"],
                 CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                SampleMessages = ["string"],
             },
         ];
 
+        Assert.Equal(expectedDescription, model.Description);
+        Assert.Equal(expectedName, model.Name);
+        Assert.Equal(expectedType, model.Type);
         Assert.Equal(expectedBilledDate, model.BilledDate);
         Assert.Equal(expectedBrandID, model.BrandID);
         Assert.Equal(expectedCost, model.Cost);
@@ -1054,13 +1051,11 @@ public class IntersectionMember1Test : TestBase
         Assert.Equal(expectedCustomerID, model.CustomerID);
         Assert.Equal(expectedDcaElectionsComplete, model.DcaElectionsComplete);
         Assert.Equal(expectedDcaElectionsCompletedAt, model.DcaElectionsCompletedAt);
-        Assert.Equal(expectedDescription, model.Description);
         Assert.Equal(expectedHasSubmissionTransaction, model.HasSubmissionTransaction);
         Assert.Equal(expectedHelpKeywords, model.HelpKeywords);
         Assert.Equal(expectedHelpMessage, model.HelpMessage);
         Assert.Equal(expectedKycSubmissionFormID, model.KycSubmissionFormID);
         Assert.Equal(expectedMessageFlow, model.MessageFlow);
-        Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedOptinKeywords, model.OptinKeywords);
         Assert.Equal(expectedOptinMessage, model.OptinMessage);
         Assert.Equal(expectedOptoutKeywords, model.OptoutKeywords);
@@ -1075,7 +1070,6 @@ public class IntersectionMember1Test : TestBase
         Assert.Equal(expectedTcrSyncError, model.TcrSyncError);
         Assert.Equal(expectedTelnyxCampaignID, model.TelnyxCampaignID);
         Assert.Equal(expectedTermsAndConditionsLink, model.TermsAndConditionsLink);
-        Assert.Equal(expectedType, model.Type);
         Assert.Equal(expectedUpstreamCnpID, model.UpstreamCnpID);
         Assert.NotNull(model.UseCases);
         Assert.Equal(expectedUseCases.Count, model.UseCases.Count);
@@ -1090,6 +1084,9 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -1097,13 +1094,11 @@ public class IntersectionMember1Test : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessageFlow = "messageFlow",
-            Name = "name",
             OptinKeywords = "optinKeywords",
             OptinMessage = "optinMessage",
             OptoutKeywords = "optoutKeywords",
@@ -1118,7 +1113,6 @@ public class IntersectionMember1Test : TestBase
             TcrSyncError = "tcrSyncError",
             TelnyxCampaignID = "telnyxCampaignId",
             TermsAndConditionsLink = "termsAndConditionsLink",
-            Type = "type",
             UpstreamCnpID = "upstreamCnpId",
             UseCases =
             [
@@ -1127,10 +1121,10 @@ public class IntersectionMember1Test : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -1149,6 +1143,9 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -1156,13 +1153,11 @@ public class IntersectionMember1Test : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessageFlow = "messageFlow",
-            Name = "name",
             OptinKeywords = "optinKeywords",
             OptinMessage = "optinMessage",
             OptoutKeywords = "optoutKeywords",
@@ -1177,7 +1172,6 @@ public class IntersectionMember1Test : TestBase
             TcrSyncError = "tcrSyncError",
             TelnyxCampaignID = "telnyxCampaignId",
             TermsAndConditionsLink = "termsAndConditionsLink",
-            Type = "type",
             UpstreamCnpID = "upstreamCnpId",
             UseCases =
             [
@@ -1186,10 +1180,10 @@ public class IntersectionMember1Test : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -1201,6 +1195,9 @@ public class IntersectionMember1Test : TestBase
         );
         Assert.NotNull(deserialized);
 
+        string expectedDescription = "description";
+        string expectedName = "name";
+        string expectedType = "type";
         DateTimeOffset expectedBilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedBrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         double expectedCost = 0;
@@ -1210,13 +1207,11 @@ public class IntersectionMember1Test : TestBase
         DateTimeOffset expectedDcaElectionsCompletedAt = DateTimeOffset.Parse(
             "2019-12-27T18:11:19.117Z"
         );
-        string expectedDescription = "description";
         bool expectedHasSubmissionTransaction = true;
         string expectedHelpKeywords = "helpKeywords";
         string expectedHelpMessage = "helpMessage";
         string expectedKycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedMessageFlow = "messageFlow";
-        string expectedName = "name";
         string expectedOptinKeywords = "optinKeywords";
         string expectedOptinMessage = "optinMessage";
         string expectedOptoutKeywords = "optoutKeywords";
@@ -1231,7 +1226,6 @@ public class IntersectionMember1Test : TestBase
         string expectedTcrSyncError = "tcrSyncError";
         string expectedTelnyxCampaignID = "telnyxCampaignId";
         string expectedTermsAndConditionsLink = "termsAndConditionsLink";
-        string expectedType = "type";
         string expectedUpstreamCnpID = "upstreamCnpId";
         List<UseCase> expectedUseCases =
         [
@@ -1240,13 +1234,16 @@ public class IntersectionMember1Test : TestBase
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                SampleMessages = ["string"],
                 CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                SampleMessages = ["string"],
             },
         ];
 
+        Assert.Equal(expectedDescription, deserialized.Description);
+        Assert.Equal(expectedName, deserialized.Name);
+        Assert.Equal(expectedType, deserialized.Type);
         Assert.Equal(expectedBilledDate, deserialized.BilledDate);
         Assert.Equal(expectedBrandID, deserialized.BrandID);
         Assert.Equal(expectedCost, deserialized.Cost);
@@ -1254,13 +1251,11 @@ public class IntersectionMember1Test : TestBase
         Assert.Equal(expectedCustomerID, deserialized.CustomerID);
         Assert.Equal(expectedDcaElectionsComplete, deserialized.DcaElectionsComplete);
         Assert.Equal(expectedDcaElectionsCompletedAt, deserialized.DcaElectionsCompletedAt);
-        Assert.Equal(expectedDescription, deserialized.Description);
         Assert.Equal(expectedHasSubmissionTransaction, deserialized.HasSubmissionTransaction);
         Assert.Equal(expectedHelpKeywords, deserialized.HelpKeywords);
         Assert.Equal(expectedHelpMessage, deserialized.HelpMessage);
         Assert.Equal(expectedKycSubmissionFormID, deserialized.KycSubmissionFormID);
         Assert.Equal(expectedMessageFlow, deserialized.MessageFlow);
-        Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedOptinKeywords, deserialized.OptinKeywords);
         Assert.Equal(expectedOptinMessage, deserialized.OptinMessage);
         Assert.Equal(expectedOptoutKeywords, deserialized.OptoutKeywords);
@@ -1275,7 +1270,6 @@ public class IntersectionMember1Test : TestBase
         Assert.Equal(expectedTcrSyncError, deserialized.TcrSyncError);
         Assert.Equal(expectedTelnyxCampaignID, deserialized.TelnyxCampaignID);
         Assert.Equal(expectedTermsAndConditionsLink, deserialized.TermsAndConditionsLink);
-        Assert.Equal(expectedType, deserialized.Type);
         Assert.Equal(expectedUpstreamCnpID, deserialized.UpstreamCnpID);
         Assert.NotNull(deserialized.UseCases);
         Assert.Equal(expectedUseCases.Count, deserialized.UseCases.Count);
@@ -1290,6 +1284,9 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -1297,13 +1294,11 @@ public class IntersectionMember1Test : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessageFlow = "messageFlow",
-            Name = "name",
             OptinKeywords = "optinKeywords",
             OptinMessage = "optinMessage",
             OptoutKeywords = "optoutKeywords",
@@ -1318,7 +1313,6 @@ public class IntersectionMember1Test : TestBase
             TcrSyncError = "tcrSyncError",
             TelnyxCampaignID = "telnyxCampaignId",
             TermsAndConditionsLink = "termsAndConditionsLink",
-            Type = "type",
             UpstreamCnpID = "upstreamCnpId",
             UseCases =
             [
@@ -1327,10 +1321,10 @@ public class IntersectionMember1Test : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -1343,6 +1337,9 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -1371,16 +1368,10 @@ public class IntersectionMember1Test : TestBase
 
         Assert.Null(model.CustomerID);
         Assert.False(model.RawData.ContainsKey("customerId"));
-        Assert.Null(model.Description);
-        Assert.False(model.RawData.ContainsKey("description"));
         Assert.Null(model.HasSubmissionTransaction);
         Assert.False(model.RawData.ContainsKey("hasSubmissionTransaction"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.SubmittedToTcr);
         Assert.False(model.RawData.ContainsKey("submittedToTCR"));
-        Assert.Null(model.Type);
-        Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.UseCases);
         Assert.False(model.RawData.ContainsKey("useCases"));
     }
@@ -1390,6 +1381,9 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -1424,6 +1418,9 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -1451,26 +1448,17 @@ public class IntersectionMember1Test : TestBase
 
             // Null should be interpreted as omitted for these properties
             CustomerID = null,
-            Description = null,
             HasSubmissionTransaction = null,
-            Name = null,
             SubmittedToTcr = null,
-            Type = null,
             UseCases = null,
         };
 
         Assert.Null(model.CustomerID);
         Assert.False(model.RawData.ContainsKey("customerId"));
-        Assert.Null(model.Description);
-        Assert.False(model.RawData.ContainsKey("description"));
         Assert.Null(model.HasSubmissionTransaction);
         Assert.False(model.RawData.ContainsKey("hasSubmissionTransaction"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.SubmittedToTcr);
         Assert.False(model.RawData.ContainsKey("submittedToTCR"));
-        Assert.Null(model.Type);
-        Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.UseCases);
         Assert.False(model.RawData.ContainsKey("useCases"));
     }
@@ -1480,6 +1468,9 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -1507,11 +1498,8 @@ public class IntersectionMember1Test : TestBase
 
             // Null should be interpreted as omitted for these properties
             CustomerID = null,
-            Description = null,
             HasSubmissionTransaction = null,
-            Name = null,
             SubmittedToTcr = null,
-            Type = null,
             UseCases = null,
         };
 
@@ -1523,12 +1511,12 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
-            HasSubmissionTransaction = true,
             Name = "name",
-            SubmittedToTcr = true,
             Type = "type",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            HasSubmissionTransaction = true,
+            SubmittedToTcr = true,
             UseCases =
             [
                 new()
@@ -1536,10 +1524,10 @@ public class IntersectionMember1Test : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -1599,12 +1587,12 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
-            HasSubmissionTransaction = true,
             Name = "name",
-            SubmittedToTcr = true,
             Type = "type",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            HasSubmissionTransaction = true,
+            SubmittedToTcr = true,
             UseCases =
             [
                 new()
@@ -1612,10 +1600,10 @@ public class IntersectionMember1Test : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -1628,12 +1616,12 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
-            HasSubmissionTransaction = true,
             Name = "name",
-            SubmittedToTcr = true,
             Type = "type",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            HasSubmissionTransaction = true,
+            SubmittedToTcr = true,
             UseCases =
             [
                 new()
@@ -1641,10 +1629,10 @@ public class IntersectionMember1Test : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
 
@@ -1729,12 +1717,12 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
-            HasSubmissionTransaction = true,
             Name = "name",
-            SubmittedToTcr = true,
             Type = "type",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            HasSubmissionTransaction = true,
+            SubmittedToTcr = true,
             UseCases =
             [
                 new()
@@ -1742,10 +1730,10 @@ public class IntersectionMember1Test : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
 
@@ -1783,6 +1771,9 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1
         {
+            Description = "description",
+            Name = "name",
+            Type = "type",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Cost = 0,
@@ -1790,13 +1781,11 @@ public class IntersectionMember1Test : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             DcaElectionsComplete = true,
             DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
             KycSubmissionFormID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessageFlow = "messageFlow",
-            Name = "name",
             OptinKeywords = "optinKeywords",
             OptinMessage = "optinMessage",
             OptoutKeywords = "optoutKeywords",
@@ -1811,7 +1800,6 @@ public class IntersectionMember1Test : TestBase
             TcrSyncError = "tcrSyncError",
             TelnyxCampaignID = "telnyxCampaignId",
             TermsAndConditionsLink = "termsAndConditionsLink",
-            Type = "type",
             UpstreamCnpID = "upstreamCnpId",
             UseCases =
             [
@@ -1820,10 +1808,10 @@ public class IntersectionMember1Test : TestBase
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    SampleMessages = ["string"],
                     CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
                 },
             ],
         };
@@ -1964,33 +1952,32 @@ public class UseCaseTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        List<string> expectedSampleMessages = ["string"];
         string expectedCampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs =
             MessagingUseCaseUs.Marketing;
-        List<string> expectedSampleMessages = ["string"];
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedUpdatedAt, model.UpdatedAt);
-        Assert.Equal(expectedCampaignID, model.CampaignID);
-        Assert.Equal(expectedCustomerID, model.CustomerID);
-        Assert.Equal(expectedMessagingUseCaseUs, model.MessagingUseCaseUs);
-        Assert.NotNull(model.SampleMessages);
         Assert.Equal(expectedSampleMessages.Count, model.SampleMessages.Count);
         for (int i = 0; i < expectedSampleMessages.Count; i++)
         {
             Assert.Equal(expectedSampleMessages[i], model.SampleMessages[i]);
         }
+        Assert.Equal(expectedCampaignID, model.CampaignID);
+        Assert.Equal(expectedCustomerID, model.CustomerID);
+        Assert.Equal(expectedMessagingUseCaseUs, model.MessagingUseCaseUs);
     }
 
     [Fact]
@@ -2001,10 +1988,10 @@ public class UseCaseTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -2021,10 +2008,10 @@ public class UseCaseTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -2037,24 +2024,23 @@ public class UseCaseTest : TestBase
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        List<string> expectedSampleMessages = ["string"];
         string expectedCampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs =
             MessagingUseCaseUs.Marketing;
-        List<string> expectedSampleMessages = ["string"];
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedUpdatedAt, deserialized.UpdatedAt);
-        Assert.Equal(expectedCampaignID, deserialized.CampaignID);
-        Assert.Equal(expectedCustomerID, deserialized.CustomerID);
-        Assert.Equal(expectedMessagingUseCaseUs, deserialized.MessagingUseCaseUs);
-        Assert.NotNull(deserialized.SampleMessages);
         Assert.Equal(expectedSampleMessages.Count, deserialized.SampleMessages.Count);
         for (int i = 0; i < expectedSampleMessages.Count; i++)
         {
             Assert.Equal(expectedSampleMessages[i], deserialized.SampleMessages[i]);
         }
+        Assert.Equal(expectedCampaignID, deserialized.CampaignID);
+        Assert.Equal(expectedCustomerID, deserialized.CustomerID);
+        Assert.Equal(expectedMessagingUseCaseUs, deserialized.MessagingUseCaseUs);
     }
 
     [Fact]
@@ -2065,10 +2051,10 @@ public class UseCaseTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
         };
 
         model.Validate();
@@ -2077,7 +2063,11 @@ public class UseCaseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new UseCase { UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z") };
+        var model = new UseCase
+        {
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
+        };
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
@@ -2089,14 +2079,16 @@ public class UseCaseTest : TestBase
         Assert.False(model.RawData.ContainsKey("customerId"));
         Assert.Null(model.MessagingUseCaseUs);
         Assert.False(model.RawData.ContainsKey("messagingUseCaseUs"));
-        Assert.Null(model.SampleMessages);
-        Assert.False(model.RawData.ContainsKey("sampleMessages"));
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new UseCase { UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z") };
+        var model = new UseCase
+        {
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
+        };
 
         model.Validate();
     }
@@ -2107,6 +2099,7 @@ public class UseCaseTest : TestBase
         var model = new UseCase
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
 
             // Null should be interpreted as omitted for these properties
             ID = null,
@@ -2114,7 +2107,6 @@ public class UseCaseTest : TestBase
             CampaignID = null,
             CustomerID = null,
             MessagingUseCaseUs = null,
-            SampleMessages = null,
         };
 
         Assert.Null(model.ID);
@@ -2127,8 +2119,6 @@ public class UseCaseTest : TestBase
         Assert.False(model.RawData.ContainsKey("customerId"));
         Assert.Null(model.MessagingUseCaseUs);
         Assert.False(model.RawData.ContainsKey("messagingUseCaseUs"));
-        Assert.Null(model.SampleMessages);
-        Assert.False(model.RawData.ContainsKey("sampleMessages"));
     }
 
     [Fact]
@@ -2137,6 +2127,7 @@ public class UseCaseTest : TestBase
         var model = new UseCase
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
 
             // Null should be interpreted as omitted for these properties
             ID = null,
@@ -2144,7 +2135,6 @@ public class UseCaseTest : TestBase
             CampaignID = null,
             CustomerID = null,
             MessagingUseCaseUs = null,
-            SampleMessages = null,
         };
 
         model.Validate();
@@ -2157,10 +2147,10 @@ public class UseCaseTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
         };
 
         Assert.Null(model.UpdatedAt);
@@ -2174,10 +2164,10 @@ public class UseCaseTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
         };
 
         model.Validate();
@@ -2190,10 +2180,10 @@ public class UseCaseTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
 
             UpdatedAt = null,
         };
@@ -2209,10 +2199,10 @@ public class UseCaseTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
 
             UpdatedAt = null,
         };
@@ -2228,10 +2218,10 @@ public class UseCaseTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
         };
 
         UseCase copied = new(model);
@@ -2247,27 +2237,26 @@ public class SentDmServicesCommonEntitiesTcrCampaignUseCasePropertiesTest : Test
     {
         var model = new SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties
         {
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
         };
 
+        List<string> expectedSampleMessages = ["string"];
         string expectedCampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs =
             MessagingUseCaseUs.Marketing;
-        List<string> expectedSampleMessages = ["string"];
 
-        Assert.Equal(expectedCampaignID, model.CampaignID);
-        Assert.Equal(expectedCustomerID, model.CustomerID);
-        Assert.Equal(expectedMessagingUseCaseUs, model.MessagingUseCaseUs);
-        Assert.NotNull(model.SampleMessages);
         Assert.Equal(expectedSampleMessages.Count, model.SampleMessages.Count);
         for (int i = 0; i < expectedSampleMessages.Count; i++)
         {
             Assert.Equal(expectedSampleMessages[i], model.SampleMessages[i]);
         }
+        Assert.Equal(expectedCampaignID, model.CampaignID);
+        Assert.Equal(expectedCustomerID, model.CustomerID);
+        Assert.Equal(expectedMessagingUseCaseUs, model.MessagingUseCaseUs);
     }
 
     [Fact]
@@ -2275,10 +2264,10 @@ public class SentDmServicesCommonEntitiesTcrCampaignUseCasePropertiesTest : Test
     {
         var model = new SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties
         {
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -2296,10 +2285,10 @@ public class SentDmServicesCommonEntitiesTcrCampaignUseCasePropertiesTest : Test
     {
         var model = new SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties
         {
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -2310,21 +2299,20 @@ public class SentDmServicesCommonEntitiesTcrCampaignUseCasePropertiesTest : Test
             );
         Assert.NotNull(deserialized);
 
+        List<string> expectedSampleMessages = ["string"];
         string expectedCampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs =
             MessagingUseCaseUs.Marketing;
-        List<string> expectedSampleMessages = ["string"];
 
-        Assert.Equal(expectedCampaignID, deserialized.CampaignID);
-        Assert.Equal(expectedCustomerID, deserialized.CustomerID);
-        Assert.Equal(expectedMessagingUseCaseUs, deserialized.MessagingUseCaseUs);
-        Assert.NotNull(deserialized.SampleMessages);
         Assert.Equal(expectedSampleMessages.Count, deserialized.SampleMessages.Count);
         for (int i = 0; i < expectedSampleMessages.Count; i++)
         {
             Assert.Equal(expectedSampleMessages[i], deserialized.SampleMessages[i]);
         }
+        Assert.Equal(expectedCampaignID, deserialized.CampaignID);
+        Assert.Equal(expectedCustomerID, deserialized.CustomerID);
+        Assert.Equal(expectedMessagingUseCaseUs, deserialized.MessagingUseCaseUs);
     }
 
     [Fact]
@@ -2332,10 +2320,10 @@ public class SentDmServicesCommonEntitiesTcrCampaignUseCasePropertiesTest : Test
     {
         var model = new SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties
         {
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
         };
 
         model.Validate();
@@ -2344,7 +2332,10 @@ public class SentDmServicesCommonEntitiesTcrCampaignUseCasePropertiesTest : Test
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties { };
+        var model = new SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties
+        {
+            SampleMessages = ["string"],
+        };
 
         Assert.Null(model.CampaignID);
         Assert.False(model.RawData.ContainsKey("campaignId"));
@@ -2352,14 +2343,15 @@ public class SentDmServicesCommonEntitiesTcrCampaignUseCasePropertiesTest : Test
         Assert.False(model.RawData.ContainsKey("customerId"));
         Assert.Null(model.MessagingUseCaseUs);
         Assert.False(model.RawData.ContainsKey("messagingUseCaseUs"));
-        Assert.Null(model.SampleMessages);
-        Assert.False(model.RawData.ContainsKey("sampleMessages"));
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties { };
+        var model = new SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties
+        {
+            SampleMessages = ["string"],
+        };
 
         model.Validate();
     }
@@ -2369,11 +2361,12 @@ public class SentDmServicesCommonEntitiesTcrCampaignUseCasePropertiesTest : Test
     {
         var model = new SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties
         {
+            SampleMessages = ["string"],
+
             // Null should be interpreted as omitted for these properties
             CampaignID = null,
             CustomerID = null,
             MessagingUseCaseUs = null,
-            SampleMessages = null,
         };
 
         Assert.Null(model.CampaignID);
@@ -2382,8 +2375,6 @@ public class SentDmServicesCommonEntitiesTcrCampaignUseCasePropertiesTest : Test
         Assert.False(model.RawData.ContainsKey("customerId"));
         Assert.Null(model.MessagingUseCaseUs);
         Assert.False(model.RawData.ContainsKey("messagingUseCaseUs"));
-        Assert.Null(model.SampleMessages);
-        Assert.False(model.RawData.ContainsKey("sampleMessages"));
     }
 
     [Fact]
@@ -2391,11 +2382,12 @@ public class SentDmServicesCommonEntitiesTcrCampaignUseCasePropertiesTest : Test
     {
         var model = new SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties
         {
+            SampleMessages = ["string"],
+
             // Null should be interpreted as omitted for these properties
             CampaignID = null,
             CustomerID = null,
             MessagingUseCaseUs = null,
-            SampleMessages = null,
         };
 
         model.Validate();
@@ -2406,10 +2398,10 @@ public class SentDmServicesCommonEntitiesTcrCampaignUseCasePropertiesTest : Test
     {
         var model = new SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties
         {
+            SampleMessages = ["string"],
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
         };
 
         SentDmServicesCommonEntitiesTcrCampaignUseCaseProperties copied = new(model);
