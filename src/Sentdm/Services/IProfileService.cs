@@ -154,11 +154,16 @@ public interface IProfileService
     /// provided webhook URL when finished.
     ///
     /// <para>                Prerequisites:                 - Profile must be completed
-    ///                 - If inheritTcrBrand=false: Profile must have existing brand
-    ///             - If inheritTcrBrand=true: Parent must have existing brand
-    ///       - If TCR application: Must have at least one campaign (own or inherited)
-    ///               - If inheritTcrCampaign=false: Profile should have campaigns
-    ///           - If inheritTcrCampaign=true: Parent must have campaigns</para>
+    ///
+    ///               - If inheritTcrBrand=false: Profile must have existing brand
+    ///
+    ///         - If inheritTcrBrand=true: Parent must have existing brand
+    ///
+    /// - If TCR application: Must have at least one campaign (own or inherited)
+    ///
+    ///       - If inheritTcrCampaign=false: Profile should have campaigns
+    ///
+    /// - If inheritTcrCampaign=true: Parent must have campaigns</para>
     ///
     /// <para>                Status Logic:                 - If both SMS and WhatsApp
     /// channels are missing → SUBMITTED                 - If TCR application and not
