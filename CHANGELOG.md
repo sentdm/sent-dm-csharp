@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.28.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.27.0...v0.28.0) (2026-07-07)
+
+
+### Features
+
+* enable release-please releases and back-sync trigger ([f18de8b](https://github.com/sentdm/sent-dm-csharp/commit/f18de8bbe446abde6f3a91cb277e292fb1831080))
+* initial stlc build ([3212429](https://github.com/sentdm/sent-dm-csharp/commit/3212429aa1a128c7038646f63915cd6019bd7e3f))
+
+
+### Chores
+
+* add promote, back-sync, and trunk-lock workflows ([caff6e3](https://github.com/sentdm/sent-dm-csharp/commit/caff6e30885ed90586fa68bfacc3c1a833918af9))
+* add release back-sync trigger workflow ([01c5d03](https://github.com/sentdm/sent-dm-csharp/commit/01c5d0331504aae5be73aaa8e7ad2a47d51b6de8))
+
 ## 0.27.0 (2026-07-02)
 
 Full Changelog: [v0.26.0...v0.27.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.26.0...v0.27.0)
