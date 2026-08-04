@@ -17,7 +17,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expectedMessagingVolume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
@@ -31,7 +30,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
         [
             new() { ID = "id", IsMain = true },
         ];
-        string expectedExpectedMessagingVolume = "expectedMessagingVolume";
         bool expectedIsTcrApplication = true;
         string expectedNotes = "notes";
         string expectedPhoneNumberPrefix = "phoneNumberPrefix";
@@ -45,7 +43,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
         {
             Assert.Equal(expectedDestinationCountries[i], model.DestinationCountries[i]);
         }
-        Assert.Equal(expectedExpectedMessagingVolume, model.ExpectedMessagingVolume);
         Assert.Equal(expectedIsTcrApplication, model.IsTcrApplication);
         Assert.Equal(expectedNotes, model.Notes);
         Assert.Equal(expectedPhoneNumberPrefix, model.PhoneNumberPrefix);
@@ -61,7 +58,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expectedMessagingVolume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
@@ -87,7 +83,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expectedMessagingVolume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
@@ -109,7 +104,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
         [
             new() { ID = "id", IsMain = true },
         ];
-        string expectedExpectedMessagingVolume = "expectedMessagingVolume";
         bool expectedIsTcrApplication = true;
         string expectedNotes = "notes";
         string expectedPhoneNumberPrefix = "phoneNumberPrefix";
@@ -123,7 +117,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
         {
             Assert.Equal(expectedDestinationCountries[i], deserialized.DestinationCountries[i]);
         }
-        Assert.Equal(expectedExpectedMessagingVolume, deserialized.ExpectedMessagingVolume);
         Assert.Equal(expectedIsTcrApplication, deserialized.IsTcrApplication);
         Assert.Equal(expectedNotes, deserialized.Notes);
         Assert.Equal(expectedPhoneNumberPrefix, deserialized.PhoneNumberPrefix);
@@ -139,7 +132,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expectedMessagingVolume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
@@ -161,8 +153,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
 
         Assert.Null(model.DestinationCountries);
         Assert.False(model.RawData.ContainsKey("destinationCountries"));
-        Assert.Null(model.ExpectedMessagingVolume);
-        Assert.False(model.RawData.ContainsKey("expectedMessagingVolume"));
         Assert.Null(model.IsTcrApplication);
         Assert.False(model.RawData.ContainsKey("isTcrApplication"));
         Assert.Null(model.Notes);
@@ -196,7 +186,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
                 Vertical = TcrVertical.Professional,
 
                 DestinationCountries = null,
-                ExpectedMessagingVolume = null,
                 IsTcrApplication = null,
                 Notes = null,
                 PhoneNumberPrefix = null,
@@ -205,8 +194,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
 
         Assert.Null(model.DestinationCountries);
         Assert.True(model.RawData.ContainsKey("destinationCountries"));
-        Assert.Null(model.ExpectedMessagingVolume);
-        Assert.True(model.RawData.ContainsKey("expectedMessagingVolume"));
         Assert.Null(model.IsTcrApplication);
         Assert.True(model.RawData.ContainsKey("isTcrApplication"));
         Assert.Null(model.Notes);
@@ -227,7 +214,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
                 Vertical = TcrVertical.Professional,
 
                 DestinationCountries = null,
-                ExpectedMessagingVolume = null,
                 IsTcrApplication = null,
                 Notes = null,
                 PhoneNumberPrefix = null,
@@ -246,7 +232,6 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expectedMessagingVolume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",

@@ -8,7 +8,7 @@ public class CampaignServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var apiResponseOfTcrCampaignWithUseCases = await this.client.Profiles.Campaigns.Create(
+        var campaign = await this.client.Profiles.Campaigns.Create(
             "770e8400-e29b-41d4-a716-446655440002",
             new()
             {
@@ -40,17 +40,18 @@ public class CampaignServiceTest : TestBase
                     OptoutMessage = "You have been unsubscribed. Reply START to opt back in.",
                     PrivacyPolicyLink = "https://acmecorp.com/privacy",
                     TermsAndConditionsLink = "https://acmecorp.com/terms",
+                    Volume = null,
                 },
             },
             TestContext.Current.CancellationToken
         );
-        apiResponseOfTcrCampaignWithUseCases.Validate();
+        campaign.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var apiResponseOfTcrCampaignWithUseCases = await this.client.Profiles.Campaigns.Update(
+        var campaign = await this.client.Profiles.Campaigns.Update(
             "b2c3d4e5-f6a7-8901-bcde-f12345678901",
             new()
             {
@@ -82,11 +83,12 @@ public class CampaignServiceTest : TestBase
                     OptoutMessage = null,
                     PrivacyPolicyLink = null,
                     TermsAndConditionsLink = null,
+                    Volume = null,
                 },
             },
             TestContext.Current.CancellationToken
         );
-        apiResponseOfTcrCampaignWithUseCases.Validate();
+        campaign.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]

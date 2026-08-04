@@ -39,6 +39,7 @@ public class CampaignUpdateParamsTest : TestBase
                 OptoutMessage = null,
                 PrivacyPolicyLink = null,
                 TermsAndConditionsLink = null,
+                Volume = null,
             },
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
@@ -73,6 +74,7 @@ public class CampaignUpdateParamsTest : TestBase
             OptoutMessage = null,
             PrivacyPolicyLink = null,
             TermsAndConditionsLink = null,
+            Volume = null,
         };
         bool expectedSandbox = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
@@ -119,6 +121,7 @@ public class CampaignUpdateParamsTest : TestBase
                 OptoutMessage = null,
                 PrivacyPolicyLink = null,
                 TermsAndConditionsLink = null,
+                Volume = null,
             },
         };
 
@@ -163,6 +166,7 @@ public class CampaignUpdateParamsTest : TestBase
                 OptoutMessage = null,
                 PrivacyPolicyLink = null,
                 TermsAndConditionsLink = null,
+                Volume = null,
             },
 
             // Null should be interpreted as omitted for these properties
@@ -212,6 +216,7 @@ public class CampaignUpdateParamsTest : TestBase
                 OptoutMessage = null,
                 PrivacyPolicyLink = null,
                 TermsAndConditionsLink = null,
+                Volume = null,
             },
         };
 
@@ -261,6 +266,7 @@ public class CampaignUpdateParamsTest : TestBase
                 OptoutMessage = null,
                 PrivacyPolicyLink = null,
                 TermsAndConditionsLink = null,
+                Volume = null,
             },
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -308,6 +314,7 @@ public class CampaignUpdateParamsTest : TestBase
                 OptoutMessage = null,
                 PrivacyPolicyLink = null,
                 TermsAndConditionsLink = null,
+                Volume = null,
             },
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
