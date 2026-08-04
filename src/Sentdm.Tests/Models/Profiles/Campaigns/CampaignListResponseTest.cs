@@ -59,6 +59,7 @@ public class CampaignListResponseTest : TestBase
                             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         },
                     ],
+                    Volume = "volume",
                 },
             ],
             Error = new()
@@ -121,6 +122,7 @@ public class CampaignListResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
+                Volume = "volume",
             },
         ];
         ErrorDetail expectedError = new()
@@ -198,6 +200,7 @@ public class CampaignListResponseTest : TestBase
                             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         },
                     ],
+                    Volume = "volume",
                 },
             ],
             Error = new()
@@ -274,6 +277,7 @@ public class CampaignListResponseTest : TestBase
                             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         },
                     ],
+                    Volume = "volume",
                 },
             ],
             Error = new()
@@ -343,6 +347,7 @@ public class CampaignListResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
+                Volume = "volume",
             },
         ];
         ErrorDetail expectedError = new()
@@ -420,6 +425,7 @@ public class CampaignListResponseTest : TestBase
                             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         },
                     ],
+                    Volume = "volume",
                 },
             ],
             Error = new()
@@ -490,6 +496,7 @@ public class CampaignListResponseTest : TestBase
                             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         },
                     ],
+                    Volume = "volume",
                 },
             ],
             Error = new()
@@ -556,6 +563,7 @@ public class CampaignListResponseTest : TestBase
                             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         },
                     ],
+                    Volume = "volume",
                 },
             ],
             Error = new()
@@ -619,6 +627,7 @@ public class CampaignListResponseTest : TestBase
                             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         },
                     ],
+                    Volume = "volume",
                 },
             ],
             Error = new()
@@ -689,6 +698,7 @@ public class CampaignListResponseTest : TestBase
                             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         },
                     ],
+                    Volume = "volume",
                 },
             ],
             Error = new()
@@ -836,6 +846,7 @@ public class CampaignListResponseTest : TestBase
                             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         },
                     ],
+                    Volume = "volume",
                 },
             ],
             Error = new()
@@ -907,6 +918,7 @@ public class CampaignListResponseDataTest : TestBase
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
             ],
+            Volume = "volume",
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -952,6 +964,7 @@ public class CampaignListResponseDataTest : TestBase
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },
         ];
+        string expectedVolume = "volume";
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedBilledDate, model.BilledDate);
@@ -986,6 +999,7 @@ public class CampaignListResponseDataTest : TestBase
         {
             Assert.Equal(expectedUseCases[i], model.UseCases[i]);
         }
+        Assert.Equal(expectedVolume, model.Volume);
     }
 
     [Fact]
@@ -1033,6 +1047,7 @@ public class CampaignListResponseDataTest : TestBase
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
             ],
+            Volume = "volume",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -1089,6 +1104,7 @@ public class CampaignListResponseDataTest : TestBase
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
             ],
+            Volume = "volume",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -1141,6 +1157,7 @@ public class CampaignListResponseDataTest : TestBase
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },
         ];
+        string expectedVolume = "volume";
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedBilledDate, deserialized.BilledDate);
@@ -1175,6 +1192,7 @@ public class CampaignListResponseDataTest : TestBase
         {
             Assert.Equal(expectedUseCases[i], deserialized.UseCases[i]);
         }
+        Assert.Equal(expectedVolume, deserialized.Volume);
     }
 
     [Fact]
@@ -1222,6 +1240,7 @@ public class CampaignListResponseDataTest : TestBase
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
             ],
+            Volume = "volume",
         };
 
         model.Validate();
@@ -1251,6 +1270,7 @@ public class CampaignListResponseDataTest : TestBase
             TcrSyncError = "tcrSyncError",
             TermsAndConditionsLink = "termsAndConditionsLink",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Volume = "volume",
         };
 
         Assert.Null(model.ID);
@@ -1297,6 +1317,7 @@ public class CampaignListResponseDataTest : TestBase
             TcrSyncError = "tcrSyncError",
             TermsAndConditionsLink = "termsAndConditionsLink",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Volume = "volume",
         };
 
         model.Validate();
@@ -1326,6 +1347,7 @@ public class CampaignListResponseDataTest : TestBase
             TcrSyncError = "tcrSyncError",
             TermsAndConditionsLink = "termsAndConditionsLink",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Volume = "volume",
 
             // Null should be interpreted as omitted for these properties
             ID = null,
@@ -1383,6 +1405,7 @@ public class CampaignListResponseDataTest : TestBase
             TcrSyncError = "tcrSyncError",
             TermsAndConditionsLink = "termsAndConditionsLink",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Volume = "volume",
 
             // Null should be interpreted as omitted for these properties
             ID = null,
@@ -1465,6 +1488,8 @@ public class CampaignListResponseDataTest : TestBase
         Assert.False(model.RawData.ContainsKey("termsAndConditionsLink"));
         Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updatedAt"));
+        Assert.Null(model.Volume);
+        Assert.False(model.RawData.ContainsKey("volume"));
     }
 
     [Fact]
@@ -1544,6 +1569,7 @@ public class CampaignListResponseDataTest : TestBase
             TcrSyncError = null,
             TermsAndConditionsLink = null,
             UpdatedAt = null,
+            Volume = null,
         };
 
         Assert.Null(model.BilledDate);
@@ -1584,6 +1610,8 @@ public class CampaignListResponseDataTest : TestBase
         Assert.True(model.RawData.ContainsKey("termsAndConditionsLink"));
         Assert.Null(model.UpdatedAt);
         Assert.True(model.RawData.ContainsKey("updatedAt"));
+        Assert.Null(model.Volume);
+        Assert.True(model.RawData.ContainsKey("volume"));
     }
 
     [Fact]
@@ -1632,6 +1660,7 @@ public class CampaignListResponseDataTest : TestBase
             TcrSyncError = null,
             TermsAndConditionsLink = null,
             UpdatedAt = null,
+            Volume = null,
         };
 
         model.Validate();
@@ -1682,6 +1711,7 @@ public class CampaignListResponseDataTest : TestBase
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
             ],
+            Volume = "volume",
         };
 
         CampaignListResponseData copied = new(model);

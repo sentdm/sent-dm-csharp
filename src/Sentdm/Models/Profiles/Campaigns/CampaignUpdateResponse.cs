@@ -18,15 +18,7 @@ namespace Sentdm.Models.Profiles.Campaigns;
 public sealed record class CampaignUpdateResponse : JsonModel
 {
     /// <summary>
-    /// Customer-facing campaign representation for the public v3 API. Deliberately
-    /// does not inherit TcrCampaign. The service-layer type TcrCampaignWithUseCasesResponse
-    /// extends the database entity, so returning it directly from a public endpoint
-    /// serialized every column, including supplier-specific and internal provisioning
-    /// identifiers. This DTO is an explicit allowlist: a new column on the entity
-    /// is invisible to customers until it is added here on purpose. Intentionally
-    /// omitted: telnyxCampaignId (supplier-specific), plus cspId, resellerId, upstreamCnpId,
-    /// kycSubmissionFormId and sharingStatus (internal provisioning and CSP-to-DCA
-    /// plumbing). All six remain available on the admin API.
+    /// A 10DLC campaign registered for a brand.
     /// </summary>
     public CampaignUpdateResponseData? Data
     {
@@ -141,15 +133,7 @@ class CampaignUpdateResponseFromRaw : IFromRawJson<CampaignUpdateResponse>
 }
 
 /// <summary>
-/// Customer-facing campaign representation for the public v3 API. Deliberately does
-/// not inherit TcrCampaign. The service-layer type TcrCampaignWithUseCasesResponse
-/// extends the database entity, so returning it directly from a public endpoint serialized
-/// every column, including supplier-specific and internal provisioning identifiers.
-/// This DTO is an explicit allowlist: a new column on the entity is invisible to
-/// customers until it is added here on purpose. Intentionally omitted: telnyxCampaignId
-/// (supplier-specific), plus cspId, resellerId, upstreamCnpId, kycSubmissionFormId
-/// and sharingStatus (internal provisioning and CSP-to-DCA plumbing). All six remain
-/// available on the admin API.
+/// A 10DLC campaign registered for a brand.
 /// </summary>
 [JsonConverter(
     typeof(JsonModelConverter<CampaignUpdateResponseData, CampaignUpdateResponseDataFromRaw>)
@@ -531,6 +515,22 @@ public sealed record class CampaignUpdateResponseData : JsonModel
         }
     }
 
+    /// <summary>
+    /// Expected messaging volume for this campaign — customer-supplied on create/update,
+    /// and the             input to both the TCR usecase classification (LOW_VOLUME
+    /// vs MIXED/specific) and the campaign fee             tier. Surfaced so customers
+    /// can read back the value they set.
+    /// </summary>
+    public string? Volume
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("volume");
+        }
+        init { this._rawData.Set("volume", value); }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
@@ -565,6 +565,7 @@ public sealed record class CampaignUpdateResponseData : JsonModel
         {
             item.Validate();
         }
+        _ = this.Volume;
     }
 
     public CampaignUpdateResponseData() { }

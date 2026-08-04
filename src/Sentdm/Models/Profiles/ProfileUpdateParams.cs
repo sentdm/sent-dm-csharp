@@ -270,7 +270,7 @@ public record class ProfileUpdateParams : ParamsBase
     }
 
     /// <summary>
-    /// Reference to another profile to use for SMS/Telnyx configuration (optional)
+    /// Reference to another profile to use for SMS configuration (optional)
     /// </summary>
     public string? SendingPhoneNumberProfileID
     {

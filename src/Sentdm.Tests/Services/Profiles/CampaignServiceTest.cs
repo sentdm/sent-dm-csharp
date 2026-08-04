@@ -40,6 +40,7 @@ public class CampaignServiceTest : TestBase
                     OptoutMessage = "You have been unsubscribed. Reply START to opt back in.",
                     PrivacyPolicyLink = "https://acmecorp.com/privacy",
                     TermsAndConditionsLink = "https://acmecorp.com/terms",
+                    Volume = null,
                 },
             },
             TestContext.Current.CancellationToken
@@ -82,6 +83,7 @@ public class CampaignServiceTest : TestBase
                     OptoutMessage = null,
                     PrivacyPolicyLink = null,
                     TermsAndConditionsLink = null,
+                    Volume = null,
                 },
             },
             TestContext.Current.CancellationToken
