@@ -47,7 +47,6 @@ public class ProfileDetailTest : TestBase
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
                     DestinationCountries = [new() { ID = "id", IsMain = true }],
-                    ExpectedMessagingVolume = "expected_messaging_volume",
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -127,7 +126,6 @@ public class ProfileDetailTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expected_messaging_volume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -241,7 +239,6 @@ public class ProfileDetailTest : TestBase
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
                     DestinationCountries = [new() { ID = "id", IsMain = true }],
-                    ExpectedMessagingVolume = "expected_messaging_volume",
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -335,7 +332,6 @@ public class ProfileDetailTest : TestBase
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
                     DestinationCountries = [new() { ID = "id", IsMain = true }],
-                    ExpectedMessagingVolume = "expected_messaging_volume",
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -422,7 +418,6 @@ public class ProfileDetailTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expected_messaging_volume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -539,7 +534,6 @@ public class ProfileDetailTest : TestBase
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
                     DestinationCountries = [new() { ID = "id", IsMain = true }],
-                    ExpectedMessagingVolume = "expected_messaging_volume",
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -623,7 +617,6 @@ public class ProfileDetailTest : TestBase
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
                     DestinationCountries = [new() { ID = "id", IsMain = true }],
-                    ExpectedMessagingVolume = "expected_messaging_volume",
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -721,7 +714,6 @@ public class ProfileDetailTest : TestBase
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
                     DestinationCountries = [new() { ID = "id", IsMain = true }],
-                    ExpectedMessagingVolume = "expected_messaging_volume",
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -798,7 +790,6 @@ public class ProfileDetailTest : TestBase
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
                     DestinationCountries = [new() { ID = "id", IsMain = true }],
-                    ExpectedMessagingVolume = "expected_messaging_volume",
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -909,7 +900,6 @@ public class ProfileDetailTest : TestBase
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
                     DestinationCountries = [new() { ID = "id", IsMain = true }],
-                    ExpectedMessagingVolume = "expected_messaging_volume",
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -1171,7 +1161,6 @@ public class ProfileDetailTest : TestBase
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
                     DestinationCountries = [new() { ID = "id", IsMain = true }],
-                    ExpectedMessagingVolume = "expected_messaging_volume",
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -1412,7 +1401,6 @@ public class BrandTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expected_messaging_volume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -1459,7 +1447,6 @@ public class BrandTest : TestBase
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
-            ExpectedMessagingVolume = "expected_messaging_volume",
             IsTcrApplication = true,
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",
@@ -1526,7 +1513,6 @@ public class BrandTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expected_messaging_volume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -1584,7 +1570,6 @@ public class BrandTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expected_messaging_volume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -1635,7 +1620,6 @@ public class BrandTest : TestBase
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
-            ExpectedMessagingVolume = "expected_messaging_volume",
             IsTcrApplication = true,
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",
@@ -1702,7 +1686,6 @@ public class BrandTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expected_messaging_volume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -1756,7 +1739,6 @@ public class BrandTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expected_messaging_volume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -1814,7 +1796,6 @@ public class BrandTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expected_messaging_volume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -1865,7 +1846,6 @@ public class BrandTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expected_messaging_volume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -1929,7 +1909,6 @@ public class BrandTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expected_messaging_volume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -2103,7 +2082,6 @@ public class BrandTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 DestinationCountries = [new() { ID = "id", IsMain = true }],
-                ExpectedMessagingVolume = "expected_messaging_volume",
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -2410,7 +2388,6 @@ public class ComplianceTest : TestBase
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
-            ExpectedMessagingVolume = "expected_messaging_volume",
             IsTcrApplication = true,
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",
@@ -2424,7 +2401,6 @@ public class ComplianceTest : TestBase
         [
             new() { ID = "id", IsMain = true },
         ];
-        string expectedExpectedMessagingVolume = "expected_messaging_volume";
         bool expectedIsTcrApplication = true;
         string expectedNotes = "notes";
         string expectedPhoneNumberPrefix = "phone_number_prefix";
@@ -2438,7 +2414,6 @@ public class ComplianceTest : TestBase
         {
             Assert.Equal(expectedDestinationCountries[i], model.DestinationCountries[i]);
         }
-        Assert.Equal(expectedExpectedMessagingVolume, model.ExpectedMessagingVolume);
         Assert.Equal(expectedIsTcrApplication, model.IsTcrApplication);
         Assert.Equal(expectedNotes, model.Notes);
         Assert.Equal(expectedPhoneNumberPrefix, model.PhoneNumberPrefix);
@@ -2453,7 +2428,6 @@ public class ComplianceTest : TestBase
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
-            ExpectedMessagingVolume = "expected_messaging_volume",
             IsTcrApplication = true,
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",
@@ -2477,7 +2451,6 @@ public class ComplianceTest : TestBase
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
-            ExpectedMessagingVolume = "expected_messaging_volume",
             IsTcrApplication = true,
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",
@@ -2498,7 +2471,6 @@ public class ComplianceTest : TestBase
         [
             new() { ID = "id", IsMain = true },
         ];
-        string expectedExpectedMessagingVolume = "expected_messaging_volume";
         bool expectedIsTcrApplication = true;
         string expectedNotes = "notes";
         string expectedPhoneNumberPrefix = "phone_number_prefix";
@@ -2512,7 +2484,6 @@ public class ComplianceTest : TestBase
         {
             Assert.Equal(expectedDestinationCountries[i], deserialized.DestinationCountries[i]);
         }
-        Assert.Equal(expectedExpectedMessagingVolume, deserialized.ExpectedMessagingVolume);
         Assert.Equal(expectedIsTcrApplication, deserialized.IsTcrApplication);
         Assert.Equal(expectedNotes, deserialized.Notes);
         Assert.Equal(expectedPhoneNumberPrefix, deserialized.PhoneNumberPrefix);
@@ -2527,7 +2498,6 @@ public class ComplianceTest : TestBase
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
-            ExpectedMessagingVolume = "expected_messaging_volume",
             IsTcrApplication = true,
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",
@@ -2544,7 +2514,6 @@ public class ComplianceTest : TestBase
         var model = new Compliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
-            ExpectedMessagingVolume = "expected_messaging_volume",
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",
             PrimaryUseCase = "primary_use_case",
@@ -2563,7 +2532,6 @@ public class ComplianceTest : TestBase
         var model = new Compliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
-            ExpectedMessagingVolume = "expected_messaging_volume",
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",
             PrimaryUseCase = "primary_use_case",
@@ -2579,7 +2547,6 @@ public class ComplianceTest : TestBase
         var model = new Compliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
-            ExpectedMessagingVolume = "expected_messaging_volume",
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",
             PrimaryUseCase = "primary_use_case",
@@ -2602,7 +2569,6 @@ public class ComplianceTest : TestBase
         var model = new Compliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
-            ExpectedMessagingVolume = "expected_messaging_volume",
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",
             PrimaryUseCase = "primary_use_case",
@@ -2627,8 +2593,6 @@ public class ComplianceTest : TestBase
 
         Assert.Null(model.BrandRelationship);
         Assert.False(model.RawData.ContainsKey("brand_relationship"));
-        Assert.Null(model.ExpectedMessagingVolume);
-        Assert.False(model.RawData.ContainsKey("expected_messaging_volume"));
         Assert.Null(model.Notes);
         Assert.False(model.RawData.ContainsKey("notes"));
         Assert.Null(model.PhoneNumberPrefix);
@@ -2660,7 +2624,6 @@ public class ComplianceTest : TestBase
             IsTcrApplication = true,
 
             BrandRelationship = null,
-            ExpectedMessagingVolume = null,
             Notes = null,
             PhoneNumberPrefix = null,
             PrimaryUseCase = null,
@@ -2669,8 +2632,6 @@ public class ComplianceTest : TestBase
 
         Assert.Null(model.BrandRelationship);
         Assert.True(model.RawData.ContainsKey("brand_relationship"));
-        Assert.Null(model.ExpectedMessagingVolume);
-        Assert.True(model.RawData.ContainsKey("expected_messaging_volume"));
         Assert.Null(model.Notes);
         Assert.True(model.RawData.ContainsKey("notes"));
         Assert.Null(model.PhoneNumberPrefix);
@@ -2690,7 +2651,6 @@ public class ComplianceTest : TestBase
             IsTcrApplication = true,
 
             BrandRelationship = null,
-            ExpectedMessagingVolume = null,
             Notes = null,
             PhoneNumberPrefix = null,
             PrimaryUseCase = null,
@@ -2707,7 +2667,6 @@ public class ComplianceTest : TestBase
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
-            ExpectedMessagingVolume = "expected_messaging_volume",
             IsTcrApplication = true,
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",

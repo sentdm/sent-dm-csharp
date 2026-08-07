@@ -49,7 +49,6 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
                         DestinationCountries = [new() { ID = "id", IsMain = true }],
-                        ExpectedMessagingVolume = "expected_messaging_volume",
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -146,7 +145,6 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
                     DestinationCountries = [new() { ID = "id", IsMain = true }],
-                    ExpectedMessagingVolume = "expected_messaging_volume",
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -253,7 +251,6 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
                         DestinationCountries = [new() { ID = "id", IsMain = true }],
-                        ExpectedMessagingVolume = "expected_messaging_volume",
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -364,7 +361,6 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
                         DestinationCountries = [new() { ID = "id", IsMain = true }],
-                        ExpectedMessagingVolume = "expected_messaging_volume",
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -468,7 +464,6 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
                     DestinationCountries = [new() { ID = "id", IsMain = true }],
-                    ExpectedMessagingVolume = "expected_messaging_volume",
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -575,7 +570,6 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
                         DestinationCountries = [new() { ID = "id", IsMain = true }],
-                        ExpectedMessagingVolume = "expected_messaging_volume",
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -680,7 +674,6 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
                         DestinationCountries = [new() { ID = "id", IsMain = true }],
-                        ExpectedMessagingVolume = "expected_messaging_volume",
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -781,7 +774,6 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
                         DestinationCountries = [new() { ID = "id", IsMain = true }],
-                        ExpectedMessagingVolume = "expected_messaging_volume",
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -879,7 +871,6 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
                         DestinationCountries = [new() { ID = "id", IsMain = true }],
-                        ExpectedMessagingVolume = "expected_messaging_volume",
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -984,7 +975,6 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
                         DestinationCountries = [new() { ID = "id", IsMain = true }],
-                        ExpectedMessagingVolume = "expected_messaging_volume",
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -1166,7 +1156,6 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
                         DestinationCountries = [new() { ID = "id", IsMain = true }],
-                        ExpectedMessagingVolume = "expected_messaging_volume",
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",

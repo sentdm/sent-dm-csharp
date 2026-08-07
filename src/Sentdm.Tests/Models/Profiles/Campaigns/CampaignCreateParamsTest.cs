@@ -39,6 +39,7 @@ public class CampaignCreateParamsTest : TestBase
                 OptoutMessage = "You have been unsubscribed. Reply START to opt back in.",
                 PrivacyPolicyLink = "https://acmecorp.com/privacy",
                 TermsAndConditionsLink = "https://acmecorp.com/terms",
+                Volume = null,
             },
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
@@ -72,6 +73,7 @@ public class CampaignCreateParamsTest : TestBase
             OptoutMessage = "You have been unsubscribed. Reply START to opt back in.",
             PrivacyPolicyLink = "https://acmecorp.com/privacy",
             TermsAndConditionsLink = "https://acmecorp.com/terms",
+            Volume = null,
         };
         bool expectedSandbox = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
@@ -117,6 +119,7 @@ public class CampaignCreateParamsTest : TestBase
                 OptoutMessage = "You have been unsubscribed. Reply START to opt back in.",
                 PrivacyPolicyLink = "https://acmecorp.com/privacy",
                 TermsAndConditionsLink = "https://acmecorp.com/terms",
+                Volume = null,
             },
         };
 
@@ -161,6 +164,7 @@ public class CampaignCreateParamsTest : TestBase
                 OptoutMessage = "You have been unsubscribed. Reply START to opt back in.",
                 PrivacyPolicyLink = "https://acmecorp.com/privacy",
                 TermsAndConditionsLink = "https://acmecorp.com/terms",
+                Volume = null,
             },
 
             // Null should be interpreted as omitted for these properties
@@ -210,6 +214,7 @@ public class CampaignCreateParamsTest : TestBase
                 OptoutMessage = "You have been unsubscribed. Reply START to opt back in.",
                 PrivacyPolicyLink = "https://acmecorp.com/privacy",
                 TermsAndConditionsLink = "https://acmecorp.com/terms",
+                Volume = null,
             },
         };
 
@@ -259,6 +264,7 @@ public class CampaignCreateParamsTest : TestBase
                 OptoutMessage = "You have been unsubscribed. Reply START to opt back in.",
                 PrivacyPolicyLink = "https://acmecorp.com/privacy",
                 TermsAndConditionsLink = "https://acmecorp.com/terms",
+                Volume = null,
             },
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -306,6 +312,7 @@ public class CampaignCreateParamsTest : TestBase
                 OptoutMessage = "You have been unsubscribed. Reply START to opt back in.",
                 PrivacyPolicyLink = "https://acmecorp.com/privacy",
                 TermsAndConditionsLink = "https://acmecorp.com/terms",
+                Volume = null,
             },
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
