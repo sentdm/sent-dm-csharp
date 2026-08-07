@@ -10,22 +10,26 @@ using Sentdm.Core;
 namespace Sentdm.Models.Profiles;
 
 /// <summary>
-/// Final step in profile compliance workflow. Validates all prerequisites (general
-/// data, brand, campaigns), connects profile to Telnyx/WhatsApp, and sets status
-/// based on configuration. The process runs in the background and calls the provided
-/// webhook URL when finished.
+/// Final step in the profile compliance workflow. Validates all prerequisites (KYC,
+/// brand, campaigns, required documents), connects the profile to the SMS and WhatsApp
+/// channels, and sets its status based on configuration. Prerequisites are always
+/// validated first: if any fail the call returns 400. If they pass and the profile
+/// is already completed, the call returns 200 and does nothing. Otherwise it returns
+/// 202 and calls the provided webhook URL when background processing finishes.
 ///
-/// <para>                Prerequisites:                 - Profile must be completed
-///                 - If inheritTcrBrand=false: Profile must have existing brand
-///                 - If inheritTcrBrand=true: Parent must have existing brand
-///               - If TCR application: Must have at least one campaign (own or inherited)
-///                 - If inheritTcrCampaign=false: Profile should have campaigns
-///                 - If inheritTcrCampaign=true: Parent must have campaigns</para>
+/// <para>Prerequisites: - Profile must have a name, short name, and description (short
+/// name max 50 characters, description max 5000) - webHookUrl must be supplied on
+/// the request - A KYC form submission is required - A brand is required, either
+/// on the profile or inherited from the parent organization - TCR applications must
+/// have at least one campaign, own or inherited - Destination countries marked as
+/// main must have their required compliance documents uploaded</para>
 ///
-/// <para>                Status Logic:                 - If both SMS and WhatsApp
-/// channels are missing → SUBMITTED                 - If TCR application and not
-/// inheriting brand/campaigns → SUBMITTED                 - If non-TCR with destination
-/// country (IsMain=true) → SUBMITTED                 - Otherwise → COMPLETED</para>
+/// <para>Resulting status: - If either the SMS or WhatsApp channel is unconfigured,
+/// the profile is SUBMITTED - For a TCR application that inherits both its brand
+/// and its campaigns, the profile is COMPLETED - For a TCR application that owns
+/// either its brand or its campaigns, the profile is COMPLETED once both have been
+/// submitted to TCR, and SUBMITTED until then - For a non-TCR application, the profile
+/// is SUBMITTED when a main destination country is set, and COMPLETED otherwise</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

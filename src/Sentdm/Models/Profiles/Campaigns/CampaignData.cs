@@ -190,6 +190,20 @@ public sealed record class CampaignData : JsonModel
         init { this._rawData.Set("termsAndConditionsLink", value); }
     }
 
+    /// <summary>
+    /// Expected messaging volume for this campaign. Numeric string (e.g. "1999",
+    /// "5000"); values below 2000 bill at the low-volume tier.
+    /// </summary>
+    public string? Volume
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("volume");
+        }
+        init { this._rawData.Set("volume", value); }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
@@ -209,6 +223,7 @@ public sealed record class CampaignData : JsonModel
         _ = this.OptoutMessage;
         _ = this.PrivacyPolicyLink;
         _ = this.TermsAndConditionsLink;
+        _ = this.Volume;
     }
 
     public CampaignData() { }

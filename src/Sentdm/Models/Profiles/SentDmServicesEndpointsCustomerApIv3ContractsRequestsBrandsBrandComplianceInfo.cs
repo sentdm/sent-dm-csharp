@@ -64,19 +64,6 @@ public sealed record class SentDmServicesEndpointsCustomerApIv3ContractsRequests
     }
 
     /// <summary>
-    /// Expected daily messaging volume
-    /// </summary>
-    public string? ExpectedMessagingVolume
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("expectedMessagingVolume");
-        }
-        init { this._rawData.Set("expectedMessagingVolume", value); }
-    }
-
-    /// <summary>
     /// Whether this is a TCR (Campaign Registry) application
     /// </summary>
     public bool? IsTcrApplication
@@ -137,7 +124,6 @@ public sealed record class SentDmServicesEndpointsCustomerApIv3ContractsRequests
         {
             item.Validate();
         }
-        _ = this.ExpectedMessagingVolume;
         _ = this.IsTcrApplication;
         _ = this.Notes;
         _ = this.PhoneNumberPrefix;

@@ -8,79 +8,14 @@ using Sentdm.Models.Webhooks;
 
 namespace Sentdm.Tests.Models.Profiles.Campaigns;
 
-public class CampaignListResponseTest : TestBase
+public class CampaignUpdateResponseTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
-            Data =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Cost = 0,
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    DcaElectionsComplete = true,
-                    DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    HasSubmissionTransaction = true,
-                    HelpKeywords = "helpKeywords",
-                    HelpMessage = "helpMessage",
-                    MessageFlow = "messageFlow",
-                    Name = "name",
-                    OptinKeywords = "optinKeywords",
-                    OptinMessage = "optinMessage",
-                    OptoutKeywords = "optoutKeywords",
-                    OptoutMessage = "optoutMessage",
-                    PrivacyPolicyLink = "privacyPolicyLink",
-                    Status = CampaignListResponseDataStatus.SentCreated,
-                    SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    SubmittedToTcr = true,
-                    TcrCampaignID = "tcrCampaignId",
-                    TcrSyncError = "tcrSyncError",
-                    TermsAndConditionsLink = "termsAndConditionsLink",
-                    Type = "type",
-                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    UseCases =
-                    [
-                        new()
-                        {
-                            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                            SampleMessages = ["string"],
-                            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        },
-                    ],
-                    Volume = "volume",
-                },
-            ],
-            Error = new()
-            {
-                Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
-                DocUrl = "doc_url",
-                Message = "message",
-            },
-            Meta = new()
-            {
-                RequestID = "request_id",
-                Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Version = "version",
-            },
-            Success = true,
-        };
-
-        List<CampaignListResponseData> expectedData =
-        [
-            new()
+            Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -101,7 +36,7 @@ public class CampaignListResponseTest : TestBase
                 OptoutKeywords = "optoutKeywords",
                 OptoutMessage = "optoutMessage",
                 PrivacyPolicyLink = "privacyPolicyLink",
-                Status = CampaignListResponseDataStatus.SentCreated,
+                Status = CampaignUpdateResponseDataStatus.SentCreated,
                 SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 SubmittedToTcr = true,
                 TcrCampaignID = "tcrCampaignId",
@@ -124,7 +59,66 @@ public class CampaignListResponseTest : TestBase
                 ],
                 Volume = "volume",
             },
-        ];
+            Error = new()
+            {
+                Code = "code",
+                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                DocUrl = "doc_url",
+                Message = "message",
+            },
+            Meta = new()
+            {
+                RequestID = "request_id",
+                Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Version = "version",
+            },
+            Success = true,
+        };
+
+        CampaignUpdateResponseData expectedData = new()
+        {
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Cost = 0,
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            DcaElectionsComplete = true,
+            DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
+            HasSubmissionTransaction = true,
+            HelpKeywords = "helpKeywords",
+            HelpMessage = "helpMessage",
+            MessageFlow = "messageFlow",
+            Name = "name",
+            OptinKeywords = "optinKeywords",
+            OptinMessage = "optinMessage",
+            OptoutKeywords = "optoutKeywords",
+            OptoutMessage = "optoutMessage",
+            PrivacyPolicyLink = "privacyPolicyLink",
+            Status = CampaignUpdateResponseDataStatus.SentCreated,
+            SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SubmittedToTcr = true,
+            TcrCampaignID = "tcrCampaignId",
+            TcrSyncError = "tcrSyncError",
+            TermsAndConditionsLink = "termsAndConditionsLink",
+            Type = "type",
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            UseCases =
+            [
+                new()
+                {
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
+                    SampleMessages = ["string"],
+                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                },
+            ],
+            Volume = "volume",
+        };
         ErrorDetail expectedError = new()
         {
             Code = "code",
@@ -140,12 +134,7 @@ public class CampaignListResponseTest : TestBase
         };
         bool expectedSuccess = true;
 
-        Assert.NotNull(model.Data);
-        Assert.Equal(expectedData.Count, model.Data.Count);
-        for (int i = 0; i < expectedData.Count; i++)
-        {
-            Assert.Equal(expectedData[i], model.Data[i]);
-        }
+        Assert.Equal(expectedData, model.Data);
         Assert.Equal(expectedError, model.Error);
         Assert.Equal(expectedMeta, model.Meta);
         Assert.Equal(expectedSuccess, model.Success);
@@ -154,55 +143,52 @@ public class CampaignListResponseTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
-            Data =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Cost = 0,
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    DcaElectionsComplete = true,
-                    DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    HasSubmissionTransaction = true,
-                    HelpKeywords = "helpKeywords",
-                    HelpMessage = "helpMessage",
-                    MessageFlow = "messageFlow",
-                    Name = "name",
-                    OptinKeywords = "optinKeywords",
-                    OptinMessage = "optinMessage",
-                    OptoutKeywords = "optoutKeywords",
-                    OptoutMessage = "optoutMessage",
-                    PrivacyPolicyLink = "privacyPolicyLink",
-                    Status = CampaignListResponseDataStatus.SentCreated,
-                    SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    SubmittedToTcr = true,
-                    TcrCampaignID = "tcrCampaignId",
-                    TcrSyncError = "tcrSyncError",
-                    TermsAndConditionsLink = "termsAndConditionsLink",
-                    Type = "type",
-                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    UseCases =
-                    [
-                        new()
-                        {
-                            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                            SampleMessages = ["string"],
-                            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        },
-                    ],
-                    Volume = "volume",
-                },
-            ],
+            Data = new()
+            {
+                ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Cost = 0,
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                DcaElectionsComplete = true,
+                DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Description = "description",
+                HasSubmissionTransaction = true,
+                HelpKeywords = "helpKeywords",
+                HelpMessage = "helpMessage",
+                MessageFlow = "messageFlow",
+                Name = "name",
+                OptinKeywords = "optinKeywords",
+                OptinMessage = "optinMessage",
+                OptoutKeywords = "optoutKeywords",
+                OptoutMessage = "optoutMessage",
+                PrivacyPolicyLink = "privacyPolicyLink",
+                Status = CampaignUpdateResponseDataStatus.SentCreated,
+                SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                SubmittedToTcr = true,
+                TcrCampaignID = "tcrCampaignId",
+                TcrSyncError = "tcrSyncError",
+                TermsAndConditionsLink = "termsAndConditionsLink",
+                Type = "type",
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                UseCases =
+                [
+                    new()
+                    {
+                        ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
+                        SampleMessages = ["string"],
+                        UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    },
+                ],
+                Volume = "volume",
+            },
             Error = new()
             {
                 Code = "code",
@@ -220,7 +206,7 @@ public class CampaignListResponseTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CampaignListResponse>(
+        var deserialized = JsonSerializer.Deserialize<CampaignUpdateResponse>(
             json,
             ModelBase.SerializerOptions
         );
@@ -231,81 +217,9 @@ public class CampaignListResponseTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
-            Data =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Cost = 0,
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    DcaElectionsComplete = true,
-                    DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    HasSubmissionTransaction = true,
-                    HelpKeywords = "helpKeywords",
-                    HelpMessage = "helpMessage",
-                    MessageFlow = "messageFlow",
-                    Name = "name",
-                    OptinKeywords = "optinKeywords",
-                    OptinMessage = "optinMessage",
-                    OptoutKeywords = "optoutKeywords",
-                    OptoutMessage = "optoutMessage",
-                    PrivacyPolicyLink = "privacyPolicyLink",
-                    Status = CampaignListResponseDataStatus.SentCreated,
-                    SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    SubmittedToTcr = true,
-                    TcrCampaignID = "tcrCampaignId",
-                    TcrSyncError = "tcrSyncError",
-                    TermsAndConditionsLink = "termsAndConditionsLink",
-                    Type = "type",
-                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    UseCases =
-                    [
-                        new()
-                        {
-                            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                            SampleMessages = ["string"],
-                            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        },
-                    ],
-                    Volume = "volume",
-                },
-            ],
-            Error = new()
-            {
-                Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
-                DocUrl = "doc_url",
-                Message = "message",
-            },
-            Meta = new()
-            {
-                RequestID = "request_id",
-                Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Version = "version",
-            },
-            Success = true,
-        };
-
-        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CampaignListResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
-        Assert.NotNull(deserialized);
-
-        List<CampaignListResponseData> expectedData =
-        [
-            new()
+            Data = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -326,7 +240,7 @@ public class CampaignListResponseTest : TestBase
                 OptoutKeywords = "optoutKeywords",
                 OptoutMessage = "optoutMessage",
                 PrivacyPolicyLink = "privacyPolicyLink",
-                Status = CampaignListResponseDataStatus.SentCreated,
+                Status = CampaignUpdateResponseDataStatus.SentCreated,
                 SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 SubmittedToTcr = true,
                 TcrCampaignID = "tcrCampaignId",
@@ -349,7 +263,73 @@ public class CampaignListResponseTest : TestBase
                 ],
                 Volume = "volume",
             },
-        ];
+            Error = new()
+            {
+                Code = "code",
+                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                DocUrl = "doc_url",
+                Message = "message",
+            },
+            Meta = new()
+            {
+                RequestID = "request_id",
+                Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Version = "version",
+            },
+            Success = true,
+        };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<CampaignUpdateResponse>(
+            element,
+            ModelBase.SerializerOptions
+        );
+        Assert.NotNull(deserialized);
+
+        CampaignUpdateResponseData expectedData = new()
+        {
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Cost = 0,
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            DcaElectionsComplete = true,
+            DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",
+            HasSubmissionTransaction = true,
+            HelpKeywords = "helpKeywords",
+            HelpMessage = "helpMessage",
+            MessageFlow = "messageFlow",
+            Name = "name",
+            OptinKeywords = "optinKeywords",
+            OptinMessage = "optinMessage",
+            OptoutKeywords = "optoutKeywords",
+            OptoutMessage = "optoutMessage",
+            PrivacyPolicyLink = "privacyPolicyLink",
+            Status = CampaignUpdateResponseDataStatus.SentCreated,
+            SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            SubmittedToTcr = true,
+            TcrCampaignID = "tcrCampaignId",
+            TcrSyncError = "tcrSyncError",
+            TermsAndConditionsLink = "termsAndConditionsLink",
+            Type = "type",
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            UseCases =
+            [
+                new()
+                {
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
+                    SampleMessages = ["string"],
+                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                },
+            ],
+            Volume = "volume",
+        };
         ErrorDetail expectedError = new()
         {
             Code = "code",
@@ -365,12 +345,7 @@ public class CampaignListResponseTest : TestBase
         };
         bool expectedSuccess = true;
 
-        Assert.NotNull(deserialized.Data);
-        Assert.Equal(expectedData.Count, deserialized.Data.Count);
-        for (int i = 0; i < expectedData.Count; i++)
-        {
-            Assert.Equal(expectedData[i], deserialized.Data[i]);
-        }
+        Assert.Equal(expectedData, deserialized.Data);
         Assert.Equal(expectedError, deserialized.Error);
         Assert.Equal(expectedMeta, deserialized.Meta);
         Assert.Equal(expectedSuccess, deserialized.Success);
@@ -379,55 +354,52 @@ public class CampaignListResponseTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
-            Data =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Cost = 0,
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    DcaElectionsComplete = true,
-                    DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    HasSubmissionTransaction = true,
-                    HelpKeywords = "helpKeywords",
-                    HelpMessage = "helpMessage",
-                    MessageFlow = "messageFlow",
-                    Name = "name",
-                    OptinKeywords = "optinKeywords",
-                    OptinMessage = "optinMessage",
-                    OptoutKeywords = "optoutKeywords",
-                    OptoutMessage = "optoutMessage",
-                    PrivacyPolicyLink = "privacyPolicyLink",
-                    Status = CampaignListResponseDataStatus.SentCreated,
-                    SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    SubmittedToTcr = true,
-                    TcrCampaignID = "tcrCampaignId",
-                    TcrSyncError = "tcrSyncError",
-                    TermsAndConditionsLink = "termsAndConditionsLink",
-                    Type = "type",
-                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    UseCases =
-                    [
-                        new()
-                        {
-                            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                            SampleMessages = ["string"],
-                            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        },
-                    ],
-                    Volume = "volume",
-                },
-            ],
+            Data = new()
+            {
+                ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Cost = 0,
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                DcaElectionsComplete = true,
+                DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Description = "description",
+                HasSubmissionTransaction = true,
+                HelpKeywords = "helpKeywords",
+                HelpMessage = "helpMessage",
+                MessageFlow = "messageFlow",
+                Name = "name",
+                OptinKeywords = "optinKeywords",
+                OptinMessage = "optinMessage",
+                OptoutKeywords = "optoutKeywords",
+                OptoutMessage = "optoutMessage",
+                PrivacyPolicyLink = "privacyPolicyLink",
+                Status = CampaignUpdateResponseDataStatus.SentCreated,
+                SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                SubmittedToTcr = true,
+                TcrCampaignID = "tcrCampaignId",
+                TcrSyncError = "tcrSyncError",
+                TermsAndConditionsLink = "termsAndConditionsLink",
+                Type = "type",
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                UseCases =
+                [
+                    new()
+                    {
+                        ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
+                        SampleMessages = ["string"],
+                        UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    },
+                ],
+                Volume = "volume",
+            },
             Error = new()
             {
                 Code = "code",
@@ -450,55 +422,52 @@ public class CampaignListResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
-            Data =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Cost = 0,
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    DcaElectionsComplete = true,
-                    DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    HasSubmissionTransaction = true,
-                    HelpKeywords = "helpKeywords",
-                    HelpMessage = "helpMessage",
-                    MessageFlow = "messageFlow",
-                    Name = "name",
-                    OptinKeywords = "optinKeywords",
-                    OptinMessage = "optinMessage",
-                    OptoutKeywords = "optoutKeywords",
-                    OptoutMessage = "optoutMessage",
-                    PrivacyPolicyLink = "privacyPolicyLink",
-                    Status = CampaignListResponseDataStatus.SentCreated,
-                    SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    SubmittedToTcr = true,
-                    TcrCampaignID = "tcrCampaignId",
-                    TcrSyncError = "tcrSyncError",
-                    TermsAndConditionsLink = "termsAndConditionsLink",
-                    Type = "type",
-                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    UseCases =
-                    [
-                        new()
-                        {
-                            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                            SampleMessages = ["string"],
-                            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        },
-                    ],
-                    Volume = "volume",
-                },
-            ],
+            Data = new()
+            {
+                ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Cost = 0,
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                DcaElectionsComplete = true,
+                DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Description = "description",
+                HasSubmissionTransaction = true,
+                HelpKeywords = "helpKeywords",
+                HelpMessage = "helpMessage",
+                MessageFlow = "messageFlow",
+                Name = "name",
+                OptinKeywords = "optinKeywords",
+                OptinMessage = "optinMessage",
+                OptoutKeywords = "optoutKeywords",
+                OptoutMessage = "optoutMessage",
+                PrivacyPolicyLink = "privacyPolicyLink",
+                Status = CampaignUpdateResponseDataStatus.SentCreated,
+                SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                SubmittedToTcr = true,
+                TcrCampaignID = "tcrCampaignId",
+                TcrSyncError = "tcrSyncError",
+                TermsAndConditionsLink = "termsAndConditionsLink",
+                Type = "type",
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                UseCases =
+                [
+                    new()
+                    {
+                        ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
+                        SampleMessages = ["string"],
+                        UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    },
+                ],
+                Volume = "volume",
+            },
             Error = new()
             {
                 Code = "code",
@@ -517,55 +486,52 @@ public class CampaignListResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
-            Data =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Cost = 0,
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    DcaElectionsComplete = true,
-                    DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    HasSubmissionTransaction = true,
-                    HelpKeywords = "helpKeywords",
-                    HelpMessage = "helpMessage",
-                    MessageFlow = "messageFlow",
-                    Name = "name",
-                    OptinKeywords = "optinKeywords",
-                    OptinMessage = "optinMessage",
-                    OptoutKeywords = "optoutKeywords",
-                    OptoutMessage = "optoutMessage",
-                    PrivacyPolicyLink = "privacyPolicyLink",
-                    Status = CampaignListResponseDataStatus.SentCreated,
-                    SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    SubmittedToTcr = true,
-                    TcrCampaignID = "tcrCampaignId",
-                    TcrSyncError = "tcrSyncError",
-                    TermsAndConditionsLink = "termsAndConditionsLink",
-                    Type = "type",
-                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    UseCases =
-                    [
-                        new()
-                        {
-                            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                            SampleMessages = ["string"],
-                            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        },
-                    ],
-                    Volume = "volume",
-                },
-            ],
+            Data = new()
+            {
+                ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Cost = 0,
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                DcaElectionsComplete = true,
+                DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Description = "description",
+                HasSubmissionTransaction = true,
+                HelpKeywords = "helpKeywords",
+                HelpMessage = "helpMessage",
+                MessageFlow = "messageFlow",
+                Name = "name",
+                OptinKeywords = "optinKeywords",
+                OptinMessage = "optinMessage",
+                OptoutKeywords = "optoutKeywords",
+                OptoutMessage = "optoutMessage",
+                PrivacyPolicyLink = "privacyPolicyLink",
+                Status = CampaignUpdateResponseDataStatus.SentCreated,
+                SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                SubmittedToTcr = true,
+                TcrCampaignID = "tcrCampaignId",
+                TcrSyncError = "tcrSyncError",
+                TermsAndConditionsLink = "termsAndConditionsLink",
+                Type = "type",
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                UseCases =
+                [
+                    new()
+                    {
+                        ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
+                        SampleMessages = ["string"],
+                        UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    },
+                ],
+                Volume = "volume",
+            },
             Error = new()
             {
                 Code = "code",
@@ -581,55 +547,52 @@ public class CampaignListResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
-            Data =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Cost = 0,
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    DcaElectionsComplete = true,
-                    DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    HasSubmissionTransaction = true,
-                    HelpKeywords = "helpKeywords",
-                    HelpMessage = "helpMessage",
-                    MessageFlow = "messageFlow",
-                    Name = "name",
-                    OptinKeywords = "optinKeywords",
-                    OptinMessage = "optinMessage",
-                    OptoutKeywords = "optoutKeywords",
-                    OptoutMessage = "optoutMessage",
-                    PrivacyPolicyLink = "privacyPolicyLink",
-                    Status = CampaignListResponseDataStatus.SentCreated,
-                    SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    SubmittedToTcr = true,
-                    TcrCampaignID = "tcrCampaignId",
-                    TcrSyncError = "tcrSyncError",
-                    TermsAndConditionsLink = "termsAndConditionsLink",
-                    Type = "type",
-                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    UseCases =
-                    [
-                        new()
-                        {
-                            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                            SampleMessages = ["string"],
-                            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        },
-                    ],
-                    Volume = "volume",
-                },
-            ],
+            Data = new()
+            {
+                ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Cost = 0,
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                DcaElectionsComplete = true,
+                DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Description = "description",
+                HasSubmissionTransaction = true,
+                HelpKeywords = "helpKeywords",
+                HelpMessage = "helpMessage",
+                MessageFlow = "messageFlow",
+                Name = "name",
+                OptinKeywords = "optinKeywords",
+                OptinMessage = "optinMessage",
+                OptoutKeywords = "optoutKeywords",
+                OptoutMessage = "optoutMessage",
+                PrivacyPolicyLink = "privacyPolicyLink",
+                Status = CampaignUpdateResponseDataStatus.SentCreated,
+                SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                SubmittedToTcr = true,
+                TcrCampaignID = "tcrCampaignId",
+                TcrSyncError = "tcrSyncError",
+                TermsAndConditionsLink = "termsAndConditionsLink",
+                Type = "type",
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                UseCases =
+                [
+                    new()
+                    {
+                        ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
+                        SampleMessages = ["string"],
+                        UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    },
+                ],
+                Volume = "volume",
+            },
             Error = new()
             {
                 Code = "code",
@@ -652,55 +615,52 @@ public class CampaignListResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
-            Data =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Cost = 0,
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    DcaElectionsComplete = true,
-                    DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    HasSubmissionTransaction = true,
-                    HelpKeywords = "helpKeywords",
-                    HelpMessage = "helpMessage",
-                    MessageFlow = "messageFlow",
-                    Name = "name",
-                    OptinKeywords = "optinKeywords",
-                    OptinMessage = "optinMessage",
-                    OptoutKeywords = "optoutKeywords",
-                    OptoutMessage = "optoutMessage",
-                    PrivacyPolicyLink = "privacyPolicyLink",
-                    Status = CampaignListResponseDataStatus.SentCreated,
-                    SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    SubmittedToTcr = true,
-                    TcrCampaignID = "tcrCampaignId",
-                    TcrSyncError = "tcrSyncError",
-                    TermsAndConditionsLink = "termsAndConditionsLink",
-                    Type = "type",
-                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    UseCases =
-                    [
-                        new()
-                        {
-                            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                            SampleMessages = ["string"],
-                            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        },
-                    ],
-                    Volume = "volume",
-                },
-            ],
+            Data = new()
+            {
+                ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Cost = 0,
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                DcaElectionsComplete = true,
+                DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Description = "description",
+                HasSubmissionTransaction = true,
+                HelpKeywords = "helpKeywords",
+                HelpMessage = "helpMessage",
+                MessageFlow = "messageFlow",
+                Name = "name",
+                OptinKeywords = "optinKeywords",
+                OptinMessage = "optinMessage",
+                OptoutKeywords = "optoutKeywords",
+                OptoutMessage = "optoutMessage",
+                PrivacyPolicyLink = "privacyPolicyLink",
+                Status = CampaignUpdateResponseDataStatus.SentCreated,
+                SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                SubmittedToTcr = true,
+                TcrCampaignID = "tcrCampaignId",
+                TcrSyncError = "tcrSyncError",
+                TermsAndConditionsLink = "termsAndConditionsLink",
+                Type = "type",
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                UseCases =
+                [
+                    new()
+                    {
+                        ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
+                        SampleMessages = ["string"],
+                        UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    },
+                ],
+                Volume = "volume",
+            },
             Error = new()
             {
                 Code = "code",
@@ -720,7 +680,7 @@ public class CampaignListResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
             Meta = new()
             {
@@ -740,7 +700,7 @@ public class CampaignListResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
             Meta = new()
             {
@@ -757,7 +717,7 @@ public class CampaignListResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
             Meta = new()
             {
@@ -780,7 +740,7 @@ public class CampaignListResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
             Meta = new()
             {
@@ -800,55 +760,52 @@ public class CampaignListResponseTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new CampaignListResponse
+        var model = new CampaignUpdateResponse
         {
-            Data =
-            [
-                new()
-                {
-                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Cost = 0,
-                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    DcaElectionsComplete = true,
-                    DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Description = "description",
-                    HasSubmissionTransaction = true,
-                    HelpKeywords = "helpKeywords",
-                    HelpMessage = "helpMessage",
-                    MessageFlow = "messageFlow",
-                    Name = "name",
-                    OptinKeywords = "optinKeywords",
-                    OptinMessage = "optinMessage",
-                    OptoutKeywords = "optoutKeywords",
-                    OptoutMessage = "optoutMessage",
-                    PrivacyPolicyLink = "privacyPolicyLink",
-                    Status = CampaignListResponseDataStatus.SentCreated,
-                    SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    SubmittedToTcr = true,
-                    TcrCampaignID = "tcrCampaignId",
-                    TcrSyncError = "tcrSyncError",
-                    TermsAndConditionsLink = "termsAndConditionsLink",
-                    Type = "type",
-                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    UseCases =
-                    [
-                        new()
-                        {
-                            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                            SampleMessages = ["string"],
-                            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        },
-                    ],
-                    Volume = "volume",
-                },
-            ],
+            Data = new()
+            {
+                ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Cost = 0,
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                DcaElectionsComplete = true,
+                DcaElectionsCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Description = "description",
+                HasSubmissionTransaction = true,
+                HelpKeywords = "helpKeywords",
+                HelpMessage = "helpMessage",
+                MessageFlow = "messageFlow",
+                Name = "name",
+                OptinKeywords = "optinKeywords",
+                OptinMessage = "optinMessage",
+                OptoutKeywords = "optoutKeywords",
+                OptoutMessage = "optoutMessage",
+                PrivacyPolicyLink = "privacyPolicyLink",
+                Status = CampaignUpdateResponseDataStatus.SentCreated,
+                SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                SubmittedToTcr = true,
+                TcrCampaignID = "tcrCampaignId",
+                TcrSyncError = "tcrSyncError",
+                TermsAndConditionsLink = "termsAndConditionsLink",
+                Type = "type",
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                UseCases =
+                [
+                    new()
+                    {
+                        ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
+                        SampleMessages = ["string"],
+                        UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    },
+                ],
+                Volume = "volume",
+            },
             Error = new()
             {
                 Code = "code",
@@ -865,18 +822,18 @@ public class CampaignListResponseTest : TestBase
             Success = true,
         };
 
-        CampaignListResponse copied = new(model);
+        CampaignUpdateResponse copied = new(model);
 
         Assert.Equal(model, copied);
     }
 }
 
-public class CampaignListResponseDataTest : TestBase
+public class CampaignUpdateResponseDataTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -897,7 +854,7 @@ public class CampaignListResponseDataTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = CampaignListResponseDataStatus.SentCreated,
+            Status = CampaignUpdateResponseDataStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SubmittedToTcr = true,
             TcrCampaignID = "tcrCampaignId",
@@ -942,8 +899,8 @@ public class CampaignListResponseDataTest : TestBase
         string expectedOptoutKeywords = "optoutKeywords";
         string expectedOptoutMessage = "optoutMessage";
         string expectedPrivacyPolicyLink = "privacyPolicyLink";
-        ApiEnum<string, CampaignListResponseDataStatus> expectedStatus =
-            CampaignListResponseDataStatus.SentCreated;
+        ApiEnum<string, CampaignUpdateResponseDataStatus> expectedStatus =
+            CampaignUpdateResponseDataStatus.SentCreated;
         DateTimeOffset expectedSubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         bool expectedSubmittedToTcr = true;
         string expectedTcrCampaignID = "tcrCampaignId";
@@ -951,7 +908,7 @@ public class CampaignListResponseDataTest : TestBase
         string expectedTermsAndConditionsLink = "termsAndConditionsLink";
         string expectedType = "type";
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
-        List<CampaignListResponseDataUseCase> expectedUseCases =
+        List<CampaignUpdateResponseDataUseCase> expectedUseCases =
         [
             new()
             {
@@ -1005,7 +962,7 @@ public class CampaignListResponseDataTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1026,7 +983,7 @@ public class CampaignListResponseDataTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = CampaignListResponseDataStatus.SentCreated,
+            Status = CampaignUpdateResponseDataStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SubmittedToTcr = true,
             TcrCampaignID = "tcrCampaignId",
@@ -1051,7 +1008,7 @@ public class CampaignListResponseDataTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CampaignListResponseData>(
+        var deserialized = JsonSerializer.Deserialize<CampaignUpdateResponseData>(
             json,
             ModelBase.SerializerOptions
         );
@@ -1062,7 +1019,7 @@ public class CampaignListResponseDataTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1083,7 +1040,7 @@ public class CampaignListResponseDataTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = CampaignListResponseDataStatus.SentCreated,
+            Status = CampaignUpdateResponseDataStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SubmittedToTcr = true,
             TcrCampaignID = "tcrCampaignId",
@@ -1108,7 +1065,7 @@ public class CampaignListResponseDataTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CampaignListResponseData>(
+        var deserialized = JsonSerializer.Deserialize<CampaignUpdateResponseData>(
             element,
             ModelBase.SerializerOptions
         );
@@ -1135,8 +1092,8 @@ public class CampaignListResponseDataTest : TestBase
         string expectedOptoutKeywords = "optoutKeywords";
         string expectedOptoutMessage = "optoutMessage";
         string expectedPrivacyPolicyLink = "privacyPolicyLink";
-        ApiEnum<string, CampaignListResponseDataStatus> expectedStatus =
-            CampaignListResponseDataStatus.SentCreated;
+        ApiEnum<string, CampaignUpdateResponseDataStatus> expectedStatus =
+            CampaignUpdateResponseDataStatus.SentCreated;
         DateTimeOffset expectedSubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         bool expectedSubmittedToTcr = true;
         string expectedTcrCampaignID = "tcrCampaignId";
@@ -1144,7 +1101,7 @@ public class CampaignListResponseDataTest : TestBase
         string expectedTermsAndConditionsLink = "termsAndConditionsLink";
         string expectedType = "type";
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
-        List<CampaignListResponseDataUseCase> expectedUseCases =
+        List<CampaignUpdateResponseDataUseCase> expectedUseCases =
         [
             new()
             {
@@ -1198,7 +1155,7 @@ public class CampaignListResponseDataTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1219,7 +1176,7 @@ public class CampaignListResponseDataTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = CampaignListResponseDataStatus.SentCreated,
+            Status = CampaignUpdateResponseDataStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SubmittedToTcr = true,
             TcrCampaignID = "tcrCampaignId",
@@ -1249,7 +1206,7 @@ public class CampaignListResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1264,7 +1221,7 @@ public class CampaignListResponseDataTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = CampaignListResponseDataStatus.SentCreated,
+            Status = CampaignUpdateResponseDataStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             TcrCampaignID = "tcrCampaignId",
             TcrSyncError = "tcrSyncError",
@@ -1296,7 +1253,7 @@ public class CampaignListResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1311,7 +1268,7 @@ public class CampaignListResponseDataTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = CampaignListResponseDataStatus.SentCreated,
+            Status = CampaignUpdateResponseDataStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             TcrCampaignID = "tcrCampaignId",
             TcrSyncError = "tcrSyncError",
@@ -1326,7 +1283,7 @@ public class CampaignListResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1341,7 +1298,7 @@ public class CampaignListResponseDataTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = CampaignListResponseDataStatus.SentCreated,
+            Status = CampaignUpdateResponseDataStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             TcrCampaignID = "tcrCampaignId",
             TcrSyncError = "tcrSyncError",
@@ -1384,7 +1341,7 @@ public class CampaignListResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             BrandID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1399,7 +1356,7 @@ public class CampaignListResponseDataTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = CampaignListResponseDataStatus.SentCreated,
+            Status = CampaignUpdateResponseDataStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             TcrCampaignID = "tcrCampaignId",
             TcrSyncError = "tcrSyncError",
@@ -1425,7 +1382,7 @@ public class CampaignListResponseDataTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1495,7 +1452,7 @@ public class CampaignListResponseDataTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1526,7 +1483,7 @@ public class CampaignListResponseDataTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1617,7 +1574,7 @@ public class CampaignListResponseDataTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1669,7 +1626,7 @@ public class CampaignListResponseDataTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new CampaignListResponseData
+        var model = new CampaignUpdateResponseData
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             BilledDate = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1690,7 +1647,7 @@ public class CampaignListResponseDataTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = CampaignListResponseDataStatus.SentCreated,
+            Status = CampaignUpdateResponseDataStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SubmittedToTcr = true,
             TcrCampaignID = "tcrCampaignId",
@@ -1714,29 +1671,29 @@ public class CampaignListResponseDataTest : TestBase
             Volume = "volume",
         };
 
-        CampaignListResponseData copied = new(model);
+        CampaignUpdateResponseData copied = new(model);
 
         Assert.Equal(model, copied);
     }
 }
 
-public class CampaignListResponseDataStatusTest : TestBase
+public class CampaignUpdateResponseDataStatusTest : TestBase
 {
     [Theory]
-    [InlineData(CampaignListResponseDataStatus.SentCreated)]
-    [InlineData(CampaignListResponseDataStatus.Active)]
-    [InlineData(CampaignListResponseDataStatus.Expired)]
-    public void Validation_Works(CampaignListResponseDataStatus rawValue)
+    [InlineData(CampaignUpdateResponseDataStatus.SentCreated)]
+    [InlineData(CampaignUpdateResponseDataStatus.Active)]
+    [InlineData(CampaignUpdateResponseDataStatus.Expired)]
+    public void Validation_Works(CampaignUpdateResponseDataStatus rawValue)
     {
         // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, CampaignListResponseDataStatus> value = rawValue;
+        ApiEnum<string, CampaignUpdateResponseDataStatus> value = rawValue;
         value.Validate();
     }
 
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, CampaignListResponseDataStatus>>(
+        var value = JsonSerializer.Deserialize<ApiEnum<string, CampaignUpdateResponseDataStatus>>(
             JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
@@ -1746,17 +1703,17 @@ public class CampaignListResponseDataStatusTest : TestBase
     }
 
     [Theory]
-    [InlineData(CampaignListResponseDataStatus.SentCreated)]
-    [InlineData(CampaignListResponseDataStatus.Active)]
-    [InlineData(CampaignListResponseDataStatus.Expired)]
-    public void SerializationRoundtrip_Works(CampaignListResponseDataStatus rawValue)
+    [InlineData(CampaignUpdateResponseDataStatus.SentCreated)]
+    [InlineData(CampaignUpdateResponseDataStatus.Active)]
+    [InlineData(CampaignUpdateResponseDataStatus.Expired)]
+    public void SerializationRoundtrip_Works(CampaignUpdateResponseDataStatus rawValue)
     {
         // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, CampaignListResponseDataStatus> value = rawValue;
+        ApiEnum<string, CampaignUpdateResponseDataStatus> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, CampaignListResponseDataStatus>
+            ApiEnum<string, CampaignUpdateResponseDataStatus>
         >(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
@@ -1765,25 +1722,25 @@ public class CampaignListResponseDataStatusTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, CampaignListResponseDataStatus>>(
+        var value = JsonSerializer.Deserialize<ApiEnum<string, CampaignUpdateResponseDataStatus>>(
             JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, CampaignListResponseDataStatus>
+            ApiEnum<string, CampaignUpdateResponseDataStatus>
         >(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
 }
 
-public class CampaignListResponseDataUseCaseTest : TestBase
+public class CampaignUpdateResponseDataUseCaseTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1820,7 +1777,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1832,7 +1789,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CampaignListResponseDataUseCase>(
+        var deserialized = JsonSerializer.Deserialize<CampaignUpdateResponseDataUseCase>(
             json,
             ModelBase.SerializerOptions
         );
@@ -1843,7 +1800,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1855,7 +1812,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CampaignListResponseDataUseCase>(
+        var deserialized = JsonSerializer.Deserialize<CampaignUpdateResponseDataUseCase>(
             element,
             ModelBase.SerializerOptions
         );
@@ -1887,7 +1844,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1904,7 +1861,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
@@ -1926,7 +1883,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
@@ -1937,7 +1894,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
@@ -1967,7 +1924,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
@@ -1986,7 +1943,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2003,7 +1960,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2019,7 +1976,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2038,7 +1995,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2056,7 +2013,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new CampaignListResponseDataUseCase
+        var model = new CampaignUpdateResponseDataUseCase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -2067,7 +2024,7 @@ public class CampaignListResponseDataUseCaseTest : TestBase
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
-        CampaignListResponseDataUseCase copied = new(model);
+        CampaignUpdateResponseDataUseCase copied = new(model);
 
         Assert.Equal(model, copied);
     }

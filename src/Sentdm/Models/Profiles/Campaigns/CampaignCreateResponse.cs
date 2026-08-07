@@ -7,46 +7,38 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
 using Sentdm.Exceptions;
-using Sentdm.Models.Webhooks;
+using Webhooks = Sentdm.Models.Webhooks;
 
 namespace Sentdm.Models.Profiles.Campaigns;
 
 /// <summary>
 /// Standard API response envelope for all v3 endpoints
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<CampaignListResponse, CampaignListResponseFromRaw>))]
-public sealed record class CampaignListResponse : JsonModel
+[JsonConverter(typeof(JsonModelConverter<CampaignCreateResponse, CampaignCreateResponseFromRaw>))]
+public sealed record class CampaignCreateResponse : JsonModel
 {
     /// <summary>
-    /// The response data (null if error)
+    /// A 10DLC campaign registered for a brand.
     /// </summary>
-    public IReadOnlyList<CampaignListResponseData>? Data
+    public Data? Data
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<CampaignListResponseData>>(
-                "data"
-            );
+            return this._rawData.GetNullableClass<Data>("data");
         }
-        init
-        {
-            this._rawData.Set<ImmutableArray<CampaignListResponseData>?>(
-                "data",
-                value == null ? null : ImmutableArray.ToImmutableArray(value)
-            );
-        }
+        init { this._rawData.Set("data", value); }
     }
 
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
+    public Webhooks::ErrorDetail? Error
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>("error");
         }
         init { this._rawData.Set("error", value); }
     }
@@ -54,12 +46,12 @@ public sealed record class CampaignListResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
+    public Webhooks::ApiMeta? Meta
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<Webhooks::ApiMeta>("meta");
         }
         init
         {
@@ -96,38 +88,35 @@ public sealed record class CampaignListResponse : JsonModel
     /// <inheritdoc/>
     public override void Validate()
     {
-        foreach (var item in this.Data ?? [])
-        {
-            item.Validate();
-        }
+        this.Data?.Validate();
         this.Error?.Validate();
         this.Meta?.Validate();
         _ = this.Success;
     }
 
-    public CampaignListResponse() { }
+    public CampaignCreateResponse() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public CampaignListResponse(CampaignListResponse campaignListResponse)
-        : base(campaignListResponse) { }
+    public CampaignCreateResponse(CampaignCreateResponse campaignCreateResponse)
+        : base(campaignCreateResponse) { }
 #pragma warning restore CS8618
 
-    public CampaignListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
+    public CampaignCreateResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    CampaignListResponse(FrozenDictionary<string, JsonElement> rawData)
+    CampaignCreateResponse(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="CampaignListResponseFromRaw.FromRawUnchecked"/>
-    public static CampaignListResponse FromRawUnchecked(
+    /// <inheritdoc cref="CampaignCreateResponseFromRaw.FromRawUnchecked"/>
+    public static CampaignCreateResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -135,21 +124,19 @@ public sealed record class CampaignListResponse : JsonModel
     }
 }
 
-class CampaignListResponseFromRaw : IFromRawJson<CampaignListResponse>
+class CampaignCreateResponseFromRaw : IFromRawJson<CampaignCreateResponse>
 {
     /// <inheritdoc/>
-    public CampaignListResponse FromRawUnchecked(
+    public CampaignCreateResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => CampaignListResponse.FromRawUnchecked(rawData);
+    ) => CampaignCreateResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>
 /// A 10DLC campaign registered for a brand.
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<CampaignListResponseData, CampaignListResponseDataFromRaw>)
-)]
-public sealed record class CampaignListResponseData : JsonModel
+[JsonConverter(typeof(JsonModelConverter<Data, DataFromRaw>))]
+public sealed record class Data : JsonModel
 {
     public string? ID
     {
@@ -396,14 +383,12 @@ public sealed record class CampaignListResponseData : JsonModel
         init { this._rawData.Set("privacyPolicyLink", value); }
     }
 
-    public ApiEnum<string, CampaignListResponseDataStatus>? Status
+    public ApiEnum<string, Status>? Status
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiEnum<string, CampaignListResponseDataStatus>>(
-                "status"
-            );
+            return this._rawData.GetNullableClass<ApiEnum<string, Status>>("status");
         }
         init { this._rawData.Set("status", value); }
     }
@@ -503,14 +488,12 @@ public sealed record class CampaignListResponseData : JsonModel
         init { this._rawData.Set("updatedAt", value); }
     }
 
-    public IReadOnlyList<CampaignListResponseDataUseCase>? UseCases
+    public IReadOnlyList<UseCase>? UseCases
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<CampaignListResponseDataUseCase>>(
-                "useCases"
-            );
+            return this._rawData.GetNullableStruct<ImmutableArray<UseCase>>("useCases");
         }
         init
         {
@@ -519,7 +502,7 @@ public sealed record class CampaignListResponseData : JsonModel
                 return;
             }
 
-            this._rawData.Set<ImmutableArray<CampaignListResponseDataUseCase>?>(
+            this._rawData.Set<ImmutableArray<UseCase>?>(
                 "useCases",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -579,55 +562,52 @@ public sealed record class CampaignListResponseData : JsonModel
         _ = this.Volume;
     }
 
-    public CampaignListResponseData() { }
+    public Data() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public CampaignListResponseData(CampaignListResponseData campaignListResponseData)
-        : base(campaignListResponseData) { }
+    public Data(Data data)
+        : base(data) { }
 #pragma warning restore CS8618
 
-    public CampaignListResponseData(IReadOnlyDictionary<string, JsonElement> rawData)
+    public Data(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    CampaignListResponseData(FrozenDictionary<string, JsonElement> rawData)
+    Data(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="CampaignListResponseDataFromRaw.FromRawUnchecked"/>
-    public static CampaignListResponseData FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="DataFromRaw.FromRawUnchecked"/>
+    public static Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class CampaignListResponseDataFromRaw : IFromRawJson<CampaignListResponseData>
+class DataFromRaw : IFromRawJson<Data>
 {
     /// <inheritdoc/>
-    public CampaignListResponseData FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => CampaignListResponseData.FromRawUnchecked(rawData);
+    public Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Data.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(typeof(CampaignListResponseDataStatusConverter))]
-public enum CampaignListResponseDataStatus
+[JsonConverter(typeof(StatusConverter))]
+public enum Status
 {
     SentCreated,
     Active,
     Expired,
 }
 
-sealed class CampaignListResponseDataStatusConverter : JsonConverter<CampaignListResponseDataStatus>
+sealed class StatusConverter : JsonConverter<Status>
 {
-    public override CampaignListResponseDataStatus Read(
+    public override Status Read(
         ref Utf8JsonReader reader,
         Type typeToConvert,
         JsonSerializerOptions options
@@ -635,26 +615,22 @@ sealed class CampaignListResponseDataStatusConverter : JsonConverter<CampaignLis
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "SENT_CREATED" => CampaignListResponseDataStatus.SentCreated,
-            "ACTIVE" => CampaignListResponseDataStatus.Active,
-            "EXPIRED" => CampaignListResponseDataStatus.Expired,
-            _ => (CampaignListResponseDataStatus)(-1),
+            "SENT_CREATED" => Status.SentCreated,
+            "ACTIVE" => Status.Active,
+            "EXPIRED" => Status.Expired,
+            _ => (Status)(-1),
         };
     }
 
-    public override void Write(
-        Utf8JsonWriter writer,
-        CampaignListResponseDataStatus value,
-        JsonSerializerOptions options
-    )
+    public override void Write(Utf8JsonWriter writer, Status value, JsonSerializerOptions options)
     {
         JsonSerializer.Serialize(
             writer,
             value switch
             {
-                CampaignListResponseDataStatus.SentCreated => "SENT_CREATED",
-                CampaignListResponseDataStatus.Active => "ACTIVE",
-                CampaignListResponseDataStatus.Expired => "EXPIRED",
+                Status.SentCreated => "SENT_CREATED",
+                Status.Active => "ACTIVE",
+                Status.Expired => "EXPIRED",
                 _ => throw new SentInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
@@ -673,13 +649,8 @@ sealed class CampaignListResponseDataStatusConverter : JsonConverter<CampaignLis
 /// exactly the fields the entity already serialized, so it removes nothing from
 /// the current response shape. It only closes the future-leak path.
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        CampaignListResponseDataUseCase,
-        CampaignListResponseDataUseCaseFromRaw
-    >)
-)]
-public sealed record class CampaignListResponseDataUseCase : JsonModel
+[JsonConverter(typeof(JsonModelConverter<UseCase, UseCaseFromRaw>))]
+public sealed record class UseCase : JsonModel
 {
     public string? ID
     {
@@ -819,42 +790,37 @@ public sealed record class CampaignListResponseDataUseCase : JsonModel
         _ = this.UpdatedAt;
     }
 
-    public CampaignListResponseDataUseCase() { }
+    public UseCase() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public CampaignListResponseDataUseCase(
-        CampaignListResponseDataUseCase campaignListResponseDataUseCase
-    )
-        : base(campaignListResponseDataUseCase) { }
+    public UseCase(UseCase useCase)
+        : base(useCase) { }
 #pragma warning restore CS8618
 
-    public CampaignListResponseDataUseCase(IReadOnlyDictionary<string, JsonElement> rawData)
+    public UseCase(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    CampaignListResponseDataUseCase(FrozenDictionary<string, JsonElement> rawData)
+    UseCase(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="CampaignListResponseDataUseCaseFromRaw.FromRawUnchecked"/>
-    public static CampaignListResponseDataUseCase FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="UseCaseFromRaw.FromRawUnchecked"/>
+    public static UseCase FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class CampaignListResponseDataUseCaseFromRaw : IFromRawJson<CampaignListResponseDataUseCase>
+class UseCaseFromRaw : IFromRawJson<UseCase>
 {
     /// <inheritdoc/>
-    public CampaignListResponseDataUseCase FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => CampaignListResponseDataUseCase.FromRawUnchecked(rawData);
+    public UseCase FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        UseCase.FromRawUnchecked(rawData);
 }

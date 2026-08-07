@@ -32,6 +32,7 @@ public class CampaignDataTest : TestBase
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "https://example.com",
             TermsAndConditionsLink = "https://example.com",
+            Volume = "volume",
         };
 
         string expectedDescription = "x";
@@ -54,6 +55,7 @@ public class CampaignDataTest : TestBase
         string expectedOptoutMessage = "optoutMessage";
         string expectedPrivacyPolicyLink = "https://example.com";
         string expectedTermsAndConditionsLink = "https://example.com";
+        string expectedVolume = "volume";
 
         Assert.Equal(expectedDescription, model.Description);
         Assert.Equal(expectedName, model.Name);
@@ -72,6 +74,7 @@ public class CampaignDataTest : TestBase
         Assert.Equal(expectedOptoutMessage, model.OptoutMessage);
         Assert.Equal(expectedPrivacyPolicyLink, model.PrivacyPolicyLink);
         Assert.Equal(expectedTermsAndConditionsLink, model.TermsAndConditionsLink);
+        Assert.Equal(expectedVolume, model.Volume);
     }
 
     [Fact]
@@ -99,6 +102,7 @@ public class CampaignDataTest : TestBase
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "https://example.com",
             TermsAndConditionsLink = "https://example.com",
+            Volume = "volume",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -135,6 +139,7 @@ public class CampaignDataTest : TestBase
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "https://example.com",
             TermsAndConditionsLink = "https://example.com",
+            Volume = "volume",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -164,6 +169,7 @@ public class CampaignDataTest : TestBase
         string expectedOptoutMessage = "optoutMessage";
         string expectedPrivacyPolicyLink = "https://example.com";
         string expectedTermsAndConditionsLink = "https://example.com";
+        string expectedVolume = "volume";
 
         Assert.Equal(expectedDescription, deserialized.Description);
         Assert.Equal(expectedName, deserialized.Name);
@@ -182,6 +188,7 @@ public class CampaignDataTest : TestBase
         Assert.Equal(expectedOptoutMessage, deserialized.OptoutMessage);
         Assert.Equal(expectedPrivacyPolicyLink, deserialized.PrivacyPolicyLink);
         Assert.Equal(expectedTermsAndConditionsLink, deserialized.TermsAndConditionsLink);
+        Assert.Equal(expectedVolume, deserialized.Volume);
     }
 
     [Fact]
@@ -209,6 +216,7 @@ public class CampaignDataTest : TestBase
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "https://example.com",
             TermsAndConditionsLink = "https://example.com",
+            Volume = "volume",
         };
 
         model.Validate();
@@ -250,6 +258,8 @@ public class CampaignDataTest : TestBase
         Assert.False(model.RawData.ContainsKey("privacyPolicyLink"));
         Assert.Null(model.TermsAndConditionsLink);
         Assert.False(model.RawData.ContainsKey("termsAndConditionsLink"));
+        Assert.Null(model.Volume);
+        Assert.False(model.RawData.ContainsKey("volume"));
     }
 
     [Fact]
@@ -299,6 +309,7 @@ public class CampaignDataTest : TestBase
             OptoutMessage = null,
             PrivacyPolicyLink = null,
             TermsAndConditionsLink = null,
+            Volume = null,
         };
 
         Assert.Null(model.HelpKeywords);
@@ -319,6 +330,8 @@ public class CampaignDataTest : TestBase
         Assert.True(model.RawData.ContainsKey("privacyPolicyLink"));
         Assert.Null(model.TermsAndConditionsLink);
         Assert.True(model.RawData.ContainsKey("termsAndConditionsLink"));
+        Assert.Null(model.Volume);
+        Assert.True(model.RawData.ContainsKey("volume"));
     }
 
     [Fact]
@@ -347,6 +360,7 @@ public class CampaignDataTest : TestBase
             OptoutMessage = null,
             PrivacyPolicyLink = null,
             TermsAndConditionsLink = null,
+            Volume = null,
         };
 
         model.Validate();
@@ -377,6 +391,7 @@ public class CampaignDataTest : TestBase
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "https://example.com",
             TermsAndConditionsLink = "https://example.com",
+            Volume = "volume",
         };
 
         CampaignData copied = new(model);

@@ -332,7 +332,7 @@ public sealed record class ProfileDetail : JsonModel
     }
 
     /// <summary>
-    /// Reference to another profile for SMS/Telnyx configuration
+    /// Reference to another profile whose SMS configuration this profile uses
     /// </summary>
     public string? SendingPhoneNumberProfileID
     {
@@ -1103,19 +1103,6 @@ public sealed record class Compliance : JsonModel
     }
 
     /// <summary>
-    /// Expected daily messaging volume
-    /// </summary>
-    public string? ExpectedMessagingVolume
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("expected_messaging_volume");
-        }
-        init { this._rawData.Set("expected_messaging_volume", value); }
-    }
-
-    /// <summary>
     /// Whether this is a TCR (Campaign Registry) application
     /// </summary>
     public bool? IsTcrApplication
@@ -1193,7 +1180,6 @@ public sealed record class Compliance : JsonModel
         {
             item.Validate();
         }
-        _ = this.ExpectedMessagingVolume;
         _ = this.IsTcrApplication;
         _ = this.Notes;
         _ = this.PhoneNumberPrefix;
