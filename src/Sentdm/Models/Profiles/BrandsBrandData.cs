@@ -16,14 +16,12 @@ public sealed record class BrandsBrandData : JsonModel
     /// <summary>
     /// Compliance and TCR information for brand registration
     /// </summary>
-    public required SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo Compliance
+    public required BrandComplianceInfo Compliance
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo>(
-                "compliance"
-            );
+            return this._rawData.GetNotNullClass<BrandComplianceInfo>("compliance");
         }
         init { this._rawData.Set("compliance", value); }
     }
@@ -31,14 +29,12 @@ public sealed record class BrandsBrandData : JsonModel
     /// <summary>
     /// Contact information for brand KYC
     /// </summary>
-    public required SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo Contact
+    public required BrandContactInfo Contact
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo>(
-                "contact"
-            );
+            return this._rawData.GetNotNullClass<BrandContactInfo>("contact");
         }
         init { this._rawData.Set("contact", value); }
     }
@@ -46,14 +42,12 @@ public sealed record class BrandsBrandData : JsonModel
     /// <summary>
     /// Business details and address for brand KYC
     /// </summary>
-    public SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo? Business
+    public BrandBusinessInfo? Business
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo>(
-                "business"
-            );
+            return this._rawData.GetNullableClass<BrandBusinessInfo>("business");
         }
         init { this._rawData.Set("business", value); }
     }

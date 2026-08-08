@@ -91,6 +91,24 @@ public interface IContactService
         ContactDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     );
+
+    /// <summary>
+    /// Returns aggregate message counts, time bounds, channels used, and per-channel
+    /// success/fail scores (each as a percentage 0-100 of messages on that channel) for
+    /// one of your contacts. Successful terminal states: SENT/DELIVERED/READ for
+    /// outbound, RECEIVED for inbound. Fail: FAILED.
+    /// </summary>
+    Task<ApiResponseOfContactMessageSummary> RetrieveMessageSummary(
+        ContactRetrieveMessageSummaryParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="RetrieveMessageSummary(ContactRetrieveMessageSummaryParams, CancellationToken)"/>
+    Task<ApiResponseOfContactMessageSummary> RetrieveMessageSummary(
+        string contactID,
+        ContactRetrieveMessageSummaryParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
 }
 
 /// <summary>
@@ -169,6 +187,22 @@ public interface IContactServiceWithRawResponse
     Task<HttpResponse> Delete(
         string id,
         ContactDeleteParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for <c>get /v3/contacts/{contactId}/message-summary</c>, but is otherwise the
+    /// same as <see cref="IContactService.RetrieveMessageSummary(ContactRetrieveMessageSummaryParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<ApiResponseOfContactMessageSummary>> RetrieveMessageSummary(
+        ContactRetrieveMessageSummaryParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="RetrieveMessageSummary(ContactRetrieveMessageSummaryParams, CancellationToken)"/>
+    Task<HttpResponse<ApiResponseOfContactMessageSummary>> RetrieveMessageSummary(
+        string contactID,
+        ContactRetrieveMessageSummaryParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }
