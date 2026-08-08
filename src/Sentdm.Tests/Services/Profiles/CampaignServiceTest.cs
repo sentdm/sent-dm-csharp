@@ -8,7 +8,7 @@ public class CampaignServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var campaign = await this.client.Profiles.Campaigns.Create(
+        var apiResponseOfBrandCampaign = await this.client.Profiles.Campaigns.Create(
             "770e8400-e29b-41d4-a716-446655440002",
             new()
             {
@@ -45,13 +45,13 @@ public class CampaignServiceTest : TestBase
             },
             TestContext.Current.CancellationToken
         );
-        campaign.Validate();
+        apiResponseOfBrandCampaign.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var campaign = await this.client.Profiles.Campaigns.Update(
+        var apiResponseOfBrandCampaign = await this.client.Profiles.Campaigns.Update(
             "b2c3d4e5-f6a7-8901-bcde-f12345678901",
             new()
             {
@@ -88,18 +88,18 @@ public class CampaignServiceTest : TestBase
             },
             TestContext.Current.CancellationToken
         );
-        campaign.Validate();
+        apiResponseOfBrandCampaign.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
-        var campaigns = await this.client.Profiles.Campaigns.List(
+        var apiResponseOfListOfBrandCampaign = await this.client.Profiles.Campaigns.List(
             "770e8400-e29b-41d4-a716-446655440002",
             new(),
             TestContext.Current.CancellationToken
         );
-        campaigns.Validate();
+        apiResponseOfListOfBrandCampaign.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
