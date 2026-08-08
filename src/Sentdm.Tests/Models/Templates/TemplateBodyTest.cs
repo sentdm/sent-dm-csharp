@@ -4,12 +4,12 @@ using Sentdm.Models.Templates;
 
 namespace Sentdm.Tests.Models.Templates;
 
-public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
+public class TemplateBodyTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateBody
+        var model = new TemplateBody
         {
             MultiChannel = new()
             {
@@ -215,7 +215,7 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateBody
+        var model = new TemplateBody
         {
             MultiChannel = new()
             {
@@ -316,11 +316,10 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesCommonContractsPocOsTemplateBody>(
-                json,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<TemplateBody>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -328,7 +327,7 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateBody
+        var model = new TemplateBody
         {
             MultiChannel = new()
             {
@@ -429,11 +428,10 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesCommonContractsPocOsTemplateBody>(
-                element,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<TemplateBody>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         TemplateBodyContent expectedMultiChannel = new()
@@ -542,7 +540,7 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateBody
+        var model = new TemplateBody
         {
             MultiChannel = new()
             {
@@ -648,7 +646,7 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateBody { };
+        var model = new TemplateBody { };
 
         Assert.Null(model.MultiChannel);
         Assert.False(model.RawData.ContainsKey("multiChannel"));
@@ -663,7 +661,7 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateBody { };
+        var model = new TemplateBody { };
 
         model.Validate();
     }
@@ -671,7 +669,7 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateBody
+        var model = new TemplateBody
         {
             MultiChannel = null,
             Rcs = null,
@@ -692,7 +690,7 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateBody
+        var model = new TemplateBody
         {
             MultiChannel = null,
             Rcs = null,
@@ -706,7 +704,7 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateBody
+        var model = new TemplateBody
         {
             MultiChannel = new()
             {
@@ -806,7 +804,7 @@ public class SentDmServicesCommonContractsPocOsTemplateBodyTest : TestBase
             },
         };
 
-        SentDmServicesCommonContractsPocOsTemplateBody copied = new(model);
+        TemplateBody copied = new(model);
 
         Assert.Equal(model, copied);
     }

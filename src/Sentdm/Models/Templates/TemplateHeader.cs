@@ -9,18 +9,14 @@ using Sentdm.Core;
 namespace Sentdm.Models.Templates;
 
 /// <summary>
-/// Footer section of a message template
+/// Header section of a message template
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        SentDmServicesCommonContractsPocOsTemplateFooter,
-        SentDmServicesCommonContractsPocOsTemplateFooterFromRaw
-    >)
-)]
-public sealed record class SentDmServicesCommonContractsPocOsTemplateFooter : JsonModel
+[JsonConverter(typeof(JsonModelConverter<TemplateHeader, TemplateHeaderFromRaw>))]
+public sealed record class TemplateHeader : JsonModel
 {
     /// <summary>
-    /// The footer template text with optional variable placeholders
+    /// The header template text with optional variable placeholders (e.g., "Welcome
+    /// to {{0:variable}}")
     /// </summary>
     public required string Template
     {
@@ -33,7 +29,7 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateFooter : Js
     }
 
     /// <summary>
-    /// The type of footer (typically "text")
+    /// The type of header (e.g., "text", "image", "video", "document")
     /// </summary>
     public string? Type
     {
@@ -46,7 +42,7 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateFooter : Js
     }
 
     /// <summary>
-    /// List of variables used in the footer template
+    /// List of variables used in the header template
     /// </summary>
     public IReadOnlyList<TemplateVariable>? Variables
     {
@@ -75,52 +71,44 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateFooter : Js
         }
     }
 
-    public SentDmServicesCommonContractsPocOsTemplateFooter() { }
+    public TemplateHeader() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public SentDmServicesCommonContractsPocOsTemplateFooter(
-        SentDmServicesCommonContractsPocOsTemplateFooter sentDmServicesCommonContractsPocOsTemplateFooter
-    )
-        : base(sentDmServicesCommonContractsPocOsTemplateFooter) { }
+    public TemplateHeader(TemplateHeader templateHeader)
+        : base(templateHeader) { }
 #pragma warning restore CS8618
 
-    public SentDmServicesCommonContractsPocOsTemplateFooter(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    public TemplateHeader(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    SentDmServicesCommonContractsPocOsTemplateFooter(FrozenDictionary<string, JsonElement> rawData)
+    TemplateHeader(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="SentDmServicesCommonContractsPocOsTemplateFooterFromRaw.FromRawUnchecked"/>
-    public static SentDmServicesCommonContractsPocOsTemplateFooter FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="TemplateHeaderFromRaw.FromRawUnchecked"/>
+    public static TemplateHeader FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 
     [SetsRequiredMembers]
-    public SentDmServicesCommonContractsPocOsTemplateFooter(string template)
+    public TemplateHeader(string template)
         : this()
     {
         this.Template = template;
     }
 }
 
-class SentDmServicesCommonContractsPocOsTemplateFooterFromRaw
-    : IFromRawJson<SentDmServicesCommonContractsPocOsTemplateFooter>
+class TemplateHeaderFromRaw : IFromRawJson<TemplateHeader>
 {
     /// <inheritdoc/>
-    public SentDmServicesCommonContractsPocOsTemplateFooter FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => SentDmServicesCommonContractsPocOsTemplateFooter.FromRawUnchecked(rawData);
+    public TemplateHeader FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        TemplateHeader.FromRawUnchecked(rawData);
 }

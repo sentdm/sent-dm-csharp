@@ -8,13 +8,8 @@ using Sentdm.Core;
 
 namespace Sentdm.Models.Templates;
 
-[JsonConverter(
-    typeof(JsonModelConverter<
-        SentDmServicesCommonContractsPocOsTemplateButtonProps,
-        SentDmServicesCommonContractsPocOsTemplateButtonPropsFromRaw
-    >)
-)]
-public sealed record class SentDmServicesCommonContractsPocOsTemplateButtonProps : JsonModel
+[JsonConverter(typeof(JsonModelConverter<TemplateButtonProps, TemplateButtonPropsFromRaw>))]
+public sealed record class TemplateButtonProps : JsonModel
 {
     public required int ActiveFor
     {
@@ -178,35 +173,29 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateButtonProps
         _ = this.SignatureHash;
     }
 
-    public SentDmServicesCommonContractsPocOsTemplateButtonProps() { }
+    public TemplateButtonProps() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public SentDmServicesCommonContractsPocOsTemplateButtonProps(
-        SentDmServicesCommonContractsPocOsTemplateButtonProps sentDmServicesCommonContractsPocOsTemplateButtonProps
-    )
-        : base(sentDmServicesCommonContractsPocOsTemplateButtonProps) { }
+    public TemplateButtonProps(TemplateButtonProps templateButtonProps)
+        : base(templateButtonProps) { }
 #pragma warning restore CS8618
 
-    public SentDmServicesCommonContractsPocOsTemplateButtonProps(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    public TemplateButtonProps(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    SentDmServicesCommonContractsPocOsTemplateButtonProps(
-        FrozenDictionary<string, JsonElement> rawData
-    )
+    TemplateButtonProps(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="SentDmServicesCommonContractsPocOsTemplateButtonPropsFromRaw.FromRawUnchecked"/>
-    public static SentDmServicesCommonContractsPocOsTemplateButtonProps FromRawUnchecked(
+    /// <inheritdoc cref="TemplateButtonPropsFromRaw.FromRawUnchecked"/>
+    public static TemplateButtonProps FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -214,11 +203,9 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateButtonProps
     }
 }
 
-class SentDmServicesCommonContractsPocOsTemplateButtonPropsFromRaw
-    : IFromRawJson<SentDmServicesCommonContractsPocOsTemplateButtonProps>
+class TemplateButtonPropsFromRaw : IFromRawJson<TemplateButtonProps>
 {
     /// <inheritdoc/>
-    public SentDmServicesCommonContractsPocOsTemplateButtonProps FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => SentDmServicesCommonContractsPocOsTemplateButtonProps.FromRawUnchecked(rawData);
+    public TemplateButtonProps FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        TemplateButtonProps.FromRawUnchecked(rawData);
 }
