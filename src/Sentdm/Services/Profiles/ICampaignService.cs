@@ -32,13 +32,13 @@ public interface ICampaignService
     /// Creates a new campaign scoped under the brand of the specified profile. Each
     /// campaign must include at least one use case with sample messages.
     /// </summary>
-    Task<CampaignCreateResponse> Create(
+    Task<ApiResponseOfBrandCampaign> Create(
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Create(CampaignCreateParams, CancellationToken)"/>
-    Task<CampaignCreateResponse> Create(
+    Task<ApiResponseOfBrandCampaign> Create(
         string profileID,
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
@@ -48,13 +48,13 @@ public interface ICampaignService
     /// Updates an existing campaign under the brand of the specified profile. Cannot
     /// update campaigns that have already been submitted to TCR.
     /// </summary>
-    Task<CampaignUpdateResponse> Update(
+    Task<ApiResponseOfBrandCampaign> Update(
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(CampaignUpdateParams, CancellationToken)"/>
-    Task<CampaignUpdateResponse> Update(
+    Task<ApiResponseOfBrandCampaign> Update(
         string campaignID,
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
@@ -64,13 +64,13 @@ public interface ICampaignService
     /// Retrieves all campaigns linked to the profile's brand, including use cases and
     /// sample messages. Returns inherited campaigns if inherit_tcr_campaign=true.
     /// </summary>
-    Task<CampaignListResponse> List(
+    Task<ApiResponseOfListOfBrandCampaign> List(
         CampaignListParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="List(CampaignListParams, CancellationToken)"/>
-    Task<CampaignListResponse> List(
+    Task<ApiResponseOfListOfBrandCampaign> List(
         string profileID,
         CampaignListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -107,13 +107,13 @@ public interface ICampaignServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/profiles/{profileId}/campaigns</c>, but is otherwise the
     /// same as <see cref="ICampaignService.Create(CampaignCreateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<CampaignCreateResponse>> Create(
+    Task<HttpResponse<ApiResponseOfBrandCampaign>> Create(
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Create(CampaignCreateParams, CancellationToken)"/>
-    Task<HttpResponse<CampaignCreateResponse>> Create(
+    Task<HttpResponse<ApiResponseOfBrandCampaign>> Create(
         string profileID,
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
@@ -123,13 +123,13 @@ public interface ICampaignServiceWithRawResponse
     /// Returns a raw HTTP response for <c>put /v3/profiles/{profileId}/campaigns/{campaignId}</c>, but is otherwise the
     /// same as <see cref="ICampaignService.Update(CampaignUpdateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<CampaignUpdateResponse>> Update(
+    Task<HttpResponse<ApiResponseOfBrandCampaign>> Update(
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(CampaignUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<CampaignUpdateResponse>> Update(
+    Task<HttpResponse<ApiResponseOfBrandCampaign>> Update(
         string campaignID,
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
@@ -139,13 +139,13 @@ public interface ICampaignServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/profiles/{profileId}/campaigns</c>, but is otherwise the
     /// same as <see cref="ICampaignService.List(CampaignListParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<CampaignListResponse>> List(
+    Task<HttpResponse<ApiResponseOfListOfBrandCampaign>> List(
         CampaignListParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="List(CampaignListParams, CancellationToken)"/>
-    Task<HttpResponse<CampaignListResponse>> List(
+    Task<HttpResponse<ApiResponseOfListOfBrandCampaign>> List(
         string profileID,
         CampaignListParams? parameters = null,
         CancellationToken cancellationToken = default
