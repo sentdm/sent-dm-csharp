@@ -5,13 +5,12 @@ using Sentdm.Models.Profiles;
 
 namespace Sentdm.Tests.Models.Profiles;
 
-public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfoTest
-    : TestBase
+public class BrandBusinessInfoTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo
+        var model = new BrandBusinessInfo
         {
             City = "city",
             Country = "country",
@@ -54,7 +53,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBus
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo
+        var model = new BrandBusinessInfo
         {
             City = "city",
             Country = "country",
@@ -70,11 +69,10 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBus
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo>(
-                json,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<BrandBusinessInfo>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -82,7 +80,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBus
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo
+        var model = new BrandBusinessInfo
         {
             City = "city",
             Country = "country",
@@ -98,11 +96,10 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBus
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo>(
-                element,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<BrandBusinessInfo>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedCity = "city";
@@ -133,7 +130,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBus
     [Fact]
     public void Validation_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo
+        var model = new BrandBusinessInfo
         {
             City = "city",
             Country = "country",
@@ -154,8 +151,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBus
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo
-        { };
+        var model = new BrandBusinessInfo { };
 
         Assert.Null(model.City);
         Assert.False(model.RawData.ContainsKey("city"));
@@ -184,8 +180,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBus
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo
-        { };
+        var model = new BrandBusinessInfo { };
 
         model.Validate();
     }
@@ -193,7 +188,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBus
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo
+        var model = new BrandBusinessInfo
         {
             City = null,
             Country = null,
@@ -235,7 +230,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBus
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo
+        var model = new BrandBusinessInfo
         {
             City = null,
             Country = null,
@@ -256,7 +251,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBus
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo
+        var model = new BrandBusinessInfo
         {
             City = "city",
             Country = "country",
@@ -271,9 +266,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBus
             Url = "https://example.com",
         };
 
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo copied = new(
-            model
-        );
+        BrandBusinessInfo copied = new(model);
 
         Assert.Equal(model, copied);
     }

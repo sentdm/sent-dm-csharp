@@ -4,13 +4,12 @@ using Sentdm.Models.Profiles;
 
 namespace Sentdm.Tests.Models.Profiles;
 
-public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfoTest
-    : TestBase
+public class BrandContactInfoTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo
+        var model = new BrandContactInfo
         {
             Name = "x",
             BusinessName = "businessName",
@@ -38,7 +37,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCon
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo
+        var model = new BrandContactInfo
         {
             Name = "x",
             BusinessName = "businessName",
@@ -49,11 +48,10 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCon
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo>(
-                json,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<BrandContactInfo>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -61,7 +59,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCon
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo
+        var model = new BrandContactInfo
         {
             Name = "x",
             BusinessName = "businessName",
@@ -72,11 +70,10 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCon
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo>(
-                element,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<BrandContactInfo>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedName = "x";
@@ -97,7 +94,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCon
     [Fact]
     public void Validation_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo
+        var model = new BrandContactInfo
         {
             Name = "x",
             BusinessName = "businessName",
@@ -113,10 +110,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCon
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo
-        {
-            Name = "x",
-        };
+        var model = new BrandContactInfo { Name = "x" };
 
         Assert.Null(model.BusinessName);
         Assert.False(model.RawData.ContainsKey("businessName"));
@@ -133,10 +127,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCon
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo
-        {
-            Name = "x",
-        };
+        var model = new BrandContactInfo { Name = "x" };
 
         model.Validate();
     }
@@ -144,7 +135,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCon
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo
+        var model = new BrandContactInfo
         {
             Name = "x",
 
@@ -170,7 +161,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCon
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo
+        var model = new BrandContactInfo
         {
             Name = "x",
 
@@ -187,7 +178,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCon
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo
+        var model = new BrandContactInfo
         {
             Name = "x",
             BusinessName = "businessName",
@@ -197,9 +188,7 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCon
             Role = "role",
         };
 
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo copied = new(
-            model
-        );
+        BrandContactInfo copied = new(model);
 
         Assert.Equal(model, copied);
     }

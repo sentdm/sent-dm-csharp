@@ -56,20 +56,19 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// List of use cases with sample messages
     /// </summary>
-    public required IReadOnlyList<SentDmServicesEndpointsCustomerApIv3ContractsRequestsCampaignsCampaignUseCaseData> UseCases
+    public required IReadOnlyList<CampaignUseCaseData> UseCases
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<
-                ImmutableArray<SentDmServicesEndpointsCustomerApIv3ContractsRequestsCampaignsCampaignUseCaseData>
-            >("useCases");
+            return this._rawData.GetNotNullStruct<ImmutableArray<CampaignUseCaseData>>("useCases");
         }
         init
         {
-            this._rawData.Set<
-                ImmutableArray<SentDmServicesEndpointsCustomerApIv3ContractsRequestsCampaignsCampaignUseCaseData>
-            >("useCases", ImmutableArray.ToImmutableArray(value));
+            this._rawData.Set<ImmutableArray<CampaignUseCaseData>>(
+                "useCases",
+                ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 

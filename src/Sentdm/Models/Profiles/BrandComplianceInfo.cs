@@ -11,14 +11,8 @@ namespace Sentdm.Models.Profiles;
 /// <summary>
 /// Compliance and TCR information for brand registration
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo,
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfoFromRaw
-    >)
-)]
-public sealed record class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo
-    : JsonModel
+[JsonConverter(typeof(JsonModelConverter<BrandComplianceInfo, BrandComplianceInfoFromRaw>))]
+public sealed record class BrandComplianceInfo : JsonModel
 {
     public required ApiEnum<string, TcrBrandRelationship> BrandRelationship
     {
@@ -130,35 +124,29 @@ public sealed record class SentDmServicesEndpointsCustomerApIv3ContractsRequests
         _ = this.PrimaryUseCase;
     }
 
-    public SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo() { }
+    public BrandComplianceInfo() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo(
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo sentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo
-    )
-        : base(sentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo) { }
+    public BrandComplianceInfo(BrandComplianceInfo brandComplianceInfo)
+        : base(brandComplianceInfo) { }
 #pragma warning restore CS8618
 
-    public SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    public BrandComplianceInfo(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo(
-        FrozenDictionary<string, JsonElement> rawData
-    )
+    BrandComplianceInfo(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfoFromRaw.FromRawUnchecked"/>
-    public static SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo FromRawUnchecked(
+    /// <inheritdoc cref="BrandComplianceInfoFromRaw.FromRawUnchecked"/>
+    public static BrandComplianceInfo FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -166,14 +154,9 @@ public sealed record class SentDmServicesEndpointsCustomerApIv3ContractsRequests
     }
 }
 
-class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfoFromRaw
-    : IFromRawJson<SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo>
+class BrandComplianceInfoFromRaw : IFromRawJson<BrandComplianceInfo>
 {
     /// <inheritdoc/>
-    public SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) =>
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo.FromRawUnchecked(
-            rawData
-        );
+    public BrandComplianceInfo FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        BrandComplianceInfo.FromRawUnchecked(rawData);
 }

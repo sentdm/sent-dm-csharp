@@ -5,12 +5,12 @@ using Sentdm.Models.Templates;
 
 namespace Sentdm.Tests.Models.Templates;
 
-public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBase
+public class TemplateButtonPropsTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateButtonProps
+        var model = new TemplateButtonProps
         {
             ActiveFor = 1,
             CountryCode = "x",
@@ -99,7 +99,7 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateButtonProps
+        var model = new TemplateButtonProps
         {
             ActiveFor = 1,
             CountryCode = "x",
@@ -135,11 +135,10 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesCommonContractsPocOsTemplateButtonProps>(
-                json,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<TemplateButtonProps>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -147,7 +146,7 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateButtonProps
+        var model = new TemplateButtonProps
         {
             ActiveFor = 1,
             CountryCode = "x",
@@ -183,11 +182,10 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesCommonContractsPocOsTemplateButtonProps>(
-                element,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<TemplateButtonProps>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         int expectedActiveFor = 1;
@@ -244,7 +242,7 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
     [Fact]
     public void Validation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateButtonProps
+        var model = new TemplateButtonProps
         {
             ActiveFor = 1,
             CountryCode = "x",
@@ -285,7 +283,7 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateButtonProps
+        var model = new TemplateButtonProps
         {
             ActiveFor = 1,
             CountryCode = "x",
@@ -329,7 +327,7 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateButtonProps
+        var model = new TemplateButtonProps
         {
             ActiveFor = 1,
             CountryCode = "x",
@@ -366,7 +364,7 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateButtonProps
+        var model = new TemplateButtonProps
         {
             ActiveFor = 1,
             CountryCode = "x",
@@ -415,7 +413,7 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateButtonProps
+        var model = new TemplateButtonProps
         {
             ActiveFor = 1,
             CountryCode = "x",
@@ -457,7 +455,7 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateButtonProps
+        var model = new TemplateButtonProps
         {
             ActiveFor = 1,
             CountryCode = "x",
@@ -492,7 +490,7 @@ public class SentDmServicesCommonContractsPocOsTemplateButtonPropsTest : TestBas
             SignatureHash = "signatureHash",
         };
 
-        SentDmServicesCommonContractsPocOsTemplateButtonProps copied = new(model);
+        TemplateButtonProps copied = new(model);
 
         Assert.Equal(model, copied);
     }
