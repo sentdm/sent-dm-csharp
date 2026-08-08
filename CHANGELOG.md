@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.29.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.28.0...v0.29.0) (2026-08-08)
+
+
+### Features
+
+* **api:** sync OpenAPI spec from production ([305150e](https://github.com/sentdm/sent-dm-csharp/commit/305150ed2ff198394407de197243be483543dc5d))
+
+
+### Chores
+
+* mark GitHub Releases as stable releases (prerelease: false) ([c51506b](https://github.com/sentdm/sent-dm-csharp/commit/c51506b0b2c2cf722c3a3b352dbbfb0aa51c0248))
+
 ## [0.28.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.27.0...v0.28.0) (2026-07-07)
 
 
