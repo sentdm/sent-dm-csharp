@@ -22,15 +22,13 @@ public abstract record class ModelBase
         Converters =
         {
             new FrozenDictionaryConverterFactory(),
+            new ApiEnumConverter<string, EntityType>(),
             new ApiEnumConverter<string, IdentityStatus>(),
             new ApiEnumConverter<string, Status>(),
-            new ApiEnumConverter<string, EntityType>(),
             new ApiEnumConverter<string, TcrBrandRelationship>(),
             new ApiEnumConverter<string, TcrVertical>(),
-            new ApiEnumConverter<string, Campaigns::MessagingUseCaseUs>(),
             new ApiEnumConverter<string, Campaigns::Status>(),
-            new ApiEnumConverter<string, Campaigns::CampaignUpdateResponseDataStatus>(),
-            new ApiEnumConverter<string, Campaigns::CampaignListResponseDataStatus>(),
+            new ApiEnumConverter<string, Campaigns::MessagingUseCaseUs>(),
         },
     };
 

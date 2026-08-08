@@ -17,14 +17,12 @@ public sealed record class TemplateDefinition : JsonModel
     /// <summary>
     /// Body section of a message template with channel-specific content
     /// </summary>
-    public required SentDmServicesCommonContractsPocOsTemplateBody Body
+    public required TemplateBody Body
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<SentDmServicesCommonContractsPocOsTemplateBody>(
-                "body"
-            );
+            return this._rawData.GetNotNullClass<TemplateBody>("body");
         }
         init { this._rawData.Set("body", value); }
     }
@@ -32,14 +30,12 @@ public sealed record class TemplateDefinition : JsonModel
     /// <summary>
     /// Configuration for AUTHENTICATION category templates
     /// </summary>
-    public SentDmServicesCommonContractsPocOsAuthenticationConfig? AuthenticationConfig
+    public AuthenticationConfig? AuthenticationConfig
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<SentDmServicesCommonContractsPocOsAuthenticationConfig>(
-                "authenticationConfig"
-            );
+            return this._rawData.GetNullableClass<AuthenticationConfig>("authenticationConfig");
         }
         init { this._rawData.Set("authenticationConfig", value); }
     }
@@ -47,18 +43,16 @@ public sealed record class TemplateDefinition : JsonModel
     /// <summary>
     /// Optional list of interactive buttons (e.g., quick replies, URLs, phone numbers)
     /// </summary>
-    public IReadOnlyList<SentDmServicesCommonContractsPocOsTemplateButton>? Buttons
+    public IReadOnlyList<TemplateButton>? Buttons
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<
-                ImmutableArray<SentDmServicesCommonContractsPocOsTemplateButton>
-            >("buttons");
+            return this._rawData.GetNullableStruct<ImmutableArray<TemplateButton>>("buttons");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<SentDmServicesCommonContractsPocOsTemplateButton>?>(
+            this._rawData.Set<ImmutableArray<TemplateButton>?>(
                 "buttons",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -81,14 +75,12 @@ public sealed record class TemplateDefinition : JsonModel
     /// <summary>
     /// Footer section of a message template
     /// </summary>
-    public SentDmServicesCommonContractsPocOsTemplateFooter? Footer
+    public TemplateFooter? Footer
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<SentDmServicesCommonContractsPocOsTemplateFooter>(
-                "footer"
-            );
+            return this._rawData.GetNullableClass<TemplateFooter>("footer");
         }
         init { this._rawData.Set("footer", value); }
     }
@@ -96,14 +88,12 @@ public sealed record class TemplateDefinition : JsonModel
     /// <summary>
     /// Header section of a message template
     /// </summary>
-    public SentDmServicesCommonContractsPocOsTemplateHeader? Header
+    public TemplateHeader? Header
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<SentDmServicesCommonContractsPocOsTemplateHeader>(
-                "header"
-            );
+            return this._rawData.GetNullableClass<TemplateHeader>("header");
         }
         init { this._rawData.Set("header", value); }
     }
@@ -152,7 +142,7 @@ public sealed record class TemplateDefinition : JsonModel
     }
 
     [SetsRequiredMembers]
-    public TemplateDefinition(SentDmServicesCommonContractsPocOsTemplateBody body)
+    public TemplateDefinition(TemplateBody body)
         : this()
     {
         this.Body = body;

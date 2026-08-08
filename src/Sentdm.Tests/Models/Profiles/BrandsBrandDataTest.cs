@@ -46,42 +46,39 @@ public class BrandsBrandDataTest : TestBase
             },
         };
 
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo expectedCompliance =
-            new()
-            {
-                BrandRelationship = TcrBrandRelationship.BasicAccount,
-                Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
-                IsTcrApplication = true,
-                Notes = "notes",
-                PhoneNumberPrefix = "phoneNumberPrefix",
-                PrimaryUseCase = "primaryUseCase",
-            };
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo expectedContact =
-            new()
-            {
-                Name = "x",
-                BusinessName = "businessName",
-                Email = "dev@stainless.com",
-                Phone = "phone",
-                PhoneCountryCode = "phoneCountryCode",
-                Role = "role",
-            };
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo expectedBusiness =
-            new()
-            {
-                City = "city",
-                Country = "country",
-                CountryOfRegistration = "countryOfRegistration",
-                EntityType = EntityType.PrivateProfit,
-                LegalName = "legalName",
-                PostalCode = "postalCode",
-                State = "state",
-                Street = "street",
-                TaxID = "taxId",
-                TaxIDType = "taxIdType",
-                Url = "https://example.com",
-            };
+        BrandComplianceInfo expectedCompliance = new()
+        {
+            BrandRelationship = TcrBrandRelationship.BasicAccount,
+            Vertical = TcrVertical.Professional,
+            DestinationCountries = [new() { ID = "id", IsMain = true }],
+            IsTcrApplication = true,
+            Notes = "notes",
+            PhoneNumberPrefix = "phoneNumberPrefix",
+            PrimaryUseCase = "primaryUseCase",
+        };
+        BrandContactInfo expectedContact = new()
+        {
+            Name = "x",
+            BusinessName = "businessName",
+            Email = "dev@stainless.com",
+            Phone = "phone",
+            PhoneCountryCode = "phoneCountryCode",
+            Role = "role",
+        };
+        BrandBusinessInfo expectedBusiness = new()
+        {
+            City = "city",
+            Country = "country",
+            CountryOfRegistration = "countryOfRegistration",
+            EntityType = EntityType.PrivateProfit,
+            LegalName = "legalName",
+            PostalCode = "postalCode",
+            State = "state",
+            Street = "street",
+            TaxID = "taxId",
+            TaxIDType = "taxIdType",
+            Url = "https://example.com",
+        };
 
         Assert.Equal(expectedCompliance, model.Compliance);
         Assert.Equal(expectedContact, model.Contact);
@@ -184,42 +181,39 @@ public class BrandsBrandDataTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo expectedCompliance =
-            new()
-            {
-                BrandRelationship = TcrBrandRelationship.BasicAccount,
-                Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
-                IsTcrApplication = true,
-                Notes = "notes",
-                PhoneNumberPrefix = "phoneNumberPrefix",
-                PrimaryUseCase = "primaryUseCase",
-            };
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo expectedContact =
-            new()
-            {
-                Name = "x",
-                BusinessName = "businessName",
-                Email = "dev@stainless.com",
-                Phone = "phone",
-                PhoneCountryCode = "phoneCountryCode",
-                Role = "role",
-            };
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandBusinessInfo expectedBusiness =
-            new()
-            {
-                City = "city",
-                Country = "country",
-                CountryOfRegistration = "countryOfRegistration",
-                EntityType = EntityType.PrivateProfit,
-                LegalName = "legalName",
-                PostalCode = "postalCode",
-                State = "state",
-                Street = "street",
-                TaxID = "taxId",
-                TaxIDType = "taxIdType",
-                Url = "https://example.com",
-            };
+        BrandComplianceInfo expectedCompliance = new()
+        {
+            BrandRelationship = TcrBrandRelationship.BasicAccount,
+            Vertical = TcrVertical.Professional,
+            DestinationCountries = [new() { ID = "id", IsMain = true }],
+            IsTcrApplication = true,
+            Notes = "notes",
+            PhoneNumberPrefix = "phoneNumberPrefix",
+            PrimaryUseCase = "primaryUseCase",
+        };
+        BrandContactInfo expectedContact = new()
+        {
+            Name = "x",
+            BusinessName = "businessName",
+            Email = "dev@stainless.com",
+            Phone = "phone",
+            PhoneCountryCode = "phoneCountryCode",
+            Role = "role",
+        };
+        BrandBusinessInfo expectedBusiness = new()
+        {
+            City = "city",
+            Country = "country",
+            CountryOfRegistration = "countryOfRegistration",
+            EntityType = EntityType.PrivateProfit,
+            LegalName = "legalName",
+            PostalCode = "postalCode",
+            State = "state",
+            Street = "street",
+            TaxID = "taxId",
+            TaxIDType = "taxIdType",
+            Url = "https://example.com",
+        };
 
         Assert.Equal(expectedCompliance, deserialized.Compliance);
         Assert.Equal(expectedContact, deserialized.Contact);
