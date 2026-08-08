@@ -10,14 +10,8 @@ namespace Sentdm.Models.Profiles;
 /// <summary>
 /// Contact information for brand KYC
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo,
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfoFromRaw
-    >)
-)]
-public sealed record class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo
-    : JsonModel
+[JsonConverter(typeof(JsonModelConverter<BrandContactInfo, BrandContactInfoFromRaw>))]
+public sealed record class BrandContactInfo : JsonModel
 {
     /// <summary>
     /// Primary contact name (required)
@@ -108,35 +102,29 @@ public sealed record class SentDmServicesEndpointsCustomerApIv3ContractsRequests
         _ = this.Role;
     }
 
-    public SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo() { }
+    public BrandContactInfo() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo(
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo sentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo
-    )
-        : base(sentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo) { }
+    public BrandContactInfo(BrandContactInfo brandContactInfo)
+        : base(brandContactInfo) { }
 #pragma warning restore CS8618
 
-    public SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    public BrandContactInfo(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo(
-        FrozenDictionary<string, JsonElement> rawData
-    )
+    BrandContactInfo(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfoFromRaw.FromRawUnchecked"/>
-    public static SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo FromRawUnchecked(
+    /// <inheritdoc cref="BrandContactInfoFromRaw.FromRawUnchecked"/>
+    public static BrandContactInfo FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -144,21 +132,16 @@ public sealed record class SentDmServicesEndpointsCustomerApIv3ContractsRequests
     }
 
     [SetsRequiredMembers]
-    public SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo(string name)
+    public BrandContactInfo(string name)
         : this()
     {
         this.Name = name;
     }
 }
 
-class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfoFromRaw
-    : IFromRawJson<SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo>
+class BrandContactInfoFromRaw : IFromRawJson<BrandContactInfo>
 {
     /// <inheritdoc/>
-    public SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) =>
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandContactInfo.FromRawUnchecked(
-            rawData
-        );
+    public BrandContactInfo FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        BrandContactInfo.FromRawUnchecked(rawData);
 }

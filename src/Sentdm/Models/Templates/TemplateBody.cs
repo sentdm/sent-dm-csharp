@@ -10,13 +10,8 @@ namespace Sentdm.Models.Templates;
 /// <summary>
 /// Body section of a message template with channel-specific content
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        SentDmServicesCommonContractsPocOsTemplateBody,
-        SentDmServicesCommonContractsPocOsTemplateBodyFromRaw
-    >)
-)]
-public sealed record class SentDmServicesCommonContractsPocOsTemplateBody : JsonModel
+[JsonConverter(typeof(JsonModelConverter<TemplateBody, TemplateBodyFromRaw>))]
+public sealed record class TemplateBody : JsonModel
 {
     /// <summary>
     /// Content that will be used for all channels (SMS and WhatsApp) unless channel-specific
@@ -80,45 +75,37 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateBody : Json
         this.Whatsapp?.Validate();
     }
 
-    public SentDmServicesCommonContractsPocOsTemplateBody() { }
+    public TemplateBody() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public SentDmServicesCommonContractsPocOsTemplateBody(
-        SentDmServicesCommonContractsPocOsTemplateBody sentDmServicesCommonContractsPocOsTemplateBody
-    )
-        : base(sentDmServicesCommonContractsPocOsTemplateBody) { }
+    public TemplateBody(TemplateBody templateBody)
+        : base(templateBody) { }
 #pragma warning restore CS8618
 
-    public SentDmServicesCommonContractsPocOsTemplateBody(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    public TemplateBody(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    SentDmServicesCommonContractsPocOsTemplateBody(FrozenDictionary<string, JsonElement> rawData)
+    TemplateBody(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="SentDmServicesCommonContractsPocOsTemplateBodyFromRaw.FromRawUnchecked"/>
-    public static SentDmServicesCommonContractsPocOsTemplateBody FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="TemplateBodyFromRaw.FromRawUnchecked"/>
+    public static TemplateBody FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class SentDmServicesCommonContractsPocOsTemplateBodyFromRaw
-    : IFromRawJson<SentDmServicesCommonContractsPocOsTemplateBody>
+class TemplateBodyFromRaw : IFromRawJson<TemplateBody>
 {
     /// <inheritdoc/>
-    public SentDmServicesCommonContractsPocOsTemplateBody FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => SentDmServicesCommonContractsPocOsTemplateBody.FromRawUnchecked(rawData);
+    public TemplateBody FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        TemplateBody.FromRawUnchecked(rawData);
 }

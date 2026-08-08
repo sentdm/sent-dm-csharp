@@ -10,13 +10,8 @@ namespace Sentdm.Models.Templates;
 /// <summary>
 /// Configuration for AUTHENTICATION category templates
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        SentDmServicesCommonContractsPocOsAuthenticationConfig,
-        SentDmServicesCommonContractsPocOsAuthenticationConfigFromRaw
-    >)
-)]
-public sealed record class SentDmServicesCommonContractsPocOsAuthenticationConfig : JsonModel
+[JsonConverter(typeof(JsonModelConverter<AuthenticationConfig, AuthenticationConfigFromRaw>))]
+public sealed record class AuthenticationConfig : JsonModel
 {
     /// <summary>
     /// Whether to add the security recommendation text: "For your security, do not
@@ -61,35 +56,29 @@ public sealed record class SentDmServicesCommonContractsPocOsAuthenticationConfi
         _ = this.CodeExpirationMinutes;
     }
 
-    public SentDmServicesCommonContractsPocOsAuthenticationConfig() { }
+    public AuthenticationConfig() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public SentDmServicesCommonContractsPocOsAuthenticationConfig(
-        SentDmServicesCommonContractsPocOsAuthenticationConfig sentDmServicesCommonContractsPocOsAuthenticationConfig
-    )
-        : base(sentDmServicesCommonContractsPocOsAuthenticationConfig) { }
+    public AuthenticationConfig(AuthenticationConfig authenticationConfig)
+        : base(authenticationConfig) { }
 #pragma warning restore CS8618
 
-    public SentDmServicesCommonContractsPocOsAuthenticationConfig(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    public AuthenticationConfig(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    SentDmServicesCommonContractsPocOsAuthenticationConfig(
-        FrozenDictionary<string, JsonElement> rawData
-    )
+    AuthenticationConfig(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="SentDmServicesCommonContractsPocOsAuthenticationConfigFromRaw.FromRawUnchecked"/>
-    public static SentDmServicesCommonContractsPocOsAuthenticationConfig FromRawUnchecked(
+    /// <inheritdoc cref="AuthenticationConfigFromRaw.FromRawUnchecked"/>
+    public static AuthenticationConfig FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -97,11 +86,10 @@ public sealed record class SentDmServicesCommonContractsPocOsAuthenticationConfi
     }
 }
 
-class SentDmServicesCommonContractsPocOsAuthenticationConfigFromRaw
-    : IFromRawJson<SentDmServicesCommonContractsPocOsAuthenticationConfig>
+class AuthenticationConfigFromRaw : IFromRawJson<AuthenticationConfig>
 {
     /// <inheritdoc/>
-    public SentDmServicesCommonContractsPocOsAuthenticationConfig FromRawUnchecked(
+    public AuthenticationConfig FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => SentDmServicesCommonContractsPocOsAuthenticationConfig.FromRawUnchecked(rawData);
+    ) => AuthenticationConfig.FromRawUnchecked(rawData);
 }

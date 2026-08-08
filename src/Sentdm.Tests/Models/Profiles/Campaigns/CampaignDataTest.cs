@@ -38,7 +38,7 @@ public class CampaignDataTest : TestBase
         string expectedDescription = "x";
         string expectedName = "x";
         string expectedType = "x";
-        List<SentDmServicesEndpointsCustomerApIv3ContractsRequestsCampaignsCampaignUseCaseData> expectedUseCases =
+        List<CampaignUseCaseData> expectedUseCases =
         [
             new()
             {
@@ -152,7 +152,7 @@ public class CampaignDataTest : TestBase
         string expectedDescription = "x";
         string expectedName = "x";
         string expectedType = "x";
-        List<SentDmServicesEndpointsCustomerApIv3ContractsRequestsCampaignsCampaignUseCaseData> expectedUseCases =
+        List<CampaignUseCaseData> expectedUseCases =
         [
             new()
             {

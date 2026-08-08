@@ -10,25 +10,18 @@ namespace Sentdm.Models.Templates;
 /// <summary>
 /// Interactive button in a message template
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        SentDmServicesCommonContractsPocOsTemplateButton,
-        SentDmServicesCommonContractsPocOsTemplateButtonFromRaw
-    >)
-)]
-public sealed record class SentDmServicesCommonContractsPocOsTemplateButton : JsonModel
+[JsonConverter(typeof(JsonModelConverter<TemplateButton, TemplateButtonFromRaw>))]
+public sealed record class TemplateButton : JsonModel
 {
     /// <summary>
     /// Properties specific to the button type
     /// </summary>
-    public required SentDmServicesCommonContractsPocOsTemplateButtonProps Props
+    public required TemplateButtonProps Props
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<SentDmServicesCommonContractsPocOsTemplateButtonProps>(
-                "props"
-            );
+            return this._rawData.GetNotNullClass<TemplateButtonProps>("props");
         }
         init { this._rawData.Set("props", value); }
     }
@@ -75,45 +68,37 @@ public sealed record class SentDmServicesCommonContractsPocOsTemplateButton : Js
         _ = this.ID;
     }
 
-    public SentDmServicesCommonContractsPocOsTemplateButton() { }
+    public TemplateButton() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public SentDmServicesCommonContractsPocOsTemplateButton(
-        SentDmServicesCommonContractsPocOsTemplateButton sentDmServicesCommonContractsPocOsTemplateButton
-    )
-        : base(sentDmServicesCommonContractsPocOsTemplateButton) { }
+    public TemplateButton(TemplateButton templateButton)
+        : base(templateButton) { }
 #pragma warning restore CS8618
 
-    public SentDmServicesCommonContractsPocOsTemplateButton(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    public TemplateButton(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    SentDmServicesCommonContractsPocOsTemplateButton(FrozenDictionary<string, JsonElement> rawData)
+    TemplateButton(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="SentDmServicesCommonContractsPocOsTemplateButtonFromRaw.FromRawUnchecked"/>
-    public static SentDmServicesCommonContractsPocOsTemplateButton FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="TemplateButtonFromRaw.FromRawUnchecked"/>
+    public static TemplateButton FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class SentDmServicesCommonContractsPocOsTemplateButtonFromRaw
-    : IFromRawJson<SentDmServicesCommonContractsPocOsTemplateButton>
+class TemplateButtonFromRaw : IFromRawJson<TemplateButton>
 {
     /// <inheritdoc/>
-    public SentDmServicesCommonContractsPocOsTemplateButton FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => SentDmServicesCommonContractsPocOsTemplateButton.FromRawUnchecked(rawData);
+    public TemplateButton FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        TemplateButton.FromRawUnchecked(rawData);
 }

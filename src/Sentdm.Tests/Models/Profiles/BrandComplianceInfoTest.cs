@@ -5,23 +5,21 @@ using Sentdm.Models.Profiles;
 
 namespace Sentdm.Tests.Models.Profiles;
 
-public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfoTest
-    : TestBase
+public class BrandComplianceInfoTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo
-            {
-                BrandRelationship = TcrBrandRelationship.BasicAccount,
-                Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
-                IsTcrApplication = true,
-                Notes = "notes",
-                PhoneNumberPrefix = "phoneNumberPrefix",
-                PrimaryUseCase = "primaryUseCase",
-            };
+        var model = new BrandComplianceInfo
+        {
+            BrandRelationship = TcrBrandRelationship.BasicAccount,
+            Vertical = TcrVertical.Professional,
+            DestinationCountries = [new() { ID = "id", IsMain = true }],
+            IsTcrApplication = true,
+            Notes = "notes",
+            PhoneNumberPrefix = "phoneNumberPrefix",
+            PrimaryUseCase = "primaryUseCase",
+        };
 
         ApiEnum<string, TcrBrandRelationship> expectedBrandRelationship =
             TcrBrandRelationship.BasicAccount;
@@ -52,24 +50,22 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo
-            {
-                BrandRelationship = TcrBrandRelationship.BasicAccount,
-                Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
-                IsTcrApplication = true,
-                Notes = "notes",
-                PhoneNumberPrefix = "phoneNumberPrefix",
-                PrimaryUseCase = "primaryUseCase",
-            };
+        var model = new BrandComplianceInfo
+        {
+            BrandRelationship = TcrBrandRelationship.BasicAccount,
+            Vertical = TcrVertical.Professional,
+            DestinationCountries = [new() { ID = "id", IsMain = true }],
+            IsTcrApplication = true,
+            Notes = "notes",
+            PhoneNumberPrefix = "phoneNumberPrefix",
+            PrimaryUseCase = "primaryUseCase",
+        };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo>(
-                json,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<BrandComplianceInfo>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -77,24 +73,22 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo
-            {
-                BrandRelationship = TcrBrandRelationship.BasicAccount,
-                Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
-                IsTcrApplication = true,
-                Notes = "notes",
-                PhoneNumberPrefix = "phoneNumberPrefix",
-                PrimaryUseCase = "primaryUseCase",
-            };
+        var model = new BrandComplianceInfo
+        {
+            BrandRelationship = TcrBrandRelationship.BasicAccount,
+            Vertical = TcrVertical.Professional,
+            DestinationCountries = [new() { ID = "id", IsMain = true }],
+            IsTcrApplication = true,
+            Notes = "notes",
+            PhoneNumberPrefix = "phoneNumberPrefix",
+            PrimaryUseCase = "primaryUseCase",
+        };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo>(
-                element,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<BrandComplianceInfo>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         ApiEnum<string, TcrBrandRelationship> expectedBrandRelationship =
@@ -126,17 +120,16 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
     [Fact]
     public void Validation_Works()
     {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo
-            {
-                BrandRelationship = TcrBrandRelationship.BasicAccount,
-                Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
-                IsTcrApplication = true,
-                Notes = "notes",
-                PhoneNumberPrefix = "phoneNumberPrefix",
-                PrimaryUseCase = "primaryUseCase",
-            };
+        var model = new BrandComplianceInfo
+        {
+            BrandRelationship = TcrBrandRelationship.BasicAccount,
+            Vertical = TcrVertical.Professional,
+            DestinationCountries = [new() { ID = "id", IsMain = true }],
+            IsTcrApplication = true,
+            Notes = "notes",
+            PhoneNumberPrefix = "phoneNumberPrefix",
+            PrimaryUseCase = "primaryUseCase",
+        };
 
         model.Validate();
     }
@@ -144,12 +137,11 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo
-            {
-                BrandRelationship = TcrBrandRelationship.BasicAccount,
-                Vertical = TcrVertical.Professional,
-            };
+        var model = new BrandComplianceInfo
+        {
+            BrandRelationship = TcrBrandRelationship.BasicAccount,
+            Vertical = TcrVertical.Professional,
+        };
 
         Assert.Null(model.DestinationCountries);
         Assert.False(model.RawData.ContainsKey("destinationCountries"));
@@ -166,12 +158,11 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo
-            {
-                BrandRelationship = TcrBrandRelationship.BasicAccount,
-                Vertical = TcrVertical.Professional,
-            };
+        var model = new BrandComplianceInfo
+        {
+            BrandRelationship = TcrBrandRelationship.BasicAccount,
+            Vertical = TcrVertical.Professional,
+        };
 
         model.Validate();
     }
@@ -179,18 +170,17 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo
-            {
-                BrandRelationship = TcrBrandRelationship.BasicAccount,
-                Vertical = TcrVertical.Professional,
+        var model = new BrandComplianceInfo
+        {
+            BrandRelationship = TcrBrandRelationship.BasicAccount,
+            Vertical = TcrVertical.Professional,
 
-                DestinationCountries = null,
-                IsTcrApplication = null,
-                Notes = null,
-                PhoneNumberPrefix = null,
-                PrimaryUseCase = null,
-            };
+            DestinationCountries = null,
+            IsTcrApplication = null,
+            Notes = null,
+            PhoneNumberPrefix = null,
+            PrimaryUseCase = null,
+        };
 
         Assert.Null(model.DestinationCountries);
         Assert.True(model.RawData.ContainsKey("destinationCountries"));
@@ -207,18 +197,17 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo
-            {
-                BrandRelationship = TcrBrandRelationship.BasicAccount,
-                Vertical = TcrVertical.Professional,
+        var model = new BrandComplianceInfo
+        {
+            BrandRelationship = TcrBrandRelationship.BasicAccount,
+            Vertical = TcrVertical.Professional,
 
-                DestinationCountries = null,
-                IsTcrApplication = null,
-                Notes = null,
-                PhoneNumberPrefix = null,
-                PrimaryUseCase = null,
-            };
+            DestinationCountries = null,
+            IsTcrApplication = null,
+            Notes = null,
+            PhoneNumberPrefix = null,
+            PrimaryUseCase = null,
+        };
 
         model.Validate();
     }
@@ -226,21 +215,18 @@ public class SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandCom
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo
-            {
-                BrandRelationship = TcrBrandRelationship.BasicAccount,
-                Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
-                IsTcrApplication = true,
-                Notes = "notes",
-                PhoneNumberPrefix = "phoneNumberPrefix",
-                PrimaryUseCase = "primaryUseCase",
-            };
+        var model = new BrandComplianceInfo
+        {
+            BrandRelationship = TcrBrandRelationship.BasicAccount,
+            Vertical = TcrVertical.Professional,
+            DestinationCountries = [new() { ID = "id", IsMain = true }],
+            IsTcrApplication = true,
+            Notes = "notes",
+            PhoneNumberPrefix = "phoneNumberPrefix",
+            PrimaryUseCase = "primaryUseCase",
+        };
 
-        SentDmServicesEndpointsCustomerApIv3ContractsRequestsBrandsBrandComplianceInfo copied = new(
-            model
-        );
+        BrandComplianceInfo copied = new(model);
 
         Assert.Equal(model, copied);
     }

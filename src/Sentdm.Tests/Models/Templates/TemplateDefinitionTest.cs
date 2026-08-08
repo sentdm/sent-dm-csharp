@@ -209,7 +209,7 @@ public class TemplateDefinitionTest : TestBase
             },
         };
 
-        SentDmServicesCommonContractsPocOsTemplateBody expectedBody = new()
+        TemplateBody expectedBody = new()
         {
             MultiChannel = new()
             {
@@ -308,12 +308,12 @@ public class TemplateDefinitionTest : TestBase
                 ],
             },
         };
-        SentDmServicesCommonContractsPocOsAuthenticationConfig expectedAuthenticationConfig = new()
+        AuthenticationConfig expectedAuthenticationConfig = new()
         {
             AddSecurityRecommendation = true,
             CodeExpirationMinutes = 0,
         };
-        List<SentDmServicesCommonContractsPocOsTemplateButton> expectedButtons =
+        List<TemplateButton> expectedButtons =
         [
             new()
             {
@@ -356,7 +356,7 @@ public class TemplateDefinitionTest : TestBase
             },
         ];
         string expectedDefinitionVersion = "definitionVersion";
-        SentDmServicesCommonContractsPocOsTemplateFooter expectedFooter = new()
+        TemplateFooter expectedFooter = new()
         {
             Template = "template",
             Type = "type",
@@ -380,7 +380,7 @@ public class TemplateDefinitionTest : TestBase
                 },
             ],
         };
-        SentDmServicesCommonContractsPocOsTemplateHeader expectedHeader = new()
+        TemplateHeader expectedHeader = new()
         {
             Template = "template",
             Type = "type",
@@ -838,7 +838,7 @@ public class TemplateDefinitionTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        SentDmServicesCommonContractsPocOsTemplateBody expectedBody = new()
+        TemplateBody expectedBody = new()
         {
             MultiChannel = new()
             {
@@ -937,12 +937,12 @@ public class TemplateDefinitionTest : TestBase
                 ],
             },
         };
-        SentDmServicesCommonContractsPocOsAuthenticationConfig expectedAuthenticationConfig = new()
+        AuthenticationConfig expectedAuthenticationConfig = new()
         {
             AddSecurityRecommendation = true,
             CodeExpirationMinutes = 0,
         };
-        List<SentDmServicesCommonContractsPocOsTemplateButton> expectedButtons =
+        List<TemplateButton> expectedButtons =
         [
             new()
             {
@@ -985,7 +985,7 @@ public class TemplateDefinitionTest : TestBase
             },
         ];
         string expectedDefinitionVersion = "definitionVersion";
-        SentDmServicesCommonContractsPocOsTemplateFooter expectedFooter = new()
+        TemplateFooter expectedFooter = new()
         {
             Template = "template",
             Type = "type",
@@ -1009,7 +1009,7 @@ public class TemplateDefinitionTest : TestBase
                 },
             ],
         };
-        SentDmServicesCommonContractsPocOsTemplateHeader expectedHeader = new()
+        TemplateHeader expectedHeader = new()
         {
             Template = "template",
             Type = "type",

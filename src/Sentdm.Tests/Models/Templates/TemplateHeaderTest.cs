@@ -5,12 +5,12 @@ using Sentdm.Models.Templates;
 
 namespace Sentdm.Tests.Models.Templates;
 
-public class SentDmServicesCommonContractsPocOsTemplateFooterTest : TestBase
+public class TemplateHeaderTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateFooter
+        var model = new TemplateHeader
         {
             Template = "template",
             Type = "type",
@@ -70,7 +70,7 @@ public class SentDmServicesCommonContractsPocOsTemplateFooterTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateFooter
+        var model = new TemplateHeader
         {
             Template = "template",
             Type = "type",
@@ -96,11 +96,10 @@ public class SentDmServicesCommonContractsPocOsTemplateFooterTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesCommonContractsPocOsTemplateFooter>(
-                json,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<TemplateHeader>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -108,7 +107,7 @@ public class SentDmServicesCommonContractsPocOsTemplateFooterTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateFooter
+        var model = new TemplateHeader
         {
             Template = "template",
             Type = "type",
@@ -134,11 +133,10 @@ public class SentDmServicesCommonContractsPocOsTemplateFooterTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesCommonContractsPocOsTemplateFooter>(
-                element,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<TemplateHeader>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedTemplate = "template";
@@ -176,7 +174,7 @@ public class SentDmServicesCommonContractsPocOsTemplateFooterTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateFooter
+        var model = new TemplateHeader
         {
             Template = "template",
             Type = "type",
@@ -207,7 +205,7 @@ public class SentDmServicesCommonContractsPocOsTemplateFooterTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateFooter { Template = "template" };
+        var model = new TemplateHeader { Template = "template" };
 
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
@@ -218,7 +216,7 @@ public class SentDmServicesCommonContractsPocOsTemplateFooterTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateFooter { Template = "template" };
+        var model = new TemplateHeader { Template = "template" };
 
         model.Validate();
     }
@@ -226,7 +224,7 @@ public class SentDmServicesCommonContractsPocOsTemplateFooterTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateFooter
+        var model = new TemplateHeader
         {
             Template = "template",
 
@@ -243,7 +241,7 @@ public class SentDmServicesCommonContractsPocOsTemplateFooterTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateFooter
+        var model = new TemplateHeader
         {
             Template = "template",
 
@@ -257,7 +255,7 @@ public class SentDmServicesCommonContractsPocOsTemplateFooterTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsTemplateFooter
+        var model = new TemplateHeader
         {
             Template = "template",
             Type = "type",
@@ -282,7 +280,7 @@ public class SentDmServicesCommonContractsPocOsTemplateFooterTest : TestBase
             ],
         };
 
-        SentDmServicesCommonContractsPocOsTemplateFooter copied = new(model);
+        TemplateHeader copied = new(model);
 
         Assert.Equal(model, copied);
     }

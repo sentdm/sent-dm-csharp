@@ -4,12 +4,12 @@ using Sentdm.Models.Templates;
 
 namespace Sentdm.Tests.Models.Templates;
 
-public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBase
+public class AuthenticationConfigTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
+        var model = new AuthenticationConfig
         {
             AddSecurityRecommendation = true,
             CodeExpirationMinutes = 0,
@@ -25,18 +25,17 @@ public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBa
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
+        var model = new AuthenticationConfig
         {
             AddSecurityRecommendation = true,
             CodeExpirationMinutes = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesCommonContractsPocOsAuthenticationConfig>(
-                json,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<AuthenticationConfig>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -44,18 +43,17 @@ public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBa
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
+        var model = new AuthenticationConfig
         {
             AddSecurityRecommendation = true,
             CodeExpirationMinutes = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesCommonContractsPocOsAuthenticationConfig>(
-                element,
-                ModelBase.SerializerOptions
-            );
+        var deserialized = JsonSerializer.Deserialize<AuthenticationConfig>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         bool expectedAddSecurityRecommendation = true;
@@ -68,7 +66,7 @@ public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBa
     [Fact]
     public void Validation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
+        var model = new AuthenticationConfig
         {
             AddSecurityRecommendation = true,
             CodeExpirationMinutes = 0,
@@ -80,10 +78,7 @@ public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBa
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
-        {
-            CodeExpirationMinutes = 0,
-        };
+        var model = new AuthenticationConfig { CodeExpirationMinutes = 0 };
 
         Assert.Null(model.AddSecurityRecommendation);
         Assert.False(model.RawData.ContainsKey("addSecurityRecommendation"));
@@ -92,10 +87,7 @@ public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBa
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
-        {
-            CodeExpirationMinutes = 0,
-        };
+        var model = new AuthenticationConfig { CodeExpirationMinutes = 0 };
 
         model.Validate();
     }
@@ -103,7 +95,7 @@ public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBa
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
+        var model = new AuthenticationConfig
         {
             CodeExpirationMinutes = 0,
 
@@ -118,7 +110,7 @@ public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBa
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
+        var model = new AuthenticationConfig
         {
             CodeExpirationMinutes = 0,
 
@@ -132,10 +124,7 @@ public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBa
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
-        {
-            AddSecurityRecommendation = true,
-        };
+        var model = new AuthenticationConfig { AddSecurityRecommendation = true };
 
         Assert.Null(model.CodeExpirationMinutes);
         Assert.False(model.RawData.ContainsKey("codeExpirationMinutes"));
@@ -144,10 +133,7 @@ public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBa
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
-        {
-            AddSecurityRecommendation = true,
-        };
+        var model = new AuthenticationConfig { AddSecurityRecommendation = true };
 
         model.Validate();
     }
@@ -155,7 +141,7 @@ public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBa
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
+        var model = new AuthenticationConfig
         {
             AddSecurityRecommendation = true,
 
@@ -169,7 +155,7 @@ public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBa
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
+        var model = new AuthenticationConfig
         {
             AddSecurityRecommendation = true,
 
@@ -182,13 +168,13 @@ public class SentDmServicesCommonContractsPocOsAuthenticationConfigTest : TestBa
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new SentDmServicesCommonContractsPocOsAuthenticationConfig
+        var model = new AuthenticationConfig
         {
             AddSecurityRecommendation = true,
             CodeExpirationMinutes = 0,
         };
 
-        SentDmServicesCommonContractsPocOsAuthenticationConfig copied = new(model);
+        AuthenticationConfig copied = new(model);
 
         Assert.Equal(model, copied);
     }
