@@ -69,6 +69,8 @@ public interface ISentClient : IDisposable
 
     IContactService Contacts { get; }
 
+    IConversationService Conversations { get; }
+
     IMeService Me { get; }
 }
 
@@ -118,6 +120,8 @@ public interface ISentClientWithRawResponse : IDisposable
     IMessageServiceWithRawResponse Messages { get; }
 
     IContactServiceWithRawResponse Contacts { get; }
+
+    IConversationServiceWithRawResponse Conversations { get; }
 
     IMeServiceWithRawResponse Me { get; }
 

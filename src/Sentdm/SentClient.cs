@@ -114,6 +114,12 @@ public sealed class SentClient : ISentClient
         get { return _contacts.Value; }
     }
 
+    readonly Lazy<IConversationService> _conversations;
+    public IConversationService Conversations
+    {
+        get { return _conversations.Value; }
+    }
+
     readonly Lazy<IMeService> _me;
     public IMeService Me
     {
@@ -134,6 +140,7 @@ public sealed class SentClient : ISentClient
         _numbers = new(() => new NumberService(this));
         _messages = new(() => new MessageService(this));
         _contacts = new(() => new ContactService(this));
+        _conversations = new(() => new ConversationService(this));
         _me = new(() => new MeService(this));
     }
 
@@ -250,6 +257,12 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
     public IContactServiceWithRawResponse Contacts
     {
         get { return _contacts.Value; }
+    }
+
+    readonly Lazy<IConversationServiceWithRawResponse> _conversations;
+    public IConversationServiceWithRawResponse Conversations
+    {
+        get { return _conversations.Value; }
     }
 
     readonly Lazy<IMeServiceWithRawResponse> _me;
@@ -463,6 +476,7 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
         _numbers = new(() => new NumberServiceWithRawResponse(this));
         _messages = new(() => new MessageServiceWithRawResponse(this));
         _contacts = new(() => new ContactServiceWithRawResponse(this));
+        _conversations = new(() => new ConversationServiceWithRawResponse(this));
         _me = new(() => new MeServiceWithRawResponse(this));
     }
 
