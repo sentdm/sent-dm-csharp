@@ -11,11 +11,11 @@ public class ProfileRetrieveParamsTest : TestBase
     {
         var parameters = new ProfileRetrieveParams
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        string expectedProfileID = "profileId";
+        string expectedProfileID = "770e8400-e29b-41d4-a716-446655440002";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedProfileID, parameters.ProfileID);
@@ -25,7 +25,10 @@ public class ProfileRetrieveParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new ProfileRetrieveParams { ProfileID = "profileId" };
+        var parameters = new ProfileRetrieveParams
+        {
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
+        };
 
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
@@ -36,7 +39,7 @@ public class ProfileRetrieveParamsTest : TestBase
     {
         var parameters = new ProfileRetrieveParams
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
 
             // Null should be interpreted as omitted for these properties
             XProfileID = null,
@@ -49,11 +52,19 @@ public class ProfileRetrieveParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        ProfileRetrieveParams parameters = new() { ProfileID = "profileId" };
+        ProfileRetrieveParams parameters = new()
+        {
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
+        };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/profiles/profileId"), url));
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri("https://api.sent.dm/v3/profiles/770e8400-e29b-41d4-a716-446655440002"),
+                url
+            )
+        );
     }
 
     [Fact]
@@ -62,7 +73,7 @@ public class ProfileRetrieveParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         ProfileRetrieveParams parameters = new()
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
@@ -79,7 +90,7 @@ public class ProfileRetrieveParamsTest : TestBase
     {
         var parameters = new ProfileRetrieveParams
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 

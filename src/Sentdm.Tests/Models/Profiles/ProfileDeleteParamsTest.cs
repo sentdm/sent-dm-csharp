@@ -11,12 +11,12 @@ public class ProfileDeleteParamsTest : TestBase
     {
         var parameters = new ProfileDeleteParams
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             Sandbox = false,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        string expectedProfileID = "profileId";
+        string expectedProfileID = "770e8400-e29b-41d4-a716-446655440002";
         bool expectedSandbox = false;
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
@@ -28,7 +28,10 @@ public class ProfileDeleteParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new ProfileDeleteParams { ProfileID = "profileId" };
+        var parameters = new ProfileDeleteParams
+        {
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
+        };
 
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
@@ -41,7 +44,7 @@ public class ProfileDeleteParamsTest : TestBase
     {
         var parameters = new ProfileDeleteParams
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
 
             // Null should be interpreted as omitted for these properties
             Sandbox = null,
@@ -57,11 +60,19 @@ public class ProfileDeleteParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        ProfileDeleteParams parameters = new() { ProfileID = "profileId" };
+        ProfileDeleteParams parameters = new()
+        {
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
+        };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/profiles/profileId"), url));
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri("https://api.sent.dm/v3/profiles/770e8400-e29b-41d4-a716-446655440002"),
+                url
+            )
+        );
     }
 
     [Fact]
@@ -70,7 +81,7 @@ public class ProfileDeleteParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         ProfileDeleteParams parameters = new()
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
@@ -87,7 +98,7 @@ public class ProfileDeleteParamsTest : TestBase
     {
         var parameters = new ProfileDeleteParams
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             Sandbox = false,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
