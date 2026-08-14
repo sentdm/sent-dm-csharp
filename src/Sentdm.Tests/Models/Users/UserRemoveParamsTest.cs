@@ -11,12 +11,12 @@ public class UserRemoveParamsTest : TestBase
     {
         var parameters = new UserRemoveParams
         {
-            UserID = "userId",
+            UserID = "aa0e8400-e29b-41d4-a716-446655440005",
             Sandbox = false,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        string expectedUserID = "userId";
+        string expectedUserID = "aa0e8400-e29b-41d4-a716-446655440005";
         bool expectedSandbox = false;
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
@@ -28,7 +28,7 @@ public class UserRemoveParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new UserRemoveParams { UserID = "userId" };
+        var parameters = new UserRemoveParams { UserID = "aa0e8400-e29b-41d4-a716-446655440005" };
 
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
@@ -41,7 +41,7 @@ public class UserRemoveParamsTest : TestBase
     {
         var parameters = new UserRemoveParams
         {
-            UserID = "userId",
+            UserID = "aa0e8400-e29b-41d4-a716-446655440005",
 
             // Null should be interpreted as omitted for these properties
             Sandbox = null,
@@ -57,11 +57,16 @@ public class UserRemoveParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        UserRemoveParams parameters = new() { UserID = "userId" };
+        UserRemoveParams parameters = new() { UserID = "aa0e8400-e29b-41d4-a716-446655440005" };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/users/userId"), url));
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri("https://api.sent.dm/v3/users/aa0e8400-e29b-41d4-a716-446655440005"),
+                url
+            )
+        );
     }
 
     [Fact]
@@ -70,7 +75,7 @@ public class UserRemoveParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         UserRemoveParams parameters = new()
         {
-            UserID = "userId",
+            UserID = "aa0e8400-e29b-41d4-a716-446655440005",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
@@ -87,7 +92,7 @@ public class UserRemoveParamsTest : TestBase
     {
         var parameters = new UserRemoveParams
         {
-            UserID = "userId",
+            UserID = "aa0e8400-e29b-41d4-a716-446655440005",
             Sandbox = false,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };

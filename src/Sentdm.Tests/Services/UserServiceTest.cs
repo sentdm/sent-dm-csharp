@@ -8,7 +8,7 @@ public class UserServiceTest : TestBase
     public async Task Retrieve_Works()
     {
         var apiResponseOfUser = await this.client.Users.Retrieve(
-            "userId",
+            "880e8400-e29b-41d4-a716-446655440003",
             new(),
             TestContext.Current.CancellationToken
         );
@@ -35,14 +35,18 @@ public class UserServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Remove_Works()
     {
-        await this.client.Users.Remove("userId", new(), TestContext.Current.CancellationToken);
+        await this.client.Users.Remove(
+            "aa0e8400-e29b-41d4-a716-446655440005",
+            new(),
+            TestContext.Current.CancellationToken
+        );
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task UpdateRole_Works()
     {
         var apiResponseOfUser = await this.client.Users.UpdateRole(
-            "userId",
+            "aa0e8400-e29b-41d4-a716-446655440005",
             new(),
             TestContext.Current.CancellationToken
         );

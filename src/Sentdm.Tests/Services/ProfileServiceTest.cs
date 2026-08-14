@@ -18,7 +18,7 @@ public class ProfileServiceTest : TestBase
     public async Task Retrieve_Works()
     {
         var apiResponseOfProfileDetail = await this.client.Profiles.Retrieve(
-            "profileId",
+            "770e8400-e29b-41d4-a716-446655440002",
             new(),
             TestContext.Current.CancellationToken
         );
@@ -29,7 +29,7 @@ public class ProfileServiceTest : TestBase
     public async Task Update_Works()
     {
         var apiResponseOfProfileDetail = await this.client.Profiles.Update(
-            "profileId",
+            "770e8400-e29b-41d4-a716-446655440002",
             new(),
             TestContext.Current.CancellationToken
         );
@@ -50,7 +50,7 @@ public class ProfileServiceTest : TestBase
     public async Task Delete_Works()
     {
         await this.client.Profiles.Delete(
-            "profileId",
+            "770e8400-e29b-41d4-a716-446655440002",
             new(),
             TestContext.Current.CancellationToken
         );

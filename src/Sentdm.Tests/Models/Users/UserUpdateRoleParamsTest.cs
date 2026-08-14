@@ -11,14 +11,14 @@ public class UserUpdateRoleParamsTest : TestBase
     {
         var parameters = new UserUpdateRoleParams
         {
-            UserID = "userId",
+            UserID = "aa0e8400-e29b-41d4-a716-446655440005",
             Role = "billing",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        string expectedUserID = "userId";
+        string expectedUserID = "aa0e8400-e29b-41d4-a716-446655440005";
         string expectedRole = "billing";
         bool expectedSandbox = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
@@ -34,7 +34,10 @@ public class UserUpdateRoleParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new UserUpdateRoleParams { UserID = "userId" };
+        var parameters = new UserUpdateRoleParams
+        {
+            UserID = "aa0e8400-e29b-41d4-a716-446655440005",
+        };
 
         Assert.Null(parameters.Role);
         Assert.False(parameters.RawBodyData.ContainsKey("role"));
@@ -51,7 +54,7 @@ public class UserUpdateRoleParamsTest : TestBase
     {
         var parameters = new UserUpdateRoleParams
         {
-            UserID = "userId",
+            UserID = "aa0e8400-e29b-41d4-a716-446655440005",
 
             // Null should be interpreted as omitted for these properties
             Role = null,
@@ -73,11 +76,16 @@ public class UserUpdateRoleParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        UserUpdateRoleParams parameters = new() { UserID = "userId" };
+        UserUpdateRoleParams parameters = new() { UserID = "aa0e8400-e29b-41d4-a716-446655440005" };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/users/userId"), url));
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri("https://api.sent.dm/v3/users/aa0e8400-e29b-41d4-a716-446655440005"),
+                url
+            )
+        );
     }
 
     [Fact]
@@ -86,7 +94,7 @@ public class UserUpdateRoleParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         UserUpdateRoleParams parameters = new()
         {
-            UserID = "userId",
+            UserID = "aa0e8400-e29b-41d4-a716-446655440005",
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
@@ -105,7 +113,7 @@ public class UserUpdateRoleParamsTest : TestBase
     {
         var parameters = new UserUpdateRoleParams
         {
-            UserID = "userId",
+            UserID = "aa0e8400-e29b-41d4-a716-446655440005",
             Role = "billing",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
