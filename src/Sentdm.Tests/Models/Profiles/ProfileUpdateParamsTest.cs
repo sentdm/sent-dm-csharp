@@ -11,7 +11,7 @@ public class ProfileUpdateParamsTest : TestBase
     {
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             AllowContactSharing = true,
             AllowNumberChangeDuringOnboarding = null,
             AllowTemplateSharing = null,
@@ -83,7 +83,7 @@ public class ProfileUpdateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        string expectedProfileID = "profileId";
+        string expectedProfileID = "770e8400-e29b-41d4-a716-446655440002";
         bool expectedAllowContactSharing = true;
         BillingContactInfo expectedBillingContact = new()
         {
@@ -173,7 +173,7 @@ public class ProfileUpdateParamsTest : TestBase
     {
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             AllowContactSharing = true,
             AllowNumberChangeDuringOnboarding = null,
             AllowTemplateSharing = null,
@@ -255,7 +255,7 @@ public class ProfileUpdateParamsTest : TestBase
     {
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             AllowContactSharing = true,
             AllowNumberChangeDuringOnboarding = null,
             AllowTemplateSharing = null,
@@ -342,7 +342,7 @@ public class ProfileUpdateParamsTest : TestBase
     {
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -393,7 +393,7 @@ public class ProfileUpdateParamsTest : TestBase
     {
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -462,11 +462,19 @@ public class ProfileUpdateParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        ProfileUpdateParams parameters = new() { ProfileID = "profileId" };
+        ProfileUpdateParams parameters = new()
+        {
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
+        };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/profiles/profileId"), url));
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri("https://api.sent.dm/v3/profiles/770e8400-e29b-41d4-a716-446655440002"),
+                url
+            )
+        );
     }
 
     [Fact]
@@ -475,7 +483,7 @@ public class ProfileUpdateParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         ProfileUpdateParams parameters = new()
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
@@ -494,7 +502,7 @@ public class ProfileUpdateParamsTest : TestBase
     {
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "profileId",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             AllowContactSharing = true,
             AllowNumberChangeDuringOnboarding = null,
             AllowTemplateSharing = null,
