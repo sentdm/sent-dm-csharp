@@ -16,9 +16,11 @@ namespace Sentdm.Models.Messages;
 /// broadcast — when multiple channels are specified (e.g. ["sms", "whatsapp"]), a
 /// separate message is created for each (recipient, channel) pair. Returns immediately
 /// with per-recipient message IDs for async tracking via webhooks or the GET /messages/{id}
-/// endpoint. Account-level preconditions such as insufficient balance do not reject
-/// the request: the send is accepted with 202 and the affected messages are reported
-/// as BLOCKED on GET /messages/{id} and the message status webhook.
+/// endpoint. Sends gated before any delivery attempt do not reject the request —
+/// an account-level precondition such as insufficient balance, a template not approved
+/// for sending, or free-form content with no open conversation with the contact.
+/// The send is accepted with 202 and the affected messages are reported as BLOCKED
+/// on GET /messages/{id} and the message.blocked webhook.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
