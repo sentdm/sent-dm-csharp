@@ -191,7 +191,7 @@ public sealed record class CampaignData : JsonModel
 
     /// <summary>
     /// Expected messaging volume for this campaign. Numeric string (e.g. "1999",
-    /// "5000"); values below 2000 bill at the low-volume tier.
+    /// "5000"). Values below 2000 bill at the low-volume tier.
     /// </summary>
     public string? Volume
     {
