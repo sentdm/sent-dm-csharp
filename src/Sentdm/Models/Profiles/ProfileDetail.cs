@@ -676,8 +676,12 @@ public sealed record class Brand : JsonModel
     }
 
     /// <summary>
-    /// CSP (Campaign Service Provider) ID
+    /// Deprecated and scheduled for removal. Identifies the Campaign Service Provider
+    /// that registered the brand, which is Sent, so the value is the same for every
+    /// brand and every account. Nothing on your side can act on it and there is
+    /// no replacement. Stop reading it.
     /// </summary>
+    [Obsolete("deprecated")]
     public string? CspID
     {
         get
