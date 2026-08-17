@@ -6,6 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
+using Sentdm.Exceptions;
 
 namespace Sentdm.Models.Webhooks;
 
@@ -317,12 +318,18 @@ public sealed record class Event : JsonModel
         init { this._rawData.Set("error_message", value); }
     }
 
-    public JsonElement? EventData
+    /// <summary>
+    /// The exact event body that was delivered, or attempted, for this record. One
+    /// of the three webhook envelopes: a message status change, an inbound message,
+    /// or a template status change. Read field and event to tell which, the same
+    /// way your endpoint does.
+    /// </summary>
+    public EventData? EventData
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<JsonElement>("event_data");
+            return this._rawData.GetNullableClass<EventData>("event_data");
         }
         init
         {
@@ -401,7 +408,7 @@ public sealed record class Event : JsonModel
         _ = this.DeliveryAttempts;
         _ = this.DeliveryStatus;
         _ = this.ErrorMessage;
-        _ = this.EventData;
+        this.EventData?.Validate();
         _ = this.EventType;
         _ = this.HttpStatusCode;
         _ = this.ProcessingCompletedAt;
@@ -442,4 +449,351 @@ class EventFromRaw : IFromRawJson<Event>
     /// <inheritdoc/>
     public Event FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         Event.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// The exact event body that was delivered, or attempted, for this record. One of
+/// the three webhook envelopes: a message status change, an inbound message, or
+/// a template status change. Read field and event to tell which, the same way your
+/// endpoint does.
+/// </summary>
+[JsonConverter(typeof(EventDataConverter))]
+public record class EventData : ModelBase
+{
+    public object? Value { get; } = null;
+
+    JsonElement? _element = null;
+
+    public JsonElement Json
+    {
+        get
+        {
+            return this._element ??= JsonSerializer.SerializeToElement(
+                this.Value,
+                ModelBase.SerializerOptions
+            );
+        }
+    }
+
+    public string? Event
+    {
+        get
+        {
+            return Match<string?>(
+                messageEvent: (x) => x.Event,
+                inboundMessageEvent: (x) => x.Event,
+                templateEvent: (x) => x.Event
+            );
+        }
+    }
+
+    public string? Field
+    {
+        get
+        {
+            return Match<string?>(
+                messageEvent: (x) => x.Field,
+                inboundMessageEvent: (x) => x.Field,
+                templateEvent: (x) => x.Field
+            );
+        }
+    }
+
+    public string? Timestamp
+    {
+        get
+        {
+            return Match<string?>(
+                messageEvent: (x) => x.Timestamp,
+                inboundMessageEvent: (x) => x.Timestamp,
+                templateEvent: (x) => x.Timestamp
+            );
+        }
+    }
+
+    public EventData(MessageEvent value, JsonElement? element = null)
+    {
+        this.Value = value;
+        this._element = element;
+    }
+
+    public EventData(InboundMessageEvent value, JsonElement? element = null)
+    {
+        this.Value = value;
+        this._element = element;
+    }
+
+    public EventData(TemplateEvent value, JsonElement? element = null)
+    {
+        this.Value = value;
+        this._element = element;
+    }
+
+    public EventData(JsonElement element)
+    {
+        this._element = element;
+    }
+
+    /// <summary>
+    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+    /// type <see cref="MessageEvent"/>.
+    ///
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+    ///
+    /// <example>
+    /// <code>
+    /// if (instance.TryPickMessageEvent(out var value)) {
+    ///     // `value` is of type `MessageEvent`
+    ///     Console.WriteLine(value);
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
+    public bool TryPickMessageEvent([NotNullWhen(true)] out MessageEvent? value)
+    {
+        value = this.Value as MessageEvent;
+        return value != null;
+    }
+
+    /// <summary>
+    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+    /// type <see cref="InboundMessageEvent"/>.
+    ///
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+    ///
+    /// <example>
+    /// <code>
+    /// if (instance.TryPickInboundMessageEvent(out var value)) {
+    ///     // `value` is of type `InboundMessageEvent`
+    ///     Console.WriteLine(value);
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
+    public bool TryPickInboundMessageEvent([NotNullWhen(true)] out InboundMessageEvent? value)
+    {
+        value = this.Value as InboundMessageEvent;
+        return value != null;
+    }
+
+    /// <summary>
+    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+    /// type <see cref="TemplateEvent"/>.
+    ///
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+    ///
+    /// <example>
+    /// <code>
+    /// if (instance.TryPickTemplateEvent(out var value)) {
+    ///     // `value` is of type `TemplateEvent`
+    ///     Console.WriteLine(value);
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
+    public bool TryPickTemplateEvent([NotNullWhen(true)] out TemplateEvent? value)
+    {
+        value = this.Value as TemplateEvent;
+        return value != null;
+    }
+
+    /// <summary>
+    /// Calls the function parameter corresponding to the variant the instance was constructed with.
+    ///
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
+    /// if you need your function parameters to return something.</para>
+    ///
+    /// <exception cref="SentInvalidDataException">
+    /// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
+    /// that doesn't match any variant's expected shape).
+    /// </exception>
+    ///
+    /// <example>
+    /// <code>
+    /// instance.Switch(
+    ///     (MessageEvent value) =&gt; {...},
+    ///     (InboundMessageEvent value) =&gt; {...},
+    ///     (TemplateEvent value) =&gt; {...}
+    /// );
+    /// </code>
+    /// </example>
+    /// </summary>
+    public void Switch(
+        Action<MessageEvent> messageEvent,
+        Action<InboundMessageEvent> inboundMessageEvent,
+        Action<TemplateEvent> templateEvent
+    )
+    {
+        switch (this.Value)
+        {
+            case MessageEvent value:
+                messageEvent(value);
+                break;
+            case InboundMessageEvent value:
+                inboundMessageEvent(value);
+                break;
+            case TemplateEvent value:
+                templateEvent(value);
+                break;
+            default:
+                throw new SentInvalidDataException("Data did not match any variant of EventData");
+        }
+    }
+
+    /// <summary>
+    /// Calls the function parameter corresponding to the variant the instance was constructed with and
+    /// returns its result.
+    ///
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
+    /// if you don't need your function parameters to return a value.</para>
+    ///
+    /// <exception cref="SentInvalidDataException">
+    /// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
+    /// that doesn't match any variant's expected shape).
+    /// </exception>
+    ///
+    /// <example>
+    /// <code>
+    /// var result = instance.Match(
+    ///     (MessageEvent value) =&gt; {...},
+    ///     (InboundMessageEvent value) =&gt; {...},
+    ///     (TemplateEvent value) =&gt; {...}
+    /// );
+    /// </code>
+    /// </example>
+    /// </summary>
+    public T Match<T>(
+        Func<MessageEvent, T> messageEvent,
+        Func<InboundMessageEvent, T> inboundMessageEvent,
+        Func<TemplateEvent, T> templateEvent
+    )
+    {
+        return this.Value switch
+        {
+            MessageEvent value => messageEvent(value),
+            InboundMessageEvent value => inboundMessageEvent(value),
+            TemplateEvent value => templateEvent(value),
+            _ => throw new SentInvalidDataException("Data did not match any variant of EventData"),
+        };
+    }
+
+    public static implicit operator EventData(MessageEvent value) => new(value);
+
+    public static implicit operator EventData(InboundMessageEvent value) => new(value);
+
+    public static implicit operator EventData(TemplateEvent value) => new(value);
+
+    /// <summary>
+    /// Validates that the instance was constructed with a known variant and that this variant is valid
+    /// (based on its own <c>Validate</c> method).
+    ///
+    /// <para>This is useful for instances constructed from raw JSON data (e.g. deserialized from an API response).</para>
+    ///
+    /// <exception cref="SentInvalidDataException">
+    /// Thrown when the instance does not pass validation.
+    /// </exception>
+    /// </summary>
+    public override void Validate()
+    {
+        if (this.Value == null)
+        {
+            throw new SentInvalidDataException("Data did not match any variant of EventData");
+        }
+        this.Switch(
+            (messageEvent) => messageEvent.Validate(),
+            (inboundMessageEvent) => inboundMessageEvent.Validate(),
+            (templateEvent) => templateEvent.Validate()
+        );
+    }
+
+    public virtual bool Equals(EventData? other) =>
+        other != null
+        && this.VariantIndex() == other.VariantIndex()
+        && JsonElement.DeepEquals(this.Json, other.Json);
+
+    public override int GetHashCode()
+    {
+        return 0;
+    }
+
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            FriendlyJsonPrinter.PrintValue(this.Json),
+            ModelBase.ToStringSerializerOptions
+        );
+
+    int VariantIndex()
+    {
+        return this.Value switch
+        {
+            MessageEvent _ => 0,
+            InboundMessageEvent _ => 1,
+            TemplateEvent _ => 2,
+            _ => -1,
+        };
+    }
+}
+
+sealed class EventDataConverter : JsonConverter<EventData>
+{
+    public override EventData? Read(
+        ref Utf8JsonReader reader,
+        Type typeToConvert,
+        JsonSerializerOptions options
+    )
+    {
+        var element = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
+        try
+        {
+            var deserialized = JsonSerializer.Deserialize<MessageEvent>(element, options);
+            if (deserialized != null)
+            {
+                deserialized.Validate();
+                return new(deserialized, element);
+            }
+        }
+        catch (Exception e) when (e is JsonException || e is SentInvalidDataException)
+        {
+            // ignore
+        }
+
+        try
+        {
+            var deserialized = JsonSerializer.Deserialize<InboundMessageEvent>(element, options);
+            if (deserialized != null)
+            {
+                deserialized.Validate();
+                return new(deserialized, element);
+            }
+        }
+        catch (Exception e) when (e is JsonException || e is SentInvalidDataException)
+        {
+            // ignore
+        }
+
+        try
+        {
+            var deserialized = JsonSerializer.Deserialize<TemplateEvent>(element, options);
+            if (deserialized != null)
+            {
+                deserialized.Validate();
+                return new(deserialized, element);
+            }
+        }
+        catch (Exception e) when (e is JsonException || e is SentInvalidDataException)
+        {
+            // ignore
+        }
+
+        return new(element);
+    }
+
+    public override void Write(
+        Utf8JsonWriter writer,
+        EventData value,
+        JsonSerializerOptions options
+    )
+    {
+        JsonSerializer.Serialize(writer, value.Json, options);
+    }
 }
