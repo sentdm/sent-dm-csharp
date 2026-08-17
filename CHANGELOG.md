@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.30.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.29.0...v0.30.0) (2026-08-17)
+
+
+### Features
+
+* **api:** sync OpenAPI spec from production ([46fa794](https://github.com/sentdm/sent-dm-csharp/commit/46fa79437c701d5ce32648d3f788d1839f2f06e7))
+* **api:** sync OpenAPI spec from production ([40b8565](https://github.com/sentdm/sent-dm-csharp/commit/40b856515f1c3572d85b8476f59546dde0202d9b))
+* **api:** sync OpenAPI spec from production ([07293b0](https://github.com/sentdm/sent-dm-csharp/commit/07293b07be955cceebbb2b921a076f658c4e7dea))
+* **sdk:** expose the delivered webhook payloads as models ([9790fea](https://github.com/sentdm/sent-dm-csharp/commit/9790fea4daacc3320f4f50e5dc2e2d0908aefb30))
+
+
+### Chores
+
+* add eager seal-dispatch workflow ([05c0522](https://github.com/sentdm/sent-dm-csharp/commit/05c052246e0067028462f9ae5fe8a16955da85e1))
+
 ## [0.29.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.28.0...v0.29.0) (2026-08-08)
 
 
