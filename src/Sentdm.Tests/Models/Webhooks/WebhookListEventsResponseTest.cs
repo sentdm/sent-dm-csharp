@@ -24,7 +24,24 @@ public class WebhookListEventsResponseTest : TestBase
                         DeliveryAttempts = 0,
                         DeliveryStatus = "delivery_status",
                         ErrorMessage = "error_message",
-                        EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                        EventData = new MessageEvent()
+                        {
+                            Event = "event",
+                            Field = "field",
+                            Payload = new()
+                            {
+                                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                AgentID = "agent_id",
+                                Channel = "channel",
+                                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                MessageStatus = "message_status",
+                                OutboundNumber = "outbound_number",
+                                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                TemplateName = "template_name",
+                                UpdatedAt = "updated_at",
+                            },
+                            Timestamp = "timestamp",
+                        },
                         EventType = "event_type",
                         HttpStatusCode = 0,
                         ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -69,7 +86,24 @@ public class WebhookListEventsResponseTest : TestBase
                     DeliveryAttempts = 0,
                     DeliveryStatus = "delivery_status",
                     ErrorMessage = "error_message",
-                    EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                    EventData = new MessageEvent()
+                    {
+                        Event = "event",
+                        Field = "field",
+                        Payload = new()
+                        {
+                            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            AgentID = "agent_id",
+                            Channel = "channel",
+                            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            MessageStatus = "message_status",
+                            OutboundNumber = "outbound_number",
+                            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            TemplateName = "template_name",
+                            UpdatedAt = "updated_at",
+                        },
+                        Timestamp = "timestamp",
+                    },
                     EventType = "event_type",
                     HttpStatusCode = 0,
                     ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -124,7 +158,24 @@ public class WebhookListEventsResponseTest : TestBase
                         DeliveryAttempts = 0,
                         DeliveryStatus = "delivery_status",
                         ErrorMessage = "error_message",
-                        EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                        EventData = new MessageEvent()
+                        {
+                            Event = "event",
+                            Field = "field",
+                            Payload = new()
+                            {
+                                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                AgentID = "agent_id",
+                                Channel = "channel",
+                                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                MessageStatus = "message_status",
+                                OutboundNumber = "outbound_number",
+                                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                TemplateName = "template_name",
+                                UpdatedAt = "updated_at",
+                            },
+                            Timestamp = "timestamp",
+                        },
                         EventType = "event_type",
                         HttpStatusCode = 0,
                         ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -183,7 +234,24 @@ public class WebhookListEventsResponseTest : TestBase
                         DeliveryAttempts = 0,
                         DeliveryStatus = "delivery_status",
                         ErrorMessage = "error_message",
-                        EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                        EventData = new MessageEvent()
+                        {
+                            Event = "event",
+                            Field = "field",
+                            Payload = new()
+                            {
+                                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                AgentID = "agent_id",
+                                Channel = "channel",
+                                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                MessageStatus = "message_status",
+                                OutboundNumber = "outbound_number",
+                                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                TemplateName = "template_name",
+                                UpdatedAt = "updated_at",
+                            },
+                            Timestamp = "timestamp",
+                        },
                         EventType = "event_type",
                         HttpStatusCode = 0,
                         ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -235,7 +303,24 @@ public class WebhookListEventsResponseTest : TestBase
                     DeliveryAttempts = 0,
                     DeliveryStatus = "delivery_status",
                     ErrorMessage = "error_message",
-                    EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                    EventData = new MessageEvent()
+                    {
+                        Event = "event",
+                        Field = "field",
+                        Payload = new()
+                        {
+                            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            AgentID = "agent_id",
+                            Channel = "channel",
+                            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            MessageStatus = "message_status",
+                            OutboundNumber = "outbound_number",
+                            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            TemplateName = "template_name",
+                            UpdatedAt = "updated_at",
+                        },
+                        Timestamp = "timestamp",
+                    },
                     EventType = "event_type",
                     HttpStatusCode = 0,
                     ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -290,7 +375,24 @@ public class WebhookListEventsResponseTest : TestBase
                         DeliveryAttempts = 0,
                         DeliveryStatus = "delivery_status",
                         ErrorMessage = "error_message",
-                        EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                        EventData = new MessageEvent()
+                        {
+                            Event = "event",
+                            Field = "field",
+                            Payload = new()
+                            {
+                                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                AgentID = "agent_id",
+                                Channel = "channel",
+                                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                MessageStatus = "message_status",
+                                OutboundNumber = "outbound_number",
+                                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                TemplateName = "template_name",
+                                UpdatedAt = "updated_at",
+                            },
+                            Timestamp = "timestamp",
+                        },
                         EventType = "event_type",
                         HttpStatusCode = 0,
                         ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -343,7 +445,24 @@ public class WebhookListEventsResponseTest : TestBase
                         DeliveryAttempts = 0,
                         DeliveryStatus = "delivery_status",
                         ErrorMessage = "error_message",
-                        EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                        EventData = new MessageEvent()
+                        {
+                            Event = "event",
+                            Field = "field",
+                            Payload = new()
+                            {
+                                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                AgentID = "agent_id",
+                                Channel = "channel",
+                                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                MessageStatus = "message_status",
+                                OutboundNumber = "outbound_number",
+                                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                TemplateName = "template_name",
+                                UpdatedAt = "updated_at",
+                            },
+                            Timestamp = "timestamp",
+                        },
                         EventType = "event_type",
                         HttpStatusCode = 0,
                         ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -392,7 +511,24 @@ public class WebhookListEventsResponseTest : TestBase
                         DeliveryAttempts = 0,
                         DeliveryStatus = "delivery_status",
                         ErrorMessage = "error_message",
-                        EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                        EventData = new MessageEvent()
+                        {
+                            Event = "event",
+                            Field = "field",
+                            Payload = new()
+                            {
+                                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                AgentID = "agent_id",
+                                Channel = "channel",
+                                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                MessageStatus = "message_status",
+                                OutboundNumber = "outbound_number",
+                                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                TemplateName = "template_name",
+                                UpdatedAt = "updated_at",
+                            },
+                            Timestamp = "timestamp",
+                        },
                         EventType = "event_type",
                         HttpStatusCode = 0,
                         ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -438,7 +574,24 @@ public class WebhookListEventsResponseTest : TestBase
                         DeliveryAttempts = 0,
                         DeliveryStatus = "delivery_status",
                         ErrorMessage = "error_message",
-                        EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                        EventData = new MessageEvent()
+                        {
+                            Event = "event",
+                            Field = "field",
+                            Payload = new()
+                            {
+                                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                AgentID = "agent_id",
+                                Channel = "channel",
+                                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                MessageStatus = "message_status",
+                                OutboundNumber = "outbound_number",
+                                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                TemplateName = "template_name",
+                                UpdatedAt = "updated_at",
+                            },
+                            Timestamp = "timestamp",
+                        },
                         EventType = "event_type",
                         HttpStatusCode = 0,
                         ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -491,7 +644,24 @@ public class WebhookListEventsResponseTest : TestBase
                         DeliveryAttempts = 0,
                         DeliveryStatus = "delivery_status",
                         ErrorMessage = "error_message",
-                        EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                        EventData = new MessageEvent()
+                        {
+                            Event = "event",
+                            Field = "field",
+                            Payload = new()
+                            {
+                                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                AgentID = "agent_id",
+                                Channel = "channel",
+                                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                MessageStatus = "message_status",
+                                OutboundNumber = "outbound_number",
+                                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                TemplateName = "template_name",
+                                UpdatedAt = "updated_at",
+                            },
+                            Timestamp = "timestamp",
+                        },
                         EventType = "event_type",
                         HttpStatusCode = 0,
                         ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -621,7 +791,24 @@ public class WebhookListEventsResponseTest : TestBase
                         DeliveryAttempts = 0,
                         DeliveryStatus = "delivery_status",
                         ErrorMessage = "error_message",
-                        EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                        EventData = new MessageEvent()
+                        {
+                            Event = "event",
+                            Field = "field",
+                            Payload = new()
+                            {
+                                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                AgentID = "agent_id",
+                                Channel = "channel",
+                                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                MessageStatus = "message_status",
+                                OutboundNumber = "outbound_number",
+                                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                                TemplateName = "template_name",
+                                UpdatedAt = "updated_at",
+                            },
+                            Timestamp = "timestamp",
+                        },
                         EventType = "event_type",
                         HttpStatusCode = 0,
                         ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -677,7 +864,24 @@ public class WebhookListEventsResponseDataTest : TestBase
                     DeliveryAttempts = 0,
                     DeliveryStatus = "delivery_status",
                     ErrorMessage = "error_message",
-                    EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                    EventData = new MessageEvent()
+                    {
+                        Event = "event",
+                        Field = "field",
+                        Payload = new()
+                        {
+                            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            AgentID = "agent_id",
+                            Channel = "channel",
+                            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            MessageStatus = "message_status",
+                            OutboundNumber = "outbound_number",
+                            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            TemplateName = "template_name",
+                            UpdatedAt = "updated_at",
+                        },
+                        Timestamp = "timestamp",
+                    },
                     EventType = "event_type",
                     HttpStatusCode = 0,
                     ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -705,7 +909,24 @@ public class WebhookListEventsResponseDataTest : TestBase
                 DeliveryAttempts = 0,
                 DeliveryStatus = "delivery_status",
                 ErrorMessage = "error_message",
-                EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                EventData = new MessageEvent()
+                {
+                    Event = "event",
+                    Field = "field",
+                    Payload = new()
+                    {
+                        AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentID = "agent_id",
+                        Channel = "channel",
+                        MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        MessageStatus = "message_status",
+                        OutboundNumber = "outbound_number",
+                        TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        TemplateName = "template_name",
+                        UpdatedAt = "updated_at",
+                    },
+                    Timestamp = "timestamp",
+                },
                 EventType = "event_type",
                 HttpStatusCode = 0,
                 ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -746,7 +967,24 @@ public class WebhookListEventsResponseDataTest : TestBase
                     DeliveryAttempts = 0,
                     DeliveryStatus = "delivery_status",
                     ErrorMessage = "error_message",
-                    EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                    EventData = new MessageEvent()
+                    {
+                        Event = "event",
+                        Field = "field",
+                        Payload = new()
+                        {
+                            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            AgentID = "agent_id",
+                            Channel = "channel",
+                            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            MessageStatus = "message_status",
+                            OutboundNumber = "outbound_number",
+                            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            TemplateName = "template_name",
+                            UpdatedAt = "updated_at",
+                        },
+                        Timestamp = "timestamp",
+                    },
                     EventType = "event_type",
                     HttpStatusCode = 0,
                     ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -788,7 +1026,24 @@ public class WebhookListEventsResponseDataTest : TestBase
                     DeliveryAttempts = 0,
                     DeliveryStatus = "delivery_status",
                     ErrorMessage = "error_message",
-                    EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                    EventData = new MessageEvent()
+                    {
+                        Event = "event",
+                        Field = "field",
+                        Payload = new()
+                        {
+                            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            AgentID = "agent_id",
+                            Channel = "channel",
+                            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            MessageStatus = "message_status",
+                            OutboundNumber = "outbound_number",
+                            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            TemplateName = "template_name",
+                            UpdatedAt = "updated_at",
+                        },
+                        Timestamp = "timestamp",
+                    },
                     EventType = "event_type",
                     HttpStatusCode = 0,
                     ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -823,7 +1078,24 @@ public class WebhookListEventsResponseDataTest : TestBase
                 DeliveryAttempts = 0,
                 DeliveryStatus = "delivery_status",
                 ErrorMessage = "error_message",
-                EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                EventData = new MessageEvent()
+                {
+                    Event = "event",
+                    Field = "field",
+                    Payload = new()
+                    {
+                        AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentID = "agent_id",
+                        Channel = "channel",
+                        MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        MessageStatus = "message_status",
+                        OutboundNumber = "outbound_number",
+                        TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        TemplateName = "template_name",
+                        UpdatedAt = "updated_at",
+                    },
+                    Timestamp = "timestamp",
+                },
                 EventType = "event_type",
                 HttpStatusCode = 0,
                 ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -864,7 +1136,24 @@ public class WebhookListEventsResponseDataTest : TestBase
                     DeliveryAttempts = 0,
                     DeliveryStatus = "delivery_status",
                     ErrorMessage = "error_message",
-                    EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                    EventData = new MessageEvent()
+                    {
+                        Event = "event",
+                        Field = "field",
+                        Payload = new()
+                        {
+                            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            AgentID = "agent_id",
+                            Channel = "channel",
+                            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            MessageStatus = "message_status",
+                            OutboundNumber = "outbound_number",
+                            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            TemplateName = "template_name",
+                            UpdatedAt = "updated_at",
+                        },
+                        Timestamp = "timestamp",
+                    },
                     EventType = "event_type",
                     HttpStatusCode = 0,
                     ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -948,7 +1237,24 @@ public class WebhookListEventsResponseDataTest : TestBase
                     DeliveryAttempts = 0,
                     DeliveryStatus = "delivery_status",
                     ErrorMessage = "error_message",
-                    EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+                    EventData = new MessageEvent()
+                    {
+                        Event = "event",
+                        Field = "field",
+                        Payload = new()
+                        {
+                            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            AgentID = "agent_id",
+                            Channel = "channel",
+                            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            MessageStatus = "message_status",
+                            OutboundNumber = "outbound_number",
+                            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            TemplateName = "template_name",
+                            UpdatedAt = "updated_at",
+                        },
+                        Timestamp = "timestamp",
+                    },
                     EventType = "event_type",
                     HttpStatusCode = 0,
                     ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -985,7 +1291,24 @@ public class EventTest : TestBase
             DeliveryAttempts = 0,
             DeliveryStatus = "delivery_status",
             ErrorMessage = "error_message",
-            EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+            EventData = new MessageEvent()
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentID = "agent_id",
+                    Channel = "channel",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    MessageStatus = "message_status",
+                    OutboundNumber = "outbound_number",
+                    TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    TemplateName = "template_name",
+                    UpdatedAt = "updated_at",
+                },
+                Timestamp = "timestamp",
+            },
             EventType = "event_type",
             HttpStatusCode = 0,
             ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -998,7 +1321,24 @@ public class EventTest : TestBase
         int expectedDeliveryAttempts = 0;
         string expectedDeliveryStatus = "delivery_status";
         string expectedErrorMessage = "error_message";
-        JsonElement expectedEventData = JsonSerializer.Deserialize<JsonElement>("{}");
+        EventData expectedEventData = new MessageEvent()
+        {
+            Event = "event",
+            Field = "field",
+            Payload = new()
+            {
+                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                AgentID = "agent_id",
+                Channel = "channel",
+                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                MessageStatus = "message_status",
+                OutboundNumber = "outbound_number",
+                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                TemplateName = "template_name",
+                UpdatedAt = "updated_at",
+            },
+            Timestamp = "timestamp",
+        };
         string expectedEventType = "event_type";
         int expectedHttpStatusCode = 0;
         DateTimeOffset expectedProcessingCompletedAt = DateTimeOffset.Parse(
@@ -1014,8 +1354,7 @@ public class EventTest : TestBase
         Assert.Equal(expectedDeliveryAttempts, model.DeliveryAttempts);
         Assert.Equal(expectedDeliveryStatus, model.DeliveryStatus);
         Assert.Equal(expectedErrorMessage, model.ErrorMessage);
-        Assert.NotNull(model.EventData);
-        Assert.True(JsonElement.DeepEquals(expectedEventData, model.EventData.Value));
+        Assert.Equal(expectedEventData, model.EventData);
         Assert.Equal(expectedEventType, model.EventType);
         Assert.Equal(expectedHttpStatusCode, model.HttpStatusCode);
         Assert.Equal(expectedProcessingCompletedAt, model.ProcessingCompletedAt);
@@ -1033,7 +1372,24 @@ public class EventTest : TestBase
             DeliveryAttempts = 0,
             DeliveryStatus = "delivery_status",
             ErrorMessage = "error_message",
-            EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+            EventData = new MessageEvent()
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentID = "agent_id",
+                    Channel = "channel",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    MessageStatus = "message_status",
+                    OutboundNumber = "outbound_number",
+                    TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    TemplateName = "template_name",
+                    UpdatedAt = "updated_at",
+                },
+                Timestamp = "timestamp",
+            },
             EventType = "event_type",
             HttpStatusCode = 0,
             ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1057,7 +1413,24 @@ public class EventTest : TestBase
             DeliveryAttempts = 0,
             DeliveryStatus = "delivery_status",
             ErrorMessage = "error_message",
-            EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+            EventData = new MessageEvent()
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentID = "agent_id",
+                    Channel = "channel",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    MessageStatus = "message_status",
+                    OutboundNumber = "outbound_number",
+                    TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    TemplateName = "template_name",
+                    UpdatedAt = "updated_at",
+                },
+                Timestamp = "timestamp",
+            },
             EventType = "event_type",
             HttpStatusCode = 0,
             ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1074,7 +1447,24 @@ public class EventTest : TestBase
         int expectedDeliveryAttempts = 0;
         string expectedDeliveryStatus = "delivery_status";
         string expectedErrorMessage = "error_message";
-        JsonElement expectedEventData = JsonSerializer.Deserialize<JsonElement>("{}");
+        EventData expectedEventData = new MessageEvent()
+        {
+            Event = "event",
+            Field = "field",
+            Payload = new()
+            {
+                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                AgentID = "agent_id",
+                Channel = "channel",
+                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                MessageStatus = "message_status",
+                OutboundNumber = "outbound_number",
+                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                TemplateName = "template_name",
+                UpdatedAt = "updated_at",
+            },
+            Timestamp = "timestamp",
+        };
         string expectedEventType = "event_type";
         int expectedHttpStatusCode = 0;
         DateTimeOffset expectedProcessingCompletedAt = DateTimeOffset.Parse(
@@ -1090,8 +1480,7 @@ public class EventTest : TestBase
         Assert.Equal(expectedDeliveryAttempts, deserialized.DeliveryAttempts);
         Assert.Equal(expectedDeliveryStatus, deserialized.DeliveryStatus);
         Assert.Equal(expectedErrorMessage, deserialized.ErrorMessage);
-        Assert.NotNull(deserialized.EventData);
-        Assert.True(JsonElement.DeepEquals(expectedEventData, deserialized.EventData.Value));
+        Assert.Equal(expectedEventData, deserialized.EventData);
         Assert.Equal(expectedEventType, deserialized.EventType);
         Assert.Equal(expectedHttpStatusCode, deserialized.HttpStatusCode);
         Assert.Equal(expectedProcessingCompletedAt, deserialized.ProcessingCompletedAt);
@@ -1109,7 +1498,24 @@ public class EventTest : TestBase
             DeliveryAttempts = 0,
             DeliveryStatus = "delivery_status",
             ErrorMessage = "error_message",
-            EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+            EventData = new MessageEvent()
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentID = "agent_id",
+                    Channel = "channel",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    MessageStatus = "message_status",
+                    OutboundNumber = "outbound_number",
+                    TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    TemplateName = "template_name",
+                    UpdatedAt = "updated_at",
+                },
+                Timestamp = "timestamp",
+            },
             EventType = "event_type",
             HttpStatusCode = 0,
             ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1227,7 +1633,24 @@ public class EventTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DeliveryAttempts = 0,
             DeliveryStatus = "delivery_status",
-            EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+            EventData = new MessageEvent()
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentID = "agent_id",
+                    Channel = "channel",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    MessageStatus = "message_status",
+                    OutboundNumber = "outbound_number",
+                    TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    TemplateName = "template_name",
+                    UpdatedAt = "updated_at",
+                },
+                Timestamp = "timestamp",
+            },
             EventType = "event_type",
         };
 
@@ -1252,7 +1675,24 @@ public class EventTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DeliveryAttempts = 0,
             DeliveryStatus = "delivery_status",
-            EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+            EventData = new MessageEvent()
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentID = "agent_id",
+                    Channel = "channel",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    MessageStatus = "message_status",
+                    OutboundNumber = "outbound_number",
+                    TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    TemplateName = "template_name",
+                    UpdatedAt = "updated_at",
+                },
+                Timestamp = "timestamp",
+            },
             EventType = "event_type",
         };
 
@@ -1268,7 +1708,24 @@ public class EventTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DeliveryAttempts = 0,
             DeliveryStatus = "delivery_status",
-            EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+            EventData = new MessageEvent()
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentID = "agent_id",
+                    Channel = "channel",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    MessageStatus = "message_status",
+                    OutboundNumber = "outbound_number",
+                    TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    TemplateName = "template_name",
+                    UpdatedAt = "updated_at",
+                },
+                Timestamp = "timestamp",
+            },
             EventType = "event_type",
 
             ErrorMessage = null,
@@ -1299,7 +1756,24 @@ public class EventTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DeliveryAttempts = 0,
             DeliveryStatus = "delivery_status",
-            EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+            EventData = new MessageEvent()
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentID = "agent_id",
+                    Channel = "channel",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    MessageStatus = "message_status",
+                    OutboundNumber = "outbound_number",
+                    TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    TemplateName = "template_name",
+                    UpdatedAt = "updated_at",
+                },
+                Timestamp = "timestamp",
+            },
             EventType = "event_type",
 
             ErrorMessage = null,
@@ -1322,7 +1796,24 @@ public class EventTest : TestBase
             DeliveryAttempts = 0,
             DeliveryStatus = "delivery_status",
             ErrorMessage = "error_message",
-            EventData = JsonSerializer.Deserialize<JsonElement>("{}"),
+            EventData = new MessageEvent()
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentID = "agent_id",
+                    Channel = "channel",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    MessageStatus = "message_status",
+                    OutboundNumber = "outbound_number",
+                    TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    TemplateName = "template_name",
+                    UpdatedAt = "updated_at",
+                },
+                Timestamp = "timestamp",
+            },
             EventType = "event_type",
             HttpStatusCode = 0,
             ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1333,5 +1824,168 @@ public class EventTest : TestBase
         Event copied = new(model);
 
         Assert.Equal(model, copied);
+    }
+}
+
+public class EventDataTest : TestBase
+{
+    [Fact]
+    public void MessageEventValidationWorks()
+    {
+        EventData value = new MessageEvent()
+        {
+            Event = "event",
+            Field = "field",
+            Payload = new()
+            {
+                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                AgentID = "agent_id",
+                Channel = "channel",
+                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                MessageStatus = "message_status",
+                OutboundNumber = "outbound_number",
+                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                TemplateName = "template_name",
+                UpdatedAt = "updated_at",
+            },
+            Timestamp = "timestamp",
+        };
+        value.Validate();
+    }
+
+    [Fact]
+    public void InboundMessageEventValidationWorks()
+    {
+        EventData value = new InboundMessageEvent()
+        {
+            Event = "event",
+            Field = "field",
+            Payload = new()
+            {
+                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channel = "channel",
+                InboundNumber = "inbound_number",
+                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                OutboundNumber = "outbound_number",
+                ReceivedAt = "received_at",
+                Text = "text",
+                UpdatedAt = "updated_at",
+            },
+            Timestamp = "timestamp",
+        };
+        value.Validate();
+    }
+
+    [Fact]
+    public void TemplateEventValidationWorks()
+    {
+        EventData value = new TemplateEvent()
+        {
+            Event = "event",
+            Field = "field",
+            Payload = new()
+            {
+                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Category = "category",
+                Channel = "channel",
+                Language = "language",
+                Reason = "reason",
+                Status = "status",
+                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                TemplateName = "template_name",
+                WhatsappTemplateID = "whatsapp_template_id",
+            },
+            Timestamp = "timestamp",
+        };
+        value.Validate();
+    }
+
+    [Fact]
+    public void MessageEventSerializationRoundtripWorks()
+    {
+        EventData value = new MessageEvent()
+        {
+            Event = "event",
+            Field = "field",
+            Payload = new()
+            {
+                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                AgentID = "agent_id",
+                Channel = "channel",
+                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                MessageStatus = "message_status",
+                OutboundNumber = "outbound_number",
+                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                TemplateName = "template_name",
+                UpdatedAt = "updated_at",
+            },
+            Timestamp = "timestamp",
+        };
+        string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<EventData>(
+            element,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void InboundMessageEventSerializationRoundtripWorks()
+    {
+        EventData value = new InboundMessageEvent()
+        {
+            Event = "event",
+            Field = "field",
+            Payload = new()
+            {
+                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channel = "channel",
+                InboundNumber = "inbound_number",
+                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                OutboundNumber = "outbound_number",
+                ReceivedAt = "received_at",
+                Text = "text",
+                UpdatedAt = "updated_at",
+            },
+            Timestamp = "timestamp",
+        };
+        string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<EventData>(
+            element,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void TemplateEventSerializationRoundtripWorks()
+    {
+        EventData value = new TemplateEvent()
+        {
+            Event = "event",
+            Field = "field",
+            Payload = new()
+            {
+                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Category = "category",
+                Channel = "channel",
+                Language = "language",
+                Reason = "reason",
+                Status = "status",
+                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                TemplateName = "template_name",
+                WhatsappTemplateID = "whatsapp_template_id",
+            },
+            Timestamp = "timestamp",
+        };
+        string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<EventData>(
+            element,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
     }
 }
