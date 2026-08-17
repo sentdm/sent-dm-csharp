@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.30.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.29.0...v0.30.0) (2026-08-17)
+
+
+### Highlights
+
+Webhook payloads are now typed. The events Sent POSTs to your endpoint — `MessageEvent`, `InboundMessageEvent` and `TemplateEvent`, each with its own payload type — are generated types you can deserialize into, instead of a shape you had to hand-write from the docs.
+
+The webhook delivery log is typed too. `event_data` on `GET /v3/webhooks/{id}/events` returns the exact envelope that was delivered, and now describes itself as one of those three rather than an opaque object.
+
+Also in this release:
+
+- `csp_id` on the brand object is deprecated and will be removed in a later release. It identifies the Campaign Service Provider that registered the brand, which is Sent, so the value is the same for every account. There is no replacement. Your own TCR identifiers, `tcr_brand_id` and `universal_ein`, are unaffected.
+- Corrected descriptions for blocked sends, which now name the cases that gate a send before any delivery attempt: insufficient balance, a template not approved for sending, and free-form content with no open conversation.
+- `campaign.volume` documents what an omitted value does. Leave it out and the campaign registers as standard, the higher-fee tier, with no error.
+
+### Features
+
+* **api:** sync OpenAPI spec from production ([46fa794](https://github.com/sentdm/sent-dm-csharp/commit/46fa79437c701d5ce32648d3f788d1839f2f06e7))
+* **api:** sync OpenAPI spec from production ([40b8565](https://github.com/sentdm/sent-dm-csharp/commit/40b856515f1c3572d85b8476f59546dde0202d9b))
+* **api:** sync OpenAPI spec from production ([07293b0](https://github.com/sentdm/sent-dm-csharp/commit/07293b07be955cceebbb2b921a076f658c4e7dea))
+* **sdk:** expose the delivered webhook payloads as models ([9790fea](https://github.com/sentdm/sent-dm-csharp/commit/9790fea4daacc3320f4f50e5dc2e2d0908aefb30))
+
+
+### Chores
+
+* add eager seal-dispatch workflow ([05c0522](https://github.com/sentdm/sent-dm-csharp/commit/05c052246e0067028462f9ae5fe8a16955da85e1))
+
 ## [0.29.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.28.0...v0.29.0) (2026-08-08)
 
 
