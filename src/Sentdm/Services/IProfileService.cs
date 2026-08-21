@@ -156,6 +156,10 @@ public interface IProfileService
     /// it returns 202 and calls the provided webhook URL when background processing
     /// finishes.
     ///
+    /// <para>Callable with the organization's API key or the profile's own key. The
+    /// key's user must be an admin or owner of the profile, or of the organization it
+    /// belongs to.</para>
+    ///
     /// <para>Prerequisites: - Profile must have a name, short name, and description
     /// (short name max 50 characters, description max 5000) - webHookUrl must be
     /// supplied on the request - A KYC form submission is required - A brand is
@@ -163,13 +167,13 @@ public interface IProfileService
     /// applications must have at least one campaign, own or inherited - Destination
     /// countries marked as main must have their required compliance documents uploaded</para>
     ///
-    /// <para>Resulting status: - If either the SMS or WhatsApp channel is unconfigured,
-    /// the profile is SUBMITTED - For a TCR application that inherits both its brand
-    /// and its campaigns, the profile is COMPLETED - For a TCR application that owns
-    /// either its brand or its campaigns, the profile is COMPLETED once both have been
-    /// submitted to TCR, and SUBMITTED until then - For a non-TCR application, the
-    /// profile is SUBMITTED when a main destination country is set, and COMPLETED
-    /// otherwise</para>
+    /// <para>Resulting status: - If the WhatsApp channel is unconfigured, the profile
+    /// is SUBMITTED. An SMS channel is required only for TCR applications - For a TCR
+    /// application that inherits both its brand and its campaigns, the profile is
+    /// COMPLETED - For a TCR application that owns either its brand or its campaigns,
+    /// the profile is COMPLETED once both have been submitted to TCR, and SUBMITTED
+    /// until then - For a non-TCR application, the profile is SUBMITTED when a main
+    /// destination country is set, and COMPLETED otherwise</para>
     /// </summary>
     Task<ProfileCompleteResponse> Complete(
         ProfileCompleteParams parameters,
