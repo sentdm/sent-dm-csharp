@@ -168,12 +168,14 @@ public interface IProfileService
     /// countries marked as main must have their required compliance documents uploaded</para>
     ///
     /// <para>Resulting status: - If the WhatsApp channel is unconfigured, the profile
-    /// is SUBMITTED. An SMS channel is required only for TCR applications - For a TCR
-    /// application that inherits both its brand and its campaigns, the profile is
-    /// COMPLETED - For a TCR application that owns either its brand or its campaigns,
-    /// the profile is COMPLETED once both have been submitted to TCR, and SUBMITTED
-    /// until then - For a non-TCR application, the profile is SUBMITTED when a main
-    /// destination country is set, and COMPLETED otherwise</para>
+    /// is SUBMITTED. An SMS channel is required only for TCR applications - A WhatsApp
+    /// Business Account counts as configured before a phone number is registered
+    /// against it, so a missing WhatsApp phone number never holds the profile in
+    /// SUBMITTED - For a TCR application that inherits both its brand and its
+    /// campaigns, the profile is COMPLETED - For a TCR application that owns either its
+    /// brand or its campaigns, the profile is COMPLETED once both have been submitted
+    /// to TCR, and SUBMITTED until then - For a non-TCR application, the profile is
+    /// SUBMITTED when a main destination country is set, and COMPLETED otherwise</para>
     /// </summary>
     Task<ProfileCompleteResponse> Complete(
         ProfileCompleteParams parameters,
