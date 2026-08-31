@@ -10,13 +10,22 @@ using Sentdm.Core;
 namespace Sentdm.Models.Contacts;
 
 /// <summary>
-/// Dissociates a contact from the authenticated customer. Inherited contacts cannot
-/// be deleted.
+/// **Deprecated.** Use `PATCH /v3/contacts/{id}` with `{"opt_out": true}` instead,
+/// and expect this to be removed in a future release. It still behaves exactly as
+/// before, so nothing needs to change today.
+///
+/// <para>Opting a contact out stops every send to them, which is what deleting one
+/// was mostly used for — and it keeps the record of who they were and that they asked.
+/// A delete discards the consent history along with the contact, which is the part
+/// you need if anyone ever asks why you stopped, or why you started again.</para>
+///
+/// <para>Dissociates a contact from the authenticated customer.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class ContactDeleteParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();

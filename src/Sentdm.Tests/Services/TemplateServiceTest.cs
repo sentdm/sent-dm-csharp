@@ -7,33 +7,33 @@ public class TemplateServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var apiResponseTemplate = await this.client.Templates.Create(
+        var template = await this.client.Templates.Create(
             new(),
             TestContext.Current.CancellationToken
         );
-        apiResponseTemplate.Validate();
+        template.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var apiResponseTemplate = await this.client.Templates.Retrieve(
+        var template = await this.client.Templates.Retrieve(
             "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
             new(),
             TestContext.Current.CancellationToken
         );
-        apiResponseTemplate.Validate();
+        template.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var apiResponseTemplate = await this.client.Templates.Update(
+        var template = await this.client.Templates.Update(
             "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
             new(),
             TestContext.Current.CancellationToken
         );
-        apiResponseTemplate.Validate();
+        template.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]

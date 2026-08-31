@@ -7,9 +7,17 @@ using Sentdm.Models.Conversations;
 namespace Sentdm.Services;
 
 /// <summary>
-/// NOTE: Do not inherit from this type outside the SDK unless you're okay with breaking
-/// changes in non-major versions. We may add new methods in the future that cause
-/// existing derived classes to break.
+/// Inbound and outbound messages, grouped by the person they are with.
+///
+/// <para>A conversation is the thread for one contact across every channel — a reply
+/// by SMS and one by WhatsApp belong to the same conversation, because they are
+/// the same person talking to you.</para>
+///
+/// <para>Read-only. Sending is **Messages**; a reply arrives here and through your webhooks.</para>
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
 public interface IConversationService
 {
@@ -30,7 +38,7 @@ public interface IConversationService
     /// Retrieves a paginated list of the authenticated customer's messages across all
     /// conversations, ordered by created date (most recent first).
     /// </summary>
-    Task<ApiResponseOfConversationMessagesList> List(
+    Task<ConversationListResponse> List(
         ConversationListParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -39,13 +47,13 @@ public interface IConversationService
     /// Retrieves a paginated list of the messages in a single conversation (scoped to
     /// the authenticated customer), ordered by created date (most recent first).
     /// </summary>
-    Task<ApiResponseOfConversationMessagesList> ListMessages(
+    Task<ConversationListMessagesResponse> ListMessages(
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListMessages(ConversationListMessagesParams, CancellationToken)"/>
-    Task<ApiResponseOfConversationMessagesList> ListMessages(
+    Task<ConversationListMessagesResponse> ListMessages(
         string id,
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
@@ -69,7 +77,7 @@ public interface IConversationServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/conversations</c>, but is otherwise the
     /// same as <see cref="IConversationService.List(ConversationListParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfConversationMessagesList>> List(
+    Task<HttpResponse<ConversationListResponse>> List(
         ConversationListParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -78,13 +86,13 @@ public interface IConversationServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/conversations/{id}</c>, but is otherwise the
     /// same as <see cref="IConversationService.ListMessages(ConversationListMessagesParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfConversationMessagesList>> ListMessages(
+    Task<HttpResponse<ConversationListMessagesResponse>> ListMessages(
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListMessages(ConversationListMessagesParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseOfConversationMessagesList>> ListMessages(
+    Task<HttpResponse<ConversationListMessagesResponse>> ListMessages(
         string id,
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default

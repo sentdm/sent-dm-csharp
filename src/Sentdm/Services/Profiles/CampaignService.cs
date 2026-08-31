@@ -35,7 +35,8 @@ public sealed class CampaignService : ICampaignService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfBrandCampaign> Create(
+    [Obsolete("deprecated")]
+    public async Task<CampaignCreateResponse> Create(
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -47,7 +48,8 @@ public sealed class CampaignService : ICampaignService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfBrandCampaign> Create(
+    [Obsolete("deprecated")]
+    public Task<CampaignCreateResponse> Create(
         string profileID,
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
@@ -57,7 +59,8 @@ public sealed class CampaignService : ICampaignService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfBrandCampaign> Update(
+    [Obsolete("deprecated")]
+    public async Task<CampaignUpdateResponse> Update(
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -69,7 +72,8 @@ public sealed class CampaignService : ICampaignService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfBrandCampaign> Update(
+    [Obsolete("deprecated")]
+    public Task<CampaignUpdateResponse> Update(
         string campaignID,
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
@@ -79,7 +83,8 @@ public sealed class CampaignService : ICampaignService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfListOfBrandCampaign> List(
+    [Obsolete("deprecated")]
+    public async Task<CampaignListResponse> List(
         CampaignListParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -91,7 +96,8 @@ public sealed class CampaignService : ICampaignService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfListOfBrandCampaign> List(
+    [Obsolete("deprecated")]
+    public Task<CampaignListResponse> List(
         string profileID,
         CampaignListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -103,6 +109,7 @@ public sealed class CampaignService : ICampaignService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Delete(
         CampaignDeleteParams parameters,
         CancellationToken cancellationToken = default
@@ -112,6 +119,7 @@ public sealed class CampaignService : ICampaignService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task Delete(
         string campaignID,
         CampaignDeleteParams parameters,
@@ -140,7 +148,8 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfBrandCampaign>> Create(
+    [Obsolete("deprecated")]
+    public async Task<HttpResponse<CampaignCreateResponse>> Create(
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -160,20 +169,21 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
             response,
             async (token) =>
             {
-                var apiResponseOfBrandCampaign = await response
-                    .Deserialize<ApiResponseOfBrandCampaign>(token)
+                var campaign = await response
+                    .Deserialize<CampaignCreateResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfBrandCampaign.Validate();
+                    campaign.Validate();
                 }
-                return apiResponseOfBrandCampaign;
+                return campaign;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfBrandCampaign>> Create(
+    [Obsolete("deprecated")]
+    public Task<HttpResponse<CampaignCreateResponse>> Create(
         string profileID,
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
@@ -183,7 +193,8 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfBrandCampaign>> Update(
+    [Obsolete("deprecated")]
+    public async Task<HttpResponse<CampaignUpdateResponse>> Update(
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -203,20 +214,21 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
             response,
             async (token) =>
             {
-                var apiResponseOfBrandCampaign = await response
-                    .Deserialize<ApiResponseOfBrandCampaign>(token)
+                var campaign = await response
+                    .Deserialize<CampaignUpdateResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfBrandCampaign.Validate();
+                    campaign.Validate();
                 }
-                return apiResponseOfBrandCampaign;
+                return campaign;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfBrandCampaign>> Update(
+    [Obsolete("deprecated")]
+    public Task<HttpResponse<CampaignUpdateResponse>> Update(
         string campaignID,
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
@@ -226,7 +238,8 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfListOfBrandCampaign>> List(
+    [Obsolete("deprecated")]
+    public async Task<HttpResponse<CampaignListResponse>> List(
         CampaignListParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -246,20 +259,21 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
             response,
             async (token) =>
             {
-                var apiResponseOfListOfBrandCampaign = await response
-                    .Deserialize<ApiResponseOfListOfBrandCampaign>(token)
+                var campaigns = await response
+                    .Deserialize<CampaignListResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfListOfBrandCampaign.Validate();
+                    campaigns.Validate();
                 }
-                return apiResponseOfListOfBrandCampaign;
+                return campaigns;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfListOfBrandCampaign>> List(
+    [Obsolete("deprecated")]
+    public Task<HttpResponse<CampaignListResponse>> List(
         string profileID,
         CampaignListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -271,6 +285,7 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Delete(
         CampaignDeleteParams parameters,
         CancellationToken cancellationToken = default
@@ -290,6 +305,7 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Delete(
         string campaignID,
         CampaignDeleteParams parameters,

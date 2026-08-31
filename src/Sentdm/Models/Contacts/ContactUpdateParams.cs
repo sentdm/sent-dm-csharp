@@ -10,8 +10,7 @@ using Sentdm.Core;
 namespace Sentdm.Models.Contacts;
 
 /// <summary>
-/// Updates a contact's default channel and/or opt-out status. Inherited contacts
-/// cannot be updated.
+/// Updates a contact's default channel and/or opt-out status.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
