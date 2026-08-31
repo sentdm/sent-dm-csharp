@@ -10,13 +10,21 @@ using Sentdm.Core;
 namespace Sentdm.Models.Profiles;
 
 /// <summary>
-/// Soft deletes a sender profile. The profile will be marked as deleted but data
-/// is retained. Requires admin role in the organization.
+/// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+/// removed in a future release. It still behaves exactly as before, so nothing needs
+/// to change today — but new integrations should use `/v3/sender-profiles`, which
+/// models a profile's markets, compliance, brand, campaigns and billing explicitly.
+///
+/// <para>Soft deletes a sender profile. The profile will be marked as deleted but
+/// data is retained. Anything it still held is released first: phone numbers return
+/// to our inventory and can go to whoever asks next, its own WhatsApp account is
+/// deregistered, and its routing rules stop being used. Requires admin role in the organization.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class ProfileDeleteParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();

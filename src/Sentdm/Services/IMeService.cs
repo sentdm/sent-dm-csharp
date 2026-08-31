@@ -7,7 +7,11 @@ using Sentdm.Models.Me;
 namespace Sentdm.Services;
 
 /// <summary>
-/// Retrieve account details
+/// Who the current key is.
+///
+/// <para>`GET /v3/me` answers with the account the key authenticates as, which is
+/// the quickest way to tell a live key from a test one, an organization key from
+/// a sender profile's, and to confirm `x-profile-id` resolved to the profile you meant.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
