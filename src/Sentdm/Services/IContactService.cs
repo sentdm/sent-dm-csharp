@@ -7,7 +7,14 @@ using Sentdm.Models.Contacts;
 namespace Sentdm.Services;
 
 /// <summary>
-/// Create, update, and manage customer contact lists
+/// The people you message, and their channel identities.
+///
+/// <para>A contact holds one identity per channel — a phone number, a WhatsApp number
+/// — so routing can choose between them for the same person. Opt-out is recorded
+/// against the contact and honoured on every send, whichever channel it came through.</para>
+///
+/// <para>`GET /v3/contacts/{id}/message-summary` is the per-contact view of what
+/// you have sent and what happened to it.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -32,7 +39,7 @@ public interface IContactService
     /// Creates a new contact by phone number and associates it with the authenticated
     /// customer.
     /// </summary>
-    Task<ApiResponseOfContact> Create(
+    Task<ContactCreateResponse> Create(
         ContactCreateParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -42,29 +49,28 @@ public interface IContactService
     /// contact information including phone formats, available channels, and opt-out
     /// status.
     /// </summary>
-    Task<ApiResponseOfContact> Retrieve(
+    Task<ContactRetrieveResponse> Retrieve(
         ContactRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(ContactRetrieveParams, CancellationToken)"/>
-    Task<ApiResponseOfContact> Retrieve(
+    Task<ContactRetrieveResponse> Retrieve(
         string id,
         ContactRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Updates a contact's default channel and/or opt-out status. Inherited contacts
-    /// cannot be updated.
+    /// Updates a contact's default channel and/or opt-out status.
     /// </summary>
-    Task<ApiResponseOfContact> Update(
+    Task<ContactUpdateResponse> Update(
         ContactUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(ContactUpdateParams, CancellationToken)"/>
-    Task<ApiResponseOfContact> Update(
+    Task<ContactUpdateResponse> Update(
         string id,
         ContactUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -80,12 +86,22 @@ public interface IContactService
     );
 
     /// <summary>
-    /// Dissociates a contact from the authenticated customer. Inherited contacts cannot
-    /// be deleted.
+    /// **Deprecated.** Use `PATCH /v3/contacts/{id}` with `{"opt_out": true}` instead,
+    /// and expect this to be removed in a future release. It still behaves exactly as
+    /// before, so nothing needs to change today.
+    ///
+    /// <para>Opting a contact out stops every send to them, which is what deleting one
+    /// was mostly used for — and it keeps the record of who they were and that they
+    /// asked. A delete discards the consent history along with the contact, which is
+    /// the part you need if anyone ever asks why you stopped, or why you started again.</para>
+    ///
+    /// <para>Dissociates a contact from the authenticated customer.</para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task Delete(ContactDeleteParams parameters, CancellationToken cancellationToken = default);
 
     /// <inheritdoc cref="Delete(ContactDeleteParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task Delete(
         string id,
         ContactDeleteParams? parameters = null,
@@ -98,13 +114,13 @@ public interface IContactService
     /// one of your contacts. Successful terminal states: SENT/DELIVERED/READ for
     /// outbound, RECEIVED for inbound. Fail: FAILED.
     /// </summary>
-    Task<ApiResponseOfContactMessageSummary> RetrieveMessageSummary(
+    Task<ContactRetrieveMessageSummaryResponse> RetrieveMessageSummary(
         ContactRetrieveMessageSummaryParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="RetrieveMessageSummary(ContactRetrieveMessageSummaryParams, CancellationToken)"/>
-    Task<ApiResponseOfContactMessageSummary> RetrieveMessageSummary(
+    Task<ContactRetrieveMessageSummaryResponse> RetrieveMessageSummary(
         string contactID,
         ContactRetrieveMessageSummaryParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -128,7 +144,7 @@ public interface IContactServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/contacts</c>, but is otherwise the
     /// same as <see cref="IContactService.Create(ContactCreateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfContact>> Create(
+    Task<HttpResponse<ContactCreateResponse>> Create(
         ContactCreateParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -137,13 +153,13 @@ public interface IContactServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/contacts/{id}</c>, but is otherwise the
     /// same as <see cref="IContactService.Retrieve(ContactRetrieveParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfContact>> Retrieve(
+    Task<HttpResponse<ContactRetrieveResponse>> Retrieve(
         ContactRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(ContactRetrieveParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseOfContact>> Retrieve(
+    Task<HttpResponse<ContactRetrieveResponse>> Retrieve(
         string id,
         ContactRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -153,13 +169,13 @@ public interface IContactServiceWithRawResponse
     /// Returns a raw HTTP response for <c>patch /v3/contacts/{id}</c>, but is otherwise the
     /// same as <see cref="IContactService.Update(ContactUpdateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfContact>> Update(
+    Task<HttpResponse<ContactUpdateResponse>> Update(
         ContactUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(ContactUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseOfContact>> Update(
+    Task<HttpResponse<ContactUpdateResponse>> Update(
         string id,
         ContactUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -178,12 +194,14 @@ public interface IContactServiceWithRawResponse
     /// Returns a raw HTTP response for <c>delete /v3/contacts/{id}</c>, but is otherwise the
     /// same as <see cref="IContactService.Delete(ContactDeleteParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Delete(
         ContactDeleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Delete(ContactDeleteParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Delete(
         string id,
         ContactDeleteParams? parameters = null,
@@ -194,13 +212,13 @@ public interface IContactServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/contacts/{contactId}/message-summary</c>, but is otherwise the
     /// same as <see cref="IContactService.RetrieveMessageSummary(ContactRetrieveMessageSummaryParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfContactMessageSummary>> RetrieveMessageSummary(
+    Task<HttpResponse<ContactRetrieveMessageSummaryResponse>> RetrieveMessageSummary(
         ContactRetrieveMessageSummaryParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="RetrieveMessageSummary(ContactRetrieveMessageSummaryParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseOfContactMessageSummary>> RetrieveMessageSummary(
+    Task<HttpResponse<ContactRetrieveMessageSummaryResponse>> RetrieveMessageSummary(
         string contactID,
         ContactRetrieveMessageSummaryParams? parameters = null,
         CancellationToken cancellationToken = default
