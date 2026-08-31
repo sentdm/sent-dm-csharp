@@ -9,13 +9,19 @@ using Sentdm.Core;
 namespace Sentdm.Models.Profiles.Campaigns;
 
 /// <summary>
-/// Retrieves all campaigns linked to the profile's brand, including use cases and
-/// sample messages. Returns inherited campaigns if inherit_tcr_campaign=true.
+/// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+/// removed in a future release. It still behaves exactly as before, so nothing needs
+/// to change today — but new integrations should use `/v3/sender-profiles`, which
+/// models a profile's markets, compliance, brand, campaigns and billing explicitly.
+///
+/// <para>Retrieves all campaigns linked to the profile's brand, including use cases
+/// and sample messages. Returns inherited campaigns if inherit_tcr_campaign=true.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class CampaignListParams : ParamsBase
 {
     public string? ProfileID { get; init; }

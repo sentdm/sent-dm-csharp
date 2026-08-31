@@ -1,38 +1,37 @@
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
+using Sentdm.Exceptions;
 
 namespace Sentdm.Models.Profiles;
 
 /// <summary>
-/// Creates a new sender profile within an organization. Profiles represent different
-/// brands, departments, or use cases, each with their own messaging configuration
-/// and settings. Requires admin role in the organization.
+/// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+/// removed in a future release. It still behaves exactly as before, so nothing needs
+/// to change today — but new integrations should use `/v3/sender-profiles`, which
+/// models a profile's markets, compliance, brand, campaigns and billing explicitly.
+///
+/// <para>Creates a new sender profile within an organization. Profiles represent
+/// different brands, departments, or use cases, each with their own messaging configuration
+/// and settings. Requires admin role in the organization.</para>
 ///
 /// <para>## WhatsApp Business Account</para>
 ///
-/// <para>Every profile must be linked to a WhatsApp Business Account. There are
-/// two ways to do this:</para>
+/// <para>Every profile owns its own WhatsApp Business Account — accounts are never
+/// shared between profiles or inherited from the organization. Provide a `whatsapp_business_account`
+/// object with `waba_id`, `phone_number_id`, and `access_token`. Obtain these from
+/// Meta Business Manager by creating a System User with `whatsapp_business_messaging`
+/// and `whatsapp_business_management` permissions.</para>
 ///
-/// <para>**1. Inherit from organization (default)** — Omit the `whatsapp_business_account`
-/// field. The profile will share the organization's WhatsApp Business Account, which
-/// must have been set up via WhatsApp Embedded Signup. This is the recommended path
-/// for most use cases.</para>
-///
-/// <para>**2. Direct credentials** — Provide a `whatsapp_business_account` object
-/// with `waba_id`, `phone_number_id`, and `access_token`. Use this when the profile
-/// needs its own independent WhatsApp Business Account. Obtain these from Meta Business
-/// Manager by creating a System User with `whatsapp_business_messaging` and `whatsapp_business_management` permissions.</para>
-///
-/// <para>If the `whatsapp_business_account` field is omitted and the organization
-/// has no WhatsApp Business Account configured, the request will be rejected with
-/// HTTP 422.</para>
+/// <para>Omit the field and the profile is created without WhatsApp, staying incomplete
+/// until it has an account of its own.</para>
 ///
 /// <para>## Brand</para>
 ///
@@ -51,6 +50,7 @@ namespace Sentdm.Models.Profiles;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class ProfileCreateParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();
@@ -60,8 +60,21 @@ public record class ProfileCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Whether contacts are shared across profiles (default: false)
+    /// Deprecated. Accepted and ignored. Contact and template sharing between sender
+    /// profiles is gone — a profile sees only what it owns, and the organization
+    /// still sees all of its profiles' contacts and templates through read-time widening.
+    /// The four columns behind these flags were dropped by M260720120000.
+    ///        Bound rather than dropped so the properties survive on the wire and
+    /// in a generated client: an SDK that assigns them keeps compiling, which is
+    /// the compatibility this exists for. Deliberately not refused either — a 400
+    /// would break an integration that is otherwise working, and the capability
+    /// they ask for is gone either way. Same rule as SendingPhoneNumberProfileId.
+    ///              The read is what makes this survivable: every profile reports
+    /// all four as false, so a caller that checks its own write can see it did not
+    /// take. Requests carrying one are logged, so we can tell when nobody sends them
+    /// any more and the fields can go for real.
     /// </summary>
+    [Obsolete("deprecated")]
     public bool? AllowContactSharing
     {
         get
@@ -69,20 +82,10 @@ public record class ProfileCreateParams : ParamsBase
             this._rawBodyData.Freeze();
             return this._rawBodyData.GetNullableStruct<bool>("allow_contact_sharing");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawBodyData.Set("allow_contact_sharing", value);
-        }
+        init { this._rawBodyData.Set("allow_contact_sharing", value); }
     }
 
-    /// <summary>
-    /// Whether templates are shared across profiles (default: false)
-    /// </summary>
+    [Obsolete("deprecated")]
     public bool? AllowTemplateSharing
     {
         get
@@ -90,27 +93,19 @@ public record class ProfileCreateParams : ParamsBase
             this._rawBodyData.Freeze();
             return this._rawBodyData.GetNullableStruct<bool>("allow_template_sharing");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawBodyData.Set("allow_template_sharing", value);
-        }
+        init { this._rawBodyData.Set("allow_template_sharing", value); }
     }
 
     /// <summary>
     /// Billing contact information for a profile. Required when billing_model is
     /// "profile" or "profile_and_organization".
     /// </summary>
-    public BillingContactInfo? BillingContact
+    public BillingContact? BillingContact
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<BillingContactInfo>("billing_contact");
+            return this._rawBodyData.GetNullableClass<BillingContact>("billing_contact");
         }
         init { this._rawBodyData.Set("billing_contact", value); }
     }
@@ -135,12 +130,12 @@ public record class ProfileCreateParams : ParamsBase
     /// <summary>
     /// Brand and KYC data grouped into contact, business, and compliance sections
     /// </summary>
-    public BrandsBrandData? Brand
+    public Brand? Brand
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<BrandsBrandData>("brand");
+            return this._rawBodyData.GetNullableClass<Brand>("brand");
         }
         init { this._rawBodyData.Set("brand", value); }
     }
@@ -171,9 +166,7 @@ public record class ProfileCreateParams : ParamsBase
         init { this._rawBodyData.Set("icon", value); }
     }
 
-    /// <summary>
-    /// Whether this profile inherits contacts from organization (default: true)
-    /// </summary>
+    [Obsolete("deprecated")]
     public bool? InheritContacts
     {
         get
@@ -185,7 +178,7 @@ public record class ProfileCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Whether this profile inherits TCR brand from organization (default: true)
+    /// Whether this profile inherits TCR brand from organization (default: false)
     /// </summary>
     public bool? InheritTcrBrand
     {
@@ -198,7 +191,7 @@ public record class ProfileCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Whether this profile inherits TCR campaign from organization (default: true)
+    /// Whether this profile inherits TCR campaign from organization (default: false)
     /// </summary>
     public bool? InheritTcrCampaign
     {
@@ -210,9 +203,7 @@ public record class ProfileCreateParams : ParamsBase
         init { this._rawBodyData.Set("inherit_tcr_campaign", value); }
     }
 
-    /// <summary>
-    /// Whether this profile inherits templates from organization (default: true)
-    /// </summary>
+    [Obsolete("deprecated")]
     public bool? InheritTemplates
     {
         get
@@ -245,9 +236,9 @@ public record class ProfileCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Payment card details for a profile. Accepted when billing_model is "profile"
-    /// or "profile_and_organization". These details are not stored on our servers
-    /// and will be forwarded to the payment processor.
+    /// Payment card details for this profile (optional). Accepted when billing_model
+    /// is "profile" or "profile_and_organization". Not persisted on our servers —
+    /// forwarded to the payment processor.
     /// </summary>
     public PaymentDetails? PaymentDetails
     {
@@ -458,6 +449,826 @@ public record class ProfileCreateParams : ParamsBase
     {
         return 0;
     }
+}
+
+/// <summary>
+/// Billing contact information for a profile. Required when billing_model is "profile"
+/// or "profile_and_organization".
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<BillingContact, BillingContactFromRaw>))]
+public sealed record class BillingContact : JsonModel
+{
+    /// <summary>
+    /// Email address where invoices will be sent (required)
+    /// </summary>
+    public required string Email
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("email");
+        }
+        init { this._rawData.Set("email", value); }
+    }
+
+    /// <summary>
+    /// Full name of the billing contact or company (required)
+    /// </summary>
+    public required string Name
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("name");
+        }
+        init { this._rawData.Set("name", value); }
+    }
+
+    /// <summary>
+    /// Billing address (optional). Free-form text including street, city, state,
+    /// postal code, and country.
+    /// </summary>
+    public string? Address
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("address");
+        }
+        init { this._rawData.Set("address", value); }
+    }
+
+    /// <summary>
+    /// Phone number for the billing contact (optional)
+    /// </summary>
+    public string? Phone
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("phone");
+        }
+        init { this._rawData.Set("phone", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Email;
+        _ = this.Name;
+        _ = this.Address;
+        _ = this.Phone;
+    }
+
+    public BillingContact() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public BillingContact(BillingContact billingContact)
+        : base(billingContact) { }
+#pragma warning restore CS8618
+
+    public BillingContact(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    BillingContact(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="BillingContactFromRaw.FromRawUnchecked"/>
+    public static BillingContact FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class BillingContactFromRaw : IFromRawJson<BillingContact>
+{
+    /// <inheritdoc/>
+    public BillingContact FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        BillingContact.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Brand and KYC data grouped into contact, business, and compliance sections
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Brand, BrandFromRaw>))]
+public sealed record class Brand : JsonModel
+{
+    /// <summary>
+    /// Compliance and TCR information for brand registration
+    /// </summary>
+    public required Compliance Compliance
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<Compliance>("compliance");
+        }
+        init { this._rawData.Set("compliance", value); }
+    }
+
+    /// <summary>
+    /// Contact information for brand KYC
+    /// </summary>
+    public required Contact Contact
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<Contact>("contact");
+        }
+        init { this._rawData.Set("contact", value); }
+    }
+
+    /// <summary>
+    /// Business details and address for brand KYC
+    /// </summary>
+    public Business? Business
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Business>("business");
+        }
+        init { this._rawData.Set("business", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        this.Compliance.Validate();
+        this.Contact.Validate();
+        this.Business?.Validate();
+    }
+
+    public Brand() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Brand(Brand brand)
+        : base(brand) { }
+#pragma warning restore CS8618
+
+    public Brand(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Brand(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="BrandFromRaw.FromRawUnchecked"/>
+    public static Brand FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class BrandFromRaw : IFromRawJson<Brand>
+{
+    /// <inheritdoc/>
+    public Brand FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Brand.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Compliance and TCR information for brand registration
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Compliance, ComplianceFromRaw>))]
+public sealed record class Compliance : JsonModel
+{
+    public required ApiEnum<string, TcrBrandRelationship> BrandRelationship
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<ApiEnum<string, TcrBrandRelationship>>(
+                "brandRelationship"
+            );
+        }
+        init { this._rawData.Set("brandRelationship", value); }
+    }
+
+    public required ApiEnum<string, TcrVertical> Vertical
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<ApiEnum<string, TcrVertical>>("vertical");
+        }
+        init { this._rawData.Set("vertical", value); }
+    }
+
+    /// <summary>
+    /// List of destination countries for messaging
+    /// </summary>
+    public IReadOnlyList<DestinationCountry>? DestinationCountries
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<DestinationCountry>>(
+                "destinationCountries"
+            );
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<DestinationCountry>?>(
+                "destinationCountries",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
+    /// <summary>
+    /// Whether this is a TCR (Campaign Registry) application
+    /// </summary>
+    public bool? IsTcrApplication
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("isTcrApplication");
+        }
+        init { this._rawData.Set("isTcrApplication", value); }
+    }
+
+    /// <summary>
+    /// Additional notes about the business or use case
+    /// </summary>
+    public string? Notes
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("notes");
+        }
+        init { this._rawData.Set("notes", value); }
+    }
+
+    /// <summary>
+    /// Phone number prefix for messaging (e.g., "+1")
+    /// </summary>
+    public string? PhoneNumberPrefix
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("phoneNumberPrefix");
+        }
+        init { this._rawData.Set("phoneNumberPrefix", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        this.BrandRelationship.Validate();
+        this.Vertical.Validate();
+        foreach (var item in this.DestinationCountries ?? [])
+        {
+            item.Validate();
+        }
+        _ = this.IsTcrApplication;
+        _ = this.Notes;
+        _ = this.PhoneNumberPrefix;
+    }
+
+    public Compliance() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Compliance(Compliance compliance)
+        : base(compliance) { }
+#pragma warning restore CS8618
+
+    public Compliance(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Compliance(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="ComplianceFromRaw.FromRawUnchecked"/>
+    public static Compliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class ComplianceFromRaw : IFromRawJson<Compliance>
+{
+    /// <inheritdoc/>
+    public Compliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Compliance.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Contact information for brand KYC
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Contact, ContactFromRaw>))]
+public sealed record class Contact : JsonModel
+{
+    /// <summary>
+    /// Primary contact name (required)
+    /// </summary>
+    public required string Name
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("name");
+        }
+        init { this._rawData.Set("name", value); }
+    }
+
+    /// <summary>
+    /// Business/brand name
+    /// </summary>
+    public string? BusinessName
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("businessName");
+        }
+        init { this._rawData.Set("businessName", value); }
+    }
+
+    /// <summary>
+    /// Contact email address
+    /// </summary>
+    public string? Email
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("email");
+        }
+        init { this._rawData.Set("email", value); }
+    }
+
+    /// <summary>
+    /// Contact phone number in E.164 format
+    /// </summary>
+    public string? Phone
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("phone");
+        }
+        init { this._rawData.Set("phone", value); }
+    }
+
+    /// <summary>
+    /// Contact phone country code (e.g., "1" for US)
+    /// </summary>
+    public string? PhoneCountryCode
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("phoneCountryCode");
+        }
+        init { this._rawData.Set("phoneCountryCode", value); }
+    }
+
+    /// <summary>
+    /// Contact's role in the business
+    /// </summary>
+    public string? Role
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("role");
+        }
+        init { this._rawData.Set("role", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Name;
+        _ = this.BusinessName;
+        _ = this.Email;
+        _ = this.Phone;
+        _ = this.PhoneCountryCode;
+        _ = this.Role;
+    }
+
+    public Contact() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Contact(Contact contact)
+        : base(contact) { }
+#pragma warning restore CS8618
+
+    public Contact(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Contact(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="ContactFromRaw.FromRawUnchecked"/>
+    public static Contact FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+
+    [SetsRequiredMembers]
+    public Contact(string name)
+        : this()
+    {
+        this.Name = name;
+    }
+}
+
+class ContactFromRaw : IFromRawJson<Contact>
+{
+    /// <inheritdoc/>
+    public Contact FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Contact.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Business details and address for brand KYC
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Business, BusinessFromRaw>))]
+public sealed record class Business : JsonModel
+{
+    /// <summary>
+    /// City
+    /// </summary>
+    public string? City
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("city");
+        }
+        init { this._rawData.Set("city", value); }
+    }
+
+    /// <summary>
+    /// Country code (e.g., US, CA)
+    /// </summary>
+    public string? Country
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("country");
+        }
+        init { this._rawData.Set("country", value); }
+    }
+
+    /// <summary>
+    /// Country where the business is registered
+    /// </summary>
+    public string? CountryOfRegistration
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("countryOfRegistration");
+        }
+        init { this._rawData.Set("countryOfRegistration", value); }
+    }
+
+    public ApiEnum<string, EntityType>? EntityType
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ApiEnum<string, EntityType>>("entityType");
+        }
+        init { this._rawData.Set("entityType", value); }
+    }
+
+    /// <summary>
+    /// Legal business name
+    /// </summary>
+    public string? LegalName
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("legalName");
+        }
+        init { this._rawData.Set("legalName", value); }
+    }
+
+    /// <summary>
+    /// Postal/ZIP code
+    /// </summary>
+    public string? PostalCode
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("postalCode");
+        }
+        init { this._rawData.Set("postalCode", value); }
+    }
+
+    /// <summary>
+    /// State/province code
+    /// </summary>
+    public string? State
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("state");
+        }
+        init { this._rawData.Set("state", value); }
+    }
+
+    /// <summary>
+    /// Street address
+    /// </summary>
+    public string? Street
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("street");
+        }
+        init { this._rawData.Set("street", value); }
+    }
+
+    /// <summary>
+    /// Tax ID/EIN number
+    /// </summary>
+    public string? TaxID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("taxId");
+        }
+        init { this._rawData.Set("taxId", value); }
+    }
+
+    /// <summary>
+    /// Type of tax ID (e.g., us_ein, ca_bn)
+    /// </summary>
+    public string? TaxIDType
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("taxIdType");
+        }
+        init { this._rawData.Set("taxIdType", value); }
+    }
+
+    /// <summary>
+    /// Business website URL
+    /// </summary>
+    public string? Url
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("url");
+        }
+        init { this._rawData.Set("url", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.City;
+        _ = this.Country;
+        _ = this.CountryOfRegistration;
+        this.EntityType?.Validate();
+        _ = this.LegalName;
+        _ = this.PostalCode;
+        _ = this.State;
+        _ = this.Street;
+        _ = this.TaxID;
+        _ = this.TaxIDType;
+        _ = this.Url;
+    }
+
+    public Business() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Business(Business business)
+        : base(business) { }
+#pragma warning restore CS8618
+
+    public Business(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Business(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="BusinessFromRaw.FromRawUnchecked"/>
+    public static Business FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class BusinessFromRaw : IFromRawJson<Business>
+{
+    /// <inheritdoc/>
+    public Business FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Business.FromRawUnchecked(rawData);
+}
+
+[JsonConverter(typeof(EntityTypeConverter))]
+public enum EntityType
+{
+    PrivateProfit,
+    PublicProfit,
+    NonProfit,
+    SoleProprietor,
+    Government,
+}
+
+sealed class EntityTypeConverter : JsonConverter<EntityType>
+{
+    public override EntityType Read(
+        ref Utf8JsonReader reader,
+        Type typeToConvert,
+        JsonSerializerOptions options
+    )
+    {
+        return JsonSerializer.Deserialize<string>(ref reader, options) switch
+        {
+            "PRIVATE_PROFIT" => EntityType.PrivateProfit,
+            "PUBLIC_PROFIT" => EntityType.PublicProfit,
+            "NON_PROFIT" => EntityType.NonProfit,
+            "SOLE_PROPRIETOR" => EntityType.SoleProprietor,
+            "GOVERNMENT" => EntityType.Government,
+            _ => (EntityType)(-1),
+        };
+    }
+
+    public override void Write(
+        Utf8JsonWriter writer,
+        EntityType value,
+        JsonSerializerOptions options
+    )
+    {
+        JsonSerializer.Serialize(
+            writer,
+            value switch
+            {
+                EntityType.PrivateProfit => "PRIVATE_PROFIT",
+                EntityType.PublicProfit => "PUBLIC_PROFIT",
+                EntityType.NonProfit => "NON_PROFIT",
+                EntityType.SoleProprietor => "SOLE_PROPRIETOR",
+                EntityType.Government => "GOVERNMENT",
+                _ => throw new SentInvalidDataException(
+                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
+                ),
+            },
+            options
+        );
+    }
+}
+
+/// <summary>
+/// Payment card details for this profile (optional). Accepted when billing_model
+/// is "profile" or "profile_and_organization". Not persisted on our servers — forwarded
+/// to the payment processor.
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<PaymentDetails, PaymentDetailsFromRaw>))]
+public sealed record class PaymentDetails : JsonModel
+{
+    /// <summary>
+    /// Card number (digits only, 13–19 characters)
+    /// </summary>
+    public required string CardNumber
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("card_number");
+        }
+        init { this._rawData.Set("card_number", value); }
+    }
+
+    /// <summary>
+    /// Card security code (3–4 digits)
+    /// </summary>
+    public required string Cvc
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("cvc");
+        }
+        init { this._rawData.Set("cvc", value); }
+    }
+
+    /// <summary>
+    /// Card expiry date in MM/YY format (e.g. "09/27")
+    /// </summary>
+    public required string Expiry
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("expiry");
+        }
+        init { this._rawData.Set("expiry", value); }
+    }
+
+    /// <summary>
+    /// Billing ZIP / postal code associated with the card
+    /// </summary>
+    public required string ZipCode
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("zip_code");
+        }
+        init { this._rawData.Set("zip_code", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.CardNumber;
+        _ = this.Cvc;
+        _ = this.Expiry;
+        _ = this.ZipCode;
+    }
+
+    public PaymentDetails() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public PaymentDetails(PaymentDetails paymentDetails)
+        : base(paymentDetails) { }
+#pragma warning restore CS8618
+
+    public PaymentDetails(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    PaymentDetails(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="PaymentDetailsFromRaw.FromRawUnchecked"/>
+    public static PaymentDetails FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class PaymentDetailsFromRaw : IFromRawJson<PaymentDetails>
+{
+    /// <inheritdoc/>
+    public PaymentDetails FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        PaymentDetails.FromRawUnchecked(rawData);
 }
 
 /// <summary>
