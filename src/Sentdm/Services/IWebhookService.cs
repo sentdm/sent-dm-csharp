@@ -7,7 +7,17 @@ using Sentdm.Models.Webhooks;
 namespace Sentdm.Services;
 
 /// <summary>
-/// Configure webhook endpoints for real-time event delivery
+/// Delivery reports and inbound messages, pushed to you.
+///
+/// <para>Subscribe an endpoint to the event types you care about — `GET /v3/webhooks/event-types`
+/// lists them — and we POST each one as it happens, retrying on failure. Polling
+/// `GET /v3/messages/{id}` works and does not scale.</para>
+///
+/// <para>**Verify the signature.** Every delivery is signed with your endpoint's
+/// secret; an unverified endpoint is one anybody can post to. `rotate-secret` replaces
+/// it, `test` sends a specimen event, and `GET /v3/webhooks/{id}/events` shows what
+/// we tried to deliver and what your endpoint answered — which is the first place
+/// to look when something appears to be missing.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -31,7 +41,7 @@ public interface IWebhookService
     /// <summary>
     /// Creates a new webhook endpoint for the authenticated customer.
     /// </summary>
-    Task<ApiResponseWebhook> Create(
+    Task<WebhookCreateResponse> Create(
         WebhookCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -39,13 +49,13 @@ public interface IWebhookService
     /// <summary>
     /// Retrieves a single webhook by ID for the authenticated customer.
     /// </summary>
-    Task<ApiResponseWebhook> Retrieve(
+    Task<WebhookRetrieveResponse> Retrieve(
         WebhookRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(WebhookRetrieveParams, CancellationToken)"/>
-    Task<ApiResponseWebhook> Retrieve(
+    Task<WebhookRetrieveResponse> Retrieve(
         string id,
         WebhookRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -54,13 +64,13 @@ public interface IWebhookService
     /// <summary>
     /// Updates an existing webhook for the authenticated customer.
     /// </summary>
-    Task<ApiResponseWebhook> Update(
+    Task<WebhookUpdateResponse> Update(
         WebhookUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(WebhookUpdateParams, CancellationToken)"/>
-    Task<ApiResponseWebhook> Update(
+    Task<WebhookUpdateResponse> Update(
         string id,
         WebhookUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -143,13 +153,13 @@ public interface IWebhookService
     /// <summary>
     /// Activates or deactivates a webhook for the authenticated customer.
     /// </summary>
-    Task<ApiResponseWebhook> ToggleStatus(
+    Task<WebhookToggleStatusResponse> ToggleStatus(
         WebhookToggleStatusParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ToggleStatus(WebhookToggleStatusParams, CancellationToken)"/>
-    Task<ApiResponseWebhook> ToggleStatus(
+    Task<WebhookToggleStatusResponse> ToggleStatus(
         string id,
         WebhookToggleStatusParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -173,7 +183,7 @@ public interface IWebhookServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/webhooks</c>, but is otherwise the
     /// same as <see cref="IWebhookService.Create(WebhookCreateParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseWebhook>> Create(
+    Task<HttpResponse<WebhookCreateResponse>> Create(
         WebhookCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -182,13 +192,13 @@ public interface IWebhookServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/webhooks/{id}</c>, but is otherwise the
     /// same as <see cref="IWebhookService.Retrieve(WebhookRetrieveParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseWebhook>> Retrieve(
+    Task<HttpResponse<WebhookRetrieveResponse>> Retrieve(
         WebhookRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(WebhookRetrieveParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseWebhook>> Retrieve(
+    Task<HttpResponse<WebhookRetrieveResponse>> Retrieve(
         string id,
         WebhookRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -198,13 +208,13 @@ public interface IWebhookServiceWithRawResponse
     /// Returns a raw HTTP response for <c>put /v3/webhooks/{id}</c>, but is otherwise the
     /// same as <see cref="IWebhookService.Update(WebhookUpdateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseWebhook>> Update(
+    Task<HttpResponse<WebhookUpdateResponse>> Update(
         WebhookUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(WebhookUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseWebhook>> Update(
+    Task<HttpResponse<WebhookUpdateResponse>> Update(
         string id,
         WebhookUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -296,13 +306,13 @@ public interface IWebhookServiceWithRawResponse
     /// Returns a raw HTTP response for <c>patch /v3/webhooks/{id}/toggle-status</c>, but is otherwise the
     /// same as <see cref="IWebhookService.ToggleStatus(WebhookToggleStatusParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseWebhook>> ToggleStatus(
+    Task<HttpResponse<WebhookToggleStatusResponse>> ToggleStatus(
         WebhookToggleStatusParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ToggleStatus(WebhookToggleStatusParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseWebhook>> ToggleStatus(
+    Task<HttpResponse<WebhookToggleStatusResponse>> ToggleStatus(
         string id,
         WebhookToggleStatusParams? parameters = null,
         CancellationToken cancellationToken = default

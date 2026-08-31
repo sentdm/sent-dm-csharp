@@ -9,13 +9,19 @@ using Sentdm.Core;
 namespace Sentdm.Models.Profiles;
 
 /// <summary>
-/// Retrieves detailed information about a specific sender profile within an organization,
-/// including brand and KYC information if a brand has been configured.
+/// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+/// removed in a future release. It still behaves exactly as before, so nothing needs
+/// to change today — but new integrations should use `/v3/sender-profiles`, which
+/// models a profile's markets, compliance, brand, campaigns and billing explicitly.
+///
+/// <para>Retrieves detailed information about a specific sender profile within an
+/// organization, including brand and KYC information if a brand has been configured.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class ProfileRetrieveParams : ParamsBase
 {
     public string? ProfileID { get; init; }

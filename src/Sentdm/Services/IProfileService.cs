@@ -8,7 +8,13 @@ using Sentdm.Services.Profiles;
 namespace Sentdm.Services;
 
 /// <summary>
-/// Manage organization profiles
+/// **Deprecated — use Sender Profiles.**
+///
+/// <para>The original profile resource, kept because it has live callers. It still
+/// works, and its replacement is `/v3/sender-profiles`, which takes the identity
+/// and the campaign in one call instead of across three.</para>
+///
+/// <para>New integrations should not start here.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -32,29 +38,27 @@ public interface IProfileService
     ICampaignService Campaigns { get; }
 
     /// <summary>
-    /// Creates a new sender profile within an organization. Profiles represent
+    /// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+    /// removed in a future release. It still behaves exactly as before, so nothing
+    /// needs to change today — but new integrations should use `/v3/sender-profiles`,
+    /// which models a profile's markets, compliance, brand, campaigns and billing
+    /// explicitly.
+    ///
+    /// <para>Creates a new sender profile within an organization. Profiles represent
     /// different brands, departments, or use cases, each with their own messaging
-    /// configuration and settings. Requires admin role in the organization.
+    /// configuration and settings. Requires admin role in the organization.</para>
     ///
     /// <para>## WhatsApp Business Account</para>
     ///
-    /// <para>Every profile must be linked to a WhatsApp Business Account. There are two
-    /// ways to do this:</para>
+    /// <para>Every profile owns its own WhatsApp Business Account — accounts are never
+    /// shared between profiles or inherited from the organization. Provide a
+    /// `whatsapp_business_account` object with `waba_id`, `phone_number_id`, and
+    /// `access_token`. Obtain these from Meta Business Manager by creating a System
+    /// User with `whatsapp_business_messaging` and `whatsapp_business_management`
+    /// permissions.</para>
     ///
-    /// <para>**1. Inherit from organization (default)** — Omit the
-    /// `whatsapp_business_account` field. The profile will share the organization's
-    /// WhatsApp Business Account, which must have been set up via WhatsApp Embedded
-    /// Signup. This is the recommended path for most use cases.</para>
-    ///
-    /// <para>**2. Direct credentials** — Provide a `whatsapp_business_account` object
-    /// with `waba_id`, `phone_number_id`, and `access_token`. Use this when the profile
-    /// needs its own independent WhatsApp Business Account. Obtain these from Meta
-    /// Business Manager by creating a System User with `whatsapp_business_messaging`
-    /// and `whatsapp_business_management` permissions.</para>
-    ///
-    /// <para>If the `whatsapp_business_account` field is omitted and the organization
-    /// has no WhatsApp Business Account configured, the request will be rejected with
-    /// HTTP 422.</para>
+    /// <para>Omit the field and the profile is created without WhatsApp, staying
+    /// incomplete until it has an account of its own.</para>
     ///
     /// <para>## Brand</para>
     ///
@@ -69,31 +73,46 @@ public interface IProfileService
     /// servers and are forwarded directly to the payment processor. Providing
     /// `payment_details` when `billing_model` is `"organization"` is not allowed.</para>
     /// </summary>
-    Task<ApiResponseOfProfileDetail> Create(
+    [Obsolete("deprecated")]
+    Task<ProfileCreateResponse> Create(
         ProfileCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Retrieves detailed information about a specific sender profile within an
+    /// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+    /// removed in a future release. It still behaves exactly as before, so nothing
+    /// needs to change today — but new integrations should use `/v3/sender-profiles`,
+    /// which models a profile's markets, compliance, brand, campaigns and billing
+    /// explicitly.
+    ///
+    /// <para>Retrieves detailed information about a specific sender profile within an
     /// organization, including brand and KYC information if a brand has been
-    /// configured.
+    /// configured.</para>
     /// </summary>
-    Task<ApiResponseOfProfileDetail> Retrieve(
+    [Obsolete("deprecated")]
+    Task<ProfileRetrieveResponse> Retrieve(
         ProfileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(ProfileRetrieveParams, CancellationToken)"/>
-    Task<ApiResponseOfProfileDetail> Retrieve(
+    [Obsolete("deprecated")]
+    Task<ProfileRetrieveResponse> Retrieve(
         string profileID,
         ProfileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Updates a profile's configuration and settings. Requires admin role in the
-    /// organization. Only provided fields will be updated (partial update).
+    /// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+    /// removed in a future release. It still behaves exactly as before, so nothing
+    /// needs to change today — but new integrations should use `/v3/sender-profiles`,
+    /// which models a profile's markets, compliance, brand, campaigns and billing
+    /// explicitly.
+    ///
+    /// <para>Updates a profile's configuration and settings. Requires admin role in the
+    /// organization. Only provided fields will be updated (partial update).</para>
     ///
     /// <para>## Brand Management</para>
     ///
@@ -110,37 +129,72 @@ public interface IProfileService
     /// (MM/YY), CVC, and billing ZIP code. Payment details are **never stored** on our
     /// servers and are forwarded directly to the payment processor. Providing
     /// `payment_details` when `billing_model` is `"organization"` is not allowed.</para>
+    ///
+    /// <para>## Deprecated fields</para>
+    ///
+    /// <para>`sending_phone_number_profile_id` and `sending_whatsapp_number_profile_id`
+    /// are **accepted and ignored**. Sender borrowing is gone: a profile cannot send
+    /// from another profile's number, because two profiles behind one sender makes an
+    /// inbound reply and a delivery receipt ambiguous about whose they are.</para>
+    ///
+    /// <para>Sending either **changes nothing and still returns `200`** — they are kept
+    /// on the contract so an existing integration keeps working. Reads carry both keys
+    /// too and always answer `null`, which is how you can confirm the value did not
+    /// take.</para>
+    ///
+    /// <para>Give the profile a sender of its own instead — `POST /v3/channels/sms` or
+    /// `POST /v3/channels/whatsapp`, sent with the `x-profile-id` header naming it.</para>
     /// </summary>
-    Task<ApiResponseOfProfileDetail> Update(
+    [Obsolete("deprecated")]
+    Task<ProfileUpdateResponse> Update(
         ProfileUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(ProfileUpdateParams, CancellationToken)"/>
-    Task<ApiResponseOfProfileDetail> Update(
+    [Obsolete("deprecated")]
+    Task<ProfileUpdateResponse> Update(
         string profileID,
         ProfileUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Retrieves all sender profiles within an organization, including brand
+    /// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+    /// removed in a future release. It still behaves exactly as before, so nothing
+    /// needs to change today — but new integrations should use `/v3/sender-profiles`,
+    /// which models a profile's markets, compliance, brand, campaigns and billing
+    /// explicitly.
+    ///
+    /// <para>Retrieves all sender profiles within an organization, including brand
     /// information for each profile. Profiles represent different brands, departments,
     /// or use cases within an organization, each with their own messaging
-    /// configuration.
+    /// configuration.</para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task<ProfileListResponse> List(
         ProfileListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Soft deletes a sender profile. The profile will be marked as deleted but data is
-    /// retained. Requires admin role in the organization.
+    /// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+    /// removed in a future release. It still behaves exactly as before, so nothing
+    /// needs to change today — but new integrations should use `/v3/sender-profiles`,
+    /// which models a profile's markets, compliance, brand, campaigns and billing
+    /// explicitly.
+    ///
+    /// <para>Soft deletes a sender profile. The profile will be marked as deleted but
+    /// data is retained. Anything it still held is released first: phone numbers return
+    /// to our inventory and can go to whoever asks next, its own WhatsApp account is
+    /// deregistered, and its routing rules stop being used. Requires admin role in the
+    /// organization.</para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task Delete(ProfileDeleteParams parameters, CancellationToken cancellationToken = default);
 
     /// <inheritdoc cref="Delete(ProfileDeleteParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task Delete(
         string profileID,
         ProfileDeleteParams? parameters = null,
@@ -148,35 +202,51 @@ public interface IProfileService
     );
 
     /// <summary>
-    /// Final step in the profile compliance workflow. Validates all prerequisites (KYC,
-    /// brand, campaigns, required documents), connects the profile to the SMS and
-    /// WhatsApp channels, and sets its status based on configuration. Prerequisites are
-    /// always validated first: if any fail the call returns 400. If they pass and the
-    /// profile is already completed, the call returns 200 and does nothing. Otherwise
-    /// it returns 202 and calls the provided webhook URL when background processing
-    /// finishes.
+    /// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+    /// removed in a future release. It still behaves exactly as before, so nothing
+    /// needs to change today — but new integrations should use `/v3/sender-profiles`,
+    /// which models a profile's markets, compliance, brand, campaigns and billing
+    /// explicitly.
     ///
-    /// <para>Prerequisites: - Profile must have a name, short name, and description
-    /// (short name max 50 characters, description max 5000) - webHookUrl must be
-    /// supplied on the request - A KYC form submission is required - A brand is
-    /// required, either on the profile or inherited from the parent organization - TCR
-    /// applications must have at least one campaign, own or inherited - Destination
-    /// countries marked as main must have their required compliance documents uploaded</para>
+    /// <para>Final step in the profile compliance workflow. Validates all prerequisites
+    /// (KYC, brand, campaigns, required documents), connects the profile to the SMS and
+    /// WhatsApp channels, and marks it onboarded. Prerequisites are always validated
+    /// first: if any fail the call returns 400 naming every unmet one, and nothing is
+    /// started. If they pass and the profile is already onboarded, the call returns 200
+    /// and does nothing. Otherwise it returns 202 and calls the provided webhook URL
+    /// when background processing finishes.</para>
     ///
-    /// <para>Resulting status: - If either the SMS or WhatsApp channel is unconfigured,
-    /// the profile is SUBMITTED - For a TCR application that inherits both its brand
-    /// and its campaigns, the profile is COMPLETED - For a TCR application that owns
-    /// either its brand or its campaigns, the profile is COMPLETED once both have been
-    /// submitted to TCR, and SUBMITTED until then - For a non-TCR application, the
-    /// profile is SUBMITTED when a main destination country is set, and COMPLETED
-    /// otherwise</para>
+    /// <para>Callable with the organization's API key or the profile's own key. The
+    /// key's user must be an admin or owner of the profile, or of the organization it
+    /// belongs to.</para>
+    ///
+    /// <para>Prerequisites (all but the last are checked before the already-onboarded
+    /// short-circuit, matching the previous contract; the last is checked after it, so
+    /// a profile that is already onboarded is never rejected by it): - Profile must
+    /// have a name, short name, and description (short name max 50 characters,
+    /// description max 5000) - webHookUrl must be supplied on the request - A KYC form
+    /// submission is required - A brand is required, either on the profile or inherited
+    /// from the parent organization - TCR applications must have at least one campaign,
+    /// own or inherited - Destination countries marked as main must have their required
+    /// compliance documents uploaded - TCR applications must state whether they inherit
+    /// the organization's TCR brand and campaign</para>
+    ///
+    /// <para>Outcome: - Once the prerequisites pass and background processing succeeds,
+    /// the profile's conversionFlowStatus becomes ONBOARDED and its public status reads
+    /// `approved` - A profile with no WhatsApp channel, or one still awaiting TCR
+    /// registration or country documents, is onboarded like any other. Those are
+    /// answered by the brand and campaign records, not by a status on the profile - If
+    /// background processing fails, the profile keeps the status it already had and the
+    /// webhook reports the reason</para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task<ProfileCompleteResponse> Complete(
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Complete(ProfileCompleteParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<ProfileCompleteResponse> Complete(
         string profileID,
         ProfileCompleteParams parameters,
@@ -203,7 +273,8 @@ public interface IProfileServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/profiles</c>, but is otherwise the
     /// same as <see cref="IProfileService.Create(ProfileCreateParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfProfileDetail>> Create(
+    [Obsolete("deprecated")]
+    Task<HttpResponse<ProfileCreateResponse>> Create(
         ProfileCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -212,13 +283,15 @@ public interface IProfileServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/profiles/{profileId}</c>, but is otherwise the
     /// same as <see cref="IProfileService.Retrieve(ProfileRetrieveParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfProfileDetail>> Retrieve(
+    [Obsolete("deprecated")]
+    Task<HttpResponse<ProfileRetrieveResponse>> Retrieve(
         ProfileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(ProfileRetrieveParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseOfProfileDetail>> Retrieve(
+    [Obsolete("deprecated")]
+    Task<HttpResponse<ProfileRetrieveResponse>> Retrieve(
         string profileID,
         ProfileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -228,13 +301,15 @@ public interface IProfileServiceWithRawResponse
     /// Returns a raw HTTP response for <c>patch /v3/profiles/{profileId}</c>, but is otherwise the
     /// same as <see cref="IProfileService.Update(ProfileUpdateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfProfileDetail>> Update(
+    [Obsolete("deprecated")]
+    Task<HttpResponse<ProfileUpdateResponse>> Update(
         ProfileUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(ProfileUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseOfProfileDetail>> Update(
+    [Obsolete("deprecated")]
+    Task<HttpResponse<ProfileUpdateResponse>> Update(
         string profileID,
         ProfileUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -244,6 +319,7 @@ public interface IProfileServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/profiles</c>, but is otherwise the
     /// same as <see cref="IProfileService.List(ProfileListParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ProfileListResponse>> List(
         ProfileListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -253,12 +329,14 @@ public interface IProfileServiceWithRawResponse
     /// Returns a raw HTTP response for <c>delete /v3/profiles/{profileId}</c>, but is otherwise the
     /// same as <see cref="IProfileService.Delete(ProfileDeleteParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Delete(
         ProfileDeleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Delete(ProfileDeleteParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Delete(
         string profileID,
         ProfileDeleteParams? parameters = null,
@@ -269,12 +347,14 @@ public interface IProfileServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/profiles/{profileId}/complete</c>, but is otherwise the
     /// same as <see cref="IProfileService.Complete(ProfileCompleteParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ProfileCompleteResponse>> Complete(
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Complete(ProfileCompleteParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ProfileCompleteResponse>> Complete(
         string profileID,
         ProfileCompleteParams parameters,

@@ -7,7 +7,13 @@ using Sentdm.Models.Templates;
 namespace Sentdm.Services;
 
 /// <summary>
-/// Manage message templates with variable substitution
+/// Reusable message bodies with named variables.
+///
+/// <para>A template is substituted at send time from the values you pass, so the
+/// copy lives here rather than in your application. WhatsApp templates additionally
+/// need Meta's approval before they can be sent, and a template's channel status
+/// reports where that stands — an approved SMS template and an unapproved WhatsApp
+/// one are the same template in two states.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -33,7 +39,7 @@ public interface ITemplateService
     /// template can be submitted for review immediately or saved as draft for later
     /// submission.
     /// </summary>
-    Task<ApiResponseTemplate> Create(
+    Task<TemplateCreateResponse> Create(
         TemplateCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -42,13 +48,13 @@ public interface ITemplateService
     /// Retrieves a specific template by its ID. Returns template details including
     /// name, category, language, status, and definition.
     /// </summary>
-    Task<ApiResponseTemplate> Retrieve(
+    Task<TemplateRetrieveResponse> Retrieve(
         TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(TemplateRetrieveParams, CancellationToken)"/>
-    Task<ApiResponseTemplate> Retrieve(
+    Task<TemplateRetrieveResponse> Retrieve(
         string id,
         TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -58,13 +64,13 @@ public interface ITemplateService
     /// Updates an existing template's name, category, language, definition, or submits
     /// it for review.
     /// </summary>
-    Task<ApiResponseTemplate> Update(
+    Task<TemplateUpdateResponse> Update(
         TemplateUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(TemplateUpdateParams, CancellationToken)"/>
-    Task<ApiResponseTemplate> Update(
+    Task<TemplateUpdateResponse> Update(
         string id,
         TemplateUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -110,7 +116,7 @@ public interface ITemplateServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/templates</c>, but is otherwise the
     /// same as <see cref="ITemplateService.Create(TemplateCreateParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseTemplate>> Create(
+    Task<HttpResponse<TemplateCreateResponse>> Create(
         TemplateCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -119,13 +125,13 @@ public interface ITemplateServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/templates/{id}</c>, but is otherwise the
     /// same as <see cref="ITemplateService.Retrieve(TemplateRetrieveParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseTemplate>> Retrieve(
+    Task<HttpResponse<TemplateRetrieveResponse>> Retrieve(
         TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(TemplateRetrieveParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseTemplate>> Retrieve(
+    Task<HttpResponse<TemplateRetrieveResponse>> Retrieve(
         string id,
         TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -135,13 +141,13 @@ public interface ITemplateServiceWithRawResponse
     /// Returns a raw HTTP response for <c>put /v3/templates/{id}</c>, but is otherwise the
     /// same as <see cref="ITemplateService.Update(TemplateUpdateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseTemplate>> Update(
+    Task<HttpResponse<TemplateUpdateResponse>> Update(
         TemplateUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(TemplateUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseTemplate>> Update(
+    Task<HttpResponse<TemplateUpdateResponse>> Update(
         string id,
         TemplateUpdateParams? parameters = null,
         CancellationToken cancellationToken = default

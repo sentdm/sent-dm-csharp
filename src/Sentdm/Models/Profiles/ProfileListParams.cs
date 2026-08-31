@@ -9,14 +9,20 @@ using Sentdm.Core;
 namespace Sentdm.Models.Profiles;
 
 /// <summary>
-/// Retrieves all sender profiles within an organization, including brand information
+/// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+/// removed in a future release. It still behaves exactly as before, so nothing needs
+/// to change today — but new integrations should use `/v3/sender-profiles`, which
+/// models a profile's markets, compliance, brand, campaigns and billing explicitly.
+///
+/// <para>Retrieves all sender profiles within an organization, including brand information
 /// for each profile. Profiles represent different brands, departments, or use cases
-/// within an organization, each with their own messaging configuration.
+/// within an organization, each with their own messaging configuration.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class ProfileListParams : ParamsBase
 {
     public string? XProfileID

@@ -43,7 +43,8 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfProfileDetail> Create(
+    [Obsolete("deprecated")]
+    public async Task<ProfileCreateResponse> Create(
         ProfileCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -55,7 +56,8 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfProfileDetail> Retrieve(
+    [Obsolete("deprecated")]
+    public async Task<ProfileRetrieveResponse> Retrieve(
         ProfileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -67,7 +69,8 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfProfileDetail> Retrieve(
+    [Obsolete("deprecated")]
+    public Task<ProfileRetrieveResponse> Retrieve(
         string profileID,
         ProfileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -79,7 +82,8 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfProfileDetail> Update(
+    [Obsolete("deprecated")]
+    public async Task<ProfileUpdateResponse> Update(
         ProfileUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -91,7 +95,8 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfProfileDetail> Update(
+    [Obsolete("deprecated")]
+    public Task<ProfileUpdateResponse> Update(
         string profileID,
         ProfileUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -103,6 +108,7 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<ProfileListResponse> List(
         ProfileListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -115,6 +121,7 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Delete(
         ProfileDeleteParams parameters,
         CancellationToken cancellationToken = default
@@ -124,6 +131,7 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task Delete(
         string profileID,
         ProfileDeleteParams? parameters = null,
@@ -137,6 +145,7 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<ProfileCompleteResponse> Complete(
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
@@ -149,6 +158,7 @@ public sealed class ProfileService : IProfileService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<ProfileCompleteResponse> Complete(
         string profileID,
         ProfileCompleteParams parameters,
@@ -184,7 +194,8 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfProfileDetail>> Create(
+    [Obsolete("deprecated")]
+    public async Task<HttpResponse<ProfileCreateResponse>> Create(
         ProfileCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -201,20 +212,21 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             response,
             async (token) =>
             {
-                var apiResponseOfProfileDetail = await response
-                    .Deserialize<ApiResponseOfProfileDetail>(token)
+                var profile = await response
+                    .Deserialize<ProfileCreateResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfProfileDetail.Validate();
+                    profile.Validate();
                 }
-                return apiResponseOfProfileDetail;
+                return profile;
             }
         );
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfProfileDetail>> Retrieve(
+    [Obsolete("deprecated")]
+    public async Task<HttpResponse<ProfileRetrieveResponse>> Retrieve(
         ProfileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -234,20 +246,21 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             response,
             async (token) =>
             {
-                var apiResponseOfProfileDetail = await response
-                    .Deserialize<ApiResponseOfProfileDetail>(token)
+                var profile = await response
+                    .Deserialize<ProfileRetrieveResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfProfileDetail.Validate();
+                    profile.Validate();
                 }
-                return apiResponseOfProfileDetail;
+                return profile;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfProfileDetail>> Retrieve(
+    [Obsolete("deprecated")]
+    public Task<HttpResponse<ProfileRetrieveResponse>> Retrieve(
         string profileID,
         ProfileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -259,7 +272,8 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfProfileDetail>> Update(
+    [Obsolete("deprecated")]
+    public async Task<HttpResponse<ProfileUpdateResponse>> Update(
         ProfileUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -279,20 +293,21 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             response,
             async (token) =>
             {
-                var apiResponseOfProfileDetail = await response
-                    .Deserialize<ApiResponseOfProfileDetail>(token)
+                var profile = await response
+                    .Deserialize<ProfileUpdateResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfProfileDetail.Validate();
+                    profile.Validate();
                 }
-                return apiResponseOfProfileDetail;
+                return profile;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfProfileDetail>> Update(
+    [Obsolete("deprecated")]
+    public Task<HttpResponse<ProfileUpdateResponse>> Update(
         string profileID,
         ProfileUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -304,6 +319,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<ProfileListResponse>> List(
         ProfileListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -334,6 +350,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Delete(
         ProfileDeleteParams parameters,
         CancellationToken cancellationToken = default
@@ -353,6 +370,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Delete(
         string profileID,
         ProfileDeleteParams? parameters = null,
@@ -365,6 +383,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<ProfileCompleteResponse>> Complete(
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
@@ -398,6 +417,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse<ProfileCompleteResponse>> Complete(
         string profileID,
         ProfileCompleteParams parameters,

@@ -7,33 +7,33 @@ public class WebhookServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var apiResponseWebhook = await this.client.Webhooks.Create(
+        var webhook = await this.client.Webhooks.Create(
             new(),
             TestContext.Current.CancellationToken
         );
-        apiResponseWebhook.Validate();
+        webhook.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var apiResponseWebhook = await this.client.Webhooks.Retrieve(
+        var webhook = await this.client.Webhooks.Retrieve(
             "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
             new(),
             TestContext.Current.CancellationToken
         );
-        apiResponseWebhook.Validate();
+        webhook.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var apiResponseWebhook = await this.client.Webhooks.Update(
+        var webhook = await this.client.Webhooks.Update(
             "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
             new(),
             TestContext.Current.CancellationToken
         );
-        apiResponseWebhook.Validate();
+        webhook.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
@@ -102,11 +102,11 @@ public class WebhookServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task ToggleStatus_Works()
     {
-        var apiResponseWebhook = await this.client.Webhooks.ToggleStatus(
+        var response = await this.client.Webhooks.ToggleStatus(
             "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
             new(),
             TestContext.Current.CancellationToken
         );
-        apiResponseWebhook.Validate();
+        response.Validate();
     }
 }
