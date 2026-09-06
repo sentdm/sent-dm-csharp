@@ -16,6 +16,32 @@ namespace Sentdm.Models.Webhooks;
 public sealed record class InboundMessageEventPayload : JsonModel
 {
     /// <summary>
+    /// The contact's number in E.164 format, meaning the number the message came from.
+    /// </summary>
+    public required string InboundNumber
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("inbound_number");
+        }
+        init { this._rawData.Set("inbound_number", value); }
+    }
+
+    /// <summary>
+    /// When the message was received, in UTC (yyyy-MM-ddTHH:mm:ssZ).
+    /// </summary>
+    public required string ReceivedAt
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("received_at");
+        }
+        init { this._rawData.Set("received_at", value); }
+    }
+
+    /// <summary>
     /// The account the message belongs to.
     /// </summary>
     public string? AccountID
@@ -54,27 +80,6 @@ public sealed record class InboundMessageEventPayload : JsonModel
             }
 
             this._rawData.Set("channel", value);
-        }
-    }
-
-    /// <summary>
-    /// The contact's number in E.164 format, meaning the number the message came from.
-    /// </summary>
-    public string? InboundNumber
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("inbound_number");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("inbound_number", value);
         }
     }
 
@@ -121,27 +126,6 @@ public sealed record class InboundMessageEventPayload : JsonModel
     }
 
     /// <summary>
-    /// When the message was received, in UTC (yyyy-MM-ddTHH:mm:ssZ).
-    /// </summary>
-    public string? ReceivedAt
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("received_at");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("received_at", value);
-        }
-    }
-
-    /// <summary>
     /// The message body. Sent as null when the inbound message carried no text, for
     /// example a media-only message. The field is always present, so read it and
     /// check for null rather than checking whether the key exists.
@@ -181,12 +165,12 @@ public sealed record class InboundMessageEventPayload : JsonModel
     /// <inheritdoc/>
     public override void Validate()
     {
+        _ = this.InboundNumber;
+        _ = this.ReceivedAt;
         _ = this.AccountID;
         _ = this.Channel;
-        _ = this.InboundNumber;
         _ = this.MessageID;
         _ = this.OutboundNumber;
-        _ = this.ReceivedAt;
         _ = this.Text;
         _ = this.UpdatedAt;
     }

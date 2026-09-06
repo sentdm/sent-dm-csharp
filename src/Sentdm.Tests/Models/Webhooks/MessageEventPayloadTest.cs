@@ -11,32 +11,32 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AgentID = "agent_id",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageStatus = "message_status",
             OutboundNumber = "outbound_number",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
             UpdatedAt = "updated_at",
         };
 
+        string expectedMessageStatus = "message_status";
         string expectedAccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedAgentID = "agent_id";
         string expectedChannel = "channel";
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        string expectedMessageStatus = "message_status";
         string expectedOutboundNumber = "outbound_number";
         string expectedTemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedTemplateName = "template_name";
         string expectedUpdatedAt = "updated_at";
 
+        Assert.Equal(expectedMessageStatus, model.MessageStatus);
         Assert.Equal(expectedAccountID, model.AccountID);
         Assert.Equal(expectedAgentID, model.AgentID);
         Assert.Equal(expectedChannel, model.Channel);
         Assert.Equal(expectedMessageID, model.MessageID);
-        Assert.Equal(expectedMessageStatus, model.MessageStatus);
         Assert.Equal(expectedOutboundNumber, model.OutboundNumber);
         Assert.Equal(expectedTemplateID, model.TemplateID);
         Assert.Equal(expectedTemplateName, model.TemplateName);
@@ -48,11 +48,11 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AgentID = "agent_id",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageStatus = "message_status",
             OutboundNumber = "outbound_number",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -73,11 +73,11 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AgentID = "agent_id",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageStatus = "message_status",
             OutboundNumber = "outbound_number",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -91,21 +91,21 @@ public class MessageEventPayloadTest : TestBase
         );
         Assert.NotNull(deserialized);
 
+        string expectedMessageStatus = "message_status";
         string expectedAccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedAgentID = "agent_id";
         string expectedChannel = "channel";
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        string expectedMessageStatus = "message_status";
         string expectedOutboundNumber = "outbound_number";
         string expectedTemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedTemplateName = "template_name";
         string expectedUpdatedAt = "updated_at";
 
+        Assert.Equal(expectedMessageStatus, deserialized.MessageStatus);
         Assert.Equal(expectedAccountID, deserialized.AccountID);
         Assert.Equal(expectedAgentID, deserialized.AgentID);
         Assert.Equal(expectedChannel, deserialized.Channel);
         Assert.Equal(expectedMessageID, deserialized.MessageID);
-        Assert.Equal(expectedMessageStatus, deserialized.MessageStatus);
         Assert.Equal(expectedOutboundNumber, deserialized.OutboundNumber);
         Assert.Equal(expectedTemplateID, deserialized.TemplateID);
         Assert.Equal(expectedTemplateName, deserialized.TemplateName);
@@ -117,11 +117,11 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AgentID = "agent_id",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageStatus = "message_status",
             OutboundNumber = "outbound_number",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -136,6 +136,7 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AgentID = "agent_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -147,8 +148,6 @@ public class MessageEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("channel"));
         Assert.Null(model.MessageID);
         Assert.False(model.RawData.ContainsKey("message_id"));
-        Assert.Null(model.MessageStatus);
-        Assert.False(model.RawData.ContainsKey("message_status"));
         Assert.Null(model.OutboundNumber);
         Assert.False(model.RawData.ContainsKey("outbound_number"));
         Assert.Null(model.UpdatedAt);
@@ -160,6 +159,7 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AgentID = "agent_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -173,6 +173,7 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AgentID = "agent_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -181,7 +182,6 @@ public class MessageEventPayloadTest : TestBase
             AccountID = null,
             Channel = null,
             MessageID = null,
-            MessageStatus = null,
             OutboundNumber = null,
             UpdatedAt = null,
         };
@@ -192,8 +192,6 @@ public class MessageEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("channel"));
         Assert.Null(model.MessageID);
         Assert.False(model.RawData.ContainsKey("message_id"));
-        Assert.Null(model.MessageStatus);
-        Assert.False(model.RawData.ContainsKey("message_status"));
         Assert.Null(model.OutboundNumber);
         Assert.False(model.RawData.ContainsKey("outbound_number"));
         Assert.Null(model.UpdatedAt);
@@ -205,6 +203,7 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AgentID = "agent_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -213,7 +212,6 @@ public class MessageEventPayloadTest : TestBase
             AccountID = null,
             Channel = null,
             MessageID = null,
-            MessageStatus = null,
             OutboundNumber = null,
             UpdatedAt = null,
         };
@@ -226,10 +224,10 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageStatus = "message_status",
             OutboundNumber = "outbound_number",
             UpdatedAt = "updated_at",
         };
@@ -247,10 +245,10 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageStatus = "message_status",
             OutboundNumber = "outbound_number",
             UpdatedAt = "updated_at",
         };
@@ -263,10 +261,10 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageStatus = "message_status",
             OutboundNumber = "outbound_number",
             UpdatedAt = "updated_at",
 
@@ -288,10 +286,10 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageStatus = "message_status",
             OutboundNumber = "outbound_number",
             UpdatedAt = "updated_at",
 
@@ -308,11 +306,11 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
+            MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AgentID = "agent_id",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageStatus = "message_status",
             OutboundNumber = "outbound_number",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",

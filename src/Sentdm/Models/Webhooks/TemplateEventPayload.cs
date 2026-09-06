@@ -15,6 +15,33 @@ namespace Sentdm.Models.Webhooks;
 public sealed record class TemplateEventPayload : JsonModel
 {
     /// <summary>
+    /// The review status the template just reached, for example APPROVED or REJECTED.
+    /// </summary>
+    public required string Status
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("status");
+        }
+        init { this._rawData.Set("status", value); }
+    }
+
+    /// <summary>
+    /// The template's identifier with Meta, assigned when the template is submitted
+    /// for review.
+    /// </summary>
+    public required string WhatsappTemplateID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("whatsapp_template_id");
+        }
+        init { this._rawData.Set("whatsapp_template_id", value); }
+    }
+
+    /// <summary>
     /// The account the template belongs to.
     /// </summary>
     public string? AccountID
@@ -112,27 +139,6 @@ public sealed record class TemplateEventPayload : JsonModel
     }
 
     /// <summary>
-    /// The review status the template just reached, for example APPROVED or REJECTED.
-    /// </summary>
-    public string? Status
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("status");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("status", value);
-        }
-    }
-
-    /// <summary>
     /// The template in Sent.
     /// </summary>
     public string? TemplateID
@@ -174,40 +180,18 @@ public sealed record class TemplateEventPayload : JsonModel
         }
     }
 
-    /// <summary>
-    /// The template's identifier with Meta, assigned when the template is submitted
-    /// for review.
-    /// </summary>
-    public string? WhatsappTemplateID
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("whatsapp_template_id");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("whatsapp_template_id", value);
-        }
-    }
-
     /// <inheritdoc/>
     public override void Validate()
     {
+        _ = this.Status;
+        _ = this.WhatsappTemplateID;
         _ = this.AccountID;
         _ = this.Category;
         _ = this.Channel;
         _ = this.Language;
         _ = this.Reason;
-        _ = this.Status;
         _ = this.TemplateID;
         _ = this.TemplateName;
-        _ = this.WhatsappTemplateID;
     }
 
     public TemplateEventPayload() { }

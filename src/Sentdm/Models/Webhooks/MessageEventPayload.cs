@@ -15,6 +15,20 @@ namespace Sentdm.Models.Webhooks;
 public sealed record class MessageEventPayload : JsonModel
 {
     /// <summary>
+    /// The status the message just reached, for example SENT, DELIVERED, or FAILED.
+    /// Sent means dispatched and delivered means confirmed, so treat them as distinct outcomes.
+    /// </summary>
+    public required string MessageStatus
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("message_status");
+        }
+        init { this._rawData.Set("message_status", value); }
+    }
+
+    /// <summary>
     /// The account the message belongs to.
     /// </summary>
     public string? AccountID
@@ -93,28 +107,6 @@ public sealed record class MessageEventPayload : JsonModel
     }
 
     /// <summary>
-    /// The status the message just reached, for example SENT, DELIVERED, or FAILED.
-    /// Sent means dispatched and delivered means confirmed, so treat them as distinct outcomes.
-    /// </summary>
-    public string? MessageStatus
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("message_status");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("message_status", value);
-        }
-    }
-
-    /// <summary>
     /// The recipient's number in E.164 format.
     /// </summary>
     public string? OutboundNumber
@@ -185,11 +177,11 @@ public sealed record class MessageEventPayload : JsonModel
     /// <inheritdoc/>
     public override void Validate()
     {
+        _ = this.MessageStatus;
         _ = this.AccountID;
         _ = this.AgentID;
         _ = this.Channel;
         _ = this.MessageID;
-        _ = this.MessageStatus;
         _ = this.OutboundNumber;
         _ = this.TemplateID;
         _ = this.TemplateName;
@@ -223,6 +215,13 @@ public sealed record class MessageEventPayload : JsonModel
     )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+
+    [SetsRequiredMembers]
+    public MessageEventPayload(string messageStatus)
+        : this()
+    {
+        this.MessageStatus = messageStatus;
     }
 }
 
