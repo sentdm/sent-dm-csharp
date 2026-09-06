@@ -57,6 +57,8 @@ public class MeRetrieveResponseTest : TestBase
                         Status = "status",
                     },
                 ],
+                SendingPhoneNumber = "sending_phone_number",
+                SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Settings = new()
                 {
                     AllowContactSharing = true,
@@ -131,6 +133,8 @@ public class MeRetrieveResponseTest : TestBase
                     Status = "status",
                 },
             ],
+            SendingPhoneNumber = "sending_phone_number",
+            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -215,6 +219,8 @@ public class MeRetrieveResponseTest : TestBase
                         Status = "status",
                     },
                 ],
+                SendingPhoneNumber = "sending_phone_number",
+                SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Settings = new()
                 {
                     AllowContactSharing = true,
@@ -303,6 +309,8 @@ public class MeRetrieveResponseTest : TestBase
                         Status = "status",
                     },
                 ],
+                SendingPhoneNumber = "sending_phone_number",
+                SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Settings = new()
                 {
                     AllowContactSharing = true,
@@ -384,6 +392,8 @@ public class MeRetrieveResponseTest : TestBase
                     Status = "status",
                 },
             ],
+            SendingPhoneNumber = "sending_phone_number",
+            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -468,6 +478,8 @@ public class MeRetrieveResponseTest : TestBase
                         Status = "status",
                     },
                 ],
+                SendingPhoneNumber = "sending_phone_number",
+                SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Settings = new()
                 {
                     AllowContactSharing = true,
@@ -550,6 +562,8 @@ public class MeRetrieveResponseTest : TestBase
                         Status = "status",
                     },
                 ],
+                SendingPhoneNumber = "sending_phone_number",
+                SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Settings = new()
                 {
                     AllowContactSharing = true,
@@ -628,6 +642,8 @@ public class MeRetrieveResponseTest : TestBase
                         Status = "status",
                     },
                 ],
+                SendingPhoneNumber = "sending_phone_number",
+                SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Settings = new()
                 {
                     AllowContactSharing = true,
@@ -703,6 +719,8 @@ public class MeRetrieveResponseTest : TestBase
                         Status = "status",
                     },
                 ],
+                SendingPhoneNumber = "sending_phone_number",
+                SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Settings = new()
                 {
                     AllowContactSharing = true,
@@ -785,6 +803,8 @@ public class MeRetrieveResponseTest : TestBase
                         Status = "status",
                     },
                 ],
+                SendingPhoneNumber = "sending_phone_number",
+                SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Settings = new()
                 {
                     AllowContactSharing = true,
@@ -944,6 +964,8 @@ public class MeRetrieveResponseTest : TestBase
                         Status = "status",
                     },
                 ],
+                SendingPhoneNumber = "sending_phone_number",
+                SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Settings = new()
                 {
                     AllowContactSharing = true,
@@ -1029,6 +1051,8 @@ public class DataTest : TestBase
                     Status = "status",
                 },
             ],
+            SendingPhoneNumber = "sending_phone_number",
+            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -1086,6 +1110,8 @@ public class DataTest : TestBase
                 Status = "status",
             },
         ];
+        string expectedSendingPhoneNumber = "sending_phone_number";
+        string expectedSendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DataSettings expectedSettings = new()
         {
             AllowContactSharing = true,
@@ -1114,6 +1140,8 @@ public class DataTest : TestBase
         {
             Assert.Equal(expectedProfiles[i], model.Profiles[i]);
         }
+        Assert.Equal(expectedSendingPhoneNumber, model.SendingPhoneNumber);
+        Assert.Equal(expectedSendingPhoneNumberProfileID, model.SendingPhoneNumberProfileID);
         Assert.Equal(expectedSettings, model.Settings);
         Assert.Equal(expectedShortName, model.ShortName);
         Assert.Equal(expectedStatus, model.Status);
@@ -1167,6 +1195,8 @@ public class DataTest : TestBase
                     Status = "status",
                 },
             ],
+            SendingPhoneNumber = "sending_phone_number",
+            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -1235,6 +1265,8 @@ public class DataTest : TestBase
                     Status = "status",
                 },
             ],
+            SendingPhoneNumber = "sending_phone_number",
+            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -1296,6 +1328,8 @@ public class DataTest : TestBase
                 Status = "status",
             },
         ];
+        string expectedSendingPhoneNumber = "sending_phone_number";
+        string expectedSendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DataSettings expectedSettings = new()
         {
             AllowContactSharing = true,
@@ -1324,6 +1358,8 @@ public class DataTest : TestBase
         {
             Assert.Equal(expectedProfiles[i], deserialized.Profiles[i]);
         }
+        Assert.Equal(expectedSendingPhoneNumber, deserialized.SendingPhoneNumber);
+        Assert.Equal(expectedSendingPhoneNumberProfileID, deserialized.SendingPhoneNumberProfileID);
         Assert.Equal(expectedSettings, deserialized.Settings);
         Assert.Equal(expectedShortName, deserialized.ShortName);
         Assert.Equal(expectedStatus, deserialized.Status);
@@ -1377,6 +1413,8 @@ public class DataTest : TestBase
                     Status = "status",
                 },
             ],
+            SendingPhoneNumber = "sending_phone_number",
+            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -1404,6 +1442,8 @@ public class DataTest : TestBase
             Email = "email",
             Icon = "icon",
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            SendingPhoneNumber = "sending_phone_number",
+            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -1441,6 +1481,8 @@ public class DataTest : TestBase
             Email = "email",
             Icon = "icon",
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            SendingPhoneNumber = "sending_phone_number",
+            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -1467,6 +1509,8 @@ public class DataTest : TestBase
             Email = "email",
             Icon = "icon",
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            SendingPhoneNumber = "sending_phone_number",
+            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -1512,6 +1556,8 @@ public class DataTest : TestBase
             Email = "email",
             Icon = "icon",
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            SendingPhoneNumber = "sending_phone_number",
+            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
@@ -1591,6 +1637,10 @@ public class DataTest : TestBase
         Assert.False(model.RawData.ContainsKey("icon"));
         Assert.Null(model.OrganizationID);
         Assert.False(model.RawData.ContainsKey("organization_id"));
+        Assert.Null(model.SendingPhoneNumber);
+        Assert.False(model.RawData.ContainsKey("sending_phone_number"));
+        Assert.Null(model.SendingPhoneNumberProfileID);
+        Assert.False(model.RawData.ContainsKey("sending_phone_number_profile_id"));
         Assert.Null(model.Settings);
         Assert.False(model.RawData.ContainsKey("settings"));
         Assert.Null(model.ShortName);
@@ -1697,6 +1747,8 @@ public class DataTest : TestBase
             Email = null,
             Icon = null,
             OrganizationID = null,
+            SendingPhoneNumber = null,
+            SendingPhoneNumberProfileID = null,
             Settings = null,
             ShortName = null,
             Status = null,
@@ -1710,6 +1762,10 @@ public class DataTest : TestBase
         Assert.True(model.RawData.ContainsKey("icon"));
         Assert.Null(model.OrganizationID);
         Assert.True(model.RawData.ContainsKey("organization_id"));
+        Assert.Null(model.SendingPhoneNumber);
+        Assert.True(model.RawData.ContainsKey("sending_phone_number"));
+        Assert.Null(model.SendingPhoneNumberProfileID);
+        Assert.True(model.RawData.ContainsKey("sending_phone_number_profile_id"));
         Assert.Null(model.Settings);
         Assert.True(model.RawData.ContainsKey("settings"));
         Assert.Null(model.ShortName);
@@ -1767,6 +1823,8 @@ public class DataTest : TestBase
             Email = null,
             Icon = null,
             OrganizationID = null,
+            SendingPhoneNumber = null,
+            SendingPhoneNumberProfileID = null,
             Settings = null,
             ShortName = null,
             Status = null,
@@ -1822,6 +1880,8 @@ public class DataTest : TestBase
                     Status = "status",
                 },
             ],
+            SendingPhoneNumber = "sending_phone_number",
+            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Settings = new()
             {
                 AllowContactSharing = true,
