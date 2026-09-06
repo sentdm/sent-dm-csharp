@@ -15,15 +15,15 @@ public class TemplateEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                Status = "status",
+                WhatsappTemplateID = "whatsapp_template_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
                 Channel = "channel",
                 Language = "language",
                 Reason = "reason",
-                Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-                WhatsappTemplateID = "whatsapp_template_id",
             },
             Timestamp = "timestamp",
         };
@@ -32,15 +32,15 @@ public class TemplateEventTest : TestBase
         string expectedField = "field";
         TemplateEventPayload expectedPayload = new()
         {
+            Status = "status",
+            WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
             Channel = "channel",
             Language = "language",
             Reason = "reason",
-            Status = "status",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
-            WhatsappTemplateID = "whatsapp_template_id",
         };
         string expectedTimestamp = "timestamp";
 
@@ -59,15 +59,15 @@ public class TemplateEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                Status = "status",
+                WhatsappTemplateID = "whatsapp_template_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
                 Channel = "channel",
                 Language = "language",
                 Reason = "reason",
-                Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-                WhatsappTemplateID = "whatsapp_template_id",
             },
             Timestamp = "timestamp",
         };
@@ -90,15 +90,15 @@ public class TemplateEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                Status = "status",
+                WhatsappTemplateID = "whatsapp_template_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
                 Channel = "channel",
                 Language = "language",
                 Reason = "reason",
-                Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-                WhatsappTemplateID = "whatsapp_template_id",
             },
             Timestamp = "timestamp",
         };
@@ -114,15 +114,15 @@ public class TemplateEventTest : TestBase
         string expectedField = "field";
         TemplateEventPayload expectedPayload = new()
         {
+            Status = "status",
+            WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
             Channel = "channel",
             Language = "language",
             Reason = "reason",
-            Status = "status",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
-            WhatsappTemplateID = "whatsapp_template_id",
         };
         string expectedTimestamp = "timestamp";
 
@@ -141,15 +141,15 @@ public class TemplateEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                Status = "status",
+                WhatsappTemplateID = "whatsapp_template_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
                 Channel = "channel",
                 Language = "language",
                 Reason = "reason",
-                Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-                WhatsappTemplateID = "whatsapp_template_id",
             },
             Timestamp = "timestamp",
         };
@@ -165,15 +165,15 @@ public class TemplateEventTest : TestBase
             Event = "event",
             Payload = new()
             {
+                Status = "status",
+                WhatsappTemplateID = "whatsapp_template_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
                 Channel = "channel",
                 Language = "language",
                 Reason = "reason",
-                Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-                WhatsappTemplateID = "whatsapp_template_id",
             },
         };
 
@@ -191,15 +191,15 @@ public class TemplateEventTest : TestBase
             Event = "event",
             Payload = new()
             {
+                Status = "status",
+                WhatsappTemplateID = "whatsapp_template_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
                 Channel = "channel",
                 Language = "language",
                 Reason = "reason",
-                Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-                WhatsappTemplateID = "whatsapp_template_id",
             },
         };
 
@@ -214,15 +214,15 @@ public class TemplateEventTest : TestBase
             Event = "event",
             Payload = new()
             {
+                Status = "status",
+                WhatsappTemplateID = "whatsapp_template_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
                 Channel = "channel",
                 Language = "language",
                 Reason = "reason",
-                Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-                WhatsappTemplateID = "whatsapp_template_id",
             },
 
             // Null should be interpreted as omitted for these properties
@@ -244,15 +244,15 @@ public class TemplateEventTest : TestBase
             Event = "event",
             Payload = new()
             {
+                Status = "status",
+                WhatsappTemplateID = "whatsapp_template_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
                 Channel = "channel",
                 Language = "language",
                 Reason = "reason",
-                Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-                WhatsappTemplateID = "whatsapp_template_id",
             },
 
             // Null should be interpreted as omitted for these properties
@@ -324,15 +324,15 @@ public class TemplateEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                Status = "status",
+                WhatsappTemplateID = "whatsapp_template_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
                 Channel = "channel",
                 Language = "language",
                 Reason = "reason",
-                Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-                WhatsappTemplateID = "whatsapp_template_id",
             },
             Timestamp = "timestamp",
         };

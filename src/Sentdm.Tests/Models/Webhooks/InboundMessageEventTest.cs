@@ -15,12 +15,12 @@ public class InboundMessageEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                InboundNumber = "inbound_number",
+                ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
-                InboundNumber = "inbound_number",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
-                ReceivedAt = "received_at",
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
@@ -31,12 +31,12 @@ public class InboundMessageEventTest : TestBase
         string expectedField = "field";
         InboundMessageEventPayload expectedPayload = new()
         {
+            InboundNumber = "inbound_number",
+            ReceivedAt = "received_at",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
-            InboundNumber = "inbound_number",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
-            ReceivedAt = "received_at",
             Text = "text",
             UpdatedAt = "updated_at",
         };
@@ -57,12 +57,12 @@ public class InboundMessageEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                InboundNumber = "inbound_number",
+                ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
-                InboundNumber = "inbound_number",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
-                ReceivedAt = "received_at",
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
@@ -87,12 +87,12 @@ public class InboundMessageEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                InboundNumber = "inbound_number",
+                ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
-                InboundNumber = "inbound_number",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
-                ReceivedAt = "received_at",
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
@@ -110,12 +110,12 @@ public class InboundMessageEventTest : TestBase
         string expectedField = "field";
         InboundMessageEventPayload expectedPayload = new()
         {
+            InboundNumber = "inbound_number",
+            ReceivedAt = "received_at",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
-            InboundNumber = "inbound_number",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
-            ReceivedAt = "received_at",
             Text = "text",
             UpdatedAt = "updated_at",
         };
@@ -136,12 +136,12 @@ public class InboundMessageEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                InboundNumber = "inbound_number",
+                ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
-                InboundNumber = "inbound_number",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
-                ReceivedAt = "received_at",
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
@@ -159,12 +159,12 @@ public class InboundMessageEventTest : TestBase
             Event = "event",
             Payload = new()
             {
+                InboundNumber = "inbound_number",
+                ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
-                InboundNumber = "inbound_number",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
-                ReceivedAt = "received_at",
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
@@ -184,12 +184,12 @@ public class InboundMessageEventTest : TestBase
             Event = "event",
             Payload = new()
             {
+                InboundNumber = "inbound_number",
+                ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
-                InboundNumber = "inbound_number",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
-                ReceivedAt = "received_at",
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
@@ -206,12 +206,12 @@ public class InboundMessageEventTest : TestBase
             Event = "event",
             Payload = new()
             {
+                InboundNumber = "inbound_number",
+                ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
-                InboundNumber = "inbound_number",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
-                ReceivedAt = "received_at",
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
@@ -235,12 +235,12 @@ public class InboundMessageEventTest : TestBase
             Event = "event",
             Payload = new()
             {
+                InboundNumber = "inbound_number",
+                ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
-                InboundNumber = "inbound_number",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
-                ReceivedAt = "received_at",
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
@@ -314,12 +314,12 @@ public class InboundMessageEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                InboundNumber = "inbound_number",
+                ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
-                InboundNumber = "inbound_number",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
-                ReceivedAt = "received_at",
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
