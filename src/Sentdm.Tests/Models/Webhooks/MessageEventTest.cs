@@ -15,11 +15,11 @@ public class MessageEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                MessageStatus = "message_status",
                 OutboundNumber = "outbound_number",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
@@ -32,11 +32,11 @@ public class MessageEventTest : TestBase
         string expectedField = "field";
         MessageEventPayload expectedPayload = new()
         {
+            MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AgentID = "agent_id",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageStatus = "message_status",
             OutboundNumber = "outbound_number",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -59,11 +59,11 @@ public class MessageEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                MessageStatus = "message_status",
                 OutboundNumber = "outbound_number",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
@@ -90,11 +90,11 @@ public class MessageEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                MessageStatus = "message_status",
                 OutboundNumber = "outbound_number",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
@@ -114,11 +114,11 @@ public class MessageEventTest : TestBase
         string expectedField = "field";
         MessageEventPayload expectedPayload = new()
         {
+            MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AgentID = "agent_id",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageStatus = "message_status",
             OutboundNumber = "outbound_number",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -141,11 +141,11 @@ public class MessageEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                MessageStatus = "message_status",
                 OutboundNumber = "outbound_number",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
@@ -165,11 +165,11 @@ public class MessageEventTest : TestBase
             Event = "event",
             Payload = new()
             {
+                MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                MessageStatus = "message_status",
                 OutboundNumber = "outbound_number",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
@@ -191,11 +191,11 @@ public class MessageEventTest : TestBase
             Event = "event",
             Payload = new()
             {
+                MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                MessageStatus = "message_status",
                 OutboundNumber = "outbound_number",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
@@ -214,11 +214,11 @@ public class MessageEventTest : TestBase
             Event = "event",
             Payload = new()
             {
+                MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                MessageStatus = "message_status",
                 OutboundNumber = "outbound_number",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
@@ -244,11 +244,11 @@ public class MessageEventTest : TestBase
             Event = "event",
             Payload = new()
             {
+                MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                MessageStatus = "message_status",
                 OutboundNumber = "outbound_number",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
@@ -324,11 +324,11 @@ public class MessageEventTest : TestBase
             Field = "field",
             Payload = new()
             {
+                MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                MessageStatus = "message_status",
                 OutboundNumber = "outbound_number",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
