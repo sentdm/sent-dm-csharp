@@ -35,7 +35,7 @@ public sealed class ContactService : IContactService
     }
 
     /// <inheritdoc/>
-    public async Task<ContactCreateResponse> Create(
+    public async Task<ApiResponseOfContact> Create(
         ContactCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -47,7 +47,7 @@ public sealed class ContactService : IContactService
     }
 
     /// <inheritdoc/>
-    public async Task<ContactRetrieveResponse> Retrieve(
+    public async Task<ApiResponseOfContact> Retrieve(
         ContactRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -59,7 +59,7 @@ public sealed class ContactService : IContactService
     }
 
     /// <inheritdoc/>
-    public Task<ContactRetrieveResponse> Retrieve(
+    public Task<ApiResponseOfContact> Retrieve(
         string id,
         ContactRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -71,7 +71,7 @@ public sealed class ContactService : IContactService
     }
 
     /// <inheritdoc/>
-    public async Task<ContactUpdateResponse> Update(
+    public async Task<ApiResponseOfContact> Update(
         ContactUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -83,7 +83,7 @@ public sealed class ContactService : IContactService
     }
 
     /// <inheritdoc/>
-    public Task<ContactUpdateResponse> Update(
+    public Task<ApiResponseOfContact> Update(
         string id,
         ContactUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -130,7 +130,7 @@ public sealed class ContactService : IContactService
     }
 
     /// <inheritdoc/>
-    public async Task<ContactRetrieveMessageSummaryResponse> RetrieveMessageSummary(
+    public async Task<ApiResponseOfContactMessageSummary> RetrieveMessageSummary(
         ContactRetrieveMessageSummaryParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -142,7 +142,7 @@ public sealed class ContactService : IContactService
     }
 
     /// <inheritdoc/>
-    public Task<ContactRetrieveMessageSummaryResponse> RetrieveMessageSummary(
+    public Task<ApiResponseOfContactMessageSummary> RetrieveMessageSummary(
         string contactID,
         ContactRetrieveMessageSummaryParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -177,7 +177,7 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ContactCreateResponse>> Create(
+    public async Task<HttpResponse<ApiResponseOfContact>> Create(
         ContactCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -192,20 +192,20 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
             response,
             async (token) =>
             {
-                var contact = await response
-                    .Deserialize<ContactCreateResponse>(token)
+                var apiResponseOfContact = await response
+                    .Deserialize<ApiResponseOfContact>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    contact.Validate();
+                    apiResponseOfContact.Validate();
                 }
-                return contact;
+                return apiResponseOfContact;
             }
         );
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ContactRetrieveResponse>> Retrieve(
+    public async Task<HttpResponse<ApiResponseOfContact>> Retrieve(
         ContactRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -225,20 +225,20 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
             response,
             async (token) =>
             {
-                var contact = await response
-                    .Deserialize<ContactRetrieveResponse>(token)
+                var apiResponseOfContact = await response
+                    .Deserialize<ApiResponseOfContact>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    contact.Validate();
+                    apiResponseOfContact.Validate();
                 }
-                return contact;
+                return apiResponseOfContact;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ContactRetrieveResponse>> Retrieve(
+    public Task<HttpResponse<ApiResponseOfContact>> Retrieve(
         string id,
         ContactRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -250,7 +250,7 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ContactUpdateResponse>> Update(
+    public async Task<HttpResponse<ApiResponseOfContact>> Update(
         ContactUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -270,20 +270,20 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
             response,
             async (token) =>
             {
-                var contact = await response
-                    .Deserialize<ContactUpdateResponse>(token)
+                var apiResponseOfContact = await response
+                    .Deserialize<ApiResponseOfContact>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    contact.Validate();
+                    apiResponseOfContact.Validate();
                 }
-                return contact;
+                return apiResponseOfContact;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ContactUpdateResponse>> Update(
+    public Task<HttpResponse<ApiResponseOfContact>> Update(
         string id,
         ContactUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -356,7 +356,7 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ContactRetrieveMessageSummaryResponse>> RetrieveMessageSummary(
+    public async Task<HttpResponse<ApiResponseOfContactMessageSummary>> RetrieveMessageSummary(
         ContactRetrieveMessageSummaryParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -376,20 +376,20 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
             response,
             async (token) =>
             {
-                var deserializedResponse = await response
-                    .Deserialize<ContactRetrieveMessageSummaryResponse>(token)
+                var apiResponseOfContactMessageSummary = await response
+                    .Deserialize<ApiResponseOfContactMessageSummary>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    deserializedResponse.Validate();
+                    apiResponseOfContactMessageSummary.Validate();
                 }
-                return deserializedResponse;
+                return apiResponseOfContactMessageSummary;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ContactRetrieveMessageSummaryResponse>> RetrieveMessageSummary(
+    public Task<HttpResponse<ApiResponseOfContactMessageSummary>> RetrieveMessageSummary(
         string contactID,
         ContactRetrieveMessageSummaryParams? parameters = null,
         CancellationToken cancellationToken = default
