@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.33.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.32.0...v0.33.0) (2026-09-09)
+
+
+### Features
+
+* **api:** repoint dangling model refs at current v3 schema names ([245d2c9](https://github.com/sentdm/sent-dm-csharp/commit/245d2c99b1c99576cabb46894e77be5da0c4d963))
+
 ## [0.32.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.31.0...v0.32.0) (2026-09-06)
 
 
