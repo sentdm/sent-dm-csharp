@@ -45,14 +45,14 @@ public interface ICampaignService
     /// Each campaign must include at least one use case with sample messages.</para>
     /// </summary>
     [Obsolete("deprecated")]
-    Task<CampaignCreateResponse> Create(
+    Task<ApiResponseOfBrandCampaign> Create(
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Create(CampaignCreateParams, CancellationToken)"/>
     [Obsolete("deprecated")]
-    Task<CampaignCreateResponse> Create(
+    Task<ApiResponseOfBrandCampaign> Create(
         string profileID,
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
@@ -69,14 +69,14 @@ public interface ICampaignService
     /// Cannot update campaigns that have already been submitted to TCR.</para>
     /// </summary>
     [Obsolete("deprecated")]
-    Task<CampaignUpdateResponse> Update(
+    Task<ApiResponseOfBrandCampaign> Update(
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(CampaignUpdateParams, CancellationToken)"/>
     [Obsolete("deprecated")]
-    Task<CampaignUpdateResponse> Update(
+    Task<ApiResponseOfBrandCampaign> Update(
         string campaignID,
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
@@ -93,14 +93,14 @@ public interface ICampaignService
     /// and sample messages. Returns inherited campaigns if inherit_tcr_campaign=true.</para>
     /// </summary>
     [Obsolete("deprecated")]
-    Task<CampaignListResponse> List(
+    Task<ApiResponseOfListOfBrandCampaign> List(
         CampaignListParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="List(CampaignListParams, CancellationToken)"/>
     [Obsolete("deprecated")]
-    Task<CampaignListResponse> List(
+    Task<ApiResponseOfListOfBrandCampaign> List(
         string profileID,
         CampaignListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -146,14 +146,14 @@ public interface ICampaignServiceWithRawResponse
     /// same as <see cref="ICampaignService.Create(CampaignCreateParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
-    Task<HttpResponse<CampaignCreateResponse>> Create(
+    Task<HttpResponse<ApiResponseOfBrandCampaign>> Create(
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Create(CampaignCreateParams, CancellationToken)"/>
     [Obsolete("deprecated")]
-    Task<HttpResponse<CampaignCreateResponse>> Create(
+    Task<HttpResponse<ApiResponseOfBrandCampaign>> Create(
         string profileID,
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
@@ -164,14 +164,14 @@ public interface ICampaignServiceWithRawResponse
     /// same as <see cref="ICampaignService.Update(CampaignUpdateParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
-    Task<HttpResponse<CampaignUpdateResponse>> Update(
+    Task<HttpResponse<ApiResponseOfBrandCampaign>> Update(
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(CampaignUpdateParams, CancellationToken)"/>
     [Obsolete("deprecated")]
-    Task<HttpResponse<CampaignUpdateResponse>> Update(
+    Task<HttpResponse<ApiResponseOfBrandCampaign>> Update(
         string campaignID,
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
@@ -182,14 +182,14 @@ public interface ICampaignServiceWithRawResponse
     /// same as <see cref="ICampaignService.List(CampaignListParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
-    Task<HttpResponse<CampaignListResponse>> List(
+    Task<HttpResponse<ApiResponseOfListOfBrandCampaign>> List(
         CampaignListParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="List(CampaignListParams, CancellationToken)"/>
     [Obsolete("deprecated")]
-    Task<HttpResponse<CampaignListResponse>> List(
+    Task<HttpResponse<ApiResponseOfListOfBrandCampaign>> List(
         string profileID,
         CampaignListParams? parameters = null,
         CancellationToken cancellationToken = default

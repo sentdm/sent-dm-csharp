@@ -74,7 +74,7 @@ public interface IProfileService
     /// `payment_details` when `billing_model` is `"organization"` is not allowed.</para>
     /// </summary>
     [Obsolete("deprecated")]
-    Task<ProfileCreateResponse> Create(
+    Task<ApiResponseOfProfileDetail> Create(
         ProfileCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -91,14 +91,14 @@ public interface IProfileService
     /// configured.</para>
     /// </summary>
     [Obsolete("deprecated")]
-    Task<ProfileRetrieveResponse> Retrieve(
+    Task<ApiResponseOfProfileDetail> Retrieve(
         ProfileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(ProfileRetrieveParams, CancellationToken)"/>
     [Obsolete("deprecated")]
-    Task<ProfileRetrieveResponse> Retrieve(
+    Task<ApiResponseOfProfileDetail> Retrieve(
         string profileID,
         ProfileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -146,14 +146,14 @@ public interface IProfileService
     /// `POST /v3/channels/whatsapp`, sent with the `x-profile-id` header naming it.</para>
     /// </summary>
     [Obsolete("deprecated")]
-    Task<ProfileUpdateResponse> Update(
+    Task<ApiResponseOfProfileDetail> Update(
         ProfileUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(ProfileUpdateParams, CancellationToken)"/>
     [Obsolete("deprecated")]
-    Task<ProfileUpdateResponse> Update(
+    Task<ApiResponseOfProfileDetail> Update(
         string profileID,
         ProfileUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -274,7 +274,7 @@ public interface IProfileServiceWithRawResponse
     /// same as <see cref="IProfileService.Create(ProfileCreateParams?, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
-    Task<HttpResponse<ProfileCreateResponse>> Create(
+    Task<HttpResponse<ApiResponseOfProfileDetail>> Create(
         ProfileCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -284,14 +284,14 @@ public interface IProfileServiceWithRawResponse
     /// same as <see cref="IProfileService.Retrieve(ProfileRetrieveParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
-    Task<HttpResponse<ProfileRetrieveResponse>> Retrieve(
+    Task<HttpResponse<ApiResponseOfProfileDetail>> Retrieve(
         ProfileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(ProfileRetrieveParams, CancellationToken)"/>
     [Obsolete("deprecated")]
-    Task<HttpResponse<ProfileRetrieveResponse>> Retrieve(
+    Task<HttpResponse<ApiResponseOfProfileDetail>> Retrieve(
         string profileID,
         ProfileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -302,14 +302,14 @@ public interface IProfileServiceWithRawResponse
     /// same as <see cref="IProfileService.Update(ProfileUpdateParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
-    Task<HttpResponse<ProfileUpdateResponse>> Update(
+    Task<HttpResponse<ApiResponseOfProfileDetail>> Update(
         ProfileUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(ProfileUpdateParams, CancellationToken)"/>
     [Obsolete("deprecated")]
-    Task<HttpResponse<ProfileUpdateResponse>> Update(
+    Task<HttpResponse<ApiResponseOfProfileDetail>> Update(
         string profileID,
         ProfileUpdateParams? parameters = null,
         CancellationToken cancellationToken = default

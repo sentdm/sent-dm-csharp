@@ -7,33 +7,33 @@ public class ProfileServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var profile = await this.client.Profiles.Create(
+        var apiResponseOfProfileDetail = await this.client.Profiles.Create(
             new(),
             TestContext.Current.CancellationToken
         );
-        profile.Validate();
+        apiResponseOfProfileDetail.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var profile = await this.client.Profiles.Retrieve(
+        var apiResponseOfProfileDetail = await this.client.Profiles.Retrieve(
             "770e8400-e29b-41d4-a716-446655440002",
             new(),
             TestContext.Current.CancellationToken
         );
-        profile.Validate();
+        apiResponseOfProfileDetail.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var profile = await this.client.Profiles.Update(
+        var apiResponseOfProfileDetail = await this.client.Profiles.Update(
             "770e8400-e29b-41d4-a716-446655440002",
             new(),
             TestContext.Current.CancellationToken
         );
-        profile.Validate();
+        apiResponseOfProfileDetail.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]

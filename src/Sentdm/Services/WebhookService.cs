@@ -35,7 +35,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public async Task<WebhookCreateResponse> Create(
+    public async Task<ApiResponseWebhook> Create(
         WebhookCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -47,7 +47,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public async Task<WebhookRetrieveResponse> Retrieve(
+    public async Task<ApiResponseWebhook> Retrieve(
         WebhookRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -59,7 +59,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public Task<WebhookRetrieveResponse> Retrieve(
+    public Task<ApiResponseWebhook> Retrieve(
         string id,
         WebhookRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -71,7 +71,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public async Task<WebhookUpdateResponse> Update(
+    public async Task<ApiResponseWebhook> Update(
         WebhookUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -83,7 +83,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public Task<WebhookUpdateResponse> Update(
+    public Task<ApiResponseWebhook> Update(
         string id,
         WebhookUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -210,7 +210,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public async Task<WebhookToggleStatusResponse> ToggleStatus(
+    public async Task<ApiResponseWebhook> ToggleStatus(
         WebhookToggleStatusParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -222,7 +222,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public Task<WebhookToggleStatusResponse> ToggleStatus(
+    public Task<ApiResponseWebhook> ToggleStatus(
         string id,
         WebhookToggleStatusParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -251,7 +251,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<WebhookCreateResponse>> Create(
+    public async Task<HttpResponse<ApiResponseWebhook>> Create(
         WebhookCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -268,20 +268,20 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
             response,
             async (token) =>
             {
-                var webhook = await response
-                    .Deserialize<WebhookCreateResponse>(token)
+                var apiResponseWebhook = await response
+                    .Deserialize<ApiResponseWebhook>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    webhook.Validate();
+                    apiResponseWebhook.Validate();
                 }
-                return webhook;
+                return apiResponseWebhook;
             }
         );
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<WebhookRetrieveResponse>> Retrieve(
+    public async Task<HttpResponse<ApiResponseWebhook>> Retrieve(
         WebhookRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -301,20 +301,20 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
             response,
             async (token) =>
             {
-                var webhook = await response
-                    .Deserialize<WebhookRetrieveResponse>(token)
+                var apiResponseWebhook = await response
+                    .Deserialize<ApiResponseWebhook>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    webhook.Validate();
+                    apiResponseWebhook.Validate();
                 }
-                return webhook;
+                return apiResponseWebhook;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<WebhookRetrieveResponse>> Retrieve(
+    public Task<HttpResponse<ApiResponseWebhook>> Retrieve(
         string id,
         WebhookRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -326,7 +326,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<WebhookUpdateResponse>> Update(
+    public async Task<HttpResponse<ApiResponseWebhook>> Update(
         WebhookUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -346,20 +346,20 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
             response,
             async (token) =>
             {
-                var webhook = await response
-                    .Deserialize<WebhookUpdateResponse>(token)
+                var apiResponseWebhook = await response
+                    .Deserialize<ApiResponseWebhook>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    webhook.Validate();
+                    apiResponseWebhook.Validate();
                 }
-                return webhook;
+                return apiResponseWebhook;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<WebhookUpdateResponse>> Update(
+    public Task<HttpResponse<ApiResponseWebhook>> Update(
         string id,
         WebhookUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -593,7 +593,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<WebhookToggleStatusResponse>> ToggleStatus(
+    public async Task<HttpResponse<ApiResponseWebhook>> ToggleStatus(
         WebhookToggleStatusParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -613,20 +613,20 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
             response,
             async (token) =>
             {
-                var deserializedResponse = await response
-                    .Deserialize<WebhookToggleStatusResponse>(token)
+                var apiResponseWebhook = await response
+                    .Deserialize<ApiResponseWebhook>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    deserializedResponse.Validate();
+                    apiResponseWebhook.Validate();
                 }
-                return deserializedResponse;
+                return apiResponseWebhook;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<WebhookToggleStatusResponse>> ToggleStatus(
+    public Task<HttpResponse<ApiResponseWebhook>> ToggleStatus(
         string id,
         WebhookToggleStatusParams? parameters = null,
         CancellationToken cancellationToken = default

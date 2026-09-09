@@ -35,7 +35,7 @@ public sealed class TemplateService : ITemplateService
     }
 
     /// <inheritdoc/>
-    public async Task<TemplateCreateResponse> Create(
+    public async Task<ApiResponseTemplate> Create(
         TemplateCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -47,7 +47,7 @@ public sealed class TemplateService : ITemplateService
     }
 
     /// <inheritdoc/>
-    public async Task<TemplateRetrieveResponse> Retrieve(
+    public async Task<ApiResponseTemplate> Retrieve(
         TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -59,7 +59,7 @@ public sealed class TemplateService : ITemplateService
     }
 
     /// <inheritdoc/>
-    public Task<TemplateRetrieveResponse> Retrieve(
+    public Task<ApiResponseTemplate> Retrieve(
         string id,
         TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -71,7 +71,7 @@ public sealed class TemplateService : ITemplateService
     }
 
     /// <inheritdoc/>
-    public async Task<TemplateUpdateResponse> Update(
+    public async Task<ApiResponseTemplate> Update(
         TemplateUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -83,7 +83,7 @@ public sealed class TemplateService : ITemplateService
     }
 
     /// <inheritdoc/>
-    public Task<TemplateUpdateResponse> Update(
+    public Task<ApiResponseTemplate> Update(
         string id,
         TemplateUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -145,7 +145,7 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<TemplateCreateResponse>> Create(
+    public async Task<HttpResponse<ApiResponseTemplate>> Create(
         TemplateCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -162,20 +162,20 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
             response,
             async (token) =>
             {
-                var template = await response
-                    .Deserialize<TemplateCreateResponse>(token)
+                var apiResponseTemplate = await response
+                    .Deserialize<ApiResponseTemplate>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    template.Validate();
+                    apiResponseTemplate.Validate();
                 }
-                return template;
+                return apiResponseTemplate;
             }
         );
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<TemplateRetrieveResponse>> Retrieve(
+    public async Task<HttpResponse<ApiResponseTemplate>> Retrieve(
         TemplateRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -195,20 +195,20 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
             response,
             async (token) =>
             {
-                var template = await response
-                    .Deserialize<TemplateRetrieveResponse>(token)
+                var apiResponseTemplate = await response
+                    .Deserialize<ApiResponseTemplate>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    template.Validate();
+                    apiResponseTemplate.Validate();
                 }
-                return template;
+                return apiResponseTemplate;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<TemplateRetrieveResponse>> Retrieve(
+    public Task<HttpResponse<ApiResponseTemplate>> Retrieve(
         string id,
         TemplateRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -220,7 +220,7 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<TemplateUpdateResponse>> Update(
+    public async Task<HttpResponse<ApiResponseTemplate>> Update(
         TemplateUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -240,20 +240,20 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
             response,
             async (token) =>
             {
-                var template = await response
-                    .Deserialize<TemplateUpdateResponse>(token)
+                var apiResponseTemplate = await response
+                    .Deserialize<ApiResponseTemplate>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    template.Validate();
+                    apiResponseTemplate.Validate();
                 }
-                return template;
+                return apiResponseTemplate;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<TemplateUpdateResponse>> Update(
+    public Task<HttpResponse<ApiResponseTemplate>> Update(
         string id,
         TemplateUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
