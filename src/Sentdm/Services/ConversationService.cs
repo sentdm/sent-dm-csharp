@@ -37,7 +37,7 @@ public sealed class ConversationService : IConversationService
     }
 
     /// <inheritdoc/>
-    public async Task<ConversationListResponse> List(
+    public async Task<ApiResponseOfConversationMessagesList> List(
         ConversationListParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -49,7 +49,7 @@ public sealed class ConversationService : IConversationService
     }
 
     /// <inheritdoc/>
-    public async Task<ConversationListMessagesResponse> ListMessages(
+    public async Task<ApiResponseOfConversationMessagesList> ListMessages(
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -61,7 +61,7 @@ public sealed class ConversationService : IConversationService
     }
 
     /// <inheritdoc/>
-    public Task<ConversationListMessagesResponse> ListMessages(
+    public Task<ApiResponseOfConversationMessagesList> ListMessages(
         string id,
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
@@ -90,7 +90,7 @@ public sealed class ConversationServiceWithRawResponse : IConversationServiceWit
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ConversationListResponse>> List(
+    public async Task<HttpResponse<ApiResponseOfConversationMessagesList>> List(
         ConversationListParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -105,20 +105,20 @@ public sealed class ConversationServiceWithRawResponse : IConversationServiceWit
             response,
             async (token) =>
             {
-                var conversations = await response
-                    .Deserialize<ConversationListResponse>(token)
+                var apiResponseOfConversationMessagesList = await response
+                    .Deserialize<ApiResponseOfConversationMessagesList>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    conversations.Validate();
+                    apiResponseOfConversationMessagesList.Validate();
                 }
-                return conversations;
+                return apiResponseOfConversationMessagesList;
             }
         );
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ConversationListMessagesResponse>> ListMessages(
+    public async Task<HttpResponse<ApiResponseOfConversationMessagesList>> ListMessages(
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -138,20 +138,20 @@ public sealed class ConversationServiceWithRawResponse : IConversationServiceWit
             response,
             async (token) =>
             {
-                var deserializedResponse = await response
-                    .Deserialize<ConversationListMessagesResponse>(token)
+                var apiResponseOfConversationMessagesList = await response
+                    .Deserialize<ApiResponseOfConversationMessagesList>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    deserializedResponse.Validate();
+                    apiResponseOfConversationMessagesList.Validate();
                 }
-                return deserializedResponse;
+                return apiResponseOfConversationMessagesList;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ConversationListMessagesResponse>> ListMessages(
+    public Task<HttpResponse<ApiResponseOfConversationMessagesList>> ListMessages(
         string id,
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
