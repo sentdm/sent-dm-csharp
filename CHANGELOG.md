@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.34.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.33.0...v0.34.0) (2026-09-10)
+
+
+### Features
+
+* **api:** configure page_number pagination for the v3 list endpoints ([a568d44](https://github.com/sentdm/sent-dm-csharp/commit/a568d4452cbdff299fb6d96f12c67556895ae429))
+
 ## [0.33.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.32.0...v0.33.0) (2026-09-09)
 
 
