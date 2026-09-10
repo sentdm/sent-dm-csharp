@@ -5,18 +5,17 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
-using Webhooks = Sentdm.Models.Webhooks;
 
-namespace Sentdm.Models.Contacts;
+namespace Sentdm.Models.Webhooks;
 
 /// <summary>
 /// Standard API response envelope for all v3 endpoints
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<ContactListResponse, ContactListResponseFromRaw>))]
-public sealed record class ContactListResponse : JsonModel
+[JsonConverter(typeof(JsonModelConverter<WebhookListPageResponse, WebhookListPageResponseFromRaw>))]
+public sealed record class WebhookListPageResponse : JsonModel
 {
     /// <summary>
-    /// A paginated list of contacts.
+    /// A paginated list of webhooks.
     /// </summary>
     public Data? Data
     {
@@ -31,12 +30,12 @@ public sealed record class ContactListResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public Webhooks::ErrorDetail? Error
+    public ErrorDetail? Error
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>("error");
         }
         init { this._rawData.Set("error", value); }
     }
@@ -44,12 +43,12 @@ public sealed record class ContactListResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public Webhooks::ApiMeta? Meta
+    public ApiMeta? Meta
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ApiMeta>("meta");
+            return this._rawData.GetNullableClass<ApiMeta>("meta");
         }
         init
         {
@@ -92,29 +91,29 @@ public sealed record class ContactListResponse : JsonModel
         _ = this.Success;
     }
 
-    public ContactListResponse() { }
+    public WebhookListPageResponse() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ContactListResponse(ContactListResponse contactListResponse)
-        : base(contactListResponse) { }
+    public WebhookListPageResponse(WebhookListPageResponse webhookListPageResponse)
+        : base(webhookListPageResponse) { }
 #pragma warning restore CS8618
 
-    public ContactListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
+    public WebhookListPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ContactListResponse(FrozenDictionary<string, JsonElement> rawData)
+    WebhookListPageResponse(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="ContactListResponseFromRaw.FromRawUnchecked"/>
-    public static ContactListResponse FromRawUnchecked(
+    /// <inheritdoc cref="WebhookListPageResponseFromRaw.FromRawUnchecked"/>
+    public static WebhookListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -122,52 +121,29 @@ public sealed record class ContactListResponse : JsonModel
     }
 }
 
-class ContactListResponseFromRaw : IFromRawJson<ContactListResponse>
+class WebhookListPageResponseFromRaw : IFromRawJson<WebhookListPageResponse>
 {
     /// <inheritdoc/>
-    public ContactListResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        ContactListResponse.FromRawUnchecked(rawData);
+    public WebhookListPageResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => WebhookListPageResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>
-/// A paginated list of contacts.
+/// A paginated list of webhooks.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Data, DataFromRaw>))]
 public sealed record class Data : JsonModel
 {
     /// <summary>
-    /// The contacts on this page.
-    /// </summary>
-    public IReadOnlyList<ContactResponse>? Contacts
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<ContactResponse>>("contacts");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set<ImmutableArray<ContactResponse>?>(
-                "contacts",
-                value == null ? null : ImmutableArray.ToImmutableArray(value)
-            );
-        }
-    }
-
-    /// <summary>
     /// Pagination metadata for list responses
     /// </summary>
-    public Webhooks::PaginationMeta? Pagination
+    public PaginationMeta? Pagination
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::PaginationMeta>("pagination");
+            return this._rawData.GetNullableClass<PaginationMeta>("pagination");
         }
         init
         {
@@ -180,14 +156,38 @@ public sealed record class Data : JsonModel
         }
     }
 
+    /// <summary>
+    /// The webhooks on this page.
+    /// </summary>
+    public IReadOnlyList<WebhookResponse>? Webhooks
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<WebhookResponse>>("webhooks");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set<ImmutableArray<WebhookResponse>?>(
+                "webhooks",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
-        foreach (var item in this.Contacts ?? [])
+        this.Pagination?.Validate();
+        foreach (var item in this.Webhooks ?? [])
         {
             item.Validate();
         }
-        this.Pagination?.Validate();
     }
 
     public Data() { }

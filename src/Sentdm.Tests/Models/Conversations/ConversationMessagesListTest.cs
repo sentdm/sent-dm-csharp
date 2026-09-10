@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Conversations;
-using Webhooks = Sentdm.Models.Webhooks;
+using Sentdm.Models.Webhooks;
 
 namespace Sentdm.Tests.Models.Conversations;
 
@@ -117,7 +117,7 @@ public class ConversationMessagesListTest : TestBase
                 TemplateName = "template_name",
             },
         ];
-        Webhooks::PaginationMeta expectedPagination = new()
+        PaginationMeta expectedPagination = new()
         {
             Cursors = new() { After = "after", Before = "before" },
             HasMore = true,
@@ -322,7 +322,7 @@ public class ConversationMessagesListTest : TestBase
                 TemplateName = "template_name",
             },
         ];
-        Webhooks::PaginationMeta expectedPagination = new()
+        PaginationMeta expectedPagination = new()
         {
             Cursors = new() { After = "after", Before = "before" },
             HasMore = true,

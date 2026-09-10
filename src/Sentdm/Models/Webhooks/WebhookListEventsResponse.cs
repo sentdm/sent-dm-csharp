@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -10,234 +9,10 @@ using Sentdm.Exceptions;
 
 namespace Sentdm.Models.Webhooks;
 
-/// <summary>
-/// Standard API response envelope for all v3 endpoints
-/// </summary>
 [JsonConverter(
     typeof(JsonModelConverter<WebhookListEventsResponse, WebhookListEventsResponseFromRaw>)
 )]
 public sealed record class WebhookListEventsResponse : JsonModel
-{
-    /// <summary>
-    /// A paginated list of webhook delivery records.
-    /// </summary>
-    public WebhookListEventsResponseData? Data
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<WebhookListEventsResponseData>("data");
-        }
-        init { this._rawData.Set("data", value); }
-    }
-
-    /// <summary>
-    /// Error information
-    /// </summary>
-    public ErrorDetail? Error
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
-        }
-        init { this._rawData.Set("error", value); }
-    }
-
-    /// <summary>
-    /// Request and response metadata
-    /// </summary>
-    public ApiMeta? Meta
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("meta", value);
-        }
-    }
-
-    /// <summary>
-    /// Indicates whether the request was successful
-    /// </summary>
-    public bool? Success
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("success", value);
-        }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        this.Data?.Validate();
-        this.Error?.Validate();
-        this.Meta?.Validate();
-        _ = this.Success;
-    }
-
-    public WebhookListEventsResponse() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public WebhookListEventsResponse(WebhookListEventsResponse webhookListEventsResponse)
-        : base(webhookListEventsResponse) { }
-#pragma warning restore CS8618
-
-    public WebhookListEventsResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    WebhookListEventsResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="WebhookListEventsResponseFromRaw.FromRawUnchecked"/>
-    public static WebhookListEventsResponse FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class WebhookListEventsResponseFromRaw : IFromRawJson<WebhookListEventsResponse>
-{
-    /// <inheritdoc/>
-    public WebhookListEventsResponse FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => WebhookListEventsResponse.FromRawUnchecked(rawData);
-}
-
-/// <summary>
-/// A paginated list of webhook delivery records.
-/// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<WebhookListEventsResponseData, WebhookListEventsResponseDataFromRaw>)
-)]
-public sealed record class WebhookListEventsResponseData : JsonModel
-{
-    /// <summary>
-    /// The events on this page.
-    /// </summary>
-    public IReadOnlyList<Event>? Events
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Event>>("events");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set<ImmutableArray<Event>?>(
-                "events",
-                value == null ? null : ImmutableArray.ToImmutableArray(value)
-            );
-        }
-    }
-
-    /// <summary>
-    /// Pagination metadata for list responses
-    /// </summary>
-    public PaginationMeta? Pagination
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<PaginationMeta>("pagination");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("pagination", value);
-        }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        foreach (var item in this.Events ?? [])
-        {
-            item.Validate();
-        }
-        this.Pagination?.Validate();
-    }
-
-    public WebhookListEventsResponseData() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public WebhookListEventsResponseData(
-        WebhookListEventsResponseData webhookListEventsResponseData
-    )
-        : base(webhookListEventsResponseData) { }
-#pragma warning restore CS8618
-
-    public WebhookListEventsResponseData(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    WebhookListEventsResponseData(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="WebhookListEventsResponseDataFromRaw.FromRawUnchecked"/>
-    public static WebhookListEventsResponseData FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class WebhookListEventsResponseDataFromRaw : IFromRawJson<WebhookListEventsResponseData>
-{
-    /// <inheritdoc/>
-    public WebhookListEventsResponseData FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => WebhookListEventsResponseData.FromRawUnchecked(rawData);
-}
-
-[JsonConverter(typeof(JsonModelConverter<Event, EventFromRaw>))]
-public sealed record class Event : JsonModel
 {
     public string? ID
     {
@@ -419,39 +194,42 @@ public sealed record class Event : JsonModel
         _ = this.ResponseBody;
     }
 
-    public Event() { }
+    public WebhookListEventsResponse() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Event(Event event_)
-        : base(event_) { }
+    public WebhookListEventsResponse(WebhookListEventsResponse webhookListEventsResponse)
+        : base(webhookListEventsResponse) { }
 #pragma warning restore CS8618
 
-    public Event(IReadOnlyDictionary<string, JsonElement> rawData)
+    public WebhookListEventsResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Event(FrozenDictionary<string, JsonElement> rawData)
+    WebhookListEventsResponse(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="EventFromRaw.FromRawUnchecked"/>
-    public static Event FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="WebhookListEventsResponseFromRaw.FromRawUnchecked"/>
+    public static WebhookListEventsResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class EventFromRaw : IFromRawJson<Event>
+class WebhookListEventsResponseFromRaw : IFromRawJson<WebhookListEventsResponse>
 {
     /// <inheritdoc/>
-    public Event FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Event.FromRawUnchecked(rawData);
+    public WebhookListEventsResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => WebhookListEventsResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>

@@ -11,22 +11,22 @@ public class WebhookListParamsTest : TestBase
     {
         var parameters = new WebhookListParams
         {
+            IsActive = true,
             Page = 0,
             PageSize = 0,
-            IsActive = true,
             Search = "search",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        bool expectedIsActive = true;
         int expectedPage = 0;
         int expectedPageSize = 0;
-        bool expectedIsActive = true;
         string expectedSearch = "search";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
+        Assert.Equal(expectedIsActive, parameters.IsActive);
         Assert.Equal(expectedPage, parameters.Page);
         Assert.Equal(expectedPageSize, parameters.PageSize);
-        Assert.Equal(expectedIsActive, parameters.IsActive);
         Assert.Equal(expectedSearch, parameters.Search);
         Assert.Equal(expectedXProfileID, parameters.XProfileID);
     }
@@ -34,14 +34,12 @@ public class WebhookListParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new WebhookListParams
-        {
-            Page = 0,
-            PageSize = 0,
-            IsActive = true,
-            Search = "search",
-        };
+        var parameters = new WebhookListParams { IsActive = true, Search = "search" };
 
+        Assert.Null(parameters.Page);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
@@ -51,15 +49,19 @@ public class WebhookListParamsTest : TestBase
     {
         var parameters = new WebhookListParams
         {
-            Page = 0,
-            PageSize = 0,
             IsActive = true,
             Search = "search",
 
             // Null should be interpreted as omitted for these properties
+            Page = null,
+            PageSize = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.Page);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
@@ -104,9 +106,9 @@ public class WebhookListParamsTest : TestBase
     {
         WebhookListParams parameters = new()
         {
+            IsActive = true,
             Page = 0,
             PageSize = 0,
-            IsActive = true,
             Search = "search",
         };
 
@@ -115,7 +117,7 @@ public class WebhookListParamsTest : TestBase
         Assert.True(
             TestBase.UrisEqual(
                 new Uri(
-                    "https://api.sent.dm/v3/webhooks?page=0&page_size=0&is_active=true&search=search"
+                    "https://api.sent.dm/v3/webhooks?is_active=true&page=0&page_size=0&search=search"
                 ),
                 url
             )
@@ -128,8 +130,6 @@ public class WebhookListParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         WebhookListParams parameters = new()
         {
-            Page = 0,
-            PageSize = 0,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
@@ -146,9 +146,9 @@ public class WebhookListParamsTest : TestBase
     {
         var parameters = new WebhookListParams
         {
+            IsActive = true,
             Page = 0,
             PageSize = 0,
-            IsActive = true,
             Search = "search",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };

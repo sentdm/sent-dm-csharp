@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Messages;
-using Webhooks = Sentdm.Models.Webhooks;
+using Sentdm.Models.Webhooks;
 
 namespace Sentdm.Tests.Models.Messages;
 
@@ -116,14 +116,14 @@ public class MessageRetrieveStatusResponseTest : TestBase
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
         };
-        Webhooks::ErrorDetail expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        Webhooks::ApiMeta expectedMeta = new()
+        ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -324,14 +324,14 @@ public class MessageRetrieveStatusResponseTest : TestBase
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
         };
-        Webhooks::ErrorDetail expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        Webhooks::ApiMeta expectedMeta = new()
+        ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),

@@ -7,12 +7,12 @@ using Webhooks = Sentdm.Models.Webhooks;
 
 namespace Sentdm.Tests.Models.Contacts;
 
-public class ContactListResponseTest : TestBase
+public class ContactListPageResponseTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Data = new()
             {
@@ -120,7 +120,7 @@ public class ContactListResponseTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Data = new()
             {
@@ -172,7 +172,7 @@ public class ContactListResponseTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ContactListResponse>(
+        var deserialized = JsonSerializer.Deserialize<ContactListPageResponse>(
             json,
             ModelBase.SerializerOptions
         );
@@ -183,7 +183,7 @@ public class ContactListResponseTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Data = new()
             {
@@ -235,7 +235,7 @@ public class ContactListResponseTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ContactListResponse>(
+        var deserialized = JsonSerializer.Deserialize<ContactListPageResponse>(
             element,
             ModelBase.SerializerOptions
         );
@@ -298,7 +298,7 @@ public class ContactListResponseTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Data = new()
             {
@@ -355,7 +355,7 @@ public class ContactListResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Data = new()
             {
@@ -408,7 +408,7 @@ public class ContactListResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Data = new()
             {
@@ -458,7 +458,7 @@ public class ContactListResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Data = new()
             {
@@ -515,7 +515,7 @@ public class ContactListResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Data = new()
             {
@@ -569,7 +569,7 @@ public class ContactListResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Meta = new()
             {
@@ -589,7 +589,7 @@ public class ContactListResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Meta = new()
             {
@@ -606,7 +606,7 @@ public class ContactListResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Meta = new()
             {
@@ -629,7 +629,7 @@ public class ContactListResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Meta = new()
             {
@@ -649,7 +649,7 @@ public class ContactListResponseTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new ContactListResponse
+        var model = new ContactListPageResponse
         {
             Data = new()
             {
@@ -700,7 +700,7 @@ public class ContactListResponseTest : TestBase
             Success = true,
         };
 
-        ContactListResponse copied = new(model);
+        ContactListPageResponse copied = new(model);
 
         Assert.Equal(model, copied);
     }

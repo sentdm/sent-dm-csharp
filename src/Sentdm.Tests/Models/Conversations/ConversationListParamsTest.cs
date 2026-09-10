@@ -28,8 +28,12 @@ public class ConversationListParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new ConversationListParams { Page = 0, PageSize = 0 };
+        var parameters = new ConversationListParams { };
 
+        Assert.Null(parameters.Page);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
@@ -39,13 +43,16 @@ public class ConversationListParamsTest : TestBase
     {
         var parameters = new ConversationListParams
         {
-            Page = 0,
-            PageSize = 0,
-
             // Null should be interpreted as omitted for these properties
+            Page = null,
+            PageSize = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.Page);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
@@ -71,8 +78,6 @@ public class ConversationListParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         ConversationListParams parameters = new()
         {
-            Page = 0,
-            PageSize = 0,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 

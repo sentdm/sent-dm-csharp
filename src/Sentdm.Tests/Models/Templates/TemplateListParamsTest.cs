@@ -11,27 +11,27 @@ public class TemplateListParamsTest : TestBase
     {
         var parameters = new TemplateListParams
         {
-            Page = 0,
-            PageSize = 0,
             Category = "category",
             IsWelcomePlayground = true,
+            Page = 0,
+            PageSize = 0,
             Search = "search",
             Status = "status",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        int expectedPage = 0;
-        int expectedPageSize = 0;
         string expectedCategory = "category";
         bool expectedIsWelcomePlayground = true;
+        int expectedPage = 0;
+        int expectedPageSize = 0;
         string expectedSearch = "search";
         string expectedStatus = "status";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
-        Assert.Equal(expectedPage, parameters.Page);
-        Assert.Equal(expectedPageSize, parameters.PageSize);
         Assert.Equal(expectedCategory, parameters.Category);
         Assert.Equal(expectedIsWelcomePlayground, parameters.IsWelcomePlayground);
+        Assert.Equal(expectedPage, parameters.Page);
+        Assert.Equal(expectedPageSize, parameters.PageSize);
         Assert.Equal(expectedSearch, parameters.Search);
         Assert.Equal(expectedStatus, parameters.Status);
         Assert.Equal(expectedXProfileID, parameters.XProfileID);
@@ -42,14 +42,16 @@ public class TemplateListParamsTest : TestBase
     {
         var parameters = new TemplateListParams
         {
-            Page = 0,
-            PageSize = 0,
             Category = "category",
             IsWelcomePlayground = true,
             Search = "search",
             Status = "status",
         };
 
+        Assert.Null(parameters.Page);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
@@ -59,17 +61,21 @@ public class TemplateListParamsTest : TestBase
     {
         var parameters = new TemplateListParams
         {
-            Page = 0,
-            PageSize = 0,
             Category = "category",
             IsWelcomePlayground = true,
             Search = "search",
             Status = "status",
 
             // Null should be interpreted as omitted for these properties
+            Page = null,
+            PageSize = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.Page);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
@@ -124,10 +130,10 @@ public class TemplateListParamsTest : TestBase
     {
         TemplateListParams parameters = new()
         {
-            Page = 0,
-            PageSize = 0,
             Category = "category",
             IsWelcomePlayground = true,
+            Page = 0,
+            PageSize = 0,
             Search = "search",
             Status = "status",
         };
@@ -137,7 +143,7 @@ public class TemplateListParamsTest : TestBase
         Assert.True(
             TestBase.UrisEqual(
                 new Uri(
-                    "https://api.sent.dm/v3/templates?page=0&page_size=0&category=category&is_welcome_playground=true&search=search&status=status"
+                    "https://api.sent.dm/v3/templates?category=category&is_welcome_playground=true&page=0&page_size=0&search=search&status=status"
                 ),
                 url
             )
@@ -150,8 +156,6 @@ public class TemplateListParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         TemplateListParams parameters = new()
         {
-            Page = 0,
-            PageSize = 0,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
@@ -168,10 +172,10 @@ public class TemplateListParamsTest : TestBase
     {
         var parameters = new TemplateListParams
         {
-            Page = 0,
-            PageSize = 0,
             Category = "category",
             IsWelcomePlayground = true,
+            Page = 0,
+            PageSize = 0,
             Search = "search",
             Status = "status",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

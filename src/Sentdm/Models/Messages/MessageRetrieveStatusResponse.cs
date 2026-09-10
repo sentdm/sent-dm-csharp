@@ -264,18 +264,16 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
-    public IReadOnlyList<global::Sentdm.Models.Messages.Event>? Events
+    public IReadOnlyList<Event>? Events
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<
-                ImmutableArray<global::Sentdm.Models.Messages.Event>
-            >("events");
+            return this._rawData.GetNullableStruct<ImmutableArray<Event>>("events");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<global::Sentdm.Models.Messages.Event>?>(
+            this._rawData.Set<ImmutableArray<Event>?>(
                 "events",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -476,12 +474,7 @@ class MessageRetrieveStatusResponseDataFromRaw : IFromRawJson<MessageRetrieveSta
 /// <summary>
 /// Represents a status change event in a message's lifecycle (v3)
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        global::Sentdm.Models.Messages.Event,
-        global::Sentdm.Models.Messages.EventFromRaw
-    >)
-)]
+[JsonConverter(typeof(JsonModelConverter<Event, EventFromRaw>))]
 public sealed record class Event : JsonModel
 {
     public required string Status
@@ -526,7 +519,7 @@ public sealed record class Event : JsonModel
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Event(global::Sentdm.Models.Messages.Event event_)
+    public Event(Event event_)
         : base(event_) { }
 #pragma warning restore CS8618
 
@@ -543,21 +536,18 @@ public sealed record class Event : JsonModel
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="global::Sentdm.Models.Messages.EventFromRaw.FromRawUnchecked"/>
-    public static global::Sentdm.Models.Messages.Event FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="EventFromRaw.FromRawUnchecked"/>
+    public static Event FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class EventFromRaw : IFromRawJson<global::Sentdm.Models.Messages.Event>
+class EventFromRaw : IFromRawJson<Event>
 {
     /// <inheritdoc/>
-    public global::Sentdm.Models.Messages.Event FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => global::Sentdm.Models.Messages.Event.FromRawUnchecked(rawData);
+    public Event FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Event.FromRawUnchecked(rawData);
 }
 
 /// <summary>

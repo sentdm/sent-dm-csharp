@@ -34,10 +34,12 @@ public class ConversationListMessagesParamsTest : TestBase
         var parameters = new ConversationListMessagesParams
         {
             ID = "08fab313-c9e2-502c-975e-08b0356c432e",
-            Page = 0,
-            PageSize = 0,
         };
 
+        Assert.Null(parameters.Page);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
@@ -48,13 +50,17 @@ public class ConversationListMessagesParamsTest : TestBase
         var parameters = new ConversationListMessagesParams
         {
             ID = "08fab313-c9e2-502c-975e-08b0356c432e",
-            Page = 0,
-            PageSize = 0,
 
             // Null should be interpreted as omitted for these properties
+            Page = null,
+            PageSize = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.Page);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
@@ -88,8 +94,6 @@ public class ConversationListMessagesParamsTest : TestBase
         ConversationListMessagesParams parameters = new()
         {
             ID = "08fab313-c9e2-502c-975e-08b0356c432e",
-            Page = 0,
-            PageSize = 0,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
