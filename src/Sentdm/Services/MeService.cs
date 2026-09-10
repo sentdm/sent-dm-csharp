@@ -13,8 +13,7 @@ public sealed class MeService : IMeService
     readonly Lazy<IMeServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IMeServiceWithRawResponse WithRawResponse
-    {
+    public IMeServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
@@ -22,15 +21,15 @@ public sealed class MeService : IMeService
 
     /// <inheritdoc/>
     public IMeService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new MeService(this._client.WithOptions(modifier));
-    }
+    { return new MeService(this._client.WithOptions(modifier)); }
 
-    public MeService(ISentClient client)
+    public MeService (ISentClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new MeServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new MeServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -39,9 +38,7 @@ public sealed class MeService : IMeService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 }
@@ -52,15 +49,13 @@ public sealed class MeServiceWithRawResponse : IMeServiceWithRawResponse
     readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IMeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new MeServiceWithRawResponse(this._client.WithOptions(modifier));
-    }
+    public IMeServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new MeServiceWithRawResponse(this._client.WithOptions(modifier)); }
 
-    public MeServiceWithRawResponse(ISentClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public MeServiceWithRawResponse (ISentClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<MeRetrieveResponse>> Retrieve(
@@ -76,19 +71,12 @@ public sealed class MeServiceWithRawResponse : IMeServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var me = await response
-                    .Deserialize<MeRetrieveResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    me.Validate();
-                }
-                return me;
+        return new(response, async ( token )=>{
+            var me = await response.Deserialize<MeRetrieveResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                me.Validate();
             }
-        );
+            return me;
+        });
     }
 }

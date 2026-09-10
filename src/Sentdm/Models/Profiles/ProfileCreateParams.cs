@@ -51,9 +51,7 @@ namespace Sentdm.Models.Profiles;
 [Obsolete("deprecated")]
 public record class ProfileCreateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
@@ -73,23 +71,23 @@ public record class ProfileCreateParams : ParamsBase
     /// any more and the fields can go for real.
     /// </summary>
     [Obsolete("deprecated")]
-    public bool? AllowContactSharing
-    {
-        get
-        {
+    public bool? AllowContactSharing {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("allow_contact_sharing");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "allow_contact_sharing"
+            );
         }
         init { this._rawBodyData.Set("allow_contact_sharing", value); }
     }
 
     [Obsolete("deprecated")]
-    public bool? AllowTemplateSharing
-    {
-        get
-        {
+    public bool? AllowTemplateSharing {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("allow_template_sharing");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "allow_template_sharing"
+            );
         }
         init { this._rawBodyData.Set("allow_template_sharing", value); }
     }
@@ -98,12 +96,12 @@ public record class ProfileCreateParams : ParamsBase
     /// Billing contact information for a profile. Required when billing_model is
     /// "profile" or "profile_and_organization".
     /// </summary>
-    public BillingContactInfo? BillingContact
-    {
-        get
-        {
+    public BillingContactInfo? BillingContact {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<BillingContactInfo>("billing_contact");
+            return this._rawBodyData.GetNullableClass<BillingContactInfo>(
+                "billing_contact"
+            );
         }
         init { this._rawBodyData.Set("billing_contact", value); }
     }
@@ -115,12 +113,12 @@ public record class ProfileCreateParams : ParamsBase
     /// billing_contact is required. - "profile_and_organization": the profile is
     /// billed first with the organization as fallback; billing_contact is required.
     /// </summary>
-    public string? BillingModel
-    {
-        get
-        {
+    public string? BillingModel {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("billing_model");
+            return this._rawBodyData.GetNullableClass<string>(
+                "billing_model"
+            );
         }
         init { this._rawBodyData.Set("billing_model", value); }
     }
@@ -128,12 +126,12 @@ public record class ProfileCreateParams : ParamsBase
     /// <summary>
     /// Brand and KYC data grouped into contact, business, and compliance sections
     /// </summary>
-    public BrandsBrandData? Brand
-    {
-        get
-        {
+    public BrandsBrandData? Brand {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<BrandsBrandData>("brand");
+            return this._rawBodyData.GetNullableClass<BrandsBrandData>(
+                "brand"
+            );
         }
         init { this._rawBodyData.Set("brand", value); }
     }
@@ -141,12 +139,12 @@ public record class ProfileCreateParams : ParamsBase
     /// <summary>
     /// Profile description (optional)
     /// </summary>
-    public string? Description
-    {
-        get
-        {
+    public string? Description {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("description");
+            return this._rawBodyData.GetNullableClass<string>(
+                "description"
+            );
         }
         init { this._rawBodyData.Set("description", value); }
     }
@@ -154,23 +152,23 @@ public record class ProfileCreateParams : ParamsBase
     /// <summary>
     /// Profile icon URL (optional)
     /// </summary>
-    public string? Icon
-    {
-        get
-        {
+    public string? Icon {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("icon");
+            return this._rawBodyData.GetNullableClass<string>(
+                "icon"
+            );
         }
         init { this._rawBodyData.Set("icon", value); }
     }
 
     [Obsolete("deprecated")]
-    public bool? InheritContacts
-    {
-        get
-        {
+    public bool? InheritContacts {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("inherit_contacts");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "inherit_contacts"
+            );
         }
         init { this._rawBodyData.Set("inherit_contacts", value); }
     }
@@ -178,12 +176,12 @@ public record class ProfileCreateParams : ParamsBase
     /// <summary>
     /// Whether this profile inherits TCR brand from organization (default: false)
     /// </summary>
-    public bool? InheritTcrBrand
-    {
-        get
-        {
+    public bool? InheritTcrBrand {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("inherit_tcr_brand");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "inherit_tcr_brand"
+            );
         }
         init { this._rawBodyData.Set("inherit_tcr_brand", value); }
     }
@@ -191,23 +189,23 @@ public record class ProfileCreateParams : ParamsBase
     /// <summary>
     /// Whether this profile inherits TCR campaign from organization (default: false)
     /// </summary>
-    public bool? InheritTcrCampaign
-    {
-        get
-        {
+    public bool? InheritTcrCampaign {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("inherit_tcr_campaign");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "inherit_tcr_campaign"
+            );
         }
         init { this._rawBodyData.Set("inherit_tcr_campaign", value); }
     }
 
     [Obsolete("deprecated")]
-    public bool? InheritTemplates
-    {
-        get
-        {
+    public bool? InheritTemplates {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("inherit_templates");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "inherit_templates"
+            );
         }
         init { this._rawBodyData.Set("inherit_templates", value); }
     }
@@ -215,17 +213,15 @@ public record class ProfileCreateParams : ParamsBase
     /// <summary>
     /// Profile name (required)
     /// </summary>
-    public string? Name
-    {
-        get
-        {
+    public string? Name {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("name");
+            return this._rawBodyData.GetNullableClass<string>(
+                "name"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -238,12 +234,12 @@ public record class ProfileCreateParams : ParamsBase
     /// is "profile" or "profile_and_organization". Not persisted on our servers —
     /// forwarded to the payment processor.
     /// </summary>
-    public PaymentDetails? PaymentDetails
-    {
-        get
-        {
+    public PaymentDetails? PaymentDetails {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<PaymentDetails>("payment_details");
+            return this._rawBodyData.GetNullableClass<PaymentDetails>(
+                "payment_details"
+            );
         }
         init { this._rawBodyData.Set("payment_details", value); }
     }
@@ -252,17 +248,15 @@ public record class ProfileCreateParams : ParamsBase
     /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
-    public bool? Sandbox
-    {
-        get
-        {
+    public bool? Sandbox {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("sandbox");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "sandbox"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -275,12 +269,12 @@ public record class ProfileCreateParams : ParamsBase
     /// only letters, numbers, and spaces, and include at least one letter. Example:
     /// "SALES", "Mkt 2", "Support1".
     /// </summary>
-    public string? ShortName
-    {
-        get
-        {
+    public string? ShortName {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("short_name");
+            return this._rawBodyData.GetNullableClass<string>(
+                "short_name"
+            );
         }
         init { this._rawBodyData.Set("short_name", value); }
     }
@@ -291,10 +285,8 @@ public record class ProfileCreateParams : ParamsBase
     /// from the organization. Credentials must be obtained from Meta Business Manager
     /// by creating a System User with whatsapp_business_messaging and whatsapp_business_management scopes.
     /// </summary>
-    public WhatsappBusinessAccount? WhatsappBusinessAccount
-    {
-        get
-        {
+    public WhatsappBusinessAccount? WhatsappBusinessAccount {
+        get {
             this._rawBodyData.Freeze();
             return this._rawBodyData.GetNullableClass<WhatsappBusinessAccount>(
                 "whatsapp_business_account"
@@ -303,17 +295,15 @@ public record class ProfileCreateParams : ParamsBase
         init { this._rawBodyData.Set("whatsapp_business_account", value); }
     }
 
-    public string? IdempotencyKey
-    {
-        get
-        {
+    public string? IdempotencyKey {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("Idempotency-Key");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "Idempotency-Key"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -321,17 +311,15 @@ public record class ProfileCreateParams : ParamsBase
         }
     }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -339,18 +327,18 @@ public record class ProfileCreateParams : ParamsBase
         }
     }
 
-    public ProfileCreateParams() { }
+    public ProfileCreateParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ProfileCreateParams(ProfileCreateParams profileCreateParams)
-        : base(profileCreateParams)
-    {
-        this._rawBodyData = new(profileCreateParams._rawBodyData);
-    }
-#pragma warning restore CS8618
+    public ProfileCreateParams (ProfileCreateParams profileCreateParams) : base(
+        profileCreateParams
+    )
+    { this._rawBodyData = new(profileCreateParams._rawBodyData); }
+    #pragma warning restore CS8618
 
-    public ProfileCreateParams(
+    public ProfileCreateParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -361,9 +349,9 @@ public record class ProfileCreateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ProfileCreateParams(
+    ProfileCreateParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData
@@ -373,7 +361,7 @@ public record class ProfileCreateParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static ProfileCreateParams FromRawUnchecked(
@@ -386,25 +374,18 @@ public record class ProfileCreateParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(ProfileCreateParams? other)
     {
@@ -412,17 +393,19 @@ public record class ProfileCreateParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v3/profiles")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/v3/profiles"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -431,10 +414,12 @@ public record class ProfileCreateParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -444,9 +429,7 @@ public record class ProfileCreateParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }
 
 /// <summary>
@@ -462,12 +445,12 @@ public sealed record class WhatsappBusinessAccount : JsonModel
     /// System User access token with whatsapp_business_messaging and whatsapp_business_management
     /// permissions. This value is stored securely and never returned in API responses.
     /// </summary>
-    public required string AccessToken
-    {
-        get
-        {
+    public required string AccessToken {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("access_token");
+            return this._rawData.GetNotNullClass<string>(
+                "access_token"
+            );
         }
         init { this._rawData.Set("access_token", value); }
     }
@@ -475,12 +458,12 @@ public sealed record class WhatsappBusinessAccount : JsonModel
     /// <summary>
     /// WhatsApp Business Account ID from Meta Business Manager
     /// </summary>
-    public required string WabaID
-    {
-        get
-        {
+    public required string WabaID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("waba_id");
+            return this._rawData.GetNotNullClass<string>(
+                "waba_id"
+            );
         }
         init { this._rawData.Set("waba_id", value); }
     }
@@ -491,12 +474,12 @@ public sealed record class WhatsappBusinessAccount : JsonModel
     /// from our pool and registered in the WABA during the onboarding flow. When
     /// provided, the number must already exist in the WABA.
     /// </summary>
-    public string? PhoneNumberID
-    {
-        get
-        {
+    public string? PhoneNumberID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phone_number_id");
+            return this._rawData.GetNullableClass<string>(
+                "phone_number_id"
+            );
         }
         init { this._rawData.Set("phone_number_id", value); }
     }
@@ -509,34 +492,33 @@ public sealed record class WhatsappBusinessAccount : JsonModel
         _ = this.PhoneNumberID;
     }
 
-    public WhatsappBusinessAccount() { }
+    public WhatsappBusinessAccount ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WhatsappBusinessAccount(WhatsappBusinessAccount whatsappBusinessAccount)
-        : base(whatsappBusinessAccount) { }
-#pragma warning restore CS8618
+    public WhatsappBusinessAccount (
+        WhatsappBusinessAccount whatsappBusinessAccount
+    ) : base(whatsappBusinessAccount)
+    {  }
+    #pragma warning restore CS8618
 
-    public WhatsappBusinessAccount(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public WhatsappBusinessAccount (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WhatsappBusinessAccount(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    WhatsappBusinessAccount (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="WhatsappBusinessAccountFromRaw.FromRawUnchecked"/>
     public static WhatsappBusinessAccount FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class WhatsappBusinessAccountFromRaw : IFromRawJson<WhatsappBusinessAccount>
@@ -544,5 +526,6 @@ class WhatsappBusinessAccountFromRaw : IFromRawJson<WhatsappBusinessAccount>
     /// <inheritdoc/>
     public WhatsappBusinessAccount FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => WhatsappBusinessAccount.FromRawUnchecked(rawData);
+    )
+    =>WhatsappBusinessAccount.FromRawUnchecked(rawData);
 }

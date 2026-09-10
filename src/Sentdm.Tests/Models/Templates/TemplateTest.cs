@@ -13,30 +13,32 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channels = ["string"],
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsPublished = true,
-            Language = "language",
-            Name = "name",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Variables = ["string"],
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channels =
+            [
+                "string"
+            ],CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsPublished = true,Language = "language",Name = "name",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Variables =
+            [
+                "string"
+            ],
         };
 
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedCategory = "category";
-        List<string> expectedChannels = ["string"];
+        List<string> expectedChannels =
+        [
+            "string"
+        ];
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         bool expectedIsPublished = true;
         string expectedLanguage = "language";
         string expectedName = "name";
         string expectedStatus = "status";
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
-        List<string> expectedVariables = ["string"];
+        List<string> expectedVariables =
+        [
+            "string"
+        ];
 
         Assert.Equal(expectedCustomerID, model.CustomerID);
         Assert.Equal(expectedID, model.ID);
@@ -66,17 +68,13 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channels = ["string"],
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsPublished = true,
-            Language = "language",
-            Name = "name",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Variables = ["string"],
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channels =
+            [
+                "string"
+            ],CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsPublished = true,Language = "language",Name = "name",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Variables =
+            [
+                "string"
+            ],
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -90,37 +88,36 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channels = ["string"],
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsPublished = true,
-            Language = "language",
-            Name = "name",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Variables = ["string"],
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channels =
+            [
+                "string"
+            ],CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsPublished = true,Language = "language",Name = "name",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Variables =
+            [
+                "string"
+            ],
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Template>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Template>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedCategory = "category";
-        List<string> expectedChannels = ["string"];
+        List<string> expectedChannels =
+        [
+            "string"
+        ];
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         bool expectedIsPublished = true;
         string expectedLanguage = "language";
         string expectedName = "name";
         string expectedStatus = "status";
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
-        List<string> expectedVariables = ["string"];
+        List<string> expectedVariables =
+        [
+            "string"
+        ];
 
         Assert.Equal(expectedCustomerID, deserialized.CustomerID);
         Assert.Equal(expectedID, deserialized.ID);
@@ -150,17 +147,13 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channels = ["string"],
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsPublished = true,
-            Language = "language",
-            Name = "name",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Variables = ["string"],
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channels =
+            [
+                "string"
+            ],CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsPublished = true,Language = "language",Name = "name",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Variables =
+            [
+                "string"
+            ],
         };
 
         model.Validate();
@@ -171,26 +164,24 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channels = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Variables = ["string"],
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channels =
+            [
+                "string"
+            ],UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Variables =
+            [
+                "string"
+            ],
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.Category);
-        Assert.False(model.RawData.ContainsKey("category"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.IsPublished);
-        Assert.False(model.RawData.ContainsKey("is_published"));
-        Assert.Null(model.Language);
-        Assert.False(model.RawData.ContainsKey("language"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.Category);
+        Assert.False(model.RawData.ContainsKey("category"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.IsPublished);
+        Assert.False(model.RawData.ContainsKey("is_published"));Assert.Null(model.Language);
+        Assert.False(model.RawData.ContainsKey("language"));Assert.Null(model.Name);
+        Assert.False(model.RawData.ContainsKey("name"));Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
+
     }
 
     [Fact]
@@ -198,10 +189,13 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channels = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Variables = ["string"],
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channels =
+            [
+                "string"
+            ],UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Variables =
+            [
+                "string"
+            ],
         };
 
         model.Validate();
@@ -212,35 +206,27 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channels = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Variables = ["string"],
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channels =
+            [
+                "string"
+            ],UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Variables =
+            [
+                "string"
+            ],
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            Category = null,
-            CreatedAt = null,
-            IsPublished = null,
-            Language = null,
-            Name = null,
-            Status = null,
+            ID = null,Category = null,CreatedAt = null,IsPublished = null,Language = null,Name = null,Status = null,
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.Category);
-        Assert.False(model.RawData.ContainsKey("category"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.IsPublished);
-        Assert.False(model.RawData.ContainsKey("is_published"));
-        Assert.Null(model.Language);
-        Assert.False(model.RawData.ContainsKey("language"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.Category);
+        Assert.False(model.RawData.ContainsKey("category"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.IsPublished);
+        Assert.False(model.RawData.ContainsKey("is_published"));Assert.Null(model.Language);
+        Assert.False(model.RawData.ContainsKey("language"));Assert.Null(model.Name);
+        Assert.False(model.RawData.ContainsKey("name"));Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
+
     }
 
     [Fact]
@@ -248,19 +234,16 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channels = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Variables = ["string"],
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channels =
+            [
+                "string"
+            ],UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Variables =
+            [
+                "string"
+            ],
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            Category = null,
-            CreatedAt = null,
-            IsPublished = null,
-            Language = null,
-            Name = null,
-            Status = null,
+            ID = null,Category = null,CreatedAt = null,IsPublished = null,Language = null,Name = null,Status = null,
         };
 
         model.Validate();
@@ -271,22 +254,14 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsPublished = true,
-            Language = "language",
-            Name = "name",
-            Status = "status",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsPublished = true,Language = "language",Name = "name",Status = "status",
         };
 
         Assert.Null(model.Channels);
-        Assert.False(model.RawData.ContainsKey("channels"));
-        Assert.Null(model.UpdatedAt);
-        Assert.False(model.RawData.ContainsKey("updated_at"));
-        Assert.Null(model.Variables);
+        Assert.False(model.RawData.ContainsKey("channels"));Assert.Null(model.UpdatedAt);
+        Assert.False(model.RawData.ContainsKey("updated_at"));Assert.Null(model.Variables);
         Assert.False(model.RawData.ContainsKey("variables"));
+
     }
 
     [Fact]
@@ -294,14 +269,7 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsPublished = true,
-            Language = "language",
-            Name = "name",
-            Status = "status",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsPublished = true,Language = "language",Name = "name",Status = "status",
         };
 
         model.Validate();
@@ -312,26 +280,16 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsPublished = true,
-            Language = "language",
-            Name = "name",
-            Status = "status",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsPublished = true,Language = "language",Name = "name",Status = "status",
 
-            Channels = null,
-            UpdatedAt = null,
-            Variables = null,
+            Channels = null,UpdatedAt = null,Variables = null,
         };
 
         Assert.Null(model.Channels);
-        Assert.True(model.RawData.ContainsKey("channels"));
-        Assert.Null(model.UpdatedAt);
-        Assert.True(model.RawData.ContainsKey("updated_at"));
-        Assert.Null(model.Variables);
+        Assert.True(model.RawData.ContainsKey("channels"));Assert.Null(model.UpdatedAt);
+        Assert.True(model.RawData.ContainsKey("updated_at"));Assert.Null(model.Variables);
         Assert.True(model.RawData.ContainsKey("variables"));
+
     }
 
     [Fact]
@@ -339,18 +297,9 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsPublished = true,
-            Language = "language",
-            Name = "name",
-            Status = "status",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsPublished = true,Language = "language",Name = "name",Status = "status",
 
-            Channels = null,
-            UpdatedAt = null,
-            Variables = null,
+            Channels = null,UpdatedAt = null,Variables = null,
         };
 
         model.Validate();
@@ -361,17 +310,13 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channels = ["string"],
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsPublished = true,
-            Language = "language",
-            Name = "name",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Variables = ["string"],
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channels =
+            [
+                "string"
+            ],CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsPublished = true,Language = "language",Name = "name",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Variables =
+            [
+                "string"
+            ],
         };
 
         Template copied = new(model);

@@ -6,9 +6,9 @@ using System.Net;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
+using Threading = System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Exceptions;
-using Threading = System.Threading;
 
 namespace Sentdm.Core;
 
@@ -16,31 +16,30 @@ public class HttpResponse : IDisposable
 {
     public required HttpResponseMessage RawMessage { get; init; }
 
-    public IEnumerable<KeyValuePair<string, IEnumerable<string>>> Headers
-    {
+    public IEnumerable<KeyValuePair<string, IEnumerable<string>>> Headers {
         get { return RawMessage.Headers; }
     }
 
-    public bool IsSuccessStatusCode
-    {
+    public bool IsSuccessStatusCode {
         get { return RawMessage.IsSuccessStatusCode; }
     }
 
-    public HttpStatusCode StatusCode
-    {
-        get { return RawMessage.StatusCode; }
-    }
+    public HttpStatusCode StatusCode { get { return RawMessage.StatusCode; } }
 
-    public Threading::CancellationToken CancellationToken { get; init; } = default;
+    public Threading::CancellationToken CancellationToken {
+        get; init;
+    } = default;
 
-    public IEnumerable<string> GetHeaderValues(string name) => RawMessage.Headers.GetValues(name);
+    public IEnumerable<string> GetHeaderValues(string name)
+    =>RawMessage.Headers.GetValues(name);
 
     public bool TryGetHeaderValues(
-        string name,
-        [NotNullWhen(true)] out IEnumerable<string>? values
-    ) => RawMessage.Headers.TryGetValues(name, out values);
+        string name, [NotNullWhen(true)] out IEnumerable<string>? values
+    )
+    =>RawMessage.Headers.TryGetValues(name, out values);
 
-    public sealed override string ToString() => this.RawMessage.ToString();
+    public sealed override string ToString()
+    =>this.RawMessage.ToString();
 
     public override bool Equals(object? obj)
     {
@@ -52,9 +51,11 @@ public class HttpResponse : IDisposable
         return this.RawMessage.Equals(other.RawMessage);
     }
 
-    public override int GetHashCode() => this.RawMessage.GetHashCode();
+    public override int GetHashCode()
+    =>this.RawMessage.GetHashCode();
 
-    public async Task<T> Deserialize<T>(Threading::CancellationToken cancellationToken = default)
+    public async Task<T> Deserialize<T>
+    (Threading::CancellationToken cancellationToken = default)
     {
         using var cts = Threading::CancellationTokenSource.CreateLinkedTokenSource(
             this.CancellationToken,
@@ -77,29 +78,33 @@ public class HttpResponse : IDisposable
         }
     }
 
-    public async Task<Stream> ReadAsStream(Threading::CancellationToken cancellationToken = default)
+    public async Task<Stream> ReadAsStream(
+        Threading::CancellationToken cancellationToken = default
+    )
     {
         using var cts = Threading::CancellationTokenSource.CreateLinkedTokenSource(
             this.CancellationToken,
             cancellationToken
         );
         return await RawMessage.Content.ReadAsStreamAsync(
-#if NET
-            cts.Token
-#endif
+        #if NET
+        cts.Token
+        #endif
         ).ConfigureAwait(false);
     }
 
-    public async Task<string> ReadAsString(Threading::CancellationToken cancellationToken = default)
+    public async Task<string> ReadAsString(
+        Threading::CancellationToken cancellationToken = default
+    )
     {
         using var cts = Threading::CancellationTokenSource.CreateLinkedTokenSource(
             this.CancellationToken,
             cancellationToken
         );
         return await RawMessage.Content.ReadAsStringAsync(
-#if NET
-            cts.Token
-#endif
+        #if NET
+        cts.Token
+        #endif
         ).ConfigureAwait(false);
     }
 
@@ -114,23 +119,24 @@ public sealed class HttpResponse<T> : HttpResponse
 {
     readonly Func<Threading::CancellationToken, Task<T>> _deserialize;
 
-    internal HttpResponse(Func<Threading::CancellationToken, Task<T>> deserialize)
-    {
-        this._deserialize = deserialize;
-    }
-
-    [SetsRequiredMembers]
-    internal HttpResponse(
-        HttpResponse response,
+    internal HttpResponse (
         Func<Threading::CancellationToken, Task<T>> deserialize
     )
-        : this(deserialize)
+    { this._deserialize = deserialize; }
+
+    [SetsRequiredMembers]
+    internal HttpResponse (
+        HttpResponse response,
+        Func<Threading::CancellationToken, Task<T>> deserialize
+    ) : this(deserialize)
     {
         this.RawMessage = response.RawMessage;
         this.CancellationToken = response.CancellationToken;
     }
 
-    public Task<T> Deserialize(Threading::CancellationToken cancellationToken = default)
+    public Task<T> Deserialize(
+        Threading::CancellationToken cancellationToken = default
+    )
     {
         using var cts = Threading::CancellationTokenSource.CreateLinkedTokenSource(
             this.CancellationToken,
@@ -144,19 +150,16 @@ public sealed class StreamingHttpResponse<T> : HttpResponse
 {
     readonly Func<Threading::CancellationToken, IAsyncEnumerable<T>> _enumerate;
 
-    internal StreamingHttpResponse(
+    internal StreamingHttpResponse (
         Func<Threading::CancellationToken, IAsyncEnumerable<T>> enumerate
     )
-    {
-        this._enumerate = enumerate;
-    }
+    { this._enumerate = enumerate; }
 
     [SetsRequiredMembers]
-    internal StreamingHttpResponse(
+    internal StreamingHttpResponse (
         HttpResponse response,
         Func<Threading::CancellationToken, IAsyncEnumerable<T>> enumerate
-    )
-        : this(enumerate)
+    ) : this(enumerate)
     {
         this.RawMessage = response.RawMessage;
         this.CancellationToken = response.CancellationToken;
@@ -170,7 +173,7 @@ public sealed class StreamingHttpResponse<T> : HttpResponse
             this.CancellationToken,
             cancellationToken
         );
-        await foreach (var item in this._enumerate(cts.Token))
+        await foreach(var item in this._enumerate(cts.Token))
         {
             yield return item;
         }

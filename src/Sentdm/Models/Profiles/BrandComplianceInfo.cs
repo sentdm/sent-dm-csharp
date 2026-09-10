@@ -14,10 +14,8 @@ namespace Sentdm.Models.Profiles;
 [JsonConverter(typeof(JsonModelConverter<BrandComplianceInfo, BrandComplianceInfoFromRaw>))]
 public sealed record class BrandComplianceInfo : JsonModel
 {
-    public required ApiEnum<string, TcrBrandRelationship> BrandRelationship
-    {
-        get
-        {
+    public required ApiEnum<string, TcrBrandRelationship> BrandRelationship {
+        get {
             this._rawData.Freeze();
             return this._rawData.GetNotNullClass<ApiEnum<string, TcrBrandRelationship>>(
                 "brandRelationship"
@@ -26,12 +24,12 @@ public sealed record class BrandComplianceInfo : JsonModel
         init { this._rawData.Set("brandRelationship", value); }
     }
 
-    public required ApiEnum<string, TcrVertical> Vertical
-    {
-        get
-        {
+    public required ApiEnum<string, TcrVertical> Vertical {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, TcrVertical>>("vertical");
+            return this._rawData.GetNotNullClass<ApiEnum<string, TcrVertical>>(
+                "vertical"
+            );
         }
         init { this._rawData.Set("vertical", value); }
     }
@@ -39,17 +37,14 @@ public sealed record class BrandComplianceInfo : JsonModel
     /// <summary>
     /// List of destination countries for messaging
     /// </summary>
-    public IReadOnlyList<DestinationCountry>? DestinationCountries
-    {
-        get
-        {
+    public IReadOnlyList<DestinationCountry>? DestinationCountries {
+        get {
             this._rawData.Freeze();
             return this._rawData.GetNullableStruct<ImmutableArray<DestinationCountry>>(
                 "destinationCountries"
             );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<DestinationCountry>?>(
                 "destinationCountries",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -60,12 +55,12 @@ public sealed record class BrandComplianceInfo : JsonModel
     /// <summary>
     /// Whether this is a TCR (Campaign Registry) application
     /// </summary>
-    public bool? IsTcrApplication
-    {
-        get
-        {
+    public bool? IsTcrApplication {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("isTcrApplication");
+            return this._rawData.GetNullableStruct<bool>(
+                "isTcrApplication"
+            );
         }
         init { this._rawData.Set("isTcrApplication", value); }
     }
@@ -73,12 +68,12 @@ public sealed record class BrandComplianceInfo : JsonModel
     /// <summary>
     /// Additional notes about the business or use case
     /// </summary>
-    public string? Notes
-    {
-        get
-        {
+    public string? Notes {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("notes");
+            return this._rawData.GetNullableClass<string>(
+                "notes"
+            );
         }
         init { this._rawData.Set("notes", value); }
     }
@@ -86,12 +81,12 @@ public sealed record class BrandComplianceInfo : JsonModel
     /// <summary>
     /// Phone number prefix for messaging (e.g., "+1")
     /// </summary>
-    public string? PhoneNumberPrefix
-    {
-        get
-        {
+    public string? PhoneNumberPrefix {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phoneNumberPrefix");
+            return this._rawData.GetNullableClass<string>(
+                "phoneNumberPrefix"
+            );
         }
         init { this._rawData.Set("phoneNumberPrefix", value); }
     }
@@ -110,39 +105,40 @@ public sealed record class BrandComplianceInfo : JsonModel
         _ = this.PhoneNumberPrefix;
     }
 
-    public BrandComplianceInfo() { }
+    public BrandComplianceInfo ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public BrandComplianceInfo(BrandComplianceInfo brandComplianceInfo)
-        : base(brandComplianceInfo) { }
-#pragma warning restore CS8618
+    public BrandComplianceInfo (BrandComplianceInfo brandComplianceInfo) : base(
+        brandComplianceInfo
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public BrandComplianceInfo(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public BrandComplianceInfo (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    BrandComplianceInfo(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    BrandComplianceInfo (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="BrandComplianceInfoFromRaw.FromRawUnchecked"/>
     public static BrandComplianceInfo FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class BrandComplianceInfoFromRaw : IFromRawJson<BrandComplianceInfo>
 {
     /// <inheritdoc/>
-    public BrandComplianceInfo FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        BrandComplianceInfo.FromRawUnchecked(rawData);
+    public BrandComplianceInfo FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>BrandComplianceInfo.FromRawUnchecked(rawData);
 }

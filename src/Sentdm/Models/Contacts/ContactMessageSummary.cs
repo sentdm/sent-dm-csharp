@@ -12,17 +12,15 @@ namespace Sentdm.Models.Contacts;
 [JsonConverter(typeof(JsonModelConverter<ContactMessageSummary, ContactMessageSummaryFromRaw>))]
 public sealed record class ContactMessageSummary : JsonModel
 {
-    public IReadOnlyList<ChannelScore>? ChannelScores
-    {
-        get
-        {
+    public IReadOnlyList<ChannelScore>? ChannelScores {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<ChannelScore>>("channel_scores");
+            return this._rawData.GetNullableStruct<ImmutableArray<ChannelScore>>(
+                "channel_scores"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -33,17 +31,15 @@ public sealed record class ContactMessageSummary : JsonModel
         }
     }
 
-    public IReadOnlyList<string>? ChannelsUsed
-    {
-        get
-        {
+    public IReadOnlyList<string>? ChannelsUsed {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("channels_used");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "channels_used"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -54,17 +50,15 @@ public sealed record class ContactMessageSummary : JsonModel
         }
     }
 
-    public string? ContactID
-    {
-        get
-        {
+    public string? ContactID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("contact_id");
+            return this._rawData.GetNullableClass<string>(
+                "contact_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -72,37 +66,35 @@ public sealed record class ContactMessageSummary : JsonModel
         }
     }
 
-    public DateTimeOffset? FirstMessageAt
-    {
-        get
-        {
+    public DateTimeOffset? FirstMessageAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("first_message_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "first_message_at"
+            );
         }
         init { this._rawData.Set("first_message_at", value); }
     }
 
-    public DateTimeOffset? LastMessageAt
-    {
-        get
-        {
+    public DateTimeOffset? LastMessageAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("last_message_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "last_message_at"
+            );
         }
         init { this._rawData.Set("last_message_at", value); }
     }
 
-    public int? MessageCount
-    {
-        get
-        {
+    public int? MessageCount {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("message_count");
+            return this._rawData.GetNullableStruct<int>(
+                "message_count"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -124,34 +116,33 @@ public sealed record class ContactMessageSummary : JsonModel
         _ = this.MessageCount;
     }
 
-    public ContactMessageSummary() { }
+    public ContactMessageSummary ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ContactMessageSummary(ContactMessageSummary contactMessageSummary)
-        : base(contactMessageSummary) { }
-#pragma warning restore CS8618
+    public ContactMessageSummary (
+        ContactMessageSummary contactMessageSummary
+    ) : base(contactMessageSummary)
+    {  }
+    #pragma warning restore CS8618
 
-    public ContactMessageSummary(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public ContactMessageSummary (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ContactMessageSummary(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ContactMessageSummary (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ContactMessageSummaryFromRaw.FromRawUnchecked"/>
     public static ContactMessageSummary FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class ContactMessageSummaryFromRaw : IFromRawJson<ContactMessageSummary>
@@ -159,23 +150,22 @@ class ContactMessageSummaryFromRaw : IFromRawJson<ContactMessageSummary>
     /// <inheritdoc/>
     public ContactMessageSummary FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ContactMessageSummary.FromRawUnchecked(rawData);
+    )
+    =>ContactMessageSummary.FromRawUnchecked(rawData);
 }
 
 [JsonConverter(typeof(JsonModelConverter<ChannelScore, ChannelScoreFromRaw>))]
 public sealed record class ChannelScore : JsonModel
 {
-    public string? Channel
-    {
-        get
-        {
+    public string? Channel {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("channel");
+            return this._rawData.GetNullableClass<string>(
+                "channel"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -186,17 +176,15 @@ public sealed record class ChannelScore : JsonModel
     /// <summary>
     /// Percentage (0-100) of messages on this channel that ended in FAILED.
     /// </summary>
-    public int? FailScore
-    {
-        get
-        {
+    public int? FailScore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("fail_score");
+            return this._rawData.GetNullableStruct<int>(
+                "fail_score"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -208,17 +196,15 @@ public sealed record class ChannelScore : JsonModel
     /// Percentage (0-100) of messages on this channel that reached a successful terminal
     /// state: SENT/DELIVERED/READ for outbound, RECEIVED for inbound.
     /// </summary>
-    public int? SuccessScore
-    {
-        get
-        {
+    public int? SuccessScore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("success_score");
+            return this._rawData.GetNullableStruct<int>(
+                "success_score"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -234,37 +220,34 @@ public sealed record class ChannelScore : JsonModel
         _ = this.SuccessScore;
     }
 
-    public ChannelScore() { }
+    public ChannelScore ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ChannelScore(ChannelScore channelScore)
-        : base(channelScore) { }
-#pragma warning restore CS8618
+    public ChannelScore (ChannelScore channelScore) : base(channelScore)
+    {  }
+    #pragma warning restore CS8618
 
-    public ChannelScore(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public ChannelScore (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ChannelScore(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ChannelScore (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ChannelScoreFromRaw.FromRawUnchecked"/>
-    public static ChannelScore FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class ChannelScoreFromRaw : IFromRawJson<ChannelScore>
+    public static ChannelScore FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class ChannelScoreFromRaw : IFromRawJson<ChannelScore>
 {
     /// <inheritdoc/>
-    public ChannelScore FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        ChannelScore.FromRawUnchecked(rawData);
+    public ChannelScore FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>ChannelScore.FromRawUnchecked(rawData);
 }

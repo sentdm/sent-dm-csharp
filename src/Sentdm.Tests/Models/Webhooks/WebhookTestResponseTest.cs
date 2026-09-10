@@ -13,28 +13,45 @@ public class WebhookTestResponseTest : TestBase
     {
         var model = new WebhookTestResponse
         {
-            Data = new() { Message = "message", Success = true },
-            Error = new()
+            Data = new()
+            {
+                Message = "message",
+                Success = true,
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
-        WebhookTestResponseData expectedData = new() { Message = "message", Success = true };
+        WebhookTestResponseData expectedData = new()
+        {
+            Message = "message",
+            Success = true,
+        };
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -57,28 +74,32 @@ public class WebhookTestResponseTest : TestBase
     {
         var model = new WebhookTestResponse
         {
-            Data = new() { Message = "message", Success = true },
-            Error = new()
+            Data = new()
+            {
+                Message = "message",
+                Success = true,
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookTestResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookTestResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -88,35 +109,49 @@ public class WebhookTestResponseTest : TestBase
     {
         var model = new WebhookTestResponse
         {
-            Data = new() { Message = "message", Success = true },
-            Error = new()
+            Data = new()
+            {
+                Message = "message",
+                Success = true,
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookTestResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookTestResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        WebhookTestResponseData expectedData = new() { Message = "message", Success = true };
+        WebhookTestResponseData expectedData = new()
+        {
+            Message = "message",
+            Success = true,
+        };
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -139,21 +174,28 @@ public class WebhookTestResponseTest : TestBase
     {
         var model = new WebhookTestResponse
         {
-            Data = new() { Message = "message", Success = true },
-            Error = new()
+            Data = new()
+            {
+                Message = "message",
+                Success = true,
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -164,20 +206,29 @@ public class WebhookTestResponseTest : TestBase
     {
         var model = new WebhookTestResponse
         {
-            Data = new() { Message = "message", Success = true },
-            Error = new()
+            Data = new()
+            {
+                Message = "message",
+                Success = true,
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -185,11 +236,20 @@ public class WebhookTestResponseTest : TestBase
     {
         var model = new WebhookTestResponse
         {
-            Data = new() { Message = "message", Success = true },
-            Error = new()
+            Data = new()
+            {
+                Message = "message",
+                Success = true,
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
@@ -203,24 +263,32 @@ public class WebhookTestResponseTest : TestBase
     {
         var model = new WebhookTestResponse
         {
-            Data = new() { Message = "message", Success = true },
-            Error = new()
+            Data = new()
+            {
+                Message = "message",
+                Success = true,
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -228,18 +296,26 @@ public class WebhookTestResponseTest : TestBase
     {
         var model = new WebhookTestResponse
         {
-            Data = new() { Message = "message", Success = true },
-            Error = new()
+            Data = new()
+            {
+                Message = "message",
+                Success = true,
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         model.Validate();
@@ -255,14 +331,13 @@ public class WebhookTestResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Assert.Null(model.Data);
-        Assert.False(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.False(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.False(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -275,8 +350,7 @@ public class WebhookTestResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -292,17 +366,15 @@ public class WebhookTestResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         Assert.Null(model.Data);
-        Assert.True(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.True(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.True(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -315,11 +387,9 @@ public class WebhookTestResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         model.Validate();
@@ -330,21 +400,28 @@ public class WebhookTestResponseTest : TestBase
     {
         var model = new WebhookTestResponse
         {
-            Data = new() { Message = "message", Success = true },
-            Error = new()
+            Data = new()
+            {
+                Message = "message",
+                Success = true,
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         WebhookTestResponse copied = new(model);
@@ -358,7 +435,10 @@ public class WebhookTestResponseDataTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new WebhookTestResponseData { Message = "message", Success = true };
+        var model = new WebhookTestResponseData
+        {
+            Message = "message",Success = true,
+        };
 
         string expectedMessage = "message";
         bool expectedSuccess = true;
@@ -370,13 +450,13 @@ public class WebhookTestResponseDataTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new WebhookTestResponseData { Message = "message", Success = true };
+        var model = new WebhookTestResponseData
+        {
+            Message = "message",Success = true,
+        };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookTestResponseData>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookTestResponseData>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -384,13 +464,13 @@ public class WebhookTestResponseDataTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new WebhookTestResponseData { Message = "message", Success = true };
+        var model = new WebhookTestResponseData
+        {
+            Message = "message",Success = true,
+        };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookTestResponseData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookTestResponseData>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedMessage = "message";
@@ -403,7 +483,10 @@ public class WebhookTestResponseDataTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new WebhookTestResponseData { Message = "message", Success = true };
+        var model = new WebhookTestResponseData
+        {
+            Message = "message",Success = true,
+        };
 
         model.Validate();
     }
@@ -411,18 +494,24 @@ public class WebhookTestResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new WebhookTestResponseData { };
+        var model = new WebhookTestResponseData
+        {
+
+        };
 
         Assert.Null(model.Message);
-        Assert.False(model.RawData.ContainsKey("message"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("message"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new WebhookTestResponseData { };
+        var model = new WebhookTestResponseData
+        {
+
+        };
 
         model.Validate();
     }
@@ -432,15 +521,16 @@ public class WebhookTestResponseDataTest : TestBase
     {
         var model = new WebhookTestResponseData
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Message = null,
-            Success = null,
+            Message = null,Success = null,
         };
 
         Assert.Null(model.Message);
-        Assert.False(model.RawData.ContainsKey("message"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("message"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -448,9 +538,10 @@ public class WebhookTestResponseDataTest : TestBase
     {
         var model = new WebhookTestResponseData
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Message = null,
-            Success = null,
+            Message = null,Success = null,
         };
 
         model.Validate();
@@ -459,7 +550,10 @@ public class WebhookTestResponseDataTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new WebhookTestResponseData { Message = "message", Success = true };
+        var model = new WebhookTestResponseData
+        {
+            Message = "message",Success = true,
+        };
 
         WebhookTestResponseData copied = new(model);
 

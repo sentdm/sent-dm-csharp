@@ -14,24 +14,25 @@ public sealed class NumberService : INumberService
     readonly Lazy<INumberServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public INumberServiceWithRawResponse WithRawResponse
-    {
+    public INumberServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly ISentClient _client;
 
     /// <inheritdoc/>
-    public INumberService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new NumberService(this._client.WithOptions(modifier));
-    }
+    public INumberService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new NumberService(this._client.WithOptions(modifier)); }
 
-    public NumberService(ISentClient client)
+    public NumberService (ISentClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new NumberServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new NumberServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -40,13 +41,9 @@ public sealed class NumberService : INumberService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Lookup(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Lookup(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<NumberLookupResponse> Lookup(
         string phoneNumber,
         NumberLookupParams? parameters = null,
@@ -55,7 +52,9 @@ public sealed class NumberService : INumberService
     {
         parameters ??= new();
 
-        return this.Lookup(parameters with { PhoneNumber = phoneNumber }, cancellationToken);
+        return this.Lookup(parameters with{
+            PhoneNumber = phoneNumber
+        }, cancellationToken);
     }
 }
 
@@ -65,15 +64,15 @@ public sealed class NumberServiceWithRawResponse : INumberServiceWithRawResponse
     readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public INumberServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public INumberServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new NumberServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public NumberServiceWithRawResponse(ISentClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public NumberServiceWithRawResponse (ISentClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<NumberLookupResponse>> Lookup(
@@ -83,7 +82,9 @@ public sealed class NumberServiceWithRawResponse : INumberServiceWithRawResponse
     {
         if (parameters.PhoneNumber == null)
         {
-            throw new SentInvalidDataException("'parameters.PhoneNumber' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.PhoneNumber' cannot be null"
+            );
         }
 
         HttpRequest<NumberLookupParams> request = new()
@@ -92,23 +93,14 @@ public sealed class NumberServiceWithRawResponse : INumberServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var deserializedResponse = await response
-                    .Deserialize<NumberLookupResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    deserializedResponse.Validate();
-                }
-                return deserializedResponse;
+        return new(response, async ( token )=>{
+            var deserializedResponse = await response.Deserialize<NumberLookupResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                deserializedResponse.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return deserializedResponse;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<NumberLookupResponse>> Lookup(
         string phoneNumber,
         NumberLookupParams? parameters = null,
@@ -117,6 +109,8 @@ public sealed class NumberServiceWithRawResponse : INumberServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.Lookup(parameters with { PhoneNumber = phoneNumber }, cancellationToken);
+        return this.Lookup(parameters with{
+            PhoneNumber = phoneNumber
+        }, cancellationToken);
     }
 }

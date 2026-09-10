@@ -11,23 +11,18 @@ namespace Sentdm.Models.Conversations;
 /// <summary>
 /// Standard API response envelope for all v3 endpoints
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        ApiResponseOfConversationMessagesList,
-        ApiResponseOfConversationMessagesListFromRaw
-    >)
-)]
+[JsonConverter(typeof(JsonModelConverter<ApiResponseOfConversationMessagesList, ApiResponseOfConversationMessagesListFromRaw>))]
 public sealed record class ApiResponseOfConversationMessagesList : JsonModel
 {
     /// <summary>
     /// A paginated list of messages — used by both conversation read endpoints.
     /// </summary>
-    public ConversationMessagesList? Data
-    {
-        get
-        {
+    public ConversationMessagesList? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ConversationMessagesList>("data");
+            return this._rawData.GetNullableClass<ConversationMessagesList>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -35,12 +30,12 @@ public sealed record class ApiResponseOfConversationMessagesList : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
-    {
-        get
-        {
+    public ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -48,17 +43,15 @@ public sealed record class ApiResponseOfConversationMessagesList : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
-    {
-        get
-        {
+    public ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -69,17 +62,15 @@ public sealed record class ApiResponseOfConversationMessagesList : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -96,43 +87,42 @@ public sealed record class ApiResponseOfConversationMessagesList : JsonModel
         _ = this.Success;
     }
 
-    public ApiResponseOfConversationMessagesList() { }
+    public ApiResponseOfConversationMessagesList ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ApiResponseOfConversationMessagesList(
+    public ApiResponseOfConversationMessagesList (
         ApiResponseOfConversationMessagesList apiResponseOfConversationMessagesList
+    ) : base(apiResponseOfConversationMessagesList)
+    {  }
+    #pragma warning restore CS8618
+
+    public ApiResponseOfConversationMessagesList (
+        IReadOnlyDictionary<string, JsonElement> rawData
     )
-        : base(apiResponseOfConversationMessagesList) { }
-#pragma warning restore CS8618
+    { this._rawData = new(rawData); }
 
-    public ApiResponseOfConversationMessagesList(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ApiResponseOfConversationMessagesList(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ApiResponseOfConversationMessagesList (
+        FrozenDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ApiResponseOfConversationMessagesListFromRaw.FromRawUnchecked"/>
     public static ApiResponseOfConversationMessagesList FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
-class ApiResponseOfConversationMessagesListFromRaw
-    : IFromRawJson<ApiResponseOfConversationMessagesList>
+class ApiResponseOfConversationMessagesListFromRaw : IFromRawJson<ApiResponseOfConversationMessagesList>
 {
     /// <inheritdoc/>
     public ApiResponseOfConversationMessagesList FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ApiResponseOfConversationMessagesList.FromRawUnchecked(rawData);
+    )
+    =>ApiResponseOfConversationMessagesList.FromRawUnchecked(rawData);
 }

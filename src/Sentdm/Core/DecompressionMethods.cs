@@ -8,33 +8,16 @@ static class DecompressionMethods
 {
     internal static readonly Net::DecompressionMethods Available;
 
-    static DecompressionMethods()
+    static DecompressionMethods ()
     {
         try
         {
             // Minimal valid GZip payload (empty body).
             var gzipPayload = new byte[]
             {
-                0x1f,
-                0x8b,
-                0x08,
-                0x00,
-                0x00,
-                0x00,
-                0x00,
-                0x00,
-                0x00,
-                0x03,
-                0x03,
-                0x00,
-                0x00,
-                0x00,
-                0x00,
-                0x00,
-                0x00,
-                0x00,
-                0x00,
-                0x00,
+                0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00,
+                0x00, 0x03, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00,
+                0x00, 0x00, 0x00, 0x00
             };
             using var memoryStream = new MemoryStream(gzipPayload);
             using var gzipStream = new GZipStream(memoryStream, CompressionMode.Decompress);

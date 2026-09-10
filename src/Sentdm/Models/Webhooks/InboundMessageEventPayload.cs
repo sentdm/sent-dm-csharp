@@ -10,20 +10,18 @@ namespace Sentdm.Models.Webhooks;
 /// <summary>
 /// Body of a message.received event. Delivered when a contact messages one of your numbers.
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<InboundMessageEventPayload, InboundMessageEventPayloadFromRaw>)
-)]
+[JsonConverter(typeof(JsonModelConverter<InboundMessageEventPayload, InboundMessageEventPayloadFromRaw>))]
 public sealed record class InboundMessageEventPayload : JsonModel
 {
     /// <summary>
     /// The contact's number in E.164 format, meaning the number the message came from.
     /// </summary>
-    public required string InboundNumber
-    {
-        get
-        {
+    public required string InboundNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("inbound_number");
+            return this._rawData.GetNotNullClass<string>(
+                "inbound_number"
+            );
         }
         init { this._rawData.Set("inbound_number", value); }
     }
@@ -31,12 +29,12 @@ public sealed record class InboundMessageEventPayload : JsonModel
     /// <summary>
     /// When the message was received, in UTC (yyyy-MM-ddTHH:mm:ssZ).
     /// </summary>
-    public required string ReceivedAt
-    {
-        get
-        {
+    public required string ReceivedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("received_at");
+            return this._rawData.GetNotNullClass<string>(
+                "received_at"
+            );
         }
         init { this._rawData.Set("received_at", value); }
     }
@@ -44,17 +42,15 @@ public sealed record class InboundMessageEventPayload : JsonModel
     /// <summary>
     /// The account the message belongs to.
     /// </summary>
-    public string? AccountID
-    {
-        get
-        {
+    public string? AccountID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("account_id");
+            return this._rawData.GetNullableClass<string>(
+                "account_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -65,17 +61,15 @@ public sealed record class InboundMessageEventPayload : JsonModel
     /// <summary>
     /// The channel the message arrived on, for example sms or whatsapp.
     /// </summary>
-    public string? Channel
-    {
-        get
-        {
+    public string? Channel {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("channel");
+            return this._rawData.GetNullableClass<string>(
+                "channel"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -86,17 +80,15 @@ public sealed record class InboundMessageEventPayload : JsonModel
     /// <summary>
     /// The inbound message.
     /// </summary>
-    public string? MessageID
-    {
-        get
-        {
+    public string? MessageID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("message_id");
+            return this._rawData.GetNullableClass<string>(
+                "message_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -107,17 +99,15 @@ public sealed record class InboundMessageEventPayload : JsonModel
     /// <summary>
     /// Your number in E.164 format, meaning the number the message was addressed to.
     /// </summary>
-    public string? OutboundNumber
-    {
-        get
-        {
+    public string? OutboundNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("outbound_number");
+            return this._rawData.GetNullableClass<string>(
+                "outbound_number"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -130,12 +120,12 @@ public sealed record class InboundMessageEventPayload : JsonModel
     /// example a media-only message. The field is always present, so read it and
     /// check for null rather than checking whether the key exists.
     /// </summary>
-    public string? Text
-    {
-        get
-        {
+    public string? Text {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("text");
+            return this._rawData.GetNullableClass<string>(
+                "text"
+            );
         }
         init { this._rawData.Set("text", value); }
     }
@@ -144,17 +134,15 @@ public sealed record class InboundMessageEventPayload : JsonModel
     /// When the message was received, in UTC (yyyy-MM-ddTHH:mm:ssZ). Same value
     /// as ReceivedAt, kept for envelope consistency with outbound events.
     /// </summary>
-    public string? UpdatedAt
-    {
-        get
-        {
+    public string? UpdatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("updated_at");
+            return this._rawData.GetNullableClass<string>(
+                "updated_at"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -175,34 +163,33 @@ public sealed record class InboundMessageEventPayload : JsonModel
         _ = this.UpdatedAt;
     }
 
-    public InboundMessageEventPayload() { }
+    public InboundMessageEventPayload ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public InboundMessageEventPayload(InboundMessageEventPayload inboundMessageEventPayload)
-        : base(inboundMessageEventPayload) { }
-#pragma warning restore CS8618
+    public InboundMessageEventPayload (
+        InboundMessageEventPayload inboundMessageEventPayload
+    ) : base(inboundMessageEventPayload)
+    {  }
+    #pragma warning restore CS8618
 
-    public InboundMessageEventPayload(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public InboundMessageEventPayload (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    InboundMessageEventPayload(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    InboundMessageEventPayload (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="InboundMessageEventPayloadFromRaw.FromRawUnchecked"/>
     public static InboundMessageEventPayload FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class InboundMessageEventPayloadFromRaw : IFromRawJson<InboundMessageEventPayload>
@@ -210,5 +197,6 @@ class InboundMessageEventPayloadFromRaw : IFromRawJson<InboundMessageEventPayloa
     /// <inheritdoc/>
     public InboundMessageEventPayload FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => InboundMessageEventPayload.FromRawUnchecked(rawData);
+    )
+    =>InboundMessageEventPayload.FromRawUnchecked(rawData);
 }

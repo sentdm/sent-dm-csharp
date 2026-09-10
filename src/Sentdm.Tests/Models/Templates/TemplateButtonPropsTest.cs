@@ -12,15 +12,7 @@ public class TemplateButtonPropsTest : TestBase
     {
         var model = new TemplateButtonProps
         {
-            ActiveFor = 1,
-            CountryCode = "x",
-            OfferCode = "x",
-            PhoneNumber = "x",
-            QuickReplyType = "x",
-            Text = "text",
-            Url = "url",
-            UrlType = "x",
-            Variables =
+            ActiveFor = 1,CountryCode = "x",OfferCode = "x",PhoneNumber = "x",QuickReplyType = "x",Text = "text",Url = "url",UrlType = "x",Variables =
             [
                 new()
                 {
@@ -38,11 +30,7 @@ public class TemplateButtonPropsTest : TestBase
                     Type = "x",
                     ID = 0,
                 },
-            ],
-            AutofillText = "autofillText",
-            OtpType = "otpType",
-            PackageName = "packageName",
-            SignatureHash = "signatureHash",
+            ],AutofillText = "autofillText",OtpType = "otpType",PackageName = "packageName",SignatureHash = "signatureHash",
         };
 
         int expectedActiveFor = 1;
@@ -101,15 +89,7 @@ public class TemplateButtonPropsTest : TestBase
     {
         var model = new TemplateButtonProps
         {
-            ActiveFor = 1,
-            CountryCode = "x",
-            OfferCode = "x",
-            PhoneNumber = "x",
-            QuickReplyType = "x",
-            Text = "text",
-            Url = "url",
-            UrlType = "x",
-            Variables =
+            ActiveFor = 1,CountryCode = "x",OfferCode = "x",PhoneNumber = "x",QuickReplyType = "x",Text = "text",Url = "url",UrlType = "x",Variables =
             [
                 new()
                 {
@@ -127,18 +107,11 @@ public class TemplateButtonPropsTest : TestBase
                     Type = "x",
                     ID = 0,
                 },
-            ],
-            AutofillText = "autofillText",
-            OtpType = "otpType",
-            PackageName = "packageName",
-            SignatureHash = "signatureHash",
+            ],AutofillText = "autofillText",OtpType = "otpType",PackageName = "packageName",SignatureHash = "signatureHash",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateButtonProps>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateButtonProps>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -148,15 +121,7 @@ public class TemplateButtonPropsTest : TestBase
     {
         var model = new TemplateButtonProps
         {
-            ActiveFor = 1,
-            CountryCode = "x",
-            OfferCode = "x",
-            PhoneNumber = "x",
-            QuickReplyType = "x",
-            Text = "text",
-            Url = "url",
-            UrlType = "x",
-            Variables =
+            ActiveFor = 1,CountryCode = "x",OfferCode = "x",PhoneNumber = "x",QuickReplyType = "x",Text = "text",Url = "url",UrlType = "x",Variables =
             [
                 new()
                 {
@@ -174,18 +139,11 @@ public class TemplateButtonPropsTest : TestBase
                     Type = "x",
                     ID = 0,
                 },
-            ],
-            AutofillText = "autofillText",
-            OtpType = "otpType",
-            PackageName = "packageName",
-            SignatureHash = "signatureHash",
+            ],AutofillText = "autofillText",OtpType = "otpType",PackageName = "packageName",SignatureHash = "signatureHash",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateButtonProps>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateButtonProps>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         int expectedActiveFor = 1;
@@ -244,15 +202,7 @@ public class TemplateButtonPropsTest : TestBase
     {
         var model = new TemplateButtonProps
         {
-            ActiveFor = 1,
-            CountryCode = "x",
-            OfferCode = "x",
-            PhoneNumber = "x",
-            QuickReplyType = "x",
-            Text = "text",
-            Url = "url",
-            UrlType = "x",
-            Variables =
+            ActiveFor = 1,CountryCode = "x",OfferCode = "x",PhoneNumber = "x",QuickReplyType = "x",Text = "text",Url = "url",UrlType = "x",Variables =
             [
                 new()
                 {
@@ -270,11 +220,7 @@ public class TemplateButtonPropsTest : TestBase
                     Type = "x",
                     ID = 0,
                 },
-            ],
-            AutofillText = "autofillText",
-            OtpType = "otpType",
-            PackageName = "packageName",
-            SignatureHash = "signatureHash",
+            ],AutofillText = "autofillText",OtpType = "otpType",PackageName = "packageName",SignatureHash = "signatureHash",
         };
 
         model.Validate();
@@ -285,15 +231,7 @@ public class TemplateButtonPropsTest : TestBase
     {
         var model = new TemplateButtonProps
         {
-            ActiveFor = 1,
-            CountryCode = "x",
-            OfferCode = "x",
-            PhoneNumber = "x",
-            QuickReplyType = "x",
-            Text = "text",
-            Url = "url",
-            UrlType = "x",
-            Variables =
+            ActiveFor = 1,CountryCode = "x",OfferCode = "x",PhoneNumber = "x",QuickReplyType = "x",Text = "text",Url = "url",UrlType = "x",Variables =
             [
                 new()
                 {
@@ -315,13 +253,11 @@ public class TemplateButtonPropsTest : TestBase
         };
 
         Assert.Null(model.AutofillText);
-        Assert.False(model.RawData.ContainsKey("autofillText"));
-        Assert.Null(model.OtpType);
-        Assert.False(model.RawData.ContainsKey("otpType"));
-        Assert.Null(model.PackageName);
-        Assert.False(model.RawData.ContainsKey("packageName"));
-        Assert.Null(model.SignatureHash);
+        Assert.False(model.RawData.ContainsKey("autofillText"));Assert.Null(model.OtpType);
+        Assert.False(model.RawData.ContainsKey("otpType"));Assert.Null(model.PackageName);
+        Assert.False(model.RawData.ContainsKey("packageName"));Assert.Null(model.SignatureHash);
         Assert.False(model.RawData.ContainsKey("signatureHash"));
+
     }
 
     [Fact]
@@ -329,15 +265,7 @@ public class TemplateButtonPropsTest : TestBase
     {
         var model = new TemplateButtonProps
         {
-            ActiveFor = 1,
-            CountryCode = "x",
-            OfferCode = "x",
-            PhoneNumber = "x",
-            QuickReplyType = "x",
-            Text = "text",
-            Url = "url",
-            UrlType = "x",
-            Variables =
+            ActiveFor = 1,CountryCode = "x",OfferCode = "x",PhoneNumber = "x",QuickReplyType = "x",Text = "text",Url = "url",UrlType = "x",Variables =
             [
                 new()
                 {
@@ -366,15 +294,7 @@ public class TemplateButtonPropsTest : TestBase
     {
         var model = new TemplateButtonProps
         {
-            ActiveFor = 1,
-            CountryCode = "x",
-            OfferCode = "x",
-            PhoneNumber = "x",
-            QuickReplyType = "x",
-            Text = "text",
-            Url = "url",
-            UrlType = "x",
-            Variables =
+            ActiveFor = 1,CountryCode = "x",OfferCode = "x",PhoneNumber = "x",QuickReplyType = "x",Text = "text",Url = "url",UrlType = "x",Variables =
             [
                 new()
                 {
@@ -394,20 +314,15 @@ public class TemplateButtonPropsTest : TestBase
                 },
             ],
 
-            AutofillText = null,
-            OtpType = null,
-            PackageName = null,
-            SignatureHash = null,
+            AutofillText = null,OtpType = null,PackageName = null,SignatureHash = null,
         };
 
         Assert.Null(model.AutofillText);
-        Assert.True(model.RawData.ContainsKey("autofillText"));
-        Assert.Null(model.OtpType);
-        Assert.True(model.RawData.ContainsKey("otpType"));
-        Assert.Null(model.PackageName);
-        Assert.True(model.RawData.ContainsKey("packageName"));
-        Assert.Null(model.SignatureHash);
+        Assert.True(model.RawData.ContainsKey("autofillText"));Assert.Null(model.OtpType);
+        Assert.True(model.RawData.ContainsKey("otpType"));Assert.Null(model.PackageName);
+        Assert.True(model.RawData.ContainsKey("packageName"));Assert.Null(model.SignatureHash);
         Assert.True(model.RawData.ContainsKey("signatureHash"));
+
     }
 
     [Fact]
@@ -415,15 +330,7 @@ public class TemplateButtonPropsTest : TestBase
     {
         var model = new TemplateButtonProps
         {
-            ActiveFor = 1,
-            CountryCode = "x",
-            OfferCode = "x",
-            PhoneNumber = "x",
-            QuickReplyType = "x",
-            Text = "text",
-            Url = "url",
-            UrlType = "x",
-            Variables =
+            ActiveFor = 1,CountryCode = "x",OfferCode = "x",PhoneNumber = "x",QuickReplyType = "x",Text = "text",Url = "url",UrlType = "x",Variables =
             [
                 new()
                 {
@@ -443,10 +350,7 @@ public class TemplateButtonPropsTest : TestBase
                 },
             ],
 
-            AutofillText = null,
-            OtpType = null,
-            PackageName = null,
-            SignatureHash = null,
+            AutofillText = null,OtpType = null,PackageName = null,SignatureHash = null,
         };
 
         model.Validate();
@@ -457,15 +361,7 @@ public class TemplateButtonPropsTest : TestBase
     {
         var model = new TemplateButtonProps
         {
-            ActiveFor = 1,
-            CountryCode = "x",
-            OfferCode = "x",
-            PhoneNumber = "x",
-            QuickReplyType = "x",
-            Text = "text",
-            Url = "url",
-            UrlType = "x",
-            Variables =
+            ActiveFor = 1,CountryCode = "x",OfferCode = "x",PhoneNumber = "x",QuickReplyType = "x",Text = "text",Url = "url",UrlType = "x",Variables =
             [
                 new()
                 {
@@ -483,11 +379,7 @@ public class TemplateButtonPropsTest : TestBase
                     Type = "x",
                     ID = 0,
                 },
-            ],
-            AutofillText = "autofillText",
-            OtpType = "otpType",
-            PackageName = "packageName",
-            SignatureHash = "signatureHash",
+            ],AutofillText = "autofillText",OtpType = "otpType",PackageName = "packageName",SignatureHash = "signatureHash",
         };
 
         TemplateButtonProps copied = new(model);

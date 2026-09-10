@@ -17,17 +17,15 @@ public sealed record class ErrorDetail : JsonModel
     /// <summary>
     /// Machine-readable error code (e.g., "RESOURCE_001")
     /// </summary>
-    public string? Code
-    {
-        get
-        {
+    public string? Code {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("code");
+            return this._rawData.GetNullableClass<string>(
+                "code"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -38,36 +36,22 @@ public sealed record class ErrorDetail : JsonModel
     /// <summary>
     /// Additional validation error details (field-level errors)
     /// </summary>
-    public IReadOnlyDictionary<string, IReadOnlyList<string>>? Details
-    {
-        get
-        {
+    public IReadOnlyDictionary<string, IReadOnlyList<string>>? Details {
+        get {
             this._rawData.Freeze();
-            var value = this._rawData.GetNullableClass<
-                FrozenDictionary<string, ImmutableArray<string>>
-            >("details");
-            if (value == null)
-            {
+            var value = this._rawData.GetNullableClass<FrozenDictionary<string, ImmutableArray<string>>>(
+                "details"
+            );
+            if (value == null) {
                 return null;
             }
 
-            return FrozenDictionary.ToFrozenDictionary(
-                value,
-                entry => entry.Key,
-                (entry) => (IReadOnlyList<string>)entry.Value
-            );
+            return FrozenDictionary.ToFrozenDictionary(value, entry => entry.Key, ( entry )=>(IReadOnlyList<string>)entry.Value);
         }
-        init
-        {
+        init {
             this._rawData.Set<FrozenDictionary<string, ImmutableArray<string>>?>(
                 "details",
-                value == null
-                    ? null
-                    : FrozenDictionary.ToFrozenDictionary(
-                        value,
-                        entry => entry.Key,
-                        (entry) => ImmutableArray.ToImmutableArray(entry.Value)
-                    )
+                value == null ? null : FrozenDictionary.ToFrozenDictionary(value, entry => entry.Key, ( entry )=>ImmutableArray.ToImmutableArray(entry.Value))
             );
         }
     }
@@ -75,12 +59,12 @@ public sealed record class ErrorDetail : JsonModel
     /// <summary>
     /// URL to documentation about this error
     /// </summary>
-    public string? DocUrl
-    {
-        get
-        {
+    public string? DocUrl {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("doc_url");
+            return this._rawData.GetNullableClass<string>(
+                "doc_url"
+            );
         }
         init { this._rawData.Set("doc_url", value); }
     }
@@ -88,17 +72,15 @@ public sealed record class ErrorDetail : JsonModel
     /// <summary>
     /// Human-readable error message
     /// </summary>
-    public string? Message
-    {
-        get
-        {
+    public string? Message {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("message");
+            return this._rawData.GetNullableClass<string>(
+                "message"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -115,37 +97,36 @@ public sealed record class ErrorDetail : JsonModel
         _ = this.Message;
     }
 
-    public ErrorDetail() { }
+    public ErrorDetail ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ErrorDetail(ErrorDetail errorDetail)
-        : base(errorDetail) { }
-#pragma warning restore CS8618
+    public ErrorDetail (ErrorDetail errorDetail) : base(errorDetail)
+    {  }
+    #pragma warning restore CS8618
 
-    public ErrorDetail(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public ErrorDetail (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ErrorDetail(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ErrorDetail (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ErrorDetailFromRaw.FromRawUnchecked"/>
-    public static ErrorDetail FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static ErrorDetail FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class ErrorDetailFromRaw : IFromRawJson<ErrorDetail>
 {
     /// <inheritdoc/>
-    public ErrorDetail FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        ErrorDetail.FromRawUnchecked(rawData);
+    public ErrorDetail FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>ErrorDetail.FromRawUnchecked(rawData);
 }

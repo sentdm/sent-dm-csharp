@@ -17,12 +17,12 @@ public sealed record class NumberLookupResponse : JsonModel
     /// <summary>
     /// The response data (null if error)
     /// </summary>
-    public Data? Data
-    {
-        get
-        {
+    public Data? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Data>("data");
+            return this._rawData.GetNullableClass<Data>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class NumberLookupResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public Webhooks::ErrorDetail? Error
-    {
-        get
-        {
+    public Webhooks::ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>("error");
+            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -43,17 +43,15 @@ public sealed record class NumberLookupResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public Webhooks::ApiMeta? Meta
-    {
-        get
-        {
+    public Webhooks::ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ApiMeta>("meta");
+            return this._rawData.GetNullableClass<Webhooks::ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -64,17 +62,15 @@ public sealed record class NumberLookupResponse : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -91,34 +87,33 @@ public sealed record class NumberLookupResponse : JsonModel
         _ = this.Success;
     }
 
-    public NumberLookupResponse() { }
+    public NumberLookupResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public NumberLookupResponse(NumberLookupResponse numberLookupResponse)
-        : base(numberLookupResponse) { }
-#pragma warning restore CS8618
+    public NumberLookupResponse (
+        NumberLookupResponse numberLookupResponse
+    ) : base(numberLookupResponse)
+    {  }
+    #pragma warning restore CS8618
 
-    public NumberLookupResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public NumberLookupResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    NumberLookupResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    NumberLookupResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="NumberLookupResponseFromRaw.FromRawUnchecked"/>
     public static NumberLookupResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class NumberLookupResponseFromRaw : IFromRawJson<NumberLookupResponse>
@@ -126,7 +121,8 @@ class NumberLookupResponseFromRaw : IFromRawJson<NumberLookupResponse>
     /// <inheritdoc/>
     public NumberLookupResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => NumberLookupResponse.FromRawUnchecked(rawData);
+    )
+    =>NumberLookupResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -135,47 +131,45 @@ class NumberLookupResponseFromRaw : IFromRawJson<NumberLookupResponse>
 [JsonConverter(typeof(JsonModelConverter<Data, DataFromRaw>))]
 public sealed record class Data : JsonModel
 {
-    public string? CarrierName
-    {
-        get
-        {
+    public string? CarrierName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("carrier_name");
+            return this._rawData.GetNullableClass<string>(
+                "carrier_name"
+            );
         }
         init { this._rawData.Set("carrier_name", value); }
     }
 
-    public string? CountryCode
-    {
-        get
-        {
+    public string? CountryCode {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("country_code");
+            return this._rawData.GetNullableClass<string>(
+                "country_code"
+            );
         }
         init { this._rawData.Set("country_code", value); }
     }
 
-    public bool? IsPorted
-    {
-        get
-        {
+    public bool? IsPorted {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_ported");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_ported"
+            );
         }
         init { this._rawData.Set("is_ported", value); }
     }
 
-    public bool? IsValid
-    {
-        get
-        {
+    public bool? IsValid {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_valid");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_valid"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -183,57 +177,55 @@ public sealed record class Data : JsonModel
         }
     }
 
-    public bool? IsVoip
-    {
-        get
-        {
+    public bool? IsVoip {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_voip");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_voip"
+            );
         }
         init { this._rawData.Set("is_voip", value); }
     }
 
-    public string? LineType
-    {
-        get
-        {
+    public string? LineType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("line_type");
+            return this._rawData.GetNullableClass<string>(
+                "line_type"
+            );
         }
         init { this._rawData.Set("line_type", value); }
     }
 
-    public string? MobileCountryCode
-    {
-        get
-        {
+    public string? MobileCountryCode {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("mobile_country_code");
+            return this._rawData.GetNullableClass<string>(
+                "mobile_country_code"
+            );
         }
         init { this._rawData.Set("mobile_country_code", value); }
     }
 
-    public string? MobileNetworkCode
-    {
-        get
-        {
+    public string? MobileNetworkCode {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("mobile_network_code");
+            return this._rawData.GetNullableClass<string>(
+                "mobile_network_code"
+            );
         }
         init { this._rawData.Set("mobile_network_code", value); }
     }
 
-    public string? PhoneNumber
-    {
-        get
-        {
+    public string? PhoneNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phone_number");
+            return this._rawData.GetNullableClass<string>(
+                "phone_number"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -255,37 +247,34 @@ public sealed record class Data : JsonModel
         _ = this.PhoneNumber;
     }
 
-    public Data() { }
+    public Data ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Data(Data data)
-        : base(data) { }
-#pragma warning restore CS8618
+    public Data (Data data) : base(data)
+    {  }
+    #pragma warning restore CS8618
 
-    public Data(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Data (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Data(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Data (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="DataFromRaw.FromRawUnchecked"/>
-    public static Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class DataFromRaw : IFromRawJson<Data>
+    public static Data FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class DataFromRaw : IFromRawJson<Data>
 {
     /// <inheritdoc/>
-    public Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Data.FromRawUnchecked(rawData);
+    public Data FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Data.FromRawUnchecked(rawData);
 }

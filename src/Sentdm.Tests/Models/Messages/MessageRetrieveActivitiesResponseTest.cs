@@ -31,28 +31,35 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Data expectedData = new()
@@ -72,7 +79,11 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -83,7 +94,13 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
         Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -123,35 +140,39 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageRetrieveActivitiesResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageRetrieveActivitiesResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -178,35 +199,39 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageRetrieveActivitiesResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageRetrieveActivitiesResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         Data expectedData = new()
@@ -226,7 +251,11 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -237,7 +266,13 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
         Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -277,28 +312,35 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -326,27 +368,36 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -371,18 +422,27 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
@@ -413,31 +473,39 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -462,25 +530,33 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         model.Validate();
@@ -496,14 +572,13 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Assert.Null(model.Data);
-        Assert.False(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.False(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.False(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -516,8 +591,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -533,17 +607,15 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         Assert.Null(model.Data);
-        Assert.True(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.True(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.True(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -556,11 +628,9 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         model.Validate();
@@ -588,28 +658,35 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         MessageRetrieveActivitiesResponse copied = new(model);
@@ -636,11 +713,15 @@ public class DataTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
-            ],
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Pagination = new()
+            ],MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Pagination = new(
+
+            )
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -664,7 +745,11 @@ public class DataTest : TestBase
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         Webhooks::PaginationMeta expectedPagination = new()
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },
             HasMore = true,
             Page = 0,
             PageSize = 0,
@@ -698,11 +783,15 @@ public class DataTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
-            ],
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Pagination = new()
+            ],MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Pagination = new(
+
+            )
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -733,11 +822,15 @@ public class DataTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
-            ],
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Pagination = new()
+            ],MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Pagination = new(
+
+            )
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -765,7 +858,11 @@ public class DataTest : TestBase
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         Webhooks::PaginationMeta expectedPagination = new()
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },
             HasMore = true,
             Page = 0,
             PageSize = 0,
@@ -799,11 +896,15 @@ public class DataTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
-            ],
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Pagination = new()
+            ],MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Pagination = new(
+
+            )
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -818,20 +919,25 @@ public class DataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Data { };
+        var model = new Data
+        {
+
+        };
 
         Assert.Null(model.Activities);
-        Assert.False(model.RawData.ContainsKey("activities"));
-        Assert.Null(model.MessageID);
-        Assert.False(model.RawData.ContainsKey("message_id"));
-        Assert.Null(model.Pagination);
+        Assert.False(model.RawData.ContainsKey("activities"));Assert.Null(model.MessageID);
+        Assert.False(model.RawData.ContainsKey("message_id"));Assert.Null(model.Pagination);
         Assert.False(model.RawData.ContainsKey("pagination"));
+
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Data { };
+        var model = new Data
+        {
+
+        };
 
         model.Validate();
     }
@@ -841,18 +947,17 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Activities = null,
-            MessageID = null,
-            Pagination = null,
+            Activities = null,MessageID = null,Pagination = null,
         };
 
         Assert.Null(model.Activities);
-        Assert.False(model.RawData.ContainsKey("activities"));
-        Assert.Null(model.MessageID);
-        Assert.False(model.RawData.ContainsKey("message_id"));
-        Assert.Null(model.Pagination);
+        Assert.False(model.RawData.ContainsKey("activities"));Assert.Null(model.MessageID);
+        Assert.False(model.RawData.ContainsKey("message_id"));Assert.Null(model.Pagination);
         Assert.False(model.RawData.ContainsKey("pagination"));
+
     }
 
     [Fact]
@@ -860,10 +965,10 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Activities = null,
-            MessageID = null,
-            Pagination = null,
+            Activities = null,MessageID = null,Pagination = null,
         };
 
         model.Validate();
@@ -885,11 +990,15 @@ public class DataTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
-            ],
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Pagination = new()
+            ],MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Pagination = new(
+
+            )
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -911,12 +1020,7 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            ActiveContactPrice = "active_contact_price",
-            Description = "description",
-            From = "from",
-            Price = "price",
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ActiveContactPrice = "active_contact_price",Description = "description",From = "from",Price = "price",Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string expectedActiveContactPrice = "active_contact_price";
@@ -939,12 +1043,7 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            ActiveContactPrice = "active_contact_price",
-            Description = "description",
-            From = "from",
-            Price = "price",
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ActiveContactPrice = "active_contact_price",Description = "description",From = "from",Price = "price",Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -958,19 +1057,11 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            ActiveContactPrice = "active_contact_price",
-            Description = "description",
-            From = "from",
-            Price = "price",
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ActiveContactPrice = "active_contact_price",Description = "description",From = "from",Price = "price",Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Activity>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Activity>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedActiveContactPrice = "active_contact_price";
@@ -993,12 +1084,7 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            ActiveContactPrice = "active_contact_price",
-            Description = "description",
-            From = "from",
-            Price = "price",
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ActiveContactPrice = "active_contact_price",Description = "description",From = "from",Price = "price",Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         model.Validate();
@@ -1009,17 +1095,14 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            ActiveContactPrice = "active_contact_price",
-            From = "from",
-            Price = "price",
+            ActiveContactPrice = "active_contact_price",From = "from",Price = "price",
         };
 
         Assert.Null(model.Description);
-        Assert.False(model.RawData.ContainsKey("description"));
-        Assert.Null(model.Status);
-        Assert.False(model.RawData.ContainsKey("status"));
-        Assert.Null(model.Timestamp);
+        Assert.False(model.RawData.ContainsKey("description"));Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("status"));Assert.Null(model.Timestamp);
         Assert.False(model.RawData.ContainsKey("timestamp"));
+
     }
 
     [Fact]
@@ -1027,9 +1110,7 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            ActiveContactPrice = "active_contact_price",
-            From = "from",
-            Price = "price",
+            ActiveContactPrice = "active_contact_price",From = "from",Price = "price",
         };
 
         model.Validate();
@@ -1040,22 +1121,17 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            ActiveContactPrice = "active_contact_price",
-            From = "from",
-            Price = "price",
+            ActiveContactPrice = "active_contact_price",From = "from",Price = "price",
 
             // Null should be interpreted as omitted for these properties
-            Description = null,
-            Status = null,
-            Timestamp = null,
+            Description = null,Status = null,Timestamp = null,
         };
 
         Assert.Null(model.Description);
-        Assert.False(model.RawData.ContainsKey("description"));
-        Assert.Null(model.Status);
-        Assert.False(model.RawData.ContainsKey("status"));
-        Assert.Null(model.Timestamp);
+        Assert.False(model.RawData.ContainsKey("description"));Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("status"));Assert.Null(model.Timestamp);
         Assert.False(model.RawData.ContainsKey("timestamp"));
+
     }
 
     [Fact]
@@ -1063,14 +1139,10 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            ActiveContactPrice = "active_contact_price",
-            From = "from",
-            Price = "price",
+            ActiveContactPrice = "active_contact_price",From = "from",Price = "price",
 
             // Null should be interpreted as omitted for these properties
-            Description = null,
-            Status = null,
-            Timestamp = null,
+            Description = null,Status = null,Timestamp = null,
         };
 
         model.Validate();
@@ -1081,17 +1153,14 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            Description = "description",
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         Assert.Null(model.ActiveContactPrice);
-        Assert.False(model.RawData.ContainsKey("active_contact_price"));
-        Assert.Null(model.From);
-        Assert.False(model.RawData.ContainsKey("from"));
-        Assert.Null(model.Price);
+        Assert.False(model.RawData.ContainsKey("active_contact_price"));Assert.Null(model.From);
+        Assert.False(model.RawData.ContainsKey("from"));Assert.Null(model.Price);
         Assert.False(model.RawData.ContainsKey("price"));
+
     }
 
     [Fact]
@@ -1099,9 +1168,7 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            Description = "description",
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         model.Validate();
@@ -1112,21 +1179,16 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            Description = "description",
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
-            ActiveContactPrice = null,
-            From = null,
-            Price = null,
+            ActiveContactPrice = null,From = null,Price = null,
         };
 
         Assert.Null(model.ActiveContactPrice);
-        Assert.True(model.RawData.ContainsKey("active_contact_price"));
-        Assert.Null(model.From);
-        Assert.True(model.RawData.ContainsKey("from"));
-        Assert.Null(model.Price);
+        Assert.True(model.RawData.ContainsKey("active_contact_price"));Assert.Null(model.From);
+        Assert.True(model.RawData.ContainsKey("from"));Assert.Null(model.Price);
         Assert.True(model.RawData.ContainsKey("price"));
+
     }
 
     [Fact]
@@ -1134,13 +1196,9 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            Description = "description",
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Description = "description",Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
-            ActiveContactPrice = null,
-            From = null,
-            Price = null,
+            ActiveContactPrice = null,From = null,Price = null,
         };
 
         model.Validate();
@@ -1151,12 +1209,7 @@ public class ActivityTest : TestBase
     {
         var model = new Activity
         {
-            ActiveContactPrice = "active_contact_price",
-            Description = "description",
-            From = "from",
-            Price = "price",
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ActiveContactPrice = "active_contact_price",Description = "description",From = "from",Price = "price",Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         Activity copied = new(model);

@@ -21,12 +21,12 @@ public record class ContactListParams : ParamsBase
     /// <summary>
     /// Optional channel filter (sms, whatsapp)
     /// </summary>
-    public string? Channel
-    {
-        get
-        {
+    public string? Channel {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("channel");
+            return this._rawQueryData.GetNullableClass<string>(
+                "channel"
+            );
         }
         init { this._rawQueryData.Set("channel", value); }
     }
@@ -34,17 +34,15 @@ public record class ContactListParams : ParamsBase
     /// <summary>
     /// Page number (1-indexed)
     /// </summary>
-    public int? Page
-    {
-        get
-        {
+    public int? Page {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<int>("page");
+            return this._rawQueryData.GetNullableStruct<int>(
+                "page"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -55,17 +53,15 @@ public record class ContactListParams : ParamsBase
     /// <summary>
     /// Number of items per page
     /// </summary>
-    public int? PageSize
-    {
-        get
-        {
+    public int? PageSize {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<int>("page_size");
+            return this._rawQueryData.GetNullableStruct<int>(
+                "page_size"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -76,12 +72,12 @@ public record class ContactListParams : ParamsBase
     /// <summary>
     /// Optional phone number filter (alternative to list view)
     /// </summary>
-    public string? Phone
-    {
-        get
-        {
+    public string? Phone {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("phone");
+            return this._rawQueryData.GetNullableClass<string>(
+                "phone"
+            );
         }
         init { this._rawQueryData.Set("phone", value); }
     }
@@ -89,27 +85,25 @@ public record class ContactListParams : ParamsBase
     /// <summary>
     /// Optional search term for filtering contacts
     /// </summary>
-    public string? Search
-    {
-        get
-        {
+    public string? Search {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("search");
+            return this._rawQueryData.GetNullableClass<string>(
+                "search"
+            );
         }
         init { this._rawQueryData.Set("search", value); }
     }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -117,15 +111,18 @@ public record class ContactListParams : ParamsBase
         }
     }
 
-    public ContactListParams() { }
+    public ContactListParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ContactListParams(ContactListParams contactListParams)
-        : base(contactListParams) { }
-#pragma warning restore CS8618
+    public ContactListParams (ContactListParams contactListParams) : base(
+        contactListParams
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public ContactListParams(
+    public ContactListParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -134,9 +131,9 @@ public record class ContactListParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ContactListParams(
+    ContactListParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -144,7 +141,7 @@ public record class ContactListParams : ParamsBase
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static ContactListParams FromRawUnchecked(
@@ -155,24 +152,17 @@ public record class ContactListParams : ParamsBase
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(ContactListParams? other)
     {
@@ -180,19 +170,22 @@ public record class ContactListParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v3/contacts")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/v3/contacts"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -202,7 +195,5 @@ public record class ContactListParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

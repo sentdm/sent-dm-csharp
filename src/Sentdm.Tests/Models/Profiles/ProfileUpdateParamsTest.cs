@@ -9,27 +9,32 @@ public class ProfileUpdateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
-            AllowContactSharing = null,
-            AllowNumberChangeDuringOnboarding = null,
-            AllowTemplateSharing = null,
-            BillingContact = new()
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",AllowContactSharing = null,AllowNumberChangeDuringOnboarding = null,AllowTemplateSharing = null,BillingContact = new(
+
+            )
             {
                 Email = "dev@stainless.com",
                 Name = "x",
                 Address = "address",
                 Phone = "phone",
-            },
-            BillingModel = "organization",
-            Brand = new()
+            },BillingModel = "organization",Brand = new()
             {
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.SmallAccount,
                     Vertical = TcrVertical.Professional,
-                    DestinationCountries = [new() { ID = "US", IsMain = false }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "US",
+                            IsMain = false,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = null,
                     PhoneNumberPrefix = "+1",
@@ -57,29 +62,15 @@ public class ProfileUpdateParamsTest : TestBase
                     TaxIDType = "us_ein",
                     Url = "https://acmecorp.com",
                 },
-            },
-            Description = "Updated sales department sender profile",
-            Icon = null,
-            InheritContacts = null,
-            InheritTcrBrand = null,
-            InheritTcrCampaign = null,
-            InheritTemplates = null,
-            Name = "Sales Team - Updated",
-            PaymentDetails = new()
+            },Description = "Updated sales department sender profile",Icon = null,InheritContacts = null,InheritTcrBrand = null,InheritTcrCampaign = null,InheritTemplates = null,Name = "Sales Team - Updated",PaymentDetails = new(
+
+            )
             {
                 CardNumber = "3216699102256101",
                 Cvc = "3216",
                 Expiry = "11/66",
                 ZipCode = "x",
-            },
-            Sandbox = false,
-            SendingPhoneNumber = null,
-            SendingPhoneNumberProfileID = null,
-            SendingWhatsappNumberProfileID = null,
-            ShortName = "SALES",
-            WhatsappPhoneNumber = null,
-            IdempotencyKey = "req_abc123_retry1",
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            },Sandbox = false,SendingPhoneNumber = null,SendingPhoneNumberProfileID = null,SendingWhatsappNumberProfileID = null,ShortName = "SALES",WhatsappPhoneNumber = null,IdempotencyKey = "req_abc123_retry1",XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedProfileID = "770e8400-e29b-41d4-a716-446655440002";
@@ -97,7 +88,14 @@ public class ProfileUpdateParamsTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.SmallAccount,
                 Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "US", IsMain = false }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "US",
+                        IsMain = false,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = null,
                 PhoneNumberPrefix = "+1",
@@ -168,27 +166,32 @@ public class ProfileUpdateParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
-            AllowContactSharing = null,
-            AllowNumberChangeDuringOnboarding = null,
-            AllowTemplateSharing = null,
-            BillingContact = new()
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",AllowContactSharing = null,AllowNumberChangeDuringOnboarding = null,AllowTemplateSharing = null,BillingContact = new(
+
+            )
             {
                 Email = "dev@stainless.com",
                 Name = "x",
                 Address = "address",
                 Phone = "phone",
-            },
-            BillingModel = "organization",
-            Brand = new()
+            },BillingModel = "organization",Brand = new()
             {
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.SmallAccount,
                     Vertical = TcrVertical.Professional,
-                    DestinationCountries = [new() { ID = "US", IsMain = false }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "US",
+                            IsMain = false,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = null,
                     PhoneNumberPrefix = "+1",
@@ -216,60 +219,53 @@ public class ProfileUpdateParamsTest : TestBase
                     TaxIDType = "us_ein",
                     Url = "https://acmecorp.com",
                 },
-            },
-            Description = "Updated sales department sender profile",
-            Icon = null,
-            InheritContacts = null,
-            InheritTcrBrand = null,
-            InheritTcrCampaign = null,
-            InheritTemplates = null,
-            Name = "Sales Team - Updated",
-            PaymentDetails = new()
+            },Description = "Updated sales department sender profile",Icon = null,InheritContacts = null,InheritTcrBrand = null,InheritTcrCampaign = null,InheritTemplates = null,Name = "Sales Team - Updated",PaymentDetails = new(
+
+            )
             {
                 CardNumber = "3216699102256101",
                 Cvc = "3216",
                 Expiry = "11/66",
                 ZipCode = "x",
-            },
-            SendingPhoneNumber = null,
-            SendingPhoneNumberProfileID = null,
-            SendingWhatsappNumberProfileID = null,
-            ShortName = "SALES",
-            WhatsappPhoneNumber = null,
+            },SendingPhoneNumber = null,SendingPhoneNumberProfileID = null,SendingWhatsappNumberProfileID = null,ShortName = "SALES",WhatsappPhoneNumber = null,
         };
 
         Assert.Null(parameters.Sandbox);
-        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.IdempotencyKey);
-        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));Assert.Null(parameters.IdempotencyKey);
+        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
-            AllowContactSharing = null,
-            AllowNumberChangeDuringOnboarding = null,
-            AllowTemplateSharing = null,
-            BillingContact = new()
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",AllowContactSharing = null,AllowNumberChangeDuringOnboarding = null,AllowTemplateSharing = null,BillingContact = new(
+
+            )
             {
                 Email = "dev@stainless.com",
                 Name = "x",
                 Address = "address",
                 Phone = "phone",
-            },
-            BillingModel = "organization",
-            Brand = new()
+            },BillingModel = "organization",Brand = new()
             {
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.SmallAccount,
                     Vertical = TcrVertical.Professional,
-                    DestinationCountries = [new() { ID = "US", IsMain = false }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "US",
+                            IsMain = false,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = null,
                     PhoneNumberPrefix = "+1",
@@ -297,161 +293,93 @@ public class ProfileUpdateParamsTest : TestBase
                     TaxIDType = "us_ein",
                     Url = "https://acmecorp.com",
                 },
-            },
-            Description = "Updated sales department sender profile",
-            Icon = null,
-            InheritContacts = null,
-            InheritTcrBrand = null,
-            InheritTcrCampaign = null,
-            InheritTemplates = null,
-            Name = "Sales Team - Updated",
-            PaymentDetails = new()
+            },Description = "Updated sales department sender profile",Icon = null,InheritContacts = null,InheritTcrBrand = null,InheritTcrCampaign = null,InheritTemplates = null,Name = "Sales Team - Updated",PaymentDetails = new(
+
+            )
             {
                 CardNumber = "3216699102256101",
                 Cvc = "3216",
                 Expiry = "11/66",
                 ZipCode = "x",
-            },
-            SendingPhoneNumber = null,
-            SendingPhoneNumberProfileID = null,
-            SendingWhatsappNumberProfileID = null,
-            ShortName = "SALES",
-            WhatsappPhoneNumber = null,
+            },SendingPhoneNumber = null,SendingPhoneNumberProfileID = null,SendingWhatsappNumberProfileID = null,ShortName = "SALES",WhatsappPhoneNumber = null,
 
             // Null should be interpreted as omitted for these properties
-            Sandbox = null,
-            IdempotencyKey = null,
-            XProfileID = null,
+            Sandbox = null,IdempotencyKey = null,XProfileID = null,
         };
 
         Assert.Null(parameters.Sandbox);
-        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.IdempotencyKey);
-        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));Assert.Null(parameters.IdempotencyKey);
+        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
-            Sandbox = false,
-            IdempotencyKey = "req_abc123_retry1",
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",Sandbox = false,IdempotencyKey = "req_abc123_retry1",XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         Assert.Null(parameters.AllowContactSharing);
-        Assert.False(parameters.RawBodyData.ContainsKey("allow_contact_sharing"));
-        Assert.Null(parameters.AllowNumberChangeDuringOnboarding);
-        Assert.False(parameters.RawBodyData.ContainsKey("allow_number_change_during_onboarding"));
-        Assert.Null(parameters.AllowTemplateSharing);
-        Assert.False(parameters.RawBodyData.ContainsKey("allow_template_sharing"));
-        Assert.Null(parameters.BillingContact);
-        Assert.False(parameters.RawBodyData.ContainsKey("billing_contact"));
-        Assert.Null(parameters.BillingModel);
-        Assert.False(parameters.RawBodyData.ContainsKey("billing_model"));
-        Assert.Null(parameters.Brand);
-        Assert.False(parameters.RawBodyData.ContainsKey("brand"));
-        Assert.Null(parameters.Description);
-        Assert.False(parameters.RawBodyData.ContainsKey("description"));
-        Assert.Null(parameters.Icon);
-        Assert.False(parameters.RawBodyData.ContainsKey("icon"));
-        Assert.Null(parameters.InheritContacts);
-        Assert.False(parameters.RawBodyData.ContainsKey("inherit_contacts"));
-        Assert.Null(parameters.InheritTcrBrand);
-        Assert.False(parameters.RawBodyData.ContainsKey("inherit_tcr_brand"));
-        Assert.Null(parameters.InheritTcrCampaign);
-        Assert.False(parameters.RawBodyData.ContainsKey("inherit_tcr_campaign"));
-        Assert.Null(parameters.InheritTemplates);
-        Assert.False(parameters.RawBodyData.ContainsKey("inherit_templates"));
-        Assert.Null(parameters.Name);
-        Assert.False(parameters.RawBodyData.ContainsKey("name"));
-        Assert.Null(parameters.PaymentDetails);
-        Assert.False(parameters.RawBodyData.ContainsKey("payment_details"));
-        Assert.Null(parameters.SendingPhoneNumber);
-        Assert.False(parameters.RawBodyData.ContainsKey("sending_phone_number"));
-        Assert.Null(parameters.SendingPhoneNumberProfileID);
-        Assert.False(parameters.RawBodyData.ContainsKey("sending_phone_number_profile_id"));
-        Assert.Null(parameters.SendingWhatsappNumberProfileID);
-        Assert.False(parameters.RawBodyData.ContainsKey("sending_whatsapp_number_profile_id"));
-        Assert.Null(parameters.ShortName);
-        Assert.False(parameters.RawBodyData.ContainsKey("short_name"));
-        Assert.Null(parameters.WhatsappPhoneNumber);
+        Assert.False(parameters.RawBodyData.ContainsKey("allow_contact_sharing"));Assert.Null(parameters.AllowNumberChangeDuringOnboarding);
+        Assert.False(parameters.RawBodyData.ContainsKey("allow_number_change_during_onboarding"));Assert.Null(parameters.AllowTemplateSharing);
+        Assert.False(parameters.RawBodyData.ContainsKey("allow_template_sharing"));Assert.Null(parameters.BillingContact);
+        Assert.False(parameters.RawBodyData.ContainsKey("billing_contact"));Assert.Null(parameters.BillingModel);
+        Assert.False(parameters.RawBodyData.ContainsKey("billing_model"));Assert.Null(parameters.Brand);
+        Assert.False(parameters.RawBodyData.ContainsKey("brand"));Assert.Null(parameters.Description);
+        Assert.False(parameters.RawBodyData.ContainsKey("description"));Assert.Null(parameters.Icon);
+        Assert.False(parameters.RawBodyData.ContainsKey("icon"));Assert.Null(parameters.InheritContacts);
+        Assert.False(parameters.RawBodyData.ContainsKey("inherit_contacts"));Assert.Null(parameters.InheritTcrBrand);
+        Assert.False(parameters.RawBodyData.ContainsKey("inherit_tcr_brand"));Assert.Null(parameters.InheritTcrCampaign);
+        Assert.False(parameters.RawBodyData.ContainsKey("inherit_tcr_campaign"));Assert.Null(parameters.InheritTemplates);
+        Assert.False(parameters.RawBodyData.ContainsKey("inherit_templates"));Assert.Null(parameters.Name);
+        Assert.False(parameters.RawBodyData.ContainsKey("name"));Assert.Null(parameters.PaymentDetails);
+        Assert.False(parameters.RawBodyData.ContainsKey("payment_details"));Assert.Null(parameters.SendingPhoneNumber);
+        Assert.False(parameters.RawBodyData.ContainsKey("sending_phone_number"));Assert.Null(parameters.SendingPhoneNumberProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("sending_phone_number_profile_id"));Assert.Null(parameters.SendingWhatsappNumberProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("sending_whatsapp_number_profile_id"));Assert.Null(parameters.ShortName);
+        Assert.False(parameters.RawBodyData.ContainsKey("short_name"));Assert.Null(parameters.WhatsappPhoneNumber);
         Assert.False(parameters.RawBodyData.ContainsKey("whatsapp_phone_number"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new ProfileUpdateParams
         {
-            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
-            Sandbox = false,
-            IdempotencyKey = "req_abc123_retry1",
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",Sandbox = false,IdempotencyKey = "req_abc123_retry1",XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
-            AllowContactSharing = null,
-            AllowNumberChangeDuringOnboarding = null,
-            AllowTemplateSharing = null,
-            BillingContact = null,
-            BillingModel = null,
-            Brand = null,
-            Description = null,
-            Icon = null,
-            InheritContacts = null,
-            InheritTcrBrand = null,
-            InheritTcrCampaign = null,
-            InheritTemplates = null,
-            Name = null,
-            PaymentDetails = null,
-            SendingPhoneNumber = null,
-            SendingPhoneNumberProfileID = null,
-            SendingWhatsappNumberProfileID = null,
-            ShortName = null,
-            WhatsappPhoneNumber = null,
+            AllowContactSharing = null,AllowNumberChangeDuringOnboarding = null,AllowTemplateSharing = null,BillingContact = null,BillingModel = null,Brand = null,Description = null,Icon = null,InheritContacts = null,InheritTcrBrand = null,InheritTcrCampaign = null,InheritTemplates = null,Name = null,PaymentDetails = null,SendingPhoneNumber = null,SendingPhoneNumberProfileID = null,SendingWhatsappNumberProfileID = null,ShortName = null,WhatsappPhoneNumber = null,
         };
 
         Assert.Null(parameters.AllowContactSharing);
-        Assert.True(parameters.RawBodyData.ContainsKey("allow_contact_sharing"));
-        Assert.Null(parameters.AllowNumberChangeDuringOnboarding);
-        Assert.True(parameters.RawBodyData.ContainsKey("allow_number_change_during_onboarding"));
-        Assert.Null(parameters.AllowTemplateSharing);
-        Assert.True(parameters.RawBodyData.ContainsKey("allow_template_sharing"));
-        Assert.Null(parameters.BillingContact);
-        Assert.True(parameters.RawBodyData.ContainsKey("billing_contact"));
-        Assert.Null(parameters.BillingModel);
-        Assert.True(parameters.RawBodyData.ContainsKey("billing_model"));
-        Assert.Null(parameters.Brand);
-        Assert.True(parameters.RawBodyData.ContainsKey("brand"));
-        Assert.Null(parameters.Description);
-        Assert.True(parameters.RawBodyData.ContainsKey("description"));
-        Assert.Null(parameters.Icon);
-        Assert.True(parameters.RawBodyData.ContainsKey("icon"));
-        Assert.Null(parameters.InheritContacts);
-        Assert.True(parameters.RawBodyData.ContainsKey("inherit_contacts"));
-        Assert.Null(parameters.InheritTcrBrand);
-        Assert.True(parameters.RawBodyData.ContainsKey("inherit_tcr_brand"));
-        Assert.Null(parameters.InheritTcrCampaign);
-        Assert.True(parameters.RawBodyData.ContainsKey("inherit_tcr_campaign"));
-        Assert.Null(parameters.InheritTemplates);
-        Assert.True(parameters.RawBodyData.ContainsKey("inherit_templates"));
-        Assert.Null(parameters.Name);
-        Assert.True(parameters.RawBodyData.ContainsKey("name"));
-        Assert.Null(parameters.PaymentDetails);
-        Assert.True(parameters.RawBodyData.ContainsKey("payment_details"));
-        Assert.Null(parameters.SendingPhoneNumber);
-        Assert.True(parameters.RawBodyData.ContainsKey("sending_phone_number"));
-        Assert.Null(parameters.SendingPhoneNumberProfileID);
-        Assert.True(parameters.RawBodyData.ContainsKey("sending_phone_number_profile_id"));
-        Assert.Null(parameters.SendingWhatsappNumberProfileID);
-        Assert.True(parameters.RawBodyData.ContainsKey("sending_whatsapp_number_profile_id"));
-        Assert.Null(parameters.ShortName);
-        Assert.True(parameters.RawBodyData.ContainsKey("short_name"));
-        Assert.Null(parameters.WhatsappPhoneNumber);
+        Assert.True(parameters.RawBodyData.ContainsKey("allow_contact_sharing"));Assert.Null(parameters.AllowNumberChangeDuringOnboarding);
+        Assert.True(parameters.RawBodyData.ContainsKey("allow_number_change_during_onboarding"));Assert.Null(parameters.AllowTemplateSharing);
+        Assert.True(parameters.RawBodyData.ContainsKey("allow_template_sharing"));Assert.Null(parameters.BillingContact);
+        Assert.True(parameters.RawBodyData.ContainsKey("billing_contact"));Assert.Null(parameters.BillingModel);
+        Assert.True(parameters.RawBodyData.ContainsKey("billing_model"));Assert.Null(parameters.Brand);
+        Assert.True(parameters.RawBodyData.ContainsKey("brand"));Assert.Null(parameters.Description);
+        Assert.True(parameters.RawBodyData.ContainsKey("description"));Assert.Null(parameters.Icon);
+        Assert.True(parameters.RawBodyData.ContainsKey("icon"));Assert.Null(parameters.InheritContacts);
+        Assert.True(parameters.RawBodyData.ContainsKey("inherit_contacts"));Assert.Null(parameters.InheritTcrBrand);
+        Assert.True(parameters.RawBodyData.ContainsKey("inherit_tcr_brand"));Assert.Null(parameters.InheritTcrCampaign);
+        Assert.True(parameters.RawBodyData.ContainsKey("inherit_tcr_campaign"));Assert.Null(parameters.InheritTemplates);
+        Assert.True(parameters.RawBodyData.ContainsKey("inherit_templates"));Assert.Null(parameters.Name);
+        Assert.True(parameters.RawBodyData.ContainsKey("name"));Assert.Null(parameters.PaymentDetails);
+        Assert.True(parameters.RawBodyData.ContainsKey("payment_details"));Assert.Null(parameters.SendingPhoneNumber);
+        Assert.True(parameters.RawBodyData.ContainsKey("sending_phone_number"));Assert.Null(parameters.SendingPhoneNumberProfileID);
+        Assert.True(parameters.RawBodyData.ContainsKey("sending_phone_number_profile_id"));Assert.Null(parameters.SendingWhatsappNumberProfileID);
+        Assert.True(parameters.RawBodyData.ContainsKey("sending_whatsapp_number_profile_id"));Assert.Null(parameters.ShortName);
+        Assert.True(parameters.RawBodyData.ContainsKey("short_name"));Assert.Null(parameters.WhatsappPhoneNumber);
         Assert.True(parameters.RawBodyData.ContainsKey("whatsapp_phone_number"));
+
     }
 
     [Fact]
@@ -459,17 +387,17 @@ public class ProfileUpdateParamsTest : TestBase
     {
         ProfileUpdateParams parameters = new()
         {
-            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002"
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
-
-        Assert.True(
-            TestBase.UrisEqual(
-                new Uri("https://api.sent.dm/v3/profiles/770e8400-e29b-41d4-a716-446655440002"),
-                url
-            )
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/profiles/770e8400-e29b-41d4-a716-446655440002"), url));
     }
 
     [Fact]
@@ -483,13 +411,15 @@ public class ProfileUpdateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
-
-        Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));
-        Assert.Equal(
-            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-            requestMessage.Headers.GetValues("x-profile-id")
+        parameters.AddHeadersToRequest(
+            requestMessage,
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));Assert.Equal(["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"], requestMessage.Headers.GetValues("x-profile-id"));
     }
 
     [Fact]
@@ -515,7 +445,14 @@ public class ProfileUpdateParamsTest : TestBase
                 {
                     BrandRelationship = TcrBrandRelationship.SmallAccount,
                     Vertical = TcrVertical.Professional,
-                    DestinationCountries = [new() { ID = "US", IsMain = false }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "US",
+                            IsMain = false,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = null,
                     PhoneNumberPrefix = "+1",

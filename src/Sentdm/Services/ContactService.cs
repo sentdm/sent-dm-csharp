@@ -14,24 +14,25 @@ public sealed class ContactService : IContactService
     readonly Lazy<IContactServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IContactServiceWithRawResponse WithRawResponse
-    {
+    public IContactServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly ISentClient _client;
 
     /// <inheritdoc/>
-    public IContactService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new ContactService(this._client.WithOptions(modifier));
-    }
+    public IContactService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new ContactService(this._client.WithOptions(modifier)); }
 
-    public ContactService(ISentClient client)
+    public ContactService (ISentClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new ContactServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new ContactServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -40,9 +41,7 @@ public sealed class ContactService : IContactService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Create(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Create(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -52,13 +51,9 @@ public sealed class ContactService : IContactService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<ApiResponseOfContact> Retrieve(
         string id,
         ContactRetrieveParams? parameters = null,
@@ -67,7 +62,9 @@ public sealed class ContactService : IContactService
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { ID = id }, cancellationToken);
+        return this.Retrieve(parameters with{
+            ID = id
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -76,13 +73,9 @@ public sealed class ContactService : IContactService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Update(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Update(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<ApiResponseOfContact> Update(
         string id,
         ContactUpdateParams? parameters = null,
@@ -91,7 +84,9 @@ public sealed class ContactService : IContactService
     {
         parameters ??= new();
 
-        return this.Update(parameters with { ID = id }, cancellationToken);
+        return this.Update(parameters with{
+            ID = id
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -100,9 +95,7 @@ public sealed class ContactService : IContactService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.List(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -114,9 +107,7 @@ public sealed class ContactService : IContactService
     )
     {
         return this.WithRawResponse.Delete(parameters, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public async Task Delete(
         string id,
@@ -126,7 +117,9 @@ public sealed class ContactService : IContactService
     {
         parameters ??= new();
 
-        await this.Delete(parameters with { ID = id }, cancellationToken).ConfigureAwait(false);
+        await this.Delete(parameters with{
+            ID = id
+        }, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -135,13 +128,9 @@ public sealed class ContactService : IContactService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.RetrieveMessageSummary(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.RetrieveMessageSummary(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<ApiResponseOfContactMessageSummary> RetrieveMessageSummary(
         string contactID,
         ContactRetrieveMessageSummaryParams? parameters = null,
@@ -150,13 +139,9 @@ public sealed class ContactService : IContactService
     {
         parameters ??= new();
 
-        return this.RetrieveMessageSummary(
-            parameters with
-            {
-                ContactID = contactID,
-            },
-            cancellationToken
-        );
+        return this.RetrieveMessageSummary(parameters with{
+            ContactID = contactID
+        }, cancellationToken);
     }
 }
 
@@ -166,15 +151,15 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IContactServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public IContactServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new ContactServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public ContactServiceWithRawResponse(ISentClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public ContactServiceWithRawResponse (ISentClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<ApiResponseOfContact>> Create(
@@ -188,20 +173,13 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var apiResponseOfContact = await response
-                    .Deserialize<ApiResponseOfContact>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    apiResponseOfContact.Validate();
-                }
-                return apiResponseOfContact;
+        return new(response, async ( token )=>{
+            var apiResponseOfContact = await response.Deserialize<ApiResponseOfContact>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                apiResponseOfContact.Validate();
             }
-        );
+            return apiResponseOfContact;
+        });
     }
 
     /// <inheritdoc/>
@@ -212,7 +190,9 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.ID' cannot be null"
+            );
         }
 
         HttpRequest<ContactRetrieveParams> request = new()
@@ -221,23 +201,14 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var apiResponseOfContact = await response
-                    .Deserialize<ApiResponseOfContact>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    apiResponseOfContact.Validate();
-                }
-                return apiResponseOfContact;
+        return new(response, async ( token )=>{
+            var apiResponseOfContact = await response.Deserialize<ApiResponseOfContact>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                apiResponseOfContact.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return apiResponseOfContact;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<ApiResponseOfContact>> Retrieve(
         string id,
         ContactRetrieveParams? parameters = null,
@@ -246,7 +217,9 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { ID = id }, cancellationToken);
+        return this.Retrieve(parameters with{
+            ID = id
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -257,7 +230,9 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.ID' cannot be null"
+            );
         }
 
         HttpRequest<ContactUpdateParams> request = new()
@@ -266,23 +241,14 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var apiResponseOfContact = await response
-                    .Deserialize<ApiResponseOfContact>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    apiResponseOfContact.Validate();
-                }
-                return apiResponseOfContact;
+        return new(response, async ( token )=>{
+            var apiResponseOfContact = await response.Deserialize<ApiResponseOfContact>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                apiResponseOfContact.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return apiResponseOfContact;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<ApiResponseOfContact>> Update(
         string id,
         ContactUpdateParams? parameters = null,
@@ -291,7 +257,9 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.Update(parameters with { ID = id }, cancellationToken);
+        return this.Update(parameters with{
+            ID = id
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -308,20 +276,13 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<ContactListPageResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new ContactListPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<ContactListPageResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new ContactListPage(this, parameters, page);
+        });
     }
 
     /// <inheritdoc/>
@@ -333,7 +294,9 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.ID' cannot be null"
+            );
         }
 
         HttpRequest<ContactDeleteParams> request = new()
@@ -342,9 +305,7 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
             Params = parameters,
         };
         return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<HttpResponse> Delete(
         string id,
@@ -354,7 +315,9 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.Delete(parameters with { ID = id }, cancellationToken);
+        return this.Delete(parameters with{
+            ID = id
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -365,7 +328,9 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     {
         if (parameters.ContactID == null)
         {
-            throw new SentInvalidDataException("'parameters.ContactID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.ContactID' cannot be null"
+            );
         }
 
         HttpRequest<ContactRetrieveMessageSummaryParams> request = new()
@@ -374,23 +339,14 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var apiResponseOfContactMessageSummary = await response
-                    .Deserialize<ApiResponseOfContactMessageSummary>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    apiResponseOfContactMessageSummary.Validate();
-                }
-                return apiResponseOfContactMessageSummary;
+        return new(response, async ( token )=>{
+            var apiResponseOfContactMessageSummary = await response.Deserialize<ApiResponseOfContactMessageSummary>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                apiResponseOfContactMessageSummary.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return apiResponseOfContactMessageSummary;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<ApiResponseOfContactMessageSummary>> RetrieveMessageSummary(
         string contactID,
         ContactRetrieveMessageSummaryParams? parameters = null,
@@ -399,12 +355,8 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.RetrieveMessageSummary(
-            parameters with
-            {
-                ContactID = contactID,
-            },
-            cancellationToken
-        );
+        return this.RetrieveMessageSummary(parameters with{
+            ContactID = contactID
+        }, cancellationToken);
     }
 }

@@ -10,17 +10,15 @@ namespace Sentdm.Models.Profiles;
 [JsonConverter(typeof(JsonModelConverter<DestinationCountry, DestinationCountryFromRaw>))]
 public sealed record class DestinationCountry : JsonModel
 {
-    public string? ID
-    {
-        get
-        {
+    public string? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("id");
+            return this._rawData.GetNullableClass<string>(
+                "id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -28,17 +26,15 @@ public sealed record class DestinationCountry : JsonModel
         }
     }
 
-    public bool? IsMain
-    {
-        get
-        {
+    public bool? IsMain {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("isMain");
+            return this._rawData.GetNullableStruct<bool>(
+                "isMain"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -53,39 +49,38 @@ public sealed record class DestinationCountry : JsonModel
         _ = this.IsMain;
     }
 
-    public DestinationCountry() { }
+    public DestinationCountry ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public DestinationCountry(DestinationCountry destinationCountry)
-        : base(destinationCountry) { }
-#pragma warning restore CS8618
+    public DestinationCountry (DestinationCountry destinationCountry) : base(
+        destinationCountry
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public DestinationCountry(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public DestinationCountry (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    DestinationCountry(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    DestinationCountry (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="DestinationCountryFromRaw.FromRawUnchecked"/>
     public static DestinationCountry FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class DestinationCountryFromRaw : IFromRawJson<DestinationCountry>
 {
     /// <inheritdoc/>
-    public DestinationCountry FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        DestinationCountry.FromRawUnchecked(rawData);
+    public DestinationCountry FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>DestinationCountry.FromRawUnchecked(rawData);
 }

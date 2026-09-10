@@ -21,12 +21,12 @@ public record class TemplateListParams : ParamsBase
     /// <summary>
     /// Optional category filter: MARKETING, UTILITY, AUTHENTICATION
     /// </summary>
-    public string? Category
-    {
-        get
-        {
+    public string? Category {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("category");
+            return this._rawQueryData.GetNullableClass<string>(
+                "category"
+            );
         }
         init { this._rawQueryData.Set("category", value); }
     }
@@ -38,12 +38,12 @@ public record class TemplateListParams : ParamsBase
     /// still passing is_welcome_playground keeps binding instead of the request
     /// shape changing under it.
     /// </summary>
-    public bool? IsWelcomePlayground
-    {
-        get
-        {
+    public bool? IsWelcomePlayground {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<bool>("is_welcome_playground");
+            return this._rawQueryData.GetNullableStruct<bool>(
+                "is_welcome_playground"
+            );
         }
         init { this._rawQueryData.Set("is_welcome_playground", value); }
     }
@@ -51,17 +51,15 @@ public record class TemplateListParams : ParamsBase
     /// <summary>
     /// Page number (1-indexed)
     /// </summary>
-    public int? Page
-    {
-        get
-        {
+    public int? Page {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<int>("page");
+            return this._rawQueryData.GetNullableStruct<int>(
+                "page"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -72,17 +70,15 @@ public record class TemplateListParams : ParamsBase
     /// <summary>
     /// Number of items per page
     /// </summary>
-    public int? PageSize
-    {
-        get
-        {
+    public int? PageSize {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<int>("page_size");
+            return this._rawQueryData.GetNullableStruct<int>(
+                "page_size"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -93,12 +89,12 @@ public record class TemplateListParams : ParamsBase
     /// <summary>
     /// Optional search term for filtering templates
     /// </summary>
-    public string? Search
-    {
-        get
-        {
+    public string? Search {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("search");
+            return this._rawQueryData.GetNullableClass<string>(
+                "search"
+            );
         }
         init { this._rawQueryData.Set("search", value); }
     }
@@ -106,27 +102,25 @@ public record class TemplateListParams : ParamsBase
     /// <summary>
     /// Optional status filter: APPROVED, PENDING, REJECTED
     /// </summary>
-    public string? Status
-    {
-        get
-        {
+    public string? Status {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("status");
+            return this._rawQueryData.GetNullableClass<string>(
+                "status"
+            );
         }
         init { this._rawQueryData.Set("status", value); }
     }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -134,15 +128,18 @@ public record class TemplateListParams : ParamsBase
         }
     }
 
-    public TemplateListParams() { }
+    public TemplateListParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateListParams(TemplateListParams templateListParams)
-        : base(templateListParams) { }
-#pragma warning restore CS8618
+    public TemplateListParams (TemplateListParams templateListParams) : base(
+        templateListParams
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public TemplateListParams(
+    public TemplateListParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -151,9 +148,9 @@ public record class TemplateListParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateListParams(
+    TemplateListParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -161,7 +158,7 @@ public record class TemplateListParams : ParamsBase
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TemplateListParams FromRawUnchecked(
@@ -172,24 +169,17 @@ public record class TemplateListParams : ParamsBase
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(TemplateListParams? other)
     {
@@ -197,19 +187,22 @@ public record class TemplateListParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v3/templates")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/v3/templates"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -219,7 +212,5 @@ public record class TemplateListParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

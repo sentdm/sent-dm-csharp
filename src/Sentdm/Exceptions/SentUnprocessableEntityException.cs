@@ -4,6 +4,8 @@ namespace Sentdm.Exceptions;
 
 public class SentUnprocessableEntityException : Sent4xxException
 {
-    public SentUnprocessableEntityException(HttpRequestException? innerException = null)
-        : base(innerException) { }
+    public SentUnprocessableEntityException (
+        HttpRequestException? innerException = null
+    ) : base(innerException)
+    {  }
 }

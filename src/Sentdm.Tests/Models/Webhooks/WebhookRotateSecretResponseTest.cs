@@ -13,28 +13,40 @@ public class WebhookRotateSecretResponseTest : TestBase
     {
         var model = new WebhookRotateSecretResponse
         {
-            Data = new() { SigningSecret = "signing_secret" },
-            Error = new()
+            Data = new() { SigningSecret = "signing_secret" },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
-        WebhookRotateSecretResponseData expectedData = new() { SigningSecret = "signing_secret" };
+        WebhookRotateSecretResponseData expectedData = new()
+        {
+            SigningSecret = "signing_secret"
+        };
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -57,28 +69,28 @@ public class WebhookRotateSecretResponseTest : TestBase
     {
         var model = new WebhookRotateSecretResponse
         {
-            Data = new() { SigningSecret = "signing_secret" },
-            Error = new()
+            Data = new() { SigningSecret = "signing_secret" },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookRotateSecretResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookRotateSecretResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -88,35 +100,44 @@ public class WebhookRotateSecretResponseTest : TestBase
     {
         var model = new WebhookRotateSecretResponse
         {
-            Data = new() { SigningSecret = "signing_secret" },
-            Error = new()
+            Data = new() { SigningSecret = "signing_secret" },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookRotateSecretResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookRotateSecretResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        WebhookRotateSecretResponseData expectedData = new() { SigningSecret = "signing_secret" };
+        WebhookRotateSecretResponseData expectedData = new()
+        {
+            SigningSecret = "signing_secret"
+        };
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -139,21 +160,24 @@ public class WebhookRotateSecretResponseTest : TestBase
     {
         var model = new WebhookRotateSecretResponse
         {
-            Data = new() { SigningSecret = "signing_secret" },
-            Error = new()
+            Data = new() { SigningSecret = "signing_secret" },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -164,20 +188,25 @@ public class WebhookRotateSecretResponseTest : TestBase
     {
         var model = new WebhookRotateSecretResponse
         {
-            Data = new() { SigningSecret = "signing_secret" },
-            Error = new()
+            Data = new() { SigningSecret = "signing_secret" },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -185,11 +214,16 @@ public class WebhookRotateSecretResponseTest : TestBase
     {
         var model = new WebhookRotateSecretResponse
         {
-            Data = new() { SigningSecret = "signing_secret" },
-            Error = new()
+            Data = new() { SigningSecret = "signing_secret" },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
@@ -203,24 +237,28 @@ public class WebhookRotateSecretResponseTest : TestBase
     {
         var model = new WebhookRotateSecretResponse
         {
-            Data = new() { SigningSecret = "signing_secret" },
-            Error = new()
+            Data = new() { SigningSecret = "signing_secret" },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -228,18 +266,22 @@ public class WebhookRotateSecretResponseTest : TestBase
     {
         var model = new WebhookRotateSecretResponse
         {
-            Data = new() { SigningSecret = "signing_secret" },
-            Error = new()
+            Data = new() { SigningSecret = "signing_secret" },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         model.Validate();
@@ -255,14 +297,13 @@ public class WebhookRotateSecretResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Assert.Null(model.Data);
-        Assert.False(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.False(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.False(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -275,8 +316,7 @@ public class WebhookRotateSecretResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -292,17 +332,15 @@ public class WebhookRotateSecretResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         Assert.Null(model.Data);
-        Assert.True(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.True(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.True(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -315,11 +353,9 @@ public class WebhookRotateSecretResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         model.Validate();
@@ -330,21 +366,24 @@ public class WebhookRotateSecretResponseTest : TestBase
     {
         var model = new WebhookRotateSecretResponse
         {
-            Data = new() { SigningSecret = "signing_secret" },
-            Error = new()
+            Data = new() { SigningSecret = "signing_secret" },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         WebhookRotateSecretResponse copied = new(model);
@@ -358,7 +397,10 @@ public class WebhookRotateSecretResponseDataTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new WebhookRotateSecretResponseData { SigningSecret = "signing_secret" };
+        var model = new WebhookRotateSecretResponseData
+        {
+            SigningSecret = "signing_secret",
+        };
 
         string expectedSigningSecret = "signing_secret";
 
@@ -368,13 +410,13 @@ public class WebhookRotateSecretResponseDataTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new WebhookRotateSecretResponseData { SigningSecret = "signing_secret" };
+        var model = new WebhookRotateSecretResponseData
+        {
+            SigningSecret = "signing_secret",
+        };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookRotateSecretResponseData>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookRotateSecretResponseData>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -382,13 +424,13 @@ public class WebhookRotateSecretResponseDataTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new WebhookRotateSecretResponseData { SigningSecret = "signing_secret" };
+        var model = new WebhookRotateSecretResponseData
+        {
+            SigningSecret = "signing_secret",
+        };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookRotateSecretResponseData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookRotateSecretResponseData>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedSigningSecret = "signing_secret";
@@ -399,7 +441,10 @@ public class WebhookRotateSecretResponseDataTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new WebhookRotateSecretResponseData { SigningSecret = "signing_secret" };
+        var model = new WebhookRotateSecretResponseData
+        {
+            SigningSecret = "signing_secret",
+        };
 
         model.Validate();
     }
@@ -407,16 +452,23 @@ public class WebhookRotateSecretResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new WebhookRotateSecretResponseData { };
+        var model = new WebhookRotateSecretResponseData
+        {
+
+        };
 
         Assert.Null(model.SigningSecret);
         Assert.False(model.RawData.ContainsKey("signing_secret"));
+
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new WebhookRotateSecretResponseData { };
+        var model = new WebhookRotateSecretResponseData
+        {
+
+        };
 
         model.Validate();
     }
@@ -426,12 +478,15 @@ public class WebhookRotateSecretResponseDataTest : TestBase
     {
         var model = new WebhookRotateSecretResponseData
         {
+
+
             // Null should be interpreted as omitted for these properties
             SigningSecret = null,
         };
 
         Assert.Null(model.SigningSecret);
         Assert.False(model.RawData.ContainsKey("signing_secret"));
+
     }
 
     [Fact]
@@ -439,6 +494,8 @@ public class WebhookRotateSecretResponseDataTest : TestBase
     {
         var model = new WebhookRotateSecretResponseData
         {
+
+
             // Null should be interpreted as omitted for these properties
             SigningSecret = null,
         };
@@ -449,7 +506,10 @@ public class WebhookRotateSecretResponseDataTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new WebhookRotateSecretResponseData { SigningSecret = "signing_secret" };
+        var model = new WebhookRotateSecretResponseData
+        {
+            SigningSecret = "signing_secret",
+        };
 
         WebhookRotateSecretResponseData copied = new(model);
 

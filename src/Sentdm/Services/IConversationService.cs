@@ -32,32 +32,36 @@ public interface IConversationService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IConversationService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IConversationService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Retrieves a paginated list of the authenticated customer's messages across all
-    /// conversations, ordered by created date (most recent first).
-    /// </summary>
+/// Retrieves a paginated list of the authenticated customer's messages across all
+/// conversations, ordered by created date (most recent first).
+/// </summary>
     Task<ConversationListPage> List(
         ConversationListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Retrieves a paginated list of the messages in a single conversation (scoped to
-    /// the authenticated customer), ordered by created date (most recent first).
-    /// </summary>
+/// Retrieves a paginated list of the messages in a single conversation (scoped to
+/// the authenticated customer), ordered by created date (most recent first).
+/// </summary>
     Task<ConversationListMessagesPage> ListMessages(
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ListMessages(ConversationListMessagesParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="ListMessages(ConversationListMessagesParams, CancellationToken)"/>
     Task<ConversationListMessagesPage> ListMessages(
         string id,
         ConversationListMessagesParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -71,30 +75,34 @@ public interface IConversationServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IConversationServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IConversationServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /v3/conversations</c>, but is otherwise the
-    /// same as <see cref="IConversationService.List(ConversationListParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /v3/conversations</c>, but is otherwise the
+/// same as <see cref="IConversationService.List(ConversationListParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<ConversationListPage>> List(
         ConversationListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /v3/conversations/{id}</c>, but is otherwise the
-    /// same as <see cref="IConversationService.ListMessages(ConversationListMessagesParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /v3/conversations/{id}</c>, but is otherwise the
+/// same as <see cref="IConversationService.ListMessages(ConversationListMessagesParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<ConversationListMessagesPage>> ListMessages(
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ListMessages(ConversationListMessagesParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="ListMessages(ConversationListMessagesParams, CancellationToken)"/>
     Task<HttpResponse<ConversationListMessagesPage>> ListMessages(
         string id,
         ConversationListMessagesParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

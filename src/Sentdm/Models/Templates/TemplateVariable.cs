@@ -10,47 +10,45 @@ namespace Sentdm.Models.Templates;
 [JsonConverter(typeof(JsonModelConverter<TemplateVariable, TemplateVariableFromRaw>))]
 public sealed record class TemplateVariable : JsonModel
 {
-    public required string Name
-    {
-        get
-        {
+    public required string Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("name");
+            return this._rawData.GetNotNullClass<string>(
+                "name"
+            );
         }
         init { this._rawData.Set("name", value); }
     }
 
-    public required Props Props
-    {
-        get
-        {
+    public required Props Props {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<Props>("props");
+            return this._rawData.GetNotNullClass<Props>(
+                "props"
+            );
         }
         init { this._rawData.Set("props", value); }
     }
 
-    public required string Type
-    {
-        get
-        {
+    public required string Type {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("type");
+            return this._rawData.GetNotNullClass<string>(
+                "type"
+            );
         }
         init { this._rawData.Set("type", value); }
     }
 
-    public int? ID
-    {
-        get
-        {
+    public int? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("id");
+            return this._rawData.GetNullableStruct<int>(
+                "id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -67,112 +65,111 @@ public sealed record class TemplateVariable : JsonModel
         _ = this.ID;
     }
 
-    public TemplateVariable() { }
+    public TemplateVariable ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateVariable(TemplateVariable templateVariable)
-        : base(templateVariable) { }
-#pragma warning restore CS8618
+    public TemplateVariable (TemplateVariable templateVariable) : base(
+        templateVariable
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public TemplateVariable(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TemplateVariable (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateVariable(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TemplateVariable (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TemplateVariableFromRaw.FromRawUnchecked"/>
     public static TemplateVariable FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TemplateVariableFromRaw : IFromRawJson<TemplateVariable>
 {
     /// <inheritdoc/>
-    public TemplateVariable FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        TemplateVariable.FromRawUnchecked(rawData);
+    public TemplateVariable FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>TemplateVariable.FromRawUnchecked(rawData);
 }
 
 [JsonConverter(typeof(JsonModelConverter<Props, PropsFromRaw>))]
 public sealed record class Props : JsonModel
 {
-    public required string MediaType
-    {
-        get
-        {
+    public required string MediaType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("mediaType");
+            return this._rawData.GetNotNullClass<string>(
+                "mediaType"
+            );
         }
         init { this._rawData.Set("mediaType", value); }
     }
 
-    public required string Sample
-    {
-        get
-        {
+    public required string Sample {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("sample");
+            return this._rawData.GetNotNullClass<string>(
+                "sample"
+            );
         }
         init { this._rawData.Set("sample", value); }
     }
 
-    public required string Url
-    {
-        get
-        {
+    public required string Url {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("url");
+            return this._rawData.GetNotNullClass<string>(
+                "url"
+            );
         }
         init { this._rawData.Set("url", value); }
     }
 
-    public required string VariableType
-    {
-        get
-        {
+    public required string VariableType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("variableType");
+            return this._rawData.GetNotNullClass<string>(
+                "variableType"
+            );
         }
         init { this._rawData.Set("variableType", value); }
     }
 
-    public string? Alt
-    {
-        get
-        {
+    public string? Alt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("alt");
+            return this._rawData.GetNullableClass<string>(
+                "alt"
+            );
         }
         init { this._rawData.Set("alt", value); }
     }
 
-    public string? Regex
-    {
-        get
-        {
+    public string? Regex {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("regex");
+            return this._rawData.GetNullableClass<string>(
+                "regex"
+            );
         }
         init { this._rawData.Set("regex", value); }
     }
 
-    public string? ShortUrl
-    {
-        get
-        {
+    public string? ShortUrl {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("shortUrl");
+            return this._rawData.GetNullableClass<string>(
+                "shortUrl"
+            );
         }
         init { this._rawData.Set("shortUrl", value); }
     }
@@ -189,37 +186,34 @@ public sealed record class Props : JsonModel
         _ = this.ShortUrl;
     }
 
-    public Props() { }
+    public Props ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Props(Props props)
-        : base(props) { }
-#pragma warning restore CS8618
+    public Props (Props props) : base(props)
+    {  }
+    #pragma warning restore CS8618
 
-    public Props(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Props (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Props(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Props (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="PropsFromRaw.FromRawUnchecked"/>
-    public static Props FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class PropsFromRaw : IFromRawJson<Props>
+    public static Props FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class PropsFromRaw : IFromRawJson<Props>
 {
     /// <inheritdoc/>
-    public Props FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Props.FromRawUnchecked(rawData);
+    public Props FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Props.FromRawUnchecked(rawData);
 }

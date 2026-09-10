@@ -18,7 +18,11 @@ public class UserListResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -41,28 +45,35 @@ public class UserListResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Data expectedData = new()
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -89,7 +100,13 @@ public class UserListResponseTest : TestBase
         Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -116,7 +133,11 @@ public class UserListResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -139,28 +160,28 @@ public class UserListResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UserListResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<UserListResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -174,7 +195,11 @@ public class UserListResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -197,35 +222,39 @@ public class UserListResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UserListResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<UserListResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         Data expectedData = new()
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -252,7 +281,13 @@ public class UserListResponseTest : TestBase
         Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -279,7 +314,11 @@ public class UserListResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -302,21 +341,24 @@ public class UserListResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -331,7 +373,11 @@ public class UserListResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -354,20 +400,25 @@ public class UserListResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -379,7 +430,11 @@ public class UserListResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -402,11 +457,16 @@ public class UserListResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
@@ -424,7 +484,11 @@ public class UserListResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -447,24 +511,28 @@ public class UserListResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -476,7 +544,11 @@ public class UserListResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -499,18 +571,22 @@ public class UserListResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         model.Validate();
@@ -526,14 +602,13 @@ public class UserListResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Assert.Null(model.Data);
-        Assert.False(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.False(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.False(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -546,8 +621,7 @@ public class UserListResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -563,17 +637,15 @@ public class UserListResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         Assert.Null(model.Data);
-        Assert.True(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.True(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.True(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -586,11 +658,9 @@ public class UserListResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         model.Validate();
@@ -605,7 +675,11 @@ public class UserListResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -628,21 +702,24 @@ public class UserListResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         UserListResponse copied = new(model);
@@ -660,14 +737,17 @@ public class DataTest : TestBase
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
                 TotalCount = 0,
                 TotalPages = 0,
-            },
-            Users =
+            },Users =
             [
                 new()
                 {
@@ -687,7 +767,11 @@ public class DataTest : TestBase
 
         Webhooks::PaginationMeta expectedPagination = new()
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },
             HasMore = true,
             Page = 0,
             PageSize = 0,
@@ -727,14 +811,17 @@ public class DataTest : TestBase
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
                 TotalCount = 0,
                 TotalPages = 0,
-            },
-            Users =
+            },Users =
             [
                 new()
                 {
@@ -765,14 +852,17 @@ public class DataTest : TestBase
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
                 TotalCount = 0,
                 TotalPages = 0,
-            },
-            Users =
+            },Users =
             [
                 new()
                 {
@@ -796,7 +886,11 @@ public class DataTest : TestBase
 
         Webhooks::PaginationMeta expectedPagination = new()
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },
             HasMore = true,
             Page = 0,
             PageSize = 0,
@@ -836,14 +930,17 @@ public class DataTest : TestBase
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
                 TotalCount = 0,
                 TotalPages = 0,
-            },
-            Users =
+            },Users =
             [
                 new()
                 {
@@ -867,18 +964,24 @@ public class DataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Data { };
+        var model = new Data
+        {
+
+        };
 
         Assert.Null(model.Pagination);
-        Assert.False(model.RawData.ContainsKey("pagination"));
-        Assert.Null(model.Users);
+        Assert.False(model.RawData.ContainsKey("pagination"));Assert.Null(model.Users);
         Assert.False(model.RawData.ContainsKey("users"));
+
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Data { };
+        var model = new Data
+        {
+
+        };
 
         model.Validate();
     }
@@ -888,15 +991,16 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Pagination = null,
-            Users = null,
+            Pagination = null,Users = null,
         };
 
         Assert.Null(model.Pagination);
-        Assert.False(model.RawData.ContainsKey("pagination"));
-        Assert.Null(model.Users);
+        Assert.False(model.RawData.ContainsKey("pagination"));Assert.Null(model.Users);
         Assert.False(model.RawData.ContainsKey("users"));
+
     }
 
     [Fact]
@@ -904,9 +1008,10 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Pagination = null,
-            Users = null,
+            Pagination = null,Users = null,
         };
 
         model.Validate();
@@ -919,14 +1024,17 @@ public class DataTest : TestBase
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
                 TotalCount = 0,
                 TotalPages = 0,
-            },
-            Users =
+            },Users =
             [
                 new()
                 {

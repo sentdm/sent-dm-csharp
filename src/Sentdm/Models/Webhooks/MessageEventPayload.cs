@@ -18,12 +18,12 @@ public sealed record class MessageEventPayload : JsonModel
     /// The status the message just reached, for example SENT, DELIVERED, or FAILED.
     /// Sent means dispatched and delivered means confirmed, so treat them as distinct outcomes.
     /// </summary>
-    public required string MessageStatus
-    {
-        get
-        {
+    public required string MessageStatus {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("message_status");
+            return this._rawData.GetNotNullClass<string>(
+                "message_status"
+            );
         }
         init { this._rawData.Set("message_status", value); }
     }
@@ -31,17 +31,15 @@ public sealed record class MessageEventPayload : JsonModel
     /// <summary>
     /// The account the message belongs to.
     /// </summary>
-    public string? AccountID
-    {
-        get
-        {
+    public string? AccountID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("account_id");
+            return this._rawData.GetNullableClass<string>(
+                "account_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -52,12 +50,12 @@ public sealed record class MessageEventPayload : JsonModel
     /// <summary>
     /// The agent attributed to the send, when the send was attributed to one.
     /// </summary>
-    public string? AgentID
-    {
-        get
-        {
+    public string? AgentID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("agent_id");
+            return this._rawData.GetNullableClass<string>(
+                "agent_id"
+            );
         }
         init { this._rawData.Set("agent_id", value); }
     }
@@ -66,17 +64,15 @@ public sealed record class MessageEventPayload : JsonModel
     /// The channel the message went out on, for example sms or whatsapp. A message
     /// that falls back to another channel reports the channel actually used.
     /// </summary>
-    public string? Channel
-    {
-        get
-        {
+    public string? Channel {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("channel");
+            return this._rawData.GetNullableClass<string>(
+                "channel"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -88,17 +84,15 @@ public sealed record class MessageEventPayload : JsonModel
     /// The message this event describes. Stable across every event in the message's
     /// lifecycle, so use it to correlate them.
     /// </summary>
-    public string? MessageID
-    {
-        get
-        {
+    public string? MessageID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("message_id");
+            return this._rawData.GetNullableClass<string>(
+                "message_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -109,17 +103,15 @@ public sealed record class MessageEventPayload : JsonModel
     /// <summary>
     /// The recipient's number in E.164 format.
     /// </summary>
-    public string? OutboundNumber
-    {
-        get
-        {
+    public string? OutboundNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("outbound_number");
+            return this._rawData.GetNullableClass<string>(
+                "outbound_number"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -130,12 +122,12 @@ public sealed record class MessageEventPayload : JsonModel
     /// <summary>
     /// The template the message was sent from, when it was sent from one.
     /// </summary>
-    public string? TemplateID
-    {
-        get
-        {
+    public string? TemplateID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("template_id");
+            return this._rawData.GetNullableClass<string>(
+                "template_id"
+            );
         }
         init { this._rawData.Set("template_id", value); }
     }
@@ -143,12 +135,12 @@ public sealed record class MessageEventPayload : JsonModel
     /// <summary>
     /// Name of the template the message was sent from. Omitted when the message wasn't template-based.
     /// </summary>
-    public string? TemplateName
-    {
-        get
-        {
+    public string? TemplateName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("template_name");
+            return this._rawData.GetNullableClass<string>(
+                "template_name"
+            );
         }
         init { this._rawData.Set("template_name", value); }
     }
@@ -156,17 +148,15 @@ public sealed record class MessageEventPayload : JsonModel
     /// <summary>
     /// When the message reached MessageStatus, in UTC (yyyy-MM-ddTHH:mm:ssZ).
     /// </summary>
-    public string? UpdatedAt
-    {
-        get
-        {
+    public string? UpdatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("updated_at");
+            return this._rawData.GetNullableClass<string>(
+                "updated_at"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -188,46 +178,44 @@ public sealed record class MessageEventPayload : JsonModel
         _ = this.UpdatedAt;
     }
 
-    public MessageEventPayload() { }
+    public MessageEventPayload ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MessageEventPayload(MessageEventPayload messageEventPayload)
-        : base(messageEventPayload) { }
-#pragma warning restore CS8618
+    public MessageEventPayload (MessageEventPayload messageEventPayload) : base(
+        messageEventPayload
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public MessageEventPayload(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public MessageEventPayload (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MessageEventPayload(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    MessageEventPayload (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="MessageEventPayloadFromRaw.FromRawUnchecked"/>
     public static MessageEventPayload FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 
     [SetsRequiredMembers]
-    public MessageEventPayload(string messageStatus)
-        : this()
-    {
-        this.MessageStatus = messageStatus;
-    }
+    public MessageEventPayload (string messageStatus) : this()
+    { this.MessageStatus = messageStatus; }
 }
 
 class MessageEventPayloadFromRaw : IFromRawJson<MessageEventPayload>
 {
     /// <inheritdoc/>
-    public MessageEventPayload FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        MessageEventPayload.FromRawUnchecked(rawData);
+    public MessageEventPayload FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>MessageEventPayload.FromRawUnchecked(rawData);
 }

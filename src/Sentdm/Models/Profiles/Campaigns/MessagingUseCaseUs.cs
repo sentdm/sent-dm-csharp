@@ -20,7 +20,7 @@ public enum MessagingUseCaseUs
     HigherEducation,
     PollingVoting,
     PublicServiceAnnouncement,
-    LowVolume,
+    LowVolume
 }
 
 sealed class MessagingUseCaseUsConverter : JsonConverter<MessagingUseCaseUs>
@@ -33,20 +33,20 @@ sealed class MessagingUseCaseUsConverter : JsonConverter<MessagingUseCaseUs>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "MARKETING" => MessagingUseCaseUs.Marketing,
-            "ACCOUNT_NOTIFICATION" => MessagingUseCaseUs.AccountNotification,
-            "CUSTOMER_CARE" => MessagingUseCaseUs.CustomerCare,
-            "FRAUD_ALERT" => MessagingUseCaseUs.FraudAlert,
-            "TWO_FA" => MessagingUseCaseUs.TwoFa,
-            "DELIVERY_NOTIFICATION" => MessagingUseCaseUs.DeliveryNotification,
-            "SECURITY_ALERT" => MessagingUseCaseUs.SecurityAlert,
-            "M2M" => MessagingUseCaseUs.M2M,
-            "MIXED" => MessagingUseCaseUs.Mixed,
-            "HIGHER_EDUCATION" => MessagingUseCaseUs.HigherEducation,
-            "POLLING_VOTING" => MessagingUseCaseUs.PollingVoting,
-            "PUBLIC_SERVICE_ANNOUNCEMENT" => MessagingUseCaseUs.PublicServiceAnnouncement,
-            "LOW_VOLUME" => MessagingUseCaseUs.LowVolume,
-            _ => (MessagingUseCaseUs)(-1),
+            "MARKETING"=>MessagingUseCaseUs.Marketing,
+            "ACCOUNT_NOTIFICATION"=>MessagingUseCaseUs.AccountNotification,
+            "CUSTOMER_CARE"=>MessagingUseCaseUs.CustomerCare,
+            "FRAUD_ALERT"=>MessagingUseCaseUs.FraudAlert,
+            "TWO_FA"=>MessagingUseCaseUs.TwoFa,
+            "DELIVERY_NOTIFICATION"=>MessagingUseCaseUs.DeliveryNotification,
+            "SECURITY_ALERT"=>MessagingUseCaseUs.SecurityAlert,
+            "M2M"=>MessagingUseCaseUs.M2M,
+            "MIXED"=>MessagingUseCaseUs.Mixed,
+            "HIGHER_EDUCATION"=>MessagingUseCaseUs.HigherEducation,
+            "POLLING_VOTING"=>MessagingUseCaseUs.PollingVoting,
+            "PUBLIC_SERVICE_ANNOUNCEMENT"=>MessagingUseCaseUs.PublicServiceAnnouncement,
+            "LOW_VOLUME"=>MessagingUseCaseUs.LowVolume,
+            _ =>(MessagingUseCaseUs)(-1)
         };
     }
 
@@ -56,28 +56,24 @@ sealed class MessagingUseCaseUsConverter : JsonConverter<MessagingUseCaseUs>
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                MessagingUseCaseUs.Marketing => "MARKETING",
-                MessagingUseCaseUs.AccountNotification => "ACCOUNT_NOTIFICATION",
-                MessagingUseCaseUs.CustomerCare => "CUSTOMER_CARE",
-                MessagingUseCaseUs.FraudAlert => "FRAUD_ALERT",
-                MessagingUseCaseUs.TwoFa => "TWO_FA",
-                MessagingUseCaseUs.DeliveryNotification => "DELIVERY_NOTIFICATION",
-                MessagingUseCaseUs.SecurityAlert => "SECURITY_ALERT",
-                MessagingUseCaseUs.M2M => "M2M",
-                MessagingUseCaseUs.Mixed => "MIXED",
-                MessagingUseCaseUs.HigherEducation => "HIGHER_EDUCATION",
-                MessagingUseCaseUs.PollingVoting => "POLLING_VOTING",
-                MessagingUseCaseUs.PublicServiceAnnouncement => "PUBLIC_SERVICE_ANNOUNCEMENT",
-                MessagingUseCaseUs.LowVolume => "LOW_VOLUME",
-                _ => throw new SentInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            MessagingUseCaseUs.Marketing=>"MARKETING",
+            MessagingUseCaseUs.AccountNotification=>"ACCOUNT_NOTIFICATION",
+            MessagingUseCaseUs.CustomerCare=>"CUSTOMER_CARE",
+            MessagingUseCaseUs.FraudAlert=>"FRAUD_ALERT",
+            MessagingUseCaseUs.TwoFa=>"TWO_FA",
+            MessagingUseCaseUs.DeliveryNotification=>"DELIVERY_NOTIFICATION",
+            MessagingUseCaseUs.SecurityAlert=>"SECURITY_ALERT",
+            MessagingUseCaseUs.M2M=>"M2M",
+            MessagingUseCaseUs.Mixed=>"MIXED",
+            MessagingUseCaseUs.HigherEducation=>"HIGHER_EDUCATION",
+            MessagingUseCaseUs.PollingVoting=>"POLLING_VOTING",
+            MessagingUseCaseUs.PublicServiceAnnouncement=>"PUBLIC_SERVICE_ANNOUNCEMENT",
+            MessagingUseCaseUs.LowVolume=>"LOW_VOLUME",
+            _ => throw new SentInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

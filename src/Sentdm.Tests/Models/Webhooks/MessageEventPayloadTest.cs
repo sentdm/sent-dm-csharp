@@ -11,15 +11,7 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AgentID = "agent_id",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
-            UpdatedAt = "updated_at",
+            MessageStatus = "message_status",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AgentID = "agent_id",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",UpdatedAt = "updated_at",
         };
 
         string expectedMessageStatus = "message_status";
@@ -48,22 +40,11 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AgentID = "agent_id",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
-            UpdatedAt = "updated_at",
+            MessageStatus = "message_status",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AgentID = "agent_id",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",UpdatedAt = "updated_at",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageEventPayload>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageEventPayload>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -73,22 +54,11 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AgentID = "agent_id",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
-            UpdatedAt = "updated_at",
+            MessageStatus = "message_status",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AgentID = "agent_id",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",UpdatedAt = "updated_at",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageEventPayload>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageEventPayload>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedMessageStatus = "message_status";
@@ -117,15 +87,7 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AgentID = "agent_id",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
-            UpdatedAt = "updated_at",
+            MessageStatus = "message_status",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AgentID = "agent_id",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",UpdatedAt = "updated_at",
         };
 
         model.Validate();
@@ -136,22 +98,16 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AgentID = "agent_id",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            MessageStatus = "message_status",AgentID = "agent_id",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         Assert.Null(model.AccountID);
-        Assert.False(model.RawData.ContainsKey("account_id"));
-        Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
-        Assert.Null(model.MessageID);
-        Assert.False(model.RawData.ContainsKey("message_id"));
-        Assert.Null(model.OutboundNumber);
-        Assert.False(model.RawData.ContainsKey("outbound_number"));
-        Assert.Null(model.UpdatedAt);
+        Assert.False(model.RawData.ContainsKey("account_id"));Assert.Null(model.Channel);
+        Assert.False(model.RawData.ContainsKey("channel"));Assert.Null(model.MessageID);
+        Assert.False(model.RawData.ContainsKey("message_id"));Assert.Null(model.OutboundNumber);
+        Assert.False(model.RawData.ContainsKey("outbound_number"));Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updated_at"));
+
     }
 
     [Fact]
@@ -159,10 +115,7 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AgentID = "agent_id",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            MessageStatus = "message_status",AgentID = "agent_id",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         model.Validate();
@@ -173,29 +126,19 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AgentID = "agent_id",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            MessageStatus = "message_status",AgentID = "agent_id",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
 
             // Null should be interpreted as omitted for these properties
-            AccountID = null,
-            Channel = null,
-            MessageID = null,
-            OutboundNumber = null,
-            UpdatedAt = null,
+            AccountID = null,Channel = null,MessageID = null,OutboundNumber = null,UpdatedAt = null,
         };
 
         Assert.Null(model.AccountID);
-        Assert.False(model.RawData.ContainsKey("account_id"));
-        Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
-        Assert.Null(model.MessageID);
-        Assert.False(model.RawData.ContainsKey("message_id"));
-        Assert.Null(model.OutboundNumber);
-        Assert.False(model.RawData.ContainsKey("outbound_number"));
-        Assert.Null(model.UpdatedAt);
+        Assert.False(model.RawData.ContainsKey("account_id"));Assert.Null(model.Channel);
+        Assert.False(model.RawData.ContainsKey("channel"));Assert.Null(model.MessageID);
+        Assert.False(model.RawData.ContainsKey("message_id"));Assert.Null(model.OutboundNumber);
+        Assert.False(model.RawData.ContainsKey("outbound_number"));Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updated_at"));
+
     }
 
     [Fact]
@@ -203,17 +146,10 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AgentID = "agent_id",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            MessageStatus = "message_status",AgentID = "agent_id",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
 
             // Null should be interpreted as omitted for these properties
-            AccountID = null,
-            Channel = null,
-            MessageID = null,
-            OutboundNumber = null,
-            UpdatedAt = null,
+            AccountID = null,Channel = null,MessageID = null,OutboundNumber = null,UpdatedAt = null,
         };
 
         model.Validate();
@@ -224,20 +160,14 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            UpdatedAt = "updated_at",
+            MessageStatus = "message_status",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",UpdatedAt = "updated_at",
         };
 
         Assert.Null(model.AgentID);
-        Assert.False(model.RawData.ContainsKey("agent_id"));
-        Assert.Null(model.TemplateID);
-        Assert.False(model.RawData.ContainsKey("template_id"));
-        Assert.Null(model.TemplateName);
+        Assert.False(model.RawData.ContainsKey("agent_id"));Assert.Null(model.TemplateID);
+        Assert.False(model.RawData.ContainsKey("template_id"));Assert.Null(model.TemplateName);
         Assert.False(model.RawData.ContainsKey("template_name"));
+
     }
 
     [Fact]
@@ -245,12 +175,7 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            UpdatedAt = "updated_at",
+            MessageStatus = "message_status",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",UpdatedAt = "updated_at",
         };
 
         model.Validate();
@@ -261,24 +186,16 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            UpdatedAt = "updated_at",
+            MessageStatus = "message_status",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",UpdatedAt = "updated_at",
 
-            AgentID = null,
-            TemplateID = null,
-            TemplateName = null,
+            AgentID = null,TemplateID = null,TemplateName = null,
         };
 
         Assert.Null(model.AgentID);
-        Assert.True(model.RawData.ContainsKey("agent_id"));
-        Assert.Null(model.TemplateID);
-        Assert.True(model.RawData.ContainsKey("template_id"));
-        Assert.Null(model.TemplateName);
+        Assert.True(model.RawData.ContainsKey("agent_id"));Assert.Null(model.TemplateID);
+        Assert.True(model.RawData.ContainsKey("template_id"));Assert.Null(model.TemplateName);
         Assert.True(model.RawData.ContainsKey("template_name"));
+
     }
 
     [Fact]
@@ -286,16 +203,9 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            UpdatedAt = "updated_at",
+            MessageStatus = "message_status",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",UpdatedAt = "updated_at",
 
-            AgentID = null,
-            TemplateID = null,
-            TemplateName = null,
+            AgentID = null,TemplateID = null,TemplateName = null,
         };
 
         model.Validate();
@@ -306,15 +216,7 @@ public class MessageEventPayloadTest : TestBase
     {
         var model = new MessageEventPayload
         {
-            MessageStatus = "message_status",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AgentID = "agent_id",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
-            UpdatedAt = "updated_at",
+            MessageStatus = "message_status",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AgentID = "agent_id",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",UpdatedAt = "updated_at",
         };
 
         MessageEventPayload copied = new(model);

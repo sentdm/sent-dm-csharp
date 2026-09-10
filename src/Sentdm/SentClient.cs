@@ -17,43 +17,37 @@ public sealed class SentClient : ISentClient
     readonly ClientOptions _options;
 
     /// <inheritdoc/>
-    public HttpClient HttpClient
-    {
+    public HttpClient HttpClient {
         get { return this._options.HttpClient; }
         init { this._options.HttpClient = value; }
     }
 
     /// <inheritdoc/>
-    public string BaseUrl
-    {
+    public string BaseUrl {
         get { return this._options.BaseUrl; }
         init { this._options.BaseUrl = value; }
     }
 
     /// <inheritdoc/>
-    public bool ResponseValidation
-    {
+    public bool ResponseValidation {
         get { return this._options.ResponseValidation; }
         init { this._options.ResponseValidation = value; }
     }
 
     /// <inheritdoc/>
-    public int? MaxRetries
-    {
+    public int? MaxRetries {
         get { return this._options.MaxRetries; }
         init { this._options.MaxRetries = value; }
     }
 
     /// <inheritdoc/>
-    public TimeSpan? Timeout
-    {
+    public TimeSpan? Timeout {
         get { return this._options.Timeout; }
         init { this._options.Timeout = value; }
     }
 
     /// <inheritdoc/>
-    public string ApiKey
-    {
+    public string ApiKey {
         get { return this._options.ApiKey; }
         init { this._options.ApiKey = value; }
     }
@@ -61,222 +55,173 @@ public sealed class SentClient : ISentClient
     readonly Lazy<ISentClientWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public ISentClientWithRawResponse WithRawResponse
-    {
+    public ISentClientWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     /// <inheritdoc/>
     public ISentClient WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new SentClient(modifier(this._options));
-    }
+    { return new SentClient(modifier(this._options)); }
 
     readonly Lazy<IWebhookService> _webhooks;
-    public IWebhookService Webhooks
-    {
-        get { return _webhooks.Value; }
-    }
+    public IWebhookService Webhooks { get { return _webhooks.Value; } }
 
     readonly Lazy<IUserService> _users;
-    public IUserService Users
-    {
-        get { return _users.Value; }
-    }
+    public IUserService Users { get { return _users.Value; } }
 
     readonly Lazy<ITemplateService> _templates;
-    public ITemplateService Templates
-    {
-        get { return _templates.Value; }
-    }
+    public ITemplateService Templates { get { return _templates.Value; } }
 
     readonly Lazy<IProfileService> _profiles;
-    public IProfileService Profiles
-    {
-        get { return _profiles.Value; }
-    }
+    public IProfileService Profiles { get { return _profiles.Value; } }
 
     readonly Lazy<INumberService> _numbers;
-    public INumberService Numbers
-    {
-        get { return _numbers.Value; }
-    }
+    public INumberService Numbers { get { return _numbers.Value; } }
 
     readonly Lazy<IMessageService> _messages;
-    public IMessageService Messages
-    {
-        get { return _messages.Value; }
-    }
+    public IMessageService Messages { get { return _messages.Value; } }
 
     readonly Lazy<IContactService> _contacts;
-    public IContactService Contacts
-    {
-        get { return _contacts.Value; }
-    }
+    public IContactService Contacts { get { return _contacts.Value; } }
 
     readonly Lazy<IConversationService> _conversations;
-    public IConversationService Conversations
-    {
+    public IConversationService Conversations {
         get { return _conversations.Value; }
     }
 
     readonly Lazy<IMeService> _me;
-    public IMeService Me
-    {
-        get { return _me.Value; }
-    }
+    public IMeService Me { get { return _me.Value; } }
 
-    public void Dispose() => this.HttpClient.Dispose();
+    public void Dispose()
+    =>this.HttpClient.Dispose();
 
-    public SentClient()
+    public SentClient ()
     {
         _options = new();
 
-        _withRawResponse = new(() => new SentClientWithRawResponse(this._options));
-        _webhooks = new(() => new WebhookService(this));
-        _users = new(() => new UserService(this));
-        _templates = new(() => new TemplateService(this));
-        _profiles = new(() => new ProfileService(this));
-        _numbers = new(() => new NumberService(this));
-        _messages = new(() => new MessageService(this));
-        _contacts = new(() => new ContactService(this));
-        _conversations = new(() => new ConversationService(this));
-        _me = new(() => new MeService(this));
+        _withRawResponse =new(
+            () => new SentClientWithRawResponse(this._options)
+        ) ;
+        _webhooks =new(() => new WebhookService(this)) ;
+        _users =new(() => new UserService(this)) ;
+        _templates =new(() => new TemplateService(this)) ;
+        _profiles =new(() => new ProfileService(this)) ;
+        _numbers =new(() => new NumberService(this)) ;
+        _messages =new(() => new MessageService(this)) ;
+        _contacts =new(() => new ContactService(this)) ;
+        _conversations =new(() => new ConversationService(this)) ;
+        _me =new(() => new MeService(this)) ;
     }
 
-    public SentClient(ClientOptions options)
-        : this()
-    {
-        _options = options;
-    }
+    public SentClient (ClientOptions options) : this()
+    { _options = options; }
 }
 
 /// <inheritdoc/>
 public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
 {
-#if NET
+
+    #if NET
     static readonly Random Random = Random.Shared;
-#else
+    #else
     static readonly ThreadLocal<Random> _threadLocalRandom = new(() => new Random());
 
-    static Random Random
-    {
-        get { return _threadLocalRandom.Value!; }
-    }
-#endif
+    static Random Random { get { return _threadLocalRandom.Value!; } }
+    #endif
+
 
     internal static HttpMethod PatchMethod = new("PATCH");
 
     readonly ClientOptions _options;
 
     /// <inheritdoc/>
-    public HttpClient HttpClient
-    {
+    public HttpClient HttpClient {
         get { return this._options.HttpClient; }
         init { this._options.HttpClient = value; }
     }
 
     /// <inheritdoc/>
-    public string BaseUrl
-    {
+    public string BaseUrl {
         get { return this._options.BaseUrl; }
         init { this._options.BaseUrl = value; }
     }
 
     /// <inheritdoc/>
-    public bool ResponseValidation
-    {
+    public bool ResponseValidation {
         get { return this._options.ResponseValidation; }
         init { this._options.ResponseValidation = value; }
     }
 
     /// <inheritdoc/>
-    public int? MaxRetries
-    {
+    public int? MaxRetries {
         get { return this._options.MaxRetries; }
         init { this._options.MaxRetries = value; }
     }
 
     /// <inheritdoc/>
-    public TimeSpan? Timeout
-    {
+    public TimeSpan? Timeout {
         get { return this._options.Timeout; }
         init { this._options.Timeout = value; }
     }
 
     /// <inheritdoc/>
-    public string ApiKey
-    {
+    public string ApiKey {
         get { return this._options.ApiKey; }
         init { this._options.ApiKey = value; }
     }
 
     /// <inheritdoc/>
-    public ISentClientWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new SentClientWithRawResponse(modifier(this._options));
-    }
+    public ISentClientWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new SentClientWithRawResponse(modifier(this._options)); }
 
     readonly Lazy<IWebhookServiceWithRawResponse> _webhooks;
-    public IWebhookServiceWithRawResponse Webhooks
-    {
+    public IWebhookServiceWithRawResponse Webhooks {
         get { return _webhooks.Value; }
     }
 
     readonly Lazy<IUserServiceWithRawResponse> _users;
-    public IUserServiceWithRawResponse Users
-    {
-        get { return _users.Value; }
-    }
+    public IUserServiceWithRawResponse Users { get { return _users.Value; } }
 
     readonly Lazy<ITemplateServiceWithRawResponse> _templates;
-    public ITemplateServiceWithRawResponse Templates
-    {
+    public ITemplateServiceWithRawResponse Templates {
         get { return _templates.Value; }
     }
 
     readonly Lazy<IProfileServiceWithRawResponse> _profiles;
-    public IProfileServiceWithRawResponse Profiles
-    {
+    public IProfileServiceWithRawResponse Profiles {
         get { return _profiles.Value; }
     }
 
     readonly Lazy<INumberServiceWithRawResponse> _numbers;
-    public INumberServiceWithRawResponse Numbers
-    {
+    public INumberServiceWithRawResponse Numbers {
         get { return _numbers.Value; }
     }
 
     readonly Lazy<IMessageServiceWithRawResponse> _messages;
-    public IMessageServiceWithRawResponse Messages
-    {
+    public IMessageServiceWithRawResponse Messages {
         get { return _messages.Value; }
     }
 
     readonly Lazy<IContactServiceWithRawResponse> _contacts;
-    public IContactServiceWithRawResponse Contacts
-    {
+    public IContactServiceWithRawResponse Contacts {
         get { return _contacts.Value; }
     }
 
     readonly Lazy<IConversationServiceWithRawResponse> _conversations;
-    public IConversationServiceWithRawResponse Conversations
-    {
+    public IConversationServiceWithRawResponse Conversations {
         get { return _conversations.Value; }
     }
 
     readonly Lazy<IMeServiceWithRawResponse> _me;
-    public IMeServiceWithRawResponse Me
-    {
-        get { return _me.Value; }
-    }
+    public IMeServiceWithRawResponse Me { get { return _me.Value; } }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse> Execute<T>(
-        HttpRequest<T> request,
-        CancellationToken cancellationToken = default
-    )
-        where T : ParamsBase
+    public async Task<HttpResponse> Execute<T>
+    (
+        HttpRequest<T> request, CancellationToken cancellationToken = default
+    ) where T: ParamsBase
     {
         var maxRetries = this.MaxRetries ?? ClientOptions.DefaultMaxRetries;
         var retries = 0;
@@ -285,8 +230,9 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
             HttpResponse? response = null;
             try
             {
-                response = await ExecuteOnce(request, retries, cancellationToken)
-                    .ConfigureAwait(false);
+                response = await ExecuteOnce(request,
+                retries,
+                cancellationToken).ConfigureAwait(false);
             }
             catch (Exception e)
             {
@@ -298,8 +244,7 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
 
             if (response != null && (++retries > maxRetries || !ShouldRetry(response)))
             {
-                if (response.IsSuccessStatusCode)
-                {
+                if (response.IsSuccessStatusCode) {
                     return response;
                 }
 
@@ -313,11 +258,8 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
                 catch (HttpRequestException e)
                 {
                     throw new SentIOException("I/O Exception", e);
-                }
-                finally
-                {
-                    response.Dispose();
-                }
+                }finally
+                { response.Dispose(); }
             }
 
             var backoff = ComputeRetryBackoff(retries, response);
@@ -326,58 +268,41 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
         }
     }
 
-    async Task<HttpResponse> ExecuteOnce<T>(
+    async Task<HttpResponse> ExecuteOnce<T>
+    (
         HttpRequest<T> request,
         int retryCount,
         CancellationToken cancellationToken = default
-    )
-        where T : ParamsBase
+    ) where T: ParamsBase
     {
         using HttpRequestMessage requestMessage = new(
-            request.Method,
-            request.Params.Url(this._options)
+            request.Method, request.Params.Url(this._options)
         )
         {
-            Content = request.Params.BodyContent(),
-        };
-        request.Params.AddHeadersToRequest(requestMessage, this._options);
-        if (!requestMessage.Headers.Contains("x-stainless-retry-count"))
+            Content = request.Params.BodyContent()
+        };request.Params.AddHeadersToRequest(requestMessage, this._options);if (!requestMessage.Headers.Contains("x-stainless-retry-count"))
         {
             requestMessage.Headers.Add("x-stainless-retry-count", retryCount.ToString());
-        }
-        using CancellationTokenSource timeoutCts = new(
+        }using CancellationTokenSource timeoutCts = new(
             this.Timeout ?? ClientOptions.DefaultTimeout
-        );
-        using var cts = CancellationTokenSource.CreateLinkedTokenSource(
-            timeoutCts.Token,
-            cancellationToken
-        );
-        HttpResponseMessage responseMessage;
-        try
+        );using var cts = CancellationTokenSource.CreateLinkedTokenSource(timeoutCts.Token, cancellationToken);HttpResponseMessage responseMessage;try
         {
-            responseMessage = await this
-                .HttpClient.SendAsync(
-                    requestMessage,
-                    HttpCompletionOption.ResponseHeadersRead,
-                    cts.Token
-                )
-                .ConfigureAwait(false);
+            responseMessage =await this.HttpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, cts.Token).ConfigureAwait(false) ;
         }
         catch (HttpRequestException e)
         {
             throw new SentIOException("I/O exception", e);
-        }
-        return new() { RawMessage = responseMessage, CancellationToken = cts.Token };
+        }return new()
+        {
+            RawMessage = responseMessage,
+            CancellationToken = cts.Token,
+        };
     }
 
     static TimeSpan ComputeRetryBackoff(int retries, HttpResponse? response)
     {
         TimeSpan? apiBackoff = ParseRetryAfterMsHeader(response) ?? ParseRetryAfterHeader(response);
-        if (
-            apiBackoff != null
-            && apiBackoff > TimeSpan.Zero
-            && apiBackoff < TimeSpan.FromMinutes(1)
-        )
+        if (apiBackoff != null && apiBackoff > TimeSpan.Zero && apiBackoff < TimeSpan.FromMinutes(1))
         {
             // If the API asks us to wait a certain amount of time (and it's a reasonable amount), then just
             // do what it says.
@@ -385,7 +310,9 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
         }
 
         // Apply exponential backoff, but not more than the max.
-        var backoffSeconds = Math.Min(0.5 * Math.Pow(2.0, retries - 1), 8.0);
+        var backoffSeconds = Math.Min(
+            0.5 * Math.Pow(2.0, retries - 1), 8.0
+        );
         var jitter = 1.0 - 0.25 * Random.NextDouble();
         return TimeSpan.FromSeconds(backoffSeconds * jitter);
     }
@@ -432,10 +359,8 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
 
     static bool ShouldRetry(HttpResponse response)
     {
-        if (
-            response.TryGetHeaderValues("X-Should-Retry", out var headerValues)
-            && bool.TryParse(Enumerable.FirstOrDefault(headerValues), out var shouldRetry)
-        )
+        if (response.TryGetHeaderValues("X-Should-Retry", out var headerValues)
+            && bool.TryParse(Enumerable.FirstOrDefault(headerValues), out var shouldRetry))
         {
             // If the server explicitly says whether to retry, then we obey.
             return shouldRetry;
@@ -459,30 +384,28 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
     }
 
     static bool ShouldRetry(Exception e)
-    {
-        return e is IOException || e is SentIOException;
-    }
+    { return e is IOException || e is SentIOException; }
 
-    public void Dispose() => this.HttpClient.Dispose();
+    public void Dispose()
+    =>this.HttpClient.Dispose();
 
-    public SentClientWithRawResponse()
+    public SentClientWithRawResponse ()
     {
         _options = new();
 
-        _webhooks = new(() => new WebhookServiceWithRawResponse(this));
-        _users = new(() => new UserServiceWithRawResponse(this));
-        _templates = new(() => new TemplateServiceWithRawResponse(this));
-        _profiles = new(() => new ProfileServiceWithRawResponse(this));
-        _numbers = new(() => new NumberServiceWithRawResponse(this));
-        _messages = new(() => new MessageServiceWithRawResponse(this));
-        _contacts = new(() => new ContactServiceWithRawResponse(this));
-        _conversations = new(() => new ConversationServiceWithRawResponse(this));
-        _me = new(() => new MeServiceWithRawResponse(this));
+        _webhooks =new(() => new WebhookServiceWithRawResponse(this)) ;
+        _users =new(() => new UserServiceWithRawResponse(this)) ;
+        _templates =new(() => new TemplateServiceWithRawResponse(this)) ;
+        _profiles =new(() => new ProfileServiceWithRawResponse(this)) ;
+        _numbers =new(() => new NumberServiceWithRawResponse(this)) ;
+        _messages =new(() => new MessageServiceWithRawResponse(this)) ;
+        _contacts =new(() => new ContactServiceWithRawResponse(this)) ;
+        _conversations =new(
+            () => new ConversationServiceWithRawResponse(this)
+        ) ;
+        _me =new(() => new MeServiceWithRawResponse(this)) ;
     }
 
-    public SentClientWithRawResponse(ClientOptions options)
-        : this()
-    {
-        _options = options;
-    }
+    public SentClientWithRawResponse (ClientOptions options) : this()
+    { _options = options; }
 }

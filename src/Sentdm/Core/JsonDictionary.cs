@@ -10,11 +10,11 @@ namespace Sentdm.Core;
 
 /// <summary>
 /// A dictionary that holds JSON data.
-///
+/// 
 /// <para>It can be mutated and then frozen once no more mutations are expected.
 /// This is useful for allowing the dictionary to be modified by a class's
 /// <c>init</c> properties, but then preventing it from being modified afterwards.</para>
-///
+/// 
 /// <para>It also caches data deserialization for performance.</para>
 /// </summary>
 sealed class JsonDictionary
@@ -23,10 +23,8 @@ sealed class JsonDictionary
 
     readonly ConcurrentDictionary<string, object?> _deserializedData;
 
-    Dictionary<string, JsonElement> MutableRawData
-    {
-        get
-        {
+    Dictionary<string, JsonElement> MutableRawData {
+        get {
             if (_rawData is Dictionary<string, JsonElement> dictionary)
             {
                 return dictionary;
@@ -35,36 +33,44 @@ sealed class JsonDictionary
         }
     }
 
-    public JsonDictionary()
+    public JsonDictionary ()
     {
         _rawData = new Dictionary<string, JsonElement>();
         _deserializedData = new();
     }
 
-    public JsonDictionary(IReadOnlyDictionary<string, JsonElement> dictionary)
+    public JsonDictionary (IReadOnlyDictionary<string, JsonElement> dictionary)
     {
-        _rawData = Enumerable.ToDictionary(dictionary, (e) => e.Key, (e) => e.Value);
+        _rawData = Enumerable.ToDictionary(
+            dictionary,
+            ( e )=>e.Key,
+            ( e )=>e.Value
+        );
         _deserializedData = new();
     }
 
-    public JsonDictionary(FrozenDictionary<string, JsonElement> dictionary)
+    public JsonDictionary (FrozenDictionary<string, JsonElement> dictionary)
     {
         _rawData = dictionary;
         _deserializedData = new();
     }
 
-    public JsonDictionary(JsonDictionary dictionary)
+    public JsonDictionary (JsonDictionary dictionary)
     {
-        _rawData = Enumerable.ToDictionary(dictionary._rawData, (e) => e.Key, (e) => e.Value);
+        _rawData = Enumerable.ToDictionary(
+            dictionary._rawData,
+            ( e )=>e.Key,
+            ( e )=>e.Value
+        );
         _deserializedData = new(dictionary._deserializedData);
     }
 
     /// <summary>
-    /// Freezes this dictionary and returns a readonly view of it.
-    ///
-    /// <para>Future calls to mutating methods on this class will throw
-    /// <see cref="InvalidOperationException"/></para>.
-    /// </summary>
+/// Freezes this dictionary and returns a readonly view of it.
+/// 
+/// <para>Future calls to mutating methods on this class will throw
+/// <see cref="InvalidOperationException"/></para>.
+/// </summary>
     public IReadOnlyDictionary<string, JsonElement> Freeze()
     {
         if (_rawData is FrozenDictionary<string, JsonElement> dictionary)
@@ -77,14 +83,18 @@ sealed class JsonDictionary
         return frozenRawData;
     }
 
-    public void Set<T>(string key, T value)
+    public void Set<T>
+    (string key, T value)
     {
-        MutableRawData[key] = JsonSerializer.SerializeToElement(value, ModelBase.SerializerOptions);
+        MutableRawData[key] = JsonSerializer.SerializeToElement(
+            value,
+            ModelBase.SerializerOptions
+        );
         _deserializedData[key] = value;
     }
 
-    public T GetNotNullClass<T>(string key)
-        where T : class
+    public T GetNotNullClass<T>
+    (string key) where T: class
     {
         if (_deserializedData.TryGetValue(key, out var cached) && cached is T t)
         {
@@ -99,8 +109,8 @@ sealed class JsonDictionary
         return deserialized;
     }
 
-    public T GetNotNullStruct<T>(string key)
-        where T : struct
+    public T GetNotNullStruct<T>
+    (string key) where T: struct
     {
         if (_deserializedData.TryGetValue(key, out var cached) && cached is T t)
         {
@@ -115,8 +125,8 @@ sealed class JsonDictionary
         return deserialized;
     }
 
-    public T? GetNullableClass<T>(string key)
-        where T : class
+    public T? GetNullableClass<T>
+    (string key) where T: class
     {
         if (_deserializedData.TryGetValue(key, out var cached) && (cached == null || cached is T))
         {
@@ -132,8 +142,8 @@ sealed class JsonDictionary
         return deserialized;
     }
 
-    public T? GetNullableStruct<T>(string key)
-        where T : struct
+    public T? GetNullableStruct<T>
+    (string key) where T: struct
     {
         if (_deserializedData.TryGetValue(key, out var cached) && (cached == null || cached is T))
         {
@@ -150,12 +160,12 @@ sealed class JsonDictionary
     }
 
     /// <summary>
-    /// Gets the raw JSON element for a key that must be present, without rejecting JSON null.
-    ///
-    /// <para>Used for values of unknown type, which can be any JSON value including null. A JSON
-    /// null is returned as a <see cref="JsonElement"/> whose <c>ValueKind</c> is
-    /// <c>Null</c>.</para>
-    /// </summary>
+/// Gets the raw JSON element for a key that must be present, without rejecting JSON null.
+/// 
+/// <para>Used for values of unknown type, which can be any JSON value including null. A JSON
+/// null is returned as a <see cref="JsonElement"/> whose <c>ValueKind</c> is
+/// <c>Null</c>.</para>
+/// </summary>
     public JsonElement GetNotAbsentElement(string key)
     {
         if (!_rawData.TryGetValue(key, out JsonElement element))
@@ -165,11 +175,8 @@ sealed class JsonDictionary
         return element;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(this._rawData),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(this._rawData), ModelBase.ToStringSerializerOptions);
 
     public override bool Equals(object? obj)
     {
@@ -195,7 +202,5 @@ sealed class JsonDictionary
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

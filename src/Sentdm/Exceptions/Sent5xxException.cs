@@ -4,6 +4,8 @@ namespace Sentdm.Exceptions;
 
 public class Sent5xxException : SentApiException
 {
-    public Sent5xxException(HttpRequestException? innerException = null)
-        : base(innerException) { }
+    public Sent5xxException (
+        HttpRequestException? innerException = null
+    ) : base(innerException)
+    {  }
 }

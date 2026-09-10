@@ -36,134 +36,141 @@ public interface IWebhookService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IWebhookService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IWebhookService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Creates a new webhook endpoint for the authenticated customer.
-    /// </summary>
+/// Creates a new webhook endpoint for the authenticated customer.
+/// </summary>
     Task<ApiResponseWebhook> Create(
         WebhookCreateParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Retrieves a single webhook by ID for the authenticated customer.
-    /// </summary>
+/// Retrieves a single webhook by ID for the authenticated customer.
+/// </summary>
     Task<ApiResponseWebhook> Retrieve(
         WebhookRetrieveParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Retrieve(WebhookRetrieveParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Retrieve(WebhookRetrieveParams, CancellationToken)"/>
     Task<ApiResponseWebhook> Retrieve(
         string id,
         WebhookRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Updates an existing webhook for the authenticated customer.
-    /// </summary>
+/// Updates an existing webhook for the authenticated customer.
+/// </summary>
     Task<ApiResponseWebhook> Update(
         WebhookUpdateParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(WebhookUpdateParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Update(WebhookUpdateParams, CancellationToken)"/>
     Task<ApiResponseWebhook> Update(
         string id,
         WebhookUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Retrieves a paginated list of webhooks for the authenticated customer.
-    /// </summary>
+/// Retrieves a paginated list of webhooks for the authenticated customer.
+/// </summary>
     Task<WebhookListPage> List(
         WebhookListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Deletes a webhook for the authenticated customer.
-    /// </summary>
-    Task Delete(WebhookDeleteParams parameters, CancellationToken cancellationToken = default);
-
-    /// <inheritdoc cref="Delete(WebhookDeleteParams, CancellationToken)"/>
+/// Deletes a webhook for the authenticated customer.
+/// </summary>
+    Task Delete(
+        WebhookDeleteParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    ;/// <inheritdoc cref="Delete(WebhookDeleteParams, CancellationToken)"/>
     Task Delete(
         string id,
         WebhookDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Retrieves all available webhook event types that can be subscribed to.
-    /// </summary>
+/// Retrieves all available webhook event types that can be subscribed to.
+/// </summary>
     Task<WebhookListEventTypesResponse> ListEventTypes(
         WebhookListEventTypesParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Retrieves a paginated list of delivery events for the specified webhook.
-    /// </summary>
+/// Retrieves a paginated list of delivery events for the specified webhook.
+/// </summary>
     Task<WebhookListEventsPage> ListEvents(
         WebhookListEventsParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ListEvents(WebhookListEventsParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="ListEvents(WebhookListEventsParams, CancellationToken)"/>
     Task<WebhookListEventsPage> ListEvents(
         string id,
         WebhookListEventsParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Generates a new signing secret for the specified webhook. The old secret is
-    /// immediately invalidated.
-    /// </summary>
+/// Generates a new signing secret for the specified webhook. The old secret is
+/// immediately invalidated.
+/// </summary>
     Task<WebhookRotateSecretResponse> RotateSecret(
         WebhookRotateSecretParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="RotateSecret(WebhookRotateSecretParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="RotateSecret(WebhookRotateSecretParams, CancellationToken)"/>
     Task<WebhookRotateSecretResponse> RotateSecret(
         string id,
         WebhookRotateSecretParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Sends a test event to the specified webhook endpoint to verify connectivity.
-    /// </summary>
+/// Sends a test event to the specified webhook endpoint to verify connectivity.
+/// </summary>
     Task<WebhookTestResponse> Test(
         WebhookTestParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Test(WebhookTestParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Test(WebhookTestParams, CancellationToken)"/>
     Task<WebhookTestResponse> Test(
         string id,
         WebhookTestParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Activates or deactivates a webhook for the authenticated customer.
-    /// </summary>
+/// Activates or deactivates a webhook for the authenticated customer.
+/// </summary>
     Task<ApiResponseWebhook> ToggleStatus(
         WebhookToggleStatusParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ToggleStatus(WebhookToggleStatusParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="ToggleStatus(WebhookToggleStatusParams, CancellationToken)"/>
     Task<ApiResponseWebhook> ToggleStatus(
         string id,
         WebhookToggleStatusParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -177,144 +184,150 @@ public interface IWebhookServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IWebhookServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IWebhookServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /v3/webhooks</c>, but is otherwise the
-    /// same as <see cref="IWebhookService.Create(WebhookCreateParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>post /v3/webhooks</c>, but is otherwise the
+/// same as <see cref="IWebhookService.Create(WebhookCreateParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<ApiResponseWebhook>> Create(
         WebhookCreateParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /v3/webhooks/{id}</c>, but is otherwise the
-    /// same as <see cref="IWebhookService.Retrieve(WebhookRetrieveParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /v3/webhooks/{id}</c>, but is otherwise the
+/// same as <see cref="IWebhookService.Retrieve(WebhookRetrieveParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<ApiResponseWebhook>> Retrieve(
         WebhookRetrieveParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Retrieve(WebhookRetrieveParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Retrieve(WebhookRetrieveParams, CancellationToken)"/>
     Task<HttpResponse<ApiResponseWebhook>> Retrieve(
         string id,
         WebhookRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>put /v3/webhooks/{id}</c>, but is otherwise the
-    /// same as <see cref="IWebhookService.Update(WebhookUpdateParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>put /v3/webhooks/{id}</c>, but is otherwise the
+/// same as <see cref="IWebhookService.Update(WebhookUpdateParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<ApiResponseWebhook>> Update(
         WebhookUpdateParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(WebhookUpdateParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Update(WebhookUpdateParams, CancellationToken)"/>
     Task<HttpResponse<ApiResponseWebhook>> Update(
         string id,
         WebhookUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /v3/webhooks</c>, but is otherwise the
-    /// same as <see cref="IWebhookService.List(WebhookListParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /v3/webhooks</c>, but is otherwise the
+/// same as <see cref="IWebhookService.List(WebhookListParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<WebhookListPage>> List(
         WebhookListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>delete /v3/webhooks/{id}</c>, but is otherwise the
-    /// same as <see cref="IWebhookService.Delete(WebhookDeleteParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>delete /v3/webhooks/{id}</c>, but is otherwise the
+/// same as <see cref="IWebhookService.Delete(WebhookDeleteParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse> Delete(
         WebhookDeleteParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Delete(WebhookDeleteParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Delete(WebhookDeleteParams, CancellationToken)"/>
     Task<HttpResponse> Delete(
         string id,
         WebhookDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /v3/webhooks/event-types</c>, but is otherwise the
-    /// same as <see cref="IWebhookService.ListEventTypes(WebhookListEventTypesParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /v3/webhooks/event-types</c>, but is otherwise the
+/// same as <see cref="IWebhookService.ListEventTypes(WebhookListEventTypesParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<WebhookListEventTypesResponse>> ListEventTypes(
         WebhookListEventTypesParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /v3/webhooks/{id}/events</c>, but is otherwise the
-    /// same as <see cref="IWebhookService.ListEvents(WebhookListEventsParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /v3/webhooks/{id}/events</c>, but is otherwise the
+/// same as <see cref="IWebhookService.ListEvents(WebhookListEventsParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<WebhookListEventsPage>> ListEvents(
         WebhookListEventsParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ListEvents(WebhookListEventsParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="ListEvents(WebhookListEventsParams, CancellationToken)"/>
     Task<HttpResponse<WebhookListEventsPage>> ListEvents(
         string id,
         WebhookListEventsParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /v3/webhooks/{id}/rotate-secret</c>, but is otherwise the
-    /// same as <see cref="IWebhookService.RotateSecret(WebhookRotateSecretParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>post /v3/webhooks/{id}/rotate-secret</c>, but is otherwise the
+/// same as <see cref="IWebhookService.RotateSecret(WebhookRotateSecretParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<WebhookRotateSecretResponse>> RotateSecret(
         WebhookRotateSecretParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="RotateSecret(WebhookRotateSecretParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="RotateSecret(WebhookRotateSecretParams, CancellationToken)"/>
     Task<HttpResponse<WebhookRotateSecretResponse>> RotateSecret(
         string id,
         WebhookRotateSecretParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /v3/webhooks/{id}/test</c>, but is otherwise the
-    /// same as <see cref="IWebhookService.Test(WebhookTestParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>post /v3/webhooks/{id}/test</c>, but is otherwise the
+/// same as <see cref="IWebhookService.Test(WebhookTestParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<WebhookTestResponse>> Test(
         WebhookTestParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Test(WebhookTestParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Test(WebhookTestParams, CancellationToken)"/>
     Task<HttpResponse<WebhookTestResponse>> Test(
         string id,
         WebhookTestParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>patch /v3/webhooks/{id}/toggle-status</c>, but is otherwise the
-    /// same as <see cref="IWebhookService.ToggleStatus(WebhookToggleStatusParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>patch /v3/webhooks/{id}/toggle-status</c>, but is otherwise the
+/// same as <see cref="IWebhookService.ToggleStatus(WebhookToggleStatusParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<ApiResponseWebhook>> ToggleStatus(
         WebhookToggleStatusParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ToggleStatus(WebhookToggleStatusParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="ToggleStatus(WebhookToggleStatusParams, CancellationToken)"/>
     Task<HttpResponse<ApiResponseWebhook>> ToggleStatus(
         string id,
         WebhookToggleStatusParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

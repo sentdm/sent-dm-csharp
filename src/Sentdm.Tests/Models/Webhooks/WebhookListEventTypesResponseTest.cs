@@ -24,33 +24,43 @@ public class WebhookListEventTypesResponseTest : TestBase
                         EventType = "event_type",
                         IsActive = true,
                         Name = "name",
-                        SubTypes = [],
+                        SubTypes =
+                        [
+
+                        ],
                     },
                 ],
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         WebhookListEventTypesResponseData expectedData = new()
@@ -64,12 +74,19 @@ public class WebhookListEventTypesResponseTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
             ],
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -80,7 +97,13 @@ public class WebhookListEventTypesResponseTest : TestBase
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -114,40 +137,47 @@ public class WebhookListEventTypesResponseTest : TestBase
                         EventType = "event_type",
                         IsActive = true,
                         Name = "name",
-                        SubTypes = [],
+                        SubTypes =
+                        [
+
+                        ],
                     },
                 ],
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookListEventTypesResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookListEventTypesResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -168,40 +198,47 @@ public class WebhookListEventTypesResponseTest : TestBase
                         EventType = "event_type",
                         IsActive = true,
                         Name = "name",
-                        SubTypes = [],
+                        SubTypes =
+                        [
+
+                        ],
                     },
                 ],
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookListEventTypesResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookListEventTypesResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         WebhookListEventTypesResponseData expectedData = new()
@@ -215,12 +252,19 @@ public class WebhookListEventTypesResponseTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
             ],
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -231,7 +275,13 @@ public class WebhookListEventTypesResponseTest : TestBase
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -265,33 +315,43 @@ public class WebhookListEventTypesResponseTest : TestBase
                         EventType = "event_type",
                         IsActive = true,
                         Name = "name",
-                        SubTypes = [],
+                        SubTypes =
+                        [
+
+                        ],
                     },
                 ],
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -313,32 +373,44 @@ public class WebhookListEventTypesResponseTest : TestBase
                         EventType = "event_type",
                         IsActive = true,
                         Name = "name",
-                        SubTypes = [],
+                        SubTypes =
+                        [
+
+                        ],
                     },
                 ],
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -357,23 +429,35 @@ public class WebhookListEventTypesResponseTest : TestBase
                         EventType = "event_type",
                         IsActive = true,
                         Name = "name",
-                        SubTypes = [],
+                        SubTypes =
+                        [
+
+                        ],
                     },
                 ],
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
@@ -398,36 +482,47 @@ public class WebhookListEventTypesResponseTest : TestBase
                         EventType = "event_type",
                         IsActive = true,
                         Name = "name",
-                        SubTypes = [],
+                        SubTypes =
+                        [
+
+                        ],
                     },
                 ],
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -446,30 +541,41 @@ public class WebhookListEventTypesResponseTest : TestBase
                         EventType = "event_type",
                         IsActive = true,
                         Name = "name",
-                        SubTypes = [],
+                        SubTypes =
+                        [
+
+                        ],
                     },
                 ],
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         model.Validate();
@@ -485,14 +591,13 @@ public class WebhookListEventTypesResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Assert.Null(model.Data);
-        Assert.False(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.False(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.False(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -505,8 +610,7 @@ public class WebhookListEventTypesResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -522,17 +626,15 @@ public class WebhookListEventTypesResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         Assert.Null(model.Data);
-        Assert.True(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.True(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.True(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -545,11 +647,9 @@ public class WebhookListEventTypesResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         model.Validate();
@@ -571,33 +671,43 @@ public class WebhookListEventTypesResponseTest : TestBase
                         EventType = "event_type",
                         IsActive = true,
                         Name = "name",
-                        SubTypes = [],
+                        SubTypes =
+                        [
+
+                        ],
                     },
                 ],
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         WebhookListEventTypesResponse copied = new(model);
@@ -622,12 +732,18 @@ public class WebhookListEventTypesResponseDataTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
-            ],
-            Pagination = new()
+            ],Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -645,12 +761,19 @@ public class WebhookListEventTypesResponseDataTest : TestBase
                 EventType = "event_type",
                 IsActive = true,
                 Name = "name",
-                SubTypes = [],
+                SubTypes =
+                [
+
+                ],
             },
         ];
         PaginationMeta expectedPagination = new()
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },
             HasMore = true,
             Page = 0,
             PageSize = 0,
@@ -681,12 +804,18 @@ public class WebhookListEventTypesResponseDataTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
-            ],
-            Pagination = new()
+            ],Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -696,10 +825,7 @@ public class WebhookListEventTypesResponseDataTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookListEventTypesResponseData>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookListEventTypesResponseData>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -718,12 +844,18 @@ public class WebhookListEventTypesResponseDataTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
-            ],
-            Pagination = new()
+            ],Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -733,10 +865,7 @@ public class WebhookListEventTypesResponseDataTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookListEventTypesResponseData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookListEventTypesResponseData>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<WebhookEventType> expectedEventTypes =
@@ -748,12 +877,19 @@ public class WebhookListEventTypesResponseDataTest : TestBase
                 EventType = "event_type",
                 IsActive = true,
                 Name = "name",
-                SubTypes = [],
+                SubTypes =
+                [
+
+                ],
             },
         ];
         PaginationMeta expectedPagination = new()
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },
             HasMore = true,
             Page = 0,
             PageSize = 0,
@@ -784,12 +920,18 @@ public class WebhookListEventTypesResponseDataTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
-            ],
-            Pagination = new()
+            ],Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -804,18 +946,24 @@ public class WebhookListEventTypesResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new WebhookListEventTypesResponseData { };
+        var model = new WebhookListEventTypesResponseData
+        {
+
+        };
 
         Assert.Null(model.EventTypes);
-        Assert.False(model.RawData.ContainsKey("event_types"));
-        Assert.Null(model.Pagination);
+        Assert.False(model.RawData.ContainsKey("event_types"));Assert.Null(model.Pagination);
         Assert.False(model.RawData.ContainsKey("pagination"));
+
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new WebhookListEventTypesResponseData { };
+        var model = new WebhookListEventTypesResponseData
+        {
+
+        };
 
         model.Validate();
     }
@@ -825,15 +973,16 @@ public class WebhookListEventTypesResponseDataTest : TestBase
     {
         var model = new WebhookListEventTypesResponseData
         {
+
+
             // Null should be interpreted as omitted for these properties
-            EventTypes = null,
-            Pagination = null,
+            EventTypes = null,Pagination = null,
         };
 
         Assert.Null(model.EventTypes);
-        Assert.False(model.RawData.ContainsKey("event_types"));
-        Assert.Null(model.Pagination);
+        Assert.False(model.RawData.ContainsKey("event_types"));Assert.Null(model.Pagination);
         Assert.False(model.RawData.ContainsKey("pagination"));
+
     }
 
     [Fact]
@@ -841,9 +990,10 @@ public class WebhookListEventTypesResponseDataTest : TestBase
     {
         var model = new WebhookListEventTypesResponseData
         {
+
+
             // Null should be interpreted as omitted for these properties
-            EventTypes = null,
-            Pagination = null,
+            EventTypes = null,Pagination = null,
         };
 
         model.Validate();
@@ -863,12 +1013,18 @@ public class WebhookListEventTypesResponseDataTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
-            ],
-            Pagination = new()
+            ],Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,

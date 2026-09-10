@@ -15,32 +15,30 @@ public sealed class ProfileService : IProfileService
     readonly Lazy<IProfileServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IProfileServiceWithRawResponse WithRawResponse
-    {
+    public IProfileServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly ISentClient _client;
 
     /// <inheritdoc/>
-    public IProfileService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new ProfileService(this._client.WithOptions(modifier));
-    }
+    public IProfileService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new ProfileService(this._client.WithOptions(modifier)); }
 
-    public ProfileService(ISentClient client)
+    public ProfileService (ISentClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new ProfileServiceWithRawResponse(client.WithRawResponse));
-        _campaigns = new(() => new CampaignService(client));
+        _withRawResponse =new(
+            () => new ProfileServiceWithRawResponse(client.WithRawResponse)
+        ) ;
+        _campaigns =new(() => new CampaignService(client)) ;
     }
 
     readonly Lazy<ICampaignService> _campaigns;
-    public ICampaignService Campaigns
-    {
-        get { return _campaigns.Value; }
-    }
+    public ICampaignService Campaigns { get { return _campaigns.Value; } }
 
     /// <inheritdoc/>
     [Obsolete("deprecated")]
@@ -49,9 +47,7 @@ public sealed class ProfileService : IProfileService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Create(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Create(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -62,13 +58,9 @@ public sealed class ProfileService : IProfileService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<ApiResponseOfProfileDetail> Retrieve(
         string profileID,
@@ -78,7 +70,9 @@ public sealed class ProfileService : IProfileService
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            ProfileID = profileID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -88,13 +82,9 @@ public sealed class ProfileService : IProfileService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Update(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Update(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<ApiResponseOfProfileDetail> Update(
         string profileID,
@@ -104,7 +94,9 @@ public sealed class ProfileService : IProfileService
     {
         parameters ??= new();
 
-        return this.Update(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.Update(parameters with{
+            ProfileID = profileID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -114,9 +106,7 @@ public sealed class ProfileService : IProfileService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.List(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -128,9 +118,7 @@ public sealed class ProfileService : IProfileService
     )
     {
         return this.WithRawResponse.Delete(parameters, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public async Task Delete(
         string profileID,
@@ -140,8 +128,9 @@ public sealed class ProfileService : IProfileService
     {
         parameters ??= new();
 
-        await this.Delete(parameters with { ProfileID = profileID }, cancellationToken)
-            .ConfigureAwait(false);
+        await this.Delete(parameters with{
+            ProfileID = profileID
+        }, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -151,13 +140,9 @@ public sealed class ProfileService : IProfileService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Complete(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Complete(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<ProfileCompleteResponse> Complete(
         string profileID,
@@ -165,7 +150,9 @@ public sealed class ProfileService : IProfileService
         CancellationToken cancellationToken = default
     )
     {
-        return this.Complete(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.Complete(parameters with{
+            ProfileID = profileID
+        }, cancellationToken);
     }
 }
 
@@ -175,21 +162,22 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IProfileServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public IProfileServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new ProfileServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public ProfileServiceWithRawResponse(ISentClientWithRawResponse client)
+    public ProfileServiceWithRawResponse (ISentClientWithRawResponse client)
     {
-        _client = client;
+        _client =client ;
 
-        _campaigns = new(() => new CampaignServiceWithRawResponse(client));
+        _campaigns =new(() => new CampaignServiceWithRawResponse(client)) ;
     }
 
     readonly Lazy<ICampaignServiceWithRawResponse> _campaigns;
-    public ICampaignServiceWithRawResponse Campaigns
-    {
+    public ICampaignServiceWithRawResponse Campaigns {
         get { return _campaigns.Value; }
     }
 
@@ -208,20 +196,13 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var apiResponseOfProfileDetail = await response
-                    .Deserialize<ApiResponseOfProfileDetail>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    apiResponseOfProfileDetail.Validate();
-                }
-                return apiResponseOfProfileDetail;
+        return new(response, async ( token )=>{
+            var apiResponseOfProfileDetail = await response.Deserialize<ApiResponseOfProfileDetail>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                apiResponseOfProfileDetail.Validate();
             }
-        );
+            return apiResponseOfProfileDetail;
+        });
     }
 
     /// <inheritdoc/>
@@ -233,7 +214,9 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     {
         if (parameters.ProfileID == null)
         {
-            throw new SentInvalidDataException("'parameters.ProfileID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.ProfileID' cannot be null"
+            );
         }
 
         HttpRequest<ProfileRetrieveParams> request = new()
@@ -242,23 +225,14 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var apiResponseOfProfileDetail = await response
-                    .Deserialize<ApiResponseOfProfileDetail>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    apiResponseOfProfileDetail.Validate();
-                }
-                return apiResponseOfProfileDetail;
+        return new(response, async ( token )=>{
+            var apiResponseOfProfileDetail = await response.Deserialize<ApiResponseOfProfileDetail>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                apiResponseOfProfileDetail.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return apiResponseOfProfileDetail;
+        });
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<HttpResponse<ApiResponseOfProfileDetail>> Retrieve(
         string profileID,
@@ -268,7 +242,9 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            ProfileID = profileID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -280,7 +256,9 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     {
         if (parameters.ProfileID == null)
         {
-            throw new SentInvalidDataException("'parameters.ProfileID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.ProfileID' cannot be null"
+            );
         }
 
         HttpRequest<ProfileUpdateParams> request = new()
@@ -289,23 +267,14 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var apiResponseOfProfileDetail = await response
-                    .Deserialize<ApiResponseOfProfileDetail>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    apiResponseOfProfileDetail.Validate();
-                }
-                return apiResponseOfProfileDetail;
+        return new(response, async ( token )=>{
+            var apiResponseOfProfileDetail = await response.Deserialize<ApiResponseOfProfileDetail>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                apiResponseOfProfileDetail.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return apiResponseOfProfileDetail;
+        });
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<HttpResponse<ApiResponseOfProfileDetail>> Update(
         string profileID,
@@ -315,7 +284,9 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.Update(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.Update(parameters with{
+            ProfileID = profileID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -333,20 +304,13 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var profiles = await response
-                    .Deserialize<ProfileListResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    profiles.Validate();
-                }
-                return profiles;
+        return new(response, async ( token )=>{
+            var profiles = await response.Deserialize<ProfileListResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                profiles.Validate();
             }
-        );
+            return profiles;
+        });
     }
 
     /// <inheritdoc/>
@@ -358,7 +322,9 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     {
         if (parameters.ProfileID == null)
         {
-            throw new SentInvalidDataException("'parameters.ProfileID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.ProfileID' cannot be null"
+            );
         }
 
         HttpRequest<ProfileDeleteParams> request = new()
@@ -367,9 +333,7 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             Params = parameters,
         };
         return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<HttpResponse> Delete(
         string profileID,
@@ -379,7 +343,9 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.Delete(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.Delete(parameters with{
+            ProfileID = profileID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -391,7 +357,9 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
     {
         if (parameters.ProfileID == null)
         {
-            throw new SentInvalidDataException("'parameters.ProfileID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.ProfileID' cannot be null"
+            );
         }
 
         HttpRequest<ProfileCompleteParams> request = new()
@@ -400,23 +368,14 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var deserializedResponse = await response
-                    .Deserialize<ProfileCompleteResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    deserializedResponse.Validate();
-                }
-                return deserializedResponse;
+        return new(response, async ( token )=>{
+            var deserializedResponse = await response.Deserialize<ProfileCompleteResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                deserializedResponse.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return deserializedResponse;
+        });
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<HttpResponse<ProfileCompleteResponse>> Complete(
         string profileID,
@@ -424,6 +383,8 @@ public sealed class ProfileServiceWithRawResponse : IProfileServiceWithRawRespon
         CancellationToken cancellationToken = default
     )
     {
-        return this.Complete(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.Complete(parameters with{
+            ProfileID = profileID
+        }, cancellationToken);
     }
 }

@@ -11,15 +11,7 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channel = "channel",
-            Language = "language",
-            Reason = "reason",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channel = "channel",Language = "language",Reason = "reason",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         string expectedStatus = "status";
@@ -48,22 +40,11 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channel = "channel",
-            Language = "language",
-            Reason = "reason",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channel = "channel",Language = "language",Reason = "reason",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateEventPayload>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateEventPayload>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -73,22 +54,11 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channel = "channel",
-            Language = "language",
-            Reason = "reason",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channel = "channel",Language = "language",Reason = "reason",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateEventPayload>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateEventPayload>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedStatus = "status";
@@ -117,15 +87,7 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channel = "channel",
-            Language = "language",
-            Reason = "reason",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channel = "channel",Language = "language",Reason = "reason",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         model.Validate();
@@ -136,23 +98,17 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            Reason = "reason",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",Reason = "reason",
         };
 
         Assert.Null(model.AccountID);
-        Assert.False(model.RawData.ContainsKey("account_id"));
-        Assert.Null(model.Category);
-        Assert.False(model.RawData.ContainsKey("category"));
-        Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
-        Assert.Null(model.Language);
-        Assert.False(model.RawData.ContainsKey("language"));
-        Assert.Null(model.TemplateID);
-        Assert.False(model.RawData.ContainsKey("template_id"));
-        Assert.Null(model.TemplateName);
+        Assert.False(model.RawData.ContainsKey("account_id"));Assert.Null(model.Category);
+        Assert.False(model.RawData.ContainsKey("category"));Assert.Null(model.Channel);
+        Assert.False(model.RawData.ContainsKey("channel"));Assert.Null(model.Language);
+        Assert.False(model.RawData.ContainsKey("language"));Assert.Null(model.TemplateID);
+        Assert.False(model.RawData.ContainsKey("template_id"));Assert.Null(model.TemplateName);
         Assert.False(model.RawData.ContainsKey("template_name"));
+
     }
 
     [Fact]
@@ -160,9 +116,7 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            Reason = "reason",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",Reason = "reason",
         };
 
         model.Validate();
@@ -173,31 +127,20 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            Reason = "reason",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",Reason = "reason",
 
             // Null should be interpreted as omitted for these properties
-            AccountID = null,
-            Category = null,
-            Channel = null,
-            Language = null,
-            TemplateID = null,
-            TemplateName = null,
+            AccountID = null,Category = null,Channel = null,Language = null,TemplateID = null,TemplateName = null,
         };
 
         Assert.Null(model.AccountID);
-        Assert.False(model.RawData.ContainsKey("account_id"));
-        Assert.Null(model.Category);
-        Assert.False(model.RawData.ContainsKey("category"));
-        Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
-        Assert.Null(model.Language);
-        Assert.False(model.RawData.ContainsKey("language"));
-        Assert.Null(model.TemplateID);
-        Assert.False(model.RawData.ContainsKey("template_id"));
-        Assert.Null(model.TemplateName);
+        Assert.False(model.RawData.ContainsKey("account_id"));Assert.Null(model.Category);
+        Assert.False(model.RawData.ContainsKey("category"));Assert.Null(model.Channel);
+        Assert.False(model.RawData.ContainsKey("channel"));Assert.Null(model.Language);
+        Assert.False(model.RawData.ContainsKey("language"));Assert.Null(model.TemplateID);
+        Assert.False(model.RawData.ContainsKey("template_id"));Assert.Null(model.TemplateName);
         Assert.False(model.RawData.ContainsKey("template_name"));
+
     }
 
     [Fact]
@@ -205,17 +148,10 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            Reason = "reason",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",Reason = "reason",
 
             // Null should be interpreted as omitted for these properties
-            AccountID = null,
-            Category = null,
-            Channel = null,
-            Language = null,
-            TemplateID = null,
-            TemplateName = null,
+            AccountID = null,Category = null,Channel = null,Language = null,TemplateID = null,TemplateName = null,
         };
 
         model.Validate();
@@ -226,18 +162,12 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channel = "channel",
-            Language = "language",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channel = "channel",Language = "language",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         Assert.Null(model.Reason);
         Assert.False(model.RawData.ContainsKey("reason"));
+
     }
 
     [Fact]
@@ -245,14 +175,7 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channel = "channel",
-            Language = "language",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channel = "channel",Language = "language",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         model.Validate();
@@ -263,20 +186,14 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channel = "channel",
-            Language = "language",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channel = "channel",Language = "language",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
 
             Reason = null,
         };
 
         Assert.Null(model.Reason);
         Assert.True(model.RawData.ContainsKey("reason"));
+
     }
 
     [Fact]
@@ -284,14 +201,7 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channel = "channel",
-            Language = "language",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channel = "channel",Language = "language",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
 
             Reason = null,
         };
@@ -304,15 +214,7 @@ public class TemplateEventPayloadTest : TestBase
     {
         var model = new TemplateEventPayload
         {
-            Status = "status",
-            WhatsappTemplateID = "whatsapp_template_id",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Category = "category",
-            Channel = "channel",
-            Language = "language",
-            Reason = "reason",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            Status = "status",WhatsappTemplateID = "whatsapp_template_id",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Category = "category",Channel = "channel",Language = "language",Reason = "reason",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         TemplateEventPayload copied = new(model);

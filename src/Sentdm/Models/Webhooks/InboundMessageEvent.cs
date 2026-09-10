@@ -18,12 +18,12 @@ public sealed record class InboundMessageEvent : JsonModel
     /// The specific event within the family, for example message.delivered or message.received.
     /// Absent on events that have no subtype, so treat it as optional.
     /// </summary>
-    public string? Event
-    {
-        get
-        {
+    public string? Event {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("event");
+            return this._rawData.GetNullableClass<string>(
+                "event"
+            );
         }
         init { this._rawData.Set("event", value); }
     }
@@ -32,17 +32,15 @@ public sealed record class InboundMessageEvent : JsonModel
     /// The event family, for example message or templates. Route on this first,
     /// then on event for the specific change.
     /// </summary>
-    public string? Field
-    {
-        get
-        {
+    public string? Field {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("field");
+            return this._rawData.GetNullableClass<string>(
+                "field"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -54,12 +52,12 @@ public sealed record class InboundMessageEvent : JsonModel
     /// Body of a message.received event. Delivered when a contact messages one of
     /// your numbers.
     /// </summary>
-    public InboundMessageEventPayload? Payload
-    {
-        get
-        {
+    public InboundMessageEventPayload? Payload {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<InboundMessageEventPayload>("payload");
+            return this._rawData.GetNullableClass<InboundMessageEventPayload>(
+                "payload"
+            );
         }
         init { this._rawData.Set("payload", value); }
     }
@@ -69,17 +67,15 @@ public sealed record class InboundMessageEvent : JsonModel
     /// time, not the time the underlying change happened. Use the timestamp inside
     /// the payload for the latter.
     /// </summary>
-    public string? Timestamp
-    {
-        get
-        {
+    public string? Timestamp {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("timestamp");
+            return this._rawData.GetNullableClass<string>(
+                "timestamp"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -96,39 +92,40 @@ public sealed record class InboundMessageEvent : JsonModel
         _ = this.Timestamp;
     }
 
-    public InboundMessageEvent() { }
+    public InboundMessageEvent ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public InboundMessageEvent(InboundMessageEvent inboundMessageEvent)
-        : base(inboundMessageEvent) { }
-#pragma warning restore CS8618
+    public InboundMessageEvent (InboundMessageEvent inboundMessageEvent) : base(
+        inboundMessageEvent
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public InboundMessageEvent(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public InboundMessageEvent (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    InboundMessageEvent(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    InboundMessageEvent (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="InboundMessageEventFromRaw.FromRawUnchecked"/>
     public static InboundMessageEvent FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class InboundMessageEventFromRaw : IFromRawJson<InboundMessageEvent>
 {
     /// <inheritdoc/>
-    public InboundMessageEvent FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        InboundMessageEvent.FromRawUnchecked(rawData);
+    public InboundMessageEvent FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>InboundMessageEvent.FromRawUnchecked(rawData);
 }

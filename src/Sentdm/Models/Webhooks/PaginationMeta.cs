@@ -18,12 +18,12 @@ public sealed record class PaginationMeta : JsonModel
     /// Cursor-based pagination. Never populated — see Cursors.
     /// </summary>
     [Obsolete("deprecated")]
-    public Cursors? Cursors
-    {
-        get
-        {
+    public Cursors? Cursors {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Cursors>("cursors");
+            return this._rawData.GetNullableClass<Cursors>(
+                "cursors"
+            );
         }
         init { this._rawData.Set("cursors", value); }
     }
@@ -31,17 +31,15 @@ public sealed record class PaginationMeta : JsonModel
     /// <summary>
     /// Whether there are more pages after this one
     /// </summary>
-    public bool? HasMore
-    {
-        get
-        {
+    public bool? HasMore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("has_more");
+            return this._rawData.GetNullableStruct<bool>(
+                "has_more"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -52,17 +50,15 @@ public sealed record class PaginationMeta : JsonModel
     /// <summary>
     /// Current page number (1-indexed)
     /// </summary>
-    public int? Page
-    {
-        get
-        {
+    public int? Page {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("page");
+            return this._rawData.GetNullableStruct<int>(
+                "page"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -73,17 +69,15 @@ public sealed record class PaginationMeta : JsonModel
     /// <summary>
     /// Number of items per page
     /// </summary>
-    public int? PageSize
-    {
-        get
-        {
+    public int? PageSize {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("page_size");
+            return this._rawData.GetNullableStruct<int>(
+                "page_size"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -94,17 +88,15 @@ public sealed record class PaginationMeta : JsonModel
     /// <summary>
     /// Total number of items across all pages
     /// </summary>
-    public int? TotalCount
-    {
-        get
-        {
+    public int? TotalCount {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("total_count");
+            return this._rawData.GetNullableStruct<int>(
+                "total_count"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -115,17 +107,15 @@ public sealed record class PaginationMeta : JsonModel
     /// <summary>
     /// Total number of pages
     /// </summary>
-    public int? TotalPages
-    {
-        get
-        {
+    public int? TotalPages {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("total_pages");
+            return this._rawData.GetNullableStruct<int>(
+                "total_pages"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -144,57 +134,55 @@ public sealed record class PaginationMeta : JsonModel
         _ = this.TotalPages;
     }
 
-    public PaginationMeta() { }
+    public PaginationMeta ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public PaginationMeta(PaginationMeta paginationMeta)
-        : base(paginationMeta) { }
-#pragma warning restore CS8618
+    public PaginationMeta (PaginationMeta paginationMeta) : base(paginationMeta)
+    {  }
+    #pragma warning restore CS8618
 
-    public PaginationMeta(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public PaginationMeta (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    PaginationMeta(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    PaginationMeta (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="PaginationMetaFromRaw.FromRawUnchecked"/>
-    public static PaginationMeta FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static PaginationMeta FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class PaginationMetaFromRaw : IFromRawJson<PaginationMeta>
 {
     /// <inheritdoc/>
-    public PaginationMeta FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        PaginationMeta.FromRawUnchecked(rawData);
+    public PaginationMeta FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>PaginationMeta.FromRawUnchecked(rawData);
 }
 
 /// <summary>
 /// Cursor-based pagination. Never populated — see Cursors.
 /// </summary>
-[Obsolete("deprecated")]
-[JsonConverter(typeof(JsonModelConverter<Cursors, CursorsFromRaw>))]
+[Obsolete("deprecated")][JsonConverter(typeof(JsonModelConverter<Cursors, CursorsFromRaw>))]
 public sealed record class Cursors : JsonModel
 {
     /// <summary>
     /// Cursor to fetch the next page.
     /// </summary>
-    public string? After
-    {
-        get
-        {
+    public string? After {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("after");
+            return this._rawData.GetNullableClass<string>(
+                "after"
+            );
         }
         init { this._rawData.Set("after", value); }
     }
@@ -202,12 +190,12 @@ public sealed record class Cursors : JsonModel
     /// <summary>
     /// Cursor to fetch the previous page.
     /// </summary>
-    public string? Before
-    {
-        get
-        {
+    public string? Before {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("before");
+            return this._rawData.GetNullableClass<string>(
+                "before"
+            );
         }
         init { this._rawData.Set("before", value); }
     }
@@ -219,37 +207,34 @@ public sealed record class Cursors : JsonModel
         _ = this.Before;
     }
 
-    public Cursors() { }
+    public Cursors ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Cursors(Cursors cursors)
-        : base(cursors) { }
-#pragma warning restore CS8618
+    public Cursors (Cursors cursors) : base(cursors)
+    {  }
+    #pragma warning restore CS8618
 
-    public Cursors(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Cursors (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Cursors(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Cursors (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="CursorsFromRaw.FromRawUnchecked"/>
-    public static Cursors FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class CursorsFromRaw : IFromRawJson<Cursors>
+    public static Cursors FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class CursorsFromRaw : IFromRawJson<Cursors>
 {
     /// <inheritdoc/>
-    public Cursors FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Cursors.FromRawUnchecked(rawData);
+    public Cursors FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Cursors.FromRawUnchecked(rawData);
 }

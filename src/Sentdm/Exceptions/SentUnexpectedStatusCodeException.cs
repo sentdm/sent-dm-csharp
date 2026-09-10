@@ -4,6 +4,8 @@ namespace Sentdm.Exceptions;
 
 public class SentUnexpectedStatusCodeException : SentApiException
 {
-    public SentUnexpectedStatusCodeException(HttpRequestException? innerException = null)
-        : base(innerException) { }
+    public SentUnexpectedStatusCodeException (
+        HttpRequestException? innerException = null
+    ) : base(innerException)
+    {  }
 }

@@ -12,16 +12,7 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Email = "email",
-            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Name = "name",
-            Role = "role",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Email = "email",InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Name = "name",Role = "role",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -52,23 +43,11 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Email = "email",
-            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Name = "name",
-            Role = "role",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Email = "email",InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Name = "name",Role = "role",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UserResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<UserResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -78,23 +57,11 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Email = "email",
-            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Name = "name",
-            Role = "role",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Email = "email",InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Name = "name",Role = "role",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UserResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<UserResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -125,16 +92,7 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Email = "email",
-            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Name = "name",
-            Role = "role",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Email = "email",InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Name = "name",Role = "role",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         model.Validate();
@@ -145,25 +103,18 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.CustomerID);
-        Assert.False(model.RawData.ContainsKey("customer_id"));
-        Assert.Null(model.Email);
-        Assert.False(model.RawData.ContainsKey("email"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Role);
-        Assert.False(model.RawData.ContainsKey("role"));
-        Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.CustomerID);
+        Assert.False(model.RawData.ContainsKey("customer_id"));Assert.Null(model.Email);
+        Assert.False(model.RawData.ContainsKey("email"));Assert.Null(model.Name);
+        Assert.False(model.RawData.ContainsKey("name"));Assert.Null(model.Role);
+        Assert.False(model.RawData.ContainsKey("role"));Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
+
     }
 
     [Fact]
@@ -171,9 +122,7 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         model.Validate();
@@ -184,34 +133,21 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            CreatedAt = null,
-            CustomerID = null,
-            Email = null,
-            Name = null,
-            Role = null,
-            Status = null,
+            ID = null,CreatedAt = null,CustomerID = null,Email = null,Name = null,Role = null,Status = null,
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.CustomerID);
-        Assert.False(model.RawData.ContainsKey("customer_id"));
-        Assert.Null(model.Email);
-        Assert.False(model.RawData.ContainsKey("email"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Role);
-        Assert.False(model.RawData.ContainsKey("role"));
-        Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.CustomerID);
+        Assert.False(model.RawData.ContainsKey("customer_id"));Assert.Null(model.Email);
+        Assert.False(model.RawData.ContainsKey("email"));Assert.Null(model.Name);
+        Assert.False(model.RawData.ContainsKey("name"));Assert.Null(model.Role);
+        Assert.False(model.RawData.ContainsKey("role"));Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
+
     }
 
     [Fact]
@@ -219,18 +155,10 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            CreatedAt = null,
-            CustomerID = null,
-            Email = null,
-            Name = null,
-            Role = null,
-            Status = null,
+            ID = null,CreatedAt = null,CustomerID = null,Email = null,Name = null,Role = null,Status = null,
         };
 
         model.Validate();
@@ -241,21 +169,14 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Email = "email",
-            Name = "name",
-            Role = "role",
-            Status = "status",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Email = "email",Name = "name",Role = "role",Status = "status",
         };
 
         Assert.Null(model.InvitedAt);
-        Assert.False(model.RawData.ContainsKey("invited_at"));
-        Assert.Null(model.LastLoginAt);
-        Assert.False(model.RawData.ContainsKey("last_login_at"));
-        Assert.Null(model.UpdatedAt);
+        Assert.False(model.RawData.ContainsKey("invited_at"));Assert.Null(model.LastLoginAt);
+        Assert.False(model.RawData.ContainsKey("last_login_at"));Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updated_at"));
+
     }
 
     [Fact]
@@ -263,13 +184,7 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Email = "email",
-            Name = "name",
-            Role = "role",
-            Status = "status",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Email = "email",Name = "name",Role = "role",Status = "status",
         };
 
         model.Validate();
@@ -280,25 +195,16 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Email = "email",
-            Name = "name",
-            Role = "role",
-            Status = "status",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Email = "email",Name = "name",Role = "role",Status = "status",
 
-            InvitedAt = null,
-            LastLoginAt = null,
-            UpdatedAt = null,
+            InvitedAt = null,LastLoginAt = null,UpdatedAt = null,
         };
 
         Assert.Null(model.InvitedAt);
-        Assert.True(model.RawData.ContainsKey("invited_at"));
-        Assert.Null(model.LastLoginAt);
-        Assert.True(model.RawData.ContainsKey("last_login_at"));
-        Assert.Null(model.UpdatedAt);
+        Assert.True(model.RawData.ContainsKey("invited_at"));Assert.Null(model.LastLoginAt);
+        Assert.True(model.RawData.ContainsKey("last_login_at"));Assert.Null(model.UpdatedAt);
         Assert.True(model.RawData.ContainsKey("updated_at"));
+
     }
 
     [Fact]
@@ -306,17 +212,9 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Email = "email",
-            Name = "name",
-            Role = "role",
-            Status = "status",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Email = "email",Name = "name",Role = "role",Status = "status",
 
-            InvitedAt = null,
-            LastLoginAt = null,
-            UpdatedAt = null,
+            InvitedAt = null,LastLoginAt = null,UpdatedAt = null,
         };
 
         model.Validate();
@@ -327,16 +225,7 @@ public class UserResponseTest : TestBase
     {
         var model = new UserResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Email = "email",
-            InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Name = "name",
-            Role = "role",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Email = "email",InvitedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastLoginAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Name = "name",Role = "role",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         UserResponse copied = new(model);

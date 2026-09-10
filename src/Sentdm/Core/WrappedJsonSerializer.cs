@@ -9,8 +9,8 @@ namespace Sentdm.Core;
 /// </summary>
 sealed class WrappedJsonSerializer
 {
-    public static T GetNotNullClass<T>(JsonElement element, string name)
-        where T : class
+    public static T GetNotNullClass<T>
+    (JsonElement element, string name) where T: class
     {
         T deserialized;
         try
@@ -21,13 +21,16 @@ sealed class WrappedJsonSerializer
         }
         catch (JsonException e)
         {
-            throw new SentInvalidDataException($"'{name}' must be of type {typeof(T).FullName}", e);
+            throw new SentInvalidDataException(
+                $"'{name}' must be of type {typeof(T).FullName}",
+                e
+            );
         }
         return deserialized;
     }
 
-    public static T GetNotNullStruct<T>(JsonElement element, string name)
-        where T : struct
+    public static T GetNotNullStruct<T>
+    (JsonElement element, string name) where T: struct
     {
         T deserialized;
         try
@@ -38,13 +41,16 @@ sealed class WrappedJsonSerializer
         }
         catch (JsonException e)
         {
-            throw new SentInvalidDataException($"'{name}' must be of type {typeof(T).FullName}", e);
+            throw new SentInvalidDataException(
+                $"'{name}' must be of type {typeof(T).FullName}",
+                e
+            );
         }
         return deserialized;
     }
 
-    public static T? GetNullableClass<T>(JsonElement element, string name)
-        where T : class
+    public static T? GetNullableClass<T>
+    (JsonElement element, string name) where T: class
     {
         T? deserialized;
         try
@@ -53,13 +59,16 @@ sealed class WrappedJsonSerializer
         }
         catch (JsonException e)
         {
-            throw new SentInvalidDataException($"'{name}' must be of type {typeof(T).FullName}", e);
+            throw new SentInvalidDataException(
+                $"'{name}' must be of type {typeof(T).FullName}",
+                e
+            );
         }
         return deserialized;
     }
 
-    public static T? GetNullableStruct<T>(JsonElement element, string name)
-        where T : struct
+    public static T? GetNullableStruct<T>
+    (JsonElement element, string name) where T: struct
     {
         T? deserialized;
         try
@@ -68,7 +77,10 @@ sealed class WrappedJsonSerializer
         }
         catch (JsonException e)
         {
-            throw new SentInvalidDataException($"'{name}' must be of type {typeof(T).FullName}", e);
+            throw new SentInvalidDataException(
+                $"'{name}' must be of type {typeof(T).FullName}",
+                e
+            );
         }
         return deserialized;
     }

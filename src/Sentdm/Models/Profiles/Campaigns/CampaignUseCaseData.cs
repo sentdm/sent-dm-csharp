@@ -14,10 +14,8 @@ namespace Sentdm.Models.Profiles.Campaigns;
 [JsonConverter(typeof(JsonModelConverter<CampaignUseCaseData, CampaignUseCaseDataFromRaw>))]
 public sealed record class CampaignUseCaseData : JsonModel
 {
-    public required ApiEnum<string, MessagingUseCaseUs> MessagingUseCaseUs
-    {
-        get
-        {
+    public required ApiEnum<string, MessagingUseCaseUs> MessagingUseCaseUs {
+        get {
             this._rawData.Freeze();
             return this._rawData.GetNotNullClass<ApiEnum<string, MessagingUseCaseUs>>(
                 "messagingUseCaseUs"
@@ -29,15 +27,14 @@ public sealed record class CampaignUseCaseData : JsonModel
     /// <summary>
     /// Sample messages for this use case (1-5 messages, max 1024 characters each)
     /// </summary>
-    public required IReadOnlyList<string> SampleMessages
-    {
-        get
-        {
+    public required IReadOnlyList<string> SampleMessages {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("sampleMessages");
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>(
+                "sampleMessages"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<string>>(
                 "sampleMessages",
                 ImmutableArray.ToImmutableArray(value)
@@ -52,39 +49,40 @@ public sealed record class CampaignUseCaseData : JsonModel
         _ = this.SampleMessages;
     }
 
-    public CampaignUseCaseData() { }
+    public CampaignUseCaseData ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public CampaignUseCaseData(CampaignUseCaseData campaignUseCaseData)
-        : base(campaignUseCaseData) { }
-#pragma warning restore CS8618
+    public CampaignUseCaseData (CampaignUseCaseData campaignUseCaseData) : base(
+        campaignUseCaseData
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public CampaignUseCaseData(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public CampaignUseCaseData (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    CampaignUseCaseData(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    CampaignUseCaseData (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="CampaignUseCaseDataFromRaw.FromRawUnchecked"/>
     public static CampaignUseCaseData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class CampaignUseCaseDataFromRaw : IFromRawJson<CampaignUseCaseData>
 {
     /// <inheritdoc/>
-    public CampaignUseCaseData FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        CampaignUseCaseData.FromRawUnchecked(rawData);
+    public CampaignUseCaseData FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>CampaignUseCaseData.FromRawUnchecked(rawData);
 }

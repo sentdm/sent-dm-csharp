@@ -14,24 +14,25 @@ public sealed class CampaignService : ICampaignService
     readonly Lazy<ICampaignServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public ICampaignServiceWithRawResponse WithRawResponse
-    {
+    public ICampaignServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly ISentClient _client;
 
     /// <inheritdoc/>
-    public ICampaignService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new CampaignService(this._client.WithOptions(modifier));
-    }
+    public ICampaignService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new CampaignService(this._client.WithOptions(modifier)); }
 
-    public CampaignService(ISentClient client)
+    public CampaignService (ISentClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new CampaignServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new CampaignServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -41,13 +42,9 @@ public sealed class CampaignService : ICampaignService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Create(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Create(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<ApiResponseOfBrandCampaign> Create(
         string profileID,
@@ -55,7 +52,9 @@ public sealed class CampaignService : ICampaignService
         CancellationToken cancellationToken = default
     )
     {
-        return this.Create(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.Create(parameters with{
+            ProfileID = profileID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -65,13 +64,9 @@ public sealed class CampaignService : ICampaignService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Update(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Update(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<ApiResponseOfBrandCampaign> Update(
         string campaignID,
@@ -79,7 +74,9 @@ public sealed class CampaignService : ICampaignService
         CancellationToken cancellationToken = default
     )
     {
-        return this.Update(parameters with { CampaignID = campaignID }, cancellationToken);
+        return this.Update(parameters with{
+            CampaignID = campaignID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -89,13 +86,9 @@ public sealed class CampaignService : ICampaignService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.List(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<ApiResponseOfListOfBrandCampaign> List(
         string profileID,
@@ -105,7 +98,9 @@ public sealed class CampaignService : ICampaignService
     {
         parameters ??= new();
 
-        return this.List(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.List(parameters with{
+            ProfileID = profileID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -116,9 +111,7 @@ public sealed class CampaignService : ICampaignService
     )
     {
         return this.WithRawResponse.Delete(parameters, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public async Task Delete(
         string campaignID,
@@ -126,8 +119,9 @@ public sealed class CampaignService : ICampaignService
         CancellationToken cancellationToken = default
     )
     {
-        await this.Delete(parameters with { CampaignID = campaignID }, cancellationToken)
-            .ConfigureAwait(false);
+        await this.Delete(parameters with{
+            CampaignID = campaignID
+        }, cancellationToken).ConfigureAwait(false);
     }
 }
 
@@ -137,15 +131,15 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public ICampaignServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public ICampaignServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new CampaignServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public CampaignServiceWithRawResponse(ISentClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public CampaignServiceWithRawResponse (ISentClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
     [Obsolete("deprecated")]
@@ -156,7 +150,9 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     {
         if (parameters.ProfileID == null)
         {
-            throw new SentInvalidDataException("'parameters.ProfileID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.ProfileID' cannot be null"
+            );
         }
 
         HttpRequest<CampaignCreateParams> request = new()
@@ -165,23 +161,14 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var apiResponseOfBrandCampaign = await response
-                    .Deserialize<ApiResponseOfBrandCampaign>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    apiResponseOfBrandCampaign.Validate();
-                }
-                return apiResponseOfBrandCampaign;
+        return new(response, async ( token )=>{
+            var apiResponseOfBrandCampaign = await response.Deserialize<ApiResponseOfBrandCampaign>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                apiResponseOfBrandCampaign.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return apiResponseOfBrandCampaign;
+        });
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<HttpResponse<ApiResponseOfBrandCampaign>> Create(
         string profileID,
@@ -189,7 +176,9 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
         CancellationToken cancellationToken = default
     )
     {
-        return this.Create(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.Create(parameters with{
+            ProfileID = profileID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -201,7 +190,9 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     {
         if (parameters.CampaignID == null)
         {
-            throw new SentInvalidDataException("'parameters.CampaignID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.CampaignID' cannot be null"
+            );
         }
 
         HttpRequest<CampaignUpdateParams> request = new()
@@ -210,23 +201,14 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var apiResponseOfBrandCampaign = await response
-                    .Deserialize<ApiResponseOfBrandCampaign>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    apiResponseOfBrandCampaign.Validate();
-                }
-                return apiResponseOfBrandCampaign;
+        return new(response, async ( token )=>{
+            var apiResponseOfBrandCampaign = await response.Deserialize<ApiResponseOfBrandCampaign>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                apiResponseOfBrandCampaign.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return apiResponseOfBrandCampaign;
+        });
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<HttpResponse<ApiResponseOfBrandCampaign>> Update(
         string campaignID,
@@ -234,7 +216,9 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
         CancellationToken cancellationToken = default
     )
     {
-        return this.Update(parameters with { CampaignID = campaignID }, cancellationToken);
+        return this.Update(parameters with{
+            CampaignID = campaignID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -246,7 +230,9 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     {
         if (parameters.ProfileID == null)
         {
-            throw new SentInvalidDataException("'parameters.ProfileID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.ProfileID' cannot be null"
+            );
         }
 
         HttpRequest<CampaignListParams> request = new()
@@ -255,23 +241,14 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var apiResponseOfListOfBrandCampaign = await response
-                    .Deserialize<ApiResponseOfListOfBrandCampaign>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    apiResponseOfListOfBrandCampaign.Validate();
-                }
-                return apiResponseOfListOfBrandCampaign;
+        return new(response, async ( token )=>{
+            var apiResponseOfListOfBrandCampaign = await response.Deserialize<ApiResponseOfListOfBrandCampaign>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                apiResponseOfListOfBrandCampaign.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return apiResponseOfListOfBrandCampaign;
+        });
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<HttpResponse<ApiResponseOfListOfBrandCampaign>> List(
         string profileID,
@@ -281,7 +258,9 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     {
         parameters ??= new();
 
-        return this.List(parameters with { ProfileID = profileID }, cancellationToken);
+        return this.List(parameters with{
+            ProfileID = profileID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -293,7 +272,9 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
     {
         if (parameters.CampaignID == null)
         {
-            throw new SentInvalidDataException("'parameters.CampaignID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.CampaignID' cannot be null"
+            );
         }
 
         HttpRequest<CampaignDeleteParams> request = new()
@@ -302,9 +283,7 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
             Params = parameters,
         };
         return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     [Obsolete("deprecated")]
     public Task<HttpResponse> Delete(
         string campaignID,
@@ -312,6 +291,8 @@ public sealed class CampaignServiceWithRawResponse : ICampaignServiceWithRawResp
         CancellationToken cancellationToken = default
     )
     {
-        return this.Delete(parameters with { CampaignID = campaignID }, cancellationToken);
+        return this.Delete(parameters with{
+            CampaignID = campaignID
+        }, cancellationToken);
     }
 }
