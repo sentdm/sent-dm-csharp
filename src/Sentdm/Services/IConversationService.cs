@@ -39,7 +39,7 @@ public interface IConversationService
     /// conversations, ordered by created date (most recent first).
     /// </summary>
     Task<ConversationListPage> List(
-        ConversationListParams parameters,
+        ConversationListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -55,7 +55,7 @@ public interface IConversationService
     /// <inheritdoc cref="ListMessages(ConversationListMessagesParams, CancellationToken)"/>
     Task<ConversationListMessagesPage> ListMessages(
         string id,
-        ConversationListMessagesParams parameters,
+        ConversationListMessagesParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }
@@ -75,10 +75,10 @@ public interface IConversationServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for <c>get /v3/conversations</c>, but is otherwise the
-    /// same as <see cref="IConversationService.List(ConversationListParams, CancellationToken)"/>.
+    /// same as <see cref="IConversationService.List(ConversationListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ConversationListPage>> List(
-        ConversationListParams parameters,
+        ConversationListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -94,7 +94,7 @@ public interface IConversationServiceWithRawResponse
     /// <inheritdoc cref="ListMessages(ConversationListMessagesParams, CancellationToken)"/>
     Task<HttpResponse<ConversationListMessagesPage>> ListMessages(
         string id,
-        ConversationListMessagesParams parameters,
+        ConversationListMessagesParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }

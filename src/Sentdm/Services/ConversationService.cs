@@ -38,7 +38,7 @@ public sealed class ConversationService : IConversationService
 
     /// <inheritdoc/>
     public async Task<ConversationListPage> List(
-        ConversationListParams parameters,
+        ConversationListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -63,10 +63,12 @@ public sealed class ConversationService : IConversationService
     /// <inheritdoc/>
     public Task<ConversationListMessagesPage> ListMessages(
         string id,
-        ConversationListMessagesParams parameters,
+        ConversationListMessagesParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.ListMessages(parameters with { ID = id }, cancellationToken);
     }
 }
@@ -91,10 +93,12 @@ public sealed class ConversationServiceWithRawResponse : IConversationServiceWit
 
     /// <inheritdoc/>
     public async Task<HttpResponse<ConversationListPage>> List(
-        ConversationListParams parameters,
+        ConversationListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         HttpRequest<ConversationListParams> request = new()
         {
             Method = HttpMethod.Get,
@@ -153,10 +157,12 @@ public sealed class ConversationServiceWithRawResponse : IConversationServiceWit
     /// <inheritdoc/>
     public Task<HttpResponse<ConversationListMessagesPage>> ListMessages(
         string id,
-        ConversationListMessagesParams parameters,
+        ConversationListMessagesParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.ListMessages(parameters with { ID = id }, cancellationToken);
     }
 }

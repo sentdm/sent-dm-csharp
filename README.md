@@ -189,7 +189,7 @@ To access individual page items and manually request the next page, use the `Ite
 ```csharp
 using System;
 
-var page = await client.Webhooks.List(parameters);
+var page = await client.Webhooks.List();
 while (true)
 {
     foreach (var item in page.Items)
@@ -333,16 +333,17 @@ This can also be used to set a documented parameter to an undocumented or not ye
 ```csharp
 using System.Collections.Generic;
 using System.Text.Json;
-using Sentdm.Models.Webhooks;
+using Sentdm.Models.Profiles;
 
-var parameters = WebhookListParams.FromRawUnchecked
+var parameters = ProfileCompleteParams.FromRawUnchecked
 (
 
     rawHeaderData: new Dictionary<string, JsonElement>(),
-    rawQueryData: new Dictionary<string, JsonElement>
+    rawQueryData: new Dictionary<string, JsonElement>(),
+    rawBodyData: new Dictionary<string, JsonElement>
     {
         {
-            "page",
+            "webHookUrl",
             JsonSerializer.SerializeToElement("custom value")
         }
     }

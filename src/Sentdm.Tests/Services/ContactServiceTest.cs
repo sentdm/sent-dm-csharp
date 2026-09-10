@@ -39,10 +39,7 @@ public class ContactServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
-        var page = await this.client.Contacts.List(
-            new() { Page = 0, PageSize = 0 },
-            TestContext.Current.CancellationToken
-        );
+        var page = await this.client.Contacts.List(new(), TestContext.Current.CancellationToken);
         page.Validate();
     }
 

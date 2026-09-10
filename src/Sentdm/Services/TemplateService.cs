@@ -96,7 +96,7 @@ public sealed class TemplateService : ITemplateService
 
     /// <inheritdoc/>
     public async Task<TemplateListPage> List(
-        TemplateListParams parameters,
+        TemplateListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -266,10 +266,12 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
 
     /// <inheritdoc/>
     public async Task<HttpResponse<TemplateListPage>> List(
-        TemplateListParams parameters,
+        TemplateListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         HttpRequest<TemplateListParams> request = new()
         {
             Method = HttpMethod.Get,

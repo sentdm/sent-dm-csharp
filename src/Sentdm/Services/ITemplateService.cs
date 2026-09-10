@@ -81,7 +81,7 @@ public interface ITemplateService
     /// Supports filtering by status, category, and search term.
     /// </summary>
     Task<TemplateListPage> List(
-        TemplateListParams parameters,
+        TemplateListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -155,10 +155,10 @@ public interface ITemplateServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for <c>get /v3/templates</c>, but is otherwise the
-    /// same as <see cref="ITemplateService.List(TemplateListParams, CancellationToken)"/>.
+    /// same as <see cref="ITemplateService.List(TemplateListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TemplateListPage>> List(
-        TemplateListParams parameters,
+        TemplateListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 

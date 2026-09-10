@@ -8,7 +8,7 @@ public class ConversationServiceTest : TestBase
     public async Task List_Works()
     {
         var page = await this.client.Conversations.List(
-            new() { Page = 0, PageSize = 0 },
+            new(),
             TestContext.Current.CancellationToken
         );
         page.Validate();
@@ -19,7 +19,7 @@ public class ConversationServiceTest : TestBase
     {
         var page = await this.client.Conversations.ListMessages(
             "08fab313-c9e2-502c-975e-08b0356c432e",
-            new() { Page = 0, PageSize = 0 },
+            new(),
             TestContext.Current.CancellationToken
         );
         page.Validate();

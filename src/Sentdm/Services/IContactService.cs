@@ -81,7 +81,7 @@ public interface IContactService
     /// filtering by search term, channel, or phone number.
     /// </summary>
     Task<ContactListPage> List(
-        ContactListParams parameters,
+        ContactListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -183,10 +183,10 @@ public interface IContactServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for <c>get /v3/contacts</c>, but is otherwise the
-    /// same as <see cref="IContactService.List(ContactListParams, CancellationToken)"/>.
+    /// same as <see cref="IContactService.List(ContactListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ContactListPage>> List(
-        ContactListParams parameters,
+        ContactListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 

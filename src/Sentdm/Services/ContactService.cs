@@ -96,7 +96,7 @@ public sealed class ContactService : IContactService
 
     /// <inheritdoc/>
     public async Task<ContactListPage> List(
-        ContactListParams parameters,
+        ContactListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -296,10 +296,12 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
 
     /// <inheritdoc/>
     public async Task<HttpResponse<ContactListPage>> List(
-        ContactListParams parameters,
+        ContactListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         HttpRequest<ContactListParams> request = new()
         {
             Method = HttpMethod.Get,

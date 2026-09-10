@@ -17,26 +17,6 @@ namespace Sentdm.Models.Webhooks;
 /// </summary>
 public record class WebhookListParams : ParamsBase
 {
-    public required int Page
-    {
-        get
-        {
-            this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNotNullStruct<int>("page");
-        }
-        init { this._rawQueryData.Set("page", value); }
-    }
-
-    public required int PageSize
-    {
-        get
-        {
-            this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNotNullStruct<int>("page_size");
-        }
-        init { this._rawQueryData.Set("page_size", value); }
-    }
-
     public bool? IsActive
     {
         get
@@ -45,6 +25,42 @@ public record class WebhookListParams : ParamsBase
             return this._rawQueryData.GetNullableStruct<bool>("is_active");
         }
         init { this._rawQueryData.Set("is_active", value); }
+    }
+
+    public int? Page
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<int>("page");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawQueryData.Set("page", value);
+        }
+    }
+
+    public int? PageSize
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<int>("page_size");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawQueryData.Set("page_size", value);
+        }
     }
 
     public string? Search

@@ -80,7 +80,7 @@ public interface IWebhookService
     /// Retrieves a paginated list of webhooks for the authenticated customer.
     /// </summary>
     Task<WebhookListPage> List(
-        WebhookListParams parameters,
+        WebhookListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -115,7 +115,7 @@ public interface IWebhookService
     /// <inheritdoc cref="ListEvents(WebhookListEventsParams, CancellationToken)"/>
     Task<WebhookListEventsPage> ListEvents(
         string id,
-        WebhookListEventsParams parameters,
+        WebhookListEventsParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -222,10 +222,10 @@ public interface IWebhookServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for <c>get /v3/webhooks</c>, but is otherwise the
-    /// same as <see cref="IWebhookService.List(WebhookListParams, CancellationToken)"/>.
+    /// same as <see cref="IWebhookService.List(WebhookListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<WebhookListPage>> List(
-        WebhookListParams parameters,
+        WebhookListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -266,7 +266,7 @@ public interface IWebhookServiceWithRawResponse
     /// <inheritdoc cref="ListEvents(WebhookListEventsParams, CancellationToken)"/>
     Task<HttpResponse<WebhookListEventsPage>> ListEvents(
         string id,
-        WebhookListEventsParams parameters,
+        WebhookListEventsParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 

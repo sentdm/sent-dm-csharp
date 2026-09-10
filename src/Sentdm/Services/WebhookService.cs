@@ -96,7 +96,7 @@ public sealed class WebhookService : IWebhookService
 
     /// <inheritdoc/>
     public async Task<WebhookListPage> List(
-        WebhookListParams parameters,
+        WebhookListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -154,10 +154,12 @@ public sealed class WebhookService : IWebhookService
     /// <inheritdoc/>
     public Task<WebhookListEventsPage> ListEvents(
         string id,
-        WebhookListEventsParams parameters,
+        WebhookListEventsParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.ListEvents(parameters with { ID = id }, cancellationToken);
     }
 
@@ -372,10 +374,12 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
 
     /// <inheritdoc/>
     public async Task<HttpResponse<WebhookListPage>> List(
-        WebhookListParams parameters,
+        WebhookListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         HttpRequest<WebhookListParams> request = new()
         {
             Method = HttpMethod.Get,
@@ -495,10 +499,12 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     /// <inheritdoc/>
     public Task<HttpResponse<WebhookListEventsPage>> ListEvents(
         string id,
-        WebhookListEventsParams parameters,
+        WebhookListEventsParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.ListEvents(parameters with { ID = id }, cancellationToken);
     }
 
