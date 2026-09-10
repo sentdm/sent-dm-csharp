@@ -18,12 +18,12 @@ public sealed record class BrandBusinessInfo : JsonModel
     /// <summary>
     /// City
     /// </summary>
-    public string? City
-    {
-        get
-        {
+    public string? City {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("city");
+            return this._rawData.GetNullableClass<string>(
+                "city"
+            );
         }
         init { this._rawData.Set("city", value); }
     }
@@ -31,12 +31,12 @@ public sealed record class BrandBusinessInfo : JsonModel
     /// <summary>
     /// Country code (e.g., US, CA)
     /// </summary>
-    public string? Country
-    {
-        get
-        {
+    public string? Country {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("country");
+            return this._rawData.GetNullableClass<string>(
+                "country"
+            );
         }
         init { this._rawData.Set("country", value); }
     }
@@ -44,22 +44,22 @@ public sealed record class BrandBusinessInfo : JsonModel
     /// <summary>
     /// Country where the business is registered
     /// </summary>
-    public string? CountryOfRegistration
-    {
-        get
-        {
+    public string? CountryOfRegistration {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("countryOfRegistration");
+            return this._rawData.GetNullableClass<string>(
+                "countryOfRegistration"
+            );
         }
         init { this._rawData.Set("countryOfRegistration", value); }
     }
 
-    public ApiEnum<string, EntityType>? EntityType
-    {
-        get
-        {
+    public ApiEnum<string, EntityType>? EntityType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiEnum<string, EntityType>>("entityType");
+            return this._rawData.GetNullableClass<ApiEnum<string, EntityType>>(
+                "entityType"
+            );
         }
         init { this._rawData.Set("entityType", value); }
     }
@@ -67,12 +67,12 @@ public sealed record class BrandBusinessInfo : JsonModel
     /// <summary>
     /// Legal business name
     /// </summary>
-    public string? LegalName
-    {
-        get
-        {
+    public string? LegalName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("legalName");
+            return this._rawData.GetNullableClass<string>(
+                "legalName"
+            );
         }
         init { this._rawData.Set("legalName", value); }
     }
@@ -80,12 +80,12 @@ public sealed record class BrandBusinessInfo : JsonModel
     /// <summary>
     /// Postal/ZIP code
     /// </summary>
-    public string? PostalCode
-    {
-        get
-        {
+    public string? PostalCode {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("postalCode");
+            return this._rawData.GetNullableClass<string>(
+                "postalCode"
+            );
         }
         init { this._rawData.Set("postalCode", value); }
     }
@@ -93,12 +93,12 @@ public sealed record class BrandBusinessInfo : JsonModel
     /// <summary>
     /// State/province code
     /// </summary>
-    public string? State
-    {
-        get
-        {
+    public string? State {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("state");
+            return this._rawData.GetNullableClass<string>(
+                "state"
+            );
         }
         init { this._rawData.Set("state", value); }
     }
@@ -106,12 +106,12 @@ public sealed record class BrandBusinessInfo : JsonModel
     /// <summary>
     /// Street address
     /// </summary>
-    public string? Street
-    {
-        get
-        {
+    public string? Street {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("street");
+            return this._rawData.GetNullableClass<string>(
+                "street"
+            );
         }
         init { this._rawData.Set("street", value); }
     }
@@ -119,12 +119,12 @@ public sealed record class BrandBusinessInfo : JsonModel
     /// <summary>
     /// Tax ID/EIN number
     /// </summary>
-    public string? TaxID
-    {
-        get
-        {
+    public string? TaxID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("taxId");
+            return this._rawData.GetNullableClass<string>(
+                "taxId"
+            );
         }
         init { this._rawData.Set("taxId", value); }
     }
@@ -132,12 +132,12 @@ public sealed record class BrandBusinessInfo : JsonModel
     /// <summary>
     /// Type of tax ID (e.g., us_ein, ca_bn)
     /// </summary>
-    public string? TaxIDType
-    {
-        get
-        {
+    public string? TaxIDType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("taxIdType");
+            return this._rawData.GetNullableClass<string>(
+                "taxIdType"
+            );
         }
         init { this._rawData.Set("taxIdType", value); }
     }
@@ -145,12 +145,12 @@ public sealed record class BrandBusinessInfo : JsonModel
     /// <summary>
     /// Business website URL
     /// </summary>
-    public string? Url
-    {
-        get
-        {
+    public string? Url {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("url");
+            return this._rawData.GetNullableClass<string>(
+                "url"
+            );
         }
         init { this._rawData.Set("url", value); }
     }
@@ -171,54 +171,47 @@ public sealed record class BrandBusinessInfo : JsonModel
         _ = this.Url;
     }
 
-    public BrandBusinessInfo() { }
+    public BrandBusinessInfo ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public BrandBusinessInfo(BrandBusinessInfo brandBusinessInfo)
-        : base(brandBusinessInfo) { }
-#pragma warning restore CS8618
+    public BrandBusinessInfo (BrandBusinessInfo brandBusinessInfo) : base(
+        brandBusinessInfo
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public BrandBusinessInfo(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public BrandBusinessInfo (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    BrandBusinessInfo(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    BrandBusinessInfo (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="BrandBusinessInfoFromRaw.FromRawUnchecked"/>
     public static BrandBusinessInfo FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class BrandBusinessInfoFromRaw : IFromRawJson<BrandBusinessInfo>
 {
     /// <inheritdoc/>
-    public BrandBusinessInfo FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        BrandBusinessInfo.FromRawUnchecked(rawData);
+    public BrandBusinessInfo FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>BrandBusinessInfo.FromRawUnchecked(rawData);
 }
 
 [JsonConverter(typeof(EntityTypeConverter))]
 public enum EntityType
 {
-    PrivateProfit,
-    PublicProfit,
-    NonProfit,
-    SoleProprietor,
-    Government,
-}
-
-sealed class EntityTypeConverter : JsonConverter<EntityType>
+    PrivateProfit, PublicProfit, NonProfit, SoleProprietor, Government
+}sealed class EntityTypeConverter : JsonConverter<EntityType>
 {
     public override EntityType Read(
         ref Utf8JsonReader reader,
@@ -228,35 +221,29 @@ sealed class EntityTypeConverter : JsonConverter<EntityType>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "PRIVATE_PROFIT" => EntityType.PrivateProfit,
-            "PUBLIC_PROFIT" => EntityType.PublicProfit,
-            "NON_PROFIT" => EntityType.NonProfit,
-            "SOLE_PROPRIETOR" => EntityType.SoleProprietor,
-            "GOVERNMENT" => EntityType.Government,
-            _ => (EntityType)(-1),
+            "PRIVATE_PROFIT"=>EntityType.PrivateProfit,
+            "PUBLIC_PROFIT"=>EntityType.PublicProfit,
+            "NON_PROFIT"=>EntityType.NonProfit,
+            "SOLE_PROPRIETOR"=>EntityType.SoleProprietor,
+            "GOVERNMENT"=>EntityType.Government,
+            _ =>(EntityType)(-1)
         };
     }
 
     public override void Write(
-        Utf8JsonWriter writer,
-        EntityType value,
-        JsonSerializerOptions options
+        Utf8JsonWriter writer, EntityType value, JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                EntityType.PrivateProfit => "PRIVATE_PROFIT",
-                EntityType.PublicProfit => "PUBLIC_PROFIT",
-                EntityType.NonProfit => "NON_PROFIT",
-                EntityType.SoleProprietor => "SOLE_PROPRIETOR",
-                EntityType.Government => "GOVERNMENT",
-                _ => throw new SentInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            EntityType.PrivateProfit=>"PRIVATE_PROFIT",
+            EntityType.PublicProfit=>"PUBLIC_PROFIT",
+            EntityType.NonProfit=>"NON_PROFIT",
+            EntityType.SoleProprietor=>"SOLE_PROPRIETOR",
+            EntityType.Government=>"GOVERNMENT",
+            _ => throw new SentInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

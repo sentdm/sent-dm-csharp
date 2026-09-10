@@ -18,12 +18,12 @@ public sealed record class UserListResponse : JsonModel
     /// <summary>
     /// The users in the organization.
     /// </summary>
-    public Data? Data
-    {
-        get
-        {
+    public Data? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Data>("data");
+            return this._rawData.GetNullableClass<Data>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -31,12 +31,12 @@ public sealed record class UserListResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public Webhooks::ErrorDetail? Error
-    {
-        get
-        {
+    public Webhooks::ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>("error");
+            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -44,17 +44,15 @@ public sealed record class UserListResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public Webhooks::ApiMeta? Meta
-    {
-        get
-        {
+    public Webhooks::ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ApiMeta>("meta");
+            return this._rawData.GetNullableClass<Webhooks::ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -65,17 +63,15 @@ public sealed record class UserListResponse : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -92,41 +88,40 @@ public sealed record class UserListResponse : JsonModel
         _ = this.Success;
     }
 
-    public UserListResponse() { }
+    public UserListResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public UserListResponse(UserListResponse userListResponse)
-        : base(userListResponse) { }
-#pragma warning restore CS8618
+    public UserListResponse (UserListResponse userListResponse) : base(
+        userListResponse
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public UserListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public UserListResponse (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    UserListResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    UserListResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="UserListResponseFromRaw.FromRawUnchecked"/>
     public static UserListResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class UserListResponseFromRaw : IFromRawJson<UserListResponse>
 {
     /// <inheritdoc/>
-    public UserListResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        UserListResponse.FromRawUnchecked(rawData);
+    public UserListResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>UserListResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -138,17 +133,15 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Pagination metadata for list responses
     /// </summary>
-    public Webhooks::PaginationMeta? Pagination
-    {
-        get
-        {
+    public Webhooks::PaginationMeta? Pagination {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::PaginationMeta>("pagination");
+            return this._rawData.GetNullableClass<Webhooks::PaginationMeta>(
+                "pagination"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -159,17 +152,15 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// The users on this page.
     /// </summary>
-    public IReadOnlyList<UserResponse>? Users
-    {
-        get
-        {
+    public IReadOnlyList<UserResponse>? Users {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<UserResponse>>("users");
+            return this._rawData.GetNullableStruct<ImmutableArray<UserResponse>>(
+                "users"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -190,37 +181,34 @@ public sealed record class Data : JsonModel
         }
     }
 
-    public Data() { }
+    public Data ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Data(Data data)
-        : base(data) { }
-#pragma warning restore CS8618
+    public Data (Data data) : base(data)
+    {  }
+    #pragma warning restore CS8618
 
-    public Data(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Data (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Data(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Data (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="DataFromRaw.FromRawUnchecked"/>
-    public static Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class DataFromRaw : IFromRawJson<Data>
+    public static Data FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class DataFromRaw : IFromRawJson<Data>
 {
     /// <inheritdoc/>
-    public Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Data.FromRawUnchecked(rawData);
+    public Data FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Data.FromRawUnchecked(rawData);
 }

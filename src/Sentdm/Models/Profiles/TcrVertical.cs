@@ -30,7 +30,7 @@ public enum TcrVertical
     Manufacturing,
     Government,
     Technology,
-    Communication,
+    Communication
 }
 
 sealed class TcrVerticalConverter : JsonConverter<TcrVertical>
@@ -43,71 +43,65 @@ sealed class TcrVerticalConverter : JsonConverter<TcrVertical>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "PROFESSIONAL" => TcrVertical.Professional,
-            "REAL_ESTATE" => TcrVertical.RealEstate,
-            "HEALTHCARE" => TcrVertical.Healthcare,
-            "HUMAN_RESOURCES" => TcrVertical.HumanResources,
-            "ENERGY" => TcrVertical.Energy,
-            "ENTERTAINMENT" => TcrVertical.Entertainment,
-            "RETAIL" => TcrVertical.Retail,
-            "TRANSPORTATION" => TcrVertical.Transportation,
-            "AGRICULTURE" => TcrVertical.Agriculture,
-            "INSURANCE" => TcrVertical.Insurance,
-            "POSTAL" => TcrVertical.Postal,
-            "EDUCATION" => TcrVertical.Education,
-            "HOSPITALITY" => TcrVertical.Hospitality,
-            "FINANCIAL" => TcrVertical.Financial,
-            "POLITICAL" => TcrVertical.Political,
-            "GAMBLING" => TcrVertical.Gambling,
-            "LEGAL" => TcrVertical.Legal,
-            "CONSTRUCTION" => TcrVertical.Construction,
-            "NGO" => TcrVertical.Ngo,
-            "MANUFACTURING" => TcrVertical.Manufacturing,
-            "GOVERNMENT" => TcrVertical.Government,
-            "TECHNOLOGY" => TcrVertical.Technology,
-            "COMMUNICATION" => TcrVertical.Communication,
-            _ => (TcrVertical)(-1),
+            "PROFESSIONAL"=>TcrVertical.Professional,
+            "REAL_ESTATE"=>TcrVertical.RealEstate,
+            "HEALTHCARE"=>TcrVertical.Healthcare,
+            "HUMAN_RESOURCES"=>TcrVertical.HumanResources,
+            "ENERGY"=>TcrVertical.Energy,
+            "ENTERTAINMENT"=>TcrVertical.Entertainment,
+            "RETAIL"=>TcrVertical.Retail,
+            "TRANSPORTATION"=>TcrVertical.Transportation,
+            "AGRICULTURE"=>TcrVertical.Agriculture,
+            "INSURANCE"=>TcrVertical.Insurance,
+            "POSTAL"=>TcrVertical.Postal,
+            "EDUCATION"=>TcrVertical.Education,
+            "HOSPITALITY"=>TcrVertical.Hospitality,
+            "FINANCIAL"=>TcrVertical.Financial,
+            "POLITICAL"=>TcrVertical.Political,
+            "GAMBLING"=>TcrVertical.Gambling,
+            "LEGAL"=>TcrVertical.Legal,
+            "CONSTRUCTION"=>TcrVertical.Construction,
+            "NGO"=>TcrVertical.Ngo,
+            "MANUFACTURING"=>TcrVertical.Manufacturing,
+            "GOVERNMENT"=>TcrVertical.Government,
+            "TECHNOLOGY"=>TcrVertical.Technology,
+            "COMMUNICATION"=>TcrVertical.Communication,
+            _ =>(TcrVertical)(-1)
         };
     }
 
     public override void Write(
-        Utf8JsonWriter writer,
-        TcrVertical value,
-        JsonSerializerOptions options
+        Utf8JsonWriter writer, TcrVertical value, JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                TcrVertical.Professional => "PROFESSIONAL",
-                TcrVertical.RealEstate => "REAL_ESTATE",
-                TcrVertical.Healthcare => "HEALTHCARE",
-                TcrVertical.HumanResources => "HUMAN_RESOURCES",
-                TcrVertical.Energy => "ENERGY",
-                TcrVertical.Entertainment => "ENTERTAINMENT",
-                TcrVertical.Retail => "RETAIL",
-                TcrVertical.Transportation => "TRANSPORTATION",
-                TcrVertical.Agriculture => "AGRICULTURE",
-                TcrVertical.Insurance => "INSURANCE",
-                TcrVertical.Postal => "POSTAL",
-                TcrVertical.Education => "EDUCATION",
-                TcrVertical.Hospitality => "HOSPITALITY",
-                TcrVertical.Financial => "FINANCIAL",
-                TcrVertical.Political => "POLITICAL",
-                TcrVertical.Gambling => "GAMBLING",
-                TcrVertical.Legal => "LEGAL",
-                TcrVertical.Construction => "CONSTRUCTION",
-                TcrVertical.Ngo => "NGO",
-                TcrVertical.Manufacturing => "MANUFACTURING",
-                TcrVertical.Government => "GOVERNMENT",
-                TcrVertical.Technology => "TECHNOLOGY",
-                TcrVertical.Communication => "COMMUNICATION",
-                _ => throw new SentInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            TcrVertical.Professional=>"PROFESSIONAL",
+            TcrVertical.RealEstate=>"REAL_ESTATE",
+            TcrVertical.Healthcare=>"HEALTHCARE",
+            TcrVertical.HumanResources=>"HUMAN_RESOURCES",
+            TcrVertical.Energy=>"ENERGY",
+            TcrVertical.Entertainment=>"ENTERTAINMENT",
+            TcrVertical.Retail=>"RETAIL",
+            TcrVertical.Transportation=>"TRANSPORTATION",
+            TcrVertical.Agriculture=>"AGRICULTURE",
+            TcrVertical.Insurance=>"INSURANCE",
+            TcrVertical.Postal=>"POSTAL",
+            TcrVertical.Education=>"EDUCATION",
+            TcrVertical.Hospitality=>"HOSPITALITY",
+            TcrVertical.Financial=>"FINANCIAL",
+            TcrVertical.Political=>"POLITICAL",
+            TcrVertical.Gambling=>"GAMBLING",
+            TcrVertical.Legal=>"LEGAL",
+            TcrVertical.Construction=>"CONSTRUCTION",
+            TcrVertical.Ngo=>"NGO",
+            TcrVertical.Manufacturing=>"MANUFACTURING",
+            TcrVertical.Government=>"GOVERNMENT",
+            TcrVertical.Technology=>"TECHNOLOGY",
+            TcrVertical.Communication=>"COMMUNICATION",
+            _ => throw new SentInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

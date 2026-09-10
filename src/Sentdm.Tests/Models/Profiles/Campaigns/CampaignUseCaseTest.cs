@@ -13,22 +13,21 @@ public class CampaignUseCaseTest : TestBase
     {
         var model = new CampaignUseCase
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedCampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs =
-            MessagingUseCaseUs.Marketing;
-        List<string> expectedSampleMessages = ["string"];
+        ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs = MessagingUseCaseUs.Marketing;
+        List<string> expectedSampleMessages =
+        [
+            "string"
+        ];
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
 
         Assert.Equal(expectedID, model.ID);
@@ -50,20 +49,14 @@ public class CampaignUseCaseTest : TestBase
     {
         var model = new CampaignUseCase
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CampaignUseCase>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<CampaignUseCase>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -73,29 +66,25 @@ public class CampaignUseCaseTest : TestBase
     {
         var model = new CampaignUseCase
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CampaignUseCase>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<CampaignUseCase>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedCampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs =
-            MessagingUseCaseUs.Marketing;
-        List<string> expectedSampleMessages = ["string"];
+        ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs = MessagingUseCaseUs.Marketing;
+        List<string> expectedSampleMessages =
+        [
+            "string"
+        ];
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
 
         Assert.Equal(expectedID, deserialized.ID);
@@ -117,13 +106,10 @@ public class CampaignUseCaseTest : TestBase
     {
         var model = new CampaignUseCase
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         model.Validate();
@@ -138,17 +124,13 @@ public class CampaignUseCaseTest : TestBase
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.CampaignID);
-        Assert.False(model.RawData.ContainsKey("campaignId"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("createdAt"));
-        Assert.Null(model.CustomerID);
-        Assert.False(model.RawData.ContainsKey("customerId"));
-        Assert.Null(model.MessagingUseCaseUs);
-        Assert.False(model.RawData.ContainsKey("messagingUseCaseUs"));
-        Assert.Null(model.SampleMessages);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.CampaignID);
+        Assert.False(model.RawData.ContainsKey("campaignId"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("createdAt"));Assert.Null(model.CustomerID);
+        Assert.False(model.RawData.ContainsKey("customerId"));Assert.Null(model.MessagingUseCaseUs);
+        Assert.False(model.RawData.ContainsKey("messagingUseCaseUs"));Assert.Null(model.SampleMessages);
         Assert.False(model.RawData.ContainsKey("sampleMessages"));
+
     }
 
     [Fact]
@@ -170,26 +152,17 @@ public class CampaignUseCaseTest : TestBase
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            CampaignID = null,
-            CreatedAt = null,
-            CustomerID = null,
-            MessagingUseCaseUs = null,
-            SampleMessages = null,
+            ID = null,CampaignID = null,CreatedAt = null,CustomerID = null,MessagingUseCaseUs = null,SampleMessages = null,
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.CampaignID);
-        Assert.False(model.RawData.ContainsKey("campaignId"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("createdAt"));
-        Assert.Null(model.CustomerID);
-        Assert.False(model.RawData.ContainsKey("customerId"));
-        Assert.Null(model.MessagingUseCaseUs);
-        Assert.False(model.RawData.ContainsKey("messagingUseCaseUs"));
-        Assert.Null(model.SampleMessages);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.CampaignID);
+        Assert.False(model.RawData.ContainsKey("campaignId"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("createdAt"));Assert.Null(model.CustomerID);
+        Assert.False(model.RawData.ContainsKey("customerId"));Assert.Null(model.MessagingUseCaseUs);
+        Assert.False(model.RawData.ContainsKey("messagingUseCaseUs"));Assert.Null(model.SampleMessages);
         Assert.False(model.RawData.ContainsKey("sampleMessages"));
+
     }
 
     [Fact]
@@ -200,12 +173,7 @@ public class CampaignUseCaseTest : TestBase
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            CampaignID = null,
-            CreatedAt = null,
-            CustomerID = null,
-            MessagingUseCaseUs = null,
-            SampleMessages = null,
+            ID = null,CampaignID = null,CreatedAt = null,CustomerID = null,MessagingUseCaseUs = null,SampleMessages = null,
         };
 
         model.Validate();
@@ -216,16 +184,15 @@ public class CampaignUseCaseTest : TestBase
     {
         var model = new CampaignUseCase
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],
         };
 
         Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updatedAt"));
+
     }
 
     [Fact]
@@ -233,12 +200,10 @@ public class CampaignUseCaseTest : TestBase
     {
         var model = new CampaignUseCase
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],
         };
 
         model.Validate();
@@ -249,18 +214,17 @@ public class CampaignUseCaseTest : TestBase
     {
         var model = new CampaignUseCase
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],
 
             UpdatedAt = null,
         };
 
         Assert.Null(model.UpdatedAt);
         Assert.True(model.RawData.ContainsKey("updatedAt"));
+
     }
 
     [Fact]
@@ -268,12 +232,10 @@ public class CampaignUseCaseTest : TestBase
     {
         var model = new CampaignUseCase
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],
 
             UpdatedAt = null,
         };
@@ -286,13 +248,10 @@ public class CampaignUseCaseTest : TestBase
     {
         var model = new CampaignUseCase
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         CampaignUseCase copied = new(model);

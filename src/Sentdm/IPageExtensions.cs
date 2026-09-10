@@ -11,7 +11,8 @@ public static class IPageExtensions
     /// Returns a lazy async enumerable that auto-paginates by yielding the given
     /// page's data and then requesting and yielding additional pages from the API.
     /// </summary>
-    public static async IAsyncEnumerable<T> Paginate<T>(
+    public static async IAsyncEnumerable<T> Paginate<T>
+    (
         this IPage<T> page,
         [EnumeratorCancellation] CancellationToken cancellationToken = default
     )

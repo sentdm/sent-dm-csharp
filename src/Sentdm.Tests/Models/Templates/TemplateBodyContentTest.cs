@@ -12,9 +12,7 @@ public class TemplateBodyContentTest : TestBase
     {
         var model = new TemplateBodyContent
         {
-            Template = "template",
-            Type = "type",
-            Variables =
+            Template = "template",Type = "type",Variables =
             [
                 new()
                 {
@@ -72,9 +70,7 @@ public class TemplateBodyContentTest : TestBase
     {
         var model = new TemplateBodyContent
         {
-            Template = "template",
-            Type = "type",
-            Variables =
+            Template = "template",Type = "type",Variables =
             [
                 new()
                 {
@@ -96,10 +92,7 @@ public class TemplateBodyContentTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateBodyContent>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateBodyContent>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -109,9 +102,7 @@ public class TemplateBodyContentTest : TestBase
     {
         var model = new TemplateBodyContent
         {
-            Template = "template",
-            Type = "type",
-            Variables =
+            Template = "template",Type = "type",Variables =
             [
                 new()
                 {
@@ -133,10 +124,7 @@ public class TemplateBodyContentTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateBodyContent>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateBodyContent>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedTemplate = "template";
@@ -176,9 +164,7 @@ public class TemplateBodyContentTest : TestBase
     {
         var model = new TemplateBodyContent
         {
-            Template = "template",
-            Type = "type",
-            Variables =
+            Template = "template",Type = "type",Variables =
             [
                 new()
                 {
@@ -205,18 +191,24 @@ public class TemplateBodyContentTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new TemplateBodyContent { Template = "template" };
+        var model = new TemplateBodyContent
+        {
+            Template = "template",
+        };
 
         Assert.Null(model.Type);
-        Assert.False(model.RawData.ContainsKey("type"));
-        Assert.Null(model.Variables);
+        Assert.False(model.RawData.ContainsKey("type"));Assert.Null(model.Variables);
         Assert.False(model.RawData.ContainsKey("variables"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new TemplateBodyContent { Template = "template" };
+        var model = new TemplateBodyContent
+        {
+            Template = "template",
+        };
 
         model.Validate();
     }
@@ -228,14 +220,13 @@ public class TemplateBodyContentTest : TestBase
         {
             Template = "template",
 
-            Type = null,
-            Variables = null,
+            Type = null,Variables = null,
         };
 
         Assert.Null(model.Type);
-        Assert.True(model.RawData.ContainsKey("type"));
-        Assert.Null(model.Variables);
+        Assert.True(model.RawData.ContainsKey("type"));Assert.Null(model.Variables);
         Assert.True(model.RawData.ContainsKey("variables"));
+
     }
 
     [Fact]
@@ -245,8 +236,7 @@ public class TemplateBodyContentTest : TestBase
         {
             Template = "template",
 
-            Type = null,
-            Variables = null,
+            Type = null,Variables = null,
         };
 
         model.Validate();
@@ -257,9 +247,7 @@ public class TemplateBodyContentTest : TestBase
     {
         var model = new TemplateBodyContent
         {
-            Template = "template",
-            Type = "type",
-            Variables =
+            Template = "template",Type = "type",Variables =
             [
                 new()
                 {

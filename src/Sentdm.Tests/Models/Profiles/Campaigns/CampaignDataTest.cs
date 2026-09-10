@@ -12,27 +12,17 @@ public class CampaignDataTest : TestBase
     {
         var model = new CampaignData
         {
-            Description = "x",
-            Name = "x",
-            Type = "x",
-            UseCases =
+            Description = "x",Name = "x",Type = "x",UseCases =
             [
                 new()
                 {
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
+                    SampleMessages =
+                    [
+                        "string"
+                    ],
                 },
-            ],
-            HelpKeywords = "helpKeywords",
-            HelpMessage = "helpMessage",
-            MessageFlow = "messageFlow",
-            OptinKeywords = "optinKeywords",
-            OptinMessage = "optinMessage",
-            OptoutKeywords = "optoutKeywords",
-            OptoutMessage = "optoutMessage",
-            PrivacyPolicyLink = "https://example.com",
-            TermsAndConditionsLink = "https://example.com",
-            Volume = "volume",
+            ],HelpKeywords = "helpKeywords",HelpMessage = "helpMessage",MessageFlow = "messageFlow",OptinKeywords = "optinKeywords",OptinMessage = "optinMessage",OptoutKeywords = "optoutKeywords",OptoutMessage = "optoutMessage",PrivacyPolicyLink = "https://example.com",TermsAndConditionsLink = "https://example.com",Volume = "volume",
         };
 
         string expectedDescription = "x";
@@ -43,7 +33,10 @@ public class CampaignDataTest : TestBase
             new()
             {
                 MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                SampleMessages = ["string"],
+                SampleMessages =
+                [
+                    "string"
+                ],
             },
         ];
         string expectedHelpKeywords = "helpKeywords";
@@ -82,34 +75,21 @@ public class CampaignDataTest : TestBase
     {
         var model = new CampaignData
         {
-            Description = "x",
-            Name = "x",
-            Type = "x",
-            UseCases =
+            Description = "x",Name = "x",Type = "x",UseCases =
             [
                 new()
                 {
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
+                    SampleMessages =
+                    [
+                        "string"
+                    ],
                 },
-            ],
-            HelpKeywords = "helpKeywords",
-            HelpMessage = "helpMessage",
-            MessageFlow = "messageFlow",
-            OptinKeywords = "optinKeywords",
-            OptinMessage = "optinMessage",
-            OptoutKeywords = "optoutKeywords",
-            OptoutMessage = "optoutMessage",
-            PrivacyPolicyLink = "https://example.com",
-            TermsAndConditionsLink = "https://example.com",
-            Volume = "volume",
+            ],HelpKeywords = "helpKeywords",HelpMessage = "helpMessage",MessageFlow = "messageFlow",OptinKeywords = "optinKeywords",OptinMessage = "optinMessage",OptoutKeywords = "optoutKeywords",OptoutMessage = "optoutMessage",PrivacyPolicyLink = "https://example.com",TermsAndConditionsLink = "https://example.com",Volume = "volume",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CampaignData>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<CampaignData>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -119,34 +99,21 @@ public class CampaignDataTest : TestBase
     {
         var model = new CampaignData
         {
-            Description = "x",
-            Name = "x",
-            Type = "x",
-            UseCases =
+            Description = "x",Name = "x",Type = "x",UseCases =
             [
                 new()
                 {
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
+                    SampleMessages =
+                    [
+                        "string"
+                    ],
                 },
-            ],
-            HelpKeywords = "helpKeywords",
-            HelpMessage = "helpMessage",
-            MessageFlow = "messageFlow",
-            OptinKeywords = "optinKeywords",
-            OptinMessage = "optinMessage",
-            OptoutKeywords = "optoutKeywords",
-            OptoutMessage = "optoutMessage",
-            PrivacyPolicyLink = "https://example.com",
-            TermsAndConditionsLink = "https://example.com",
-            Volume = "volume",
+            ],HelpKeywords = "helpKeywords",HelpMessage = "helpMessage",MessageFlow = "messageFlow",OptinKeywords = "optinKeywords",OptinMessage = "optinMessage",OptoutKeywords = "optoutKeywords",OptoutMessage = "optoutMessage",PrivacyPolicyLink = "https://example.com",TermsAndConditionsLink = "https://example.com",Volume = "volume",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CampaignData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<CampaignData>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedDescription = "x";
@@ -157,7 +124,10 @@ public class CampaignDataTest : TestBase
             new()
             {
                 MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                SampleMessages = ["string"],
+                SampleMessages =
+                [
+                    "string"
+                ],
             },
         ];
         string expectedHelpKeywords = "helpKeywords";
@@ -196,27 +166,17 @@ public class CampaignDataTest : TestBase
     {
         var model = new CampaignData
         {
-            Description = "x",
-            Name = "x",
-            Type = "x",
-            UseCases =
+            Description = "x",Name = "x",Type = "x",UseCases =
             [
                 new()
                 {
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
+                    SampleMessages =
+                    [
+                        "string"
+                    ],
                 },
-            ],
-            HelpKeywords = "helpKeywords",
-            HelpMessage = "helpMessage",
-            MessageFlow = "messageFlow",
-            OptinKeywords = "optinKeywords",
-            OptinMessage = "optinMessage",
-            OptoutKeywords = "optoutKeywords",
-            OptoutMessage = "optoutMessage",
-            PrivacyPolicyLink = "https://example.com",
-            TermsAndConditionsLink = "https://example.com",
-            Volume = "volume",
+            ],HelpKeywords = "helpKeywords",HelpMessage = "helpMessage",MessageFlow = "messageFlow",OptinKeywords = "optinKeywords",OptinMessage = "optinMessage",OptoutKeywords = "optoutKeywords",OptoutMessage = "optoutMessage",PrivacyPolicyLink = "https://example.com",TermsAndConditionsLink = "https://example.com",Volume = "volume",
         };
 
         model.Validate();
@@ -227,39 +187,31 @@ public class CampaignDataTest : TestBase
     {
         var model = new CampaignData
         {
-            Description = "x",
-            Name = "x",
-            Type = "x",
-            UseCases =
+            Description = "x",Name = "x",Type = "x",UseCases =
             [
                 new()
                 {
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
+                    SampleMessages =
+                    [
+                        "string"
+                    ],
                 },
             ],
         };
 
         Assert.Null(model.HelpKeywords);
-        Assert.False(model.RawData.ContainsKey("helpKeywords"));
-        Assert.Null(model.HelpMessage);
-        Assert.False(model.RawData.ContainsKey("helpMessage"));
-        Assert.Null(model.MessageFlow);
-        Assert.False(model.RawData.ContainsKey("messageFlow"));
-        Assert.Null(model.OptinKeywords);
-        Assert.False(model.RawData.ContainsKey("optinKeywords"));
-        Assert.Null(model.OptinMessage);
-        Assert.False(model.RawData.ContainsKey("optinMessage"));
-        Assert.Null(model.OptoutKeywords);
-        Assert.False(model.RawData.ContainsKey("optoutKeywords"));
-        Assert.Null(model.OptoutMessage);
-        Assert.False(model.RawData.ContainsKey("optoutMessage"));
-        Assert.Null(model.PrivacyPolicyLink);
-        Assert.False(model.RawData.ContainsKey("privacyPolicyLink"));
-        Assert.Null(model.TermsAndConditionsLink);
-        Assert.False(model.RawData.ContainsKey("termsAndConditionsLink"));
-        Assert.Null(model.Volume);
+        Assert.False(model.RawData.ContainsKey("helpKeywords"));Assert.Null(model.HelpMessage);
+        Assert.False(model.RawData.ContainsKey("helpMessage"));Assert.Null(model.MessageFlow);
+        Assert.False(model.RawData.ContainsKey("messageFlow"));Assert.Null(model.OptinKeywords);
+        Assert.False(model.RawData.ContainsKey("optinKeywords"));Assert.Null(model.OptinMessage);
+        Assert.False(model.RawData.ContainsKey("optinMessage"));Assert.Null(model.OptoutKeywords);
+        Assert.False(model.RawData.ContainsKey("optoutKeywords"));Assert.Null(model.OptoutMessage);
+        Assert.False(model.RawData.ContainsKey("optoutMessage"));Assert.Null(model.PrivacyPolicyLink);
+        Assert.False(model.RawData.ContainsKey("privacyPolicyLink"));Assert.Null(model.TermsAndConditionsLink);
+        Assert.False(model.RawData.ContainsKey("termsAndConditionsLink"));Assert.Null(model.Volume);
         Assert.False(model.RawData.ContainsKey("volume"));
+
     }
 
     [Fact]
@@ -267,15 +219,15 @@ public class CampaignDataTest : TestBase
     {
         var model = new CampaignData
         {
-            Description = "x",
-            Name = "x",
-            Type = "x",
-            UseCases =
+            Description = "x",Name = "x",Type = "x",UseCases =
             [
                 new()
                 {
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
+                    SampleMessages =
+                    [
+                        "string"
+                    ],
                 },
             ],
         };
@@ -288,50 +240,33 @@ public class CampaignDataTest : TestBase
     {
         var model = new CampaignData
         {
-            Description = "x",
-            Name = "x",
-            Type = "x",
-            UseCases =
+            Description = "x",Name = "x",Type = "x",UseCases =
             [
                 new()
                 {
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
+                    SampleMessages =
+                    [
+                        "string"
+                    ],
                 },
             ],
 
-            HelpKeywords = null,
-            HelpMessage = null,
-            MessageFlow = null,
-            OptinKeywords = null,
-            OptinMessage = null,
-            OptoutKeywords = null,
-            OptoutMessage = null,
-            PrivacyPolicyLink = null,
-            TermsAndConditionsLink = null,
-            Volume = null,
+            HelpKeywords = null,HelpMessage = null,MessageFlow = null,OptinKeywords = null,OptinMessage = null,OptoutKeywords = null,OptoutMessage = null,PrivacyPolicyLink = null,TermsAndConditionsLink = null,Volume = null,
         };
 
         Assert.Null(model.HelpKeywords);
-        Assert.True(model.RawData.ContainsKey("helpKeywords"));
-        Assert.Null(model.HelpMessage);
-        Assert.True(model.RawData.ContainsKey("helpMessage"));
-        Assert.Null(model.MessageFlow);
-        Assert.True(model.RawData.ContainsKey("messageFlow"));
-        Assert.Null(model.OptinKeywords);
-        Assert.True(model.RawData.ContainsKey("optinKeywords"));
-        Assert.Null(model.OptinMessage);
-        Assert.True(model.RawData.ContainsKey("optinMessage"));
-        Assert.Null(model.OptoutKeywords);
-        Assert.True(model.RawData.ContainsKey("optoutKeywords"));
-        Assert.Null(model.OptoutMessage);
-        Assert.True(model.RawData.ContainsKey("optoutMessage"));
-        Assert.Null(model.PrivacyPolicyLink);
-        Assert.True(model.RawData.ContainsKey("privacyPolicyLink"));
-        Assert.Null(model.TermsAndConditionsLink);
-        Assert.True(model.RawData.ContainsKey("termsAndConditionsLink"));
-        Assert.Null(model.Volume);
+        Assert.True(model.RawData.ContainsKey("helpKeywords"));Assert.Null(model.HelpMessage);
+        Assert.True(model.RawData.ContainsKey("helpMessage"));Assert.Null(model.MessageFlow);
+        Assert.True(model.RawData.ContainsKey("messageFlow"));Assert.Null(model.OptinKeywords);
+        Assert.True(model.RawData.ContainsKey("optinKeywords"));Assert.Null(model.OptinMessage);
+        Assert.True(model.RawData.ContainsKey("optinMessage"));Assert.Null(model.OptoutKeywords);
+        Assert.True(model.RawData.ContainsKey("optoutKeywords"));Assert.Null(model.OptoutMessage);
+        Assert.True(model.RawData.ContainsKey("optoutMessage"));Assert.Null(model.PrivacyPolicyLink);
+        Assert.True(model.RawData.ContainsKey("privacyPolicyLink"));Assert.Null(model.TermsAndConditionsLink);
+        Assert.True(model.RawData.ContainsKey("termsAndConditionsLink"));Assert.Null(model.Volume);
         Assert.True(model.RawData.ContainsKey("volume"));
+
     }
 
     [Fact]
@@ -339,28 +274,19 @@ public class CampaignDataTest : TestBase
     {
         var model = new CampaignData
         {
-            Description = "x",
-            Name = "x",
-            Type = "x",
-            UseCases =
+            Description = "x",Name = "x",Type = "x",UseCases =
             [
                 new()
                 {
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
+                    SampleMessages =
+                    [
+                        "string"
+                    ],
                 },
             ],
 
-            HelpKeywords = null,
-            HelpMessage = null,
-            MessageFlow = null,
-            OptinKeywords = null,
-            OptinMessage = null,
-            OptoutKeywords = null,
-            OptoutMessage = null,
-            PrivacyPolicyLink = null,
-            TermsAndConditionsLink = null,
-            Volume = null,
+            HelpKeywords = null,HelpMessage = null,MessageFlow = null,OptinKeywords = null,OptinMessage = null,OptoutKeywords = null,OptoutMessage = null,PrivacyPolicyLink = null,TermsAndConditionsLink = null,Volume = null,
         };
 
         model.Validate();
@@ -371,27 +297,17 @@ public class CampaignDataTest : TestBase
     {
         var model = new CampaignData
         {
-            Description = "x",
-            Name = "x",
-            Type = "x",
-            UseCases =
+            Description = "x",Name = "x",Type = "x",UseCases =
             [
                 new()
                 {
                     MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-                    SampleMessages = ["string"],
+                    SampleMessages =
+                    [
+                        "string"
+                    ],
                 },
-            ],
-            HelpKeywords = "helpKeywords",
-            HelpMessage = "helpMessage",
-            MessageFlow = "messageFlow",
-            OptinKeywords = "optinKeywords",
-            OptinMessage = "optinMessage",
-            OptoutKeywords = "optoutKeywords",
-            OptoutMessage = "optoutMessage",
-            PrivacyPolicyLink = "https://example.com",
-            TermsAndConditionsLink = "https://example.com",
-            Volume = "volume",
+            ],HelpKeywords = "helpKeywords",HelpMessage = "helpMessage",MessageFlow = "messageFlow",OptinKeywords = "optinKeywords",OptinMessage = "optinMessage",OptoutKeywords = "optoutKeywords",OptoutMessage = "optoutMessage",PrivacyPolicyLink = "https://example.com",TermsAndConditionsLink = "https://example.com",Volume = "volume",
         };
 
         CampaignData copied = new(model);

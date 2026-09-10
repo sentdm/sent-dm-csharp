@@ -9,12 +9,11 @@ public class CampaignDeleteParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new CampaignDeleteParams
         {
-            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
-            CampaignID = "b2c3d4e5-f6a7-8901-bcde-f12345678901",
-            Sandbox = false,
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",CampaignID = "b2c3d4e5-f6a7-8901-bcde-f12345678901",Sandbox = false,XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedProfileID = "770e8400-e29b-41d4-a716-446655440002";
@@ -31,35 +30,36 @@ public class CampaignDeleteParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new CampaignDeleteParams
         {
-            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
-            CampaignID = "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",CampaignID = "b2c3d4e5-f6a7-8901-bcde-f12345678901",
         };
 
         Assert.Null(parameters.Sandbox);
-        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new CampaignDeleteParams
         {
-            ProfileID = "770e8400-e29b-41d4-a716-446655440002",
-            CampaignID = "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+            ProfileID = "770e8400-e29b-41d4-a716-446655440002",CampaignID = "b2c3d4e5-f6a7-8901-bcde-f12345678901",
 
             // Null should be interpreted as omitted for these properties
-            Sandbox = null,
-            XProfileID = null,
+            Sandbox = null,XProfileID = null,
         };
 
         Assert.Null(parameters.Sandbox);
-        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
@@ -71,16 +71,14 @@ public class CampaignDeleteParamsTest : TestBase
             CampaignID = "b2c3d4e5-f6a7-8901-bcde-f12345678901",
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
-
-        Assert.True(
-            TestBase.UrisEqual(
-                new Uri(
-                    "https://api.sent.dm/v3/profiles/770e8400-e29b-41d4-a716-446655440002/campaigns/b2c3d4e5-f6a7-8901-bcde-f12345678901"
-                ),
-                url
-            )
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/profiles/770e8400-e29b-41d4-a716-446655440002/campaigns/b2c3d4e5-f6a7-8901-bcde-f12345678901"), url));
     }
 
     [Fact]
@@ -94,12 +92,15 @@ public class CampaignDeleteParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
-
-        Assert.Equal(
-            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-            requestMessage.Headers.GetValues("x-profile-id")
+        parameters.AddHeadersToRequest(
+            requestMessage,
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"], requestMessage.Headers.GetValues("x-profile-id"));
     }
 
     [Fact]

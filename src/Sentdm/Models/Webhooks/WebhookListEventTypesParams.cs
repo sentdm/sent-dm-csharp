@@ -17,17 +17,15 @@ namespace Sentdm.Models.Webhooks;
 /// </summary>
 public record class WebhookListEventTypesParams : ParamsBase
 {
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -35,15 +33,18 @@ public record class WebhookListEventTypesParams : ParamsBase
         }
     }
 
-    public WebhookListEventTypesParams() { }
+    public WebhookListEventTypesParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WebhookListEventTypesParams(WebhookListEventTypesParams webhookListEventTypesParams)
-        : base(webhookListEventTypesParams) { }
-#pragma warning restore CS8618
+    public WebhookListEventTypesParams (
+        WebhookListEventTypesParams webhookListEventTypesParams
+    ) : base(webhookListEventTypesParams)
+    {  }
+    #pragma warning restore CS8618
 
-    public WebhookListEventTypesParams(
+    public WebhookListEventTypesParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -52,9 +53,9 @@ public record class WebhookListEventTypesParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WebhookListEventTypesParams(
+    WebhookListEventTypesParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -62,7 +63,7 @@ public record class WebhookListEventTypesParams : ParamsBase
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static WebhookListEventTypesParams FromRawUnchecked(
@@ -73,24 +74,17 @@ public record class WebhookListEventTypesParams : ParamsBase
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(WebhookListEventTypesParams? other)
     {
@@ -98,19 +92,22 @@ public record class WebhookListEventTypesParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v3/webhooks/event-types")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/v3/webhooks/event-types"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -120,7 +117,5 @@ public record class WebhookListEventTypesParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

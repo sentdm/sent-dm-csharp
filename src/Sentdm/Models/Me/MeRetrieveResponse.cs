@@ -21,12 +21,12 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// user (standalone), or profile (child of an organization) data depending on
     /// the API key type. Always includes messaging channel configuration.
     /// </summary>
-    public Data? Data
-    {
-        get
-        {
+    public Data? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Data>("data");
+            return this._rawData.GetNullableClass<Data>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -34,12 +34,12 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public Webhooks::ErrorDetail? Error
-    {
-        get
-        {
+    public Webhooks::ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>("error");
+            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -47,17 +47,15 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public Webhooks::ApiMeta? Meta
-    {
-        get
-        {
+    public Webhooks::ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ApiMeta>("meta");
+            return this._rawData.GetNullableClass<Webhooks::ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -68,17 +66,15 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -95,41 +91,40 @@ public sealed record class MeRetrieveResponse : JsonModel
         _ = this.Success;
     }
 
-    public MeRetrieveResponse() { }
+    public MeRetrieveResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MeRetrieveResponse(MeRetrieveResponse meRetrieveResponse)
-        : base(meRetrieveResponse) { }
-#pragma warning restore CS8618
+    public MeRetrieveResponse (MeRetrieveResponse meRetrieveResponse) : base(
+        meRetrieveResponse
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public MeRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public MeRetrieveResponse (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MeRetrieveResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    MeRetrieveResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="MeRetrieveResponseFromRaw.FromRawUnchecked"/>
     public static MeRetrieveResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class MeRetrieveResponseFromRaw : IFromRawJson<MeRetrieveResponse>
 {
     /// <inheritdoc/>
-    public MeRetrieveResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        MeRetrieveResponse.FromRawUnchecked(rawData);
+    public MeRetrieveResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>MeRetrieveResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -143,17 +138,15 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Customer ID (organization, account, or profile)
     /// </summary>
-    public string? ID
-    {
-        get
-        {
+    public string? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("id");
+            return this._rawData.GetNullableClass<string>(
+                "id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -165,17 +158,15 @@ public sealed record class Data : JsonModel
     /// Messaging channel configuration. All three channels are always present. Each
     /// channel has a "configured" flag; configured channels expose additional details.
     /// </summary>
-    public Channels? Channels
-    {
-        get
-        {
+    public Channels? Channels {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Channels>("channels");
+            return this._rawData.GetNullableClass<Channels>(
+                "channels"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -186,17 +177,15 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// When the account was created
     /// </summary>
-    public DateTimeOffset? CreatedAt
-    {
-        get
-        {
+    public DateTimeOffset? CreatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("created_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "created_at"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -207,12 +196,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Account description
     /// </summary>
-    public string? Description
-    {
-        get
-        {
+    public string? Description {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("description");
+            return this._rawData.GetNullableClass<string>(
+                "description"
+            );
         }
         init { this._rawData.Set("description", value); }
     }
@@ -220,12 +209,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Contact email address
     /// </summary>
-    public string? Email
-    {
-        get
-        {
+    public string? Email {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("email");
+            return this._rawData.GetNullableClass<string>(
+                "email"
+            );
         }
         init { this._rawData.Set("email", value); }
     }
@@ -233,12 +222,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Account icon URL
     /// </summary>
-    public string? Icon
-    {
-        get
-        {
+    public string? Icon {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("icon");
+            return this._rawData.GetNullableClass<string>(
+                "icon"
+            );
         }
         init { this._rawData.Set("icon", value); }
     }
@@ -246,17 +235,15 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Account name
     /// </summary>
-    public string? Name
-    {
-        get
-        {
+    public string? Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
+            return this._rawData.GetNullableClass<string>(
+                "name"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -267,12 +254,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Organization ID (only for profile type — the parent organization)
     /// </summary>
-    public string? OrganizationID
-    {
-        get
-        {
+    public string? OrganizationID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("organization_id");
+            return this._rawData.GetNullableClass<string>(
+                "organization_id"
+            );
         }
         init { this._rawData.Set("organization_id", value); }
     }
@@ -280,17 +267,15 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// List of profiles (populated for organization type, empty for user and profile types)
     /// </summary>
-    public IReadOnlyList<Profile>? Profiles
-    {
-        get
-        {
+    public IReadOnlyList<Profile>? Profiles {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Profile>>("profiles");
+            return this._rawData.GetNullableStruct<ImmutableArray<Profile>>(
+                "profiles"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -312,12 +297,12 @@ public sealed record class Data : JsonModel
     /// as null, whereas channels.sms.phone_number is left out entirely when there
     /// is no sender.
     /// </summary>
-    public string? SendingPhoneNumber
-    {
-        get
-        {
+    public string? SendingPhoneNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("sending_phone_number");
+            return this._rawData.GetNullableClass<string>(
+                "sending_phone_number"
+            );
         }
         init { this._rawData.Set("sending_phone_number", value); }
     }
@@ -328,12 +313,12 @@ public sealed record class Data : JsonModel
     /// Null when there is no US sender, or when the sender is not a number drawn
     /// from inventory — an alphanumeric sender ID or a short code.
     /// </summary>
-    public string? SendingPhoneNumberProfileID
-    {
-        get
-        {
+    public string? SendingPhoneNumberProfileID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("sending_phone_number_profile_id");
+            return this._rawData.GetNullableClass<string>(
+                "sending_phone_number_profile_id"
+            );
         }
         init { this._rawData.Set("sending_phone_number_profile_id", value); }
     }
@@ -341,12 +326,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Profile configuration settings
     /// </summary>
-    public ProfileSettings? Settings
-    {
-        get
-        {
+    public ProfileSettings? Settings {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ProfileSettings>("settings");
+            return this._rawData.GetNullableClass<ProfileSettings>(
+                "settings"
+            );
         }
         init { this._rawData.Set("settings", value); }
     }
@@ -354,12 +339,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Short name / abbreviation (only for profile type)
     /// </summary>
-    public string? ShortName
-    {
-        get
-        {
+    public string? ShortName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("short_name");
+            return this._rawData.GetNullableClass<string>(
+                "short_name"
+            );
         }
         init { this._rawData.Set("short_name", value); }
     }
@@ -367,12 +352,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Profile status (only for profile type): incomplete, pending_review, approved, etc.
     /// </summary>
-    public string? Status
-    {
-        get
-        {
+    public string? Status {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("status");
+            return this._rawData.GetNullableClass<string>(
+                "status"
+            );
         }
         init { this._rawData.Set("status", value); }
     }
@@ -381,17 +366,15 @@ public sealed record class Data : JsonModel
     /// Account type: "organization" (has profiles), "user" (no profiles), or "profile"
     /// (child of an organization)
     /// </summary>
-    public string? Type
-    {
-        get
-        {
+    public string? Type {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("type");
+            return this._rawData.GetNullableClass<string>(
+                "type"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -422,42 +405,37 @@ public sealed record class Data : JsonModel
         _ = this.Type;
     }
 
-    public Data() { }
+    public Data ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Data(Data data)
-        : base(data) { }
-#pragma warning restore CS8618
+    public Data (Data data) : base(data)
+    {  }
+    #pragma warning restore CS8618
 
-    public Data(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Data (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Data(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Data (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="DataFromRaw.FromRawUnchecked"/>
-    public static Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class DataFromRaw : IFromRawJson<Data>
+    public static Data FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class DataFromRaw : IFromRawJson<Data>
 {
     /// <inheritdoc/>
-    public Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Data.FromRawUnchecked(rawData);
-}
-
-/// <summary>
+    public Data FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Data.FromRawUnchecked(rawData);
+}/// <summary>
 /// Messaging channel configuration. All three channels are always present. Each
 /// channel has a "configured" flag; configured channels expose additional details.
 /// </summary>
@@ -467,17 +445,15 @@ public sealed record class Channels : JsonModel
     /// <summary>
     /// RCS channel configuration. When configured, includes the RCS phone number.
     /// </summary>
-    public Rcs? Rcs
-    {
-        get
-        {
+    public Rcs? Rcs {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Rcs>("rcs");
+            return this._rawData.GetNullableClass<Rcs>(
+                "rcs"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -488,17 +464,15 @@ public sealed record class Channels : JsonModel
     /// <summary>
     /// SMS channel configuration. When configured, includes the sending phone number.
     /// </summary>
-    public Sms? Sms
-    {
-        get
-        {
+    public Sms? Sms {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Sms>("sms");
+            return this._rawData.GetNullableClass<Sms>(
+                "sms"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -510,17 +484,15 @@ public sealed record class Channels : JsonModel
     /// WhatsApp Business channel configuration. When configured, includes the WhatsApp
     /// phone number and business name.
     /// </summary>
-    public Whatsapp? Whatsapp
-    {
-        get
-        {
+    public Whatsapp? Whatsapp {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Whatsapp>("whatsapp");
+            return this._rawData.GetNullableClass<Whatsapp>(
+                "whatsapp"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -536,42 +508,37 @@ public sealed record class Channels : JsonModel
         this.Whatsapp?.Validate();
     }
 
-    public Channels() { }
+    public Channels ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Channels(Channels channels)
-        : base(channels) { }
-#pragma warning restore CS8618
+    public Channels (Channels channels) : base(channels)
+    {  }
+    #pragma warning restore CS8618
 
-    public Channels(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Channels (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Channels(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Channels (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ChannelsFromRaw.FromRawUnchecked"/>
-    public static Channels FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class ChannelsFromRaw : IFromRawJson<Channels>
+    public static Channels FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class ChannelsFromRaw : IFromRawJson<Channels>
 {
     /// <inheritdoc/>
-    public Channels FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Channels.FromRawUnchecked(rawData);
-}
-
-/// <summary>
+    public Channels FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Channels.FromRawUnchecked(rawData);
+}/// <summary>
 /// RCS channel configuration. When configured, includes the RCS phone number.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Rcs, RcsFromRaw>))]
@@ -580,17 +547,15 @@ public sealed record class Rcs : JsonModel
     /// <summary>
     /// Whether RCS is configured for this account
     /// </summary>
-    public bool? Configured
-    {
-        get
-        {
+    public bool? Configured {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("configured");
+            return this._rawData.GetNullableStruct<bool>(
+                "configured"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -601,12 +566,12 @@ public sealed record class Rcs : JsonModel
     /// <summary>
     /// RCS-enabled phone number in E.164 format
     /// </summary>
-    public string? PhoneNumber
-    {
-        get
-        {
+    public string? PhoneNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phone_number");
+            return this._rawData.GetNullableClass<string>(
+                "phone_number"
+            );
         }
         init { this._rawData.Set("phone_number", value); }
     }
@@ -618,42 +583,37 @@ public sealed record class Rcs : JsonModel
         _ = this.PhoneNumber;
     }
 
-    public Rcs() { }
+    public Rcs ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Rcs(Rcs rcs)
-        : base(rcs) { }
-#pragma warning restore CS8618
+    public Rcs (Rcs rcs) : base(rcs)
+    {  }
+    #pragma warning restore CS8618
 
-    public Rcs(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Rcs (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Rcs(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Rcs (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="RcsFromRaw.FromRawUnchecked"/>
-    public static Rcs FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class RcsFromRaw : IFromRawJson<Rcs>
+    public static Rcs FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class RcsFromRaw : IFromRawJson<Rcs>
 {
     /// <inheritdoc/>
-    public Rcs FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Rcs.FromRawUnchecked(rawData);
-}
-
-/// <summary>
+    public Rcs FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Rcs.FromRawUnchecked(rawData);
+}/// <summary>
 /// SMS channel configuration. When configured, includes the sending phone number.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Sms, SmsFromRaw>))]
@@ -662,17 +622,15 @@ public sealed record class Sms : JsonModel
     /// <summary>
     /// Whether SMS is configured for this account
     /// </summary>
-    public bool? Configured
-    {
-        get
-        {
+    public bool? Configured {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("configured");
+            return this._rawData.GetNullableStruct<bool>(
+                "configured"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -683,12 +641,12 @@ public sealed record class Sms : JsonModel
     /// <summary>
     /// Sending phone number in E.164 format
     /// </summary>
-    public string? PhoneNumber
-    {
-        get
-        {
+    public string? PhoneNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phone_number");
+            return this._rawData.GetNullableClass<string>(
+                "phone_number"
+            );
         }
         init { this._rawData.Set("phone_number", value); }
     }
@@ -700,42 +658,37 @@ public sealed record class Sms : JsonModel
         _ = this.PhoneNumber;
     }
 
-    public Sms() { }
+    public Sms ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Sms(Sms sms)
-        : base(sms) { }
-#pragma warning restore CS8618
+    public Sms (Sms sms) : base(sms)
+    {  }
+    #pragma warning restore CS8618
 
-    public Sms(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Sms (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Sms(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Sms (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="SmsFromRaw.FromRawUnchecked"/>
-    public static Sms FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class SmsFromRaw : IFromRawJson<Sms>
+    public static Sms FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class SmsFromRaw : IFromRawJson<Sms>
 {
     /// <inheritdoc/>
-    public Sms FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Sms.FromRawUnchecked(rawData);
-}
-
-/// <summary>
+    public Sms FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Sms.FromRawUnchecked(rawData);
+}/// <summary>
 /// WhatsApp Business channel configuration. When configured, includes the WhatsApp
 /// phone number and business name.
 /// </summary>
@@ -745,12 +698,12 @@ public sealed record class Whatsapp : JsonModel
     /// <summary>
     /// WhatsApp Business display name
     /// </summary>
-    public string? BusinessName
-    {
-        get
-        {
+    public string? BusinessName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("business_name");
+            return this._rawData.GetNullableClass<string>(
+                "business_name"
+            );
         }
         init { this._rawData.Set("business_name", value); }
     }
@@ -758,17 +711,15 @@ public sealed record class Whatsapp : JsonModel
     /// <summary>
     /// Whether WhatsApp is configured for this account
     /// </summary>
-    public bool? Configured
-    {
-        get
-        {
+    public bool? Configured {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("configured");
+            return this._rawData.GetNullableStruct<bool>(
+                "configured"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -779,12 +730,12 @@ public sealed record class Whatsapp : JsonModel
     /// <summary>
     /// WhatsApp phone number in E.164 format
     /// </summary>
-    public string? PhoneNumber
-    {
-        get
-        {
+    public string? PhoneNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phone_number");
+            return this._rawData.GetNullableClass<string>(
+                "phone_number"
+            );
         }
         init { this._rawData.Set("phone_number", value); }
     }
@@ -797,42 +748,37 @@ public sealed record class Whatsapp : JsonModel
         _ = this.PhoneNumber;
     }
 
-    public Whatsapp() { }
+    public Whatsapp ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Whatsapp(Whatsapp whatsapp)
-        : base(whatsapp) { }
-#pragma warning restore CS8618
+    public Whatsapp (Whatsapp whatsapp) : base(whatsapp)
+    {  }
+    #pragma warning restore CS8618
 
-    public Whatsapp(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Whatsapp (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Whatsapp(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Whatsapp (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="WhatsappFromRaw.FromRawUnchecked"/>
-    public static Whatsapp FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class WhatsappFromRaw : IFromRawJson<Whatsapp>
+    public static Whatsapp FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class WhatsappFromRaw : IFromRawJson<Whatsapp>
 {
     /// <inheritdoc/>
-    public Whatsapp FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Whatsapp.FromRawUnchecked(rawData);
-}
-
-/// <summary>
+    public Whatsapp FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Whatsapp.FromRawUnchecked(rawData);
+}/// <summary>
 /// Profile (sender profile) response for v3 API
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Profile, ProfileFromRaw>))]
@@ -841,17 +787,15 @@ public sealed record class Profile : JsonModel
     /// <summary>
     /// Profile unique identifier
     /// </summary>
-    public string? ID
-    {
-        get
-        {
+    public string? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("id");
+            return this._rawData.GetNullableClass<string>(
+                "id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -862,17 +806,15 @@ public sealed record class Profile : JsonModel
     /// <summary>
     /// When the profile was created
     /// </summary>
-    public DateTimeOffset? CreatedAt
-    {
-        get
-        {
+    public DateTimeOffset? CreatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("created_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "created_at"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -883,12 +825,12 @@ public sealed record class Profile : JsonModel
     /// <summary>
     /// Profile description
     /// </summary>
-    public string? Description
-    {
-        get
-        {
+    public string? Description {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("description");
+            return this._rawData.GetNullableClass<string>(
+                "description"
+            );
         }
         init { this._rawData.Set("description", value); }
     }
@@ -896,12 +838,12 @@ public sealed record class Profile : JsonModel
     /// <summary>
     /// Profile icon URL
     /// </summary>
-    public string? Icon
-    {
-        get
-        {
+    public string? Icon {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("icon");
+            return this._rawData.GetNullableClass<string>(
+                "icon"
+            );
         }
         init { this._rawData.Set("icon", value); }
     }
@@ -909,17 +851,15 @@ public sealed record class Profile : JsonModel
     /// <summary>
     /// Profile name
     /// </summary>
-    public string? Name
-    {
-        get
-        {
+    public string? Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
+            return this._rawData.GetNullableClass<string>(
+                "name"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -931,12 +871,12 @@ public sealed record class Profile : JsonModel
     /// User's role in this profile: admin, billing, developer (inherited from organization
     /// if not explicitly set)
     /// </summary>
-    public string? Role
-    {
-        get
-        {
+    public string? Role {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("role");
+            return this._rawData.GetNullableClass<string>(
+                "role"
+            );
         }
         init { this._rawData.Set("role", value); }
     }
@@ -944,17 +884,15 @@ public sealed record class Profile : JsonModel
     /// <summary>
     /// Profile configuration settings
     /// </summary>
-    public ProfileSettings? Settings
-    {
-        get
-        {
+    public ProfileSettings? Settings {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ProfileSettings>("settings");
+            return this._rawData.GetNullableClass<ProfileSettings>(
+                "settings"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -965,12 +903,12 @@ public sealed record class Profile : JsonModel
     /// <summary>
     /// Profile short name (abbreviation)
     /// </summary>
-    public string? ShortName
-    {
-        get
-        {
+    public string? ShortName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("short_name");
+            return this._rawData.GetNullableClass<string>(
+                "short_name"
+            );
         }
         init { this._rawData.Set("short_name", value); }
     }
@@ -978,12 +916,12 @@ public sealed record class Profile : JsonModel
     /// <summary>
     /// Profile setup status: incomplete, pending_review, approved, rejected
     /// </summary>
-    public string? Status
-    {
-        get
-        {
+    public string? Status {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("status");
+            return this._rawData.GetNullableClass<string>(
+                "status"
+            );
         }
         init { this._rawData.Set("status", value); }
     }
@@ -1002,37 +940,34 @@ public sealed record class Profile : JsonModel
         _ = this.Status;
     }
 
-    public Profile() { }
+    public Profile ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Profile(Profile profile)
-        : base(profile) { }
-#pragma warning restore CS8618
+    public Profile (Profile profile) : base(profile)
+    {  }
+    #pragma warning restore CS8618
 
-    public Profile(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Profile (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Profile(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Profile (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ProfileFromRaw.FromRawUnchecked"/>
-    public static Profile FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class ProfileFromRaw : IFromRawJson<Profile>
+    public static Profile FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class ProfileFromRaw : IFromRawJson<Profile>
 {
     /// <inheritdoc/>
-    public Profile FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Profile.FromRawUnchecked(rawData);
+    public Profile FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Profile.FromRawUnchecked(rawData);
 }

@@ -11,82 +11,82 @@ namespace Sentdm.Models.Templates;
 [JsonConverter(typeof(JsonModelConverter<TemplateButtonProps, TemplateButtonPropsFromRaw>))]
 public sealed record class TemplateButtonProps : JsonModel
 {
-    public required int ActiveFor
-    {
-        get
-        {
+    public required int ActiveFor {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<int>("activeFor");
+            return this._rawData.GetNotNullStruct<int>(
+                "activeFor"
+            );
         }
         init { this._rawData.Set("activeFor", value); }
     }
 
-    public required string CountryCode
-    {
-        get
-        {
+    public required string CountryCode {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("countryCode");
+            return this._rawData.GetNotNullClass<string>(
+                "countryCode"
+            );
         }
         init { this._rawData.Set("countryCode", value); }
     }
 
-    public required string OfferCode
-    {
-        get
-        {
+    public required string OfferCode {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("offerCode");
+            return this._rawData.GetNotNullClass<string>(
+                "offerCode"
+            );
         }
         init { this._rawData.Set("offerCode", value); }
     }
 
-    public required string PhoneNumber
-    {
-        get
-        {
+    public required string PhoneNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("phoneNumber");
+            return this._rawData.GetNotNullClass<string>(
+                "phoneNumber"
+            );
         }
         init { this._rawData.Set("phoneNumber", value); }
     }
 
-    public required string QuickReplyType
-    {
-        get
-        {
+    public required string QuickReplyType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("quickReplyType");
+            return this._rawData.GetNotNullClass<string>(
+                "quickReplyType"
+            );
         }
         init { this._rawData.Set("quickReplyType", value); }
     }
 
-    public required string Text
-    {
-        get
-        {
+    public required string Text {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("text");
+            return this._rawData.GetNotNullClass<string>(
+                "text"
+            );
         }
         init { this._rawData.Set("text", value); }
     }
 
-    public required string Url
-    {
-        get
-        {
+    public required string Url {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("url");
+            return this._rawData.GetNotNullClass<string>(
+                "url"
+            );
         }
         init { this._rawData.Set("url", value); }
     }
 
-    public required string UrlType
-    {
-        get
-        {
+    public required string UrlType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("urlType");
+            return this._rawData.GetNotNullClass<string>(
+                "urlType"
+            );
         }
         init { this._rawData.Set("urlType", value); }
     }
@@ -96,15 +96,14 @@ public sealed record class TemplateButtonProps : JsonModel
     /// Count is capped by TemplateContentLimits.MaxUrlButtonVariables; the placeholder
     /// must appear at the end of Url (validated in TemplateDefinitionValidator).
     /// </summary>
-    public required IReadOnlyList<TemplateVariable> Variables
-    {
-        get
-        {
+    public required IReadOnlyList<TemplateVariable> Variables {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<TemplateVariable>>("variables");
+            return this._rawData.GetNotNullStruct<ImmutableArray<TemplateVariable>>(
+                "variables"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<TemplateVariable>>(
                 "variables",
                 ImmutableArray.ToImmutableArray(value)
@@ -112,42 +111,42 @@ public sealed record class TemplateButtonProps : JsonModel
         }
     }
 
-    public string? AutofillText
-    {
-        get
-        {
+    public string? AutofillText {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("autofillText");
+            return this._rawData.GetNullableClass<string>(
+                "autofillText"
+            );
         }
         init { this._rawData.Set("autofillText", value); }
     }
 
-    public string? OtpType
-    {
-        get
-        {
+    public string? OtpType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("otpType");
+            return this._rawData.GetNullableClass<string>(
+                "otpType"
+            );
         }
         init { this._rawData.Set("otpType", value); }
     }
 
-    public string? PackageName
-    {
-        get
-        {
+    public string? PackageName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("packageName");
+            return this._rawData.GetNullableClass<string>(
+                "packageName"
+            );
         }
         init { this._rawData.Set("packageName", value); }
     }
 
-    public string? SignatureHash
-    {
-        get
-        {
+    public string? SignatureHash {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("signatureHash");
+            return this._rawData.GetNullableClass<string>(
+                "signatureHash"
+            );
         }
         init { this._rawData.Set("signatureHash", value); }
     }
@@ -173,39 +172,40 @@ public sealed record class TemplateButtonProps : JsonModel
         _ = this.SignatureHash;
     }
 
-    public TemplateButtonProps() { }
+    public TemplateButtonProps ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateButtonProps(TemplateButtonProps templateButtonProps)
-        : base(templateButtonProps) { }
-#pragma warning restore CS8618
+    public TemplateButtonProps (TemplateButtonProps templateButtonProps) : base(
+        templateButtonProps
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public TemplateButtonProps(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TemplateButtonProps (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateButtonProps(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TemplateButtonProps (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TemplateButtonPropsFromRaw.FromRawUnchecked"/>
     public static TemplateButtonProps FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TemplateButtonPropsFromRaw : IFromRawJson<TemplateButtonProps>
 {
     /// <inheritdoc/>
-    public TemplateButtonProps FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        TemplateButtonProps.FromRawUnchecked(rawData);
+    public TemplateButtonProps FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>TemplateButtonProps.FromRawUnchecked(rawData);
 }

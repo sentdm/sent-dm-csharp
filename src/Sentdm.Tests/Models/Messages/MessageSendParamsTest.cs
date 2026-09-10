@@ -12,27 +12,31 @@ public class MessageSendParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new MessageSendParams
         {
-            Channel = ["sms", "whatsapp"],
-            Sandbox = false,
-            Template = new()
+            Channel =
+            [
+                "sms", "whatsapp"
+            ],Sandbox = false,Template = new()
             {
                 ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
                 Name = "order_confirmation",
                 Parameters = new Dictionary<string, string>()
                 {
-                    { "name", "John Doe" },
-                    { "order_id", "12345" },
+                    { "name", "John Doe" }, { "order_id", "12345" }
                 },
-            },
-            Text = null,
-            To = ["+14155551234", "+14155555678"],
-            IdempotencyKey = "req_abc123_retry1",
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            },Text = null,To =
+            [
+                "+14155551234", "+14155555678"
+            ],IdempotencyKey = "req_abc123_retry1",XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        List<string> expectedChannel = ["sms", "whatsapp"];
+        List<string> expectedChannel =
+        [
+            "sms", "whatsapp"
+        ];
         bool expectedSandbox = false;
         Template expectedTemplate = new()
         {
@@ -40,11 +44,13 @@ public class MessageSendParamsTest : TestBase
             Name = "order_confirmation",
             Parameters = new Dictionary<string, string>()
             {
-                { "name", "John Doe" },
-                { "order_id", "12345" },
+                { "name", "John Doe" }, { "order_id", "12345" }
             },
         };
-        List<string> expectedTo = ["+14155551234", "+14155555678"];
+        List<string> expectedTo =
+        [
+            "+14155551234", "+14155555678"
+        ];
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
@@ -70,107 +76,104 @@ public class MessageSendParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new MessageSendParams
         {
-            Channel = ["sms", "whatsapp"],
-            Template = new()
+            Channel =
+            [
+                "sms", "whatsapp"
+            ],Template = new()
             {
                 ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
                 Name = "order_confirmation",
                 Parameters = new Dictionary<string, string>()
                 {
-                    { "name", "John Doe" },
-                    { "order_id", "12345" },
+                    { "name", "John Doe" }, { "order_id", "12345" }
                 },
-            },
-            Text = null,
+            },Text = null,
         };
 
         Assert.Null(parameters.Sandbox);
-        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.To);
-        Assert.False(parameters.RawBodyData.ContainsKey("to"));
-        Assert.Null(parameters.IdempotencyKey);
-        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));Assert.Null(parameters.To);
+        Assert.False(parameters.RawBodyData.ContainsKey("to"));Assert.Null(parameters.IdempotencyKey);
+        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new MessageSendParams
         {
-            Channel = ["sms", "whatsapp"],
-            Template = new()
+            Channel =
+            [
+                "sms", "whatsapp"
+            ],Template = new()
             {
                 ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
                 Name = "order_confirmation",
                 Parameters = new Dictionary<string, string>()
                 {
-                    { "name", "John Doe" },
-                    { "order_id", "12345" },
+                    { "name", "John Doe" }, { "order_id", "12345" }
                 },
-            },
-            Text = null,
+            },Text = null,
 
             // Null should be interpreted as omitted for these properties
-            Sandbox = null,
-            To = null,
-            IdempotencyKey = null,
-            XProfileID = null,
+            Sandbox = null,To = null,IdempotencyKey = null,XProfileID = null,
         };
 
         Assert.Null(parameters.Sandbox);
-        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.To);
-        Assert.False(parameters.RawBodyData.ContainsKey("to"));
-        Assert.Null(parameters.IdempotencyKey);
-        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));Assert.Null(parameters.To);
+        Assert.False(parameters.RawBodyData.ContainsKey("to"));Assert.Null(parameters.IdempotencyKey);
+        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new MessageSendParams
         {
-            Sandbox = false,
-            To = ["+14155551234", "+14155555678"],
-            IdempotencyKey = "req_abc123_retry1",
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Sandbox = false,To =
+            [
+                "+14155551234", "+14155555678"
+            ],IdempotencyKey = "req_abc123_retry1",XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         Assert.Null(parameters.Channel);
-        Assert.False(parameters.RawBodyData.ContainsKey("channel"));
-        Assert.Null(parameters.Template);
-        Assert.False(parameters.RawBodyData.ContainsKey("template"));
-        Assert.Null(parameters.Text);
+        Assert.False(parameters.RawBodyData.ContainsKey("channel"));Assert.Null(parameters.Template);
+        Assert.False(parameters.RawBodyData.ContainsKey("template"));Assert.Null(parameters.Text);
         Assert.False(parameters.RawBodyData.ContainsKey("text"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new MessageSendParams
         {
-            Sandbox = false,
-            To = ["+14155551234", "+14155555678"],
-            IdempotencyKey = "req_abc123_retry1",
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Sandbox = false,To =
+            [
+                "+14155551234", "+14155555678"
+            ],IdempotencyKey = "req_abc123_retry1",XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
-            Channel = null,
-            Template = null,
-            Text = null,
+            Channel = null,Template = null,Text = null,
         };
 
         Assert.Null(parameters.Channel);
-        Assert.True(parameters.RawBodyData.ContainsKey("channel"));
-        Assert.Null(parameters.Template);
-        Assert.True(parameters.RawBodyData.ContainsKey("template"));
-        Assert.Null(parameters.Text);
+        Assert.True(parameters.RawBodyData.ContainsKey("channel"));Assert.Null(parameters.Template);
+        Assert.True(parameters.RawBodyData.ContainsKey("template"));Assert.Null(parameters.Text);
         Assert.True(parameters.RawBodyData.ContainsKey("text"));
+
     }
 
     [Fact]
@@ -178,7 +181,12 @@ public class MessageSendParamsTest : TestBase
     {
         MessageSendParams parameters = new();
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/messages"), url));
     }
@@ -193,13 +201,15 @@ public class MessageSendParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
-
-        Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));
-        Assert.Equal(
-            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-            requestMessage.Headers.GetValues("x-profile-id")
+        parameters.AddHeadersToRequest(
+            requestMessage,
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));Assert.Equal(["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"], requestMessage.Headers.GetValues("x-profile-id"));
     }
 
     [Fact]
@@ -207,7 +217,10 @@ public class MessageSendParamsTest : TestBase
     {
         var parameters = new MessageSendParams
         {
-            Channel = ["sms", "whatsapp"],
+            Channel =
+            [
+                "sms", "whatsapp"
+            ],
             Sandbox = false,
             Template = new()
             {
@@ -215,12 +228,14 @@ public class MessageSendParamsTest : TestBase
                 Name = "order_confirmation",
                 Parameters = new Dictionary<string, string>()
                 {
-                    { "name", "John Doe" },
-                    { "order_id", "12345" },
+                    { "name", "John Doe" }, { "order_id", "12345" }
                 },
             },
             Text = null,
-            To = ["+14155551234", "+14155555678"],
+            To =
+            [
+                "+14155551234", "+14155555678"
+            ],
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
@@ -238,12 +253,11 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Name = "order_confirmation",
-            Parameters = new Dictionary<string, string>()
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",Name = "order_confirmation",Parameters = new Dictionary<string, string>(
+
+            )
             {
-                { "name", "John Doe" },
-                { "order_id", "12345" },
+                { "name", "John Doe" }, { "order_id", "12345" }
             },
         };
 
@@ -251,8 +265,7 @@ public class TemplateTest : TestBase
         string expectedName = "order_confirmation";
         Dictionary<string, string> expectedParameters = new()
         {
-            { "name", "John Doe" },
-            { "order_id", "12345" },
+            { "name", "John Doe" }, { "order_id", "12345" }
         };
 
         Assert.Equal(expectedID, model.ID);
@@ -272,12 +285,11 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Name = "order_confirmation",
-            Parameters = new Dictionary<string, string>()
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",Name = "order_confirmation",Parameters = new Dictionary<string, string>(
+
+            )
             {
-                { "name", "John Doe" },
-                { "order_id", "12345" },
+                { "name", "John Doe" }, { "order_id", "12345" }
             },
         };
 
@@ -292,28 +304,23 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Name = "order_confirmation",
-            Parameters = new Dictionary<string, string>()
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",Name = "order_confirmation",Parameters = new Dictionary<string, string>(
+
+            )
             {
-                { "name", "John Doe" },
-                { "order_id", "12345" },
+                { "name", "John Doe" }, { "order_id", "12345" }
             },
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Template>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Template>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8";
         string expectedName = "order_confirmation";
         Dictionary<string, string> expectedParameters = new()
         {
-            { "name", "John Doe" },
-            { "order_id", "12345" },
+            { "name", "John Doe" }, { "order_id", "12345" }
         };
 
         Assert.Equal(expectedID, deserialized.ID);
@@ -333,12 +340,11 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Name = "order_confirmation",
-            Parameters = new Dictionary<string, string>()
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",Name = "order_confirmation",Parameters = new Dictionary<string, string>(
+
+            )
             {
-                { "name", "John Doe" },
-                { "order_id", "12345" },
+                { "name", "John Doe" }, { "order_id", "12345" }
             },
         };
 
@@ -348,20 +354,25 @@ public class TemplateTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Template { };
+        var model = new Template
+        {
+
+        };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Parameters);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.Name);
+        Assert.False(model.RawData.ContainsKey("name"));Assert.Null(model.Parameters);
         Assert.False(model.RawData.ContainsKey("parameters"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Template { };
+        var model = new Template
+        {
+
+        };
 
         model.Validate();
     }
@@ -371,17 +382,16 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            ID = null,
-            Name = null,
-            Parameters = null,
+
+
+            ID = null,Name = null,Parameters = null,
         };
 
         Assert.Null(model.ID);
-        Assert.True(model.RawData.ContainsKey("id"));
-        Assert.Null(model.Name);
-        Assert.True(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Parameters);
+        Assert.True(model.RawData.ContainsKey("id"));Assert.Null(model.Name);
+        Assert.True(model.RawData.ContainsKey("name"));Assert.Null(model.Parameters);
         Assert.True(model.RawData.ContainsKey("parameters"));
+
     }
 
     [Fact]
@@ -389,9 +399,9 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            ID = null,
-            Name = null,
-            Parameters = null,
+
+
+            ID = null,Name = null,Parameters = null,
         };
 
         model.Validate();
@@ -402,12 +412,11 @@ public class TemplateTest : TestBase
     {
         var model = new Template
         {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Name = "order_confirmation",
-            Parameters = new Dictionary<string, string>()
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",Name = "order_confirmation",Parameters = new Dictionary<string, string>(
+
+            )
             {
-                { "name", "John Doe" },
-                { "order_id", "12345" },
+                { "name", "John Doe" }, { "order_id", "12345" }
             },
         };
 

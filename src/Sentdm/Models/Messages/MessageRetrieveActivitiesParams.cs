@@ -20,17 +20,15 @@ public record class MessageRetrieveActivitiesParams : ParamsBase
 {
     public string? ID { get; init; }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -38,20 +36,18 @@ public record class MessageRetrieveActivitiesParams : ParamsBase
         }
     }
 
-    public MessageRetrieveActivitiesParams() { }
+    public MessageRetrieveActivitiesParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MessageRetrieveActivitiesParams(
+    public MessageRetrieveActivitiesParams (
         MessageRetrieveActivitiesParams messageRetrieveActivitiesParams
-    )
-        : base(messageRetrieveActivitiesParams)
-    {
-        this.ID = messageRetrieveActivitiesParams.ID;
-    }
-#pragma warning restore CS8618
+    ) : base(messageRetrieveActivitiesParams)
+    { this.ID = messageRetrieveActivitiesParams.ID; }
+    #pragma warning restore CS8618
 
-    public MessageRetrieveActivitiesParams(
+    public MessageRetrieveActivitiesParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -60,9 +56,9 @@ public record class MessageRetrieveActivitiesParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MessageRetrieveActivitiesParams(
+    MessageRetrieveActivitiesParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         string id
@@ -72,7 +68,7 @@ public record class MessageRetrieveActivitiesParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.ID = id;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static MessageRetrieveActivitiesParams FromRawUnchecked(
@@ -85,25 +81,18 @@ public record class MessageRetrieveActivitiesParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             id
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["ID"] = JsonSerializer.SerializeToElement(this.ID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["ID"] = JsonSerializer.SerializeToElement(this.ID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(MessageRetrieveActivitiesParams? other)
     {
@@ -111,23 +100,23 @@ public record class MessageRetrieveActivitiesParams : ParamsBase
         {
             return false;
         }
-        return (this.ID?.Equals(other.ID) ?? other.ID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.ID?.Equals(other.ID) ?? other.ID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/v3/messages/{0}/activities", this.ID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v3/messages/{0}/activities",
+            this.ID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -137,7 +126,5 @@ public record class MessageRetrieveActivitiesParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

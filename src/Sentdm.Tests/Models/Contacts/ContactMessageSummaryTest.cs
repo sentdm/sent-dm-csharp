@@ -21,12 +21,10 @@ public class ContactMessageSummaryTest : TestBase
                     FailScore = 0,
                     SuccessScore = 0,
                 },
-            ],
-            ChannelsUsed = ["string"],
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            MessageCount = 0,
+            ],ChannelsUsed =
+            [
+                "string"
+            ],ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),MessageCount = 0,
         };
 
         List<ChannelScore> expectedChannelScores =
@@ -38,7 +36,10 @@ public class ContactMessageSummaryTest : TestBase
                 SuccessScore = 0,
             },
         ];
-        List<string> expectedChannelsUsed = ["string"];
+        List<string> expectedChannelsUsed =
+        [
+            "string"
+        ];
         string expectedContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedFirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         DateTimeOffset expectedLastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
@@ -75,19 +76,14 @@ public class ContactMessageSummaryTest : TestBase
                     FailScore = 0,
                     SuccessScore = 0,
                 },
-            ],
-            ChannelsUsed = ["string"],
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            MessageCount = 0,
+            ],ChannelsUsed =
+            [
+                "string"
+            ],ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),MessageCount = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ContactMessageSummary>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ContactMessageSummary>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -105,19 +101,14 @@ public class ContactMessageSummaryTest : TestBase
                     FailScore = 0,
                     SuccessScore = 0,
                 },
-            ],
-            ChannelsUsed = ["string"],
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            MessageCount = 0,
+            ],ChannelsUsed =
+            [
+                "string"
+            ],ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),MessageCount = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ContactMessageSummary>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ContactMessageSummary>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<ChannelScore> expectedChannelScores =
@@ -129,7 +120,10 @@ public class ContactMessageSummaryTest : TestBase
                 SuccessScore = 0,
             },
         ];
-        List<string> expectedChannelsUsed = ["string"];
+        List<string> expectedChannelsUsed =
+        [
+            "string"
+        ];
         string expectedContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedFirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         DateTimeOffset expectedLastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
@@ -166,12 +160,10 @@ public class ContactMessageSummaryTest : TestBase
                     FailScore = 0,
                     SuccessScore = 0,
                 },
-            ],
-            ChannelsUsed = ["string"],
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            MessageCount = 0,
+            ],ChannelsUsed =
+            [
+                "string"
+            ],ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),MessageCount = 0,
         };
 
         model.Validate();
@@ -182,18 +174,15 @@ public class ContactMessageSummaryTest : TestBase
     {
         var model = new ContactMessageSummary
         {
-            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         Assert.Null(model.ChannelScores);
-        Assert.False(model.RawData.ContainsKey("channel_scores"));
-        Assert.Null(model.ChannelsUsed);
-        Assert.False(model.RawData.ContainsKey("channels_used"));
-        Assert.Null(model.ContactID);
-        Assert.False(model.RawData.ContainsKey("contact_id"));
-        Assert.Null(model.MessageCount);
+        Assert.False(model.RawData.ContainsKey("channel_scores"));Assert.Null(model.ChannelsUsed);
+        Assert.False(model.RawData.ContainsKey("channels_used"));Assert.Null(model.ContactID);
+        Assert.False(model.RawData.ContainsKey("contact_id"));Assert.Null(model.MessageCount);
         Assert.False(model.RawData.ContainsKey("message_count"));
+
     }
 
     [Fact]
@@ -201,8 +190,7 @@ public class ContactMessageSummaryTest : TestBase
     {
         var model = new ContactMessageSummary
         {
-            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         model.Validate();
@@ -213,24 +201,18 @@ public class ContactMessageSummaryTest : TestBase
     {
         var model = new ContactMessageSummary
         {
-            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             // Null should be interpreted as omitted for these properties
-            ChannelScores = null,
-            ChannelsUsed = null,
-            ContactID = null,
-            MessageCount = null,
+            ChannelScores = null,ChannelsUsed = null,ContactID = null,MessageCount = null,
         };
 
         Assert.Null(model.ChannelScores);
-        Assert.False(model.RawData.ContainsKey("channel_scores"));
-        Assert.Null(model.ChannelsUsed);
-        Assert.False(model.RawData.ContainsKey("channels_used"));
-        Assert.Null(model.ContactID);
-        Assert.False(model.RawData.ContainsKey("contact_id"));
-        Assert.Null(model.MessageCount);
+        Assert.False(model.RawData.ContainsKey("channel_scores"));Assert.Null(model.ChannelsUsed);
+        Assert.False(model.RawData.ContainsKey("channels_used"));Assert.Null(model.ContactID);
+        Assert.False(model.RawData.ContainsKey("contact_id"));Assert.Null(model.MessageCount);
         Assert.False(model.RawData.ContainsKey("message_count"));
+
     }
 
     [Fact]
@@ -238,14 +220,10 @@ public class ContactMessageSummaryTest : TestBase
     {
         var model = new ContactMessageSummary
         {
-            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             // Null should be interpreted as omitted for these properties
-            ChannelScores = null,
-            ChannelsUsed = null,
-            ContactID = null,
-            MessageCount = null,
+            ChannelScores = null,ChannelsUsed = null,ContactID = null,MessageCount = null,
         };
 
         model.Validate();
@@ -264,16 +242,16 @@ public class ContactMessageSummaryTest : TestBase
                     FailScore = 0,
                     SuccessScore = 0,
                 },
-            ],
-            ChannelsUsed = ["string"],
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageCount = 0,
+            ],ChannelsUsed =
+            [
+                "string"
+            ],ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessageCount = 0,
         };
 
         Assert.Null(model.FirstMessageAt);
-        Assert.False(model.RawData.ContainsKey("first_message_at"));
-        Assert.Null(model.LastMessageAt);
+        Assert.False(model.RawData.ContainsKey("first_message_at"));Assert.Null(model.LastMessageAt);
         Assert.False(model.RawData.ContainsKey("last_message_at"));
+
     }
 
     [Fact]
@@ -289,10 +267,10 @@ public class ContactMessageSummaryTest : TestBase
                     FailScore = 0,
                     SuccessScore = 0,
                 },
-            ],
-            ChannelsUsed = ["string"],
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageCount = 0,
+            ],ChannelsUsed =
+            [
+                "string"
+            ],ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessageCount = 0,
         };
 
         model.Validate();
@@ -311,19 +289,18 @@ public class ContactMessageSummaryTest : TestBase
                     FailScore = 0,
                     SuccessScore = 0,
                 },
-            ],
-            ChannelsUsed = ["string"],
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageCount = 0,
+            ],ChannelsUsed =
+            [
+                "string"
+            ],ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessageCount = 0,
 
-            FirstMessageAt = null,
-            LastMessageAt = null,
+            FirstMessageAt = null,LastMessageAt = null,
         };
 
         Assert.Null(model.FirstMessageAt);
-        Assert.True(model.RawData.ContainsKey("first_message_at"));
-        Assert.Null(model.LastMessageAt);
+        Assert.True(model.RawData.ContainsKey("first_message_at"));Assert.Null(model.LastMessageAt);
         Assert.True(model.RawData.ContainsKey("last_message_at"));
+
     }
 
     [Fact]
@@ -339,13 +316,12 @@ public class ContactMessageSummaryTest : TestBase
                     FailScore = 0,
                     SuccessScore = 0,
                 },
-            ],
-            ChannelsUsed = ["string"],
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            MessageCount = 0,
+            ],ChannelsUsed =
+            [
+                "string"
+            ],ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",MessageCount = 0,
 
-            FirstMessageAt = null,
-            LastMessageAt = null,
+            FirstMessageAt = null,LastMessageAt = null,
         };
 
         model.Validate();
@@ -364,12 +340,10 @@ public class ContactMessageSummaryTest : TestBase
                     FailScore = 0,
                     SuccessScore = 0,
                 },
-            ],
-            ChannelsUsed = ["string"],
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            MessageCount = 0,
+            ],ChannelsUsed =
+            [
+                "string"
+            ],ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",FirstMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),LastMessageAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),MessageCount = 0,
         };
 
         ContactMessageSummary copied = new(model);
@@ -385,9 +359,7 @@ public class ChannelScoreTest : TestBase
     {
         var model = new ChannelScore
         {
-            Channel = "channel",
-            FailScore = 0,
-            SuccessScore = 0,
+            Channel = "channel",FailScore = 0,SuccessScore = 0,
         };
 
         string expectedChannel = "channel";
@@ -404,16 +376,11 @@ public class ChannelScoreTest : TestBase
     {
         var model = new ChannelScore
         {
-            Channel = "channel",
-            FailScore = 0,
-            SuccessScore = 0,
+            Channel = "channel",FailScore = 0,SuccessScore = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ChannelScore>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ChannelScore>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -423,16 +390,11 @@ public class ChannelScoreTest : TestBase
     {
         var model = new ChannelScore
         {
-            Channel = "channel",
-            FailScore = 0,
-            SuccessScore = 0,
+            Channel = "channel",FailScore = 0,SuccessScore = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ChannelScore>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ChannelScore>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedChannel = "channel";
@@ -449,9 +411,7 @@ public class ChannelScoreTest : TestBase
     {
         var model = new ChannelScore
         {
-            Channel = "channel",
-            FailScore = 0,
-            SuccessScore = 0,
+            Channel = "channel",FailScore = 0,SuccessScore = 0,
         };
 
         model.Validate();
@@ -460,20 +420,25 @@ public class ChannelScoreTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new ChannelScore { };
+        var model = new ChannelScore
+        {
+
+        };
 
         Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
-        Assert.Null(model.FailScore);
-        Assert.False(model.RawData.ContainsKey("fail_score"));
-        Assert.Null(model.SuccessScore);
+        Assert.False(model.RawData.ContainsKey("channel"));Assert.Null(model.FailScore);
+        Assert.False(model.RawData.ContainsKey("fail_score"));Assert.Null(model.SuccessScore);
         Assert.False(model.RawData.ContainsKey("success_score"));
+
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new ChannelScore { };
+        var model = new ChannelScore
+        {
+
+        };
 
         model.Validate();
     }
@@ -483,18 +448,17 @@ public class ChannelScoreTest : TestBase
     {
         var model = new ChannelScore
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Channel = null,
-            FailScore = null,
-            SuccessScore = null,
+            Channel = null,FailScore = null,SuccessScore = null,
         };
 
         Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
-        Assert.Null(model.FailScore);
-        Assert.False(model.RawData.ContainsKey("fail_score"));
-        Assert.Null(model.SuccessScore);
+        Assert.False(model.RawData.ContainsKey("channel"));Assert.Null(model.FailScore);
+        Assert.False(model.RawData.ContainsKey("fail_score"));Assert.Null(model.SuccessScore);
         Assert.False(model.RawData.ContainsKey("success_score"));
+
     }
 
     [Fact]
@@ -502,10 +466,10 @@ public class ChannelScoreTest : TestBase
     {
         var model = new ChannelScore
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Channel = null,
-            FailScore = null,
-            SuccessScore = null,
+            Channel = null,FailScore = null,SuccessScore = null,
         };
 
         model.Validate();
@@ -516,9 +480,7 @@ public class ChannelScoreTest : TestBase
     {
         var model = new ChannelScore
         {
-            Channel = "channel",
-            FailScore = 0,
-            SuccessScore = 0,
+            Channel = "channel",FailScore = 0,SuccessScore = 0,
         };
 
         ChannelScore copied = new(model);

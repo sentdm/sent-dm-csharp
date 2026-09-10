@@ -12,12 +12,7 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            Description = "description",
-            DisplayName = "display_name",
-            EventType = "event_type",
-            IsActive = true,
-            Name = "name",
-            SubTypes =
+            Description = "description",DisplayName = "display_name",EventType = "event_type",IsActive = true,Name = "name",SubTypes =
             [
                 new()
                 {
@@ -26,7 +21,10 @@ public class WebhookEventTypeTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
             ],
         };
@@ -45,7 +43,10 @@ public class WebhookEventTypeTest : TestBase
                 EventType = "event_type",
                 IsActive = true,
                 Name = "name",
-                SubTypes = [],
+                SubTypes =
+                [
+
+                ],
             },
         ];
 
@@ -67,12 +68,7 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            Description = "description",
-            DisplayName = "display_name",
-            EventType = "event_type",
-            IsActive = true,
-            Name = "name",
-            SubTypes =
+            Description = "description",DisplayName = "display_name",EventType = "event_type",IsActive = true,Name = "name",SubTypes =
             [
                 new()
                 {
@@ -81,16 +77,16 @@ public class WebhookEventTypeTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
             ],
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookEventType>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookEventType>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -100,12 +96,7 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            Description = "description",
-            DisplayName = "display_name",
-            EventType = "event_type",
-            IsActive = true,
-            Name = "name",
-            SubTypes =
+            Description = "description",DisplayName = "display_name",EventType = "event_type",IsActive = true,Name = "name",SubTypes =
             [
                 new()
                 {
@@ -114,16 +105,16 @@ public class WebhookEventTypeTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
             ],
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookEventType>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookEventType>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedDescription = "description";
@@ -140,7 +131,10 @@ public class WebhookEventTypeTest : TestBase
                 EventType = "event_type",
                 IsActive = true,
                 Name = "name",
-                SubTypes = [],
+                SubTypes =
+                [
+
+                ],
             },
         ];
 
@@ -162,12 +156,7 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            Description = "description",
-            DisplayName = "display_name",
-            EventType = "event_type",
-            IsActive = true,
-            Name = "name",
-            SubTypes =
+            Description = "description",DisplayName = "display_name",EventType = "event_type",IsActive = true,Name = "name",SubTypes =
             [
                 new()
                 {
@@ -176,7 +165,10 @@ public class WebhookEventTypeTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
             ],
         };
@@ -189,9 +181,7 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            Description = "description",
-            EventType = "event_type",
-            SubTypes =
+            Description = "description",EventType = "event_type",SubTypes =
             [
                 new()
                 {
@@ -200,17 +190,19 @@ public class WebhookEventTypeTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
             ],
         };
 
         Assert.Null(model.DisplayName);
-        Assert.False(model.RawData.ContainsKey("display_name"));
-        Assert.Null(model.IsActive);
-        Assert.False(model.RawData.ContainsKey("is_active"));
-        Assert.Null(model.Name);
+        Assert.False(model.RawData.ContainsKey("display_name"));Assert.Null(model.IsActive);
+        Assert.False(model.RawData.ContainsKey("is_active"));Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+
     }
 
     [Fact]
@@ -218,9 +210,7 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            Description = "description",
-            EventType = "event_type",
-            SubTypes =
+            Description = "description",EventType = "event_type",SubTypes =
             [
                 new()
                 {
@@ -229,7 +219,10 @@ public class WebhookEventTypeTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
             ],
         };
@@ -242,9 +235,7 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            Description = "description",
-            EventType = "event_type",
-            SubTypes =
+            Description = "description",EventType = "event_type",SubTypes =
             [
                 new()
                 {
@@ -253,22 +244,22 @@ public class WebhookEventTypeTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
             ],
 
             // Null should be interpreted as omitted for these properties
-            DisplayName = null,
-            IsActive = null,
-            Name = null,
+            DisplayName = null,IsActive = null,Name = null,
         };
 
         Assert.Null(model.DisplayName);
-        Assert.False(model.RawData.ContainsKey("display_name"));
-        Assert.Null(model.IsActive);
-        Assert.False(model.RawData.ContainsKey("is_active"));
-        Assert.Null(model.Name);
+        Assert.False(model.RawData.ContainsKey("display_name"));Assert.Null(model.IsActive);
+        Assert.False(model.RawData.ContainsKey("is_active"));Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+
     }
 
     [Fact]
@@ -276,9 +267,7 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            Description = "description",
-            EventType = "event_type",
-            SubTypes =
+            Description = "description",EventType = "event_type",SubTypes =
             [
                 new()
                 {
@@ -287,14 +276,15 @@ public class WebhookEventTypeTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
             ],
 
             // Null should be interpreted as omitted for these properties
-            DisplayName = null,
-            IsActive = null,
-            Name = null,
+            DisplayName = null,IsActive = null,Name = null,
         };
 
         model.Validate();
@@ -305,17 +295,14 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            DisplayName = "display_name",
-            IsActive = true,
-            Name = "name",
+            DisplayName = "display_name",IsActive = true,Name = "name",
         };
 
         Assert.Null(model.Description);
-        Assert.False(model.RawData.ContainsKey("description"));
-        Assert.Null(model.EventType);
-        Assert.False(model.RawData.ContainsKey("event_type"));
-        Assert.Null(model.SubTypes);
+        Assert.False(model.RawData.ContainsKey("description"));Assert.Null(model.EventType);
+        Assert.False(model.RawData.ContainsKey("event_type"));Assert.Null(model.SubTypes);
         Assert.False(model.RawData.ContainsKey("sub_types"));
+
     }
 
     [Fact]
@@ -323,9 +310,7 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            DisplayName = "display_name",
-            IsActive = true,
-            Name = "name",
+            DisplayName = "display_name",IsActive = true,Name = "name",
         };
 
         model.Validate();
@@ -336,21 +321,16 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            DisplayName = "display_name",
-            IsActive = true,
-            Name = "name",
+            DisplayName = "display_name",IsActive = true,Name = "name",
 
-            Description = null,
-            EventType = null,
-            SubTypes = null,
+            Description = null,EventType = null,SubTypes = null,
         };
 
         Assert.Null(model.Description);
-        Assert.True(model.RawData.ContainsKey("description"));
-        Assert.Null(model.EventType);
-        Assert.True(model.RawData.ContainsKey("event_type"));
-        Assert.Null(model.SubTypes);
+        Assert.True(model.RawData.ContainsKey("description"));Assert.Null(model.EventType);
+        Assert.True(model.RawData.ContainsKey("event_type"));Assert.Null(model.SubTypes);
         Assert.True(model.RawData.ContainsKey("sub_types"));
+
     }
 
     [Fact]
@@ -358,13 +338,9 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            DisplayName = "display_name",
-            IsActive = true,
-            Name = "name",
+            DisplayName = "display_name",IsActive = true,Name = "name",
 
-            Description = null,
-            EventType = null,
-            SubTypes = null,
+            Description = null,EventType = null,SubTypes = null,
         };
 
         model.Validate();
@@ -375,12 +351,7 @@ public class WebhookEventTypeTest : TestBase
     {
         var model = new WebhookEventType
         {
-            Description = "description",
-            DisplayName = "display_name",
-            EventType = "event_type",
-            IsActive = true,
-            Name = "name",
-            SubTypes =
+            Description = "description",DisplayName = "display_name",EventType = "event_type",IsActive = true,Name = "name",SubTypes =
             [
                 new()
                 {
@@ -389,7 +360,10 @@ public class WebhookEventTypeTest : TestBase
                     EventType = "event_type",
                     IsActive = true,
                     Name = "name",
-                    SubTypes = [],
+                    SubTypes =
+                    [
+
+                    ],
                 },
             ],
         };

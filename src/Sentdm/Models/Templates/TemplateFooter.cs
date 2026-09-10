@@ -17,12 +17,12 @@ public sealed record class TemplateFooter : JsonModel
     /// <summary>
     /// The footer template text with optional variable placeholders
     /// </summary>
-    public required string Template
-    {
-        get
-        {
+    public required string Template {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("template");
+            return this._rawData.GetNotNullClass<string>(
+                "template"
+            );
         }
         init { this._rawData.Set("template", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class TemplateFooter : JsonModel
     /// <summary>
     /// The type of footer (typically "text")
     /// </summary>
-    public string? Type
-    {
-        get
-        {
+    public string? Type {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("type");
+            return this._rawData.GetNullableClass<string>(
+                "type"
+            );
         }
         init { this._rawData.Set("type", value); }
     }
@@ -43,15 +43,14 @@ public sealed record class TemplateFooter : JsonModel
     /// <summary>
     /// List of variables used in the footer template
     /// </summary>
-    public IReadOnlyList<TemplateVariable>? Variables
-    {
-        get
-        {
+    public IReadOnlyList<TemplateVariable>? Variables {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<TemplateVariable>>("variables");
+            return this._rawData.GetNullableStruct<ImmutableArray<TemplateVariable>>(
+                "variables"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<TemplateVariable>?>(
                 "variables",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -70,44 +69,40 @@ public sealed record class TemplateFooter : JsonModel
         }
     }
 
-    public TemplateFooter() { }
+    public TemplateFooter ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateFooter(TemplateFooter templateFooter)
-        : base(templateFooter) { }
-#pragma warning restore CS8618
+    public TemplateFooter (TemplateFooter templateFooter) : base(templateFooter)
+    {  }
+    #pragma warning restore CS8618
 
-    public TemplateFooter(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TemplateFooter (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateFooter(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TemplateFooter (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TemplateFooterFromRaw.FromRawUnchecked"/>
-    public static TemplateFooter FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static TemplateFooter FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 
     [SetsRequiredMembers]
-    public TemplateFooter(string template)
-        : this()
-    {
-        this.Template = template;
-    }
+    public TemplateFooter (string template) : this()
+    { this.Template = template; }
 }
 
 class TemplateFooterFromRaw : IFromRawJson<TemplateFooter>
 {
     /// <inheritdoc/>
-    public TemplateFooter FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        TemplateFooter.FromRawUnchecked(rawData);
+    public TemplateFooter FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>TemplateFooter.FromRawUnchecked(rawData);
 }

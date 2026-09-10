@@ -13,20 +13,18 @@ namespace Sentdm.Models.Messages;
 /// <summary>
 /// Standard API response envelope for all v3 endpoints
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<MessageRetrieveStatusResponse, MessageRetrieveStatusResponseFromRaw>)
-)]
+[JsonConverter(typeof(JsonModelConverter<MessageRetrieveStatusResponse, MessageRetrieveStatusResponseFromRaw>))]
 public sealed record class MessageRetrieveStatusResponse : JsonModel
 {
     /// <summary>
     /// Message response for v3 API — same shape as v2 with snake_case JSON conventions
     /// </summary>
-    public MessageRetrieveStatusResponseData? Data
-    {
-        get
-        {
+    public MessageRetrieveStatusResponseData? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<MessageRetrieveStatusResponseData>("data");
+            return this._rawData.GetNullableClass<MessageRetrieveStatusResponseData>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -34,12 +32,12 @@ public sealed record class MessageRetrieveStatusResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
-    {
-        get
-        {
+    public ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -47,17 +45,15 @@ public sealed record class MessageRetrieveStatusResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
-    {
-        get
-        {
+    public ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -68,17 +64,15 @@ public sealed record class MessageRetrieveStatusResponse : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -95,36 +89,35 @@ public sealed record class MessageRetrieveStatusResponse : JsonModel
         _ = this.Success;
     }
 
-    public MessageRetrieveStatusResponse() { }
+    public MessageRetrieveStatusResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MessageRetrieveStatusResponse(
+    public MessageRetrieveStatusResponse (
         MessageRetrieveStatusResponse messageRetrieveStatusResponse
+    ) : base(messageRetrieveStatusResponse)
+    {  }
+    #pragma warning restore CS8618
+
+    public MessageRetrieveStatusResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
     )
-        : base(messageRetrieveStatusResponse) { }
-#pragma warning restore CS8618
+    { this._rawData = new(rawData); }
 
-    public MessageRetrieveStatusResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MessageRetrieveStatusResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    MessageRetrieveStatusResponse (
+        FrozenDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="MessageRetrieveStatusResponseFromRaw.FromRawUnchecked"/>
     public static MessageRetrieveStatusResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class MessageRetrieveStatusResponseFromRaw : IFromRawJson<MessageRetrieveStatusResponse>
@@ -132,31 +125,25 @@ class MessageRetrieveStatusResponseFromRaw : IFromRawJson<MessageRetrieveStatusR
     /// <inheritdoc/>
     public MessageRetrieveStatusResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => MessageRetrieveStatusResponse.FromRawUnchecked(rawData);
+    )
+    =>MessageRetrieveStatusResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>
 /// Message response for v3 API — same shape as v2 with snake_case JSON conventions
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        MessageRetrieveStatusResponseData,
-        MessageRetrieveStatusResponseDataFromRaw
-    >)
-)]
+[JsonConverter(typeof(JsonModelConverter<MessageRetrieveStatusResponseData, MessageRetrieveStatusResponseDataFromRaw>))]
 public sealed record class MessageRetrieveStatusResponseData : JsonModel
 {
-    public string? ID
-    {
-        get
-        {
+    public string? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("id");
+            return this._rawData.GetNullableClass<string>(
+                "id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -164,27 +151,25 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
-    public double? ActiveContactPrice
-    {
-        get
-        {
+    public double? ActiveContactPrice {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("active_contact_price");
+            return this._rawData.GetNullableStruct<double>(
+                "active_contact_price"
+            );
         }
         init { this._rawData.Set("active_contact_price", value); }
     }
 
-    public string? Channel
-    {
-        get
-        {
+    public string? Channel {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("channel");
+            return this._rawData.GetNullableClass<string>(
+                "channel"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -192,17 +177,15 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
-    public string? ContactID
-    {
-        get
-        {
+    public string? ContactID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("contact_id");
+            return this._rawData.GetNullableClass<string>(
+                "contact_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -210,17 +193,15 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
-    public DateTimeOffset? CreatedAt
-    {
-        get
-        {
+    public DateTimeOffset? CreatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("created_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "created_at"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -228,17 +209,15 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
-    public string? CustomerID
-    {
-        get
-        {
+    public string? CustomerID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("customer_id");
+            return this._rawData.GetNullableClass<string>(
+                "customer_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -246,17 +225,15 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
-    public string? Direction
-    {
-        get
-        {
+    public string? Direction {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("direction");
+            return this._rawData.GetNullableClass<string>(
+                "direction"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -264,15 +241,14 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
-    public IReadOnlyList<Event>? Events
-    {
-        get
-        {
+    public IReadOnlyList<Event>? Events {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Event>>("events");
+            return this._rawData.GetNullableStruct<ImmutableArray<Event>>(
+                "events"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<Event>?>(
                 "events",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -284,27 +260,25 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
     /// Structured message body format for database storage. Preserves channel-specific
     /// components (header, body, footer, buttons).
     /// </summary>
-    public MessageBody? MessageBody
-    {
-        get
-        {
+    public MessageBody? MessageBody {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<MessageBody>("message_body");
+            return this._rawData.GetNullableClass<MessageBody>(
+                "message_body"
+            );
         }
         init { this._rawData.Set("message_body", value); }
     }
 
-    public string? Phone
-    {
-        get
-        {
+    public string? Phone {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phone");
+            return this._rawData.GetNullableClass<string>(
+                "phone"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -312,17 +286,15 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
-    public string? PhoneInternational
-    {
-        get
-        {
+    public string? PhoneInternational {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phone_international");
+            return this._rawData.GetNullableClass<string>(
+                "phone_international"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -330,27 +302,25 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
-    public double? Price
-    {
-        get
-        {
+    public double? Price {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("price");
+            return this._rawData.GetNullableStruct<double>(
+                "price"
+            );
         }
         init { this._rawData.Set("price", value); }
     }
 
-    public string? RegionCode
-    {
-        get
-        {
+    public string? RegionCode {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("region_code");
+            return this._rawData.GetNullableClass<string>(
+                "region_code"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -358,17 +328,15 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
-    public string? Status
-    {
-        get
-        {
+    public string? Status {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("status");
+            return this._rawData.GetNullableClass<string>(
+                "status"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -376,32 +344,32 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
-    public string? TemplateCategory
-    {
-        get
-        {
+    public string? TemplateCategory {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("template_category");
+            return this._rawData.GetNullableClass<string>(
+                "template_category"
+            );
         }
         init { this._rawData.Set("template_category", value); }
     }
 
-    public string? TemplateID
-    {
-        get
-        {
+    public string? TemplateID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("template_id");
+            return this._rawData.GetNullableClass<string>(
+                "template_id"
+            );
         }
         init { this._rawData.Set("template_id", value); }
     }
 
-    public string? TemplateName
-    {
-        get
-        {
+    public string? TemplateName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("template_name");
+            return this._rawData.GetNullableClass<string>(
+                "template_name"
+            );
         }
         init { this._rawData.Set("template_name", value); }
     }
@@ -431,78 +399,74 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         _ = this.TemplateName;
     }
 
-    public MessageRetrieveStatusResponseData() { }
+    public MessageRetrieveStatusResponseData ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MessageRetrieveStatusResponseData(
+    public MessageRetrieveStatusResponseData (
         MessageRetrieveStatusResponseData messageRetrieveStatusResponseData
+    ) : base(messageRetrieveStatusResponseData)
+    {  }
+    #pragma warning restore CS8618
+
+    public MessageRetrieveStatusResponseData (
+        IReadOnlyDictionary<string, JsonElement> rawData
     )
-        : base(messageRetrieveStatusResponseData) { }
-#pragma warning restore CS8618
+    { this._rawData = new(rawData); }
 
-    public MessageRetrieveStatusResponseData(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MessageRetrieveStatusResponseData(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    MessageRetrieveStatusResponseData (
+        FrozenDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="MessageRetrieveStatusResponseDataFromRaw.FromRawUnchecked"/>
     public static MessageRetrieveStatusResponseData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class MessageRetrieveStatusResponseDataFromRaw : IFromRawJson<MessageRetrieveStatusResponseData>
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class MessageRetrieveStatusResponseDataFromRaw : IFromRawJson<MessageRetrieveStatusResponseData>
 {
     /// <inheritdoc/>
     public MessageRetrieveStatusResponseData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => MessageRetrieveStatusResponseData.FromRawUnchecked(rawData);
-}
-
-/// <summary>
+    )
+    =>MessageRetrieveStatusResponseData.FromRawUnchecked(rawData);
+}/// <summary>
 /// Represents a status change event in a message's lifecycle (v3)
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Event, EventFromRaw>))]
 public sealed record class Event : JsonModel
 {
-    public required string Status
-    {
-        get
-        {
+    public required string Status {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("status");
+            return this._rawData.GetNotNullClass<string>(
+                "status"
+            );
         }
         init { this._rawData.Set("status", value); }
     }
 
-    public required DateTimeOffset Timestamp
-    {
-        get
-        {
+    public required DateTimeOffset Timestamp {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<DateTimeOffset>("timestamp");
+            return this._rawData.GetNotNullStruct<DateTimeOffset>(
+                "timestamp"
+            );
         }
         init { this._rawData.Set("timestamp", value); }
     }
 
-    public string? Description
-    {
-        get
-        {
+    public string? Description {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("description");
+            return this._rawData.GetNullableClass<string>(
+                "description"
+            );
         }
         init { this._rawData.Set("description", value); }
     }
@@ -515,57 +479,51 @@ public sealed record class Event : JsonModel
         _ = this.Description;
     }
 
-    public Event() { }
+    public Event ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Event(Event event_)
-        : base(event_) { }
-#pragma warning restore CS8618
+    public Event (Event event_) : base(event_)
+    {  }
+    #pragma warning restore CS8618
 
-    public Event(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Event (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Event(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Event (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="EventFromRaw.FromRawUnchecked"/>
-    public static Event FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class EventFromRaw : IFromRawJson<Event>
+    public static Event FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class EventFromRaw : IFromRawJson<Event>
 {
     /// <inheritdoc/>
-    public Event FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Event.FromRawUnchecked(rawData);
-}
-
-/// <summary>
+    public Event FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Event.FromRawUnchecked(rawData);
+}/// <summary>
 /// Structured message body format for database storage. Preserves channel-specific
 /// components (header, body, footer, buttons).
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<MessageBody, MessageBodyFromRaw>))]
 public sealed record class MessageBody : JsonModel
 {
-    public IReadOnlyList<Button>? Buttons
-    {
-        get
-        {
+    public IReadOnlyList<Button>? Buttons {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Button>>("buttons");
+            return this._rawData.GetNullableStruct<ImmutableArray<Button>>(
+                "buttons"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<Button>?>(
                 "buttons",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -573,17 +531,15 @@ public sealed record class MessageBody : JsonModel
         }
     }
 
-    public string? Content
-    {
-        get
-        {
+    public string? Content {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("content");
+            return this._rawData.GetNullableClass<string>(
+                "content"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -591,22 +547,22 @@ public sealed record class MessageBody : JsonModel
         }
     }
 
-    public string? Footer
-    {
-        get
-        {
+    public string? Footer {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("footer");
+            return this._rawData.GetNullableClass<string>(
+                "footer"
+            );
         }
         init { this._rawData.Set("footer", value); }
     }
 
-    public string? Header
-    {
-        get
-        {
+    public string? Header {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("header");
+            return this._rawData.GetNullableClass<string>(
+                "header"
+            );
         }
         init { this._rawData.Set("header", value); }
     }
@@ -623,75 +579,68 @@ public sealed record class MessageBody : JsonModel
         _ = this.Header;
     }
 
-    public MessageBody() { }
+    public MessageBody ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MessageBody(MessageBody messageBody)
-        : base(messageBody) { }
-#pragma warning restore CS8618
+    public MessageBody (MessageBody messageBody) : base(messageBody)
+    {  }
+    #pragma warning restore CS8618
 
-    public MessageBody(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public MessageBody (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MessageBody(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    MessageBody (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="MessageBodyFromRaw.FromRawUnchecked"/>
-    public static MessageBody FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class MessageBodyFromRaw : IFromRawJson<MessageBody>
+    public static MessageBody FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class MessageBodyFromRaw : IFromRawJson<MessageBody>
 {
     /// <inheritdoc/>
-    public MessageBody FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        MessageBody.FromRawUnchecked(rawData);
-}
-
-[JsonConverter(typeof(JsonModelConverter<Button, ButtonFromRaw>))]
+    public MessageBody FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>MessageBody.FromRawUnchecked(rawData);
+}[JsonConverter(typeof(JsonModelConverter<Button, ButtonFromRaw>))]
 public sealed record class Button : JsonModel
 {
-    public string? PostbackData
-    {
-        get
-        {
+    public string? PostbackData {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("postbackData");
+            return this._rawData.GetNullableClass<string>(
+                "postbackData"
+            );
         }
         init { this._rawData.Set("postbackData", value); }
     }
 
-    public string? Text
-    {
-        get
-        {
+    public string? Text {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("text");
+            return this._rawData.GetNullableClass<string>(
+                "text"
+            );
         }
         init { this._rawData.Set("text", value); }
     }
 
-    public string? Type
-    {
-        get
-        {
+    public string? Type {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("type");
+            return this._rawData.GetNullableClass<string>(
+                "type"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -699,17 +648,15 @@ public sealed record class Button : JsonModel
         }
     }
 
-    public string? Value
-    {
-        get
-        {
+    public string? Value {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("value");
+            return this._rawData.GetNullableClass<string>(
+                "value"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -726,37 +673,34 @@ public sealed record class Button : JsonModel
         _ = this.Value;
     }
 
-    public Button() { }
+    public Button ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Button(Button button)
-        : base(button) { }
-#pragma warning restore CS8618
+    public Button (Button button) : base(button)
+    {  }
+    #pragma warning restore CS8618
 
-    public Button(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Button (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Button(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Button (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ButtonFromRaw.FromRawUnchecked"/>
-    public static Button FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class ButtonFromRaw : IFromRawJson<Button>
+    public static Button FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class ButtonFromRaw : IFromRawJson<Button>
 {
     /// <inheritdoc/>
-    public Button FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Button.FromRawUnchecked(rawData);
+    public Button FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Button.FromRawUnchecked(rawData);
 }

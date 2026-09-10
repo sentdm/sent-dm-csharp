@@ -16,17 +16,15 @@ namespace Sentdm.Models.Profiles.Campaigns;
 [JsonConverter(typeof(JsonModelConverter<BrandCampaign, BrandCampaignFromRaw>))]
 public sealed record class BrandCampaign : JsonModel
 {
-    public string? ID
-    {
-        get
-        {
+    public string? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("id");
+            return this._rawData.GetNullableClass<string>(
+                "id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -34,47 +32,45 @@ public sealed record class BrandCampaign : JsonModel
         }
     }
 
-    public DateTimeOffset? BilledDate
-    {
-        get
-        {
+    public DateTimeOffset? BilledDate {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("billedDate");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "billedDate"
+            );
         }
         init { this._rawData.Set("billedDate", value); }
     }
 
-    public string? BrandID
-    {
-        get
-        {
+    public string? BrandID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("brandId");
+            return this._rawData.GetNullableClass<string>(
+                "brandId"
+            );
         }
         init { this._rawData.Set("brandId", value); }
     }
 
-    public double? Cost
-    {
-        get
-        {
+    public double? Cost {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("cost");
+            return this._rawData.GetNullableStruct<double>(
+                "cost"
+            );
         }
         init { this._rawData.Set("cost", value); }
     }
 
-    public DateTimeOffset? CreatedAt
-    {
-        get
-        {
+    public DateTimeOffset? CreatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("createdAt");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "createdAt"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -82,17 +78,15 @@ public sealed record class BrandCampaign : JsonModel
         }
     }
 
-    public string? CustomerID
-    {
-        get
-        {
+    public string? CustomerID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("customerId");
+            return this._rawData.GetNullableClass<string>(
+                "customerId"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -104,37 +98,35 @@ public sealed record class BrandCampaign : JsonModel
     /// True once every carrier has completed its DCA election and the campaign is
     /// operationally ready for traffic.
     /// </summary>
-    public bool? DcaElectionsComplete
-    {
-        get
-        {
+    public bool? DcaElectionsComplete {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("dcaElectionsComplete");
+            return this._rawData.GetNullableStruct<bool>(
+                "dcaElectionsComplete"
+            );
         }
         init { this._rawData.Set("dcaElectionsComplete", value); }
     }
 
-    public DateTimeOffset? DcaElectionsCompletedAt
-    {
-        get
-        {
+    public DateTimeOffset? DcaElectionsCompletedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("dcaElectionsCompletedAt");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "dcaElectionsCompletedAt"
+            );
         }
         init { this._rawData.Set("dcaElectionsCompletedAt", value); }
     }
 
-    public string? Description
-    {
-        get
-        {
+    public string? Description {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("description");
+            return this._rawData.GetNullableClass<string>(
+                "description"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -145,17 +137,15 @@ public sealed record class BrandCampaign : JsonModel
     /// <summary>
     /// True when the one-time campaign submission fee has already been charged.
     /// </summary>
-    public bool? HasSubmissionTransaction
-    {
-        get
-        {
+    public bool? HasSubmissionTransaction {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("hasSubmissionTransaction");
+            return this._rawData.GetNullableStruct<bool>(
+                "hasSubmissionTransaction"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -163,47 +153,45 @@ public sealed record class BrandCampaign : JsonModel
         }
     }
 
-    public string? HelpKeywords
-    {
-        get
-        {
+    public string? HelpKeywords {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("helpKeywords");
+            return this._rawData.GetNullableClass<string>(
+                "helpKeywords"
+            );
         }
         init { this._rawData.Set("helpKeywords", value); }
     }
 
-    public string? HelpMessage
-    {
-        get
-        {
+    public string? HelpMessage {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("helpMessage");
+            return this._rawData.GetNullableClass<string>(
+                "helpMessage"
+            );
         }
         init { this._rawData.Set("helpMessage", value); }
     }
 
-    public string? MessageFlow
-    {
-        get
-        {
+    public string? MessageFlow {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("messageFlow");
+            return this._rawData.GetNullableClass<string>(
+                "messageFlow"
+            );
         }
         init { this._rawData.Set("messageFlow", value); }
     }
 
-    public string? Name
-    {
-        get
-        {
+    public string? Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
+            return this._rawData.GetNullableClass<string>(
+                "name"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -211,87 +199,85 @@ public sealed record class BrandCampaign : JsonModel
         }
     }
 
-    public string? OptinKeywords
-    {
-        get
-        {
+    public string? OptinKeywords {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("optinKeywords");
+            return this._rawData.GetNullableClass<string>(
+                "optinKeywords"
+            );
         }
         init { this._rawData.Set("optinKeywords", value); }
     }
 
-    public string? OptinMessage
-    {
-        get
-        {
+    public string? OptinMessage {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("optinMessage");
+            return this._rawData.GetNullableClass<string>(
+                "optinMessage"
+            );
         }
         init { this._rawData.Set("optinMessage", value); }
     }
 
-    public string? OptoutKeywords
-    {
-        get
-        {
+    public string? OptoutKeywords {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("optoutKeywords");
+            return this._rawData.GetNullableClass<string>(
+                "optoutKeywords"
+            );
         }
         init { this._rawData.Set("optoutKeywords", value); }
     }
 
-    public string? OptoutMessage
-    {
-        get
-        {
+    public string? OptoutMessage {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("optoutMessage");
+            return this._rawData.GetNullableClass<string>(
+                "optoutMessage"
+            );
         }
         init { this._rawData.Set("optoutMessage", value); }
     }
 
-    public string? PrivacyPolicyLink
-    {
-        get
-        {
+    public string? PrivacyPolicyLink {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("privacyPolicyLink");
+            return this._rawData.GetNullableClass<string>(
+                "privacyPolicyLink"
+            );
         }
         init { this._rawData.Set("privacyPolicyLink", value); }
     }
 
-    public ApiEnum<string, Status>? Status
-    {
-        get
-        {
+    public ApiEnum<string, Status>? Status {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiEnum<string, Status>>("status");
+            return this._rawData.GetNullableClass<ApiEnum<string, Status>>(
+                "status"
+            );
         }
         init { this._rawData.Set("status", value); }
     }
 
-    public DateTimeOffset? SubmittedAt
-    {
-        get
-        {
+    public DateTimeOffset? SubmittedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("submittedAt");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "submittedAt"
+            );
         }
         init { this._rawData.Set("submittedAt", value); }
     }
 
-    public bool? SubmittedToTcr
-    {
-        get
-        {
+    public bool? SubmittedToTcr {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("submittedToTCR");
+            return this._rawData.GetNullableStruct<bool>(
+                "submittedToTCR"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -302,12 +288,12 @@ public sealed record class BrandCampaign : JsonModel
     /// <summary>
     /// The Campaign Registry identifier, once the campaign has been accepted.
     /// </summary>
-    public string? TcrCampaignID
-    {
-        get
-        {
+    public string? TcrCampaignID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("tcrCampaignId");
+            return this._rawData.GetNullableClass<string>(
+                "tcrCampaignId"
+            );
         }
         init { this._rawData.Set("tcrCampaignId", value); }
     }
@@ -315,22 +301,22 @@ public sealed record class BrandCampaign : JsonModel
     /// <summary>
     /// Surfaced so customers can see why a submission did not reach the registry.
     /// </summary>
-    public string? TcrSyncError
-    {
-        get
-        {
+    public string? TcrSyncError {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("tcrSyncError");
+            return this._rawData.GetNullableClass<string>(
+                "tcrSyncError"
+            );
         }
         init { this._rawData.Set("tcrSyncError", value); }
     }
 
-    public string? TermsAndConditionsLink
-    {
-        get
-        {
+    public string? TermsAndConditionsLink {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("termsAndConditionsLink");
+            return this._rawData.GetNullableClass<string>(
+                "termsAndConditionsLink"
+            );
         }
         init { this._rawData.Set("termsAndConditionsLink", value); }
     }
@@ -338,17 +324,15 @@ public sealed record class BrandCampaign : JsonModel
     /// <summary>
     /// Campaign type (for example KYC or App).
     /// </summary>
-    public string? Type
-    {
-        get
-        {
+    public string? Type {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("type");
+            return this._rawData.GetNullableClass<string>(
+                "type"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -356,27 +340,25 @@ public sealed record class BrandCampaign : JsonModel
         }
     }
 
-    public DateTimeOffset? UpdatedAt
-    {
-        get
-        {
+    public DateTimeOffset? UpdatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("updatedAt");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "updatedAt"
+            );
         }
         init { this._rawData.Set("updatedAt", value); }
     }
 
-    public IReadOnlyList<CampaignUseCase>? UseCases
-    {
-        get
-        {
+    public IReadOnlyList<CampaignUseCase>? UseCases {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<CampaignUseCase>>("useCases");
+            return this._rawData.GetNullableStruct<ImmutableArray<CampaignUseCase>>(
+                "useCases"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -393,12 +375,12 @@ public sealed record class BrandCampaign : JsonModel
     /// vs MIXED/specific) and the campaign fee             tier. Surfaced so customers
     /// can read back the value they set.
     /// </summary>
-    public string? Volume
-    {
-        get
-        {
+    public string? Volume {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("volume");
+            return this._rawData.GetNullableClass<string>(
+                "volume"
+            );
         }
         init { this._rawData.Set("volume", value); }
     }
@@ -440,50 +422,45 @@ public sealed record class BrandCampaign : JsonModel
         _ = this.Volume;
     }
 
-    public BrandCampaign() { }
+    public BrandCampaign ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public BrandCampaign(BrandCampaign brandCampaign)
-        : base(brandCampaign) { }
-#pragma warning restore CS8618
+    public BrandCampaign (BrandCampaign brandCampaign) : base(brandCampaign)
+    {  }
+    #pragma warning restore CS8618
 
-    public BrandCampaign(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public BrandCampaign (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    BrandCampaign(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    BrandCampaign (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="BrandCampaignFromRaw.FromRawUnchecked"/>
-    public static BrandCampaign FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static BrandCampaign FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class BrandCampaignFromRaw : IFromRawJson<BrandCampaign>
 {
     /// <inheritdoc/>
-    public BrandCampaign FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        BrandCampaign.FromRawUnchecked(rawData);
+    public BrandCampaign FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>BrandCampaign.FromRawUnchecked(rawData);
 }
 
 [JsonConverter(typeof(StatusConverter))]
 public enum Status
 {
-    SentCreated,
-    Active,
-    Expired,
-}
-
-sealed class StatusConverter : JsonConverter<Status>
+    SentCreated, Active, Expired
+}sealed class StatusConverter : JsonConverter<Status>
 {
     public override Status Read(
         ref Utf8JsonReader reader,
@@ -493,27 +470,25 @@ sealed class StatusConverter : JsonConverter<Status>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "SENT_CREATED" => Status.SentCreated,
-            "ACTIVE" => Status.Active,
-            "EXPIRED" => Status.Expired,
-            _ => (Status)(-1),
+            "SENT_CREATED"=>Status.SentCreated,
+            "ACTIVE"=>Status.Active,
+            "EXPIRED"=>Status.Expired,
+            _ =>(Status)(-1)
         };
     }
 
-    public override void Write(Utf8JsonWriter writer, Status value, JsonSerializerOptions options)
+    public override void Write(
+        Utf8JsonWriter writer, Status value, JsonSerializerOptions options
+    )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                Status.SentCreated => "SENT_CREATED",
-                Status.Active => "ACTIVE",
-                Status.Expired => "EXPIRED",
-                _ => throw new SentInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            Status.SentCreated=>"SENT_CREATED",
+            Status.Active=>"ACTIVE",
+            Status.Expired=>"EXPIRED",
+            _ => throw new SentInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

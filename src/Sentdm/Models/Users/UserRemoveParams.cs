@@ -19,9 +19,7 @@ namespace Sentdm.Models.Users;
 /// </summary>
 public record class UserRemoveParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
@@ -31,17 +29,15 @@ public record class UserRemoveParams : ParamsBase
     /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
-    public bool? Sandbox
-    {
-        get
-        {
+    public bool? Sandbox {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("sandbox");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "sandbox"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -49,17 +45,15 @@ public record class UserRemoveParams : ParamsBase
         }
     }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -67,20 +61,22 @@ public record class UserRemoveParams : ParamsBase
         }
     }
 
-    public UserRemoveParams() { }
+    public UserRemoveParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public UserRemoveParams(UserRemoveParams userRemoveParams)
-        : base(userRemoveParams)
+    public UserRemoveParams (UserRemoveParams userRemoveParams) : base(
+        userRemoveParams
+    )
     {
         this.UserID = userRemoveParams.UserID;
 
         this._rawBodyData = new(userRemoveParams._rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
-    public UserRemoveParams(
+    public UserRemoveParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -91,9 +87,9 @@ public record class UserRemoveParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    UserRemoveParams(
+    UserRemoveParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData,
@@ -105,7 +101,7 @@ public record class UserRemoveParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
         this.UserID = userID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static UserRemoveParams FromRawUnchecked(
@@ -120,26 +116,19 @@ public record class UserRemoveParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData),
             userID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["UserID"] = JsonSerializer.SerializeToElement(this.UserID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["UserID"] = JsonSerializer.SerializeToElement(this.UserID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(UserRemoveParams? other)
     {
@@ -147,20 +136,20 @@ public record class UserRemoveParams : ParamsBase
         {
             return false;
         }
-        return (this.UserID?.Equals(other.UserID) ?? other.UserID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return (this.UserID?.Equals(other.UserID) ?? other.UserID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v3/users/{0}", this.UserID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v3/users/{0}",
+            this.UserID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -169,10 +158,12 @@ public record class UserRemoveParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -182,7 +173,5 @@ public record class UserRemoveParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

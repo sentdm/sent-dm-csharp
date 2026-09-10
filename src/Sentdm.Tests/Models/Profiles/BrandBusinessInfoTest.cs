@@ -12,17 +12,7 @@ public class BrandBusinessInfoTest : TestBase
     {
         var model = new BrandBusinessInfo
         {
-            City = "city",
-            Country = "country",
-            CountryOfRegistration = "countryOfRegistration",
-            EntityType = EntityType.PrivateProfit,
-            LegalName = "legalName",
-            PostalCode = "postalCode",
-            State = "state",
-            Street = "street",
-            TaxID = "taxId",
-            TaxIDType = "taxIdType",
-            Url = "https://example.com",
+            City = "city",Country = "country",CountryOfRegistration = "countryOfRegistration",EntityType = EntityType.PrivateProfit,LegalName = "legalName",PostalCode = "postalCode",State = "state",Street = "street",TaxID = "taxId",TaxIDType = "taxIdType",Url = "https://example.com",
         };
 
         string expectedCity = "city";
@@ -55,24 +45,11 @@ public class BrandBusinessInfoTest : TestBase
     {
         var model = new BrandBusinessInfo
         {
-            City = "city",
-            Country = "country",
-            CountryOfRegistration = "countryOfRegistration",
-            EntityType = EntityType.PrivateProfit,
-            LegalName = "legalName",
-            PostalCode = "postalCode",
-            State = "state",
-            Street = "street",
-            TaxID = "taxId",
-            TaxIDType = "taxIdType",
-            Url = "https://example.com",
+            City = "city",Country = "country",CountryOfRegistration = "countryOfRegistration",EntityType = EntityType.PrivateProfit,LegalName = "legalName",PostalCode = "postalCode",State = "state",Street = "street",TaxID = "taxId",TaxIDType = "taxIdType",Url = "https://example.com",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BrandBusinessInfo>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BrandBusinessInfo>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -82,24 +59,11 @@ public class BrandBusinessInfoTest : TestBase
     {
         var model = new BrandBusinessInfo
         {
-            City = "city",
-            Country = "country",
-            CountryOfRegistration = "countryOfRegistration",
-            EntityType = EntityType.PrivateProfit,
-            LegalName = "legalName",
-            PostalCode = "postalCode",
-            State = "state",
-            Street = "street",
-            TaxID = "taxId",
-            TaxIDType = "taxIdType",
-            Url = "https://example.com",
+            City = "city",Country = "country",CountryOfRegistration = "countryOfRegistration",EntityType = EntityType.PrivateProfit,LegalName = "legalName",PostalCode = "postalCode",State = "state",Street = "street",TaxID = "taxId",TaxIDType = "taxIdType",Url = "https://example.com",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BrandBusinessInfo>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BrandBusinessInfo>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedCity = "city";
@@ -132,17 +96,7 @@ public class BrandBusinessInfoTest : TestBase
     {
         var model = new BrandBusinessInfo
         {
-            City = "city",
-            Country = "country",
-            CountryOfRegistration = "countryOfRegistration",
-            EntityType = EntityType.PrivateProfit,
-            LegalName = "legalName",
-            PostalCode = "postalCode",
-            State = "state",
-            Street = "street",
-            TaxID = "taxId",
-            TaxIDType = "taxIdType",
-            Url = "https://example.com",
+            City = "city",Country = "country",CountryOfRegistration = "countryOfRegistration",EntityType = EntityType.PrivateProfit,LegalName = "legalName",PostalCode = "postalCode",State = "state",Street = "street",TaxID = "taxId",TaxIDType = "taxIdType",Url = "https://example.com",
         };
 
         model.Validate();
@@ -151,36 +105,33 @@ public class BrandBusinessInfoTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new BrandBusinessInfo { };
+        var model = new BrandBusinessInfo
+        {
+
+        };
 
         Assert.Null(model.City);
-        Assert.False(model.RawData.ContainsKey("city"));
-        Assert.Null(model.Country);
-        Assert.False(model.RawData.ContainsKey("country"));
-        Assert.Null(model.CountryOfRegistration);
-        Assert.False(model.RawData.ContainsKey("countryOfRegistration"));
-        Assert.Null(model.EntityType);
-        Assert.False(model.RawData.ContainsKey("entityType"));
-        Assert.Null(model.LegalName);
-        Assert.False(model.RawData.ContainsKey("legalName"));
-        Assert.Null(model.PostalCode);
-        Assert.False(model.RawData.ContainsKey("postalCode"));
-        Assert.Null(model.State);
-        Assert.False(model.RawData.ContainsKey("state"));
-        Assert.Null(model.Street);
-        Assert.False(model.RawData.ContainsKey("street"));
-        Assert.Null(model.TaxID);
-        Assert.False(model.RawData.ContainsKey("taxId"));
-        Assert.Null(model.TaxIDType);
-        Assert.False(model.RawData.ContainsKey("taxIdType"));
-        Assert.Null(model.Url);
+        Assert.False(model.RawData.ContainsKey("city"));Assert.Null(model.Country);
+        Assert.False(model.RawData.ContainsKey("country"));Assert.Null(model.CountryOfRegistration);
+        Assert.False(model.RawData.ContainsKey("countryOfRegistration"));Assert.Null(model.EntityType);
+        Assert.False(model.RawData.ContainsKey("entityType"));Assert.Null(model.LegalName);
+        Assert.False(model.RawData.ContainsKey("legalName"));Assert.Null(model.PostalCode);
+        Assert.False(model.RawData.ContainsKey("postalCode"));Assert.Null(model.State);
+        Assert.False(model.RawData.ContainsKey("state"));Assert.Null(model.Street);
+        Assert.False(model.RawData.ContainsKey("street"));Assert.Null(model.TaxID);
+        Assert.False(model.RawData.ContainsKey("taxId"));Assert.Null(model.TaxIDType);
+        Assert.False(model.RawData.ContainsKey("taxIdType"));Assert.Null(model.Url);
         Assert.False(model.RawData.ContainsKey("url"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new BrandBusinessInfo { };
+        var model = new BrandBusinessInfo
+        {
+
+        };
 
         model.Validate();
     }
@@ -190,41 +141,24 @@ public class BrandBusinessInfoTest : TestBase
     {
         var model = new BrandBusinessInfo
         {
-            City = null,
-            Country = null,
-            CountryOfRegistration = null,
-            EntityType = null,
-            LegalName = null,
-            PostalCode = null,
-            State = null,
-            Street = null,
-            TaxID = null,
-            TaxIDType = null,
-            Url = null,
+
+
+            City = null,Country = null,CountryOfRegistration = null,EntityType = null,LegalName = null,PostalCode = null,State = null,Street = null,TaxID = null,TaxIDType = null,Url = null,
         };
 
         Assert.Null(model.City);
-        Assert.True(model.RawData.ContainsKey("city"));
-        Assert.Null(model.Country);
-        Assert.True(model.RawData.ContainsKey("country"));
-        Assert.Null(model.CountryOfRegistration);
-        Assert.True(model.RawData.ContainsKey("countryOfRegistration"));
-        Assert.Null(model.EntityType);
-        Assert.True(model.RawData.ContainsKey("entityType"));
-        Assert.Null(model.LegalName);
-        Assert.True(model.RawData.ContainsKey("legalName"));
-        Assert.Null(model.PostalCode);
-        Assert.True(model.RawData.ContainsKey("postalCode"));
-        Assert.Null(model.State);
-        Assert.True(model.RawData.ContainsKey("state"));
-        Assert.Null(model.Street);
-        Assert.True(model.RawData.ContainsKey("street"));
-        Assert.Null(model.TaxID);
-        Assert.True(model.RawData.ContainsKey("taxId"));
-        Assert.Null(model.TaxIDType);
-        Assert.True(model.RawData.ContainsKey("taxIdType"));
-        Assert.Null(model.Url);
+        Assert.True(model.RawData.ContainsKey("city"));Assert.Null(model.Country);
+        Assert.True(model.RawData.ContainsKey("country"));Assert.Null(model.CountryOfRegistration);
+        Assert.True(model.RawData.ContainsKey("countryOfRegistration"));Assert.Null(model.EntityType);
+        Assert.True(model.RawData.ContainsKey("entityType"));Assert.Null(model.LegalName);
+        Assert.True(model.RawData.ContainsKey("legalName"));Assert.Null(model.PostalCode);
+        Assert.True(model.RawData.ContainsKey("postalCode"));Assert.Null(model.State);
+        Assert.True(model.RawData.ContainsKey("state"));Assert.Null(model.Street);
+        Assert.True(model.RawData.ContainsKey("street"));Assert.Null(model.TaxID);
+        Assert.True(model.RawData.ContainsKey("taxId"));Assert.Null(model.TaxIDType);
+        Assert.True(model.RawData.ContainsKey("taxIdType"));Assert.Null(model.Url);
         Assert.True(model.RawData.ContainsKey("url"));
+
     }
 
     [Fact]
@@ -232,17 +166,9 @@ public class BrandBusinessInfoTest : TestBase
     {
         var model = new BrandBusinessInfo
         {
-            City = null,
-            Country = null,
-            CountryOfRegistration = null,
-            EntityType = null,
-            LegalName = null,
-            PostalCode = null,
-            State = null,
-            Street = null,
-            TaxID = null,
-            TaxIDType = null,
-            Url = null,
+
+
+            City = null,Country = null,CountryOfRegistration = null,EntityType = null,LegalName = null,PostalCode = null,State = null,Street = null,TaxID = null,TaxIDType = null,Url = null,
         };
 
         model.Validate();
@@ -253,17 +179,7 @@ public class BrandBusinessInfoTest : TestBase
     {
         var model = new BrandBusinessInfo
         {
-            City = "city",
-            Country = "country",
-            CountryOfRegistration = "countryOfRegistration",
-            EntityType = EntityType.PrivateProfit,
-            LegalName = "legalName",
-            PostalCode = "postalCode",
-            State = "state",
-            Street = "street",
-            TaxID = "taxId",
-            TaxIDType = "taxIdType",
-            Url = "https://example.com",
+            City = "city",Country = "country",CountryOfRegistration = "countryOfRegistration",EntityType = EntityType.PrivateProfit,LegalName = "legalName",PostalCode = "postalCode",State = "state",Street = "street",TaxID = "taxId",TaxIDType = "taxIdType",Url = "https://example.com",
         };
 
         BrandBusinessInfo copied = new(model);
@@ -274,12 +190,7 @@ public class BrandBusinessInfoTest : TestBase
 
 public class EntityTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(EntityType.PrivateProfit)]
-    [InlineData(EntityType.PublicProfit)]
-    [InlineData(EntityType.NonProfit)]
-    [InlineData(EntityType.SoleProprietor)]
-    [InlineData(EntityType.Government)]
+    [Theory][InlineData(EntityType.PrivateProfit)][InlineData(EntityType.PublicProfit)][InlineData(EntityType.NonProfit)][InlineData(EntityType.SoleProprietor)][InlineData(EntityType.Government)]
     public void Validation_Works(EntityType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -290,31 +201,20 @@ public class EntityTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, EntityType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, EntityType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<SentInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(EntityType.PrivateProfit)]
-    [InlineData(EntityType.PublicProfit)]
-    [InlineData(EntityType.NonProfit)]
-    [InlineData(EntityType.SoleProprietor)]
-    [InlineData(EntityType.Government)]
+    [Theory][InlineData(EntityType.PrivateProfit)][InlineData(EntityType.PublicProfit)][InlineData(EntityType.NonProfit)][InlineData(EntityType.SoleProprietor)][InlineData(EntityType.Government)]
     public void SerializationRoundtrip_Works(EntityType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, EntityType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, EntityType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, EntityType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -322,15 +222,9 @@ public class EntityTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, EntityType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, EntityType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, EntityType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, EntityType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

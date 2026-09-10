@@ -16,12 +16,12 @@ public sealed record class TemplateButton : JsonModel
     /// <summary>
     /// Properties specific to the button type
     /// </summary>
-    public required TemplateButtonProps Props
-    {
-        get
-        {
+    public required TemplateButtonProps Props {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<TemplateButtonProps>("props");
+            return this._rawData.GetNotNullClass<TemplateButtonProps>(
+                "props"
+            );
         }
         init { this._rawData.Set("props", value); }
     }
@@ -29,12 +29,12 @@ public sealed record class TemplateButton : JsonModel
     /// <summary>
     /// The type of button (e.g., QUICK_REPLY, URL, PHONE_NUMBER, VOICE_CALL, COPY_CODE)
     /// </summary>
-    public required string Type
-    {
-        get
-        {
+    public required string Type {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("type");
+            return this._rawData.GetNotNullClass<string>(
+                "type"
+            );
         }
         init { this._rawData.Set("type", value); }
     }
@@ -42,17 +42,15 @@ public sealed record class TemplateButton : JsonModel
     /// <summary>
     /// The unique identifier of the button (1-based index)
     /// </summary>
-    public int? ID
-    {
-        get
-        {
+    public int? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("id");
+            return this._rawData.GetNullableStruct<int>(
+                "id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -68,37 +66,36 @@ public sealed record class TemplateButton : JsonModel
         _ = this.ID;
     }
 
-    public TemplateButton() { }
+    public TemplateButton ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateButton(TemplateButton templateButton)
-        : base(templateButton) { }
-#pragma warning restore CS8618
+    public TemplateButton (TemplateButton templateButton) : base(templateButton)
+    {  }
+    #pragma warning restore CS8618
 
-    public TemplateButton(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TemplateButton (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateButton(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TemplateButton (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TemplateButtonFromRaw.FromRawUnchecked"/>
-    public static TemplateButton FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static TemplateButton FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TemplateButtonFromRaw : IFromRawJson<TemplateButton>
 {
     /// <inheritdoc/>
-    public TemplateButton FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        TemplateButton.FromRawUnchecked(rawData);
+    public TemplateButton FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>TemplateButton.FromRawUnchecked(rawData);
 }

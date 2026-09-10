@@ -11,9 +11,7 @@ public class InboundMessageEventTest : TestBase
     {
         var model = new InboundMessageEvent
         {
-            Event = "event",
-            Field = "field",
-            Payload = new()
+            Event = "event",Field = "field",Payload = new()
             {
                 InboundNumber = "inbound_number",
                 ReceivedAt = "received_at",
@@ -23,8 +21,7 @@ public class InboundMessageEventTest : TestBase
                 OutboundNumber = "outbound_number",
                 Text = "text",
                 UpdatedAt = "updated_at",
-            },
-            Timestamp = "timestamp",
+            },Timestamp = "timestamp",
         };
 
         string expectedEvent = "event";
@@ -53,9 +50,7 @@ public class InboundMessageEventTest : TestBase
     {
         var model = new InboundMessageEvent
         {
-            Event = "event",
-            Field = "field",
-            Payload = new()
+            Event = "event",Field = "field",Payload = new()
             {
                 InboundNumber = "inbound_number",
                 ReceivedAt = "received_at",
@@ -65,15 +60,11 @@ public class InboundMessageEventTest : TestBase
                 OutboundNumber = "outbound_number",
                 Text = "text",
                 UpdatedAt = "updated_at",
-            },
-            Timestamp = "timestamp",
+            },Timestamp = "timestamp",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<InboundMessageEvent>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<InboundMessageEvent>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -83,9 +74,7 @@ public class InboundMessageEventTest : TestBase
     {
         var model = new InboundMessageEvent
         {
-            Event = "event",
-            Field = "field",
-            Payload = new()
+            Event = "event",Field = "field",Payload = new()
             {
                 InboundNumber = "inbound_number",
                 ReceivedAt = "received_at",
@@ -95,15 +84,11 @@ public class InboundMessageEventTest : TestBase
                 OutboundNumber = "outbound_number",
                 Text = "text",
                 UpdatedAt = "updated_at",
-            },
-            Timestamp = "timestamp",
+            },Timestamp = "timestamp",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<InboundMessageEvent>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<InboundMessageEvent>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedEvent = "event";
@@ -132,9 +117,7 @@ public class InboundMessageEventTest : TestBase
     {
         var model = new InboundMessageEvent
         {
-            Event = "event",
-            Field = "field",
-            Payload = new()
+            Event = "event",Field = "field",Payload = new()
             {
                 InboundNumber = "inbound_number",
                 ReceivedAt = "received_at",
@@ -144,8 +127,7 @@ public class InboundMessageEventTest : TestBase
                 OutboundNumber = "outbound_number",
                 Text = "text",
                 UpdatedAt = "updated_at",
-            },
-            Timestamp = "timestamp",
+            },Timestamp = "timestamp",
         };
 
         model.Validate();
@@ -156,8 +138,7 @@ public class InboundMessageEventTest : TestBase
     {
         var model = new InboundMessageEvent
         {
-            Event = "event",
-            Payload = new()
+            Event = "event",Payload = new()
             {
                 InboundNumber = "inbound_number",
                 ReceivedAt = "received_at",
@@ -171,9 +152,9 @@ public class InboundMessageEventTest : TestBase
         };
 
         Assert.Null(model.Field);
-        Assert.False(model.RawData.ContainsKey("field"));
-        Assert.Null(model.Timestamp);
+        Assert.False(model.RawData.ContainsKey("field"));Assert.Null(model.Timestamp);
         Assert.False(model.RawData.ContainsKey("timestamp"));
+
     }
 
     [Fact]
@@ -181,8 +162,7 @@ public class InboundMessageEventTest : TestBase
     {
         var model = new InboundMessageEvent
         {
-            Event = "event",
-            Payload = new()
+            Event = "event",Payload = new()
             {
                 InboundNumber = "inbound_number",
                 ReceivedAt = "received_at",
@@ -203,8 +183,7 @@ public class InboundMessageEventTest : TestBase
     {
         var model = new InboundMessageEvent
         {
-            Event = "event",
-            Payload = new()
+            Event = "event",Payload = new()
             {
                 InboundNumber = "inbound_number",
                 ReceivedAt = "received_at",
@@ -217,14 +196,13 @@ public class InboundMessageEventTest : TestBase
             },
 
             // Null should be interpreted as omitted for these properties
-            Field = null,
-            Timestamp = null,
+            Field = null,Timestamp = null,
         };
 
         Assert.Null(model.Field);
-        Assert.False(model.RawData.ContainsKey("field"));
-        Assert.Null(model.Timestamp);
+        Assert.False(model.RawData.ContainsKey("field"));Assert.Null(model.Timestamp);
         Assert.False(model.RawData.ContainsKey("timestamp"));
+
     }
 
     [Fact]
@@ -232,8 +210,7 @@ public class InboundMessageEventTest : TestBase
     {
         var model = new InboundMessageEvent
         {
-            Event = "event",
-            Payload = new()
+            Event = "event",Payload = new()
             {
                 InboundNumber = "inbound_number",
                 ReceivedAt = "received_at",
@@ -246,8 +223,7 @@ public class InboundMessageEventTest : TestBase
             },
 
             // Null should be interpreted as omitted for these properties
-            Field = null,
-            Timestamp = null,
+            Field = null,Timestamp = null,
         };
 
         model.Validate();
@@ -256,18 +232,24 @@ public class InboundMessageEventTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new InboundMessageEvent { Field = "field", Timestamp = "timestamp" };
+        var model = new InboundMessageEvent
+        {
+            Field = "field",Timestamp = "timestamp",
+        };
 
         Assert.Null(model.Event);
-        Assert.False(model.RawData.ContainsKey("event"));
-        Assert.Null(model.Payload);
+        Assert.False(model.RawData.ContainsKey("event"));Assert.Null(model.Payload);
         Assert.False(model.RawData.ContainsKey("payload"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new InboundMessageEvent { Field = "field", Timestamp = "timestamp" };
+        var model = new InboundMessageEvent
+        {
+            Field = "field",Timestamp = "timestamp",
+        };
 
         model.Validate();
     }
@@ -277,17 +259,15 @@ public class InboundMessageEventTest : TestBase
     {
         var model = new InboundMessageEvent
         {
-            Field = "field",
-            Timestamp = "timestamp",
+            Field = "field",Timestamp = "timestamp",
 
-            Event = null,
-            Payload = null,
+            Event = null,Payload = null,
         };
 
         Assert.Null(model.Event);
-        Assert.True(model.RawData.ContainsKey("event"));
-        Assert.Null(model.Payload);
+        Assert.True(model.RawData.ContainsKey("event"));Assert.Null(model.Payload);
         Assert.True(model.RawData.ContainsKey("payload"));
+
     }
 
     [Fact]
@@ -295,11 +275,9 @@ public class InboundMessageEventTest : TestBase
     {
         var model = new InboundMessageEvent
         {
-            Field = "field",
-            Timestamp = "timestamp",
+            Field = "field",Timestamp = "timestamp",
 
-            Event = null,
-            Payload = null,
+            Event = null,Payload = null,
         };
 
         model.Validate();
@@ -310,9 +288,7 @@ public class InboundMessageEventTest : TestBase
     {
         var model = new InboundMessageEvent
         {
-            Event = "event",
-            Field = "field",
-            Payload = new()
+            Event = "event",Field = "field",Payload = new()
             {
                 InboundNumber = "inbound_number",
                 ReceivedAt = "received_at",
@@ -322,8 +298,7 @@ public class InboundMessageEventTest : TestBase
                 OutboundNumber = "outbound_number",
                 Text = "text",
                 UpdatedAt = "updated_at",
-            },
-            Timestamp = "timestamp",
+            },Timestamp = "timestamp",
         };
 
         InboundMessageEvent copied = new(model);

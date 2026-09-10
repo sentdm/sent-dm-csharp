@@ -11,10 +11,7 @@ public class BillingContactInfoTest : TestBase
     {
         var model = new BillingContactInfo
         {
-            Email = "dev@stainless.com",
-            Name = "x",
-            Address = "address",
-            Phone = "phone",
+            Email = "dev@stainless.com",Name = "x",Address = "address",Phone = "phone",
         };
 
         string expectedEmail = "dev@stainless.com";
@@ -33,17 +30,11 @@ public class BillingContactInfoTest : TestBase
     {
         var model = new BillingContactInfo
         {
-            Email = "dev@stainless.com",
-            Name = "x",
-            Address = "address",
-            Phone = "phone",
+            Email = "dev@stainless.com",Name = "x",Address = "address",Phone = "phone",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BillingContactInfo>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BillingContactInfo>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -53,17 +44,11 @@ public class BillingContactInfoTest : TestBase
     {
         var model = new BillingContactInfo
         {
-            Email = "dev@stainless.com",
-            Name = "x",
-            Address = "address",
-            Phone = "phone",
+            Email = "dev@stainless.com",Name = "x",Address = "address",Phone = "phone",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BillingContactInfo>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BillingContactInfo>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedEmail = "dev@stainless.com";
@@ -82,10 +67,7 @@ public class BillingContactInfoTest : TestBase
     {
         var model = new BillingContactInfo
         {
-            Email = "dev@stainless.com",
-            Name = "x",
-            Address = "address",
-            Phone = "phone",
+            Email = "dev@stainless.com",Name = "x",Address = "address",Phone = "phone",
         };
 
         model.Validate();
@@ -94,18 +76,24 @@ public class BillingContactInfoTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new BillingContactInfo { Email = "dev@stainless.com", Name = "x" };
+        var model = new BillingContactInfo
+        {
+            Email = "dev@stainless.com",Name = "x",
+        };
 
         Assert.Null(model.Address);
-        Assert.False(model.RawData.ContainsKey("address"));
-        Assert.Null(model.Phone);
+        Assert.False(model.RawData.ContainsKey("address"));Assert.Null(model.Phone);
         Assert.False(model.RawData.ContainsKey("phone"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new BillingContactInfo { Email = "dev@stainless.com", Name = "x" };
+        var model = new BillingContactInfo
+        {
+            Email = "dev@stainless.com",Name = "x",
+        };
 
         model.Validate();
     }
@@ -115,17 +103,15 @@ public class BillingContactInfoTest : TestBase
     {
         var model = new BillingContactInfo
         {
-            Email = "dev@stainless.com",
-            Name = "x",
+            Email = "dev@stainless.com",Name = "x",
 
-            Address = null,
-            Phone = null,
+            Address = null,Phone = null,
         };
 
         Assert.Null(model.Address);
-        Assert.True(model.RawData.ContainsKey("address"));
-        Assert.Null(model.Phone);
+        Assert.True(model.RawData.ContainsKey("address"));Assert.Null(model.Phone);
         Assert.True(model.RawData.ContainsKey("phone"));
+
     }
 
     [Fact]
@@ -133,11 +119,9 @@ public class BillingContactInfoTest : TestBase
     {
         var model = new BillingContactInfo
         {
-            Email = "dev@stainless.com",
-            Name = "x",
+            Email = "dev@stainless.com",Name = "x",
 
-            Address = null,
-            Phone = null,
+            Address = null,Phone = null,
         };
 
         model.Validate();
@@ -148,10 +132,7 @@ public class BillingContactInfoTest : TestBase
     {
         var model = new BillingContactInfo
         {
-            Email = "dev@stainless.com",
-            Name = "x",
-            Address = "address",
-            Phone = "phone",
+            Email = "dev@stainless.com",Name = "x",Address = "address",Phone = "phone",
         };
 
         BillingContactInfo copied = new(model);

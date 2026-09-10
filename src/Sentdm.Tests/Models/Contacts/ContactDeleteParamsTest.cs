@@ -9,11 +9,11 @@ public class ContactDeleteParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new ContactDeleteParams
         {
-            ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            Sandbox = false,
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",Sandbox = false,XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
@@ -28,45 +28,54 @@ public class ContactDeleteParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new ContactDeleteParams { ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8" };
+
+
+        var parameters = new ContactDeleteParams
+        {
+            ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+        };
 
         Assert.Null(parameters.Sandbox);
-        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new ContactDeleteParams
         {
             ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
 
             // Null should be interpreted as omitted for these properties
-            Sandbox = null,
-            XProfileID = null,
+            Sandbox = null,XProfileID = null,
         };
 
         Assert.Null(parameters.Sandbox);
-        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void Url_Works()
     {
-        ContactDeleteParams parameters = new() { ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8" };
+        ContactDeleteParams parameters = new()
+        {
+            ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+        };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
-
-        Assert.True(
-            TestBase.UrisEqual(
-                new Uri("https://api.sent.dm/v3/contacts/6ba7b810-9dad-11d1-80b4-00c04fd430c8"),
-                url
-            )
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/contacts/6ba7b810-9dad-11d1-80b4-00c04fd430c8"), url));
     }
 
     [Fact]
@@ -79,12 +88,15 @@ public class ContactDeleteParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
-
-        Assert.Equal(
-            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-            requestMessage.Headers.GetValues("x-profile-id")
+        parameters.AddHeadersToRequest(
+            requestMessage,
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"], requestMessage.Headers.GetValues("x-profile-id"));
     }
 
     [Fact]

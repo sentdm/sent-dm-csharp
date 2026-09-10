@@ -20,17 +20,15 @@ public record class ConversationListMessagesParams : ParamsBase
 {
     public string? ID { get; init; }
 
-    public int? Page
-    {
-        get
-        {
+    public int? Page {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<int>("page");
+            return this._rawQueryData.GetNullableStruct<int>(
+                "page"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -38,17 +36,15 @@ public record class ConversationListMessagesParams : ParamsBase
         }
     }
 
-    public int? PageSize
-    {
-        get
-        {
+    public int? PageSize {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<int>("page_size");
+            return this._rawQueryData.GetNullableStruct<int>(
+                "page_size"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -56,17 +52,15 @@ public record class ConversationListMessagesParams : ParamsBase
         }
     }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -74,20 +68,18 @@ public record class ConversationListMessagesParams : ParamsBase
         }
     }
 
-    public ConversationListMessagesParams() { }
+    public ConversationListMessagesParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ConversationListMessagesParams(
+    public ConversationListMessagesParams (
         ConversationListMessagesParams conversationListMessagesParams
-    )
-        : base(conversationListMessagesParams)
-    {
-        this.ID = conversationListMessagesParams.ID;
-    }
-#pragma warning restore CS8618
+    ) : base(conversationListMessagesParams)
+    { this.ID = conversationListMessagesParams.ID; }
+    #pragma warning restore CS8618
 
-    public ConversationListMessagesParams(
+    public ConversationListMessagesParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -96,9 +88,9 @@ public record class ConversationListMessagesParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ConversationListMessagesParams(
+    ConversationListMessagesParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         string id
@@ -108,7 +100,7 @@ public record class ConversationListMessagesParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.ID = id;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static ConversationListMessagesParams FromRawUnchecked(
@@ -121,25 +113,18 @@ public record class ConversationListMessagesParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             id
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["ID"] = JsonSerializer.SerializeToElement(this.ID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["ID"] = JsonSerializer.SerializeToElement(this.ID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(ConversationListMessagesParams? other)
     {
@@ -147,23 +132,23 @@ public record class ConversationListMessagesParams : ParamsBase
         {
             return false;
         }
-        return (this.ID?.Equals(other.ID) ?? other.ID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.ID?.Equals(other.ID) ?? other.ID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/v3/conversations/{0}", this.ID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v3/conversations/{0}",
+            this.ID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -173,7 +158,5 @@ public record class ConversationListMessagesParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

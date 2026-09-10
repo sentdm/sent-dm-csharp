@@ -5,9 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Sentdm.Core;
 
-sealed class MultipartJsonModelConverter<TModel, TFromRaw> : JsonConverter<TModel>
-    where TModel : MultipartJsonModel
-    where TFromRaw : IFromRawMultipartJson<TModel>, new()
+sealed class MultipartJsonModelConverter<TModel,
+TFromRaw> : JsonConverter<TModel>where TModel : MultipartJsonModel
+where TFromRaw : IFromRawMultipartJson<TModel>, new()
 {
     public override TModel? Read(
         ref Utf8JsonReader reader,
@@ -15,18 +15,12 @@ sealed class MultipartJsonModelConverter<TModel, TFromRaw> : JsonConverter<TMode
         JsonSerializerOptions options
     )
     {
-        var rawData = JsonSerializer.Deserialize<Dictionary<string, MultipartJsonElement>>(
-            ref reader,
-            options
-        );
-        if (rawData == null)
-            return null;
+        var rawData = JsonSerializer.Deserialize<Dictionary<string, MultipartJsonElement>>(ref reader, options);
+        if (rawData == null) return null;
 
         return new TFromRaw().FromRawUnchecked(rawData);
-    }
-
-    public override void Write(Utf8JsonWriter writer, TModel value, JsonSerializerOptions options)
-    {
-        JsonSerializer.Serialize(writer, value.RawData, options);
-    }
+    }public override void Write(
+        Utf8JsonWriter writer, TModel value, JsonSerializerOptions options
+    )
+    { JsonSerializer.Serialize(writer, value.RawData, options); }
 }

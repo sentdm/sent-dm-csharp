@@ -20,12 +20,12 @@ public sealed record class ProfileSettings : JsonModel
     /// keep deserializing; it carries no information.
     /// </summary>
     [Obsolete("deprecated")]
-    public bool? AllowContactSharing
-    {
-        get
-        {
+    public bool? AllowContactSharing {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("allow_contact_sharing");
+            return this._rawData.GetNullableStruct<bool>(
+                "allow_contact_sharing"
+            );
         }
         init { this._rawData.Set("allow_contact_sharing", value); }
     }
@@ -36,12 +36,12 @@ public sealed record class ProfileSettings : JsonModel
     /// it carries no information.
     /// </summary>
     [Obsolete("deprecated")]
-    public bool? AllowTemplateSharing
-    {
-        get
-        {
+    public bool? AllowTemplateSharing {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("allow_template_sharing");
+            return this._rawData.GetNullableStruct<bool>(
+                "allow_template_sharing"
+            );
         }
         init { this._rawData.Set("allow_template_sharing", value); }
     }
@@ -49,12 +49,12 @@ public sealed record class ProfileSettings : JsonModel
     /// <summary>
     /// Billing model: profile, organization, or profile_and_organization
     /// </summary>
-    public string? BillingModel
-    {
-        get
-        {
+    public string? BillingModel {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("billing_model");
+            return this._rawData.GetNullableClass<string>(
+                "billing_model"
+            );
         }
         init { this._rawData.Set("billing_model", value); }
     }
@@ -65,12 +65,12 @@ public sealed record class ProfileSettings : JsonModel
     /// no information.
     /// </summary>
     [Obsolete("deprecated")]
-    public bool? InheritContacts
-    {
-        get
-        {
+    public bool? InheritContacts {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("inherit_contacts");
+            return this._rawData.GetNullableStruct<bool>(
+                "inherit_contacts"
+            );
         }
         init { this._rawData.Set("inherit_contacts", value); }
     }
@@ -78,12 +78,12 @@ public sealed record class ProfileSettings : JsonModel
     /// <summary>
     /// Whether this profile inherits TCR brand from the organization
     /// </summary>
-    public bool? InheritTcrBrand
-    {
-        get
-        {
+    public bool? InheritTcrBrand {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("inherit_tcr_brand");
+            return this._rawData.GetNullableStruct<bool>(
+                "inherit_tcr_brand"
+            );
         }
         init { this._rawData.Set("inherit_tcr_brand", value); }
     }
@@ -91,12 +91,12 @@ public sealed record class ProfileSettings : JsonModel
     /// <summary>
     /// Whether this profile inherits TCR campaign from the organization
     /// </summary>
-    public bool? InheritTcrCampaign
-    {
-        get
-        {
+    public bool? InheritTcrCampaign {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("inherit_tcr_campaign");
+            return this._rawData.GetNullableStruct<bool>(
+                "inherit_tcr_campaign"
+            );
         }
         init { this._rawData.Set("inherit_tcr_campaign", value); }
     }
@@ -107,12 +107,12 @@ public sealed record class ProfileSettings : JsonModel
     /// it carries no information.
     /// </summary>
     [Obsolete("deprecated")]
-    public bool? InheritTemplates
-    {
-        get
-        {
+    public bool? InheritTemplates {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("inherit_templates");
+            return this._rawData.GetNullableStruct<bool>(
+                "inherit_templates"
+            );
         }
         init { this._rawData.Set("inherit_templates", value); }
     }
@@ -129,37 +129,38 @@ public sealed record class ProfileSettings : JsonModel
         _ = this.InheritTemplates;
     }
 
-    public ProfileSettings() { }
+    public ProfileSettings ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ProfileSettings(ProfileSettings profileSettings)
-        : base(profileSettings) { }
-#pragma warning restore CS8618
+    public ProfileSettings (ProfileSettings profileSettings) : base(
+        profileSettings
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public ProfileSettings(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public ProfileSettings (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ProfileSettings(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ProfileSettings (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ProfileSettingsFromRaw.FromRawUnchecked"/>
-    public static ProfileSettings FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static ProfileSettings FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class ProfileSettingsFromRaw : IFromRawJson<ProfileSettings>
 {
     /// <inheritdoc/>
-    public ProfileSettings FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        ProfileSettings.FromRawUnchecked(rawData);
+    public ProfileSettings FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>ProfileSettings.FromRawUnchecked(rawData);
 }

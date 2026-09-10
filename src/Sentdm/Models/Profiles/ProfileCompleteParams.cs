@@ -52,9 +52,7 @@ namespace Sentdm.Models.Profiles;
 [Obsolete("deprecated")]
 public record class ProfileCompleteParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
@@ -63,12 +61,12 @@ public record class ProfileCompleteParams : ParamsBase
     /// <summary>
     /// Webhook URL to call when profile completion finishes (success or failure)
     /// </summary>
-    public required string WebHookUrl
-    {
-        get
-        {
+    public required string WebHookUrl {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("webHookUrl");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "webHookUrl"
+            );
         }
         init { this._rawBodyData.Set("webHookUrl", value); }
     }
@@ -77,17 +75,15 @@ public record class ProfileCompleteParams : ParamsBase
     /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
-    public bool? Sandbox
-    {
-        get
-        {
+    public bool? Sandbox {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("sandbox");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "sandbox"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -95,17 +91,15 @@ public record class ProfileCompleteParams : ParamsBase
         }
     }
 
-    public string? IdempotencyKey
-    {
-        get
-        {
+    public string? IdempotencyKey {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("Idempotency-Key");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "Idempotency-Key"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -113,17 +107,15 @@ public record class ProfileCompleteParams : ParamsBase
         }
     }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -131,20 +123,22 @@ public record class ProfileCompleteParams : ParamsBase
         }
     }
 
-    public ProfileCompleteParams() { }
+    public ProfileCompleteParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ProfileCompleteParams(ProfileCompleteParams profileCompleteParams)
-        : base(profileCompleteParams)
+    public ProfileCompleteParams (
+        ProfileCompleteParams profileCompleteParams
+    ) : base(profileCompleteParams)
     {
         this.ProfileID = profileCompleteParams.ProfileID;
 
         this._rawBodyData = new(profileCompleteParams._rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
-    public ProfileCompleteParams(
+    public ProfileCompleteParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -155,9 +149,9 @@ public record class ProfileCompleteParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ProfileCompleteParams(
+    ProfileCompleteParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData,
@@ -169,7 +163,7 @@ public record class ProfileCompleteParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
         this.ProfileID = profileID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static ProfileCompleteParams FromRawUnchecked(
@@ -184,26 +178,19 @@ public record class ProfileCompleteParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData),
             profileID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["ProfileID"] = JsonSerializer.SerializeToElement(this.ProfileID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["ProfileID"] = JsonSerializer.SerializeToElement(this.ProfileID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(ProfileCompleteParams? other)
     {
@@ -211,21 +198,20 @@ public record class ProfileCompleteParams : ParamsBase
         {
             return false;
         }
-        return (this.ProfileID?.Equals(other.ProfileID) ?? other.ProfileID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return (this.ProfileID?.Equals(other.ProfileID) ?? other.ProfileID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/v3/profiles/{0}/complete", this.ProfileID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v3/profiles/{0}/complete",
+            this.ProfileID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -234,10 +220,12 @@ public record class ProfileCompleteParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -247,7 +235,5 @@ public record class ProfileCompleteParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

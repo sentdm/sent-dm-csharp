@@ -14,17 +14,15 @@ public sealed record class MutationRequest : JsonModel
     /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
-    public bool? Sandbox
-    {
-        get
-        {
+    public bool? Sandbox {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("sandbox");
+            return this._rawData.GetNullableStruct<bool>(
+                "sandbox"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -34,41 +32,40 @@ public sealed record class MutationRequest : JsonModel
 
     /// <inheritdoc/>
     public override void Validate()
-    {
-        _ = this.Sandbox;
-    }
+    { _ = this.Sandbox; }
 
-    public MutationRequest() { }
+    public MutationRequest ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MutationRequest(MutationRequest mutationRequest)
-        : base(mutationRequest) { }
-#pragma warning restore CS8618
+    public MutationRequest (MutationRequest mutationRequest) : base(
+        mutationRequest
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public MutationRequest(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public MutationRequest (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MutationRequest(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    MutationRequest (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="MutationRequestFromRaw.FromRawUnchecked"/>
-    public static MutationRequest FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static MutationRequest FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class MutationRequestFromRaw : IFromRawJson<MutationRequest>
 {
     /// <inheritdoc/>
-    public MutationRequest FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        MutationRequest.FromRawUnchecked(rawData);
+    public MutationRequest FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>MutationRequest.FromRawUnchecked(rawData);
 }

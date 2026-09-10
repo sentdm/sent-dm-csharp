@@ -28,9 +28,7 @@ namespace Sentdm.Models.Messages;
 /// </summary>
 public record class MessageSendParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
@@ -39,15 +37,14 @@ public record class MessageSendParams : ParamsBase
     /// a separate message per recipient. "sent" = auto-detect. Defaults to ["sent"]
     /// (auto-detect) if omitted.
     /// </summary>
-    public IReadOnlyList<string>? Channel
-    {
-        get
-        {
+    public IReadOnlyList<string>? Channel {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("channel");
+            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>(
+                "channel"
+            );
         }
-        init
-        {
+        init {
             this._rawBodyData.Set<ImmutableArray<string>?>(
                 "channel",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -59,17 +56,15 @@ public record class MessageSendParams : ParamsBase
     /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
-    public bool? Sandbox
-    {
-        get
-        {
+    public bool? Sandbox {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("sandbox");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "sandbox"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -80,12 +75,12 @@ public record class MessageSendParams : ParamsBase
     /// <summary>
     /// SDK-style template reference: resolve by ID or by name, with optional parameters.
     /// </summary>
-    public Template? Template
-    {
-        get
-        {
+    public Template? Template {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<Template>("template");
+            return this._rawBodyData.GetNullableClass<Template>(
+                "template"
+            );
         }
         init { this._rawBodyData.Set("template", value); }
     }
@@ -93,12 +88,12 @@ public record class MessageSendParams : ParamsBase
     /// <summary>
     /// Plain-text (free-form) message body. Provide either Template or this.
     /// </summary>
-    public string? Text
-    {
-        get
-        {
+    public string? Text {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("text");
+            return this._rawBodyData.GetNullableClass<string>(
+                "text"
+            );
         }
         init { this._rawBodyData.Set("text", value); }
     }
@@ -106,17 +101,15 @@ public record class MessageSendParams : ParamsBase
     /// <summary>
     /// List of recipient phone numbers in E.164 format (multi-recipient fan-out)
     /// </summary>
-    public IReadOnlyList<string>? To
-    {
-        get
-        {
+    public IReadOnlyList<string>? To {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("to");
+            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>(
+                "to"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -127,17 +120,15 @@ public record class MessageSendParams : ParamsBase
         }
     }
 
-    public string? IdempotencyKey
-    {
-        get
-        {
+    public string? IdempotencyKey {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("Idempotency-Key");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "Idempotency-Key"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -145,17 +136,15 @@ public record class MessageSendParams : ParamsBase
         }
     }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -163,18 +152,18 @@ public record class MessageSendParams : ParamsBase
         }
     }
 
-    public MessageSendParams() { }
+    public MessageSendParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MessageSendParams(MessageSendParams messageSendParams)
-        : base(messageSendParams)
-    {
-        this._rawBodyData = new(messageSendParams._rawBodyData);
-    }
-#pragma warning restore CS8618
+    public MessageSendParams (MessageSendParams messageSendParams) : base(
+        messageSendParams
+    )
+    { this._rawBodyData = new(messageSendParams._rawBodyData); }
+    #pragma warning restore CS8618
 
-    public MessageSendParams(
+    public MessageSendParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -185,9 +174,9 @@ public record class MessageSendParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MessageSendParams(
+    MessageSendParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData
@@ -197,7 +186,7 @@ public record class MessageSendParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static MessageSendParams FromRawUnchecked(
@@ -210,25 +199,18 @@ public record class MessageSendParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(MessageSendParams? other)
     {
@@ -236,17 +218,19 @@ public record class MessageSendParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v3/messages")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/v3/messages"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -255,10 +239,12 @@ public record class MessageSendParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -268,9 +254,7 @@ public record class MessageSendParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }
 
 /// <summary>
@@ -282,12 +266,12 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// Template ID (mutually exclusive with name)
     /// </summary>
-    public string? ID
-    {
-        get
-        {
+    public string? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("id");
+            return this._rawData.GetNullableClass<string>(
+                "id"
+            );
         }
         init { this._rawData.Set("id", value); }
     }
@@ -295,12 +279,12 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// Template name (mutually exclusive with id)
     /// </summary>
-    public string? Name
-    {
-        get
-        {
+    public string? Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
+            return this._rawData.GetNullableClass<string>(
+                "name"
+            );
         }
         init { this._rawData.Set("name", value); }
     }
@@ -308,15 +292,14 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// Template variable parameters for personalization
     /// </summary>
-    public IReadOnlyDictionary<string, string>? Parameters
-    {
-        get
-        {
+    public IReadOnlyDictionary<string, string>? Parameters {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<FrozenDictionary<string, string>>("parameters");
+            return this._rawData.GetNullableClass<FrozenDictionary<string, string>>(
+                "parameters"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<FrozenDictionary<string, string>?>(
                 "parameters",
                 value == null ? null : FrozenDictionary.ToFrozenDictionary(value)
@@ -332,37 +315,36 @@ public sealed record class Template : JsonModel
         _ = this.Parameters;
     }
 
-    public Template() { }
+    public Template ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Template(Template template)
-        : base(template) { }
-#pragma warning restore CS8618
+    public Template (Template template) : base(template)
+    {  }
+    #pragma warning restore CS8618
 
-    public Template(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Template (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Template(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Template (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TemplateFromRaw.FromRawUnchecked"/>
-    public static Template FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static Template FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TemplateFromRaw : IFromRawJson<Template>
 {
     /// <inheritdoc/>
-    public Template FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Template.FromRawUnchecked(rawData);
+    public Template FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Template.FromRawUnchecked(rawData);
 }

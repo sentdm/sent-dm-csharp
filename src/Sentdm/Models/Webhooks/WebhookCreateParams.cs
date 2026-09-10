@@ -19,23 +19,19 @@ namespace Sentdm.Models.Webhooks;
 /// </summary>
 public record class WebhookCreateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
-    public string? DisplayName
-    {
-        get
-        {
+    public string? DisplayName {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("display_name");
+            return this._rawBodyData.GetNullableClass<string>(
+                "display_name"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -43,17 +39,15 @@ public record class WebhookCreateParams : ParamsBase
         }
     }
 
-    public string? EndpointUrl
-    {
-        get
-        {
+    public string? EndpointUrl {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("endpoint_url");
+            return this._rawBodyData.GetNullableClass<string>(
+                "endpoint_url"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -61,51 +55,35 @@ public record class WebhookCreateParams : ParamsBase
         }
     }
 
-    public IReadOnlyDictionary<string, IReadOnlyList<string>>? EventFilters
-    {
-        get
-        {
+    public IReadOnlyDictionary<string, IReadOnlyList<string>>? EventFilters {
+        get {
             this._rawBodyData.Freeze();
-            var value = this._rawBodyData.GetNullableClass<
-                FrozenDictionary<string, ImmutableArray<string>>
-            >("event_filters");
-            if (value == null)
-            {
+            var value = this._rawBodyData.GetNullableClass<FrozenDictionary<string, ImmutableArray<string>>>(
+                "event_filters"
+            );
+            if (value == null) {
                 return null;
             }
 
-            return FrozenDictionary.ToFrozenDictionary(
-                value,
-                entry => entry.Key,
-                (entry) => (IReadOnlyList<string>)entry.Value
-            );
+            return FrozenDictionary.ToFrozenDictionary(value, entry => entry.Key, ( entry )=>(IReadOnlyList<string>)entry.Value);
         }
-        init
-        {
+        init {
             this._rawBodyData.Set<FrozenDictionary<string, ImmutableArray<string>>?>(
                 "event_filters",
-                value == null
-                    ? null
-                    : FrozenDictionary.ToFrozenDictionary(
-                        value,
-                        entry => entry.Key,
-                        (entry) => ImmutableArray.ToImmutableArray(entry.Value)
-                    )
+                value == null ? null : FrozenDictionary.ToFrozenDictionary(value, entry => entry.Key, ( entry )=>ImmutableArray.ToImmutableArray(entry.Value))
             );
         }
     }
 
-    public IReadOnlyList<string>? EventTypes
-    {
-        get
-        {
+    public IReadOnlyList<string>? EventTypes {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("event_types");
+            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>(
+                "event_types"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -116,17 +94,15 @@ public record class WebhookCreateParams : ParamsBase
         }
     }
 
-    public int? RetryCount
-    {
-        get
-        {
+    public int? RetryCount {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<int>("retry_count");
+            return this._rawBodyData.GetNullableStruct<int>(
+                "retry_count"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -138,17 +114,15 @@ public record class WebhookCreateParams : ParamsBase
     /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
-    public bool? Sandbox
-    {
-        get
-        {
+    public bool? Sandbox {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("sandbox");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "sandbox"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -156,17 +130,15 @@ public record class WebhookCreateParams : ParamsBase
         }
     }
 
-    public int? TimeoutSeconds
-    {
-        get
-        {
+    public int? TimeoutSeconds {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<int>("timeout_seconds");
+            return this._rawBodyData.GetNullableStruct<int>(
+                "timeout_seconds"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -174,17 +146,15 @@ public record class WebhookCreateParams : ParamsBase
         }
     }
 
-    public string? IdempotencyKey
-    {
-        get
-        {
+    public string? IdempotencyKey {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("Idempotency-Key");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "Idempotency-Key"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -192,17 +162,15 @@ public record class WebhookCreateParams : ParamsBase
         }
     }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -210,18 +178,18 @@ public record class WebhookCreateParams : ParamsBase
         }
     }
 
-    public WebhookCreateParams() { }
+    public WebhookCreateParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WebhookCreateParams(WebhookCreateParams webhookCreateParams)
-        : base(webhookCreateParams)
-    {
-        this._rawBodyData = new(webhookCreateParams._rawBodyData);
-    }
-#pragma warning restore CS8618
+    public WebhookCreateParams (WebhookCreateParams webhookCreateParams) : base(
+        webhookCreateParams
+    )
+    { this._rawBodyData = new(webhookCreateParams._rawBodyData); }
+    #pragma warning restore CS8618
 
-    public WebhookCreateParams(
+    public WebhookCreateParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -232,9 +200,9 @@ public record class WebhookCreateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WebhookCreateParams(
+    WebhookCreateParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData
@@ -244,7 +212,7 @@ public record class WebhookCreateParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static WebhookCreateParams FromRawUnchecked(
@@ -257,25 +225,18 @@ public record class WebhookCreateParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(WebhookCreateParams? other)
     {
@@ -283,17 +244,19 @@ public record class WebhookCreateParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v3/webhooks")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/v3/webhooks"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -302,10 +265,12 @@ public record class WebhookCreateParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -315,7 +280,5 @@ public record class WebhookCreateParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

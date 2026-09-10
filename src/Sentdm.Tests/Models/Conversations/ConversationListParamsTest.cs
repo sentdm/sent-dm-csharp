@@ -9,11 +9,11 @@ public class ConversationListParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new ConversationListParams
         {
-            Page = 0,
-            PageSize = 0,
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Page = 0,PageSize = 0,XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         int expectedPage = 0;
@@ -28,48 +28,57 @@ public class ConversationListParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new ConversationListParams { };
+
+
+        var parameters = new ConversationListParams
+        {
+
+        };
 
         Assert.Null(parameters.Page);
-        Assert.False(parameters.RawQueryData.ContainsKey("page"));
-        Assert.Null(parameters.PageSize);
-        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new ConversationListParams
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Page = null,
-            PageSize = null,
-            XProfileID = null,
+            Page = null,PageSize = null,XProfileID = null,
         };
 
         Assert.Null(parameters.Page);
-        Assert.False(parameters.RawQueryData.ContainsKey("page"));
-        Assert.Null(parameters.PageSize);
-        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void Url_Works()
     {
-        ConversationListParams parameters = new() { Page = 0, PageSize = 0 };
+        ConversationListParams parameters = new()
+        {
+            Page = 0,
+            PageSize = 0,
+        };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
-
-        Assert.True(
-            TestBase.UrisEqual(
-                new Uri("https://api.sent.dm/v3/conversations?page=0&page_size=0"),
-                url
-            )
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/conversations?page=0&page_size=0"), url));
     }
 
     [Fact]
@@ -78,15 +87,18 @@ public class ConversationListParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         ConversationListParams parameters = new()
         {
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
         };
 
-        parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
-
-        Assert.Equal(
-            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-            requestMessage.Headers.GetValues("x-profile-id")
+        parameters.AddHeadersToRequest(
+            requestMessage,
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"], requestMessage.Headers.GetValues("x-profile-id"));
     }
 
     [Fact]

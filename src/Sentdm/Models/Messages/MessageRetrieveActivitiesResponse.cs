@@ -13,23 +13,18 @@ namespace Sentdm.Models.Messages;
 /// <summary>
 /// Standard API response envelope for all v3 endpoints
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        MessageRetrieveActivitiesResponse,
-        MessageRetrieveActivitiesResponseFromRaw
-    >)
-)]
+[JsonConverter(typeof(JsonModelConverter<MessageRetrieveActivitiesResponse, MessageRetrieveActivitiesResponseFromRaw>))]
 public sealed record class MessageRetrieveActivitiesResponse : JsonModel
 {
     /// <summary>
     /// Response for GET /messages/{id}/activities
     /// </summary>
-    public Data? Data
-    {
-        get
-        {
+    public Data? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Data>("data");
+            return this._rawData.GetNullableClass<Data>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -37,12 +32,12 @@ public sealed record class MessageRetrieveActivitiesResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public Webhooks::ErrorDetail? Error
-    {
-        get
-        {
+    public Webhooks::ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>("error");
+            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -50,17 +45,15 @@ public sealed record class MessageRetrieveActivitiesResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public Webhooks::ApiMeta? Meta
-    {
-        get
-        {
+    public Webhooks::ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ApiMeta>("meta");
+            return this._rawData.GetNullableClass<Webhooks::ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -71,17 +64,15 @@ public sealed record class MessageRetrieveActivitiesResponse : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -98,36 +89,35 @@ public sealed record class MessageRetrieveActivitiesResponse : JsonModel
         _ = this.Success;
     }
 
-    public MessageRetrieveActivitiesResponse() { }
+    public MessageRetrieveActivitiesResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MessageRetrieveActivitiesResponse(
+    public MessageRetrieveActivitiesResponse (
         MessageRetrieveActivitiesResponse messageRetrieveActivitiesResponse
+    ) : base(messageRetrieveActivitiesResponse)
+    {  }
+    #pragma warning restore CS8618
+
+    public MessageRetrieveActivitiesResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
     )
-        : base(messageRetrieveActivitiesResponse) { }
-#pragma warning restore CS8618
+    { this._rawData = new(rawData); }
 
-    public MessageRetrieveActivitiesResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MessageRetrieveActivitiesResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    MessageRetrieveActivitiesResponse (
+        FrozenDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="MessageRetrieveActivitiesResponseFromRaw.FromRawUnchecked"/>
     public static MessageRetrieveActivitiesResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class MessageRetrieveActivitiesResponseFromRaw : IFromRawJson<MessageRetrieveActivitiesResponse>
@@ -135,7 +125,8 @@ class MessageRetrieveActivitiesResponseFromRaw : IFromRawJson<MessageRetrieveAct
     /// <inheritdoc/>
     public MessageRetrieveActivitiesResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => MessageRetrieveActivitiesResponse.FromRawUnchecked(rawData);
+    )
+    =>MessageRetrieveActivitiesResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -147,17 +138,15 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// List of activity events ordered by most recent first
     /// </summary>
-    public IReadOnlyList<Activity>? Activities
-    {
-        get
-        {
+    public IReadOnlyList<Activity>? Activities {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Activity>>("activities");
+            return this._rawData.GetNullableStruct<ImmutableArray<Activity>>(
+                "activities"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -171,17 +160,15 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// The message ID these activities belong to
     /// </summary>
-    public string? MessageID
-    {
-        get
-        {
+    public string? MessageID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("message_id");
+            return this._rawData.GetNullableClass<string>(
+                "message_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -192,17 +179,15 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Pagination metadata for list responses
     /// </summary>
-    public Webhooks::PaginationMeta? Pagination
-    {
-        get
-        {
+    public Webhooks::PaginationMeta? Pagination {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::PaginationMeta>("pagination");
+            return this._rawData.GetNullableClass<Webhooks::PaginationMeta>(
+                "pagination"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -221,42 +206,37 @@ public sealed record class Data : JsonModel
         this.Pagination?.Validate();
     }
 
-    public Data() { }
+    public Data ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Data(Data data)
-        : base(data) { }
-#pragma warning restore CS8618
+    public Data (Data data) : base(data)
+    {  }
+    #pragma warning restore CS8618
 
-    public Data(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Data (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Data(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Data (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="DataFromRaw.FromRawUnchecked"/>
-    public static Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class DataFromRaw : IFromRawJson<Data>
+    public static Data FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class DataFromRaw : IFromRawJson<Data>
 {
     /// <inheritdoc/>
-    public Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Data.FromRawUnchecked(rawData);
-}
-
-/// <summary>
+    public Data FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Data.FromRawUnchecked(rawData);
+}/// <summary>
 /// A single message activity event for v3 API
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Activity, ActivityFromRaw>))]
@@ -265,12 +245,12 @@ public sealed record class Activity : JsonModel
     /// <summary>
     /// Active contact markup applied on top of the channel cost, formatted to 4 decimal places.
     /// </summary>
-    public string? ActiveContactPrice
-    {
-        get
-        {
+    public string? ActiveContactPrice {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("active_contact_price");
+            return this._rawData.GetNullableClass<string>(
+                "active_contact_price"
+            );
         }
         init { this._rawData.Set("active_contact_price", value); }
     }
@@ -278,17 +258,15 @@ public sealed record class Activity : JsonModel
     /// <summary>
     /// Human-readable description of the activity
     /// </summary>
-    public string? Description
-    {
-        get
-        {
+    public string? Description {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("description");
+            return this._rawData.GetNullableClass<string>(
+                "description"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -300,12 +278,12 @@ public sealed record class Activity : JsonModel
     /// Sender phone number for this activity (the customer's sending number for outbound,
     /// the external sender for inbound). Null when not reported by the provider.
     /// </summary>
-    public string? From
-    {
-        get
-        {
+    public string? From {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("from");
+            return this._rawData.GetNullableClass<string>(
+                "from"
+            );
         }
         init { this._rawData.Set("from", value); }
     }
@@ -314,12 +292,12 @@ public sealed record class Activity : JsonModel
     /// Channel cost for this activity (e.g., SMS/WhatsApp provider cost), formatted
     /// to 4 decimal places.
     /// </summary>
-    public string? Price
-    {
-        get
-        {
+    public string? Price {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("price");
+            return this._rawData.GetNullableClass<string>(
+                "price"
+            );
         }
         init { this._rawData.Set("price", value); }
     }
@@ -328,17 +306,15 @@ public sealed record class Activity : JsonModel
     /// Activity status. Outbound: QUEUED, PROCESSED, ROUTED, SENT, DELIVERED, READ,
     /// FAILED. Inbound (from contact): RECEIVED (terminal).
     /// </summary>
-    public string? Status
-    {
-        get
-        {
+    public string? Status {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("status");
+            return this._rawData.GetNullableClass<string>(
+                "status"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -349,17 +325,15 @@ public sealed record class Activity : JsonModel
     /// <summary>
     /// When this activity occurred
     /// </summary>
-    public DateTimeOffset? Timestamp
-    {
-        get
-        {
+    public DateTimeOffset? Timestamp {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("timestamp");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "timestamp"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -378,37 +352,34 @@ public sealed record class Activity : JsonModel
         _ = this.Timestamp;
     }
 
-    public Activity() { }
+    public Activity ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Activity(Activity activity)
-        : base(activity) { }
-#pragma warning restore CS8618
+    public Activity (Activity activity) : base(activity)
+    {  }
+    #pragma warning restore CS8618
 
-    public Activity(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Activity (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Activity(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Activity (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ActivityFromRaw.FromRawUnchecked"/>
-    public static Activity FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class ActivityFromRaw : IFromRawJson<Activity>
+    public static Activity FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class ActivityFromRaw : IFromRawJson<Activity>
 {
     /// <inheritdoc/>
-    public Activity FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Activity.FromRawUnchecked(rawData);
+    public Activity FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Activity.FromRawUnchecked(rawData);
 }

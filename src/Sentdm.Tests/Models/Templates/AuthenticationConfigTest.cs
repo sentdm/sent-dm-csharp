@@ -11,8 +11,7 @@ public class AuthenticationConfigTest : TestBase
     {
         var model = new AuthenticationConfig
         {
-            AddSecurityRecommendation = true,
-            CodeExpirationMinutes = 0,
+            AddSecurityRecommendation = true,CodeExpirationMinutes = 0,
         };
 
         bool expectedAddSecurityRecommendation = true;
@@ -27,15 +26,11 @@ public class AuthenticationConfigTest : TestBase
     {
         var model = new AuthenticationConfig
         {
-            AddSecurityRecommendation = true,
-            CodeExpirationMinutes = 0,
+            AddSecurityRecommendation = true,CodeExpirationMinutes = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<AuthenticationConfig>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<AuthenticationConfig>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -45,15 +40,11 @@ public class AuthenticationConfigTest : TestBase
     {
         var model = new AuthenticationConfig
         {
-            AddSecurityRecommendation = true,
-            CodeExpirationMinutes = 0,
+            AddSecurityRecommendation = true,CodeExpirationMinutes = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<AuthenticationConfig>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<AuthenticationConfig>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         bool expectedAddSecurityRecommendation = true;
@@ -68,8 +59,7 @@ public class AuthenticationConfigTest : TestBase
     {
         var model = new AuthenticationConfig
         {
-            AddSecurityRecommendation = true,
-            CodeExpirationMinutes = 0,
+            AddSecurityRecommendation = true,CodeExpirationMinutes = 0,
         };
 
         model.Validate();
@@ -78,16 +68,23 @@ public class AuthenticationConfigTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new AuthenticationConfig { CodeExpirationMinutes = 0 };
+        var model = new AuthenticationConfig
+        {
+            CodeExpirationMinutes = 0,
+        };
 
         Assert.Null(model.AddSecurityRecommendation);
         Assert.False(model.RawData.ContainsKey("addSecurityRecommendation"));
+
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new AuthenticationConfig { CodeExpirationMinutes = 0 };
+        var model = new AuthenticationConfig
+        {
+            CodeExpirationMinutes = 0,
+        };
 
         model.Validate();
     }
@@ -105,6 +102,7 @@ public class AuthenticationConfigTest : TestBase
 
         Assert.Null(model.AddSecurityRecommendation);
         Assert.False(model.RawData.ContainsKey("addSecurityRecommendation"));
+
     }
 
     [Fact]
@@ -124,16 +122,23 @@ public class AuthenticationConfigTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new AuthenticationConfig { AddSecurityRecommendation = true };
+        var model = new AuthenticationConfig
+        {
+            AddSecurityRecommendation = true,
+        };
 
         Assert.Null(model.CodeExpirationMinutes);
         Assert.False(model.RawData.ContainsKey("codeExpirationMinutes"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new AuthenticationConfig { AddSecurityRecommendation = true };
+        var model = new AuthenticationConfig
+        {
+            AddSecurityRecommendation = true,
+        };
 
         model.Validate();
     }
@@ -150,6 +155,7 @@ public class AuthenticationConfigTest : TestBase
 
         Assert.Null(model.CodeExpirationMinutes);
         Assert.True(model.RawData.ContainsKey("codeExpirationMinutes"));
+
     }
 
     [Fact]
@@ -170,8 +176,7 @@ public class AuthenticationConfigTest : TestBase
     {
         var model = new AuthenticationConfig
         {
-            AddSecurityRecommendation = true,
-            CodeExpirationMinutes = 0,
+            AddSecurityRecommendation = true,CodeExpirationMinutes = 0,
         };
 
         AuthenticationConfig copied = new(model);

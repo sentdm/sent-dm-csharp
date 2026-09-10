@@ -17,17 +17,15 @@ public sealed record class ApiMeta : JsonModel
     /// <summary>
     /// Unique identifier for this request (for tracing and support)
     /// </summary>
-    public string? RequestID
-    {
-        get
-        {
+    public string? RequestID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("request_id");
+            return this._rawData.GetNullableClass<string>(
+                "request_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -38,17 +36,15 @@ public sealed record class ApiMeta : JsonModel
     /// <summary>
     /// Server timestamp when the response was generated
     /// </summary>
-    public DateTimeOffset? Timestamp
-    {
-        get
-        {
+    public DateTimeOffset? Timestamp {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("timestamp");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "timestamp"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -59,17 +55,15 @@ public sealed record class ApiMeta : JsonModel
     /// <summary>
     /// API version used for this request
     /// </summary>
-    public string? Version
-    {
-        get
-        {
+    public string? Version {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("version");
+            return this._rawData.GetNullableClass<string>(
+                "version"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -85,37 +79,36 @@ public sealed record class ApiMeta : JsonModel
         _ = this.Version;
     }
 
-    public ApiMeta() { }
+    public ApiMeta ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ApiMeta(ApiMeta apiMeta)
-        : base(apiMeta) { }
-#pragma warning restore CS8618
+    public ApiMeta (ApiMeta apiMeta) : base(apiMeta)
+    {  }
+    #pragma warning restore CS8618
 
-    public ApiMeta(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public ApiMeta (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ApiMeta(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ApiMeta (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ApiMetaFromRaw.FromRawUnchecked"/>
-    public static ApiMeta FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static ApiMeta FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class ApiMetaFromRaw : IFromRawJson<ApiMeta>
 {
     /// <inheritdoc/>
-    public ApiMeta FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        ApiMeta.FromRawUnchecked(rawData);
+    public ApiMeta FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>ApiMeta.FromRawUnchecked(rawData);
 }

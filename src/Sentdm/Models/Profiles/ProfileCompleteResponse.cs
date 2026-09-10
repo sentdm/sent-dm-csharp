@@ -18,12 +18,12 @@ public sealed record class ProfileCompleteResponse : JsonModel
     /// Response when a profile is already in the completed state and no further action
     /// is taken.
     /// </summary>
-    public ProfileCompleteResponseData? Data
-    {
-        get
-        {
+    public ProfileCompleteResponseData? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ProfileCompleteResponseData>("data");
+            return this._rawData.GetNullableClass<ProfileCompleteResponseData>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -31,12 +31,12 @@ public sealed record class ProfileCompleteResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
-    {
-        get
-        {
+    public ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -44,17 +44,15 @@ public sealed record class ProfileCompleteResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
-    {
-        get
-        {
+    public ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -65,17 +63,15 @@ public sealed record class ProfileCompleteResponse : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -92,34 +88,33 @@ public sealed record class ProfileCompleteResponse : JsonModel
         _ = this.Success;
     }
 
-    public ProfileCompleteResponse() { }
+    public ProfileCompleteResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ProfileCompleteResponse(ProfileCompleteResponse profileCompleteResponse)
-        : base(profileCompleteResponse) { }
-#pragma warning restore CS8618
+    public ProfileCompleteResponse (
+        ProfileCompleteResponse profileCompleteResponse
+    ) : base(profileCompleteResponse)
+    {  }
+    #pragma warning restore CS8618
 
-    public ProfileCompleteResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public ProfileCompleteResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ProfileCompleteResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ProfileCompleteResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ProfileCompleteResponseFromRaw.FromRawUnchecked"/>
     public static ProfileCompleteResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class ProfileCompleteResponseFromRaw : IFromRawJson<ProfileCompleteResponse>
@@ -127,32 +122,29 @@ class ProfileCompleteResponseFromRaw : IFromRawJson<ProfileCompleteResponse>
     /// <inheritdoc/>
     public ProfileCompleteResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ProfileCompleteResponse.FromRawUnchecked(rawData);
+    )
+    =>ProfileCompleteResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>
 /// Response when a profile is already in the completed state and no further action
 /// is taken.
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<ProfileCompleteResponseData, ProfileCompleteResponseDataFromRaw>)
-)]
+[JsonConverter(typeof(JsonModelConverter<ProfileCompleteResponseData, ProfileCompleteResponseDataFromRaw>))]
 public sealed record class ProfileCompleteResponseData : JsonModel
 {
     /// <summary>
     /// Human-readable message describing the result.
     /// </summary>
-    public string? Message
-    {
-        get
-        {
+    public string? Message {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("message");
+            return this._rawData.GetNullableClass<string>(
+                "message"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -163,17 +155,15 @@ public sealed record class ProfileCompleteResponseData : JsonModel
     /// <summary>
     /// Current process status of the profile (e.g., "completed", "submitted", "in_progress").
     /// </summary>
-    public string? Status
-    {
-        get
-        {
+    public string? Status {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("status");
+            return this._rawData.GetNullableClass<string>(
+                "status"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -188,40 +178,38 @@ public sealed record class ProfileCompleteResponseData : JsonModel
         _ = this.Status;
     }
 
-    public ProfileCompleteResponseData() { }
+    public ProfileCompleteResponseData ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ProfileCompleteResponseData(ProfileCompleteResponseData profileCompleteResponseData)
-        : base(profileCompleteResponseData) { }
-#pragma warning restore CS8618
+    public ProfileCompleteResponseData (
+        ProfileCompleteResponseData profileCompleteResponseData
+    ) : base(profileCompleteResponseData)
+    {  }
+    #pragma warning restore CS8618
 
-    public ProfileCompleteResponseData(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public ProfileCompleteResponseData (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ProfileCompleteResponseData(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ProfileCompleteResponseData (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ProfileCompleteResponseDataFromRaw.FromRawUnchecked"/>
     public static ProfileCompleteResponseData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class ProfileCompleteResponseDataFromRaw : IFromRawJson<ProfileCompleteResponseData>
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class ProfileCompleteResponseDataFromRaw : IFromRawJson<ProfileCompleteResponseData>
 {
     /// <inheritdoc/>
     public ProfileCompleteResponseData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ProfileCompleteResponseData.FromRawUnchecked(rawData);
+    )
+    =>ProfileCompleteResponseData.FromRawUnchecked(rawData);
 }

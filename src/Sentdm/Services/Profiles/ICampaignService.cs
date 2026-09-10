@@ -32,100 +32,104 @@ public interface ICampaignService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    ICampaignService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ICampaignService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
-    /// removed in a future release. It still behaves exactly as before, so nothing
-    /// needs to change today — but new integrations should use `/v3/sender-profiles`,
-    /// which models a profile's markets, compliance, brand, campaigns and billing
-    /// explicitly.
-    ///
-    /// <para>Creates a new campaign scoped under the brand of the specified profile.
-    /// Each campaign must include at least one use case with sample messages.</para>
-    /// </summary>
+/// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+/// removed in a future release. It still behaves exactly as before, so nothing
+/// needs to change today — but new integrations should use `/v3/sender-profiles`,
+/// which models a profile's markets, compliance, brand, campaigns and billing
+/// explicitly.
+/// 
+/// <para>Creates a new campaign scoped under the brand of the specified profile.
+/// Each campaign must include at least one use case with sample messages.</para>
+/// </summary>
     [Obsolete("deprecated")]
     Task<ApiResponseOfBrandCampaign> Create(
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Create(CampaignCreateParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Create(CampaignCreateParams, CancellationToken)"/>
     [Obsolete("deprecated")]
     Task<ApiResponseOfBrandCampaign> Create(
         string profileID,
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
-    /// removed in a future release. It still behaves exactly as before, so nothing
-    /// needs to change today — but new integrations should use `/v3/sender-profiles`,
-    /// which models a profile's markets, compliance, brand, campaigns and billing
-    /// explicitly.
-    ///
-    /// <para>Updates an existing campaign under the brand of the specified profile.
-    /// Cannot update campaigns that have already been submitted to TCR.</para>
-    /// </summary>
+/// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+/// removed in a future release. It still behaves exactly as before, so nothing
+/// needs to change today — but new integrations should use `/v3/sender-profiles`,
+/// which models a profile's markets, compliance, brand, campaigns and billing
+/// explicitly.
+/// 
+/// <para>Updates an existing campaign under the brand of the specified profile.
+/// Cannot update campaigns that have already been submitted to TCR.</para>
+/// </summary>
     [Obsolete("deprecated")]
     Task<ApiResponseOfBrandCampaign> Update(
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(CampaignUpdateParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Update(CampaignUpdateParams, CancellationToken)"/>
     [Obsolete("deprecated")]
     Task<ApiResponseOfBrandCampaign> Update(
         string campaignID,
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
-    /// removed in a future release. It still behaves exactly as before, so nothing
-    /// needs to change today — but new integrations should use `/v3/sender-profiles`,
-    /// which models a profile's markets, compliance, brand, campaigns and billing
-    /// explicitly.
-    ///
-    /// <para>Retrieves all campaigns linked to the profile's brand, including use cases
-    /// and sample messages. Returns inherited campaigns if inherit_tcr_campaign=true.</para>
-    /// </summary>
+/// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+/// removed in a future release. It still behaves exactly as before, so nothing
+/// needs to change today — but new integrations should use `/v3/sender-profiles`,
+/// which models a profile's markets, compliance, brand, campaigns and billing
+/// explicitly.
+/// 
+/// <para>Retrieves all campaigns linked to the profile's brand, including use cases
+/// and sample messages. Returns inherited campaigns if inherit_tcr_campaign=true.</para>
+/// </summary>
     [Obsolete("deprecated")]
     Task<ApiResponseOfListOfBrandCampaign> List(
         CampaignListParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="List(CampaignListParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="List(CampaignListParams, CancellationToken)"/>
     [Obsolete("deprecated")]
     Task<ApiResponseOfListOfBrandCampaign> List(
         string profileID,
         CampaignListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
-    /// removed in a future release. It still behaves exactly as before, so nothing
-    /// needs to change today — but new integrations should use `/v3/sender-profiles`,
-    /// which models a profile's markets, compliance, brand, campaigns and billing
-    /// explicitly.
-    ///
-    /// <para>Deletes a campaign by ID from the brand of the specified profile. The
-    /// profile must belong to the authenticated organization.</para>
-    /// </summary>
+/// **Deprecated.** This endpoint is replaced by `/v3/sender-profiles` and will be
+/// removed in a future release. It still behaves exactly as before, so nothing
+/// needs to change today — but new integrations should use `/v3/sender-profiles`,
+/// which models a profile's markets, compliance, brand, campaigns and billing
+/// explicitly.
+/// 
+/// <para>Deletes a campaign by ID from the brand of the specified profile. The
+/// profile must belong to the authenticated organization.</para>
+/// </summary>
     [Obsolete("deprecated")]
-    Task Delete(CampaignDeleteParams parameters, CancellationToken cancellationToken = default);
-
-    /// <inheritdoc cref="Delete(CampaignDeleteParams, CancellationToken)"/>
+    Task Delete(
+        CampaignDeleteParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    ;/// <inheritdoc cref="Delete(CampaignDeleteParams, CancellationToken)"/>
     [Obsolete("deprecated")]
     Task Delete(
         string campaignID,
         CampaignDeleteParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -139,77 +143,80 @@ public interface ICampaignServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    ICampaignServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ICampaignServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /v3/profiles/{profileId}/campaigns</c>, but is otherwise the
-    /// same as <see cref="ICampaignService.Create(CampaignCreateParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>post /v3/profiles/{profileId}/campaigns</c>, but is otherwise the
+/// same as <see cref="ICampaignService.Create(CampaignCreateParams, CancellationToken)"/>.
+/// </summary>
     [Obsolete("deprecated")]
     Task<HttpResponse<ApiResponseOfBrandCampaign>> Create(
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Create(CampaignCreateParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Create(CampaignCreateParams, CancellationToken)"/>
     [Obsolete("deprecated")]
     Task<HttpResponse<ApiResponseOfBrandCampaign>> Create(
         string profileID,
         CampaignCreateParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>put /v3/profiles/{profileId}/campaigns/{campaignId}</c>, but is otherwise the
-    /// same as <see cref="ICampaignService.Update(CampaignUpdateParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>put /v3/profiles/{profileId}/campaigns/{campaignId}</c>, but is otherwise the
+/// same as <see cref="ICampaignService.Update(CampaignUpdateParams, CancellationToken)"/>.
+/// </summary>
     [Obsolete("deprecated")]
     Task<HttpResponse<ApiResponseOfBrandCampaign>> Update(
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(CampaignUpdateParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Update(CampaignUpdateParams, CancellationToken)"/>
     [Obsolete("deprecated")]
     Task<HttpResponse<ApiResponseOfBrandCampaign>> Update(
         string campaignID,
         CampaignUpdateParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /v3/profiles/{profileId}/campaigns</c>, but is otherwise the
-    /// same as <see cref="ICampaignService.List(CampaignListParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /v3/profiles/{profileId}/campaigns</c>, but is otherwise the
+/// same as <see cref="ICampaignService.List(CampaignListParams, CancellationToken)"/>.
+/// </summary>
     [Obsolete("deprecated")]
     Task<HttpResponse<ApiResponseOfListOfBrandCampaign>> List(
         CampaignListParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="List(CampaignListParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="List(CampaignListParams, CancellationToken)"/>
     [Obsolete("deprecated")]
     Task<HttpResponse<ApiResponseOfListOfBrandCampaign>> List(
         string profileID,
         CampaignListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>delete /v3/profiles/{profileId}/campaigns/{campaignId}</c>, but is otherwise the
-    /// same as <see cref="ICampaignService.Delete(CampaignDeleteParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>delete /v3/profiles/{profileId}/campaigns/{campaignId}</c>, but is otherwise the
+/// same as <see cref="ICampaignService.Delete(CampaignDeleteParams, CancellationToken)"/>.
+/// </summary>
     [Obsolete("deprecated")]
     Task<HttpResponse> Delete(
         CampaignDeleteParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Delete(CampaignDeleteParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Delete(CampaignDeleteParams, CancellationToken)"/>
     [Obsolete("deprecated")]
     Task<HttpResponse> Delete(
         string campaignID,
         CampaignDeleteParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

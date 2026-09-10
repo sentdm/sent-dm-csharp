@@ -12,14 +12,25 @@ public class ErrorDetailTest : TestBase
     {
         var model = new ErrorDetail
         {
-            Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
-            DocUrl = "doc_url",
-            Message = "message",
+            Code = "code",Details = new Dictionary<string, IReadOnlyList<string>>(
+
+            )
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },DocUrl = "doc_url",Message = "message",
         };
 
         string expectedCode = "code";
-        Dictionary<string, List<string>> expectedDetails = new() { { "foo", ["string"] } };
+        Dictionary<string, List<string>> expectedDetails = new()
+        {
+            { "foo",
+            [
+                "string"
+            ] },
+        };
         string expectedDocUrl = "doc_url";
         string expectedMessage = "message";
 
@@ -45,17 +56,19 @@ public class ErrorDetailTest : TestBase
     {
         var model = new ErrorDetail
         {
-            Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
-            DocUrl = "doc_url",
-            Message = "message",
+            Code = "code",Details = new Dictionary<string, IReadOnlyList<string>>(
+
+            )
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },DocUrl = "doc_url",Message = "message",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ErrorDetail>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ErrorDetail>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -65,21 +78,29 @@ public class ErrorDetailTest : TestBase
     {
         var model = new ErrorDetail
         {
-            Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
-            DocUrl = "doc_url",
-            Message = "message",
+            Code = "code",Details = new Dictionary<string, IReadOnlyList<string>>(
+
+            )
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },DocUrl = "doc_url",Message = "message",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ErrorDetail>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ErrorDetail>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedCode = "code";
-        Dictionary<string, List<string>> expectedDetails = new() { { "foo", ["string"] } };
+        Dictionary<string, List<string>> expectedDetails = new()
+        {
+            { "foo",
+            [
+                "string"
+            ] },
+        };
         string expectedDocUrl = "doc_url";
         string expectedMessage = "message";
 
@@ -105,10 +126,15 @@ public class ErrorDetailTest : TestBase
     {
         var model = new ErrorDetail
         {
-            Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
-            DocUrl = "doc_url",
-            Message = "message",
+            Code = "code",Details = new Dictionary<string, IReadOnlyList<string>>(
+
+            )
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },DocUrl = "doc_url",Message = "message",
         };
 
         model.Validate();
@@ -119,14 +145,19 @@ public class ErrorDetailTest : TestBase
     {
         var model = new ErrorDetail
         {
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
-            DocUrl = "doc_url",
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },DocUrl = "doc_url",
         };
 
         Assert.Null(model.Code);
-        Assert.False(model.RawData.ContainsKey("code"));
-        Assert.Null(model.Message);
+        Assert.False(model.RawData.ContainsKey("code"));Assert.Null(model.Message);
         Assert.False(model.RawData.ContainsKey("message"));
+
     }
 
     [Fact]
@@ -134,8 +165,13 @@ public class ErrorDetailTest : TestBase
     {
         var model = new ErrorDetail
         {
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
-            DocUrl = "doc_url",
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },DocUrl = "doc_url",
         };
 
         model.Validate();
@@ -146,18 +182,22 @@ public class ErrorDetailTest : TestBase
     {
         var model = new ErrorDetail
         {
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
-            DocUrl = "doc_url",
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },DocUrl = "doc_url",
 
             // Null should be interpreted as omitted for these properties
-            Code = null,
-            Message = null,
+            Code = null,Message = null,
         };
 
         Assert.Null(model.Code);
-        Assert.False(model.RawData.ContainsKey("code"));
-        Assert.Null(model.Message);
+        Assert.False(model.RawData.ContainsKey("code"));Assert.Null(model.Message);
         Assert.False(model.RawData.ContainsKey("message"));
+
     }
 
     [Fact]
@@ -165,12 +205,16 @@ public class ErrorDetailTest : TestBase
     {
         var model = new ErrorDetail
         {
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
-            DocUrl = "doc_url",
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },DocUrl = "doc_url",
 
             // Null should be interpreted as omitted for these properties
-            Code = null,
-            Message = null,
+            Code = null,Message = null,
         };
 
         model.Validate();
@@ -179,18 +223,24 @@ public class ErrorDetailTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new ErrorDetail { Code = "code", Message = "message" };
+        var model = new ErrorDetail
+        {
+            Code = "code",Message = "message",
+        };
 
         Assert.Null(model.Details);
-        Assert.False(model.RawData.ContainsKey("details"));
-        Assert.Null(model.DocUrl);
+        Assert.False(model.RawData.ContainsKey("details"));Assert.Null(model.DocUrl);
         Assert.False(model.RawData.ContainsKey("doc_url"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new ErrorDetail { Code = "code", Message = "message" };
+        var model = new ErrorDetail
+        {
+            Code = "code",Message = "message",
+        };
 
         model.Validate();
     }
@@ -200,17 +250,15 @@ public class ErrorDetailTest : TestBase
     {
         var model = new ErrorDetail
         {
-            Code = "code",
-            Message = "message",
+            Code = "code",Message = "message",
 
-            Details = null,
-            DocUrl = null,
+            Details = null,DocUrl = null,
         };
 
         Assert.Null(model.Details);
-        Assert.True(model.RawData.ContainsKey("details"));
-        Assert.Null(model.DocUrl);
+        Assert.True(model.RawData.ContainsKey("details"));Assert.Null(model.DocUrl);
         Assert.True(model.RawData.ContainsKey("doc_url"));
+
     }
 
     [Fact]
@@ -218,11 +266,9 @@ public class ErrorDetailTest : TestBase
     {
         var model = new ErrorDetail
         {
-            Code = "code",
-            Message = "message",
+            Code = "code",Message = "message",
 
-            Details = null,
-            DocUrl = null,
+            Details = null,DocUrl = null,
         };
 
         model.Validate();
@@ -233,10 +279,15 @@ public class ErrorDetailTest : TestBase
     {
         var model = new ErrorDetail
         {
-            Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
-            DocUrl = "doc_url",
-            Message = "message",
+            Code = "code",Details = new Dictionary<string, IReadOnlyList<string>>(
+
+            )
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },DocUrl = "doc_url",Message = "message",
         };
 
         ErrorDetail copied = new(model);

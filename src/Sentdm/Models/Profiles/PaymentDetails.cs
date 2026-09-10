@@ -13,12 +13,12 @@ public sealed record class PaymentDetails : JsonModel
     /// <summary>
     /// Card number (digits only, 13–19 characters)
     /// </summary>
-    public required string CardNumber
-    {
-        get
-        {
+    public required string CardNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("card_number");
+            return this._rawData.GetNotNullClass<string>(
+                "card_number"
+            );
         }
         init { this._rawData.Set("card_number", value); }
     }
@@ -26,12 +26,12 @@ public sealed record class PaymentDetails : JsonModel
     /// <summary>
     /// Card security code (3–4 digits)
     /// </summary>
-    public required string Cvc
-    {
-        get
-        {
+    public required string Cvc {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("cvc");
+            return this._rawData.GetNotNullClass<string>(
+                "cvc"
+            );
         }
         init { this._rawData.Set("cvc", value); }
     }
@@ -39,12 +39,12 @@ public sealed record class PaymentDetails : JsonModel
     /// <summary>
     /// Card expiry date in MM/YY format (e.g. "09/27")
     /// </summary>
-    public required string Expiry
-    {
-        get
-        {
+    public required string Expiry {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("expiry");
+            return this._rawData.GetNotNullClass<string>(
+                "expiry"
+            );
         }
         init { this._rawData.Set("expiry", value); }
     }
@@ -52,12 +52,12 @@ public sealed record class PaymentDetails : JsonModel
     /// <summary>
     /// Billing ZIP / postal code associated with the card
     /// </summary>
-    public required string ZipCode
-    {
-        get
-        {
+    public required string ZipCode {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("zip_code");
+            return this._rawData.GetNotNullClass<string>(
+                "zip_code"
+            );
         }
         init { this._rawData.Set("zip_code", value); }
     }
@@ -71,37 +71,36 @@ public sealed record class PaymentDetails : JsonModel
         _ = this.ZipCode;
     }
 
-    public PaymentDetails() { }
+    public PaymentDetails ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public PaymentDetails(PaymentDetails paymentDetails)
-        : base(paymentDetails) { }
-#pragma warning restore CS8618
+    public PaymentDetails (PaymentDetails paymentDetails) : base(paymentDetails)
+    {  }
+    #pragma warning restore CS8618
 
-    public PaymentDetails(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public PaymentDetails (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    PaymentDetails(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    PaymentDetails (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="PaymentDetailsFromRaw.FromRawUnchecked"/>
-    public static PaymentDetails FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static PaymentDetails FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class PaymentDetailsFromRaw : IFromRawJson<PaymentDetails>
 {
     /// <inheritdoc/>
-    public PaymentDetails FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        PaymentDetails.FromRawUnchecked(rawData);
+    public PaymentDetails FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>PaymentDetails.FromRawUnchecked(rawData);
 }

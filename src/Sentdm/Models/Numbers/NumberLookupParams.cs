@@ -21,17 +21,15 @@ public record class NumberLookupParams : ParamsBase
 {
     public string? PhoneNumber { get; init; }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -39,18 +37,18 @@ public record class NumberLookupParams : ParamsBase
         }
     }
 
-    public NumberLookupParams() { }
+    public NumberLookupParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public NumberLookupParams(NumberLookupParams numberLookupParams)
-        : base(numberLookupParams)
-    {
-        this.PhoneNumber = numberLookupParams.PhoneNumber;
-    }
-#pragma warning restore CS8618
+    public NumberLookupParams (NumberLookupParams numberLookupParams) : base(
+        numberLookupParams
+    )
+    { this.PhoneNumber = numberLookupParams.PhoneNumber; }
+    #pragma warning restore CS8618
 
-    public NumberLookupParams(
+    public NumberLookupParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -59,9 +57,9 @@ public record class NumberLookupParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    NumberLookupParams(
+    NumberLookupParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         string phoneNumber
@@ -71,7 +69,7 @@ public record class NumberLookupParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.PhoneNumber = phoneNumber;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static NumberLookupParams FromRawUnchecked(
@@ -84,25 +82,18 @@ public record class NumberLookupParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             phoneNumber
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["PhoneNumber"] = JsonSerializer.SerializeToElement(this.PhoneNumber),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["PhoneNumber"] = JsonSerializer.SerializeToElement(this.PhoneNumber),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(NumberLookupParams? other)
     {
@@ -110,23 +101,23 @@ public record class NumberLookupParams : ParamsBase
         {
             return false;
         }
-        return (this.PhoneNumber?.Equals(other.PhoneNumber) ?? other.PhoneNumber == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.PhoneNumber?.Equals(other.PhoneNumber) ?? other.PhoneNumber == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/v3/numbers/lookup/{0}", this.PhoneNumber)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v3/numbers/lookup/{0}",
+            this.PhoneNumber)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -136,7 +127,5 @@ public record class NumberLookupParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

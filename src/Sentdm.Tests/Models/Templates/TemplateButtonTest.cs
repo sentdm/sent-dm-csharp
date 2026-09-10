@@ -44,9 +44,7 @@ public class TemplateButtonTest : TestBase
                 OtpType = "otpType",
                 PackageName = "packageName",
                 SignatureHash = "signatureHash",
-            },
-            Type = "x",
-            ID = 0,
+            },Type = "x",ID = 0,
         };
 
         TemplateButtonProps expectedProps = new()
@@ -129,16 +127,11 @@ public class TemplateButtonTest : TestBase
                 OtpType = "otpType",
                 PackageName = "packageName",
                 SignatureHash = "signatureHash",
-            },
-            Type = "x",
-            ID = 0,
+            },Type = "x",ID = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateButton>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateButton>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -181,16 +174,11 @@ public class TemplateButtonTest : TestBase
                 OtpType = "otpType",
                 PackageName = "packageName",
                 SignatureHash = "signatureHash",
-            },
-            Type = "x",
-            ID = 0,
+            },Type = "x",ID = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateButton>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateButton>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         TemplateButtonProps expectedProps = new()
@@ -273,9 +261,7 @@ public class TemplateButtonTest : TestBase
                 OtpType = "otpType",
                 PackageName = "packageName",
                 SignatureHash = "signatureHash",
-            },
-            Type = "x",
-            ID = 0,
+            },Type = "x",ID = 0,
         };
 
         model.Validate();
@@ -319,12 +305,12 @@ public class TemplateButtonTest : TestBase
                 OtpType = "otpType",
                 PackageName = "packageName",
                 SignatureHash = "signatureHash",
-            },
-            Type = "x",
+            },Type = "x",
         };
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
+
     }
 
     [Fact]
@@ -365,8 +351,7 @@ public class TemplateButtonTest : TestBase
                 OtpType = "otpType",
                 PackageName = "packageName",
                 SignatureHash = "signatureHash",
-            },
-            Type = "x",
+            },Type = "x",
         };
 
         model.Validate();
@@ -410,8 +395,7 @@ public class TemplateButtonTest : TestBase
                 OtpType = "otpType",
                 PackageName = "packageName",
                 SignatureHash = "signatureHash",
-            },
-            Type = "x",
+            },Type = "x",
 
             // Null should be interpreted as omitted for these properties
             ID = null,
@@ -419,6 +403,7 @@ public class TemplateButtonTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
+
     }
 
     [Fact]
@@ -459,8 +444,7 @@ public class TemplateButtonTest : TestBase
                 OtpType = "otpType",
                 PackageName = "packageName",
                 SignatureHash = "signatureHash",
-            },
-            Type = "x",
+            },Type = "x",
 
             // Null should be interpreted as omitted for these properties
             ID = null,
@@ -507,9 +491,7 @@ public class TemplateButtonTest : TestBase
                 OtpType = "otpType",
                 PackageName = "packageName",
                 SignatureHash = "signatureHash",
-            },
-            Type = "x",
-            ID = 0,
+            },Type = "x",ID = 0,
         };
 
         TemplateButton copied = new(model);

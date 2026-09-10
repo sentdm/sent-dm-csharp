@@ -55,9 +55,7 @@ namespace Sentdm.Models.Profiles;
 [Obsolete("deprecated")]
 public record class ProfileUpdateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
@@ -75,12 +73,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// its own write can see it did not take.
     /// </summary>
     [Obsolete("deprecated")]
-    public bool? AllowContactSharing
-    {
-        get
-        {
+    public bool? AllowContactSharing {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("allow_contact_sharing");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "allow_contact_sharing"
+            );
         }
         init { this._rawBodyData.Set("allow_contact_sharing", value); }
     }
@@ -88,25 +86,25 @@ public record class ProfileUpdateParams : ParamsBase
     /// <summary>
     /// Whether number changes are allowed during onboarding (optional)
     /// </summary>
-    public bool? AllowNumberChangeDuringOnboarding
-    {
-        get
-        {
+    public bool? AllowNumberChangeDuringOnboarding {
+        get {
             this._rawBodyData.Freeze();
             return this._rawBodyData.GetNullableStruct<bool>(
                 "allow_number_change_during_onboarding"
             );
         }
-        init { this._rawBodyData.Set("allow_number_change_during_onboarding", value); }
+        init {
+            this._rawBodyData.Set("allow_number_change_during_onboarding", value);
+        }
     }
 
     [Obsolete("deprecated")]
-    public bool? AllowTemplateSharing
-    {
-        get
-        {
+    public bool? AllowTemplateSharing {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("allow_template_sharing");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "allow_template_sharing"
+            );
         }
         init { this._rawBodyData.Set("allow_template_sharing", value); }
     }
@@ -115,12 +113,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// Billing contact information for a profile. Required when billing_model is
     /// "profile" or "profile_and_organization".
     /// </summary>
-    public BillingContactInfo? BillingContact
-    {
-        get
-        {
+    public BillingContactInfo? BillingContact {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<BillingContactInfo>("billing_contact");
+            return this._rawBodyData.GetNullableClass<BillingContactInfo>(
+                "billing_contact"
+            );
         }
         init { this._rawBodyData.Set("billing_contact", value); }
     }
@@ -132,12 +130,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// is required. - "profile_and_organization": the profile is billed first with
     /// the organization as fallback; billing_contact is required.
     /// </summary>
-    public string? BillingModel
-    {
-        get
-        {
+    public string? BillingModel {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("billing_model");
+            return this._rawBodyData.GetNullableClass<string>(
+                "billing_model"
+            );
         }
         init { this._rawBodyData.Set("billing_model", value); }
     }
@@ -145,12 +143,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// <summary>
     /// Brand and KYC data grouped into contact, business, and compliance sections
     /// </summary>
-    public BrandsBrandData? Brand
-    {
-        get
-        {
+    public BrandsBrandData? Brand {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<BrandsBrandData>("brand");
+            return this._rawBodyData.GetNullableClass<BrandsBrandData>(
+                "brand"
+            );
         }
         init { this._rawBodyData.Set("brand", value); }
     }
@@ -158,12 +156,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// <summary>
     /// Profile description (optional)
     /// </summary>
-    public string? Description
-    {
-        get
-        {
+    public string? Description {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("description");
+            return this._rawBodyData.GetNullableClass<string>(
+                "description"
+            );
         }
         init { this._rawBodyData.Set("description", value); }
     }
@@ -171,23 +169,23 @@ public record class ProfileUpdateParams : ParamsBase
     /// <summary>
     /// Profile icon URL (optional)
     /// </summary>
-    public string? Icon
-    {
-        get
-        {
+    public string? Icon {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("icon");
+            return this._rawBodyData.GetNullableClass<string>(
+                "icon"
+            );
         }
         init { this._rawBodyData.Set("icon", value); }
     }
 
     [Obsolete("deprecated")]
-    public bool? InheritContacts
-    {
-        get
-        {
+    public bool? InheritContacts {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("inherit_contacts");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "inherit_contacts"
+            );
         }
         init { this._rawBodyData.Set("inherit_contacts", value); }
     }
@@ -195,12 +193,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// <summary>
     /// Whether this profile inherits TCR brand from organization (optional)
     /// </summary>
-    public bool? InheritTcrBrand
-    {
-        get
-        {
+    public bool? InheritTcrBrand {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("inherit_tcr_brand");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "inherit_tcr_brand"
+            );
         }
         init { this._rawBodyData.Set("inherit_tcr_brand", value); }
     }
@@ -208,23 +206,23 @@ public record class ProfileUpdateParams : ParamsBase
     /// <summary>
     /// Whether this profile inherits TCR campaign from organization (optional)
     /// </summary>
-    public bool? InheritTcrCampaign
-    {
-        get
-        {
+    public bool? InheritTcrCampaign {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("inherit_tcr_campaign");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "inherit_tcr_campaign"
+            );
         }
         init { this._rawBodyData.Set("inherit_tcr_campaign", value); }
     }
 
     [Obsolete("deprecated")]
-    public bool? InheritTemplates
-    {
-        get
-        {
+    public bool? InheritTemplates {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("inherit_templates");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "inherit_templates"
+            );
         }
         init { this._rawBodyData.Set("inherit_templates", value); }
     }
@@ -232,12 +230,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// <summary>
     /// Profile name (optional)
     /// </summary>
-    public string? Name
-    {
-        get
-        {
+    public string? Name {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("name");
+            return this._rawBodyData.GetNullableClass<string>(
+                "name"
+            );
         }
         init { this._rawBodyData.Set("name", value); }
     }
@@ -247,12 +245,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// is "profile" or "profile_and_organization". Not persisted on our servers —
     /// forwarded to the payment processor.
     /// </summary>
-    public PaymentDetails? PaymentDetails
-    {
-        get
-        {
+    public PaymentDetails? PaymentDetails {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<PaymentDetails>("payment_details");
+            return this._rawBodyData.GetNullableClass<PaymentDetails>(
+                "payment_details"
+            );
         }
         init { this._rawBodyData.Set("payment_details", value); }
     }
@@ -261,17 +259,15 @@ public record class ProfileUpdateParams : ParamsBase
     /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
-    public bool? Sandbox
-    {
-        get
-        {
+    public bool? Sandbox {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("sandbox");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "sandbox"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -282,12 +278,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// <summary>
     /// Direct phone number for SMS sending (optional)
     /// </summary>
-    public string? SendingPhoneNumber
-    {
-        get
-        {
+    public string? SendingPhoneNumber {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("sending_phone_number");
+            return this._rawBodyData.GetNullableClass<string>(
+                "sending_phone_number"
+            );
         }
         init { this._rawBodyData.Set("sending_phone_number", value); }
     }
@@ -309,25 +305,29 @@ public record class ProfileUpdateParams : ParamsBase
     /// with the x-profile-id header naming it.
     /// </summary>
     [Obsolete("deprecated")]
-    public string? SendingPhoneNumberProfileID
-    {
-        get
-        {
+    public string? SendingPhoneNumberProfileID {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("sending_phone_number_profile_id");
+            return this._rawBodyData.GetNullableClass<string>(
+                "sending_phone_number_profile_id"
+            );
         }
-        init { this._rawBodyData.Set("sending_phone_number_profile_id", value); }
+        init {
+            this._rawBodyData.Set("sending_phone_number_profile_id", value);
+        }
     }
 
     [Obsolete("deprecated")]
-    public string? SendingWhatsappNumberProfileID
-    {
-        get
-        {
+    public string? SendingWhatsappNumberProfileID {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("sending_whatsapp_number_profile_id");
+            return this._rawBodyData.GetNullableClass<string>(
+                "sending_whatsapp_number_profile_id"
+            );
         }
-        init { this._rawBodyData.Set("sending_whatsapp_number_profile_id", value); }
+        init {
+            this._rawBodyData.Set("sending_whatsapp_number_profile_id", value);
+        }
     }
 
     /// <summary>
@@ -335,12 +335,12 @@ public record class ProfileUpdateParams : ParamsBase
     /// only letters, numbers, and spaces, and include at least one letter. Example:
     /// "SALES", "Mkt 2", "Support1".
     /// </summary>
-    public string? ShortName
-    {
-        get
-        {
+    public string? ShortName {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("short_name");
+            return this._rawBodyData.GetNullableClass<string>(
+                "short_name"
+            );
         }
         init { this._rawBodyData.Set("short_name", value); }
     }
@@ -348,27 +348,25 @@ public record class ProfileUpdateParams : ParamsBase
     /// <summary>
     /// Direct phone number for WhatsApp sending (optional)
     /// </summary>
-    public string? WhatsappPhoneNumber
-    {
-        get
-        {
+    public string? WhatsappPhoneNumber {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("whatsapp_phone_number");
+            return this._rawBodyData.GetNullableClass<string>(
+                "whatsapp_phone_number"
+            );
         }
         init { this._rawBodyData.Set("whatsapp_phone_number", value); }
     }
 
-    public string? IdempotencyKey
-    {
-        get
-        {
+    public string? IdempotencyKey {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("Idempotency-Key");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "Idempotency-Key"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -376,17 +374,15 @@ public record class ProfileUpdateParams : ParamsBase
         }
     }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -394,20 +390,22 @@ public record class ProfileUpdateParams : ParamsBase
         }
     }
 
-    public ProfileUpdateParams() { }
+    public ProfileUpdateParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ProfileUpdateParams(ProfileUpdateParams profileUpdateParams)
-        : base(profileUpdateParams)
+    public ProfileUpdateParams (ProfileUpdateParams profileUpdateParams) : base(
+        profileUpdateParams
+    )
     {
         this.ProfileID = profileUpdateParams.ProfileID;
 
         this._rawBodyData = new(profileUpdateParams._rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
-    public ProfileUpdateParams(
+    public ProfileUpdateParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -418,9 +416,9 @@ public record class ProfileUpdateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ProfileUpdateParams(
+    ProfileUpdateParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData,
@@ -432,7 +430,7 @@ public record class ProfileUpdateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
         this.ProfileID = profileID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static ProfileUpdateParams FromRawUnchecked(
@@ -447,26 +445,19 @@ public record class ProfileUpdateParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData),
             profileID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["ProfileID"] = JsonSerializer.SerializeToElement(this.ProfileID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["ProfileID"] = JsonSerializer.SerializeToElement(this.ProfileID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(ProfileUpdateParams? other)
     {
@@ -474,21 +465,20 @@ public record class ProfileUpdateParams : ParamsBase
         {
             return false;
         }
-        return (this.ProfileID?.Equals(other.ProfileID) ?? other.ProfileID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return (this.ProfileID?.Equals(other.ProfileID) ?? other.ProfileID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/v3/profiles/{0}", this.ProfileID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v3/profiles/{0}",
+            this.ProfileID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -497,10 +487,12 @@ public record class ProfileUpdateParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -510,7 +502,5 @@ public record class ProfileUpdateParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

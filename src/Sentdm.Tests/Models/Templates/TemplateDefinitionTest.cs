@@ -110,13 +110,11 @@ public class TemplateDefinitionTest : TestBase
                         },
                     ],
                 },
-            },
-            AuthenticationConfig = new()
+            },AuthenticationConfig = new()
             {
                 AddSecurityRecommendation = true,
                 CodeExpirationMinutes = 0,
-            },
-            Buttons =
+            },Buttons =
             [
                 new()
                 {
@@ -157,9 +155,7 @@ public class TemplateDefinitionTest : TestBase
                     Type = "x",
                     ID = 0,
                 },
-            ],
-            DefinitionVersion = "definitionVersion",
-            Footer = new()
+            ],DefinitionVersion = "definitionVersion",Footer = new()
             {
                 Template = "template",
                 Type = "type",
@@ -182,8 +178,7 @@ public class TemplateDefinitionTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Header = new()
+            },Header = new()
             {
                 Template = "template",
                 Type = "type",
@@ -521,13 +516,11 @@ public class TemplateDefinitionTest : TestBase
                         },
                     ],
                 },
-            },
-            AuthenticationConfig = new()
+            },AuthenticationConfig = new()
             {
                 AddSecurityRecommendation = true,
                 CodeExpirationMinutes = 0,
-            },
-            Buttons =
+            },Buttons =
             [
                 new()
                 {
@@ -568,9 +561,7 @@ public class TemplateDefinitionTest : TestBase
                     Type = "x",
                     ID = 0,
                 },
-            ],
-            DefinitionVersion = "definitionVersion",
-            Footer = new()
+            ],DefinitionVersion = "definitionVersion",Footer = new()
             {
                 Template = "template",
                 Type = "type",
@@ -593,8 +584,7 @@ public class TemplateDefinitionTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Header = new()
+            },Header = new()
             {
                 Template = "template",
                 Type = "type",
@@ -621,10 +611,7 @@ public class TemplateDefinitionTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateDefinition>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateDefinition>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -732,13 +719,11 @@ public class TemplateDefinitionTest : TestBase
                         },
                     ],
                 },
-            },
-            AuthenticationConfig = new()
+            },AuthenticationConfig = new()
             {
                 AddSecurityRecommendation = true,
                 CodeExpirationMinutes = 0,
-            },
-            Buttons =
+            },Buttons =
             [
                 new()
                 {
@@ -779,9 +764,7 @@ public class TemplateDefinitionTest : TestBase
                     Type = "x",
                     ID = 0,
                 },
-            ],
-            DefinitionVersion = "definitionVersion",
-            Footer = new()
+            ],DefinitionVersion = "definitionVersion",Footer = new()
             {
                 Template = "template",
                 Type = "type",
@@ -804,8 +787,7 @@ public class TemplateDefinitionTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Header = new()
+            },Header = new()
             {
                 Template = "template",
                 Type = "type",
@@ -832,10 +814,7 @@ public class TemplateDefinitionTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateDefinition>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateDefinition>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         TemplateBody expectedBody = new()
@@ -1150,13 +1129,11 @@ public class TemplateDefinitionTest : TestBase
                         },
                     ],
                 },
-            },
-            AuthenticationConfig = new()
+            },AuthenticationConfig = new()
             {
                 AddSecurityRecommendation = true,
                 CodeExpirationMinutes = 0,
-            },
-            Buttons =
+            },Buttons =
             [
                 new()
                 {
@@ -1197,9 +1174,7 @@ public class TemplateDefinitionTest : TestBase
                     Type = "x",
                     ID = 0,
                 },
-            ],
-            DefinitionVersion = "definitionVersion",
-            Footer = new()
+            ],DefinitionVersion = "definitionVersion",Footer = new()
             {
                 Template = "template",
                 Type = "type",
@@ -1222,8 +1197,7 @@ public class TemplateDefinitionTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Header = new()
+            },Header = new()
             {
                 Template = "template",
                 Type = "type",
@@ -1359,15 +1333,12 @@ public class TemplateDefinitionTest : TestBase
         };
 
         Assert.Null(model.AuthenticationConfig);
-        Assert.False(model.RawData.ContainsKey("authenticationConfig"));
-        Assert.Null(model.Buttons);
-        Assert.False(model.RawData.ContainsKey("buttons"));
-        Assert.Null(model.DefinitionVersion);
-        Assert.False(model.RawData.ContainsKey("definitionVersion"));
-        Assert.Null(model.Footer);
-        Assert.False(model.RawData.ContainsKey("footer"));
-        Assert.Null(model.Header);
+        Assert.False(model.RawData.ContainsKey("authenticationConfig"));Assert.Null(model.Buttons);
+        Assert.False(model.RawData.ContainsKey("buttons"));Assert.Null(model.DefinitionVersion);
+        Assert.False(model.RawData.ContainsKey("definitionVersion"));Assert.Null(model.Footer);
+        Assert.False(model.RawData.ContainsKey("footer"));Assert.Null(model.Header);
         Assert.False(model.RawData.ContainsKey("header"));
+
     }
 
     [Fact]
@@ -1584,23 +1555,16 @@ public class TemplateDefinitionTest : TestBase
                 },
             },
 
-            AuthenticationConfig = null,
-            Buttons = null,
-            DefinitionVersion = null,
-            Footer = null,
-            Header = null,
+            AuthenticationConfig = null,Buttons = null,DefinitionVersion = null,Footer = null,Header = null,
         };
 
         Assert.Null(model.AuthenticationConfig);
-        Assert.True(model.RawData.ContainsKey("authenticationConfig"));
-        Assert.Null(model.Buttons);
-        Assert.True(model.RawData.ContainsKey("buttons"));
-        Assert.Null(model.DefinitionVersion);
-        Assert.True(model.RawData.ContainsKey("definitionVersion"));
-        Assert.Null(model.Footer);
-        Assert.True(model.RawData.ContainsKey("footer"));
-        Assert.Null(model.Header);
+        Assert.True(model.RawData.ContainsKey("authenticationConfig"));Assert.Null(model.Buttons);
+        Assert.True(model.RawData.ContainsKey("buttons"));Assert.Null(model.DefinitionVersion);
+        Assert.True(model.RawData.ContainsKey("definitionVersion"));Assert.Null(model.Footer);
+        Assert.True(model.RawData.ContainsKey("footer"));Assert.Null(model.Header);
         Assert.True(model.RawData.ContainsKey("header"));
+
     }
 
     [Fact]
@@ -1708,11 +1672,7 @@ public class TemplateDefinitionTest : TestBase
                 },
             },
 
-            AuthenticationConfig = null,
-            Buttons = null,
-            DefinitionVersion = null,
-            Footer = null,
-            Header = null,
+            AuthenticationConfig = null,Buttons = null,DefinitionVersion = null,Footer = null,Header = null,
         };
 
         model.Validate();
@@ -1821,13 +1781,11 @@ public class TemplateDefinitionTest : TestBase
                         },
                     ],
                 },
-            },
-            AuthenticationConfig = new()
+            },AuthenticationConfig = new()
             {
                 AddSecurityRecommendation = true,
                 CodeExpirationMinutes = 0,
-            },
-            Buttons =
+            },Buttons =
             [
                 new()
                 {
@@ -1868,9 +1826,7 @@ public class TemplateDefinitionTest : TestBase
                     Type = "x",
                     ID = 0,
                 },
-            ],
-            DefinitionVersion = "definitionVersion",
-            Footer = new()
+            ],DefinitionVersion = "definitionVersion",Footer = new()
             {
                 Template = "template",
                 Type = "type",
@@ -1893,8 +1849,7 @@ public class TemplateDefinitionTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Header = new()
+            },Header = new()
             {
                 Template = "template",
                 Type = "type",

@@ -16,12 +16,12 @@ public sealed record class WebhookTestResponse : JsonModel
     /// <summary>
     /// The response data (null if error)
     /// </summary>
-    public WebhookTestResponseData? Data
-    {
-        get
-        {
+    public WebhookTestResponseData? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<WebhookTestResponseData>("data");
+            return this._rawData.GetNullableClass<WebhookTestResponseData>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -29,12 +29,12 @@ public sealed record class WebhookTestResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
-    {
-        get
-        {
+    public ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -42,17 +42,15 @@ public sealed record class WebhookTestResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
-    {
-        get
-        {
+    public ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -63,17 +61,15 @@ public sealed record class WebhookTestResponse : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -90,41 +86,42 @@ public sealed record class WebhookTestResponse : JsonModel
         _ = this.Success;
     }
 
-    public WebhookTestResponse() { }
+    public WebhookTestResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WebhookTestResponse(WebhookTestResponse webhookTestResponse)
-        : base(webhookTestResponse) { }
-#pragma warning restore CS8618
+    public WebhookTestResponse (WebhookTestResponse webhookTestResponse) : base(
+        webhookTestResponse
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public WebhookTestResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public WebhookTestResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WebhookTestResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    WebhookTestResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="WebhookTestResponseFromRaw.FromRawUnchecked"/>
     public static WebhookTestResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class WebhookTestResponseFromRaw : IFromRawJson<WebhookTestResponse>
 {
     /// <inheritdoc/>
-    public WebhookTestResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        WebhookTestResponse.FromRawUnchecked(rawData);
+    public WebhookTestResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>WebhookTestResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -133,17 +130,15 @@ class WebhookTestResponseFromRaw : IFromRawJson<WebhookTestResponse>
 [JsonConverter(typeof(JsonModelConverter<WebhookTestResponseData, WebhookTestResponseDataFromRaw>))]
 public sealed record class WebhookTestResponseData : JsonModel
 {
-    public string? Message
-    {
-        get
-        {
+    public string? Message {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("message");
+            return this._rawData.GetNullableClass<string>(
+                "message"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -151,17 +146,15 @@ public sealed record class WebhookTestResponseData : JsonModel
         }
     }
 
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -176,40 +169,38 @@ public sealed record class WebhookTestResponseData : JsonModel
         _ = this.Success;
     }
 
-    public WebhookTestResponseData() { }
+    public WebhookTestResponseData ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WebhookTestResponseData(WebhookTestResponseData webhookTestResponseData)
-        : base(webhookTestResponseData) { }
-#pragma warning restore CS8618
+    public WebhookTestResponseData (
+        WebhookTestResponseData webhookTestResponseData
+    ) : base(webhookTestResponseData)
+    {  }
+    #pragma warning restore CS8618
 
-    public WebhookTestResponseData(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public WebhookTestResponseData (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WebhookTestResponseData(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    WebhookTestResponseData (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="WebhookTestResponseDataFromRaw.FromRawUnchecked"/>
     public static WebhookTestResponseData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class WebhookTestResponseDataFromRaw : IFromRawJson<WebhookTestResponseData>
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class WebhookTestResponseDataFromRaw : IFromRawJson<WebhookTestResponseData>
 {
     /// <inheritdoc/>
     public WebhookTestResponseData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => WebhookTestResponseData.FromRawUnchecked(rawData);
+    )
+    =>WebhookTestResponseData.FromRawUnchecked(rawData);
 }

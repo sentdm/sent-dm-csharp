@@ -11,12 +11,7 @@ public class BrandContactInfoTest : TestBase
     {
         var model = new BrandContactInfo
         {
-            Name = "x",
-            BusinessName = "businessName",
-            Email = "dev@stainless.com",
-            Phone = "phone",
-            PhoneCountryCode = "phoneCountryCode",
-            Role = "role",
+            Name = "x",BusinessName = "businessName",Email = "dev@stainless.com",Phone = "phone",PhoneCountryCode = "phoneCountryCode",Role = "role",
         };
 
         string expectedName = "x";
@@ -39,19 +34,11 @@ public class BrandContactInfoTest : TestBase
     {
         var model = new BrandContactInfo
         {
-            Name = "x",
-            BusinessName = "businessName",
-            Email = "dev@stainless.com",
-            Phone = "phone",
-            PhoneCountryCode = "phoneCountryCode",
-            Role = "role",
+            Name = "x",BusinessName = "businessName",Email = "dev@stainless.com",Phone = "phone",PhoneCountryCode = "phoneCountryCode",Role = "role",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BrandContactInfo>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BrandContactInfo>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -61,19 +48,11 @@ public class BrandContactInfoTest : TestBase
     {
         var model = new BrandContactInfo
         {
-            Name = "x",
-            BusinessName = "businessName",
-            Email = "dev@stainless.com",
-            Phone = "phone",
-            PhoneCountryCode = "phoneCountryCode",
-            Role = "role",
+            Name = "x",BusinessName = "businessName",Email = "dev@stainless.com",Phone = "phone",PhoneCountryCode = "phoneCountryCode",Role = "role",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BrandContactInfo>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BrandContactInfo>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedName = "x";
@@ -96,12 +75,7 @@ public class BrandContactInfoTest : TestBase
     {
         var model = new BrandContactInfo
         {
-            Name = "x",
-            BusinessName = "businessName",
-            Email = "dev@stainless.com",
-            Phone = "phone",
-            PhoneCountryCode = "phoneCountryCode",
-            Role = "role",
+            Name = "x",BusinessName = "businessName",Email = "dev@stainless.com",Phone = "phone",PhoneCountryCode = "phoneCountryCode",Role = "role",
         };
 
         model.Validate();
@@ -110,24 +84,27 @@ public class BrandContactInfoTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new BrandContactInfo { Name = "x" };
+        var model = new BrandContactInfo
+        {
+            Name = "x",
+        };
 
         Assert.Null(model.BusinessName);
-        Assert.False(model.RawData.ContainsKey("businessName"));
-        Assert.Null(model.Email);
-        Assert.False(model.RawData.ContainsKey("email"));
-        Assert.Null(model.Phone);
-        Assert.False(model.RawData.ContainsKey("phone"));
-        Assert.Null(model.PhoneCountryCode);
-        Assert.False(model.RawData.ContainsKey("phoneCountryCode"));
-        Assert.Null(model.Role);
+        Assert.False(model.RawData.ContainsKey("businessName"));Assert.Null(model.Email);
+        Assert.False(model.RawData.ContainsKey("email"));Assert.Null(model.Phone);
+        Assert.False(model.RawData.ContainsKey("phone"));Assert.Null(model.PhoneCountryCode);
+        Assert.False(model.RawData.ContainsKey("phoneCountryCode"));Assert.Null(model.Role);
         Assert.False(model.RawData.ContainsKey("role"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new BrandContactInfo { Name = "x" };
+        var model = new BrandContactInfo
+        {
+            Name = "x",
+        };
 
         model.Validate();
     }
@@ -139,23 +116,16 @@ public class BrandContactInfoTest : TestBase
         {
             Name = "x",
 
-            BusinessName = null,
-            Email = null,
-            Phone = null,
-            PhoneCountryCode = null,
-            Role = null,
+            BusinessName = null,Email = null,Phone = null,PhoneCountryCode = null,Role = null,
         };
 
         Assert.Null(model.BusinessName);
-        Assert.True(model.RawData.ContainsKey("businessName"));
-        Assert.Null(model.Email);
-        Assert.True(model.RawData.ContainsKey("email"));
-        Assert.Null(model.Phone);
-        Assert.True(model.RawData.ContainsKey("phone"));
-        Assert.Null(model.PhoneCountryCode);
-        Assert.True(model.RawData.ContainsKey("phoneCountryCode"));
-        Assert.Null(model.Role);
+        Assert.True(model.RawData.ContainsKey("businessName"));Assert.Null(model.Email);
+        Assert.True(model.RawData.ContainsKey("email"));Assert.Null(model.Phone);
+        Assert.True(model.RawData.ContainsKey("phone"));Assert.Null(model.PhoneCountryCode);
+        Assert.True(model.RawData.ContainsKey("phoneCountryCode"));Assert.Null(model.Role);
         Assert.True(model.RawData.ContainsKey("role"));
+
     }
 
     [Fact]
@@ -165,11 +135,7 @@ public class BrandContactInfoTest : TestBase
         {
             Name = "x",
 
-            BusinessName = null,
-            Email = null,
-            Phone = null,
-            PhoneCountryCode = null,
-            Role = null,
+            BusinessName = null,Email = null,Phone = null,PhoneCountryCode = null,Role = null,
         };
 
         model.Validate();
@@ -180,12 +146,7 @@ public class BrandContactInfoTest : TestBase
     {
         var model = new BrandContactInfo
         {
-            Name = "x",
-            BusinessName = "businessName",
-            Email = "dev@stainless.com",
-            Phone = "phone",
-            PhoneCountryCode = "phoneCountryCode",
-            Role = "role",
+            Name = "x",BusinessName = "businessName",Email = "dev@stainless.com",Phone = "phone",PhoneCountryCode = "phoneCountryCode",Role = "role",
         };
 
         BrandContactInfo copied = new(model);

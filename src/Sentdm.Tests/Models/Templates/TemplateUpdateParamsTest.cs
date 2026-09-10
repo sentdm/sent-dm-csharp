@@ -9,11 +9,13 @@ public class TemplateUpdateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new TemplateUpdateParams
         {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Category = "MARKETING",
-            Definition = new()
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",Category = "MARKETING",Definition = new(
+
+            )
             {
                 Body = new()
                 {
@@ -210,13 +212,7 @@ public class TemplateUpdateParamsTest : TestBase
                         },
                     ],
                 },
-            },
-            Language = null,
-            Name = "Updated Welcome Message",
-            Sandbox = false,
-            SubmitForReview = false,
-            IdempotencyKey = "req_abc123_retry1",
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            },Language = null,Name = "Updated Welcome Message",Sandbox = false,SubmitForReview = false,IdempotencyKey = "req_abc123_retry1",XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8";
@@ -439,11 +435,13 @@ public class TemplateUpdateParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new TemplateUpdateParams
         {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Category = "MARKETING",
-            Definition = new()
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",Category = "MARKETING",Definition = new(
+
+            )
             {
                 Body = new()
                 {
@@ -640,29 +638,27 @@ public class TemplateUpdateParamsTest : TestBase
                         },
                     ],
                 },
-            },
-            Language = null,
-            Name = "Updated Welcome Message",
+            },Language = null,Name = "Updated Welcome Message",
         };
 
         Assert.Null(parameters.Sandbox);
-        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.SubmitForReview);
-        Assert.False(parameters.RawBodyData.ContainsKey("submit_for_review"));
-        Assert.Null(parameters.IdempotencyKey);
-        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));Assert.Null(parameters.SubmitForReview);
+        Assert.False(parameters.RawBodyData.ContainsKey("submit_for_review"));Assert.Null(parameters.IdempotencyKey);
+        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new TemplateUpdateParams
         {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Category = "MARKETING",
-            Definition = new()
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",Category = "MARKETING",Definition = new(
+
+            )
             {
                 Body = new()
                 {
@@ -859,89 +855,74 @@ public class TemplateUpdateParamsTest : TestBase
                         },
                     ],
                 },
-            },
-            Language = null,
-            Name = "Updated Welcome Message",
+            },Language = null,Name = "Updated Welcome Message",
 
             // Null should be interpreted as omitted for these properties
-            Sandbox = null,
-            SubmitForReview = null,
-            IdempotencyKey = null,
-            XProfileID = null,
+            Sandbox = null,SubmitForReview = null,IdempotencyKey = null,XProfileID = null,
         };
 
         Assert.Null(parameters.Sandbox);
-        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.SubmitForReview);
-        Assert.False(parameters.RawBodyData.ContainsKey("submit_for_review"));
-        Assert.Null(parameters.IdempotencyKey);
-        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));Assert.Null(parameters.SubmitForReview);
+        Assert.False(parameters.RawBodyData.ContainsKey("submit_for_review"));Assert.Null(parameters.IdempotencyKey);
+        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new TemplateUpdateParams
         {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Sandbox = false,
-            SubmitForReview = false,
-            IdempotencyKey = "req_abc123_retry1",
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",Sandbox = false,SubmitForReview = false,IdempotencyKey = "req_abc123_retry1",XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         Assert.Null(parameters.Category);
-        Assert.False(parameters.RawBodyData.ContainsKey("category"));
-        Assert.Null(parameters.Definition);
-        Assert.False(parameters.RawBodyData.ContainsKey("definition"));
-        Assert.Null(parameters.Language);
-        Assert.False(parameters.RawBodyData.ContainsKey("language"));
-        Assert.Null(parameters.Name);
+        Assert.False(parameters.RawBodyData.ContainsKey("category"));Assert.Null(parameters.Definition);
+        Assert.False(parameters.RawBodyData.ContainsKey("definition"));Assert.Null(parameters.Language);
+        Assert.False(parameters.RawBodyData.ContainsKey("language"));Assert.Null(parameters.Name);
         Assert.False(parameters.RawBodyData.ContainsKey("name"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new TemplateUpdateParams
         {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Sandbox = false,
-            SubmitForReview = false,
-            IdempotencyKey = "req_abc123_retry1",
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",Sandbox = false,SubmitForReview = false,IdempotencyKey = "req_abc123_retry1",XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
-            Category = null,
-            Definition = null,
-            Language = null,
-            Name = null,
+            Category = null,Definition = null,Language = null,Name = null,
         };
 
         Assert.Null(parameters.Category);
-        Assert.True(parameters.RawBodyData.ContainsKey("category"));
-        Assert.Null(parameters.Definition);
-        Assert.True(parameters.RawBodyData.ContainsKey("definition"));
-        Assert.Null(parameters.Language);
-        Assert.True(parameters.RawBodyData.ContainsKey("language"));
-        Assert.Null(parameters.Name);
+        Assert.True(parameters.RawBodyData.ContainsKey("category"));Assert.Null(parameters.Definition);
+        Assert.True(parameters.RawBodyData.ContainsKey("definition"));Assert.Null(parameters.Language);
+        Assert.True(parameters.RawBodyData.ContainsKey("language"));Assert.Null(parameters.Name);
         Assert.True(parameters.RawBodyData.ContainsKey("name"));
+
     }
 
     [Fact]
     public void Url_Works()
     {
-        TemplateUpdateParams parameters = new() { ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8" };
+        TemplateUpdateParams parameters = new()
+        {
+            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8"
+        };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
-
-        Assert.True(
-            TestBase.UrisEqual(
-                new Uri("https://api.sent.dm/v3/templates/7ba7b820-9dad-11d1-80b4-00c04fd430c8"),
-                url
-            )
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/templates/7ba7b820-9dad-11d1-80b4-00c04fd430c8"), url));
     }
 
     [Fact]
@@ -955,13 +936,15 @@ public class TemplateUpdateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
-
-        Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));
-        Assert.Equal(
-            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-            requestMessage.Headers.GetValues("x-profile-id")
+        parameters.AddHeadersToRequest(
+            requestMessage,
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));Assert.Equal(["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"], requestMessage.Headers.GetValues("x-profile-id"));
     }
 
     [Fact]

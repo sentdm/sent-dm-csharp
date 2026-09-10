@@ -12,20 +12,18 @@ namespace Sentdm.Models.Templates;
 /// <summary>
 /// Standard API response envelope for all v3 endpoints
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<TemplateListPageResponse, TemplateListPageResponseFromRaw>)
-)]
+[JsonConverter(typeof(JsonModelConverter<TemplateListPageResponse, TemplateListPageResponseFromRaw>))]
 public sealed record class TemplateListPageResponse : JsonModel
 {
     /// <summary>
     /// A paginated list of templates.
     /// </summary>
-    public Data? Data
-    {
-        get
-        {
+    public Data? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Data>("data");
+            return this._rawData.GetNullableClass<Data>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -33,12 +31,12 @@ public sealed record class TemplateListPageResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public Webhooks::ErrorDetail? Error
-    {
-        get
-        {
+    public Webhooks::ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>("error");
+            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -46,17 +44,15 @@ public sealed record class TemplateListPageResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public Webhooks::ApiMeta? Meta
-    {
-        get
-        {
+    public Webhooks::ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ApiMeta>("meta");
+            return this._rawData.GetNullableClass<Webhooks::ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -67,17 +63,15 @@ public sealed record class TemplateListPageResponse : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -94,34 +88,33 @@ public sealed record class TemplateListPageResponse : JsonModel
         _ = this.Success;
     }
 
-    public TemplateListPageResponse() { }
+    public TemplateListPageResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateListPageResponse(TemplateListPageResponse templateListPageResponse)
-        : base(templateListPageResponse) { }
-#pragma warning restore CS8618
+    public TemplateListPageResponse (
+        TemplateListPageResponse templateListPageResponse
+    ) : base(templateListPageResponse)
+    {  }
+    #pragma warning restore CS8618
 
-    public TemplateListPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TemplateListPageResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateListPageResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TemplateListPageResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TemplateListPageResponseFromRaw.FromRawUnchecked"/>
     public static TemplateListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TemplateListPageResponseFromRaw : IFromRawJson<TemplateListPageResponse>
@@ -129,7 +122,8 @@ class TemplateListPageResponseFromRaw : IFromRawJson<TemplateListPageResponse>
     /// <inheritdoc/>
     public TemplateListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => TemplateListPageResponse.FromRawUnchecked(rawData);
+    )
+    =>TemplateListPageResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -141,17 +135,15 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Pagination metadata for list responses
     /// </summary>
-    public Webhooks::PaginationMeta? Pagination
-    {
-        get
-        {
+    public Webhooks::PaginationMeta? Pagination {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::PaginationMeta>("pagination");
+            return this._rawData.GetNullableClass<Webhooks::PaginationMeta>(
+                "pagination"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -162,17 +154,15 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// The templates on this page.
     /// </summary>
-    public IReadOnlyList<Template>? Templates
-    {
-        get
-        {
+    public IReadOnlyList<Template>? Templates {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Template>>("templates");
+            return this._rawData.GetNullableStruct<ImmutableArray<Template>>(
+                "templates"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -193,37 +183,34 @@ public sealed record class Data : JsonModel
         }
     }
 
-    public Data() { }
+    public Data ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Data(Data data)
-        : base(data) { }
-#pragma warning restore CS8618
+    public Data (Data data) : base(data)
+    {  }
+    #pragma warning restore CS8618
 
-    public Data(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Data (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Data(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Data (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="DataFromRaw.FromRawUnchecked"/>
-    public static Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class DataFromRaw : IFromRawJson<Data>
+    public static Data FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class DataFromRaw : IFromRawJson<Data>
 {
     /// <inheritdoc/>
-    public Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Data.FromRawUnchecked(rawData);
+    public Data FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Data.FromRawUnchecked(rawData);
 }

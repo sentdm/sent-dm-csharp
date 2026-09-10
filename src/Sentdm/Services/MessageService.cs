@@ -14,24 +14,25 @@ public sealed class MessageService : IMessageService
     readonly Lazy<IMessageServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IMessageServiceWithRawResponse WithRawResponse
-    {
+    public IMessageServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly ISentClient _client;
 
     /// <inheritdoc/>
-    public IMessageService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new MessageService(this._client.WithOptions(modifier));
-    }
+    public IMessageService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new MessageService(this._client.WithOptions(modifier)); }
 
-    public MessageService(ISentClient client)
+    public MessageService (ISentClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new MessageServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new MessageServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -40,13 +41,9 @@ public sealed class MessageService : IMessageService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.RetrieveActivities(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.RetrieveActivities(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<MessageRetrieveActivitiesResponse> RetrieveActivities(
         string id,
         MessageRetrieveActivitiesParams? parameters = null,
@@ -55,7 +52,9 @@ public sealed class MessageService : IMessageService
     {
         parameters ??= new();
 
-        return this.RetrieveActivities(parameters with { ID = id }, cancellationToken);
+        return this.RetrieveActivities(parameters with{
+            ID = id
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -64,13 +63,9 @@ public sealed class MessageService : IMessageService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.RetrieveStatus(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.RetrieveStatus(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<MessageRetrieveStatusResponse> RetrieveStatus(
         string id,
         MessageRetrieveStatusParams? parameters = null,
@@ -79,7 +74,9 @@ public sealed class MessageService : IMessageService
     {
         parameters ??= new();
 
-        return this.RetrieveStatus(parameters with { ID = id }, cancellationToken);
+        return this.RetrieveStatus(parameters with{
+            ID = id
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -88,9 +85,7 @@ public sealed class MessageService : IMessageService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Send(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Send(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 }
@@ -101,15 +96,15 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IMessageServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public IMessageServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new MessageServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public MessageServiceWithRawResponse(ISentClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public MessageServiceWithRawResponse (ISentClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<MessageRetrieveActivitiesResponse>> RetrieveActivities(
@@ -119,7 +114,9 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.ID' cannot be null"
+            );
         }
 
         HttpRequest<MessageRetrieveActivitiesParams> request = new()
@@ -128,23 +125,14 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var deserializedResponse = await response
-                    .Deserialize<MessageRetrieveActivitiesResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    deserializedResponse.Validate();
-                }
-                return deserializedResponse;
+        return new(response, async ( token )=>{
+            var deserializedResponse = await response.Deserialize<MessageRetrieveActivitiesResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                deserializedResponse.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return deserializedResponse;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<MessageRetrieveActivitiesResponse>> RetrieveActivities(
         string id,
         MessageRetrieveActivitiesParams? parameters = null,
@@ -153,7 +141,9 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.RetrieveActivities(parameters with { ID = id }, cancellationToken);
+        return this.RetrieveActivities(parameters with{
+            ID = id
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -164,7 +154,9 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     {
         if (parameters.ID == null)
         {
-            throw new SentInvalidDataException("'parameters.ID' cannot be null");
+            throw new SentInvalidDataException(
+                "'parameters.ID' cannot be null"
+            );
         }
 
         HttpRequest<MessageRetrieveStatusParams> request = new()
@@ -173,23 +165,14 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var deserializedResponse = await response
-                    .Deserialize<MessageRetrieveStatusResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    deserializedResponse.Validate();
-                }
-                return deserializedResponse;
+        return new(response, async ( token )=>{
+            var deserializedResponse = await response.Deserialize<MessageRetrieveStatusResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                deserializedResponse.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return deserializedResponse;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<MessageRetrieveStatusResponse>> RetrieveStatus(
         string id,
         MessageRetrieveStatusParams? parameters = null,
@@ -198,7 +181,9 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.RetrieveStatus(parameters with { ID = id }, cancellationToken);
+        return this.RetrieveStatus(parameters with{
+            ID = id
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -215,19 +200,12 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var deserializedResponse = await response
-                    .Deserialize<MessageSendResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    deserializedResponse.Validate();
-                }
-                return deserializedResponse;
+        return new(response, async ( token )=>{
+            var deserializedResponse = await response.Deserialize<MessageSendResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                deserializedResponse.Validate();
             }
-        );
+            return deserializedResponse;
+        });
     }
 }

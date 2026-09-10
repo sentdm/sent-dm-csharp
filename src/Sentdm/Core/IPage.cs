@@ -9,8 +9,8 @@ namespace Sentdm.Core;
 /// An interface representing a single page, with items of type <typeparamref name="T"/>, from a
 /// paginated endpoint response.
 /// </summary>
-public interface IPage<T>
-{
+public interface IPage
+<T>{
     /// <summary>
     /// The items in this page.
     /// </summary>
@@ -23,31 +23,38 @@ public interface IPage<T>
     /// data in this page. If a significant amount of time has passed between requesting
     /// this page and calling this method, then the result could be stale.</para>
     /// </summary>
-    bool HasNext();
+    bool HasNext()
+    ;
 
     /// <summary>
-    /// Returns the page after this one by making another request.
-    ///
-    /// <exception cref="SentInvalidDataException">
-    /// Thrown when it's impossible to get the next page. This exception is avoidable by calling
-    /// <see cref="HasNext"/> first.
-    /// </exception>
-    /// </summary>
-    Task<IPage<T>> Next(CancellationToken cancellationToken = default);
+/// Returns the page after this one by making another request.
+/// 
+/// <exception cref="SentInvalidDataException">
+/// Thrown when it's impossible to get the next page. This exception is avoidable by calling
+/// <see cref="HasNext"/> first.
+/// </exception>
+/// </summary>
+    Task<IPage<T>> Next(CancellationToken cancellationToken = default)
+    ;
 
     /// <summary>
-    /// Validates that the page was constructed with a valid response (based on its own
-    /// <c>Validate</c> method).
-    ///
-    /// <exception cref="SentInvalidDataException">
-    /// Thrown when the instance does not pass validation.
-    /// </exception>
-    /// </summary>
-    void Validate();
+/// Validates that the page was constructed with a valid response (based on its own
+/// <c>Validate</c> method).
+/// 
+/// <exception cref="SentInvalidDataException">
+/// Thrown when the instance does not pass validation.
+/// </exception>
+/// </summary>
+    void Validate()
+    ;
 
-#if NET
+
+    #if NET
     /// <inheritdoc cref="IPageExtensions.Paginate"/>
-    public IAsyncEnumerable<T> Paginate(CancellationToken cancellationToken = default) =>
-        IPageExtensions.Paginate(this, cancellationToken);
-#endif
+    public IAsyncEnumerable<T> Paginate(
+        CancellationToken cancellationToken = default
+    )
+    =>IPageExtensions.Paginate(this, cancellationToken);
+    #endif
+
 }
