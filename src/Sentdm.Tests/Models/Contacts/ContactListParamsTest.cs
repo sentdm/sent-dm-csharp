@@ -11,24 +11,24 @@ public class ContactListParamsTest : TestBase
     {
         var parameters = new ContactListParams
         {
+            Channel = "channel",
             Page = 0,
             PageSize = 0,
-            Channel = "channel",
             Phone = "phone",
             Search = "search",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        string expectedChannel = "channel";
         int expectedPage = 0;
         int expectedPageSize = 0;
-        string expectedChannel = "channel";
         string expectedPhone = "phone";
         string expectedSearch = "search";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
+        Assert.Equal(expectedChannel, parameters.Channel);
         Assert.Equal(expectedPage, parameters.Page);
         Assert.Equal(expectedPageSize, parameters.PageSize);
-        Assert.Equal(expectedChannel, parameters.Channel);
         Assert.Equal(expectedPhone, parameters.Phone);
         Assert.Equal(expectedSearch, parameters.Search);
         Assert.Equal(expectedXProfileID, parameters.XProfileID);
@@ -39,13 +39,15 @@ public class ContactListParamsTest : TestBase
     {
         var parameters = new ContactListParams
         {
-            Page = 0,
-            PageSize = 0,
             Channel = "channel",
             Phone = "phone",
             Search = "search",
         };
 
+        Assert.Null(parameters.Page);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
@@ -55,16 +57,20 @@ public class ContactListParamsTest : TestBase
     {
         var parameters = new ContactListParams
         {
-            Page = 0,
-            PageSize = 0,
             Channel = "channel",
             Phone = "phone",
             Search = "search",
 
             // Null should be interpreted as omitted for these properties
+            Page = null,
+            PageSize = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.Page);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
@@ -114,9 +120,9 @@ public class ContactListParamsTest : TestBase
     {
         ContactListParams parameters = new()
         {
+            Channel = "channel",
             Page = 0,
             PageSize = 0,
-            Channel = "channel",
             Phone = "phone",
             Search = "search",
         };
@@ -126,7 +132,7 @@ public class ContactListParamsTest : TestBase
         Assert.True(
             TestBase.UrisEqual(
                 new Uri(
-                    "https://api.sent.dm/v3/contacts?page=0&page_size=0&channel=channel&phone=phone&search=search"
+                    "https://api.sent.dm/v3/contacts?channel=channel&page=0&page_size=0&phone=phone&search=search"
                 ),
                 url
             )
@@ -139,8 +145,6 @@ public class ContactListParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         ContactListParams parameters = new()
         {
-            Page = 0,
-            PageSize = 0,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
@@ -157,9 +161,9 @@ public class ContactListParamsTest : TestBase
     {
         var parameters = new ContactListParams
         {
+            Channel = "channel",
             Page = 0,
             PageSize = 0,
-            Channel = "channel",
             Phone = "phone",
             Search = "search",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

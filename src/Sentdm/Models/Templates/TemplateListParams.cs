@@ -19,32 +19,6 @@ namespace Sentdm.Models.Templates;
 public record class TemplateListParams : ParamsBase
 {
     /// <summary>
-    /// Page number (1-indexed)
-    /// </summary>
-    public required int Page
-    {
-        get
-        {
-            this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNotNullStruct<int>("page");
-        }
-        init { this._rawQueryData.Set("page", value); }
-    }
-
-    /// <summary>
-    /// Number of items per page
-    /// </summary>
-    public required int PageSize
-    {
-        get
-        {
-            this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNotNullStruct<int>("page_size");
-        }
-        init { this._rawQueryData.Set("page_size", value); }
-    }
-
-    /// <summary>
     /// Optional category filter: MARKETING, UTILITY, AUTHENTICATION
     /// </summary>
     public string? Category
@@ -72,6 +46,48 @@ public record class TemplateListParams : ParamsBase
             return this._rawQueryData.GetNullableStruct<bool>("is_welcome_playground");
         }
         init { this._rawQueryData.Set("is_welcome_playground", value); }
+    }
+
+    /// <summary>
+    /// Page number (1-indexed)
+    /// </summary>
+    public int? Page
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<int>("page");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawQueryData.Set("page", value);
+        }
+    }
+
+    /// <summary>
+    /// Number of items per page
+    /// </summary>
+    public int? PageSize
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<int>("page_size");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawQueryData.Set("page_size", value);
+        }
     }
 
     /// <summary>
