@@ -95,7 +95,7 @@ public sealed class ContactService : IContactService
     }
 
     /// <inheritdoc/>
-    public async Task<ContactListResponse> List(
+    public async Task<ContactListPage> List(
         ContactListParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -295,7 +295,7 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ContactListResponse>> List(
+    public async Task<HttpResponse<ContactListPage>> List(
         ContactListParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -310,14 +310,14 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
             response,
             async (token) =>
             {
-                var contacts = await response
-                    .Deserialize<ContactListResponse>(token)
+                var page = await response
+                    .Deserialize<ContactListPageResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    contacts.Validate();
+                    page.Validate();
                 }
-                return contacts;
+                return new ContactListPage(this, parameters, page);
             }
         );
     }

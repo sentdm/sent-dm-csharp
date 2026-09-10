@@ -38,7 +38,7 @@ public interface IConversationService
     /// Retrieves a paginated list of the authenticated customer's messages across all
     /// conversations, ordered by created date (most recent first).
     /// </summary>
-    Task<ApiResponseOfConversationMessagesList> List(
+    Task<ConversationListPage> List(
         ConversationListParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -47,13 +47,13 @@ public interface IConversationService
     /// Retrieves a paginated list of the messages in a single conversation (scoped to
     /// the authenticated customer), ordered by created date (most recent first).
     /// </summary>
-    Task<ApiResponseOfConversationMessagesList> ListMessages(
+    Task<ConversationListMessagesPage> ListMessages(
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListMessages(ConversationListMessagesParams, CancellationToken)"/>
-    Task<ApiResponseOfConversationMessagesList> ListMessages(
+    Task<ConversationListMessagesPage> ListMessages(
         string id,
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
@@ -77,7 +77,7 @@ public interface IConversationServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/conversations</c>, but is otherwise the
     /// same as <see cref="IConversationService.List(ConversationListParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfConversationMessagesList>> List(
+    Task<HttpResponse<ConversationListPage>> List(
         ConversationListParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -86,13 +86,13 @@ public interface IConversationServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/conversations/{id}</c>, but is otherwise the
     /// same as <see cref="IConversationService.ListMessages(ConversationListMessagesParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfConversationMessagesList>> ListMessages(
+    Task<HttpResponse<ConversationListMessagesPage>> ListMessages(
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListMessages(ConversationListMessagesParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseOfConversationMessagesList>> ListMessages(
+    Task<HttpResponse<ConversationListMessagesPage>> ListMessages(
         string id,
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
