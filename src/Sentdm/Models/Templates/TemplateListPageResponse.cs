@@ -12,8 +12,10 @@ namespace Sentdm.Models.Templates;
 /// <summary>
 /// Standard API response envelope for all v3 endpoints
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<TemplateListResponse, TemplateListResponseFromRaw>))]
-public sealed record class TemplateListResponse : JsonModel
+[JsonConverter(
+    typeof(JsonModelConverter<TemplateListPageResponse, TemplateListPageResponseFromRaw>)
+)]
+public sealed record class TemplateListPageResponse : JsonModel
 {
     /// <summary>
     /// A paginated list of templates.
@@ -92,29 +94,29 @@ public sealed record class TemplateListResponse : JsonModel
         _ = this.Success;
     }
 
-    public TemplateListResponse() { }
+    public TemplateListPageResponse() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateListResponse(TemplateListResponse templateListResponse)
-        : base(templateListResponse) { }
+    public TemplateListPageResponse(TemplateListPageResponse templateListPageResponse)
+        : base(templateListPageResponse) { }
 #pragma warning restore CS8618
 
-    public TemplateListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
+    public TemplateListPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateListResponse(FrozenDictionary<string, JsonElement> rawData)
+    TemplateListPageResponse(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="TemplateListResponseFromRaw.FromRawUnchecked"/>
-    public static TemplateListResponse FromRawUnchecked(
+    /// <inheritdoc cref="TemplateListPageResponseFromRaw.FromRawUnchecked"/>
+    public static TemplateListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -122,12 +124,12 @@ public sealed record class TemplateListResponse : JsonModel
     }
 }
 
-class TemplateListResponseFromRaw : IFromRawJson<TemplateListResponse>
+class TemplateListPageResponseFromRaw : IFromRawJson<TemplateListPageResponse>
 {
     /// <inheritdoc/>
-    public TemplateListResponse FromRawUnchecked(
+    public TemplateListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => TemplateListResponse.FromRawUnchecked(rawData);
+    ) => TemplateListPageResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>
