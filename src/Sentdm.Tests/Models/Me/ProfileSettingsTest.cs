@@ -11,13 +11,7 @@ public class ProfileSettingsTest : TestBase
     {
         var model = new ProfileSettings
         {
-            AllowContactSharing = true,
-            AllowTemplateSharing = true,
-            BillingModel = "billing_model",
-            InheritContacts = true,
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            InheritTemplates = true,
+            AllowContactSharing = true,AllowTemplateSharing = true,BillingModel = "billing_model",InheritContacts = true,InheritTcrBrand = true,InheritTcrCampaign = true,InheritTemplates = true,
         };
 
         bool expectedAllowContactSharing = true;
@@ -42,20 +36,11 @@ public class ProfileSettingsTest : TestBase
     {
         var model = new ProfileSettings
         {
-            AllowContactSharing = true,
-            AllowTemplateSharing = true,
-            BillingModel = "billing_model",
-            InheritContacts = true,
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            InheritTemplates = true,
+            AllowContactSharing = true,AllowTemplateSharing = true,BillingModel = "billing_model",InheritContacts = true,InheritTcrBrand = true,InheritTcrCampaign = true,InheritTemplates = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ProfileSettings>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ProfileSettings>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -65,20 +50,11 @@ public class ProfileSettingsTest : TestBase
     {
         var model = new ProfileSettings
         {
-            AllowContactSharing = true,
-            AllowTemplateSharing = true,
-            BillingModel = "billing_model",
-            InheritContacts = true,
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            InheritTemplates = true,
+            AllowContactSharing = true,AllowTemplateSharing = true,BillingModel = "billing_model",InheritContacts = true,InheritTcrBrand = true,InheritTcrCampaign = true,InheritTemplates = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ProfileSettings>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ProfileSettings>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         bool expectedAllowContactSharing = true;
@@ -103,13 +79,7 @@ public class ProfileSettingsTest : TestBase
     {
         var model = new ProfileSettings
         {
-            AllowContactSharing = true,
-            AllowTemplateSharing = true,
-            BillingModel = "billing_model",
-            InheritContacts = true,
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            InheritTemplates = true,
+            AllowContactSharing = true,AllowTemplateSharing = true,BillingModel = "billing_model",InheritContacts = true,InheritTcrBrand = true,InheritTcrCampaign = true,InheritTemplates = true,
         };
 
         model.Validate();
@@ -118,28 +88,29 @@ public class ProfileSettingsTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new ProfileSettings { };
+        var model = new ProfileSettings
+        {
+
+        };
 
         Assert.Null(model.AllowContactSharing);
-        Assert.False(model.RawData.ContainsKey("allow_contact_sharing"));
-        Assert.Null(model.AllowTemplateSharing);
-        Assert.False(model.RawData.ContainsKey("allow_template_sharing"));
-        Assert.Null(model.BillingModel);
-        Assert.False(model.RawData.ContainsKey("billing_model"));
-        Assert.Null(model.InheritContacts);
-        Assert.False(model.RawData.ContainsKey("inherit_contacts"));
-        Assert.Null(model.InheritTcrBrand);
-        Assert.False(model.RawData.ContainsKey("inherit_tcr_brand"));
-        Assert.Null(model.InheritTcrCampaign);
-        Assert.False(model.RawData.ContainsKey("inherit_tcr_campaign"));
-        Assert.Null(model.InheritTemplates);
+        Assert.False(model.RawData.ContainsKey("allow_contact_sharing"));Assert.Null(model.AllowTemplateSharing);
+        Assert.False(model.RawData.ContainsKey("allow_template_sharing"));Assert.Null(model.BillingModel);
+        Assert.False(model.RawData.ContainsKey("billing_model"));Assert.Null(model.InheritContacts);
+        Assert.False(model.RawData.ContainsKey("inherit_contacts"));Assert.Null(model.InheritTcrBrand);
+        Assert.False(model.RawData.ContainsKey("inherit_tcr_brand"));Assert.Null(model.InheritTcrCampaign);
+        Assert.False(model.RawData.ContainsKey("inherit_tcr_campaign"));Assert.Null(model.InheritTemplates);
         Assert.False(model.RawData.ContainsKey("inherit_templates"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new ProfileSettings { };
+        var model = new ProfileSettings
+        {
+
+        };
 
         model.Validate();
     }
@@ -149,29 +120,20 @@ public class ProfileSettingsTest : TestBase
     {
         var model = new ProfileSettings
         {
-            AllowContactSharing = null,
-            AllowTemplateSharing = null,
-            BillingModel = null,
-            InheritContacts = null,
-            InheritTcrBrand = null,
-            InheritTcrCampaign = null,
-            InheritTemplates = null,
+
+
+            AllowContactSharing = null,AllowTemplateSharing = null,BillingModel = null,InheritContacts = null,InheritTcrBrand = null,InheritTcrCampaign = null,InheritTemplates = null,
         };
 
         Assert.Null(model.AllowContactSharing);
-        Assert.True(model.RawData.ContainsKey("allow_contact_sharing"));
-        Assert.Null(model.AllowTemplateSharing);
-        Assert.True(model.RawData.ContainsKey("allow_template_sharing"));
-        Assert.Null(model.BillingModel);
-        Assert.True(model.RawData.ContainsKey("billing_model"));
-        Assert.Null(model.InheritContacts);
-        Assert.True(model.RawData.ContainsKey("inherit_contacts"));
-        Assert.Null(model.InheritTcrBrand);
-        Assert.True(model.RawData.ContainsKey("inherit_tcr_brand"));
-        Assert.Null(model.InheritTcrCampaign);
-        Assert.True(model.RawData.ContainsKey("inherit_tcr_campaign"));
-        Assert.Null(model.InheritTemplates);
+        Assert.True(model.RawData.ContainsKey("allow_contact_sharing"));Assert.Null(model.AllowTemplateSharing);
+        Assert.True(model.RawData.ContainsKey("allow_template_sharing"));Assert.Null(model.BillingModel);
+        Assert.True(model.RawData.ContainsKey("billing_model"));Assert.Null(model.InheritContacts);
+        Assert.True(model.RawData.ContainsKey("inherit_contacts"));Assert.Null(model.InheritTcrBrand);
+        Assert.True(model.RawData.ContainsKey("inherit_tcr_brand"));Assert.Null(model.InheritTcrCampaign);
+        Assert.True(model.RawData.ContainsKey("inherit_tcr_campaign"));Assert.Null(model.InheritTemplates);
         Assert.True(model.RawData.ContainsKey("inherit_templates"));
+
     }
 
     [Fact]
@@ -179,13 +141,9 @@ public class ProfileSettingsTest : TestBase
     {
         var model = new ProfileSettings
         {
-            AllowContactSharing = null,
-            AllowTemplateSharing = null,
-            BillingModel = null,
-            InheritContacts = null,
-            InheritTcrBrand = null,
-            InheritTcrCampaign = null,
-            InheritTemplates = null,
+
+
+            AllowContactSharing = null,AllowTemplateSharing = null,BillingModel = null,InheritContacts = null,InheritTcrBrand = null,InheritTcrCampaign = null,InheritTemplates = null,
         };
 
         model.Validate();
@@ -196,13 +154,7 @@ public class ProfileSettingsTest : TestBase
     {
         var model = new ProfileSettings
         {
-            AllowContactSharing = true,
-            AllowTemplateSharing = true,
-            BillingModel = "billing_model",
-            InheritContacts = true,
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            InheritTemplates = true,
+            AllowContactSharing = true,AllowTemplateSharing = true,BillingModel = "billing_model",InheritContacts = true,InheritTcrBrand = true,InheritTcrCampaign = true,InheritTemplates = true,
         };
 
         ProfileSettings copied = new(model);

@@ -11,27 +11,25 @@ namespace Sentdm.Models.Webhooks;
 [JsonConverter(typeof(JsonModelConverter<WebhookEventType, WebhookEventTypeFromRaw>))]
 public sealed record class WebhookEventType : JsonModel
 {
-    public string? Description
-    {
-        get
-        {
+    public string? Description {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("description");
+            return this._rawData.GetNullableClass<string>(
+                "description"
+            );
         }
         init { this._rawData.Set("description", value); }
     }
 
-    public string? DisplayName
-    {
-        get
-        {
+    public string? DisplayName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("display_name");
+            return this._rawData.GetNullableClass<string>(
+                "display_name"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -39,27 +37,25 @@ public sealed record class WebhookEventType : JsonModel
         }
     }
 
-    public string? EventType
-    {
-        get
-        {
+    public string? EventType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("event_type");
+            return this._rawData.GetNullableClass<string>(
+                "event_type"
+            );
         }
         init { this._rawData.Set("event_type", value); }
     }
 
-    public bool? IsActive
-    {
-        get
-        {
+    public bool? IsActive {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_active");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_active"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -67,17 +63,15 @@ public sealed record class WebhookEventType : JsonModel
         }
     }
 
-    public string? Name
-    {
-        get
-        {
+    public string? Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
+            return this._rawData.GetNullableClass<string>(
+                "name"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -85,15 +79,14 @@ public sealed record class WebhookEventType : JsonModel
         }
     }
 
-    public IReadOnlyList<WebhookEventType>? SubTypes
-    {
-        get
-        {
+    public IReadOnlyList<WebhookEventType>? SubTypes {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<WebhookEventType>>("sub_types");
+            return this._rawData.GetNullableStruct<ImmutableArray<WebhookEventType>>(
+                "sub_types"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<WebhookEventType>?>(
                 "sub_types",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -115,39 +108,38 @@ public sealed record class WebhookEventType : JsonModel
         }
     }
 
-    public WebhookEventType() { }
+    public WebhookEventType ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WebhookEventType(WebhookEventType webhookEventType)
-        : base(webhookEventType) { }
-#pragma warning restore CS8618
+    public WebhookEventType (WebhookEventType webhookEventType) : base(
+        webhookEventType
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public WebhookEventType(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public WebhookEventType (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WebhookEventType(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    WebhookEventType (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="WebhookEventTypeFromRaw.FromRawUnchecked"/>
     public static WebhookEventType FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class WebhookEventTypeFromRaw : IFromRawJson<WebhookEventType>
 {
     /// <inheritdoc/>
-    public WebhookEventType FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        WebhookEventType.FromRawUnchecked(rawData);
+    public WebhookEventType FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>WebhookEventType.FromRawUnchecked(rawData);
 }

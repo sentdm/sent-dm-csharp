@@ -17,17 +17,15 @@ public sealed record class UserResponse : JsonModel
     /// <summary>
     /// User unique identifier
     /// </summary>
-    public string? ID
-    {
-        get
-        {
+    public string? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("id");
+            return this._rawData.GetNullableClass<string>(
+                "id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -38,17 +36,15 @@ public sealed record class UserResponse : JsonModel
     /// <summary>
     /// When the user was added to the organization
     /// </summary>
-    public DateTimeOffset? CreatedAt
-    {
-        get
-        {
+    public DateTimeOffset? CreatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("created_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "created_at"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -60,17 +56,15 @@ public sealed record class UserResponse : JsonModel
     /// Which customer owns this — the key's own, or the profile named in x-profile-id.
     /// Says whose resource this is, which the resource's own id does not.
     /// </summary>
-    public string? CustomerID
-    {
-        get
-        {
+    public string? CustomerID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("customer_id");
+            return this._rawData.GetNullableClass<string>(
+                "customer_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -81,17 +75,15 @@ public sealed record class UserResponse : JsonModel
     /// <summary>
     /// User email address
     /// </summary>
-    public string? Email
-    {
-        get
-        {
+    public string? Email {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("email");
+            return this._rawData.GetNullableClass<string>(
+                "email"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -102,12 +94,12 @@ public sealed record class UserResponse : JsonModel
     /// <summary>
     /// When the user was invited
     /// </summary>
-    public DateTimeOffset? InvitedAt
-    {
-        get
-        {
+    public DateTimeOffset? InvitedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("invited_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "invited_at"
+            );
         }
         init { this._rawData.Set("invited_at", value); }
     }
@@ -115,12 +107,12 @@ public sealed record class UserResponse : JsonModel
     /// <summary>
     /// When the user last logged in
     /// </summary>
-    public DateTimeOffset? LastLoginAt
-    {
-        get
-        {
+    public DateTimeOffset? LastLoginAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("last_login_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "last_login_at"
+            );
         }
         init { this._rawData.Set("last_login_at", value); }
     }
@@ -128,17 +120,15 @@ public sealed record class UserResponse : JsonModel
     /// <summary>
     /// User full name
     /// </summary>
-    public string? Name
-    {
-        get
-        {
+    public string? Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
+            return this._rawData.GetNullableClass<string>(
+                "name"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -149,17 +139,15 @@ public sealed record class UserResponse : JsonModel
     /// <summary>
     /// User role in the organization: admin, billing, developer
     /// </summary>
-    public string? Role
-    {
-        get
-        {
+    public string? Role {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("role");
+            return this._rawData.GetNullableClass<string>(
+                "role"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -170,17 +158,15 @@ public sealed record class UserResponse : JsonModel
     /// <summary>
     /// User status: active, invited, suspended, rejected
     /// </summary>
-    public string? Status
-    {
-        get
-        {
+    public string? Status {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("status");
+            return this._rawData.GetNullableClass<string>(
+                "status"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -191,12 +177,12 @@ public sealed record class UserResponse : JsonModel
     /// <summary>
     /// When the user record was last updated
     /// </summary>
-    public DateTimeOffset? UpdatedAt
-    {
-        get
-        {
+    public DateTimeOffset? UpdatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("updated_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "updated_at"
+            );
         }
         init { this._rawData.Set("updated_at", value); }
     }
@@ -216,37 +202,36 @@ public sealed record class UserResponse : JsonModel
         _ = this.UpdatedAt;
     }
 
-    public UserResponse() { }
+    public UserResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public UserResponse(UserResponse userResponse)
-        : base(userResponse) { }
-#pragma warning restore CS8618
+    public UserResponse (UserResponse userResponse) : base(userResponse)
+    {  }
+    #pragma warning restore CS8618
 
-    public UserResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public UserResponse (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    UserResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    UserResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="UserResponseFromRaw.FromRawUnchecked"/>
-    public static UserResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static UserResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class UserResponseFromRaw : IFromRawJson<UserResponse>
 {
     /// <inheritdoc/>
-    public UserResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        UserResponse.FromRawUnchecked(rawData);
+    public UserResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>UserResponse.FromRawUnchecked(rawData);
 }

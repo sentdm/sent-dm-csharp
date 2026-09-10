@@ -9,6 +9,8 @@ public class WebhookListEventTypesParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new WebhookListEventTypesParams
         {
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -22,23 +24,34 @@ public class WebhookListEventTypesParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new WebhookListEventTypesParams { };
+
+
+        var parameters = new WebhookListEventTypesParams
+        {
+
+        };
 
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new WebhookListEventTypesParams
         {
+
+
             // Null should be interpreted as omitted for these properties
             XProfileID = null,
         };
 
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
@@ -46,11 +59,14 @@ public class WebhookListEventTypesParamsTest : TestBase
     {
         WebhookListEventTypesParams parameters = new();
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
-
-        Assert.True(
-            TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/webhooks/event-types"), url)
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/webhooks/event-types"), url));
     }
 
     [Fact]
@@ -59,15 +75,18 @@ public class WebhookListEventTypesParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         WebhookListEventTypesParams parameters = new()
         {
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
         };
 
-        parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
-
-        Assert.Equal(
-            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-            requestMessage.Headers.GetValues("x-profile-id")
+        parameters.AddHeadersToRequest(
+            requestMessage,
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"], requestMessage.Headers.GetValues("x-profile-id"));
     }
 
     [Fact]
@@ -75,7 +94,7 @@ public class WebhookListEventTypesParamsTest : TestBase
     {
         var parameters = new WebhookListEventTypesParams
         {
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
         };
 
         WebhookListEventTypesParams copied = new(parameters);

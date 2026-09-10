@@ -8,18 +8,14 @@ namespace System.Runtime.CompilerServices
 {
     // Allow `required` to compile when targeting .NET Standard 2.0.
     [AttributeUsage(
-        AttributeTargets.Class
-            | AttributeTargets.Struct
-            | AttributeTargets.Property
-            | AttributeTargets.Field,
+        AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Property | AttributeTargets.Field,
         AllowMultiple = false,
         Inherited = false
     )]
     internal sealed class RequiredMemberAttribute : Attribute { }
-
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
     internal sealed class CompilerFeatureRequiredAttribute : Attribute
-    {
+    { 
         public CompilerFeatureRequiredAttribute(string feature) { }
     }
 

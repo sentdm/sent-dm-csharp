@@ -15,12 +15,18 @@ public class BrandsBrandDataTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
-            },
-            Contact = new()
+            },Contact = new()
             {
                 Name = "x",
                 BusinessName = "businessName",
@@ -28,8 +34,7 @@ public class BrandsBrandDataTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phoneCountryCode",
                 Role = "role",
-            },
-            Business = new()
+            },Business = new()
             {
                 City = "city",
                 Country = "country",
@@ -49,7 +54,14 @@ public class BrandsBrandDataTest : TestBase
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             Vertical = TcrVertical.Professional,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
+            DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],
             IsTcrApplication = true,
             Notes = "notes",
             PhoneNumberPrefix = "phoneNumberPrefix",
@@ -92,12 +104,18 @@ public class BrandsBrandDataTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
-            },
-            Contact = new()
+            },Contact = new()
             {
                 Name = "x",
                 BusinessName = "businessName",
@@ -105,8 +123,7 @@ public class BrandsBrandDataTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phoneCountryCode",
                 Role = "role",
-            },
-            Business = new()
+            },Business = new()
             {
                 City = "city",
                 Country = "country",
@@ -123,10 +140,7 @@ public class BrandsBrandDataTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BrandsBrandData>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BrandsBrandData>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -140,12 +154,18 @@ public class BrandsBrandDataTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
-            },
-            Contact = new()
+            },Contact = new()
             {
                 Name = "x",
                 BusinessName = "businessName",
@@ -153,8 +173,7 @@ public class BrandsBrandDataTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phoneCountryCode",
                 Role = "role",
-            },
-            Business = new()
+            },Business = new()
             {
                 City = "city",
                 Country = "country",
@@ -171,17 +190,21 @@ public class BrandsBrandDataTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BrandsBrandData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BrandsBrandData>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         BrandComplianceInfo expectedCompliance = new()
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             Vertical = TcrVertical.Professional,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
+            DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],
             IsTcrApplication = true,
             Notes = "notes",
             PhoneNumberPrefix = "phoneNumberPrefix",
@@ -224,12 +247,18 @@ public class BrandsBrandDataTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
-            },
-            Contact = new()
+            },Contact = new()
             {
                 Name = "x",
                 BusinessName = "businessName",
@@ -237,8 +266,7 @@ public class BrandsBrandDataTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phoneCountryCode",
                 Role = "role",
-            },
-            Business = new()
+            },Business = new()
             {
                 City = "city",
                 Country = "country",
@@ -266,12 +294,18 @@ public class BrandsBrandDataTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
-            },
-            Contact = new()
+            },Contact = new()
             {
                 Name = "x",
                 BusinessName = "businessName",
@@ -284,6 +318,7 @@ public class BrandsBrandDataTest : TestBase
 
         Assert.Null(model.Business);
         Assert.False(model.RawData.ContainsKey("business"));
+
     }
 
     [Fact]
@@ -295,12 +330,18 @@ public class BrandsBrandDataTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
-            },
-            Contact = new()
+            },Contact = new()
             {
                 Name = "x",
                 BusinessName = "businessName",
@@ -323,12 +364,18 @@ public class BrandsBrandDataTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
-            },
-            Contact = new()
+            },Contact = new()
             {
                 Name = "x",
                 BusinessName = "businessName",
@@ -343,6 +390,7 @@ public class BrandsBrandDataTest : TestBase
 
         Assert.Null(model.Business);
         Assert.True(model.RawData.ContainsKey("business"));
+
     }
 
     [Fact]
@@ -354,12 +402,18 @@ public class BrandsBrandDataTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
-            },
-            Contact = new()
+            },Contact = new()
             {
                 Name = "x",
                 BusinessName = "businessName",
@@ -384,12 +438,18 @@ public class BrandsBrandDataTest : TestBase
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
                 Vertical = TcrVertical.Professional,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phoneNumberPrefix",
-            },
-            Contact = new()
+            },Contact = new()
             {
                 Name = "x",
                 BusinessName = "businessName",
@@ -397,8 +457,7 @@ public class BrandsBrandDataTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phoneCountryCode",
                 Role = "role",
-            },
-            Business = new()
+            },Business = new()
             {
                 City = "city",
                 Country = "country",

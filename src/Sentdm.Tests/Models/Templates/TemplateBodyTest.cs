@@ -34,8 +34,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Rcs = new()
+            },Rcs = new()
             {
                 Template = "template",
                 Type = "type",
@@ -58,8 +57,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Sms = new()
+            },Sms = new()
             {
                 Template = "template",
                 Type = "type",
@@ -82,8 +80,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Whatsapp = new()
+            },Whatsapp = new()
             {
                 Template = "template",
                 Type = "type",
@@ -240,8 +237,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Rcs = new()
+            },Rcs = new()
             {
                 Template = "template",
                 Type = "type",
@@ -264,8 +260,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Sms = new()
+            },Sms = new()
             {
                 Template = "template",
                 Type = "type",
@@ -288,8 +283,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Whatsapp = new()
+            },Whatsapp = new()
             {
                 Template = "template",
                 Type = "type",
@@ -316,10 +310,7 @@ public class TemplateBodyTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateBody>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateBody>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -352,8 +343,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Rcs = new()
+            },Rcs = new()
             {
                 Template = "template",
                 Type = "type",
@@ -376,8 +366,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Sms = new()
+            },Sms = new()
             {
                 Template = "template",
                 Type = "type",
@@ -400,8 +389,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Whatsapp = new()
+            },Whatsapp = new()
             {
                 Template = "template",
                 Type = "type",
@@ -428,10 +416,7 @@ public class TemplateBodyTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateBody>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateBody>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         TemplateBodyContent expectedMultiChannel = new()
@@ -565,8 +550,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Rcs = new()
+            },Rcs = new()
             {
                 Template = "template",
                 Type = "type",
@@ -589,8 +573,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Sms = new()
+            },Sms = new()
             {
                 Template = "template",
                 Type = "type",
@@ -613,8 +596,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Whatsapp = new()
+            },Whatsapp = new()
             {
                 Template = "template",
                 Type = "type",
@@ -646,22 +628,26 @@ public class TemplateBodyTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new TemplateBody { };
+        var model = new TemplateBody
+        {
+
+        };
 
         Assert.Null(model.MultiChannel);
-        Assert.False(model.RawData.ContainsKey("multiChannel"));
-        Assert.Null(model.Rcs);
-        Assert.False(model.RawData.ContainsKey("rcs"));
-        Assert.Null(model.Sms);
-        Assert.False(model.RawData.ContainsKey("sms"));
-        Assert.Null(model.Whatsapp);
+        Assert.False(model.RawData.ContainsKey("multiChannel"));Assert.Null(model.Rcs);
+        Assert.False(model.RawData.ContainsKey("rcs"));Assert.Null(model.Sms);
+        Assert.False(model.RawData.ContainsKey("sms"));Assert.Null(model.Whatsapp);
         Assert.False(model.RawData.ContainsKey("whatsapp"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new TemplateBody { };
+        var model = new TemplateBody
+        {
+
+        };
 
         model.Validate();
     }
@@ -671,20 +657,17 @@ public class TemplateBodyTest : TestBase
     {
         var model = new TemplateBody
         {
-            MultiChannel = null,
-            Rcs = null,
-            Sms = null,
-            Whatsapp = null,
+
+
+            MultiChannel = null,Rcs = null,Sms = null,Whatsapp = null,
         };
 
         Assert.Null(model.MultiChannel);
-        Assert.True(model.RawData.ContainsKey("multiChannel"));
-        Assert.Null(model.Rcs);
-        Assert.True(model.RawData.ContainsKey("rcs"));
-        Assert.Null(model.Sms);
-        Assert.True(model.RawData.ContainsKey("sms"));
-        Assert.Null(model.Whatsapp);
+        Assert.True(model.RawData.ContainsKey("multiChannel"));Assert.Null(model.Rcs);
+        Assert.True(model.RawData.ContainsKey("rcs"));Assert.Null(model.Sms);
+        Assert.True(model.RawData.ContainsKey("sms"));Assert.Null(model.Whatsapp);
         Assert.True(model.RawData.ContainsKey("whatsapp"));
+
     }
 
     [Fact]
@@ -692,10 +675,9 @@ public class TemplateBodyTest : TestBase
     {
         var model = new TemplateBody
         {
-            MultiChannel = null,
-            Rcs = null,
-            Sms = null,
-            Whatsapp = null,
+
+
+            MultiChannel = null,Rcs = null,Sms = null,Whatsapp = null,
         };
 
         model.Validate();
@@ -729,8 +711,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Rcs = new()
+            },Rcs = new()
             {
                 Template = "template",
                 Type = "type",
@@ -753,8 +734,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Sms = new()
+            },Sms = new()
             {
                 Template = "template",
                 Type = "type",
@@ -777,8 +757,7 @@ public class TemplateBodyTest : TestBase
                         ID = 0,
                     },
                 ],
-            },
-            Whatsapp = new()
+            },Whatsapp = new()
             {
                 Template = "template",
                 Type = "type",

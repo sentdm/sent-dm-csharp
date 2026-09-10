@@ -29,21 +29,24 @@ public class MessageSendResponseTest : TestBase
                 Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         MessageSendResponseData expectedData = new()
@@ -65,7 +68,13 @@ public class MessageSendResponseTest : TestBase
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -103,28 +112,28 @@ public class MessageSendResponseTest : TestBase
                 Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageSendResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageSendResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -149,28 +158,28 @@ public class MessageSendResponseTest : TestBase
                 Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageSendResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageSendResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         MessageSendResponseData expectedData = new()
@@ -192,7 +201,13 @@ public class MessageSendResponseTest : TestBase
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -230,21 +245,24 @@ public class MessageSendResponseTest : TestBase
                 Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -270,20 +288,25 @@ public class MessageSendResponseTest : TestBase
                 Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -306,11 +329,16 @@ public class MessageSendResponseTest : TestBase
                 Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
@@ -339,24 +367,28 @@ public class MessageSendResponseTest : TestBase
                 Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -379,18 +411,22 @@ public class MessageSendResponseTest : TestBase
                 Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         model.Validate();
@@ -406,14 +442,13 @@ public class MessageSendResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Assert.Null(model.Data);
-        Assert.False(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.False(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.False(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -426,8 +461,7 @@ public class MessageSendResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -443,17 +477,15 @@ public class MessageSendResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         Assert.Null(model.Data);
-        Assert.True(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.True(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.True(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -466,11 +498,9 @@ public class MessageSendResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         model.Validate();
@@ -496,21 +526,24 @@ public class MessageSendResponseTest : TestBase
                 Status = "status",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         MessageSendResponse copied = new(model);
@@ -535,10 +568,7 @@ public class MessageSendResponseDataTest : TestBase
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     To = "to",
                 },
-            ],
-            Status = "status",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            ],Status = "status",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         List<Recipient> expectedRecipients =
@@ -580,17 +610,11 @@ public class MessageSendResponseDataTest : TestBase
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     To = "to",
                 },
-            ],
-            Status = "status",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            ],Status = "status",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageSendResponseData>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageSendResponseData>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -609,17 +633,11 @@ public class MessageSendResponseDataTest : TestBase
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     To = "to",
                 },
-            ],
-            Status = "status",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            ],Status = "status",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageSendResponseData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageSendResponseData>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<Recipient> expectedRecipients =
@@ -661,10 +679,7 @@ public class MessageSendResponseDataTest : TestBase
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     To = "to",
                 },
-            ],
-            Status = "status",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            ],Status = "status",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         model.Validate();
@@ -673,22 +688,26 @@ public class MessageSendResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new MessageSendResponseData { };
+        var model = new MessageSendResponseData
+        {
+
+        };
 
         Assert.Null(model.Recipients);
-        Assert.False(model.RawData.ContainsKey("recipients"));
-        Assert.Null(model.Status);
-        Assert.False(model.RawData.ContainsKey("status"));
-        Assert.Null(model.TemplateID);
-        Assert.False(model.RawData.ContainsKey("template_id"));
-        Assert.Null(model.TemplateName);
+        Assert.False(model.RawData.ContainsKey("recipients"));Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("status"));Assert.Null(model.TemplateID);
+        Assert.False(model.RawData.ContainsKey("template_id"));Assert.Null(model.TemplateName);
         Assert.False(model.RawData.ContainsKey("template_name"));
+
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new MessageSendResponseData { };
+        var model = new MessageSendResponseData
+        {
+
+        };
 
         model.Validate();
     }
@@ -698,21 +717,18 @@ public class MessageSendResponseDataTest : TestBase
     {
         var model = new MessageSendResponseData
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Recipients = null,
-            Status = null,
-            TemplateID = null,
-            TemplateName = null,
+            Recipients = null,Status = null,TemplateID = null,TemplateName = null,
         };
 
         Assert.Null(model.Recipients);
-        Assert.False(model.RawData.ContainsKey("recipients"));
-        Assert.Null(model.Status);
-        Assert.False(model.RawData.ContainsKey("status"));
-        Assert.Null(model.TemplateID);
-        Assert.False(model.RawData.ContainsKey("template_id"));
-        Assert.Null(model.TemplateName);
+        Assert.False(model.RawData.ContainsKey("recipients"));Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("status"));Assert.Null(model.TemplateID);
+        Assert.False(model.RawData.ContainsKey("template_id"));Assert.Null(model.TemplateName);
         Assert.False(model.RawData.ContainsKey("template_name"));
+
     }
 
     [Fact]
@@ -720,11 +736,10 @@ public class MessageSendResponseDataTest : TestBase
     {
         var model = new MessageSendResponseData
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Recipients = null,
-            Status = null,
-            TemplateID = null,
-            TemplateName = null,
+            Recipients = null,Status = null,TemplateID = null,TemplateName = null,
         };
 
         model.Validate();
@@ -744,10 +759,7 @@ public class MessageSendResponseDataTest : TestBase
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     To = "to",
                 },
-            ],
-            Status = "status",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            ],Status = "status",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         MessageSendResponseData copied = new(model);
@@ -763,10 +775,7 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
-            Body = "body",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            To = "to",
+            Body = "body",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",To = "to",
         };
 
         string expectedBody = "body";
@@ -785,10 +794,7 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
-            Body = "body",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            To = "to",
+            Body = "body",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",To = "to",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -802,17 +808,11 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
-            Body = "body",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            To = "to",
+            Body = "body",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",To = "to",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Recipient>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Recipient>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedBody = "body";
@@ -831,10 +831,7 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
-            Body = "body",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            To = "to",
+            Body = "body",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",To = "to",
         };
 
         model.Validate();
@@ -843,18 +840,24 @@ public class RecipientTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Recipient { Body = "body", Channel = "channel" };
+        var model = new Recipient
+        {
+            Body = "body",Channel = "channel",
+        };
 
         Assert.Null(model.MessageID);
-        Assert.False(model.RawData.ContainsKey("message_id"));
-        Assert.Null(model.To);
+        Assert.False(model.RawData.ContainsKey("message_id"));Assert.Null(model.To);
         Assert.False(model.RawData.ContainsKey("to"));
+
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Recipient { Body = "body", Channel = "channel" };
+        var model = new Recipient
+        {
+            Body = "body",Channel = "channel",
+        };
 
         model.Validate();
     }
@@ -864,18 +867,16 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
-            Body = "body",
-            Channel = "channel",
+            Body = "body",Channel = "channel",
 
             // Null should be interpreted as omitted for these properties
-            MessageID = null,
-            To = null,
+            MessageID = null,To = null,
         };
 
         Assert.Null(model.MessageID);
-        Assert.False(model.RawData.ContainsKey("message_id"));
-        Assert.Null(model.To);
+        Assert.False(model.RawData.ContainsKey("message_id"));Assert.Null(model.To);
         Assert.False(model.RawData.ContainsKey("to"));
+
     }
 
     [Fact]
@@ -883,12 +884,10 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
-            Body = "body",
-            Channel = "channel",
+            Body = "body",Channel = "channel",
 
             // Null should be interpreted as omitted for these properties
-            MessageID = null,
-            To = null,
+            MessageID = null,To = null,
         };
 
         model.Validate();
@@ -897,18 +896,24 @@ public class RecipientTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Recipient { MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", To = "to" };
+        var model = new Recipient
+        {
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",To = "to",
+        };
 
         Assert.Null(model.Body);
-        Assert.False(model.RawData.ContainsKey("body"));
-        Assert.Null(model.Channel);
+        Assert.False(model.RawData.ContainsKey("body"));Assert.Null(model.Channel);
         Assert.False(model.RawData.ContainsKey("channel"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Recipient { MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", To = "to" };
+        var model = new Recipient
+        {
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",To = "to",
+        };
 
         model.Validate();
     }
@@ -918,17 +923,15 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            To = "to",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",To = "to",
 
-            Body = null,
-            Channel = null,
+            Body = null,Channel = null,
         };
 
         Assert.Null(model.Body);
-        Assert.True(model.RawData.ContainsKey("body"));
-        Assert.Null(model.Channel);
+        Assert.True(model.RawData.ContainsKey("body"));Assert.Null(model.Channel);
         Assert.True(model.RawData.ContainsKey("channel"));
+
     }
 
     [Fact]
@@ -936,11 +939,9 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            To = "to",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",To = "to",
 
-            Body = null,
-            Channel = null,
+            Body = null,Channel = null,
         };
 
         model.Validate();
@@ -951,10 +952,7 @@ public class RecipientTest : TestBase
     {
         var model = new Recipient
         {
-            Body = "body",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            To = "to",
+            Body = "body",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",To = "to",
         };
 
         Recipient copied = new(model);

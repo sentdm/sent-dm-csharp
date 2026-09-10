@@ -11,35 +11,34 @@ namespace Sentdm.Models.Templates;
 [JsonConverter(typeof(JsonModelConverter<TemplateBodyContent, TemplateBodyContentFromRaw>))]
 public sealed record class TemplateBodyContent : JsonModel
 {
-    public required string Template
-    {
-        get
-        {
+    public required string Template {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("template");
+            return this._rawData.GetNotNullClass<string>(
+                "template"
+            );
         }
         init { this._rawData.Set("template", value); }
     }
 
-    public string? Type
-    {
-        get
-        {
+    public string? Type {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("type");
+            return this._rawData.GetNullableClass<string>(
+                "type"
+            );
         }
         init { this._rawData.Set("type", value); }
     }
 
-    public IReadOnlyList<TemplateVariable>? Variables
-    {
-        get
-        {
+    public IReadOnlyList<TemplateVariable>? Variables {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<TemplateVariable>>("variables");
+            return this._rawData.GetNullableStruct<ImmutableArray<TemplateVariable>>(
+                "variables"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<TemplateVariable>?>(
                 "variables",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -58,46 +57,44 @@ public sealed record class TemplateBodyContent : JsonModel
         }
     }
 
-    public TemplateBodyContent() { }
+    public TemplateBodyContent ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateBodyContent(TemplateBodyContent templateBodyContent)
-        : base(templateBodyContent) { }
-#pragma warning restore CS8618
+    public TemplateBodyContent (TemplateBodyContent templateBodyContent) : base(
+        templateBodyContent
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public TemplateBodyContent(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TemplateBodyContent (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateBodyContent(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TemplateBodyContent (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TemplateBodyContentFromRaw.FromRawUnchecked"/>
     public static TemplateBodyContent FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 
     [SetsRequiredMembers]
-    public TemplateBodyContent(string template)
-        : this()
-    {
-        this.Template = template;
-    }
+    public TemplateBodyContent (string template) : this()
+    { this.Template = template; }
 }
 
 class TemplateBodyContentFromRaw : IFromRawJson<TemplateBodyContent>
 {
     /// <inheritdoc/>
-    public TemplateBodyContent FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        TemplateBodyContent.FromRawUnchecked(rawData);
+    public TemplateBodyContent FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>TemplateBodyContent.FromRawUnchecked(rawData);
 }

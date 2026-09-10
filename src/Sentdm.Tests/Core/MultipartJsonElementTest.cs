@@ -93,12 +93,8 @@ public class MultipartJsonElementTest
         BinaryContent content2 = Encoding.UTF8.GetBytes("text");
         BinaryContent content3 = Encoding.UTF8.GetBytes("text");
 
-        MultipartJsonElement a = MultipartJsonSerializer.SerializeToElement(
-            new List<BinaryContent> { content1, content2, content3 }
-        );
-        MultipartJsonElement b = MultipartJsonSerializer.SerializeToElement(
-            new List<BinaryContent> { content1, content2, content3 }
-        );
+        MultipartJsonElement a = MultipartJsonSerializer.SerializeToElement(new List<BinaryContent> { content1, content2, content3 });
+        MultipartJsonElement b = MultipartJsonSerializer.SerializeToElement(new List<BinaryContent> { content1, content2, content3 });
 
         Assert.True(MultipartJsonElement.DeepEquals(a, b));
     }
@@ -110,12 +106,8 @@ public class MultipartJsonElementTest
         BinaryContent content2 = Encoding.UTF8.GetBytes("text");
         BinaryContent content3 = Encoding.UTF8.GetBytes("text");
 
-        MultipartJsonElement a = MultipartJsonSerializer.SerializeToElement(
-            new List<BinaryContent> { content1, content2, content3 }
-        );
-        MultipartJsonElement b = MultipartJsonSerializer.SerializeToElement(
-            new List<BinaryContent> { content1, content2 }
-        );
+        MultipartJsonElement a = MultipartJsonSerializer.SerializeToElement(new List<BinaryContent> { content1, content2, content3 });
+        MultipartJsonElement b = MultipartJsonSerializer.SerializeToElement(new List<BinaryContent> { content1, content2 });
 
         Assert.False(MultipartJsonElement.DeepEquals(a, b));
     }
@@ -127,12 +119,8 @@ public class MultipartJsonElementTest
         BinaryContent content2 = Encoding.UTF8.GetBytes("text");
         BinaryContent content3 = Encoding.UTF8.GetBytes("text");
 
-        MultipartJsonElement a = MultipartJsonSerializer.SerializeToElement(
-            new List<BinaryContent> { content1, content2, content3 }
-        );
-        MultipartJsonElement b = MultipartJsonSerializer.SerializeToElement(
-            new List<BinaryContent> { content1, content3, content2 }
-        );
+        MultipartJsonElement a = MultipartJsonSerializer.SerializeToElement(new List<BinaryContent> { content1, content2, content3 });
+        MultipartJsonElement b = MultipartJsonSerializer.SerializeToElement(new List<BinaryContent> { content1, content3, content2 });
 
         Assert.False(MultipartJsonElement.DeepEquals(a, b));
     }
@@ -142,22 +130,18 @@ public class MultipartJsonElementTest
     {
         BinaryContent content = Encoding.UTF8.GetBytes("text");
 
-        MultipartJsonElement a = MultipartJsonSerializer.SerializeToElement(
-            new Dictionary<string, object>
-            {
-                { "string", "text" },
-                { "number", -5 },
-                { "binary", content },
-            }
-        );
-        MultipartJsonElement b = MultipartJsonSerializer.SerializeToElement(
-            new Dictionary<string, object>
-            {
-                { "string", "text" },
-                { "number", -5 },
-                { "binary", content },
-            }
-        );
+        MultipartJsonElement a = MultipartJsonSerializer.SerializeToElement(new Dictionary<string, object>
+        {
+            { "string", "text" },
+            { "number", -5 },
+            { "binary", content }
+        });
+        MultipartJsonElement b = MultipartJsonSerializer.SerializeToElement(new Dictionary<string, object>
+        {
+            { "string", "text" },
+            { "number", -5 },
+            { "binary", content }
+        });
 
         Assert.True(MultipartJsonElement.DeepEquals(a, b));
     }
@@ -167,23 +151,19 @@ public class MultipartJsonElementTest
     {
         BinaryContent content = Encoding.UTF8.GetBytes("text");
 
-        MultipartJsonElement a = MultipartJsonSerializer.SerializeToElement(
-            new Dictionary<string, object>
-            {
-                { "string", "text" },
-                { "number", -5 },
-                { "binary", content },
-            }
-        );
-        MultipartJsonElement b = MultipartJsonSerializer.SerializeToElement(
-            new Dictionary<string, object>
-            {
-                { "string", "text" },
-                { "number", -5 },
-                { "binary", content },
-                { "extra", "test" },
-            }
-        );
+        MultipartJsonElement a = MultipartJsonSerializer.SerializeToElement(new Dictionary<string, object>
+        {
+            { "string", "text" },
+            { "number", -5 },
+            { "binary", content }
+        });
+        MultipartJsonElement b = MultipartJsonSerializer.SerializeToElement(new Dictionary<string, object>
+        {
+            { "string", "text" },
+            { "number", -5 },
+            { "binary", content },
+            { "extra", "test" }
+        });
 
         Assert.False(MultipartJsonElement.DeepEquals(a, b));
     }
@@ -193,17 +173,17 @@ public class MultipartJsonElementTest
     {
         BinaryContent content = Encoding.UTF8.GetBytes("text");
 
-        MultipartJsonElement a = MultipartJsonSerializer.SerializeToElement(
-            new Dictionary<string, object>
-            {
-                { "string", "text" },
-                { "number", -5 },
-                { "binary", content },
-            }
-        );
-        MultipartJsonElement b = MultipartJsonSerializer.SerializeToElement(
-            new Dictionary<string, object> { { "string", "text" }, { "binary", content } }
-        );
+        MultipartJsonElement a = MultipartJsonSerializer.SerializeToElement(new Dictionary<string, object>
+        {
+            { "string", "text" },
+            { "number", -5 },
+            { "binary", content }
+        });
+        MultipartJsonElement b = MultipartJsonSerializer.SerializeToElement(new Dictionary<string, object>
+        {
+            { "string", "text" },
+            { "binary", content }
+        });
 
         Assert.False(MultipartJsonElement.DeepEquals(a, b));
     }

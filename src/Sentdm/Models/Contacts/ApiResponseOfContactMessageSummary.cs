@@ -11,23 +11,18 @@ namespace Sentdm.Models.Contacts;
 /// <summary>
 /// Standard API response envelope for all v3 endpoints
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        ApiResponseOfContactMessageSummary,
-        ApiResponseOfContactMessageSummaryFromRaw
-    >)
-)]
+[JsonConverter(typeof(JsonModelConverter<ApiResponseOfContactMessageSummary, ApiResponseOfContactMessageSummaryFromRaw>))]
 public sealed record class ApiResponseOfContactMessageSummary : JsonModel
 {
     /// <summary>
     /// The response data (null if error)
     /// </summary>
-    public ContactMessageSummary? Data
-    {
-        get
-        {
+    public ContactMessageSummary? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ContactMessageSummary>("data");
+            return this._rawData.GetNullableClass<ContactMessageSummary>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -35,12 +30,12 @@ public sealed record class ApiResponseOfContactMessageSummary : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
-    {
-        get
-        {
+    public ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -48,17 +43,15 @@ public sealed record class ApiResponseOfContactMessageSummary : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
-    {
-        get
-        {
+    public ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -69,17 +62,15 @@ public sealed record class ApiResponseOfContactMessageSummary : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -96,36 +87,35 @@ public sealed record class ApiResponseOfContactMessageSummary : JsonModel
         _ = this.Success;
     }
 
-    public ApiResponseOfContactMessageSummary() { }
+    public ApiResponseOfContactMessageSummary ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ApiResponseOfContactMessageSummary(
+    public ApiResponseOfContactMessageSummary (
         ApiResponseOfContactMessageSummary apiResponseOfContactMessageSummary
+    ) : base(apiResponseOfContactMessageSummary)
+    {  }
+    #pragma warning restore CS8618
+
+    public ApiResponseOfContactMessageSummary (
+        IReadOnlyDictionary<string, JsonElement> rawData
     )
-        : base(apiResponseOfContactMessageSummary) { }
-#pragma warning restore CS8618
+    { this._rawData = new(rawData); }
 
-    public ApiResponseOfContactMessageSummary(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ApiResponseOfContactMessageSummary(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ApiResponseOfContactMessageSummary (
+        FrozenDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ApiResponseOfContactMessageSummaryFromRaw.FromRawUnchecked"/>
     public static ApiResponseOfContactMessageSummary FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class ApiResponseOfContactMessageSummaryFromRaw : IFromRawJson<ApiResponseOfContactMessageSummary>
@@ -133,5 +123,6 @@ class ApiResponseOfContactMessageSummaryFromRaw : IFromRawJson<ApiResponseOfCont
     /// <inheritdoc/>
     public ApiResponseOfContactMessageSummary FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ApiResponseOfContactMessageSummary.FromRawUnchecked(rawData);
+    )
+    =>ApiResponseOfContactMessageSummary.FromRawUnchecked(rawData);
 }

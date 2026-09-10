@@ -17,12 +17,12 @@ public sealed record class BillingContactInfo : JsonModel
     /// <summary>
     /// Email address where invoices will be sent (required)
     /// </summary>
-    public required string Email
-    {
-        get
-        {
+    public required string Email {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("email");
+            return this._rawData.GetNotNullClass<string>(
+                "email"
+            );
         }
         init { this._rawData.Set("email", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class BillingContactInfo : JsonModel
     /// <summary>
     /// Full name of the billing contact or company (required)
     /// </summary>
-    public required string Name
-    {
-        get
-        {
+    public required string Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("name");
+            return this._rawData.GetNotNullClass<string>(
+                "name"
+            );
         }
         init { this._rawData.Set("name", value); }
     }
@@ -44,12 +44,12 @@ public sealed record class BillingContactInfo : JsonModel
     /// Billing address (optional). Free-form text including street, city, state,
     /// postal code, and country.
     /// </summary>
-    public string? Address
-    {
-        get
-        {
+    public string? Address {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("address");
+            return this._rawData.GetNullableClass<string>(
+                "address"
+            );
         }
         init { this._rawData.Set("address", value); }
     }
@@ -57,12 +57,12 @@ public sealed record class BillingContactInfo : JsonModel
     /// <summary>
     /// Phone number for the billing contact (optional)
     /// </summary>
-    public string? Phone
-    {
-        get
-        {
+    public string? Phone {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phone");
+            return this._rawData.GetNullableClass<string>(
+                "phone"
+            );
         }
         init { this._rawData.Set("phone", value); }
     }
@@ -76,39 +76,38 @@ public sealed record class BillingContactInfo : JsonModel
         _ = this.Phone;
     }
 
-    public BillingContactInfo() { }
+    public BillingContactInfo ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public BillingContactInfo(BillingContactInfo billingContactInfo)
-        : base(billingContactInfo) { }
-#pragma warning restore CS8618
+    public BillingContactInfo (BillingContactInfo billingContactInfo) : base(
+        billingContactInfo
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public BillingContactInfo(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public BillingContactInfo (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    BillingContactInfo(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    BillingContactInfo (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="BillingContactInfoFromRaw.FromRawUnchecked"/>
     public static BillingContactInfo FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class BillingContactInfoFromRaw : IFromRawJson<BillingContactInfo>
 {
     /// <inheritdoc/>
-    public BillingContactInfo FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        BillingContactInfo.FromRawUnchecked(rawData);
+    public BillingContactInfo FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>BillingContactInfo.FromRawUnchecked(rawData);
 }

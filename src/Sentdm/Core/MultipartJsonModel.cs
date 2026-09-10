@@ -12,27 +12,21 @@ public abstract record class MultipartJsonModel : ModelBase
 {
     private protected MultipartJsonDictionary _rawData = new();
 
-    protected MultipartJsonModel(MultipartJsonModel jsonModel)
-        : base(jsonModel)
-    {
-        this._rawData = new(jsonModel._rawData);
-    }
+    protected MultipartJsonModel (MultipartJsonModel jsonModel) : base(
+        jsonModel
+    )
+    { this._rawData = new(jsonModel._rawData); }
 
     /// <summary>
     /// The backing mix of JSON and binary content properties of the instance.
     /// </summary>
-    public IReadOnlyDictionary<string, MultipartJsonElement> RawData
-    {
+    public IReadOnlyDictionary<string, MultipartJsonElement> RawData {
         get { return this._rawData.Freeze(); }
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
-}
-
-/// <summary>
+    { return 0; }
+}/// <summary>
 /// NOTE: Do not inherit from this type outside the SDK unless you're okay with breaking
 /// changes in non-major versions. We may add new methods in the future that cause
 /// existing derived classes to break.
@@ -40,8 +34,8 @@ public abstract record class MultipartJsonModel : ModelBase
 /// <para>NOTE: This interface is in the style of a factory instance instead of using
 /// abstract static methods because .NET Standard 2.0 doesn't support abstract static methods.</para>
 /// </summary>
-interface IFromRawMultipartJson<T>
-{
+interface IFromRawMultipartJson
+<T>{
     /// <summary>
     /// Returns an instance constructed from the given raw JSON properties.
     ///
@@ -52,5 +46,8 @@ interface IFromRawMultipartJson<T>
     /// data or for sending arbitrary data to the API (e.g. for undocumented or not
     /// yet supported properties or values).</para>
     /// </summary>
-    T FromRawUnchecked(IReadOnlyDictionary<string, MultipartJsonElement> rawData);
+    T FromRawUnchecked(
+        IReadOnlyDictionary<string, MultipartJsonElement> rawData
+    )
+    ;
 }

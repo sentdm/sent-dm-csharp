@@ -15,7 +15,7 @@ public abstract record class ParamsBase
 {
     static readonly IReadOnlyDictionary<string, string> defaultHeaders;
 
-    static ParamsBase()
+    static ParamsBase ()
     {
         var runtime = GetRuntime();
         var headers = new Dictionary<string, string>
@@ -27,6 +27,7 @@ public abstract record class ParamsBase
             ["X-Stainless-Package-Version"] = GetPackageVersion(),
             ["X-Stainless-Runtime"] = runtime.Name,
             ["X-Stainless-Runtime-Version"] = runtime.Version,
+
         };
 
         var customHeadersEnv = Environment.GetEnvironmentVariable("SENT_CUSTOM_HEADERS");
@@ -49,38 +50,33 @@ public abstract record class ParamsBase
 
     private protected JsonDictionary _rawHeaderData = new();
 
-    protected ParamsBase(ParamsBase paramsBase)
+    protected ParamsBase (ParamsBase paramsBase)
     {
         this._rawHeaderData = new(paramsBase._rawHeaderData);
         this._rawQueryData = new(paramsBase._rawQueryData);
     }
 
-    public IReadOnlyDictionary<string, JsonElement> RawQueryData
-    {
+    public IReadOnlyDictionary<string, JsonElement> RawQueryData {
         get { return this._rawQueryData.Freeze(); }
     }
 
-    public IReadOnlyDictionary<string, JsonElement> RawHeaderData
-    {
+    public IReadOnlyDictionary<string, JsonElement> RawHeaderData {
         get { return this._rawHeaderData.Freeze(); }
     }
 
-    public abstract Uri Url(ClientOptions options);
+    public abstract Uri Url(ClientOptions options)
+    ;
 
     protected static void AddQueryElementToCollection(
-        NameValueCollection collection,
-        string key,
-        JsonElement element
+        NameValueCollection collection, string key, JsonElement element
     )
     {
         switch (element.ValueKind)
         {
-            case JsonValueKind.Undefined:
-            case JsonValueKind.Null:
+            case JsonValueKind.Undefined:case JsonValueKind.Null:
                 collection.Add(key, "");
                 break;
-            case JsonValueKind.String:
-            case JsonValueKind.Number:
+            case JsonValueKind.String:case JsonValueKind.Number:
                 collection.Add(key, element.ToString());
                 break;
             case JsonValueKind.True:
@@ -92,49 +88,34 @@ public abstract record class ParamsBase
             case JsonValueKind.Object:
                 foreach (var item in element.EnumerateObject())
                 {
-                    AddQueryElementToCollection(
-                        collection,
-                        string.Format("{0}[{1}]", key, item.Name),
-                        item.Value
-                    );
+                    AddQueryElementToCollection(collection, string.Format("{0}[{1}]",
+                    key,
+                    item.Name), item.Value);
                 }
                 break;
             case JsonValueKind.Array:
-                collection.Add(
-                    key,
-                    string.Join(
-                        ",",
-                        Enumerable.Select(
-                            element.EnumerateArray(),
-                            x =>
-                                x.ValueKind switch
-                                {
-                                    JsonValueKind.Null => "",
-                                    JsonValueKind.True => "true",
-                                    JsonValueKind.False => "false",
-                                    _ => x.GetString(),
-                                }
-                        )
-                    )
-                );
+                collection.Add(key, string.Join(",", Enumerable.Select(element.EnumerateArray(), x => x.ValueKind switch
+                {
+                    JsonValueKind.Null=>"",
+                    JsonValueKind.True=>"true",
+                    JsonValueKind.False=>"false",
+                    _ =>x.GetString()
+                })));
                 break;
+
         }
     }
 
     protected static void AddHeaderElementToRequest(
-        HttpRequestMessage request,
-        string key,
-        JsonElement element
+        HttpRequestMessage request, string key, JsonElement element
     )
     {
         switch (element.ValueKind)
         {
-            case JsonValueKind.Undefined:
-            case JsonValueKind.Null:
+            case JsonValueKind.Undefined:case JsonValueKind.Null:
                 request.Headers.Add(key, "");
                 break;
-            case JsonValueKind.String:
-            case JsonValueKind.Number:
+            case JsonValueKind.String:case JsonValueKind.Number:
                 request.Headers.Add(key, element.ToString());
                 break;
             case JsonValueKind.True:
@@ -146,28 +127,24 @@ public abstract record class ParamsBase
             case JsonValueKind.Object:
                 foreach (var item in element.EnumerateObject())
                 {
-                    AddHeaderElementToRequest(
-                        request,
-                        string.Format("{0}.{1}", key, item.Name),
-                        item.Value
-                    );
+                    AddHeaderElementToRequest(request, string.Format("{0}.{1}",
+                    key,
+                    item.Name), item.Value);
                 }
                 break;
             case JsonValueKind.Array:
                 foreach (var item in element.EnumerateArray())
                 {
-                    request.Headers.Add(
-                        key,
-                        item.ValueKind switch
-                        {
-                            JsonValueKind.Null => "",
-                            JsonValueKind.True => "true",
-                            JsonValueKind.False => "false",
-                            _ => item.GetString(),
-                        }
-                    );
+                    request.Headers.Add(key, item.ValueKind switch
+                    {
+                        JsonValueKind.Null=>"",
+                        JsonValueKind.True=>"true",
+                        JsonValueKind.False=>"false",
+                        _ =>item.GetString()
+                    });
                 }
                 break;
+
         }
     }
 
@@ -184,27 +161,27 @@ public abstract record class ParamsBase
         {
             foreach (var value in collection.GetValues(key) ?? [])
             {
-                if (!first)
-                {
-                    sb.Append('&');
-                }
+                if (!first) { sb.Append('&'); }
                 first = false;
                 sb.Append(HttpUtility.UrlEncode(key));
                 sb.Append('=');
                 sb.Append(HttpUtility.UrlEncode(value));
             }
         }
-        return sb.ToString();
+        return sb.ToString() ;
     }
 
-    internal abstract void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options);
+    internal abstract void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
+    ;
 
     internal virtual HttpContent? BodyContent()
-    {
-        return null;
-    }
+    { return null; }
 
-    internal static void AddDefaultHeaders(HttpRequestMessage request, ClientOptions options)
+    internal static void AddDefaultHeaders(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         foreach (var header in defaultHeaders)
         {
@@ -212,40 +189,39 @@ public abstract record class ParamsBase
         }
 
         if (options.ApiKey != null)
-        {
-            request.Headers.Add("x-api-key", options.ApiKey);
-        }
+        { request.Headers.Add("x-api-key", options.ApiKey); }
         request.Headers.Add(
             "X-Stainless-Timeout",
             (options.Timeout ?? ClientOptions.DefaultTimeout).TotalSeconds.ToString()
         );
     }
 
-    static string GetUserAgent() => $"{typeof(SentClient).Name}/C# {GetPackageVersion()}";
+    static string GetUserAgent()
+    =>$"{typeof(SentClient).Name}/C# {GetPackageVersion()}";
 
-    static string GetPackageVersion() =>
-        Assembly
-            .GetExecutingAssembly()
-            .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
-            ?.InformationalVersion
-        ?? "unknown";
+    static string GetPackageVersion()
+    =>Assembly
+          .GetExecutingAssembly()
+          .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+          ?.InformationalVersion
+      ?? "unknown";
 
-    static string GetOSArch() =>
-        RuntimeInformation.OSArchitecture switch
-        {
-            Architecture.X86 => "x32",
-            Architecture.X64 => "x64",
-            Architecture.Arm => "arm",
-            Architecture.Arm64 => "arm64",
-#if !NETSTANDARD2_0
-            Architecture.Armv6 => "arm64",
-            Architecture.Wasm
-            or Architecture.S390x
-            or Architecture.LoongArch64
-            or Architecture.Ppc64le => $"other:{RuntimeInformation.OSArchitecture}",
-#endif
-            _ => "unknown",
-        };
+    static string GetOSArch()
+    =>RuntimeInformation.OSArchitecture switch
+    {
+        Architecture.X86 => "x32",
+        Architecture.X64 => "x64",
+        Architecture.Arm => "arm",
+        Architecture.Arm64 => "arm64",
+        #if !NETSTANDARD2_0
+        Architecture.Armv6 => "arm64",
+        Architecture.Wasm
+        or Architecture.S390x
+        or Architecture.LoongArch64
+        or Architecture.Ppc64le => $"other:{RuntimeInformation.OSArchitecture}",
+        #endif
+        _ => "unknown",
+    };
 
     static string GetOS()
     {
@@ -268,8 +244,7 @@ public abstract record class ParamsBase
     {
         var runtimeDescription = RuntimeInformation.FrameworkDescription;
         var lastSpaceIndex = runtimeDescription.LastIndexOf(' ');
-        if (lastSpaceIndex == -1)
-        {
+        if (lastSpaceIndex == -1) {
             return new() { Name = runtimeDescription, Version = "unknown" };
         }
 

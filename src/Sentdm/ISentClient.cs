@@ -19,8 +19,8 @@ namespace Sentdm;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
-public interface ISentClient : IDisposable
-{
+public interface ISentClient
+: IDisposable{
     /// <inheritdoc cref="ClientOptions.HttpClient" />
     HttpClient HttpClient { get; init; }
 
@@ -53,7 +53,8 @@ public interface ISentClient : IDisposable
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    ISentClient WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ISentClient WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     IWebhookService Webhooks { get; }
 
@@ -77,8 +78,8 @@ public interface ISentClient : IDisposable
 /// <summary>
 /// A view of <see cref="ISentClient"/> that provides access to raw HTTP responses for each method.
 /// </summary>
-public interface ISentClientWithRawResponse : IDisposable
-{
+public interface ISentClientWithRawResponse
+: IDisposable{
     /// <inheritdoc cref="ClientOptions.HttpClient" />
     HttpClient HttpClient { get; init; }
 
@@ -105,7 +106,10 @@ public interface ISentClientWithRawResponse : IDisposable
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    ISentClientWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ISentClientWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     IWebhookServiceWithRawResponse Webhooks { get; }
 
@@ -128,9 +132,9 @@ public interface ISentClientWithRawResponse : IDisposable
     /// <summary>
     /// Sends a request to the Sent REST API.
     /// </summary>
-    Task<HttpResponse> Execute<T>(
-        HttpRequest<T> request,
-        CancellationToken cancellationToken = default
-    )
-        where T : ParamsBase;
+    Task<HttpResponse> Execute<T>
+    (
+        HttpRequest<T> request, CancellationToken cancellationToken = default
+    ) where T: ParamsBase
+    ;
 }

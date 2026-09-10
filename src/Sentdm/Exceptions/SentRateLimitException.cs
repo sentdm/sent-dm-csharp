@@ -4,6 +4,8 @@ namespace Sentdm.Exceptions;
 
 public class SentRateLimitException : Sent4xxException
 {
-    public SentRateLimitException(HttpRequestException? innerException = null)
-        : base(innerException) { }
+    public SentRateLimitException (
+        HttpRequestException? innerException = null
+    ) : base(innerException)
+    {  }
 }

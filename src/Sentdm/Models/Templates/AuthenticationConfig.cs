@@ -17,17 +17,15 @@ public sealed record class AuthenticationConfig : JsonModel
     /// Whether to add the security recommendation text: "For your security, do not
     /// share this code."
     /// </summary>
-    public bool? AddSecurityRecommendation
-    {
-        get
-        {
+    public bool? AddSecurityRecommendation {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("addSecurityRecommendation");
+            return this._rawData.GetNullableStruct<bool>(
+                "addSecurityRecommendation"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -39,12 +37,12 @@ public sealed record class AuthenticationConfig : JsonModel
     /// Code expiration time in minutes (1-90). If set, adds footer: "This code expires
     /// in X minutes."
     /// </summary>
-    public int? CodeExpirationMinutes
-    {
-        get
-        {
+    public int? CodeExpirationMinutes {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("codeExpirationMinutes");
+            return this._rawData.GetNullableStruct<int>(
+                "codeExpirationMinutes"
+            );
         }
         init { this._rawData.Set("codeExpirationMinutes", value); }
     }
@@ -56,34 +54,33 @@ public sealed record class AuthenticationConfig : JsonModel
         _ = this.CodeExpirationMinutes;
     }
 
-    public AuthenticationConfig() { }
+    public AuthenticationConfig ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public AuthenticationConfig(AuthenticationConfig authenticationConfig)
-        : base(authenticationConfig) { }
-#pragma warning restore CS8618
+    public AuthenticationConfig (
+        AuthenticationConfig authenticationConfig
+    ) : base(authenticationConfig)
+    {  }
+    #pragma warning restore CS8618
 
-    public AuthenticationConfig(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public AuthenticationConfig (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    AuthenticationConfig(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    AuthenticationConfig (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="AuthenticationConfigFromRaw.FromRawUnchecked"/>
     public static AuthenticationConfig FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class AuthenticationConfigFromRaw : IFromRawJson<AuthenticationConfig>
@@ -91,5 +88,6 @@ class AuthenticationConfigFromRaw : IFromRawJson<AuthenticationConfig>
     /// <inheritdoc/>
     public AuthenticationConfig FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => AuthenticationConfig.FromRawUnchecked(rawData);
+    )
+    =>AuthenticationConfig.FromRawUnchecked(rawData);
 }

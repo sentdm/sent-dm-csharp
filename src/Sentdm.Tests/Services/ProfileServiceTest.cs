@@ -7,63 +7,48 @@ public class ProfileServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var apiResponseOfProfileDetail = await this.client.Profiles.Create(
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        var apiResponseOfProfileDetail = await this.client.Profiles.Create(new(), TestContext.Current.CancellationToken);
         apiResponseOfProfileDetail.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var apiResponseOfProfileDetail = await this.client.Profiles.Retrieve(
-            "770e8400-e29b-41d4-a716-446655440002",
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        var apiResponseOfProfileDetail = await this.client.Profiles.Retrieve("770e8400-e29b-41d4-a716-446655440002",
+        new(), TestContext.Current.CancellationToken);
         apiResponseOfProfileDetail.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var apiResponseOfProfileDetail = await this.client.Profiles.Update(
-            "770e8400-e29b-41d4-a716-446655440002",
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        var apiResponseOfProfileDetail = await this.client.Profiles.Update("770e8400-e29b-41d4-a716-446655440002",
+        new(), TestContext.Current.CancellationToken);
         apiResponseOfProfileDetail.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
-        var profiles = await this.client.Profiles.List(
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        var profiles = await this.client.Profiles.List(new(), TestContext.Current.CancellationToken);
         profiles.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
-        await this.client.Profiles.Delete(
-            "770e8400-e29b-41d4-a716-446655440002",
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        await this.client.Profiles.Delete("770e8400-e29b-41d4-a716-446655440002",
+        new(), TestContext.Current.CancellationToken);
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Complete_Works()
     {
-        var response = await this.client.Profiles.Complete(
-            "660e8400-e29b-41d4-a716-446655440000",
-            new() { WebHookUrl = "https://your-app.com/webhook/profile-complete" },
-            TestContext.Current.CancellationToken
-        );
+        var response = await this.client.Profiles.Complete("660e8400-e29b-41d4-a716-446655440000",
+        new()
+        {
+            WebHookUrl = "https://your-app.com/webhook/profile-complete"
+        }, TestContext.Current.CancellationToken);
         response.Validate();
     }
 }

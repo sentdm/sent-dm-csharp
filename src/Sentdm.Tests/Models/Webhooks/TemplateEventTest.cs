@@ -11,9 +11,7 @@ public class TemplateEventTest : TestBase
     {
         var model = new TemplateEvent
         {
-            Event = "event",
-            Field = "field",
-            Payload = new()
+            Event = "event",Field = "field",Payload = new()
             {
                 Status = "status",
                 WhatsappTemplateID = "whatsapp_template_id",
@@ -24,8 +22,7 @@ public class TemplateEventTest : TestBase
                 Reason = "reason",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Timestamp = "timestamp",
+            },Timestamp = "timestamp",
         };
 
         string expectedEvent = "event";
@@ -55,9 +52,7 @@ public class TemplateEventTest : TestBase
     {
         var model = new TemplateEvent
         {
-            Event = "event",
-            Field = "field",
-            Payload = new()
+            Event = "event",Field = "field",Payload = new()
             {
                 Status = "status",
                 WhatsappTemplateID = "whatsapp_template_id",
@@ -68,15 +63,11 @@ public class TemplateEventTest : TestBase
                 Reason = "reason",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Timestamp = "timestamp",
+            },Timestamp = "timestamp",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateEvent>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateEvent>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -86,9 +77,7 @@ public class TemplateEventTest : TestBase
     {
         var model = new TemplateEvent
         {
-            Event = "event",
-            Field = "field",
-            Payload = new()
+            Event = "event",Field = "field",Payload = new()
             {
                 Status = "status",
                 WhatsappTemplateID = "whatsapp_template_id",
@@ -99,15 +88,11 @@ public class TemplateEventTest : TestBase
                 Reason = "reason",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Timestamp = "timestamp",
+            },Timestamp = "timestamp",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateEvent>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TemplateEvent>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedEvent = "event";
@@ -137,9 +122,7 @@ public class TemplateEventTest : TestBase
     {
         var model = new TemplateEvent
         {
-            Event = "event",
-            Field = "field",
-            Payload = new()
+            Event = "event",Field = "field",Payload = new()
             {
                 Status = "status",
                 WhatsappTemplateID = "whatsapp_template_id",
@@ -150,8 +133,7 @@ public class TemplateEventTest : TestBase
                 Reason = "reason",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Timestamp = "timestamp",
+            },Timestamp = "timestamp",
         };
 
         model.Validate();
@@ -162,8 +144,7 @@ public class TemplateEventTest : TestBase
     {
         var model = new TemplateEvent
         {
-            Event = "event",
-            Payload = new()
+            Event = "event",Payload = new()
             {
                 Status = "status",
                 WhatsappTemplateID = "whatsapp_template_id",
@@ -178,9 +159,9 @@ public class TemplateEventTest : TestBase
         };
 
         Assert.Null(model.Field);
-        Assert.False(model.RawData.ContainsKey("field"));
-        Assert.Null(model.Timestamp);
+        Assert.False(model.RawData.ContainsKey("field"));Assert.Null(model.Timestamp);
         Assert.False(model.RawData.ContainsKey("timestamp"));
+
     }
 
     [Fact]
@@ -188,8 +169,7 @@ public class TemplateEventTest : TestBase
     {
         var model = new TemplateEvent
         {
-            Event = "event",
-            Payload = new()
+            Event = "event",Payload = new()
             {
                 Status = "status",
                 WhatsappTemplateID = "whatsapp_template_id",
@@ -211,8 +191,7 @@ public class TemplateEventTest : TestBase
     {
         var model = new TemplateEvent
         {
-            Event = "event",
-            Payload = new()
+            Event = "event",Payload = new()
             {
                 Status = "status",
                 WhatsappTemplateID = "whatsapp_template_id",
@@ -226,14 +205,13 @@ public class TemplateEventTest : TestBase
             },
 
             // Null should be interpreted as omitted for these properties
-            Field = null,
-            Timestamp = null,
+            Field = null,Timestamp = null,
         };
 
         Assert.Null(model.Field);
-        Assert.False(model.RawData.ContainsKey("field"));
-        Assert.Null(model.Timestamp);
+        Assert.False(model.RawData.ContainsKey("field"));Assert.Null(model.Timestamp);
         Assert.False(model.RawData.ContainsKey("timestamp"));
+
     }
 
     [Fact]
@@ -241,8 +219,7 @@ public class TemplateEventTest : TestBase
     {
         var model = new TemplateEvent
         {
-            Event = "event",
-            Payload = new()
+            Event = "event",Payload = new()
             {
                 Status = "status",
                 WhatsappTemplateID = "whatsapp_template_id",
@@ -256,8 +233,7 @@ public class TemplateEventTest : TestBase
             },
 
             // Null should be interpreted as omitted for these properties
-            Field = null,
-            Timestamp = null,
+            Field = null,Timestamp = null,
         };
 
         model.Validate();
@@ -266,18 +242,24 @@ public class TemplateEventTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new TemplateEvent { Field = "field", Timestamp = "timestamp" };
+        var model = new TemplateEvent
+        {
+            Field = "field",Timestamp = "timestamp",
+        };
 
         Assert.Null(model.Event);
-        Assert.False(model.RawData.ContainsKey("event"));
-        Assert.Null(model.Payload);
+        Assert.False(model.RawData.ContainsKey("event"));Assert.Null(model.Payload);
         Assert.False(model.RawData.ContainsKey("payload"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new TemplateEvent { Field = "field", Timestamp = "timestamp" };
+        var model = new TemplateEvent
+        {
+            Field = "field",Timestamp = "timestamp",
+        };
 
         model.Validate();
     }
@@ -287,17 +269,15 @@ public class TemplateEventTest : TestBase
     {
         var model = new TemplateEvent
         {
-            Field = "field",
-            Timestamp = "timestamp",
+            Field = "field",Timestamp = "timestamp",
 
-            Event = null,
-            Payload = null,
+            Event = null,Payload = null,
         };
 
         Assert.Null(model.Event);
-        Assert.True(model.RawData.ContainsKey("event"));
-        Assert.Null(model.Payload);
+        Assert.True(model.RawData.ContainsKey("event"));Assert.Null(model.Payload);
         Assert.True(model.RawData.ContainsKey("payload"));
+
     }
 
     [Fact]
@@ -305,11 +285,9 @@ public class TemplateEventTest : TestBase
     {
         var model = new TemplateEvent
         {
-            Field = "field",
-            Timestamp = "timestamp",
+            Field = "field",Timestamp = "timestamp",
 
-            Event = null,
-            Payload = null,
+            Event = null,Payload = null,
         };
 
         model.Validate();
@@ -320,9 +298,7 @@ public class TemplateEventTest : TestBase
     {
         var model = new TemplateEvent
         {
-            Event = "event",
-            Field = "field",
-            Payload = new()
+            Event = "event",Field = "field",Payload = new()
             {
                 Status = "status",
                 WhatsappTemplateID = "whatsapp_template_id",
@@ -333,8 +309,7 @@ public class TemplateEventTest : TestBase
                 Reason = "reason",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Timestamp = "timestamp",
+            },Timestamp = "timestamp",
         };
 
         TemplateEvent copied = new(model);

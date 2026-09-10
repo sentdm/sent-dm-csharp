@@ -12,13 +12,17 @@ public class CampaignUseCaseDataTest : TestBase
     {
         var model = new CampaignUseCaseData
         {
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
+            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],
         };
 
-        ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs =
-            MessagingUseCaseUs.Marketing;
-        List<string> expectedSampleMessages = ["string"];
+        ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs = MessagingUseCaseUs.Marketing;
+        List<string> expectedSampleMessages =
+        [
+            "string"
+        ];
 
         Assert.Equal(expectedMessagingUseCaseUs, model.MessagingUseCaseUs);
         Assert.Equal(expectedSampleMessages.Count, model.SampleMessages.Count);
@@ -33,15 +37,14 @@ public class CampaignUseCaseDataTest : TestBase
     {
         var model = new CampaignUseCaseData
         {
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
+            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CampaignUseCaseData>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<CampaignUseCaseData>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -51,20 +54,21 @@ public class CampaignUseCaseDataTest : TestBase
     {
         var model = new CampaignUseCaseData
         {
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
+            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CampaignUseCaseData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<CampaignUseCaseData>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs =
-            MessagingUseCaseUs.Marketing;
-        List<string> expectedSampleMessages = ["string"];
+        ApiEnum<string, MessagingUseCaseUs> expectedMessagingUseCaseUs = MessagingUseCaseUs.Marketing;
+        List<string> expectedSampleMessages =
+        [
+            "string"
+        ];
 
         Assert.Equal(expectedMessagingUseCaseUs, deserialized.MessagingUseCaseUs);
         Assert.Equal(expectedSampleMessages.Count, deserialized.SampleMessages.Count);
@@ -79,8 +83,10 @@ public class CampaignUseCaseDataTest : TestBase
     {
         var model = new CampaignUseCaseData
         {
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
+            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],
         };
 
         model.Validate();
@@ -91,8 +97,10 @@ public class CampaignUseCaseDataTest : TestBase
     {
         var model = new CampaignUseCaseData
         {
-            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,
-            SampleMessages = ["string"],
+            MessagingUseCaseUs = MessagingUseCaseUs.Marketing,SampleMessages =
+            [
+                "string"
+            ],
         };
 
         CampaignUseCaseData copied = new(model);

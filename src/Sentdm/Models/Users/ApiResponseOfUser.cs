@@ -17,12 +17,12 @@ public sealed record class ApiResponseOfUser : JsonModel
     /// <summary>
     /// User response for v3 API
     /// </summary>
-    public UserResponse? Data
-    {
-        get
-        {
+    public UserResponse? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<UserResponse>("data");
+            return this._rawData.GetNullableClass<UserResponse>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class ApiResponseOfUser : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
-    {
-        get
-        {
+    public ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -43,17 +43,15 @@ public sealed record class ApiResponseOfUser : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
-    {
-        get
-        {
+    public ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -64,17 +62,15 @@ public sealed record class ApiResponseOfUser : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -91,39 +87,38 @@ public sealed record class ApiResponseOfUser : JsonModel
         _ = this.Success;
     }
 
-    public ApiResponseOfUser() { }
+    public ApiResponseOfUser ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ApiResponseOfUser(ApiResponseOfUser apiResponseOfUser)
-        : base(apiResponseOfUser) { }
-#pragma warning restore CS8618
+    public ApiResponseOfUser (ApiResponseOfUser apiResponseOfUser) : base(
+        apiResponseOfUser
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public ApiResponseOfUser(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public ApiResponseOfUser (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ApiResponseOfUser(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ApiResponseOfUser (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ApiResponseOfUserFromRaw.FromRawUnchecked"/>
     public static ApiResponseOfUser FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class ApiResponseOfUserFromRaw : IFromRawJson<ApiResponseOfUser>
 {
     /// <inheritdoc/>
-    public ApiResponseOfUser FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        ApiResponseOfUser.FromRawUnchecked(rawData);
+    public ApiResponseOfUser FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>ApiResponseOfUser.FromRawUnchecked(rawData);
 }

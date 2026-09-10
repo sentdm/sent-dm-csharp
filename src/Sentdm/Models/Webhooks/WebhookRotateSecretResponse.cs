@@ -10,20 +10,18 @@ namespace Sentdm.Models.Webhooks;
 /// <summary>
 /// Standard API response envelope for all v3 endpoints
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<WebhookRotateSecretResponse, WebhookRotateSecretResponseFromRaw>)
-)]
+[JsonConverter(typeof(JsonModelConverter<WebhookRotateSecretResponse, WebhookRotateSecretResponseFromRaw>))]
 public sealed record class WebhookRotateSecretResponse : JsonModel
 {
     /// <summary>
     /// The response data (null if error)
     /// </summary>
-    public WebhookRotateSecretResponseData? Data
-    {
-        get
-        {
+    public WebhookRotateSecretResponseData? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<WebhookRotateSecretResponseData>("data");
+            return this._rawData.GetNullableClass<WebhookRotateSecretResponseData>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -31,12 +29,12 @@ public sealed record class WebhookRotateSecretResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
-    {
-        get
-        {
+    public ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -44,17 +42,15 @@ public sealed record class WebhookRotateSecretResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
-    {
-        get
-        {
+    public ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -65,17 +61,15 @@ public sealed record class WebhookRotateSecretResponse : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -92,34 +86,33 @@ public sealed record class WebhookRotateSecretResponse : JsonModel
         _ = this.Success;
     }
 
-    public WebhookRotateSecretResponse() { }
+    public WebhookRotateSecretResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WebhookRotateSecretResponse(WebhookRotateSecretResponse webhookRotateSecretResponse)
-        : base(webhookRotateSecretResponse) { }
-#pragma warning restore CS8618
+    public WebhookRotateSecretResponse (
+        WebhookRotateSecretResponse webhookRotateSecretResponse
+    ) : base(webhookRotateSecretResponse)
+    {  }
+    #pragma warning restore CS8618
 
-    public WebhookRotateSecretResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public WebhookRotateSecretResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WebhookRotateSecretResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    WebhookRotateSecretResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="WebhookRotateSecretResponseFromRaw.FromRawUnchecked"/>
     public static WebhookRotateSecretResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class WebhookRotateSecretResponseFromRaw : IFromRawJson<WebhookRotateSecretResponse>
@@ -127,31 +120,25 @@ class WebhookRotateSecretResponseFromRaw : IFromRawJson<WebhookRotateSecretRespo
     /// <inheritdoc/>
     public WebhookRotateSecretResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => WebhookRotateSecretResponse.FromRawUnchecked(rawData);
+    )
+    =>WebhookRotateSecretResponse.FromRawUnchecked(rawData);
 }
 
 /// <summary>
 /// The response data (null if error)
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        WebhookRotateSecretResponseData,
-        WebhookRotateSecretResponseDataFromRaw
-    >)
-)]
+[JsonConverter(typeof(JsonModelConverter<WebhookRotateSecretResponseData, WebhookRotateSecretResponseDataFromRaw>))]
 public sealed record class WebhookRotateSecretResponseData : JsonModel
 {
-    public string? SigningSecret
-    {
-        get
-        {
+    public string? SigningSecret {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("signing_secret");
+            return this._rawData.GetNullableClass<string>(
+                "signing_secret"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -161,46 +148,42 @@ public sealed record class WebhookRotateSecretResponseData : JsonModel
 
     /// <inheritdoc/>
     public override void Validate()
-    {
-        _ = this.SigningSecret;
-    }
+    { _ = this.SigningSecret; }
 
-    public WebhookRotateSecretResponseData() { }
+    public WebhookRotateSecretResponseData ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WebhookRotateSecretResponseData(
+    public WebhookRotateSecretResponseData (
         WebhookRotateSecretResponseData webhookRotateSecretResponseData
+    ) : base(webhookRotateSecretResponseData)
+    {  }
+    #pragma warning restore CS8618
+
+    public WebhookRotateSecretResponseData (
+        IReadOnlyDictionary<string, JsonElement> rawData
     )
-        : base(webhookRotateSecretResponseData) { }
-#pragma warning restore CS8618
+    { this._rawData = new(rawData); }
 
-    public WebhookRotateSecretResponseData(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WebhookRotateSecretResponseData(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    WebhookRotateSecretResponseData (
+        FrozenDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="WebhookRotateSecretResponseDataFromRaw.FromRawUnchecked"/>
     public static WebhookRotateSecretResponseData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class WebhookRotateSecretResponseDataFromRaw : IFromRawJson<WebhookRotateSecretResponseData>
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
+}class WebhookRotateSecretResponseDataFromRaw : IFromRawJson<WebhookRotateSecretResponseData>
 {
     /// <inheritdoc/>
     public WebhookRotateSecretResponseData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => WebhookRotateSecretResponseData.FromRawUnchecked(rawData);
+    )
+    =>WebhookRotateSecretResponseData.FromRawUnchecked(rawData);
 }

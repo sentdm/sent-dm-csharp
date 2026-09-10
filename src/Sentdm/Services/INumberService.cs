@@ -31,24 +31,25 @@ public interface INumberService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    INumberService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    INumberService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Retrieves detailed information about a phone number including carrier, line
-    /// type, porting status, and VoIP detection. Uses the customer's messaging provider
-    /// for rich data, with fallback to the internal index.
-    /// </summary>
+/// Retrieves detailed information about a phone number including carrier, line
+/// type, porting status, and VoIP detection. Uses the customer's messaging provider
+/// for rich data, with fallback to the internal index.
+/// </summary>
     Task<NumberLookupResponse> Lookup(
         NumberLookupParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Lookup(NumberLookupParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Lookup(NumberLookupParams, CancellationToken)"/>
     Task<NumberLookupResponse> Lookup(
         string phoneNumber,
         NumberLookupParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -62,21 +63,24 @@ public interface INumberServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    INumberServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    INumberServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /v3/numbers/lookup/{phoneNumber}</c>, but is otherwise the
-    /// same as <see cref="INumberService.Lookup(NumberLookupParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /v3/numbers/lookup/{phoneNumber}</c>, but is otherwise the
+/// same as <see cref="INumberService.Lookup(NumberLookupParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<NumberLookupResponse>> Lookup(
         NumberLookupParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Lookup(NumberLookupParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Lookup(NumberLookupParams, CancellationToken)"/>
     Task<HttpResponse<NumberLookupResponse>> Lookup(
         string phoneNumber,
         NumberLookupParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

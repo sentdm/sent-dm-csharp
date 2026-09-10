@@ -11,10 +11,7 @@ public class PaymentDetailsTest : TestBase
     {
         var model = new PaymentDetails
         {
-            CardNumber = "3216699102256101",
-            Cvc = "3216",
-            Expiry = "11/66",
-            ZipCode = "x",
+            CardNumber = "3216699102256101",Cvc = "3216",Expiry = "11/66",ZipCode = "x",
         };
 
         string expectedCardNumber = "3216699102256101";
@@ -33,17 +30,11 @@ public class PaymentDetailsTest : TestBase
     {
         var model = new PaymentDetails
         {
-            CardNumber = "3216699102256101",
-            Cvc = "3216",
-            Expiry = "11/66",
-            ZipCode = "x",
+            CardNumber = "3216699102256101",Cvc = "3216",Expiry = "11/66",ZipCode = "x",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PaymentDetails>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<PaymentDetails>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -53,17 +44,11 @@ public class PaymentDetailsTest : TestBase
     {
         var model = new PaymentDetails
         {
-            CardNumber = "3216699102256101",
-            Cvc = "3216",
-            Expiry = "11/66",
-            ZipCode = "x",
+            CardNumber = "3216699102256101",Cvc = "3216",Expiry = "11/66",ZipCode = "x",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PaymentDetails>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<PaymentDetails>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedCardNumber = "3216699102256101";
@@ -82,10 +67,7 @@ public class PaymentDetailsTest : TestBase
     {
         var model = new PaymentDetails
         {
-            CardNumber = "3216699102256101",
-            Cvc = "3216",
-            Expiry = "11/66",
-            ZipCode = "x",
+            CardNumber = "3216699102256101",Cvc = "3216",Expiry = "11/66",ZipCode = "x",
         };
 
         model.Validate();
@@ -96,10 +78,7 @@ public class PaymentDetailsTest : TestBase
     {
         var model = new PaymentDetails
         {
-            CardNumber = "3216699102256101",
-            Cvc = "3216",
-            Expiry = "11/66",
-            ZipCode = "x",
+            CardNumber = "3216699102256101",Cvc = "3216",Expiry = "11/66",ZipCode = "x",
         };
 
         PaymentDetails copied = new(model);

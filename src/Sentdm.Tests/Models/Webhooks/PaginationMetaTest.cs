@@ -11,15 +11,18 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            Cursors = new() { After = "after", Before = "before" },
-            HasMore = true,
-            Page = 0,
-            PageSize = 0,
-            TotalCount = 0,
-            TotalPages = 0,
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },HasMore = true,Page = 0,PageSize = 0,TotalCount = 0,TotalPages = 0,
         };
 
-        Cursors expectedCursors = new() { After = "after", Before = "before" };
+        Cursors expectedCursors = new()
+        {
+            After = "after",
+            Before = "before",
+        };
         bool expectedHasMore = true;
         int expectedPage = 0;
         int expectedPageSize = 0;
@@ -39,19 +42,15 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            Cursors = new() { After = "after", Before = "before" },
-            HasMore = true,
-            Page = 0,
-            PageSize = 0,
-            TotalCount = 0,
-            TotalPages = 0,
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },HasMore = true,Page = 0,PageSize = 0,TotalCount = 0,TotalPages = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PaginationMeta>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<PaginationMeta>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -61,22 +60,22 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            Cursors = new() { After = "after", Before = "before" },
-            HasMore = true,
-            Page = 0,
-            PageSize = 0,
-            TotalCount = 0,
-            TotalPages = 0,
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },HasMore = true,Page = 0,PageSize = 0,TotalCount = 0,TotalPages = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PaginationMeta>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<PaginationMeta>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        Cursors expectedCursors = new() { After = "after", Before = "before" };
+        Cursors expectedCursors = new()
+        {
+            After = "after",
+            Before = "before",
+        };
         bool expectedHasMore = true;
         int expectedPage = 0;
         int expectedPageSize = 0;
@@ -96,12 +95,11 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            Cursors = new() { After = "after", Before = "before" },
-            HasMore = true,
-            Page = 0,
-            PageSize = 0,
-            TotalCount = 0,
-            TotalPages = 0,
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },HasMore = true,Page = 0,PageSize = 0,TotalCount = 0,TotalPages = 0,
         };
 
         model.Validate();
@@ -112,19 +110,20 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },
         };
 
         Assert.Null(model.HasMore);
-        Assert.False(model.RawData.ContainsKey("has_more"));
-        Assert.Null(model.Page);
-        Assert.False(model.RawData.ContainsKey("page"));
-        Assert.Null(model.PageSize);
-        Assert.False(model.RawData.ContainsKey("page_size"));
-        Assert.Null(model.TotalCount);
-        Assert.False(model.RawData.ContainsKey("total_count"));
-        Assert.Null(model.TotalPages);
+        Assert.False(model.RawData.ContainsKey("has_more"));Assert.Null(model.Page);
+        Assert.False(model.RawData.ContainsKey("page"));Assert.Null(model.PageSize);
+        Assert.False(model.RawData.ContainsKey("page_size"));Assert.Null(model.TotalCount);
+        Assert.False(model.RawData.ContainsKey("total_count"));Assert.Null(model.TotalPages);
         Assert.False(model.RawData.ContainsKey("total_pages"));
+
     }
 
     [Fact]
@@ -132,7 +131,11 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },
         };
 
         model.Validate();
@@ -143,26 +146,23 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },
 
             // Null should be interpreted as omitted for these properties
-            HasMore = null,
-            Page = null,
-            PageSize = null,
-            TotalCount = null,
-            TotalPages = null,
+            HasMore = null,Page = null,PageSize = null,TotalCount = null,TotalPages = null,
         };
 
         Assert.Null(model.HasMore);
-        Assert.False(model.RawData.ContainsKey("has_more"));
-        Assert.Null(model.Page);
-        Assert.False(model.RawData.ContainsKey("page"));
-        Assert.Null(model.PageSize);
-        Assert.False(model.RawData.ContainsKey("page_size"));
-        Assert.Null(model.TotalCount);
-        Assert.False(model.RawData.ContainsKey("total_count"));
-        Assert.Null(model.TotalPages);
+        Assert.False(model.RawData.ContainsKey("has_more"));Assert.Null(model.Page);
+        Assert.False(model.RawData.ContainsKey("page"));Assert.Null(model.PageSize);
+        Assert.False(model.RawData.ContainsKey("page_size"));Assert.Null(model.TotalCount);
+        Assert.False(model.RawData.ContainsKey("total_count"));Assert.Null(model.TotalPages);
         Assert.False(model.RawData.ContainsKey("total_pages"));
+
     }
 
     [Fact]
@@ -170,14 +170,14 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },
 
             // Null should be interpreted as omitted for these properties
-            HasMore = null,
-            Page = null,
-            PageSize = null,
-            TotalCount = null,
-            TotalPages = null,
+            HasMore = null,Page = null,PageSize = null,TotalCount = null,TotalPages = null,
         };
 
         model.Validate();
@@ -188,15 +188,12 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            HasMore = true,
-            Page = 0,
-            PageSize = 0,
-            TotalCount = 0,
-            TotalPages = 0,
+            HasMore = true,Page = 0,PageSize = 0,TotalCount = 0,TotalPages = 0,
         };
 
         Assert.Null(model.Cursors);
         Assert.False(model.RawData.ContainsKey("cursors"));
+
     }
 
     [Fact]
@@ -204,11 +201,7 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            HasMore = true,
-            Page = 0,
-            PageSize = 0,
-            TotalCount = 0,
-            TotalPages = 0,
+            HasMore = true,Page = 0,PageSize = 0,TotalCount = 0,TotalPages = 0,
         };
 
         model.Validate();
@@ -219,17 +212,14 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            HasMore = true,
-            Page = 0,
-            PageSize = 0,
-            TotalCount = 0,
-            TotalPages = 0,
+            HasMore = true,Page = 0,PageSize = 0,TotalCount = 0,TotalPages = 0,
 
             Cursors = null,
         };
 
         Assert.Null(model.Cursors);
         Assert.True(model.RawData.ContainsKey("cursors"));
+
     }
 
     [Fact]
@@ -237,11 +227,7 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            HasMore = true,
-            Page = 0,
-            PageSize = 0,
-            TotalCount = 0,
-            TotalPages = 0,
+            HasMore = true,Page = 0,PageSize = 0,TotalCount = 0,TotalPages = 0,
 
             Cursors = null,
         };
@@ -254,12 +240,11 @@ public class PaginationMetaTest : TestBase
     {
         var model = new PaginationMeta
         {
-            Cursors = new() { After = "after", Before = "before" },
-            HasMore = true,
-            Page = 0,
-            PageSize = 0,
-            TotalCount = 0,
-            TotalPages = 0,
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },HasMore = true,Page = 0,PageSize = 0,TotalCount = 0,TotalPages = 0,
         };
 
         PaginationMeta copied = new(model);
@@ -273,7 +258,10 @@ public class CursorsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",Before = "before",
+        };
 
         string expectedAfter = "after";
         string expectedBefore = "before";
@@ -285,7 +273,10 @@ public class CursorsTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",Before = "before",
+        };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<Cursors>(json, ModelBase.SerializerOptions);
@@ -296,13 +287,13 @@ public class CursorsTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",Before = "before",
+        };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Cursors>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Cursors>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedAfter = "after";
@@ -315,7 +306,10 @@ public class CursorsTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",Before = "before",
+        };
 
         model.Validate();
     }
@@ -323,18 +317,24 @@ public class CursorsTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Cursors { };
+        var model = new Cursors
+        {
+
+        };
 
         Assert.Null(model.After);
-        Assert.False(model.RawData.ContainsKey("after"));
-        Assert.Null(model.Before);
+        Assert.False(model.RawData.ContainsKey("after"));Assert.Null(model.Before);
         Assert.False(model.RawData.ContainsKey("before"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Cursors { };
+        var model = new Cursors
+        {
+
+        };
 
         model.Validate();
     }
@@ -342,18 +342,28 @@ public class CursorsTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new Cursors { After = null, Before = null };
+        var model = new Cursors
+        {
+
+
+            After = null,Before = null,
+        };
 
         Assert.Null(model.After);
-        Assert.True(model.RawData.ContainsKey("after"));
-        Assert.Null(model.Before);
+        Assert.True(model.RawData.ContainsKey("after"));Assert.Null(model.Before);
         Assert.True(model.RawData.ContainsKey("before"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Cursors { After = null, Before = null };
+        var model = new Cursors
+        {
+
+
+            After = null,Before = null,
+        };
 
         model.Validate();
     }
@@ -361,7 +371,10 @@ public class CursorsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",Before = "before",
+        };
 
         Cursors copied = new(model);
 

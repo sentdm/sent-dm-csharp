@@ -12,26 +12,20 @@ namespace Sentdm.Models.Profiles.Campaigns;
 /// <summary>
 /// Standard API response envelope for all v3 endpoints
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        ApiResponseOfListOfBrandCampaign,
-        ApiResponseOfListOfBrandCampaignFromRaw
-    >)
-)]
+[JsonConverter(typeof(JsonModelConverter<ApiResponseOfListOfBrandCampaign, ApiResponseOfListOfBrandCampaignFromRaw>))]
 public sealed record class ApiResponseOfListOfBrandCampaign : JsonModel
 {
     /// <summary>
     /// The response data (null if error)
     /// </summary>
-    public IReadOnlyList<BrandCampaign>? Data
-    {
-        get
-        {
+    public IReadOnlyList<BrandCampaign>? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<BrandCampaign>>("data");
+            return this._rawData.GetNullableStruct<ImmutableArray<BrandCampaign>>(
+                "data"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<BrandCampaign>?>(
                 "data",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -42,12 +36,12 @@ public sealed record class ApiResponseOfListOfBrandCampaign : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
-    {
-        get
-        {
+    public ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -55,17 +49,15 @@ public sealed record class ApiResponseOfListOfBrandCampaign : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
-    {
-        get
-        {
+    public ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -76,17 +68,15 @@ public sealed record class ApiResponseOfListOfBrandCampaign : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -106,36 +96,35 @@ public sealed record class ApiResponseOfListOfBrandCampaign : JsonModel
         _ = this.Success;
     }
 
-    public ApiResponseOfListOfBrandCampaign() { }
+    public ApiResponseOfListOfBrandCampaign ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ApiResponseOfListOfBrandCampaign(
+    public ApiResponseOfListOfBrandCampaign (
         ApiResponseOfListOfBrandCampaign apiResponseOfListOfBrandCampaign
+    ) : base(apiResponseOfListOfBrandCampaign)
+    {  }
+    #pragma warning restore CS8618
+
+    public ApiResponseOfListOfBrandCampaign (
+        IReadOnlyDictionary<string, JsonElement> rawData
     )
-        : base(apiResponseOfListOfBrandCampaign) { }
-#pragma warning restore CS8618
+    { this._rawData = new(rawData); }
 
-    public ApiResponseOfListOfBrandCampaign(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ApiResponseOfListOfBrandCampaign(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ApiResponseOfListOfBrandCampaign (
+        FrozenDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ApiResponseOfListOfBrandCampaignFromRaw.FromRawUnchecked"/>
     public static ApiResponseOfListOfBrandCampaign FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class ApiResponseOfListOfBrandCampaignFromRaw : IFromRawJson<ApiResponseOfListOfBrandCampaign>
@@ -143,5 +132,6 @@ class ApiResponseOfListOfBrandCampaignFromRaw : IFromRawJson<ApiResponseOfListOf
     /// <inheritdoc/>
     public ApiResponseOfListOfBrandCampaign FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ApiResponseOfListOfBrandCampaign.FromRawUnchecked(rawData);
+    )
+    =>ApiResponseOfListOfBrandCampaign.FromRawUnchecked(rawData);
 }

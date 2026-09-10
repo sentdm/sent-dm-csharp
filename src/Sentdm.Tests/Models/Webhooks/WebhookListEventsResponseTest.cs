@@ -12,12 +12,9 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            DeliveryAttempts = 0,
-            DeliveryStatus = "delivery_status",
-            ErrorMessage = "error_message",
-            EventData = new MessageEvent()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),DeliveryAttempts = 0,DeliveryStatus = "delivery_status",ErrorMessage = "error_message",EventData = new MessageEvent(
+
+            )
             {
                 Event = "event",
                 Field = "field",
@@ -34,12 +31,7 @@ public class WebhookListEventsResponseTest : TestBase
                     UpdatedAt = "updated_at",
                 },
                 Timestamp = "timestamp",
-            },
-            EventType = "event_type",
-            HttpStatusCode = 0,
-            ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ResponseBody = "response_body",
+            },EventType = "event_type",HttpStatusCode = 0,ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ResponseBody = "response_body",
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -67,12 +59,8 @@ public class WebhookListEventsResponseTest : TestBase
         };
         string expectedEventType = "event_type";
         int expectedHttpStatusCode = 0;
-        DateTimeOffset expectedProcessingCompletedAt = DateTimeOffset.Parse(
-            "2019-12-27T18:11:19.117Z"
-        );
-        DateTimeOffset expectedProcessingStartedAt = DateTimeOffset.Parse(
-            "2019-12-27T18:11:19.117Z"
-        );
+        DateTimeOffset expectedProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        DateTimeOffset expectedProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedResponseBody = "response_body";
 
         Assert.Equal(expectedID, model.ID);
@@ -93,12 +81,9 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            DeliveryAttempts = 0,
-            DeliveryStatus = "delivery_status",
-            ErrorMessage = "error_message",
-            EventData = new MessageEvent()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),DeliveryAttempts = 0,DeliveryStatus = "delivery_status",ErrorMessage = "error_message",EventData = new MessageEvent(
+
+            )
             {
                 Event = "event",
                 Field = "field",
@@ -115,19 +100,11 @@ public class WebhookListEventsResponseTest : TestBase
                     UpdatedAt = "updated_at",
                 },
                 Timestamp = "timestamp",
-            },
-            EventType = "event_type",
-            HttpStatusCode = 0,
-            ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ResponseBody = "response_body",
+            },EventType = "event_type",HttpStatusCode = 0,ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ResponseBody = "response_body",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookListEventsResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookListEventsResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -137,12 +114,9 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            DeliveryAttempts = 0,
-            DeliveryStatus = "delivery_status",
-            ErrorMessage = "error_message",
-            EventData = new MessageEvent()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),DeliveryAttempts = 0,DeliveryStatus = "delivery_status",ErrorMessage = "error_message",EventData = new MessageEvent(
+
+            )
             {
                 Event = "event",
                 Field = "field",
@@ -159,19 +133,11 @@ public class WebhookListEventsResponseTest : TestBase
                     UpdatedAt = "updated_at",
                 },
                 Timestamp = "timestamp",
-            },
-            EventType = "event_type",
-            HttpStatusCode = 0,
-            ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ResponseBody = "response_body",
+            },EventType = "event_type",HttpStatusCode = 0,ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ResponseBody = "response_body",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookListEventsResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookListEventsResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -199,12 +165,8 @@ public class WebhookListEventsResponseTest : TestBase
         };
         string expectedEventType = "event_type";
         int expectedHttpStatusCode = 0;
-        DateTimeOffset expectedProcessingCompletedAt = DateTimeOffset.Parse(
-            "2019-12-27T18:11:19.117Z"
-        );
-        DateTimeOffset expectedProcessingStartedAt = DateTimeOffset.Parse(
-            "2019-12-27T18:11:19.117Z"
-        );
+        DateTimeOffset expectedProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        DateTimeOffset expectedProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedResponseBody = "response_body";
 
         Assert.Equal(expectedID, deserialized.ID);
@@ -225,12 +187,9 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            DeliveryAttempts = 0,
-            DeliveryStatus = "delivery_status",
-            ErrorMessage = "error_message",
-            EventData = new MessageEvent()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),DeliveryAttempts = 0,DeliveryStatus = "delivery_status",ErrorMessage = "error_message",EventData = new MessageEvent(
+
+            )
             {
                 Event = "event",
                 Field = "field",
@@ -247,12 +206,7 @@ public class WebhookListEventsResponseTest : TestBase
                     UpdatedAt = "updated_at",
                 },
                 Timestamp = "timestamp",
-            },
-            EventType = "event_type",
-            HttpStatusCode = 0,
-            ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ResponseBody = "response_body",
+            },EventType = "event_type",HttpStatusCode = 0,ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ResponseBody = "response_body",
         };
 
         model.Validate();
@@ -263,25 +217,17 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ErrorMessage = "error_message",
-            HttpStatusCode = 0,
-            ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ResponseBody = "response_body",
+            ErrorMessage = "error_message",HttpStatusCode = 0,ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ResponseBody = "response_body",
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.DeliveryAttempts);
-        Assert.False(model.RawData.ContainsKey("delivery_attempts"));
-        Assert.Null(model.DeliveryStatus);
-        Assert.False(model.RawData.ContainsKey("delivery_status"));
-        Assert.Null(model.EventData);
-        Assert.False(model.RawData.ContainsKey("event_data"));
-        Assert.Null(model.EventType);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.DeliveryAttempts);
+        Assert.False(model.RawData.ContainsKey("delivery_attempts"));Assert.Null(model.DeliveryStatus);
+        Assert.False(model.RawData.ContainsKey("delivery_status"));Assert.Null(model.EventData);
+        Assert.False(model.RawData.ContainsKey("event_data"));Assert.Null(model.EventType);
         Assert.False(model.RawData.ContainsKey("event_type"));
+
     }
 
     [Fact]
@@ -289,11 +235,7 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ErrorMessage = "error_message",
-            HttpStatusCode = 0,
-            ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ResponseBody = "response_body",
+            ErrorMessage = "error_message",HttpStatusCode = 0,ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ResponseBody = "response_body",
         };
 
         model.Validate();
@@ -304,33 +246,20 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ErrorMessage = "error_message",
-            HttpStatusCode = 0,
-            ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ResponseBody = "response_body",
+            ErrorMessage = "error_message",HttpStatusCode = 0,ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ResponseBody = "response_body",
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            CreatedAt = null,
-            DeliveryAttempts = null,
-            DeliveryStatus = null,
-            EventData = null,
-            EventType = null,
+            ID = null,CreatedAt = null,DeliveryAttempts = null,DeliveryStatus = null,EventData = null,EventType = null,
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.DeliveryAttempts);
-        Assert.False(model.RawData.ContainsKey("delivery_attempts"));
-        Assert.Null(model.DeliveryStatus);
-        Assert.False(model.RawData.ContainsKey("delivery_status"));
-        Assert.Null(model.EventData);
-        Assert.False(model.RawData.ContainsKey("event_data"));
-        Assert.Null(model.EventType);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.DeliveryAttempts);
+        Assert.False(model.RawData.ContainsKey("delivery_attempts"));Assert.Null(model.DeliveryStatus);
+        Assert.False(model.RawData.ContainsKey("delivery_status"));Assert.Null(model.EventData);
+        Assert.False(model.RawData.ContainsKey("event_data"));Assert.Null(model.EventType);
         Assert.False(model.RawData.ContainsKey("event_type"));
+
     }
 
     [Fact]
@@ -338,19 +267,10 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ErrorMessage = "error_message",
-            HttpStatusCode = 0,
-            ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ResponseBody = "response_body",
+            ErrorMessage = "error_message",HttpStatusCode = 0,ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ResponseBody = "response_body",
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            CreatedAt = null,
-            DeliveryAttempts = null,
-            DeliveryStatus = null,
-            EventData = null,
-            EventType = null,
+            ID = null,CreatedAt = null,DeliveryAttempts = null,DeliveryStatus = null,EventData = null,EventType = null,
         };
 
         model.Validate();
@@ -361,11 +281,9 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            DeliveryAttempts = 0,
-            DeliveryStatus = "delivery_status",
-            EventData = new MessageEvent()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),DeliveryAttempts = 0,DeliveryStatus = "delivery_status",EventData = new MessageEvent(
+
+            )
             {
                 Event = "event",
                 Field = "field",
@@ -382,20 +300,16 @@ public class WebhookListEventsResponseTest : TestBase
                     UpdatedAt = "updated_at",
                 },
                 Timestamp = "timestamp",
-            },
-            EventType = "event_type",
+            },EventType = "event_type",
         };
 
         Assert.Null(model.ErrorMessage);
-        Assert.False(model.RawData.ContainsKey("error_message"));
-        Assert.Null(model.HttpStatusCode);
-        Assert.False(model.RawData.ContainsKey("http_status_code"));
-        Assert.Null(model.ProcessingCompletedAt);
-        Assert.False(model.RawData.ContainsKey("processing_completed_at"));
-        Assert.Null(model.ProcessingStartedAt);
-        Assert.False(model.RawData.ContainsKey("processing_started_at"));
-        Assert.Null(model.ResponseBody);
+        Assert.False(model.RawData.ContainsKey("error_message"));Assert.Null(model.HttpStatusCode);
+        Assert.False(model.RawData.ContainsKey("http_status_code"));Assert.Null(model.ProcessingCompletedAt);
+        Assert.False(model.RawData.ContainsKey("processing_completed_at"));Assert.Null(model.ProcessingStartedAt);
+        Assert.False(model.RawData.ContainsKey("processing_started_at"));Assert.Null(model.ResponseBody);
         Assert.False(model.RawData.ContainsKey("response_body"));
+
     }
 
     [Fact]
@@ -403,11 +317,9 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            DeliveryAttempts = 0,
-            DeliveryStatus = "delivery_status",
-            EventData = new MessageEvent()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),DeliveryAttempts = 0,DeliveryStatus = "delivery_status",EventData = new MessageEvent(
+
+            )
             {
                 Event = "event",
                 Field = "field",
@@ -424,8 +336,7 @@ public class WebhookListEventsResponseTest : TestBase
                     UpdatedAt = "updated_at",
                 },
                 Timestamp = "timestamp",
-            },
-            EventType = "event_type",
+            },EventType = "event_type",
         };
 
         model.Validate();
@@ -436,11 +347,9 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            DeliveryAttempts = 0,
-            DeliveryStatus = "delivery_status",
-            EventData = new MessageEvent()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),DeliveryAttempts = 0,DeliveryStatus = "delivery_status",EventData = new MessageEvent(
+
+            )
             {
                 Event = "event",
                 Field = "field",
@@ -457,26 +366,18 @@ public class WebhookListEventsResponseTest : TestBase
                     UpdatedAt = "updated_at",
                 },
                 Timestamp = "timestamp",
-            },
-            EventType = "event_type",
+            },EventType = "event_type",
 
-            ErrorMessage = null,
-            HttpStatusCode = null,
-            ProcessingCompletedAt = null,
-            ProcessingStartedAt = null,
-            ResponseBody = null,
+            ErrorMessage = null,HttpStatusCode = null,ProcessingCompletedAt = null,ProcessingStartedAt = null,ResponseBody = null,
         };
 
         Assert.Null(model.ErrorMessage);
-        Assert.True(model.RawData.ContainsKey("error_message"));
-        Assert.Null(model.HttpStatusCode);
-        Assert.True(model.RawData.ContainsKey("http_status_code"));
-        Assert.Null(model.ProcessingCompletedAt);
-        Assert.True(model.RawData.ContainsKey("processing_completed_at"));
-        Assert.Null(model.ProcessingStartedAt);
-        Assert.True(model.RawData.ContainsKey("processing_started_at"));
-        Assert.Null(model.ResponseBody);
+        Assert.True(model.RawData.ContainsKey("error_message"));Assert.Null(model.HttpStatusCode);
+        Assert.True(model.RawData.ContainsKey("http_status_code"));Assert.Null(model.ProcessingCompletedAt);
+        Assert.True(model.RawData.ContainsKey("processing_completed_at"));Assert.Null(model.ProcessingStartedAt);
+        Assert.True(model.RawData.ContainsKey("processing_started_at"));Assert.Null(model.ResponseBody);
         Assert.True(model.RawData.ContainsKey("response_body"));
+
     }
 
     [Fact]
@@ -484,11 +385,9 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            DeliveryAttempts = 0,
-            DeliveryStatus = "delivery_status",
-            EventData = new MessageEvent()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),DeliveryAttempts = 0,DeliveryStatus = "delivery_status",EventData = new MessageEvent(
+
+            )
             {
                 Event = "event",
                 Field = "field",
@@ -505,14 +404,9 @@ public class WebhookListEventsResponseTest : TestBase
                     UpdatedAt = "updated_at",
                 },
                 Timestamp = "timestamp",
-            },
-            EventType = "event_type",
+            },EventType = "event_type",
 
-            ErrorMessage = null,
-            HttpStatusCode = null,
-            ProcessingCompletedAt = null,
-            ProcessingStartedAt = null,
-            ResponseBody = null,
+            ErrorMessage = null,HttpStatusCode = null,ProcessingCompletedAt = null,ProcessingStartedAt = null,ResponseBody = null,
         };
 
         model.Validate();
@@ -523,12 +417,9 @@ public class WebhookListEventsResponseTest : TestBase
     {
         var model = new WebhookListEventsResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            DeliveryAttempts = 0,
-            DeliveryStatus = "delivery_status",
-            ErrorMessage = "error_message",
-            EventData = new MessageEvent()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),DeliveryAttempts = 0,DeliveryStatus = "delivery_status",ErrorMessage = "error_message",EventData = new MessageEvent(
+
+            )
             {
                 Event = "event",
                 Field = "field",
@@ -545,12 +436,7 @@ public class WebhookListEventsResponseTest : TestBase
                     UpdatedAt = "updated_at",
                 },
                 Timestamp = "timestamp",
-            },
-            EventType = "event_type",
-            HttpStatusCode = 0,
-            ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            ResponseBody = "response_body",
+            },EventType = "event_type",HttpStatusCode = 0,ProcessingCompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ProcessingStartedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),ResponseBody = "response_body",
         };
 
         WebhookListEventsResponse copied = new(model);
@@ -654,10 +540,7 @@ public class EventDataTest : TestBase
             Timestamp = "timestamp",
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<EventData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<EventData>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -683,10 +566,7 @@ public class EventDataTest : TestBase
             Timestamp = "timestamp",
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<EventData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<EventData>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -713,10 +593,7 @@ public class EventDataTest : TestBase
             Timestamp = "timestamp",
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<EventData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<EventData>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

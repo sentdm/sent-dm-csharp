@@ -19,12 +19,12 @@ public sealed record class Template : JsonModel
     /// Which customer owns this — the key's own, or the profile named in x-profile-id.
     /// Says whose resource this is, which the resource's own id does not.
     /// </summary>
-    public required string CustomerID
-    {
-        get
-        {
+    public required string CustomerID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("customer_id");
+            return this._rawData.GetNotNullClass<string>(
+                "customer_id"
+            );
         }
         init { this._rawData.Set("customer_id", value); }
     }
@@ -32,17 +32,15 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// Unique template identifier
     /// </summary>
-    public string? ID
-    {
-        get
-        {
+    public string? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("id");
+            return this._rawData.GetNullableClass<string>(
+                "id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -53,17 +51,15 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// Template category: MARKETING, UTILITY, AUTHENTICATION
     /// </summary>
-    public string? Category
-    {
-        get
-        {
+    public string? Category {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("category");
+            return this._rawData.GetNullableClass<string>(
+                "category"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -74,15 +70,14 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// Supported channels: sms, whatsapp
     /// </summary>
-    public IReadOnlyList<string>? Channels
-    {
-        get
-        {
+    public IReadOnlyList<string>? Channels {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("channels");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "channels"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<string>?>(
                 "channels",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -93,17 +88,15 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// When the template was created
     /// </summary>
-    public DateTimeOffset? CreatedAt
-    {
-        get
-        {
+    public DateTimeOffset? CreatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("created_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "created_at"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -114,17 +107,15 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// Whether the template is published and active
     /// </summary>
-    public bool? IsPublished
-    {
-        get
-        {
+    public bool? IsPublished {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_published");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_published"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -135,17 +126,15 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// Template language code (e.g., en_US)
     /// </summary>
-    public string? Language
-    {
-        get
-        {
+    public string? Language {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("language");
+            return this._rawData.GetNullableClass<string>(
+                "language"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -156,17 +145,15 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// Template display name
     /// </summary>
-    public string? Name
-    {
-        get
-        {
+    public string? Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
+            return this._rawData.GetNullableClass<string>(
+                "name"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -177,17 +164,15 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// Template status: APPROVED, PENDING, REJECTED
     /// </summary>
-    public string? Status
-    {
-        get
-        {
+    public string? Status {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("status");
+            return this._rawData.GetNullableClass<string>(
+                "status"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -198,12 +183,12 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// When the template was last updated
     /// </summary>
-    public DateTimeOffset? UpdatedAt
-    {
-        get
-        {
+    public DateTimeOffset? UpdatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("updated_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "updated_at"
+            );
         }
         init { this._rawData.Set("updated_at", value); }
     }
@@ -211,15 +196,14 @@ public sealed record class Template : JsonModel
     /// <summary>
     /// Template variables for personalization
     /// </summary>
-    public IReadOnlyList<string>? Variables
-    {
-        get
-        {
+    public IReadOnlyList<string>? Variables {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("variables");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "variables"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<string>?>(
                 "variables",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -243,44 +227,40 @@ public sealed record class Template : JsonModel
         _ = this.Variables;
     }
 
-    public Template() { }
+    public Template ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Template(Template template)
-        : base(template) { }
-#pragma warning restore CS8618
+    public Template (Template template) : base(template)
+    {  }
+    #pragma warning restore CS8618
 
-    public Template(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Template (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Template(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Template (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TemplateFromRaw.FromRawUnchecked"/>
-    public static Template FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static Template FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 
     [SetsRequiredMembers]
-    public Template(string customerID)
-        : this()
-    {
-        this.CustomerID = customerID;
-    }
+    public Template (string customerID) : this()
+    { this.CustomerID = customerID; }
 }
 
 class TemplateFromRaw : IFromRawJson<Template>
 {
     /// <inheritdoc/>
-    public Template FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Template.FromRawUnchecked(rawData);
+    public Template FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Template.FromRawUnchecked(rawData);
 }

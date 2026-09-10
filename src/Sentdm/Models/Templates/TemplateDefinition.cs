@@ -17,12 +17,12 @@ public sealed record class TemplateDefinition : JsonModel
     /// <summary>
     /// Body section of a message template with channel-specific content
     /// </summary>
-    public required TemplateBody Body
-    {
-        get
-        {
+    public required TemplateBody Body {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<TemplateBody>("body");
+            return this._rawData.GetNotNullClass<TemplateBody>(
+                "body"
+            );
         }
         init { this._rawData.Set("body", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class TemplateDefinition : JsonModel
     /// <summary>
     /// Configuration for AUTHENTICATION category templates
     /// </summary>
-    public AuthenticationConfig? AuthenticationConfig
-    {
-        get
-        {
+    public AuthenticationConfig? AuthenticationConfig {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<AuthenticationConfig>("authenticationConfig");
+            return this._rawData.GetNullableClass<AuthenticationConfig>(
+                "authenticationConfig"
+            );
         }
         init { this._rawData.Set("authenticationConfig", value); }
     }
@@ -43,15 +43,14 @@ public sealed record class TemplateDefinition : JsonModel
     /// <summary>
     /// Optional list of interactive buttons (e.g., quick replies, URLs, phone numbers)
     /// </summary>
-    public IReadOnlyList<TemplateButton>? Buttons
-    {
-        get
-        {
+    public IReadOnlyList<TemplateButton>? Buttons {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<TemplateButton>>("buttons");
+            return this._rawData.GetNullableStruct<ImmutableArray<TemplateButton>>(
+                "buttons"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<TemplateButton>?>(
                 "buttons",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -62,12 +61,12 @@ public sealed record class TemplateDefinition : JsonModel
     /// <summary>
     /// The version of the template definition format
     /// </summary>
-    public string? DefinitionVersion
-    {
-        get
-        {
+    public string? DefinitionVersion {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("definitionVersion");
+            return this._rawData.GetNullableClass<string>(
+                "definitionVersion"
+            );
         }
         init { this._rawData.Set("definitionVersion", value); }
     }
@@ -75,12 +74,12 @@ public sealed record class TemplateDefinition : JsonModel
     /// <summary>
     /// Footer section of a message template
     /// </summary>
-    public TemplateFooter? Footer
-    {
-        get
-        {
+    public TemplateFooter? Footer {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<TemplateFooter>("footer");
+            return this._rawData.GetNullableClass<TemplateFooter>(
+                "footer"
+            );
         }
         init { this._rawData.Set("footer", value); }
     }
@@ -88,12 +87,12 @@ public sealed record class TemplateDefinition : JsonModel
     /// <summary>
     /// Header section of a message template
     /// </summary>
-    public TemplateHeader? Header
-    {
-        get
-        {
+    public TemplateHeader? Header {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<TemplateHeader>("header");
+            return this._rawData.GetNullableClass<TemplateHeader>(
+                "header"
+            );
         }
         init { this._rawData.Set("header", value); }
     }
@@ -112,46 +111,42 @@ public sealed record class TemplateDefinition : JsonModel
         this.Header?.Validate();
     }
 
-    public TemplateDefinition() { }
+    public TemplateDefinition ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateDefinition(TemplateDefinition templateDefinition)
-        : base(templateDefinition) { }
-#pragma warning restore CS8618
+    public TemplateDefinition (TemplateDefinition templateDefinition) : base(
+        templateDefinition
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public TemplateDefinition(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TemplateDefinition (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateDefinition(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TemplateDefinition (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TemplateDefinitionFromRaw.FromRawUnchecked"/>
     public static TemplateDefinition FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 
     [SetsRequiredMembers]
-    public TemplateDefinition(TemplateBody body)
-        : this()
-    {
-        this.Body = body;
-    }
+    public TemplateDefinition (TemplateBody body) : this()
+    { this.Body = body; }
 }
 
 class TemplateDefinitionFromRaw : IFromRawJson<TemplateDefinition>
 {
     /// <inheritdoc/>
-    public TemplateDefinition FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        TemplateDefinition.FromRawUnchecked(rawData);
+    public TemplateDefinition FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>TemplateDefinition.FromRawUnchecked(rawData);
 }

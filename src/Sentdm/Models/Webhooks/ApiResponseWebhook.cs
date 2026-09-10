@@ -16,12 +16,12 @@ public sealed record class ApiResponseWebhook : JsonModel
     /// <summary>
     /// The response data (null if error)
     /// </summary>
-    public WebhookResponse? Data
-    {
-        get
-        {
+    public WebhookResponse? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<WebhookResponse>("data");
+            return this._rawData.GetNullableClass<WebhookResponse>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -29,12 +29,12 @@ public sealed record class ApiResponseWebhook : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
-    {
-        get
-        {
+    public ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -42,17 +42,15 @@ public sealed record class ApiResponseWebhook : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
-    {
-        get
-        {
+    public ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -63,17 +61,15 @@ public sealed record class ApiResponseWebhook : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -90,39 +86,38 @@ public sealed record class ApiResponseWebhook : JsonModel
         _ = this.Success;
     }
 
-    public ApiResponseWebhook() { }
+    public ApiResponseWebhook ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ApiResponseWebhook(ApiResponseWebhook apiResponseWebhook)
-        : base(apiResponseWebhook) { }
-#pragma warning restore CS8618
+    public ApiResponseWebhook (ApiResponseWebhook apiResponseWebhook) : base(
+        apiResponseWebhook
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public ApiResponseWebhook(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public ApiResponseWebhook (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ApiResponseWebhook(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ApiResponseWebhook (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ApiResponseWebhookFromRaw.FromRawUnchecked"/>
     public static ApiResponseWebhook FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class ApiResponseWebhookFromRaw : IFromRawJson<ApiResponseWebhook>
 {
     /// <inheritdoc/>
-    public ApiResponseWebhook FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        ApiResponseWebhook.FromRawUnchecked(rawData);
+    public ApiResponseWebhook FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>ApiResponseWebhook.FromRawUnchecked(rawData);
 }

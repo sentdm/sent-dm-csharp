@@ -19,9 +19,7 @@ namespace Sentdm.Models.Templates;
 /// </summary>
 public record class TemplateCreateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
@@ -29,12 +27,12 @@ public record class TemplateCreateParams : ParamsBase
     /// Template category: MARKETING, UTILITY, AUTHENTICATION (optional, auto-detected
     /// if not provided)
     /// </summary>
-    public string? Category
-    {
-        get
-        {
+    public string? Category {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("category");
+            return this._rawBodyData.GetNullableClass<string>(
+                "category"
+            );
         }
         init { this._rawBodyData.Set("category", value); }
     }
@@ -42,12 +40,12 @@ public record class TemplateCreateParams : ParamsBase
     /// <summary>
     /// Source of template creation (default: from-api)
     /// </summary>
-    public string? CreationSource
-    {
-        get
-        {
+    public string? CreationSource {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("creation_source");
+            return this._rawBodyData.GetNullableClass<string>(
+                "creation_source"
+            );
         }
         init { this._rawBodyData.Set("creation_source", value); }
     }
@@ -56,17 +54,15 @@ public record class TemplateCreateParams : ParamsBase
     /// Complete definition of a message template including header, body, footer,
     /// and buttons
     /// </summary>
-    public TemplateDefinition? Definition
-    {
-        get
-        {
+    public TemplateDefinition? Definition {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<TemplateDefinition>("definition");
+            return this._rawBodyData.GetNullableClass<TemplateDefinition>(
+                "definition"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -77,12 +73,12 @@ public record class TemplateCreateParams : ParamsBase
     /// <summary>
     /// Template language code (e.g., en_US) (optional, auto-detected if not provided)
     /// </summary>
-    public string? Language
-    {
-        get
-        {
+    public string? Language {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("language");
+            return this._rawBodyData.GetNullableClass<string>(
+                "language"
+            );
         }
         init { this._rawBodyData.Set("language", value); }
     }
@@ -91,17 +87,15 @@ public record class TemplateCreateParams : ParamsBase
     /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
-    public bool? Sandbox
-    {
-        get
-        {
+    public bool? Sandbox {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("sandbox");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "sandbox"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -112,17 +106,15 @@ public record class TemplateCreateParams : ParamsBase
     /// <summary>
     /// Whether to submit the template for review after creation (default: false)
     /// </summary>
-    public bool? SubmitForReview
-    {
-        get
-        {
+    public bool? SubmitForReview {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("submit_for_review");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "submit_for_review"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -130,17 +122,15 @@ public record class TemplateCreateParams : ParamsBase
         }
     }
 
-    public string? IdempotencyKey
-    {
-        get
-        {
+    public string? IdempotencyKey {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("Idempotency-Key");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "Idempotency-Key"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -148,17 +138,15 @@ public record class TemplateCreateParams : ParamsBase
         }
     }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -166,18 +154,18 @@ public record class TemplateCreateParams : ParamsBase
         }
     }
 
-    public TemplateCreateParams() { }
+    public TemplateCreateParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateCreateParams(TemplateCreateParams templateCreateParams)
-        : base(templateCreateParams)
-    {
-        this._rawBodyData = new(templateCreateParams._rawBodyData);
-    }
-#pragma warning restore CS8618
+    public TemplateCreateParams (
+        TemplateCreateParams templateCreateParams
+    ) : base(templateCreateParams)
+    { this._rawBodyData = new(templateCreateParams._rawBodyData); }
+    #pragma warning restore CS8618
 
-    public TemplateCreateParams(
+    public TemplateCreateParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -188,9 +176,9 @@ public record class TemplateCreateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateCreateParams(
+    TemplateCreateParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData
@@ -200,7 +188,7 @@ public record class TemplateCreateParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TemplateCreateParams FromRawUnchecked(
@@ -213,25 +201,18 @@ public record class TemplateCreateParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(TemplateCreateParams? other)
     {
@@ -239,17 +220,19 @@ public record class TemplateCreateParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/v3/templates")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/v3/templates"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -258,10 +241,12 @@ public record class TemplateCreateParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -271,7 +256,5 @@ public record class TemplateCreateParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

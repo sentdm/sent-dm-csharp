@@ -36,56 +36,58 @@ public interface IMessageService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IMessageService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IMessageService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Retrieves the activity log for a specific message. Activities track the message
-    /// lifecycle including acceptance, processing, sending, delivery, and any errors.
-    /// </summary>
+/// Retrieves the activity log for a specific message. Activities track the message
+/// lifecycle including acceptance, processing, sending, delivery, and any errors.
+/// </summary>
     Task<MessageRetrieveActivitiesResponse> RetrieveActivities(
         MessageRetrieveActivitiesParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="RetrieveActivities(MessageRetrieveActivitiesParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="RetrieveActivities(MessageRetrieveActivitiesParams, CancellationToken)"/>
     Task<MessageRetrieveActivitiesResponse> RetrieveActivities(
         string id,
         MessageRetrieveActivitiesParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Retrieves the current status and details of a message by ID. Includes delivery
-    /// status, timestamps, and error information if applicable.
-    /// </summary>
+/// Retrieves the current status and details of a message by ID. Includes delivery
+/// status, timestamps, and error information if applicable.
+/// </summary>
     Task<MessageRetrieveStatusResponse> RetrieveStatus(
         MessageRetrieveStatusParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="RetrieveStatus(MessageRetrieveStatusParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="RetrieveStatus(MessageRetrieveStatusParams, CancellationToken)"/>
     Task<MessageRetrieveStatusResponse> RetrieveStatus(
         string id,
         MessageRetrieveStatusParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Sends a message to one or more recipients using a template. Supports
-    /// multi-channel broadcast — when multiple channels are specified (e.g. ["sms",
-    /// "whatsapp"]), a separate message is created for each (recipient, channel) pair.
-    /// Returns immediately with per-recipient message IDs for async tracking via
-    /// webhooks or the GET /messages/{id} endpoint. Sends gated before any delivery
-    /// attempt do not reject the request — an account-level precondition such as
-    /// insufficient balance, a template not approved for sending, or free-form content
-    /// with no open conversation with the contact. The send is accepted with 202 and
-    /// the affected messages are reported as BLOCKED on GET /messages/{id} and the
-    /// message.blocked webhook.
-    /// </summary>
+/// Sends a message to one or more recipients using a template. Supports
+/// multi-channel broadcast — when multiple channels are specified (e.g. ["sms",
+/// "whatsapp"]), a separate message is created for each (recipient, channel) pair.
+/// Returns immediately with per-recipient message IDs for async tracking via
+/// webhooks or the GET /messages/{id} endpoint. Sends gated before any delivery
+/// attempt do not reject the request — an account-level precondition such as
+/// insufficient balance, a template not approved for sending, or free-form content
+/// with no open conversation with the contact. The send is accepted with 202 and
+/// the affected messages are reported as BLOCKED on GET /messages/{id} and the
+/// message.blocked webhook.
+/// </summary>
     Task<MessageSendResponse> Send(
         MessageSendParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -99,46 +101,50 @@ public interface IMessageServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IMessageServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IMessageServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /v3/messages/{id}/activities</c>, but is otherwise the
-    /// same as <see cref="IMessageService.RetrieveActivities(MessageRetrieveActivitiesParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /v3/messages/{id}/activities</c>, but is otherwise the
+/// same as <see cref="IMessageService.RetrieveActivities(MessageRetrieveActivitiesParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<MessageRetrieveActivitiesResponse>> RetrieveActivities(
         MessageRetrieveActivitiesParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="RetrieveActivities(MessageRetrieveActivitiesParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="RetrieveActivities(MessageRetrieveActivitiesParams, CancellationToken)"/>
     Task<HttpResponse<MessageRetrieveActivitiesResponse>> RetrieveActivities(
         string id,
         MessageRetrieveActivitiesParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /v3/messages/{id}</c>, but is otherwise the
-    /// same as <see cref="IMessageService.RetrieveStatus(MessageRetrieveStatusParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /v3/messages/{id}</c>, but is otherwise the
+/// same as <see cref="IMessageService.RetrieveStatus(MessageRetrieveStatusParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<MessageRetrieveStatusResponse>> RetrieveStatus(
         MessageRetrieveStatusParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="RetrieveStatus(MessageRetrieveStatusParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="RetrieveStatus(MessageRetrieveStatusParams, CancellationToken)"/>
     Task<HttpResponse<MessageRetrieveStatusResponse>> RetrieveStatus(
         string id,
         MessageRetrieveStatusParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /v3/messages</c>, but is otherwise the
-    /// same as <see cref="IMessageService.Send(MessageSendParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>post /v3/messages</c>, but is otherwise the
+/// same as <see cref="IMessageService.Send(MessageSendParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<MessageSendResponse>> Send(
         MessageSendParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

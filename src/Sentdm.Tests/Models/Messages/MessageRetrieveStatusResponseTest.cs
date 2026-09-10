@@ -56,21 +56,24 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 TemplateCategory = "template_category",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         MessageRetrieveStatusResponseData expectedData = new()
@@ -119,7 +122,13 @@ public class MessageRetrieveStatusResponseTest : TestBase
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -184,28 +193,28 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 TemplateCategory = "template_category",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageRetrieveStatusResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageRetrieveStatusResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -257,28 +266,28 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 TemplateCategory = "template_category",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageRetrieveStatusResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageRetrieveStatusResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         MessageRetrieveStatusResponseData expectedData = new()
@@ -327,7 +336,13 @@ public class MessageRetrieveStatusResponseTest : TestBase
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -392,21 +407,24 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 TemplateCategory = "template_category",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -459,20 +477,25 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 TemplateCategory = "template_category",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -522,11 +545,16 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 TemplateCategory = "template_category",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
@@ -582,24 +610,28 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 TemplateCategory = "template_category",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -649,18 +681,22 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 TemplateCategory = "template_category",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         model.Validate();
@@ -676,14 +712,13 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Assert.Null(model.Data);
-        Assert.False(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.False(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.False(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -696,8 +731,7 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -713,17 +747,15 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         Assert.Null(model.Data);
-        Assert.True(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.True(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.True(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -736,11 +768,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         model.Validate();
@@ -793,21 +823,24 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 TemplateCategory = "template_category",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         MessageRetrieveStatusResponse copied = new(model);
@@ -823,14 +856,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ActiveContactPrice = 0,
-            Channel = "channel",
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Direction = "direction",
-            Events =
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ActiveContactPrice = 0,Channel = "channel",ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Direction = "direction",Events =
             [
                 new()
                 {
@@ -838,8 +864,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                 },
-            ],
-            MessageBody = new()
+            ],MessageBody = new()
             {
                 Buttons =
                 [
@@ -854,15 +879,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
-            },
-            Phone = "phone",
-            PhoneInternational = "phone_international",
-            Price = 0,
-            RegionCode = "region_code",
-            Status = "status",
-            TemplateCategory = "template_category",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            },Phone = "phone",PhoneInternational = "phone_international",Price = 0,RegionCode = "region_code",Status = "status",TemplateCategory = "template_category",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -935,14 +952,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ActiveContactPrice = 0,
-            Channel = "channel",
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Direction = "direction",
-            Events =
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ActiveContactPrice = 0,Channel = "channel",ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Direction = "direction",Events =
             [
                 new()
                 {
@@ -950,8 +960,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                 },
-            ],
-            MessageBody = new()
+            ],MessageBody = new()
             {
                 Buttons =
                 [
@@ -966,22 +975,11 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
-            },
-            Phone = "phone",
-            PhoneInternational = "phone_international",
-            Price = 0,
-            RegionCode = "region_code",
-            Status = "status",
-            TemplateCategory = "template_category",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            },Phone = "phone",PhoneInternational = "phone_international",Price = 0,RegionCode = "region_code",Status = "status",TemplateCategory = "template_category",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageRetrieveStatusResponseData>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageRetrieveStatusResponseData>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -991,14 +989,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ActiveContactPrice = 0,
-            Channel = "channel",
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Direction = "direction",
-            Events =
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ActiveContactPrice = 0,Channel = "channel",ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Direction = "direction",Events =
             [
                 new()
                 {
@@ -1006,8 +997,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                 },
-            ],
-            MessageBody = new()
+            ],MessageBody = new()
             {
                 Buttons =
                 [
@@ -1022,22 +1012,11 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
-            },
-            Phone = "phone",
-            PhoneInternational = "phone_international",
-            Price = 0,
-            RegionCode = "region_code",
-            Status = "status",
-            TemplateCategory = "template_category",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            },Phone = "phone",PhoneInternational = "phone_international",Price = 0,RegionCode = "region_code",Status = "status",TemplateCategory = "template_category",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageRetrieveStatusResponseData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageRetrieveStatusResponseData>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -1110,14 +1089,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ActiveContactPrice = 0,
-            Channel = "channel",
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Direction = "direction",
-            Events =
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ActiveContactPrice = 0,Channel = "channel",ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Direction = "direction",Events =
             [
                 new()
                 {
@@ -1125,8 +1097,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                 },
-            ],
-            MessageBody = new()
+            ],MessageBody = new()
             {
                 Buttons =
                 [
@@ -1141,15 +1112,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
-            },
-            Phone = "phone",
-            PhoneInternational = "phone_international",
-            Price = 0,
-            RegionCode = "region_code",
-            Status = "status",
-            TemplateCategory = "template_category",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            },Phone = "phone",PhoneInternational = "phone_international",Price = 0,RegionCode = "region_code",Status = "status",TemplateCategory = "template_category",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         model.Validate();
@@ -1160,8 +1123,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ActiveContactPrice = 0,
-            Events =
+            ActiveContactPrice = 0,Events =
             [
                 new()
                 {
@@ -1169,8 +1131,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                 },
-            ],
-            MessageBody = new()
+            ],MessageBody = new()
             {
                 Buttons =
                 [
@@ -1185,33 +1146,21 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
-            },
-            Price = 0,
-            TemplateCategory = "template_category",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            },Price = 0,TemplateCategory = "template_category",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
-        Assert.Null(model.ContactID);
-        Assert.False(model.RawData.ContainsKey("contact_id"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.CustomerID);
-        Assert.False(model.RawData.ContainsKey("customer_id"));
-        Assert.Null(model.Direction);
-        Assert.False(model.RawData.ContainsKey("direction"));
-        Assert.Null(model.Phone);
-        Assert.False(model.RawData.ContainsKey("phone"));
-        Assert.Null(model.PhoneInternational);
-        Assert.False(model.RawData.ContainsKey("phone_international"));
-        Assert.Null(model.RegionCode);
-        Assert.False(model.RawData.ContainsKey("region_code"));
-        Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.Channel);
+        Assert.False(model.RawData.ContainsKey("channel"));Assert.Null(model.ContactID);
+        Assert.False(model.RawData.ContainsKey("contact_id"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.CustomerID);
+        Assert.False(model.RawData.ContainsKey("customer_id"));Assert.Null(model.Direction);
+        Assert.False(model.RawData.ContainsKey("direction"));Assert.Null(model.Phone);
+        Assert.False(model.RawData.ContainsKey("phone"));Assert.Null(model.PhoneInternational);
+        Assert.False(model.RawData.ContainsKey("phone_international"));Assert.Null(model.RegionCode);
+        Assert.False(model.RawData.ContainsKey("region_code"));Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
+
     }
 
     [Fact]
@@ -1219,8 +1168,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ActiveContactPrice = 0,
-            Events =
+            ActiveContactPrice = 0,Events =
             [
                 new()
                 {
@@ -1228,8 +1176,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                 },
-            ],
-            MessageBody = new()
+            ],MessageBody = new()
             {
                 Buttons =
                 [
@@ -1244,11 +1191,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
-            },
-            Price = 0,
-            TemplateCategory = "template_category",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            },Price = 0,TemplateCategory = "template_category",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         model.Validate();
@@ -1259,8 +1202,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ActiveContactPrice = 0,
-            Events =
+            ActiveContactPrice = 0,Events =
             [
                 new()
                 {
@@ -1268,8 +1210,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                 },
-            ],
-            MessageBody = new()
+            ],MessageBody = new()
             {
                 Buttons =
                 [
@@ -1284,45 +1225,24 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
-            },
-            Price = 0,
-            TemplateCategory = "template_category",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            },Price = 0,TemplateCategory = "template_category",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            Channel = null,
-            ContactID = null,
-            CreatedAt = null,
-            CustomerID = null,
-            Direction = null,
-            Phone = null,
-            PhoneInternational = null,
-            RegionCode = null,
-            Status = null,
+            ID = null,Channel = null,ContactID = null,CreatedAt = null,CustomerID = null,Direction = null,Phone = null,PhoneInternational = null,RegionCode = null,Status = null,
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
-        Assert.Null(model.ContactID);
-        Assert.False(model.RawData.ContainsKey("contact_id"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.CustomerID);
-        Assert.False(model.RawData.ContainsKey("customer_id"));
-        Assert.Null(model.Direction);
-        Assert.False(model.RawData.ContainsKey("direction"));
-        Assert.Null(model.Phone);
-        Assert.False(model.RawData.ContainsKey("phone"));
-        Assert.Null(model.PhoneInternational);
-        Assert.False(model.RawData.ContainsKey("phone_international"));
-        Assert.Null(model.RegionCode);
-        Assert.False(model.RawData.ContainsKey("region_code"));
-        Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.Channel);
+        Assert.False(model.RawData.ContainsKey("channel"));Assert.Null(model.ContactID);
+        Assert.False(model.RawData.ContainsKey("contact_id"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.CustomerID);
+        Assert.False(model.RawData.ContainsKey("customer_id"));Assert.Null(model.Direction);
+        Assert.False(model.RawData.ContainsKey("direction"));Assert.Null(model.Phone);
+        Assert.False(model.RawData.ContainsKey("phone"));Assert.Null(model.PhoneInternational);
+        Assert.False(model.RawData.ContainsKey("phone_international"));Assert.Null(model.RegionCode);
+        Assert.False(model.RawData.ContainsKey("region_code"));Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
+
     }
 
     [Fact]
@@ -1330,8 +1250,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ActiveContactPrice = 0,
-            Events =
+            ActiveContactPrice = 0,Events =
             [
                 new()
                 {
@@ -1339,8 +1258,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                 },
-            ],
-            MessageBody = new()
+            ],MessageBody = new()
             {
                 Buttons =
                 [
@@ -1355,23 +1273,10 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
-            },
-            Price = 0,
-            TemplateCategory = "template_category",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            },Price = 0,TemplateCategory = "template_category",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            Channel = null,
-            ContactID = null,
-            CreatedAt = null,
-            CustomerID = null,
-            Direction = null,
-            Phone = null,
-            PhoneInternational = null,
-            RegionCode = null,
-            Status = null,
+            ID = null,Channel = null,ContactID = null,CreatedAt = null,CustomerID = null,Direction = null,Phone = null,PhoneInternational = null,RegionCode = null,Status = null,
         };
 
         model.Validate();
@@ -1382,32 +1287,18 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Direction = "direction",
-            Phone = "phone",
-            PhoneInternational = "phone_international",
-            RegionCode = "region_code",
-            Status = "status",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Direction = "direction",Phone = "phone",PhoneInternational = "phone_international",RegionCode = "region_code",Status = "status",
         };
 
         Assert.Null(model.ActiveContactPrice);
-        Assert.False(model.RawData.ContainsKey("active_contact_price"));
-        Assert.Null(model.Events);
-        Assert.False(model.RawData.ContainsKey("events"));
-        Assert.Null(model.MessageBody);
-        Assert.False(model.RawData.ContainsKey("message_body"));
-        Assert.Null(model.Price);
-        Assert.False(model.RawData.ContainsKey("price"));
-        Assert.Null(model.TemplateCategory);
-        Assert.False(model.RawData.ContainsKey("template_category"));
-        Assert.Null(model.TemplateID);
-        Assert.False(model.RawData.ContainsKey("template_id"));
-        Assert.Null(model.TemplateName);
+        Assert.False(model.RawData.ContainsKey("active_contact_price"));Assert.Null(model.Events);
+        Assert.False(model.RawData.ContainsKey("events"));Assert.Null(model.MessageBody);
+        Assert.False(model.RawData.ContainsKey("message_body"));Assert.Null(model.Price);
+        Assert.False(model.RawData.ContainsKey("price"));Assert.Null(model.TemplateCategory);
+        Assert.False(model.RawData.ContainsKey("template_category"));Assert.Null(model.TemplateID);
+        Assert.False(model.RawData.ContainsKey("template_id"));Assert.Null(model.TemplateName);
         Assert.False(model.RawData.ContainsKey("template_name"));
+
     }
 
     [Fact]
@@ -1415,16 +1306,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Direction = "direction",
-            Phone = "phone",
-            PhoneInternational = "phone_international",
-            RegionCode = "region_code",
-            Status = "status",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Direction = "direction",Phone = "phone",PhoneInternational = "phone_international",RegionCode = "region_code",Status = "status",
         };
 
         model.Validate();
@@ -1435,40 +1317,20 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Direction = "direction",
-            Phone = "phone",
-            PhoneInternational = "phone_international",
-            RegionCode = "region_code",
-            Status = "status",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Direction = "direction",Phone = "phone",PhoneInternational = "phone_international",RegionCode = "region_code",Status = "status",
 
-            ActiveContactPrice = null,
-            Events = null,
-            MessageBody = null,
-            Price = null,
-            TemplateCategory = null,
-            TemplateID = null,
-            TemplateName = null,
+            ActiveContactPrice = null,Events = null,MessageBody = null,Price = null,TemplateCategory = null,TemplateID = null,TemplateName = null,
         };
 
         Assert.Null(model.ActiveContactPrice);
-        Assert.True(model.RawData.ContainsKey("active_contact_price"));
-        Assert.Null(model.Events);
-        Assert.True(model.RawData.ContainsKey("events"));
-        Assert.Null(model.MessageBody);
-        Assert.True(model.RawData.ContainsKey("message_body"));
-        Assert.Null(model.Price);
-        Assert.True(model.RawData.ContainsKey("price"));
-        Assert.Null(model.TemplateCategory);
-        Assert.True(model.RawData.ContainsKey("template_category"));
-        Assert.Null(model.TemplateID);
-        Assert.True(model.RawData.ContainsKey("template_id"));
-        Assert.Null(model.TemplateName);
+        Assert.True(model.RawData.ContainsKey("active_contact_price"));Assert.Null(model.Events);
+        Assert.True(model.RawData.ContainsKey("events"));Assert.Null(model.MessageBody);
+        Assert.True(model.RawData.ContainsKey("message_body"));Assert.Null(model.Price);
+        Assert.True(model.RawData.ContainsKey("price"));Assert.Null(model.TemplateCategory);
+        Assert.True(model.RawData.ContainsKey("template_category"));Assert.Null(model.TemplateID);
+        Assert.True(model.RawData.ContainsKey("template_id"));Assert.Null(model.TemplateName);
         Assert.True(model.RawData.ContainsKey("template_name"));
+
     }
 
     [Fact]
@@ -1476,24 +1338,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Direction = "direction",
-            Phone = "phone",
-            PhoneInternational = "phone_international",
-            RegionCode = "region_code",
-            Status = "status",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Direction = "direction",Phone = "phone",PhoneInternational = "phone_international",RegionCode = "region_code",Status = "status",
 
-            ActiveContactPrice = null,
-            Events = null,
-            MessageBody = null,
-            Price = null,
-            TemplateCategory = null,
-            TemplateID = null,
-            TemplateName = null,
+            ActiveContactPrice = null,Events = null,MessageBody = null,Price = null,TemplateCategory = null,TemplateID = null,TemplateName = null,
         };
 
         model.Validate();
@@ -1504,14 +1351,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     {
         var model = new MessageRetrieveStatusResponseData
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ActiveContactPrice = 0,
-            Channel = "channel",
-            ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Direction = "direction",
-            Events =
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ActiveContactPrice = 0,Channel = "channel",ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Direction = "direction",Events =
             [
                 new()
                 {
@@ -1519,8 +1359,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
                 },
-            ],
-            MessageBody = new()
+            ],MessageBody = new()
             {
                 Buttons =
                 [
@@ -1535,15 +1374,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
-            },
-            Phone = "phone",
-            PhoneInternational = "phone_international",
-            Price = 0,
-            RegionCode = "region_code",
-            Status = "status",
-            TemplateCategory = "template_category",
-            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            TemplateName = "template_name",
+            },Phone = "phone",PhoneInternational = "phone_international",Price = 0,RegionCode = "region_code",Status = "status",TemplateCategory = "template_category",TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",TemplateName = "template_name",
         };
 
         MessageRetrieveStatusResponseData copied = new(model);
@@ -1559,9 +1390,7 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
+            Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Description = "description",
         };
 
         string expectedStatus = "status";
@@ -1578,9 +1407,7 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
+            Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Description = "description",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -1594,9 +1421,7 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
+            Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Description = "description",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -1617,9 +1442,7 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
+            Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Description = "description",
         };
 
         model.Validate();
@@ -1630,12 +1453,12 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
+
     }
 
     [Fact]
@@ -1643,8 +1466,7 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         model.Validate();
@@ -1655,14 +1477,14 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             Description = null,
         };
 
         Assert.Null(model.Description);
         Assert.True(model.RawData.ContainsKey("description"));
+
     }
 
     [Fact]
@@ -1670,8 +1492,7 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             Description = null,
         };
@@ -1684,9 +1505,7 @@ public class EventTest : TestBase
     {
         var model = new Event
         {
-            Status = "status",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
+            Status = "status",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Description = "description",
         };
 
         Event copied = new(model);
@@ -1711,10 +1530,7 @@ public class MessageBodyTest : TestBase
                     Type = "type",
                     Value = "value",
                 },
-            ],
-            Content = "content",
-            Footer = "footer",
-            Header = "header",
+            ],Content = "content",Footer = "footer",Header = "header",
         };
 
         List<Button> expectedButtons =
@@ -1756,17 +1572,11 @@ public class MessageBodyTest : TestBase
                     Type = "type",
                     Value = "value",
                 },
-            ],
-            Content = "content",
-            Footer = "footer",
-            Header = "header",
+            ],Content = "content",Footer = "footer",Header = "header",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageBody>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageBody>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -1785,17 +1595,11 @@ public class MessageBodyTest : TestBase
                     Type = "type",
                     Value = "value",
                 },
-            ],
-            Content = "content",
-            Footer = "footer",
-            Header = "header",
+            ],Content = "content",Footer = "footer",Header = "header",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageBody>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MessageBody>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<Button> expectedButtons =
@@ -1837,10 +1641,7 @@ public class MessageBodyTest : TestBase
                     Type = "type",
                     Value = "value",
                 },
-            ],
-            Content = "content",
-            Footer = "footer",
-            Header = "header",
+            ],Content = "content",Footer = "footer",Header = "header",
         };
 
         model.Validate();
@@ -1860,13 +1661,12 @@ public class MessageBodyTest : TestBase
                     Type = "type",
                     Value = "value",
                 },
-            ],
-            Footer = "footer",
-            Header = "header",
+            ],Footer = "footer",Header = "header",
         };
 
         Assert.Null(model.Content);
         Assert.False(model.RawData.ContainsKey("content"));
+
     }
 
     [Fact]
@@ -1883,9 +1683,7 @@ public class MessageBodyTest : TestBase
                     Type = "type",
                     Value = "value",
                 },
-            ],
-            Footer = "footer",
-            Header = "header",
+            ],Footer = "footer",Header = "header",
         };
 
         model.Validate();
@@ -1905,9 +1703,7 @@ public class MessageBodyTest : TestBase
                     Type = "type",
                     Value = "value",
                 },
-            ],
-            Footer = "footer",
-            Header = "header",
+            ],Footer = "footer",Header = "header",
 
             // Null should be interpreted as omitted for these properties
             Content = null,
@@ -1915,6 +1711,7 @@ public class MessageBodyTest : TestBase
 
         Assert.Null(model.Content);
         Assert.False(model.RawData.ContainsKey("content"));
+
     }
 
     [Fact]
@@ -1931,9 +1728,7 @@ public class MessageBodyTest : TestBase
                     Type = "type",
                     Value = "value",
                 },
-            ],
-            Footer = "footer",
-            Header = "header",
+            ],Footer = "footer",Header = "header",
 
             // Null should be interpreted as omitted for these properties
             Content = null,
@@ -1945,20 +1740,25 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new MessageBody { Content = "content" };
+        var model = new MessageBody
+        {
+            Content = "content",
+        };
 
         Assert.Null(model.Buttons);
-        Assert.False(model.RawData.ContainsKey("buttons"));
-        Assert.Null(model.Footer);
-        Assert.False(model.RawData.ContainsKey("footer"));
-        Assert.Null(model.Header);
+        Assert.False(model.RawData.ContainsKey("buttons"));Assert.Null(model.Footer);
+        Assert.False(model.RawData.ContainsKey("footer"));Assert.Null(model.Header);
         Assert.False(model.RawData.ContainsKey("header"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new MessageBody { Content = "content" };
+        var model = new MessageBody
+        {
+            Content = "content",
+        };
 
         model.Validate();
     }
@@ -1970,17 +1770,14 @@ public class MessageBodyTest : TestBase
         {
             Content = "content",
 
-            Buttons = null,
-            Footer = null,
-            Header = null,
+            Buttons = null,Footer = null,Header = null,
         };
 
         Assert.Null(model.Buttons);
-        Assert.True(model.RawData.ContainsKey("buttons"));
-        Assert.Null(model.Footer);
-        Assert.True(model.RawData.ContainsKey("footer"));
-        Assert.Null(model.Header);
+        Assert.True(model.RawData.ContainsKey("buttons"));Assert.Null(model.Footer);
+        Assert.True(model.RawData.ContainsKey("footer"));Assert.Null(model.Header);
         Assert.True(model.RawData.ContainsKey("header"));
+
     }
 
     [Fact]
@@ -1990,9 +1787,7 @@ public class MessageBodyTest : TestBase
         {
             Content = "content",
 
-            Buttons = null,
-            Footer = null,
-            Header = null,
+            Buttons = null,Footer = null,Header = null,
         };
 
         model.Validate();
@@ -2012,10 +1807,7 @@ public class MessageBodyTest : TestBase
                     Type = "type",
                     Value = "value",
                 },
-            ],
-            Content = "content",
-            Footer = "footer",
-            Header = "header",
+            ],Content = "content",Footer = "footer",Header = "header",
         };
 
         MessageBody copied = new(model);
@@ -2031,10 +1823,7 @@ public class ButtonTest : TestBase
     {
         var model = new Button
         {
-            PostbackData = "postbackData",
-            Text = "text",
-            Type = "type",
-            Value = "value",
+            PostbackData = "postbackData",Text = "text",Type = "type",Value = "value",
         };
 
         string expectedPostbackData = "postbackData";
@@ -2053,10 +1842,7 @@ public class ButtonTest : TestBase
     {
         var model = new Button
         {
-            PostbackData = "postbackData",
-            Text = "text",
-            Type = "type",
-            Value = "value",
+            PostbackData = "postbackData",Text = "text",Type = "type",Value = "value",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -2070,10 +1856,7 @@ public class ButtonTest : TestBase
     {
         var model = new Button
         {
-            PostbackData = "postbackData",
-            Text = "text",
-            Type = "type",
-            Value = "value",
+            PostbackData = "postbackData",Text = "text",Type = "type",Value = "value",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -2096,10 +1879,7 @@ public class ButtonTest : TestBase
     {
         var model = new Button
         {
-            PostbackData = "postbackData",
-            Text = "text",
-            Type = "type",
-            Value = "value",
+            PostbackData = "postbackData",Text = "text",Type = "type",Value = "value",
         };
 
         model.Validate();
@@ -2108,18 +1888,24 @@ public class ButtonTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Button { PostbackData = "postbackData", Text = "text" };
+        var model = new Button
+        {
+            PostbackData = "postbackData",Text = "text",
+        };
 
         Assert.Null(model.Type);
-        Assert.False(model.RawData.ContainsKey("type"));
-        Assert.Null(model.Value);
+        Assert.False(model.RawData.ContainsKey("type"));Assert.Null(model.Value);
         Assert.False(model.RawData.ContainsKey("value"));
+
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Button { PostbackData = "postbackData", Text = "text" };
+        var model = new Button
+        {
+            PostbackData = "postbackData",Text = "text",
+        };
 
         model.Validate();
     }
@@ -2129,18 +1915,16 @@ public class ButtonTest : TestBase
     {
         var model = new Button
         {
-            PostbackData = "postbackData",
-            Text = "text",
+            PostbackData = "postbackData",Text = "text",
 
             // Null should be interpreted as omitted for these properties
-            Type = null,
-            Value = null,
+            Type = null,Value = null,
         };
 
         Assert.Null(model.Type);
-        Assert.False(model.RawData.ContainsKey("type"));
-        Assert.Null(model.Value);
+        Assert.False(model.RawData.ContainsKey("type"));Assert.Null(model.Value);
         Assert.False(model.RawData.ContainsKey("value"));
+
     }
 
     [Fact]
@@ -2148,12 +1932,10 @@ public class ButtonTest : TestBase
     {
         var model = new Button
         {
-            PostbackData = "postbackData",
-            Text = "text",
+            PostbackData = "postbackData",Text = "text",
 
             // Null should be interpreted as omitted for these properties
-            Type = null,
-            Value = null,
+            Type = null,Value = null,
         };
 
         model.Validate();
@@ -2162,18 +1944,24 @@ public class ButtonTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Button { Type = "type", Value = "value" };
+        var model = new Button
+        {
+            Type = "type",Value = "value",
+        };
 
         Assert.Null(model.PostbackData);
-        Assert.False(model.RawData.ContainsKey("postbackData"));
-        Assert.Null(model.Text);
+        Assert.False(model.RawData.ContainsKey("postbackData"));Assert.Null(model.Text);
         Assert.False(model.RawData.ContainsKey("text"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Button { Type = "type", Value = "value" };
+        var model = new Button
+        {
+            Type = "type",Value = "value",
+        };
 
         model.Validate();
     }
@@ -2183,17 +1971,15 @@ public class ButtonTest : TestBase
     {
         var model = new Button
         {
-            Type = "type",
-            Value = "value",
+            Type = "type",Value = "value",
 
-            PostbackData = null,
-            Text = null,
+            PostbackData = null,Text = null,
         };
 
         Assert.Null(model.PostbackData);
-        Assert.True(model.RawData.ContainsKey("postbackData"));
-        Assert.Null(model.Text);
+        Assert.True(model.RawData.ContainsKey("postbackData"));Assert.Null(model.Text);
         Assert.True(model.RawData.ContainsKey("text"));
+
     }
 
     [Fact]
@@ -2201,11 +1987,9 @@ public class ButtonTest : TestBase
     {
         var model = new Button
         {
-            Type = "type",
-            Value = "value",
+            Type = "type",Value = "value",
 
-            PostbackData = null,
-            Text = null,
+            PostbackData = null,Text = null,
         };
 
         model.Validate();
@@ -2216,10 +2000,7 @@ public class ButtonTest : TestBase
     {
         var model = new Button
         {
-            PostbackData = "postbackData",
-            Text = "text",
-            Type = "type",
-            Value = "value",
+            PostbackData = "postbackData",Text = "text",Type = "type",Value = "value",
         };
 
         Button copied = new(model);

@@ -16,12 +16,12 @@ public sealed record class BrandsBrandData : JsonModel
     /// <summary>
     /// Compliance and TCR information for brand registration
     /// </summary>
-    public required BrandComplianceInfo Compliance
-    {
-        get
-        {
+    public required BrandComplianceInfo Compliance {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<BrandComplianceInfo>("compliance");
+            return this._rawData.GetNotNullClass<BrandComplianceInfo>(
+                "compliance"
+            );
         }
         init { this._rawData.Set("compliance", value); }
     }
@@ -29,12 +29,12 @@ public sealed record class BrandsBrandData : JsonModel
     /// <summary>
     /// Contact information for brand KYC
     /// </summary>
-    public required BrandContactInfo Contact
-    {
-        get
-        {
+    public required BrandContactInfo Contact {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<BrandContactInfo>("contact");
+            return this._rawData.GetNotNullClass<BrandContactInfo>(
+                "contact"
+            );
         }
         init { this._rawData.Set("contact", value); }
     }
@@ -42,12 +42,12 @@ public sealed record class BrandsBrandData : JsonModel
     /// <summary>
     /// Business details and address for brand KYC
     /// </summary>
-    public BrandBusinessInfo? Business
-    {
-        get
-        {
+    public BrandBusinessInfo? Business {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<BrandBusinessInfo>("business");
+            return this._rawData.GetNullableClass<BrandBusinessInfo>(
+                "business"
+            );
         }
         init { this._rawData.Set("business", value); }
     }
@@ -60,37 +60,38 @@ public sealed record class BrandsBrandData : JsonModel
         this.Business?.Validate();
     }
 
-    public BrandsBrandData() { }
+    public BrandsBrandData ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public BrandsBrandData(BrandsBrandData brandsBrandData)
-        : base(brandsBrandData) { }
-#pragma warning restore CS8618
+    public BrandsBrandData (BrandsBrandData brandsBrandData) : base(
+        brandsBrandData
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public BrandsBrandData(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public BrandsBrandData (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    BrandsBrandData(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    BrandsBrandData (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="BrandsBrandDataFromRaw.FromRawUnchecked"/>
-    public static BrandsBrandData FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static BrandsBrandData FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class BrandsBrandDataFromRaw : IFromRawJson<BrandsBrandData>
 {
     /// <inheritdoc/>
-    public BrandsBrandData FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        BrandsBrandData.FromRawUnchecked(rawData);
+    public BrandsBrandData FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>BrandsBrandData.FromRawUnchecked(rawData);
 }

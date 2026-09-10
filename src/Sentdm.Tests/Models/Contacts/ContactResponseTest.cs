@@ -12,21 +12,7 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AvailableChannels = "available_channels",
-            CountryCode = "country_code",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DefaultChannel = "default_channel",
-            FormatE164 = "format_e164",
-            FormatInternational = "format_international",
-            FormatNational = "format_national",
-            FormatRfc = "format_rfc",
-            IsInherited = true,
-            OptOut = true,
-            PhoneNumber = "phone_number",
-            RegionCode = "region_code",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AvailableChannels = "available_channels",CountryCode = "country_code",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",DefaultChannel = "default_channel",FormatE164 = "format_e164",FormatInternational = "format_international",FormatNational = "format_national",FormatRfc = "format_rfc",IsInherited = true,OptOut = true,PhoneNumber = "phone_number",RegionCode = "region_code",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -67,28 +53,11 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AvailableChannels = "available_channels",
-            CountryCode = "country_code",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DefaultChannel = "default_channel",
-            FormatE164 = "format_e164",
-            FormatInternational = "format_international",
-            FormatNational = "format_national",
-            FormatRfc = "format_rfc",
-            IsInherited = true,
-            OptOut = true,
-            PhoneNumber = "phone_number",
-            RegionCode = "region_code",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AvailableChannels = "available_channels",CountryCode = "country_code",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",DefaultChannel = "default_channel",FormatE164 = "format_e164",FormatInternational = "format_international",FormatNational = "format_national",FormatRfc = "format_rfc",IsInherited = true,OptOut = true,PhoneNumber = "phone_number",RegionCode = "region_code",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ContactResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ContactResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -98,28 +67,11 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AvailableChannels = "available_channels",
-            CountryCode = "country_code",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DefaultChannel = "default_channel",
-            FormatE164 = "format_e164",
-            FormatInternational = "format_international",
-            FormatNational = "format_national",
-            FormatRfc = "format_rfc",
-            IsInherited = true,
-            OptOut = true,
-            PhoneNumber = "phone_number",
-            RegionCode = "region_code",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AvailableChannels = "available_channels",CountryCode = "country_code",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",DefaultChannel = "default_channel",FormatE164 = "format_e164",FormatInternational = "format_international",FormatNational = "format_national",FormatRfc = "format_rfc",IsInherited = true,OptOut = true,PhoneNumber = "phone_number",RegionCode = "region_code",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ContactResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ContactResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -160,21 +112,7 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AvailableChannels = "available_channels",
-            CountryCode = "country_code",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DefaultChannel = "default_channel",
-            FormatE164 = "format_e164",
-            FormatInternational = "format_international",
-            FormatNational = "format_national",
-            FormatRfc = "format_rfc",
-            IsInherited = true,
-            OptOut = true,
-            PhoneNumber = "phone_number",
-            RegionCode = "region_code",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AvailableChannels = "available_channels",CountryCode = "country_code",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",DefaultChannel = "default_channel",FormatE164 = "format_e164",FormatInternational = "format_international",FormatNational = "format_national",FormatRfc = "format_rfc",IsInherited = true,OptOut = true,PhoneNumber = "phone_number",RegionCode = "region_code",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         model.Validate();
@@ -189,33 +127,21 @@ public class ContactResponseTest : TestBase
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.AvailableChannels);
-        Assert.False(model.RawData.ContainsKey("available_channels"));
-        Assert.Null(model.CountryCode);
-        Assert.False(model.RawData.ContainsKey("country_code"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.CustomerID);
-        Assert.False(model.RawData.ContainsKey("customer_id"));
-        Assert.Null(model.DefaultChannel);
-        Assert.False(model.RawData.ContainsKey("default_channel"));
-        Assert.Null(model.FormatE164);
-        Assert.False(model.RawData.ContainsKey("format_e164"));
-        Assert.Null(model.FormatInternational);
-        Assert.False(model.RawData.ContainsKey("format_international"));
-        Assert.Null(model.FormatNational);
-        Assert.False(model.RawData.ContainsKey("format_national"));
-        Assert.Null(model.FormatRfc);
-        Assert.False(model.RawData.ContainsKey("format_rfc"));
-        Assert.Null(model.IsInherited);
-        Assert.False(model.RawData.ContainsKey("is_inherited"));
-        Assert.Null(model.OptOut);
-        Assert.False(model.RawData.ContainsKey("opt_out"));
-        Assert.Null(model.PhoneNumber);
-        Assert.False(model.RawData.ContainsKey("phone_number"));
-        Assert.Null(model.RegionCode);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.AvailableChannels);
+        Assert.False(model.RawData.ContainsKey("available_channels"));Assert.Null(model.CountryCode);
+        Assert.False(model.RawData.ContainsKey("country_code"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.CustomerID);
+        Assert.False(model.RawData.ContainsKey("customer_id"));Assert.Null(model.DefaultChannel);
+        Assert.False(model.RawData.ContainsKey("default_channel"));Assert.Null(model.FormatE164);
+        Assert.False(model.RawData.ContainsKey("format_e164"));Assert.Null(model.FormatInternational);
+        Assert.False(model.RawData.ContainsKey("format_international"));Assert.Null(model.FormatNational);
+        Assert.False(model.RawData.ContainsKey("format_national"));Assert.Null(model.FormatRfc);
+        Assert.False(model.RawData.ContainsKey("format_rfc"));Assert.Null(model.IsInherited);
+        Assert.False(model.RawData.ContainsKey("is_inherited"));Assert.Null(model.OptOut);
+        Assert.False(model.RawData.ContainsKey("opt_out"));Assert.Null(model.PhoneNumber);
+        Assert.False(model.RawData.ContainsKey("phone_number"));Assert.Null(model.RegionCode);
         Assert.False(model.RawData.ContainsKey("region_code"));
+
     }
 
     [Fact]
@@ -237,50 +163,25 @@ public class ContactResponseTest : TestBase
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            AvailableChannels = null,
-            CountryCode = null,
-            CreatedAt = null,
-            CustomerID = null,
-            DefaultChannel = null,
-            FormatE164 = null,
-            FormatInternational = null,
-            FormatNational = null,
-            FormatRfc = null,
-            IsInherited = null,
-            OptOut = null,
-            PhoneNumber = null,
-            RegionCode = null,
+            ID = null,AvailableChannels = null,CountryCode = null,CreatedAt = null,CustomerID = null,DefaultChannel = null,FormatE164 = null,FormatInternational = null,FormatNational = null,FormatRfc = null,IsInherited = null,OptOut = null,PhoneNumber = null,RegionCode = null,
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.AvailableChannels);
-        Assert.False(model.RawData.ContainsKey("available_channels"));
-        Assert.Null(model.CountryCode);
-        Assert.False(model.RawData.ContainsKey("country_code"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.CustomerID);
-        Assert.False(model.RawData.ContainsKey("customer_id"));
-        Assert.Null(model.DefaultChannel);
-        Assert.False(model.RawData.ContainsKey("default_channel"));
-        Assert.Null(model.FormatE164);
-        Assert.False(model.RawData.ContainsKey("format_e164"));
-        Assert.Null(model.FormatInternational);
-        Assert.False(model.RawData.ContainsKey("format_international"));
-        Assert.Null(model.FormatNational);
-        Assert.False(model.RawData.ContainsKey("format_national"));
-        Assert.Null(model.FormatRfc);
-        Assert.False(model.RawData.ContainsKey("format_rfc"));
-        Assert.Null(model.IsInherited);
-        Assert.False(model.RawData.ContainsKey("is_inherited"));
-        Assert.Null(model.OptOut);
-        Assert.False(model.RawData.ContainsKey("opt_out"));
-        Assert.Null(model.PhoneNumber);
-        Assert.False(model.RawData.ContainsKey("phone_number"));
-        Assert.Null(model.RegionCode);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.AvailableChannels);
+        Assert.False(model.RawData.ContainsKey("available_channels"));Assert.Null(model.CountryCode);
+        Assert.False(model.RawData.ContainsKey("country_code"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.CustomerID);
+        Assert.False(model.RawData.ContainsKey("customer_id"));Assert.Null(model.DefaultChannel);
+        Assert.False(model.RawData.ContainsKey("default_channel"));Assert.Null(model.FormatE164);
+        Assert.False(model.RawData.ContainsKey("format_e164"));Assert.Null(model.FormatInternational);
+        Assert.False(model.RawData.ContainsKey("format_international"));Assert.Null(model.FormatNational);
+        Assert.False(model.RawData.ContainsKey("format_national"));Assert.Null(model.FormatRfc);
+        Assert.False(model.RawData.ContainsKey("format_rfc"));Assert.Null(model.IsInherited);
+        Assert.False(model.RawData.ContainsKey("is_inherited"));Assert.Null(model.OptOut);
+        Assert.False(model.RawData.ContainsKey("opt_out"));Assert.Null(model.PhoneNumber);
+        Assert.False(model.RawData.ContainsKey("phone_number"));Assert.Null(model.RegionCode);
         Assert.False(model.RawData.ContainsKey("region_code"));
+
     }
 
     [Fact]
@@ -291,20 +192,7 @@ public class ContactResponseTest : TestBase
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            AvailableChannels = null,
-            CountryCode = null,
-            CreatedAt = null,
-            CustomerID = null,
-            DefaultChannel = null,
-            FormatE164 = null,
-            FormatInternational = null,
-            FormatNational = null,
-            FormatRfc = null,
-            IsInherited = null,
-            OptOut = null,
-            PhoneNumber = null,
-            RegionCode = null,
+            ID = null,AvailableChannels = null,CountryCode = null,CreatedAt = null,CustomerID = null,DefaultChannel = null,FormatE164 = null,FormatInternational = null,FormatNational = null,FormatRfc = null,IsInherited = null,OptOut = null,PhoneNumber = null,RegionCode = null,
         };
 
         model.Validate();
@@ -315,24 +203,12 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AvailableChannels = "available_channels",
-            CountryCode = "country_code",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DefaultChannel = "default_channel",
-            FormatE164 = "format_e164",
-            FormatInternational = "format_international",
-            FormatNational = "format_national",
-            FormatRfc = "format_rfc",
-            IsInherited = true,
-            OptOut = true,
-            PhoneNumber = "phone_number",
-            RegionCode = "region_code",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AvailableChannels = "available_channels",CountryCode = "country_code",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",DefaultChannel = "default_channel",FormatE164 = "format_e164",FormatInternational = "format_international",FormatNational = "format_national",FormatRfc = "format_rfc",IsInherited = true,OptOut = true,PhoneNumber = "phone_number",RegionCode = "region_code",
         };
 
         Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updated_at"));
+
     }
 
     [Fact]
@@ -340,20 +216,7 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AvailableChannels = "available_channels",
-            CountryCode = "country_code",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DefaultChannel = "default_channel",
-            FormatE164 = "format_e164",
-            FormatInternational = "format_international",
-            FormatNational = "format_national",
-            FormatRfc = "format_rfc",
-            IsInherited = true,
-            OptOut = true,
-            PhoneNumber = "phone_number",
-            RegionCode = "region_code",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AvailableChannels = "available_channels",CountryCode = "country_code",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",DefaultChannel = "default_channel",FormatE164 = "format_e164",FormatInternational = "format_international",FormatNational = "format_national",FormatRfc = "format_rfc",IsInherited = true,OptOut = true,PhoneNumber = "phone_number",RegionCode = "region_code",
         };
 
         model.Validate();
@@ -364,26 +227,14 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AvailableChannels = "available_channels",
-            CountryCode = "country_code",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DefaultChannel = "default_channel",
-            FormatE164 = "format_e164",
-            FormatInternational = "format_international",
-            FormatNational = "format_national",
-            FormatRfc = "format_rfc",
-            IsInherited = true,
-            OptOut = true,
-            PhoneNumber = "phone_number",
-            RegionCode = "region_code",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AvailableChannels = "available_channels",CountryCode = "country_code",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",DefaultChannel = "default_channel",FormatE164 = "format_e164",FormatInternational = "format_international",FormatNational = "format_national",FormatRfc = "format_rfc",IsInherited = true,OptOut = true,PhoneNumber = "phone_number",RegionCode = "region_code",
 
             UpdatedAt = null,
         };
 
         Assert.Null(model.UpdatedAt);
         Assert.True(model.RawData.ContainsKey("updated_at"));
+
     }
 
     [Fact]
@@ -391,20 +242,7 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AvailableChannels = "available_channels",
-            CountryCode = "country_code",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DefaultChannel = "default_channel",
-            FormatE164 = "format_e164",
-            FormatInternational = "format_international",
-            FormatNational = "format_national",
-            FormatRfc = "format_rfc",
-            IsInherited = true,
-            OptOut = true,
-            PhoneNumber = "phone_number",
-            RegionCode = "region_code",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AvailableChannels = "available_channels",CountryCode = "country_code",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",DefaultChannel = "default_channel",FormatE164 = "format_e164",FormatInternational = "format_international",FormatNational = "format_national",FormatRfc = "format_rfc",IsInherited = true,OptOut = true,PhoneNumber = "phone_number",RegionCode = "region_code",
 
             UpdatedAt = null,
         };
@@ -417,21 +255,7 @@ public class ContactResponseTest : TestBase
     {
         var model = new ContactResponse
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AvailableChannels = "available_channels",
-            CountryCode = "country_code",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            DefaultChannel = "default_channel",
-            FormatE164 = "format_e164",
-            FormatInternational = "format_international",
-            FormatNational = "format_national",
-            FormatRfc = "format_rfc",
-            IsInherited = true,
-            OptOut = true,
-            PhoneNumber = "phone_number",
-            RegionCode = "region_code",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AvailableChannels = "available_channels",CountryCode = "country_code",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",DefaultChannel = "default_channel",FormatE164 = "format_e164",FormatInternational = "format_international",FormatNational = "format_national",FormatRfc = "format_rfc",IsInherited = true,OptOut = true,PhoneNumber = "phone_number",RegionCode = "region_code",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         ContactResponse copied = new(model);

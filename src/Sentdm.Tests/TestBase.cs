@@ -9,24 +9,21 @@ public class TestBase
 {
     protected ISentClient client;
 
-    public TestBase()
+    public TestBase ()
     {
         client = new SentClient()
         {
-            BaseUrl =
-                Environment.GetEnvironmentVariable("TEST_API_BASE_URL") ?? "http://localhost:4010",
+            BaseUrl = Environment.GetEnvironmentVariable("TEST_API_BASE_URL") ?? "http://localhost:4010",
             ApiKey = "My API Key",
         };
     }
 
     internal static bool UrisEqual(Uri uri1, Uri uri2)
     {
-        if (
-            uri1.Scheme != uri2.Scheme
-            || uri1.Host != uri2.Host
-            || uri1.Port != uri2.Port
-            || uri1.AbsolutePath != uri2.AbsolutePath
-        )
+        if (uri1.Scheme != uri2.Scheme ||
+            uri1.Host != uri2.Host ||
+            uri1.Port != uri2.Port ||
+            uri1.AbsolutePath != uri2.AbsolutePath)
         {
             return false;
         }
@@ -37,19 +34,16 @@ public class TestBase
         return Enumerable.SequenceEqual(query1, query2);
     }
 
-    private static readonly char[] _ampersandArray = ['&'];
-    private static readonly char[] _equalsArray = ['='];
+    private readonly static char[] _ampersandArray = ['&'];
+    private readonly static char[] _equalsArray = ['='];
 
     static SortedDictionary<string, string> ParseQueryString(string query)
     {
         var ret = new SortedDictionary<string, string>(StringComparer.Ordinal);
 
-        if (string.IsNullOrEmpty(query))
-            return ret;
+        if (string.IsNullOrEmpty(query)) return ret;
 
-        var pairs = query
-            .TrimStart('?')
-            .Split(_ampersandArray, StringSplitOptions.RemoveEmptyEntries);
+        var pairs = query.TrimStart('?').Split(_ampersandArray, StringSplitOptions.RemoveEmptyEntries);
 
         foreach (var pair in pairs)
         {

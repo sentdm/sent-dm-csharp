@@ -11,14 +11,7 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            Text = "text",
-            UpdatedAt = "updated_at",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",Text = "text",UpdatedAt = "updated_at",
         };
 
         string expectedInboundNumber = "inbound_number";
@@ -45,21 +38,11 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            Text = "text",
-            UpdatedAt = "updated_at",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",Text = "text",UpdatedAt = "updated_at",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<InboundMessageEventPayload>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<InboundMessageEventPayload>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -69,21 +52,11 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            Text = "text",
-            UpdatedAt = "updated_at",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",Text = "text",UpdatedAt = "updated_at",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<InboundMessageEventPayload>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<InboundMessageEventPayload>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedInboundNumber = "inbound_number";
@@ -110,14 +83,7 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            Text = "text",
-            UpdatedAt = "updated_at",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",Text = "text",UpdatedAt = "updated_at",
         };
 
         model.Validate();
@@ -128,21 +94,16 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            Text = "text",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",Text = "text",
         };
 
         Assert.Null(model.AccountID);
-        Assert.False(model.RawData.ContainsKey("account_id"));
-        Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
-        Assert.Null(model.MessageID);
-        Assert.False(model.RawData.ContainsKey("message_id"));
-        Assert.Null(model.OutboundNumber);
-        Assert.False(model.RawData.ContainsKey("outbound_number"));
-        Assert.Null(model.UpdatedAt);
+        Assert.False(model.RawData.ContainsKey("account_id"));Assert.Null(model.Channel);
+        Assert.False(model.RawData.ContainsKey("channel"));Assert.Null(model.MessageID);
+        Assert.False(model.RawData.ContainsKey("message_id"));Assert.Null(model.OutboundNumber);
+        Assert.False(model.RawData.ContainsKey("outbound_number"));Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updated_at"));
+
     }
 
     [Fact]
@@ -150,9 +111,7 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            Text = "text",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",Text = "text",
         };
 
         model.Validate();
@@ -163,28 +122,19 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            Text = "text",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",Text = "text",
 
             // Null should be interpreted as omitted for these properties
-            AccountID = null,
-            Channel = null,
-            MessageID = null,
-            OutboundNumber = null,
-            UpdatedAt = null,
+            AccountID = null,Channel = null,MessageID = null,OutboundNumber = null,UpdatedAt = null,
         };
 
         Assert.Null(model.AccountID);
-        Assert.False(model.RawData.ContainsKey("account_id"));
-        Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
-        Assert.Null(model.MessageID);
-        Assert.False(model.RawData.ContainsKey("message_id"));
-        Assert.Null(model.OutboundNumber);
-        Assert.False(model.RawData.ContainsKey("outbound_number"));
-        Assert.Null(model.UpdatedAt);
+        Assert.False(model.RawData.ContainsKey("account_id"));Assert.Null(model.Channel);
+        Assert.False(model.RawData.ContainsKey("channel"));Assert.Null(model.MessageID);
+        Assert.False(model.RawData.ContainsKey("message_id"));Assert.Null(model.OutboundNumber);
+        Assert.False(model.RawData.ContainsKey("outbound_number"));Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updated_at"));
+
     }
 
     [Fact]
@@ -192,16 +142,10 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            Text = "text",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",Text = "text",
 
             // Null should be interpreted as omitted for these properties
-            AccountID = null,
-            Channel = null,
-            MessageID = null,
-            OutboundNumber = null,
-            UpdatedAt = null,
+            AccountID = null,Channel = null,MessageID = null,OutboundNumber = null,UpdatedAt = null,
         };
 
         model.Validate();
@@ -212,17 +156,12 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            UpdatedAt = "updated_at",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",UpdatedAt = "updated_at",
         };
 
         Assert.Null(model.Text);
         Assert.False(model.RawData.ContainsKey("text"));
+
     }
 
     [Fact]
@@ -230,13 +169,7 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            UpdatedAt = "updated_at",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",UpdatedAt = "updated_at",
         };
 
         model.Validate();
@@ -247,19 +180,14 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            UpdatedAt = "updated_at",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",UpdatedAt = "updated_at",
 
             Text = null,
         };
 
         Assert.Null(model.Text);
         Assert.True(model.RawData.ContainsKey("text"));
+
     }
 
     [Fact]
@@ -267,13 +195,7 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            UpdatedAt = "updated_at",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",UpdatedAt = "updated_at",
 
             Text = null,
         };
@@ -286,14 +208,7 @@ public class InboundMessageEventPayloadTest : TestBase
     {
         var model = new InboundMessageEventPayload
         {
-            InboundNumber = "inbound_number",
-            ReceivedAt = "received_at",
-            AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Channel = "channel",
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            OutboundNumber = "outbound_number",
-            Text = "text",
-            UpdatedAt = "updated_at",
+            InboundNumber = "inbound_number",ReceivedAt = "received_at",AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Channel = "channel",MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",OutboundNumber = "outbound_number",Text = "text",UpdatedAt = "updated_at",
         };
 
         InboundMessageEventPayload copied = new(model);

@@ -21,17 +21,15 @@ namespace Sentdm.Models.Profiles.Campaigns;
 [JsonConverter(typeof(JsonModelConverter<CampaignUseCase, CampaignUseCaseFromRaw>))]
 public sealed record class CampaignUseCase : JsonModel
 {
-    public string? ID
-    {
-        get
-        {
+    public string? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("id");
+            return this._rawData.GetNullableClass<string>(
+                "id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -39,17 +37,15 @@ public sealed record class CampaignUseCase : JsonModel
         }
     }
 
-    public string? CampaignID
-    {
-        get
-        {
+    public string? CampaignID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("campaignId");
+            return this._rawData.GetNullableClass<string>(
+                "campaignId"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -57,17 +53,15 @@ public sealed record class CampaignUseCase : JsonModel
         }
     }
 
-    public DateTimeOffset? CreatedAt
-    {
-        get
-        {
+    public DateTimeOffset? CreatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("createdAt");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "createdAt"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -75,17 +69,15 @@ public sealed record class CampaignUseCase : JsonModel
         }
     }
 
-    public string? CustomerID
-    {
-        get
-        {
+    public string? CustomerID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("customerId");
+            return this._rawData.GetNullableClass<string>(
+                "customerId"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -93,19 +85,15 @@ public sealed record class CampaignUseCase : JsonModel
         }
     }
 
-    public ApiEnum<string, MessagingUseCaseUs>? MessagingUseCaseUs
-    {
-        get
-        {
+    public ApiEnum<string, MessagingUseCaseUs>? MessagingUseCaseUs {
+        get {
             this._rawData.Freeze();
             return this._rawData.GetNullableClass<ApiEnum<string, MessagingUseCaseUs>>(
                 "messagingUseCaseUs"
             );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -116,17 +104,15 @@ public sealed record class CampaignUseCase : JsonModel
     /// <summary>
     /// Sample messages submitted to the registry for this use case.
     /// </summary>
-    public IReadOnlyList<string>? SampleMessages
-    {
-        get
-        {
+    public IReadOnlyList<string>? SampleMessages {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("sampleMessages");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "sampleMessages"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -137,12 +123,12 @@ public sealed record class CampaignUseCase : JsonModel
         }
     }
 
-    public DateTimeOffset? UpdatedAt
-    {
-        get
-        {
+    public DateTimeOffset? UpdatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("updatedAt");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "updatedAt"
+            );
         }
         init { this._rawData.Set("updatedAt", value); }
     }
@@ -159,37 +145,38 @@ public sealed record class CampaignUseCase : JsonModel
         _ = this.UpdatedAt;
     }
 
-    public CampaignUseCase() { }
+    public CampaignUseCase ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public CampaignUseCase(CampaignUseCase campaignUseCase)
-        : base(campaignUseCase) { }
-#pragma warning restore CS8618
+    public CampaignUseCase (CampaignUseCase campaignUseCase) : base(
+        campaignUseCase
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public CampaignUseCase(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public CampaignUseCase (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    CampaignUseCase(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    CampaignUseCase (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="CampaignUseCaseFromRaw.FromRawUnchecked"/>
-    public static CampaignUseCase FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static CampaignUseCase FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class CampaignUseCaseFromRaw : IFromRawJson<CampaignUseCase>
 {
     /// <inheritdoc/>
-    public CampaignUseCase FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        CampaignUseCase.FromRawUnchecked(rawData);
+    public CampaignUseCase FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>CampaignUseCase.FromRawUnchecked(rawData);
 }

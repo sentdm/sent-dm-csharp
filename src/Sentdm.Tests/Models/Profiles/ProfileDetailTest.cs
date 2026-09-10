@@ -14,19 +14,15 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AllowContactSharing = true,
-            AllowNumberChangeDuringOnboarding = true,
-            AllowTemplateSharing = true,
-            BillingContact = new()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AllowContactSharing = true,AllowNumberChangeDuringOnboarding = true,AllowTemplateSharing = true,BillingContact = new(
+
+            )
             {
                 Address = "address",
                 Email = "email",
                 Name = "name",
                 Phone = "phone",
-            },
-            BillingModel = "billing_model",
-            Brand = new()
+            },BillingModel = "billing_model",Brand = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Business = new()
@@ -46,7 +42,14 @@ public class ProfileDetailTest : TestBase
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
-                    DestinationCountries = [new() { ID = "id", IsMain = true }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            IsMain = true,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -72,25 +75,7 @@ public class ProfileDetailTest : TestBase
                 TcrBrandID = "tcr_brand_id",
                 UniversalEin = "universal_ein",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            },
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
-            Email = "email",
-            Icon = "icon",
-            InheritContacts = true,
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            InheritTemplates = true,
-            Name = "name",
-            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingPhoneNumber = "sending_phone_number",
-            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ShortName = "short_name",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            WabaID = "waba_id",
-            WhatsappPhoneNumber = "whatsapp_phone_number",
+            },CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Description = "description",Email = "email",Icon = "icon",InheritContacts = true,InheritTcrBrand = true,InheritTcrCampaign = true,InheritTemplates = true,Name = "name",OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingPhoneNumber = "sending_phone_number",SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ShortName = "short_name",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),WabaID = "waba_id",WhatsappPhoneNumber = "whatsapp_phone_number",
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -125,7 +110,14 @@ public class ProfileDetailTest : TestBase
             Compliance = new()
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -173,10 +165,7 @@ public class ProfileDetailTest : TestBase
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedAllowContactSharing, model.AllowContactSharing);
-        Assert.Equal(
-            expectedAllowNumberChangeDuringOnboarding,
-            model.AllowNumberChangeDuringOnboarding
-        );
+        Assert.Equal(expectedAllowNumberChangeDuringOnboarding, model.AllowNumberChangeDuringOnboarding);
         Assert.Equal(expectedAllowTemplateSharing, model.AllowTemplateSharing);
         Assert.Equal(expectedBillingContact, model.BillingContact);
         Assert.Equal(expectedBillingModel, model.BillingModel);
@@ -206,19 +195,15 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AllowContactSharing = true,
-            AllowNumberChangeDuringOnboarding = true,
-            AllowTemplateSharing = true,
-            BillingContact = new()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AllowContactSharing = true,AllowNumberChangeDuringOnboarding = true,AllowTemplateSharing = true,BillingContact = new(
+
+            )
             {
                 Address = "address",
                 Email = "email",
                 Name = "name",
                 Phone = "phone",
-            },
-            BillingModel = "billing_model",
-            Brand = new()
+            },BillingModel = "billing_model",Brand = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Business = new()
@@ -238,7 +223,14 @@ public class ProfileDetailTest : TestBase
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
-                    DestinationCountries = [new() { ID = "id", IsMain = true }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            IsMain = true,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -264,32 +256,11 @@ public class ProfileDetailTest : TestBase
                 TcrBrandID = "tcr_brand_id",
                 UniversalEin = "universal_ein",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            },
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
-            Email = "email",
-            Icon = "icon",
-            InheritContacts = true,
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            InheritTemplates = true,
-            Name = "name",
-            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingPhoneNumber = "sending_phone_number",
-            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ShortName = "short_name",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            WabaID = "waba_id",
-            WhatsappPhoneNumber = "whatsapp_phone_number",
+            },CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Description = "description",Email = "email",Icon = "icon",InheritContacts = true,InheritTcrBrand = true,InheritTcrCampaign = true,InheritTemplates = true,Name = "name",OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingPhoneNumber = "sending_phone_number",SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ShortName = "short_name",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),WabaID = "waba_id",WhatsappPhoneNumber = "whatsapp_phone_number",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ProfileDetail>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ProfileDetail>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -299,19 +270,15 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AllowContactSharing = true,
-            AllowNumberChangeDuringOnboarding = true,
-            AllowTemplateSharing = true,
-            BillingContact = new()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AllowContactSharing = true,AllowNumberChangeDuringOnboarding = true,AllowTemplateSharing = true,BillingContact = new(
+
+            )
             {
                 Address = "address",
                 Email = "email",
                 Name = "name",
                 Phone = "phone",
-            },
-            BillingModel = "billing_model",
-            Brand = new()
+            },BillingModel = "billing_model",Brand = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Business = new()
@@ -331,7 +298,14 @@ public class ProfileDetailTest : TestBase
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
-                    DestinationCountries = [new() { ID = "id", IsMain = true }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            IsMain = true,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -357,32 +331,11 @@ public class ProfileDetailTest : TestBase
                 TcrBrandID = "tcr_brand_id",
                 UniversalEin = "universal_ein",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            },
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
-            Email = "email",
-            Icon = "icon",
-            InheritContacts = true,
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            InheritTemplates = true,
-            Name = "name",
-            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingPhoneNumber = "sending_phone_number",
-            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ShortName = "short_name",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            WabaID = "waba_id",
-            WhatsappPhoneNumber = "whatsapp_phone_number",
+            },CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Description = "description",Email = "email",Icon = "icon",InheritContacts = true,InheritTcrBrand = true,InheritTcrCampaign = true,InheritTemplates = true,Name = "name",OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingPhoneNumber = "sending_phone_number",SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ShortName = "short_name",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),WabaID = "waba_id",WhatsappPhoneNumber = "whatsapp_phone_number",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ProfileDetail>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ProfileDetail>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -417,7 +370,14 @@ public class ProfileDetailTest : TestBase
             Compliance = new()
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
@@ -465,10 +425,7 @@ public class ProfileDetailTest : TestBase
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedAllowContactSharing, deserialized.AllowContactSharing);
-        Assert.Equal(
-            expectedAllowNumberChangeDuringOnboarding,
-            deserialized.AllowNumberChangeDuringOnboarding
-        );
+        Assert.Equal(expectedAllowNumberChangeDuringOnboarding, deserialized.AllowNumberChangeDuringOnboarding);
         Assert.Equal(expectedAllowTemplateSharing, deserialized.AllowTemplateSharing);
         Assert.Equal(expectedBillingContact, deserialized.BillingContact);
         Assert.Equal(expectedBillingModel, deserialized.BillingModel);
@@ -485,10 +442,7 @@ public class ProfileDetailTest : TestBase
         Assert.Equal(expectedOrganizationID, deserialized.OrganizationID);
         Assert.Equal(expectedSendingPhoneNumber, deserialized.SendingPhoneNumber);
         Assert.Equal(expectedSendingPhoneNumberProfileID, deserialized.SendingPhoneNumberProfileID);
-        Assert.Equal(
-            expectedSendingWhatsappNumberProfileID,
-            deserialized.SendingWhatsappNumberProfileID
-        );
+        Assert.Equal(expectedSendingWhatsappNumberProfileID, deserialized.SendingWhatsappNumberProfileID);
         Assert.Equal(expectedShortName, deserialized.ShortName);
         Assert.Equal(expectedStatus, deserialized.Status);
         Assert.Equal(expectedUpdatedAt, deserialized.UpdatedAt);
@@ -501,19 +455,15 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AllowContactSharing = true,
-            AllowNumberChangeDuringOnboarding = true,
-            AllowTemplateSharing = true,
-            BillingContact = new()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AllowContactSharing = true,AllowNumberChangeDuringOnboarding = true,AllowTemplateSharing = true,BillingContact = new(
+
+            )
             {
                 Address = "address",
                 Email = "email",
                 Name = "name",
                 Phone = "phone",
-            },
-            BillingModel = "billing_model",
-            Brand = new()
+            },BillingModel = "billing_model",Brand = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Business = new()
@@ -533,7 +483,14 @@ public class ProfileDetailTest : TestBase
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
-                    DestinationCountries = [new() { ID = "id", IsMain = true }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            IsMain = true,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -559,25 +516,7 @@ public class ProfileDetailTest : TestBase
                 TcrBrandID = "tcr_brand_id",
                 UniversalEin = "universal_ein",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            },
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
-            Email = "email",
-            Icon = "icon",
-            InheritContacts = true,
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            InheritTemplates = true,
-            Name = "name",
-            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingPhoneNumber = "sending_phone_number",
-            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ShortName = "short_name",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            WabaID = "waba_id",
-            WhatsappPhoneNumber = "whatsapp_phone_number",
+            },CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Description = "description",Email = "email",Icon = "icon",InheritContacts = true,InheritTcrBrand = true,InheritTcrCampaign = true,InheritTemplates = true,Name = "name",OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingPhoneNumber = "sending_phone_number",SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ShortName = "short_name",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),WabaID = "waba_id",WhatsappPhoneNumber = "whatsapp_phone_number",
         };
 
         model.Validate();
@@ -588,17 +527,15 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            AllowContactSharing = true,
-            AllowNumberChangeDuringOnboarding = true,
-            AllowTemplateSharing = true,
-            BillingContact = new()
+            AllowContactSharing = true,AllowNumberChangeDuringOnboarding = true,AllowTemplateSharing = true,BillingContact = new(
+
+            )
             {
                 Address = "address",
                 Email = "email",
                 Name = "name",
                 Phone = "phone",
-            },
-            Brand = new()
+            },Brand = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Business = new()
@@ -618,7 +555,14 @@ public class ProfileDetailTest : TestBase
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
-                    DestinationCountries = [new() { ID = "id", IsMain = true }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            IsMain = true,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -644,36 +588,18 @@ public class ProfileDetailTest : TestBase
                 TcrBrandID = "tcr_brand_id",
                 UniversalEin = "universal_ein",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            },
-            Description = "description",
-            Email = "email",
-            Icon = "icon",
-            InheritContacts = true,
-            InheritTemplates = true,
-            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingPhoneNumber = "sending_phone_number",
-            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ShortName = "short_name",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            WabaID = "waba_id",
-            WhatsappPhoneNumber = "whatsapp_phone_number",
+            },Description = "description",Email = "email",Icon = "icon",InheritContacts = true,InheritTemplates = true,OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingPhoneNumber = "sending_phone_number",SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ShortName = "short_name",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),WabaID = "waba_id",WhatsappPhoneNumber = "whatsapp_phone_number",
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.BillingModel);
-        Assert.False(model.RawData.ContainsKey("billing_model"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.InheritTcrBrand);
-        Assert.False(model.RawData.ContainsKey("inherit_tcr_brand"));
-        Assert.Null(model.InheritTcrCampaign);
-        Assert.False(model.RawData.ContainsKey("inherit_tcr_campaign"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.BillingModel);
+        Assert.False(model.RawData.ContainsKey("billing_model"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.InheritTcrBrand);
+        Assert.False(model.RawData.ContainsKey("inherit_tcr_brand"));Assert.Null(model.InheritTcrCampaign);
+        Assert.False(model.RawData.ContainsKey("inherit_tcr_campaign"));Assert.Null(model.Name);
+        Assert.False(model.RawData.ContainsKey("name"));Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
+
     }
 
     [Fact]
@@ -681,17 +607,15 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            AllowContactSharing = true,
-            AllowNumberChangeDuringOnboarding = true,
-            AllowTemplateSharing = true,
-            BillingContact = new()
+            AllowContactSharing = true,AllowNumberChangeDuringOnboarding = true,AllowTemplateSharing = true,BillingContact = new(
+
+            )
             {
                 Address = "address",
                 Email = "email",
                 Name = "name",
                 Phone = "phone",
-            },
-            Brand = new()
+            },Brand = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Business = new()
@@ -711,7 +635,14 @@ public class ProfileDetailTest : TestBase
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
-                    DestinationCountries = [new() { ID = "id", IsMain = true }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            IsMain = true,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -737,20 +668,7 @@ public class ProfileDetailTest : TestBase
                 TcrBrandID = "tcr_brand_id",
                 UniversalEin = "universal_ein",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            },
-            Description = "description",
-            Email = "email",
-            Icon = "icon",
-            InheritContacts = true,
-            InheritTemplates = true,
-            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingPhoneNumber = "sending_phone_number",
-            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ShortName = "short_name",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            WabaID = "waba_id",
-            WhatsappPhoneNumber = "whatsapp_phone_number",
+            },Description = "description",Email = "email",Icon = "icon",InheritContacts = true,InheritTemplates = true,OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingPhoneNumber = "sending_phone_number",SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ShortName = "short_name",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),WabaID = "waba_id",WhatsappPhoneNumber = "whatsapp_phone_number",
         };
 
         model.Validate();
@@ -761,17 +679,15 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            AllowContactSharing = true,
-            AllowNumberChangeDuringOnboarding = true,
-            AllowTemplateSharing = true,
-            BillingContact = new()
+            AllowContactSharing = true,AllowNumberChangeDuringOnboarding = true,AllowTemplateSharing = true,BillingContact = new(
+
+            )
             {
                 Address = "address",
                 Email = "email",
                 Name = "name",
                 Phone = "phone",
-            },
-            Brand = new()
+            },Brand = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Business = new()
@@ -791,7 +707,14 @@ public class ProfileDetailTest : TestBase
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
-                    DestinationCountries = [new() { ID = "id", IsMain = true }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            IsMain = true,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -817,45 +740,21 @@ public class ProfileDetailTest : TestBase
                 TcrBrandID = "tcr_brand_id",
                 UniversalEin = "universal_ein",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            },
-            Description = "description",
-            Email = "email",
-            Icon = "icon",
-            InheritContacts = true,
-            InheritTemplates = true,
-            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingPhoneNumber = "sending_phone_number",
-            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ShortName = "short_name",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            WabaID = "waba_id",
-            WhatsappPhoneNumber = "whatsapp_phone_number",
+            },Description = "description",Email = "email",Icon = "icon",InheritContacts = true,InheritTemplates = true,OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingPhoneNumber = "sending_phone_number",SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ShortName = "short_name",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),WabaID = "waba_id",WhatsappPhoneNumber = "whatsapp_phone_number",
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            BillingModel = null,
-            CreatedAt = null,
-            InheritTcrBrand = null,
-            InheritTcrCampaign = null,
-            Name = null,
-            Status = null,
+            ID = null,BillingModel = null,CreatedAt = null,InheritTcrBrand = null,InheritTcrCampaign = null,Name = null,Status = null,
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.BillingModel);
-        Assert.False(model.RawData.ContainsKey("billing_model"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.InheritTcrBrand);
-        Assert.False(model.RawData.ContainsKey("inherit_tcr_brand"));
-        Assert.Null(model.InheritTcrCampaign);
-        Assert.False(model.RawData.ContainsKey("inherit_tcr_campaign"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.BillingModel);
+        Assert.False(model.RawData.ContainsKey("billing_model"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.InheritTcrBrand);
+        Assert.False(model.RawData.ContainsKey("inherit_tcr_brand"));Assert.Null(model.InheritTcrCampaign);
+        Assert.False(model.RawData.ContainsKey("inherit_tcr_campaign"));Assert.Null(model.Name);
+        Assert.False(model.RawData.ContainsKey("name"));Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
+
     }
 
     [Fact]
@@ -863,17 +762,15 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            AllowContactSharing = true,
-            AllowNumberChangeDuringOnboarding = true,
-            AllowTemplateSharing = true,
-            BillingContact = new()
+            AllowContactSharing = true,AllowNumberChangeDuringOnboarding = true,AllowTemplateSharing = true,BillingContact = new(
+
+            )
             {
                 Address = "address",
                 Email = "email",
                 Name = "name",
                 Phone = "phone",
-            },
-            Brand = new()
+            },Brand = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Business = new()
@@ -893,7 +790,14 @@ public class ProfileDetailTest : TestBase
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
-                    DestinationCountries = [new() { ID = "id", IsMain = true }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            IsMain = true,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -919,29 +823,10 @@ public class ProfileDetailTest : TestBase
                 TcrBrandID = "tcr_brand_id",
                 UniversalEin = "universal_ein",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            },
-            Description = "description",
-            Email = "email",
-            Icon = "icon",
-            InheritContacts = true,
-            InheritTemplates = true,
-            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingPhoneNumber = "sending_phone_number",
-            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ShortName = "short_name",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            WabaID = "waba_id",
-            WhatsappPhoneNumber = "whatsapp_phone_number",
+            },Description = "description",Email = "email",Icon = "icon",InheritContacts = true,InheritTemplates = true,OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingPhoneNumber = "sending_phone_number",SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ShortName = "short_name",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),WabaID = "waba_id",WhatsappPhoneNumber = "whatsapp_phone_number",
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            BillingModel = null,
-            CreatedAt = null,
-            InheritTcrBrand = null,
-            InheritTcrCampaign = null,
-            Name = null,
-            Status = null,
+            ID = null,BillingModel = null,CreatedAt = null,InheritTcrBrand = null,InheritTcrCampaign = null,Name = null,Status = null,
         };
 
         model.Validate();
@@ -952,51 +837,29 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            BillingModel = "billing_model",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            Name = "name",
-            Status = "status",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",BillingModel = "billing_model",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),InheritTcrBrand = true,InheritTcrCampaign = true,Name = "name",Status = "status",
         };
 
         Assert.Null(model.AllowContactSharing);
-        Assert.False(model.RawData.ContainsKey("allow_contact_sharing"));
-        Assert.Null(model.AllowNumberChangeDuringOnboarding);
-        Assert.False(model.RawData.ContainsKey("allow_number_change_during_onboarding"));
-        Assert.Null(model.AllowTemplateSharing);
-        Assert.False(model.RawData.ContainsKey("allow_template_sharing"));
-        Assert.Null(model.BillingContact);
-        Assert.False(model.RawData.ContainsKey("billing_contact"));
-        Assert.Null(model.Brand);
-        Assert.False(model.RawData.ContainsKey("brand"));
-        Assert.Null(model.Description);
-        Assert.False(model.RawData.ContainsKey("description"));
-        Assert.Null(model.Email);
-        Assert.False(model.RawData.ContainsKey("email"));
-        Assert.Null(model.Icon);
-        Assert.False(model.RawData.ContainsKey("icon"));
-        Assert.Null(model.InheritContacts);
-        Assert.False(model.RawData.ContainsKey("inherit_contacts"));
-        Assert.Null(model.InheritTemplates);
-        Assert.False(model.RawData.ContainsKey("inherit_templates"));
-        Assert.Null(model.OrganizationID);
-        Assert.False(model.RawData.ContainsKey("organization_id"));
-        Assert.Null(model.SendingPhoneNumber);
-        Assert.False(model.RawData.ContainsKey("sending_phone_number"));
-        Assert.Null(model.SendingPhoneNumberProfileID);
-        Assert.False(model.RawData.ContainsKey("sending_phone_number_profile_id"));
-        Assert.Null(model.SendingWhatsappNumberProfileID);
-        Assert.False(model.RawData.ContainsKey("sending_whatsapp_number_profile_id"));
-        Assert.Null(model.ShortName);
-        Assert.False(model.RawData.ContainsKey("short_name"));
-        Assert.Null(model.UpdatedAt);
-        Assert.False(model.RawData.ContainsKey("updated_at"));
-        Assert.Null(model.WabaID);
-        Assert.False(model.RawData.ContainsKey("waba_id"));
-        Assert.Null(model.WhatsappPhoneNumber);
+        Assert.False(model.RawData.ContainsKey("allow_contact_sharing"));Assert.Null(model.AllowNumberChangeDuringOnboarding);
+        Assert.False(model.RawData.ContainsKey("allow_number_change_during_onboarding"));Assert.Null(model.AllowTemplateSharing);
+        Assert.False(model.RawData.ContainsKey("allow_template_sharing"));Assert.Null(model.BillingContact);
+        Assert.False(model.RawData.ContainsKey("billing_contact"));Assert.Null(model.Brand);
+        Assert.False(model.RawData.ContainsKey("brand"));Assert.Null(model.Description);
+        Assert.False(model.RawData.ContainsKey("description"));Assert.Null(model.Email);
+        Assert.False(model.RawData.ContainsKey("email"));Assert.Null(model.Icon);
+        Assert.False(model.RawData.ContainsKey("icon"));Assert.Null(model.InheritContacts);
+        Assert.False(model.RawData.ContainsKey("inherit_contacts"));Assert.Null(model.InheritTemplates);
+        Assert.False(model.RawData.ContainsKey("inherit_templates"));Assert.Null(model.OrganizationID);
+        Assert.False(model.RawData.ContainsKey("organization_id"));Assert.Null(model.SendingPhoneNumber);
+        Assert.False(model.RawData.ContainsKey("sending_phone_number"));Assert.Null(model.SendingPhoneNumberProfileID);
+        Assert.False(model.RawData.ContainsKey("sending_phone_number_profile_id"));Assert.Null(model.SendingWhatsappNumberProfileID);
+        Assert.False(model.RawData.ContainsKey("sending_whatsapp_number_profile_id"));Assert.Null(model.ShortName);
+        Assert.False(model.RawData.ContainsKey("short_name"));Assert.Null(model.UpdatedAt);
+        Assert.False(model.RawData.ContainsKey("updated_at"));Assert.Null(model.WabaID);
+        Assert.False(model.RawData.ContainsKey("waba_id"));Assert.Null(model.WhatsappPhoneNumber);
         Assert.False(model.RawData.ContainsKey("whatsapp_phone_number"));
+
     }
 
     [Fact]
@@ -1004,13 +867,7 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            BillingModel = "billing_model",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            Name = "name",
-            Status = "status",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",BillingModel = "billing_model",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),InheritTcrBrand = true,InheritTcrCampaign = true,Name = "name",Status = "status",
         };
 
         model.Validate();
@@ -1021,70 +878,31 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            BillingModel = "billing_model",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            Name = "name",
-            Status = "status",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",BillingModel = "billing_model",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),InheritTcrBrand = true,InheritTcrCampaign = true,Name = "name",Status = "status",
 
-            AllowContactSharing = null,
-            AllowNumberChangeDuringOnboarding = null,
-            AllowTemplateSharing = null,
-            BillingContact = null,
-            Brand = null,
-            Description = null,
-            Email = null,
-            Icon = null,
-            InheritContacts = null,
-            InheritTemplates = null,
-            OrganizationID = null,
-            SendingPhoneNumber = null,
-            SendingPhoneNumberProfileID = null,
-            SendingWhatsappNumberProfileID = null,
-            ShortName = null,
-            UpdatedAt = null,
-            WabaID = null,
-            WhatsappPhoneNumber = null,
+            AllowContactSharing = null,AllowNumberChangeDuringOnboarding = null,AllowTemplateSharing = null,BillingContact = null,Brand = null,Description = null,Email = null,Icon = null,InheritContacts = null,InheritTemplates = null,OrganizationID = null,SendingPhoneNumber = null,SendingPhoneNumberProfileID = null,SendingWhatsappNumberProfileID = null,ShortName = null,UpdatedAt = null,WabaID = null,WhatsappPhoneNumber = null,
         };
 
         Assert.Null(model.AllowContactSharing);
-        Assert.True(model.RawData.ContainsKey("allow_contact_sharing"));
-        Assert.Null(model.AllowNumberChangeDuringOnboarding);
-        Assert.True(model.RawData.ContainsKey("allow_number_change_during_onboarding"));
-        Assert.Null(model.AllowTemplateSharing);
-        Assert.True(model.RawData.ContainsKey("allow_template_sharing"));
-        Assert.Null(model.BillingContact);
-        Assert.True(model.RawData.ContainsKey("billing_contact"));
-        Assert.Null(model.Brand);
-        Assert.True(model.RawData.ContainsKey("brand"));
-        Assert.Null(model.Description);
-        Assert.True(model.RawData.ContainsKey("description"));
-        Assert.Null(model.Email);
-        Assert.True(model.RawData.ContainsKey("email"));
-        Assert.Null(model.Icon);
-        Assert.True(model.RawData.ContainsKey("icon"));
-        Assert.Null(model.InheritContacts);
-        Assert.True(model.RawData.ContainsKey("inherit_contacts"));
-        Assert.Null(model.InheritTemplates);
-        Assert.True(model.RawData.ContainsKey("inherit_templates"));
-        Assert.Null(model.OrganizationID);
-        Assert.True(model.RawData.ContainsKey("organization_id"));
-        Assert.Null(model.SendingPhoneNumber);
-        Assert.True(model.RawData.ContainsKey("sending_phone_number"));
-        Assert.Null(model.SendingPhoneNumberProfileID);
-        Assert.True(model.RawData.ContainsKey("sending_phone_number_profile_id"));
-        Assert.Null(model.SendingWhatsappNumberProfileID);
-        Assert.True(model.RawData.ContainsKey("sending_whatsapp_number_profile_id"));
-        Assert.Null(model.ShortName);
-        Assert.True(model.RawData.ContainsKey("short_name"));
-        Assert.Null(model.UpdatedAt);
-        Assert.True(model.RawData.ContainsKey("updated_at"));
-        Assert.Null(model.WabaID);
-        Assert.True(model.RawData.ContainsKey("waba_id"));
-        Assert.Null(model.WhatsappPhoneNumber);
+        Assert.True(model.RawData.ContainsKey("allow_contact_sharing"));Assert.Null(model.AllowNumberChangeDuringOnboarding);
+        Assert.True(model.RawData.ContainsKey("allow_number_change_during_onboarding"));Assert.Null(model.AllowTemplateSharing);
+        Assert.True(model.RawData.ContainsKey("allow_template_sharing"));Assert.Null(model.BillingContact);
+        Assert.True(model.RawData.ContainsKey("billing_contact"));Assert.Null(model.Brand);
+        Assert.True(model.RawData.ContainsKey("brand"));Assert.Null(model.Description);
+        Assert.True(model.RawData.ContainsKey("description"));Assert.Null(model.Email);
+        Assert.True(model.RawData.ContainsKey("email"));Assert.Null(model.Icon);
+        Assert.True(model.RawData.ContainsKey("icon"));Assert.Null(model.InheritContacts);
+        Assert.True(model.RawData.ContainsKey("inherit_contacts"));Assert.Null(model.InheritTemplates);
+        Assert.True(model.RawData.ContainsKey("inherit_templates"));Assert.Null(model.OrganizationID);
+        Assert.True(model.RawData.ContainsKey("organization_id"));Assert.Null(model.SendingPhoneNumber);
+        Assert.True(model.RawData.ContainsKey("sending_phone_number"));Assert.Null(model.SendingPhoneNumberProfileID);
+        Assert.True(model.RawData.ContainsKey("sending_phone_number_profile_id"));Assert.Null(model.SendingWhatsappNumberProfileID);
+        Assert.True(model.RawData.ContainsKey("sending_whatsapp_number_profile_id"));Assert.Null(model.ShortName);
+        Assert.True(model.RawData.ContainsKey("short_name"));Assert.Null(model.UpdatedAt);
+        Assert.True(model.RawData.ContainsKey("updated_at"));Assert.Null(model.WabaID);
+        Assert.True(model.RawData.ContainsKey("waba_id"));Assert.Null(model.WhatsappPhoneNumber);
         Assert.True(model.RawData.ContainsKey("whatsapp_phone_number"));
+
     }
 
     [Fact]
@@ -1092,32 +910,9 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            BillingModel = "billing_model",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            Name = "name",
-            Status = "status",
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",BillingModel = "billing_model",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),InheritTcrBrand = true,InheritTcrCampaign = true,Name = "name",Status = "status",
 
-            AllowContactSharing = null,
-            AllowNumberChangeDuringOnboarding = null,
-            AllowTemplateSharing = null,
-            BillingContact = null,
-            Brand = null,
-            Description = null,
-            Email = null,
-            Icon = null,
-            InheritContacts = null,
-            InheritTemplates = null,
-            OrganizationID = null,
-            SendingPhoneNumber = null,
-            SendingPhoneNumberProfileID = null,
-            SendingWhatsappNumberProfileID = null,
-            ShortName = null,
-            UpdatedAt = null,
-            WabaID = null,
-            WhatsappPhoneNumber = null,
+            AllowContactSharing = null,AllowNumberChangeDuringOnboarding = null,AllowTemplateSharing = null,BillingContact = null,Brand = null,Description = null,Email = null,Icon = null,InheritContacts = null,InheritTemplates = null,OrganizationID = null,SendingPhoneNumber = null,SendingPhoneNumberProfileID = null,SendingWhatsappNumberProfileID = null,ShortName = null,UpdatedAt = null,WabaID = null,WhatsappPhoneNumber = null,
         };
 
         model.Validate();
@@ -1128,19 +923,15 @@ public class ProfileDetailTest : TestBase
     {
         var model = new ProfileDetail
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            AllowContactSharing = true,
-            AllowNumberChangeDuringOnboarding = true,
-            AllowTemplateSharing = true,
-            BillingContact = new()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",AllowContactSharing = true,AllowNumberChangeDuringOnboarding = true,AllowTemplateSharing = true,BillingContact = new(
+
+            )
             {
                 Address = "address",
                 Email = "email",
                 Name = "name",
                 Phone = "phone",
-            },
-            BillingModel = "billing_model",
-            Brand = new()
+            },BillingModel = "billing_model",Brand = new()
             {
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Business = new()
@@ -1160,7 +951,14 @@ public class ProfileDetailTest : TestBase
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
-                    DestinationCountries = [new() { ID = "id", IsMain = true }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            IsMain = true,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -1186,25 +984,7 @@ public class ProfileDetailTest : TestBase
                 TcrBrandID = "tcr_brand_id",
                 UniversalEin = "universal_ein",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            },
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Description = "description",
-            Email = "email",
-            Icon = "icon",
-            InheritContacts = true,
-            InheritTcrBrand = true,
-            InheritTcrCampaign = true,
-            InheritTemplates = true,
-            Name = "name",
-            OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingPhoneNumber = "sending_phone_number",
-            SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            ShortName = "short_name",
-            Status = "status",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            WabaID = "waba_id",
-            WhatsappPhoneNumber = "whatsapp_phone_number",
+            },CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Description = "description",Email = "email",Icon = "icon",InheritContacts = true,InheritTcrBrand = true,InheritTcrCampaign = true,InheritTemplates = true,Name = "name",OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingPhoneNumber = "sending_phone_number",SendingPhoneNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",SendingWhatsappNumberProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",ShortName = "short_name",Status = "status",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),WabaID = "waba_id",WhatsappPhoneNumber = "whatsapp_phone_number",
         };
 
         ProfileDetail copied = new(model);
@@ -1220,10 +1000,7 @@ public class BillingContactTest : TestBase
     {
         var model = new BillingContact
         {
-            Address = "address",
-            Email = "email",
-            Name = "name",
-            Phone = "phone",
+            Address = "address",Email = "email",Name = "name",Phone = "phone",
         };
 
         string expectedAddress = "address";
@@ -1242,17 +1019,11 @@ public class BillingContactTest : TestBase
     {
         var model = new BillingContact
         {
-            Address = "address",
-            Email = "email",
-            Name = "name",
-            Phone = "phone",
+            Address = "address",Email = "email",Name = "name",Phone = "phone",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BillingContact>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BillingContact>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -1262,17 +1033,11 @@ public class BillingContactTest : TestBase
     {
         var model = new BillingContact
         {
-            Address = "address",
-            Email = "email",
-            Name = "name",
-            Phone = "phone",
+            Address = "address",Email = "email",Name = "name",Phone = "phone",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BillingContact>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BillingContact>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedAddress = "address";
@@ -1291,10 +1056,7 @@ public class BillingContactTest : TestBase
     {
         var model = new BillingContact
         {
-            Address = "address",
-            Email = "email",
-            Name = "name",
-            Phone = "phone",
+            Address = "address",Email = "email",Name = "name",Phone = "phone",
         };
 
         model.Validate();
@@ -1303,22 +1065,26 @@ public class BillingContactTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new BillingContact { };
+        var model = new BillingContact
+        {
+
+        };
 
         Assert.Null(model.Address);
-        Assert.False(model.RawData.ContainsKey("address"));
-        Assert.Null(model.Email);
-        Assert.False(model.RawData.ContainsKey("email"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Phone);
+        Assert.False(model.RawData.ContainsKey("address"));Assert.Null(model.Email);
+        Assert.False(model.RawData.ContainsKey("email"));Assert.Null(model.Name);
+        Assert.False(model.RawData.ContainsKey("name"));Assert.Null(model.Phone);
         Assert.False(model.RawData.ContainsKey("phone"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new BillingContact { };
+        var model = new BillingContact
+        {
+
+        };
 
         model.Validate();
     }
@@ -1328,20 +1094,17 @@ public class BillingContactTest : TestBase
     {
         var model = new BillingContact
         {
-            Address = null,
-            Email = null,
-            Name = null,
-            Phone = null,
+
+
+            Address = null,Email = null,Name = null,Phone = null,
         };
 
         Assert.Null(model.Address);
-        Assert.True(model.RawData.ContainsKey("address"));
-        Assert.Null(model.Email);
-        Assert.True(model.RawData.ContainsKey("email"));
-        Assert.Null(model.Name);
-        Assert.True(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Phone);
+        Assert.True(model.RawData.ContainsKey("address"));Assert.Null(model.Email);
+        Assert.True(model.RawData.ContainsKey("email"));Assert.Null(model.Name);
+        Assert.True(model.RawData.ContainsKey("name"));Assert.Null(model.Phone);
         Assert.True(model.RawData.ContainsKey("phone"));
+
     }
 
     [Fact]
@@ -1349,10 +1112,9 @@ public class BillingContactTest : TestBase
     {
         var model = new BillingContact
         {
-            Address = null,
-            Email = null,
-            Name = null,
-            Phone = null,
+
+
+            Address = null,Email = null,Name = null,Phone = null,
         };
 
         model.Validate();
@@ -1363,10 +1125,7 @@ public class BillingContactTest : TestBase
     {
         var model = new BillingContact
         {
-            Address = "address",
-            Email = "email",
-            Name = "name",
-            Phone = "phone",
+            Address = "address",Email = "email",Name = "name",Phone = "phone",
         };
 
         BillingContact copied = new(model);
@@ -1382,8 +1141,7 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Business = new()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Business = new()
             {
                 City = "city",
                 Country = "country",
@@ -1396,18 +1154,23 @@ public class BrandTest : TestBase
                 TaxID = "tax_id",
                 TaxIDType = "tax_id_type",
                 Url = "url",
-            },
-            Compliance = new()
+            },Compliance = new()
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
                 PrimaryUseCase = "primary_use_case",
                 Vertical = TcrVertical.Professional,
-            },
-            Contact = new()
+            },Contact = new()
             {
                 BusinessName = "business_name",
                 Email = "email",
@@ -1415,17 +1178,7 @@ public class BrandTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phone_country_code",
                 Role = "role",
-            },
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CspID = "csp_id",
-            IdentityStatus = IdentityStatus.SelfDeclared,
-            IsInherited = true,
-            Status = Status.Active,
-            SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            SubmittedToTcr = true,
-            TcrBrandID = "tcr_brand_id",
-            UniversalEin = "universal_ein",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            },CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CspID = "csp_id",IdentityStatus = IdentityStatus.SelfDeclared,IsInherited = true,Status = Status.Active,SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),SubmittedToTcr = true,TcrBrandID = "tcr_brand_id",UniversalEin = "universal_ein",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -1446,7 +1199,14 @@ public class BrandTest : TestBase
         Compliance expectedCompliance = new()
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
+            DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],
             IsTcrApplication = true,
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",
@@ -1494,8 +1254,7 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Business = new()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Business = new()
             {
                 City = "city",
                 Country = "country",
@@ -1508,18 +1267,23 @@ public class BrandTest : TestBase
                 TaxID = "tax_id",
                 TaxIDType = "tax_id_type",
                 Url = "url",
-            },
-            Compliance = new()
+            },Compliance = new()
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
                 PrimaryUseCase = "primary_use_case",
                 Vertical = TcrVertical.Professional,
-            },
-            Contact = new()
+            },Contact = new()
             {
                 BusinessName = "business_name",
                 Email = "email",
@@ -1527,17 +1291,7 @@ public class BrandTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phone_country_code",
                 Role = "role",
-            },
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CspID = "csp_id",
-            IdentityStatus = IdentityStatus.SelfDeclared,
-            IsInherited = true,
-            Status = Status.Active,
-            SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            SubmittedToTcr = true,
-            TcrBrandID = "tcr_brand_id",
-            UniversalEin = "universal_ein",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            },CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CspID = "csp_id",IdentityStatus = IdentityStatus.SelfDeclared,IsInherited = true,Status = Status.Active,SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),SubmittedToTcr = true,TcrBrandID = "tcr_brand_id",UniversalEin = "universal_ein",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -1551,8 +1305,7 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Business = new()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Business = new()
             {
                 City = "city",
                 Country = "country",
@@ -1565,18 +1318,23 @@ public class BrandTest : TestBase
                 TaxID = "tax_id",
                 TaxIDType = "tax_id_type",
                 Url = "url",
-            },
-            Compliance = new()
+            },Compliance = new()
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
                 PrimaryUseCase = "primary_use_case",
                 Vertical = TcrVertical.Professional,
-            },
-            Contact = new()
+            },Contact = new()
             {
                 BusinessName = "business_name",
                 Email = "email",
@@ -1584,17 +1342,7 @@ public class BrandTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phone_country_code",
                 Role = "role",
-            },
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CspID = "csp_id",
-            IdentityStatus = IdentityStatus.SelfDeclared,
-            IsInherited = true,
-            Status = Status.Active,
-            SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            SubmittedToTcr = true,
-            TcrBrandID = "tcr_brand_id",
-            UniversalEin = "universal_ein",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            },CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CspID = "csp_id",IdentityStatus = IdentityStatus.SelfDeclared,IsInherited = true,Status = Status.Active,SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),SubmittedToTcr = true,TcrBrandID = "tcr_brand_id",UniversalEin = "universal_ein",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -1619,7 +1367,14 @@ public class BrandTest : TestBase
         Compliance expectedCompliance = new()
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
+            DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],
             IsTcrApplication = true,
             Notes = "notes",
             PhoneNumberPrefix = "phone_number_prefix",
@@ -1667,8 +1422,7 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Business = new()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Business = new()
             {
                 City = "city",
                 Country = "country",
@@ -1681,18 +1435,23 @@ public class BrandTest : TestBase
                 TaxID = "tax_id",
                 TaxIDType = "tax_id_type",
                 Url = "url",
-            },
-            Compliance = new()
+            },Compliance = new()
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
                 PrimaryUseCase = "primary_use_case",
                 Vertical = TcrVertical.Professional,
-            },
-            Contact = new()
+            },Contact = new()
             {
                 BusinessName = "business_name",
                 Email = "email",
@@ -1700,17 +1459,7 @@ public class BrandTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phone_country_code",
                 Role = "role",
-            },
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CspID = "csp_id",
-            IdentityStatus = IdentityStatus.SelfDeclared,
-            IsInherited = true,
-            Status = Status.Active,
-            SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            SubmittedToTcr = true,
-            TcrBrandID = "tcr_brand_id",
-            UniversalEin = "universal_ein",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            },CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CspID = "csp_id",IdentityStatus = IdentityStatus.SelfDeclared,IsInherited = true,Status = Status.Active,SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),SubmittedToTcr = true,TcrBrandID = "tcr_brand_id",UniversalEin = "universal_ein",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         model.Validate();
@@ -1734,18 +1483,23 @@ public class BrandTest : TestBase
                 TaxID = "tax_id",
                 TaxIDType = "tax_id_type",
                 Url = "url",
-            },
-            Compliance = new()
+            },Compliance = new()
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
                 PrimaryUseCase = "primary_use_case",
                 Vertical = TcrVertical.Professional,
-            },
-            Contact = new()
+            },Contact = new()
             {
                 BusinessName = "business_name",
                 Email = "email",
@@ -1753,24 +1507,15 @@ public class BrandTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phone_country_code",
                 Role = "role",
-            },
-            CspID = "csp_id",
-            IdentityStatus = IdentityStatus.SelfDeclared,
-            Status = Status.Active,
-            SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            TcrBrandID = "tcr_brand_id",
-            UniversalEin = "universal_ein",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            },CspID = "csp_id",IdentityStatus = IdentityStatus.SelfDeclared,Status = Status.Active,SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),TcrBrandID = "tcr_brand_id",UniversalEin = "universal_ein",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.IsInherited);
-        Assert.False(model.RawData.ContainsKey("is_inherited"));
-        Assert.Null(model.SubmittedToTcr);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.IsInherited);
+        Assert.False(model.RawData.ContainsKey("is_inherited"));Assert.Null(model.SubmittedToTcr);
         Assert.False(model.RawData.ContainsKey("submitted_to_tcr"));
+
     }
 
     [Fact]
@@ -1791,18 +1536,23 @@ public class BrandTest : TestBase
                 TaxID = "tax_id",
                 TaxIDType = "tax_id_type",
                 Url = "url",
-            },
-            Compliance = new()
+            },Compliance = new()
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
                 PrimaryUseCase = "primary_use_case",
                 Vertical = TcrVertical.Professional,
-            },
-            Contact = new()
+            },Contact = new()
             {
                 BusinessName = "business_name",
                 Email = "email",
@@ -1810,14 +1560,7 @@ public class BrandTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phone_country_code",
                 Role = "role",
-            },
-            CspID = "csp_id",
-            IdentityStatus = IdentityStatus.SelfDeclared,
-            Status = Status.Active,
-            SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            TcrBrandID = "tcr_brand_id",
-            UniversalEin = "universal_ein",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            },CspID = "csp_id",IdentityStatus = IdentityStatus.SelfDeclared,Status = Status.Active,SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),TcrBrandID = "tcr_brand_id",UniversalEin = "universal_ein",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         model.Validate();
@@ -1841,18 +1584,23 @@ public class BrandTest : TestBase
                 TaxID = "tax_id",
                 TaxIDType = "tax_id_type",
                 Url = "url",
-            },
-            Compliance = new()
+            },Compliance = new()
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
                 PrimaryUseCase = "primary_use_case",
                 Vertical = TcrVertical.Professional,
-            },
-            Contact = new()
+            },Contact = new()
             {
                 BusinessName = "business_name",
                 Email = "email",
@@ -1860,30 +1608,18 @@ public class BrandTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phone_country_code",
                 Role = "role",
-            },
-            CspID = "csp_id",
-            IdentityStatus = IdentityStatus.SelfDeclared,
-            Status = Status.Active,
-            SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            TcrBrandID = "tcr_brand_id",
-            UniversalEin = "universal_ein",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            },CspID = "csp_id",IdentityStatus = IdentityStatus.SelfDeclared,Status = Status.Active,SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),TcrBrandID = "tcr_brand_id",UniversalEin = "universal_ein",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            CreatedAt = null,
-            IsInherited = null,
-            SubmittedToTcr = null,
+            ID = null,CreatedAt = null,IsInherited = null,SubmittedToTcr = null,
         };
 
         Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.CreatedAt);
-        Assert.False(model.RawData.ContainsKey("created_at"));
-        Assert.Null(model.IsInherited);
-        Assert.False(model.RawData.ContainsKey("is_inherited"));
-        Assert.Null(model.SubmittedToTcr);
+        Assert.False(model.RawData.ContainsKey("id"));Assert.Null(model.CreatedAt);
+        Assert.False(model.RawData.ContainsKey("created_at"));Assert.Null(model.IsInherited);
+        Assert.False(model.RawData.ContainsKey("is_inherited"));Assert.Null(model.SubmittedToTcr);
         Assert.False(model.RawData.ContainsKey("submitted_to_tcr"));
+
     }
 
     [Fact]
@@ -1904,18 +1640,23 @@ public class BrandTest : TestBase
                 TaxID = "tax_id",
                 TaxIDType = "tax_id_type",
                 Url = "url",
-            },
-            Compliance = new()
+            },Compliance = new()
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
                 PrimaryUseCase = "primary_use_case",
                 Vertical = TcrVertical.Professional,
-            },
-            Contact = new()
+            },Contact = new()
             {
                 BusinessName = "business_name",
                 Email = "email",
@@ -1923,20 +1664,10 @@ public class BrandTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phone_country_code",
                 Role = "role",
-            },
-            CspID = "csp_id",
-            IdentityStatus = IdentityStatus.SelfDeclared,
-            Status = Status.Active,
-            SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            TcrBrandID = "tcr_brand_id",
-            UniversalEin = "universal_ein",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            },CspID = "csp_id",IdentityStatus = IdentityStatus.SelfDeclared,Status = Status.Active,SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),TcrBrandID = "tcr_brand_id",UniversalEin = "universal_ein",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             // Null should be interpreted as omitted for these properties
-            ID = null,
-            CreatedAt = null,
-            IsInherited = null,
-            SubmittedToTcr = null,
+            ID = null,CreatedAt = null,IsInherited = null,SubmittedToTcr = null,
         };
 
         model.Validate();
@@ -1947,32 +1678,21 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsInherited = true,
-            SubmittedToTcr = true,
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsInherited = true,SubmittedToTcr = true,
         };
 
         Assert.Null(model.Business);
-        Assert.False(model.RawData.ContainsKey("business"));
-        Assert.Null(model.Compliance);
-        Assert.False(model.RawData.ContainsKey("compliance"));
-        Assert.Null(model.Contact);
-        Assert.False(model.RawData.ContainsKey("contact"));
-        Assert.Null(model.CspID);
-        Assert.False(model.RawData.ContainsKey("csp_id"));
-        Assert.Null(model.IdentityStatus);
-        Assert.False(model.RawData.ContainsKey("identity_status"));
-        Assert.Null(model.Status);
-        Assert.False(model.RawData.ContainsKey("status"));
-        Assert.Null(model.SubmittedAt);
-        Assert.False(model.RawData.ContainsKey("submitted_at"));
-        Assert.Null(model.TcrBrandID);
-        Assert.False(model.RawData.ContainsKey("tcr_brand_id"));
-        Assert.Null(model.UniversalEin);
-        Assert.False(model.RawData.ContainsKey("universal_ein"));
-        Assert.Null(model.UpdatedAt);
+        Assert.False(model.RawData.ContainsKey("business"));Assert.Null(model.Compliance);
+        Assert.False(model.RawData.ContainsKey("compliance"));Assert.Null(model.Contact);
+        Assert.False(model.RawData.ContainsKey("contact"));Assert.Null(model.CspID);
+        Assert.False(model.RawData.ContainsKey("csp_id"));Assert.Null(model.IdentityStatus);
+        Assert.False(model.RawData.ContainsKey("identity_status"));Assert.Null(model.Status);
+        Assert.False(model.RawData.ContainsKey("status"));Assert.Null(model.SubmittedAt);
+        Assert.False(model.RawData.ContainsKey("submitted_at"));Assert.Null(model.TcrBrandID);
+        Assert.False(model.RawData.ContainsKey("tcr_brand_id"));Assert.Null(model.UniversalEin);
+        Assert.False(model.RawData.ContainsKey("universal_ein"));Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updated_at"));
+
     }
 
     [Fact]
@@ -1980,10 +1700,7 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsInherited = true,
-            SubmittedToTcr = true,
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsInherited = true,SubmittedToTcr = true,
         };
 
         model.Validate();
@@ -1994,43 +1711,23 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsInherited = true,
-            SubmittedToTcr = true,
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsInherited = true,SubmittedToTcr = true,
 
-            Business = null,
-            Compliance = null,
-            Contact = null,
-            CspID = null,
-            IdentityStatus = null,
-            Status = null,
-            SubmittedAt = null,
-            TcrBrandID = null,
-            UniversalEin = null,
-            UpdatedAt = null,
+            Business = null,Compliance = null,Contact = null,CspID = null,IdentityStatus = null,Status = null,SubmittedAt = null,TcrBrandID = null,UniversalEin = null,UpdatedAt = null,
         };
 
         Assert.Null(model.Business);
-        Assert.True(model.RawData.ContainsKey("business"));
-        Assert.Null(model.Compliance);
-        Assert.True(model.RawData.ContainsKey("compliance"));
-        Assert.Null(model.Contact);
-        Assert.True(model.RawData.ContainsKey("contact"));
-        Assert.Null(model.CspID);
-        Assert.True(model.RawData.ContainsKey("csp_id"));
-        Assert.Null(model.IdentityStatus);
-        Assert.True(model.RawData.ContainsKey("identity_status"));
-        Assert.Null(model.Status);
-        Assert.True(model.RawData.ContainsKey("status"));
-        Assert.Null(model.SubmittedAt);
-        Assert.True(model.RawData.ContainsKey("submitted_at"));
-        Assert.Null(model.TcrBrandID);
-        Assert.True(model.RawData.ContainsKey("tcr_brand_id"));
-        Assert.Null(model.UniversalEin);
-        Assert.True(model.RawData.ContainsKey("universal_ein"));
-        Assert.Null(model.UpdatedAt);
+        Assert.True(model.RawData.ContainsKey("business"));Assert.Null(model.Compliance);
+        Assert.True(model.RawData.ContainsKey("compliance"));Assert.Null(model.Contact);
+        Assert.True(model.RawData.ContainsKey("contact"));Assert.Null(model.CspID);
+        Assert.True(model.RawData.ContainsKey("csp_id"));Assert.Null(model.IdentityStatus);
+        Assert.True(model.RawData.ContainsKey("identity_status"));Assert.Null(model.Status);
+        Assert.True(model.RawData.ContainsKey("status"));Assert.Null(model.SubmittedAt);
+        Assert.True(model.RawData.ContainsKey("submitted_at"));Assert.Null(model.TcrBrandID);
+        Assert.True(model.RawData.ContainsKey("tcr_brand_id"));Assert.Null(model.UniversalEin);
+        Assert.True(model.RawData.ContainsKey("universal_ein"));Assert.Null(model.UpdatedAt);
         Assert.True(model.RawData.ContainsKey("updated_at"));
+
     }
 
     [Fact]
@@ -2038,21 +1735,9 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            IsInherited = true,
-            SubmittedToTcr = true,
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),IsInherited = true,SubmittedToTcr = true,
 
-            Business = null,
-            Compliance = null,
-            Contact = null,
-            CspID = null,
-            IdentityStatus = null,
-            Status = null,
-            SubmittedAt = null,
-            TcrBrandID = null,
-            UniversalEin = null,
-            UpdatedAt = null,
+            Business = null,Compliance = null,Contact = null,CspID = null,IdentityStatus = null,Status = null,SubmittedAt = null,TcrBrandID = null,UniversalEin = null,UpdatedAt = null,
         };
 
         model.Validate();
@@ -2063,8 +1748,7 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Business = new()
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Business = new()
             {
                 City = "city",
                 Country = "country",
@@ -2077,18 +1761,23 @@ public class BrandTest : TestBase
                 TaxID = "tax_id",
                 TaxIDType = "tax_id_type",
                 Url = "url",
-            },
-            Compliance = new()
+            },Compliance = new()
             {
                 BrandRelationship = TcrBrandRelationship.BasicAccount,
-                DestinationCountries = [new() { ID = "id", IsMain = true }],
+                DestinationCountries =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        IsMain = true,
+                    },
+                ],
                 IsTcrApplication = true,
                 Notes = "notes",
                 PhoneNumberPrefix = "phone_number_prefix",
                 PrimaryUseCase = "primary_use_case",
                 Vertical = TcrVertical.Professional,
-            },
-            Contact = new()
+            },Contact = new()
             {
                 BusinessName = "business_name",
                 Email = "email",
@@ -2096,17 +1785,7 @@ public class BrandTest : TestBase
                 Phone = "phone",
                 PhoneCountryCode = "phone_country_code",
                 Role = "role",
-            },
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            CspID = "csp_id",
-            IdentityStatus = IdentityStatus.SelfDeclared,
-            IsInherited = true,
-            Status = Status.Active,
-            SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            SubmittedToTcr = true,
-            TcrBrandID = "tcr_brand_id",
-            UniversalEin = "universal_ein",
-            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            },CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),CspID = "csp_id",IdentityStatus = IdentityStatus.SelfDeclared,IsInherited = true,Status = Status.Active,SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),SubmittedToTcr = true,TcrBrandID = "tcr_brand_id",UniversalEin = "universal_ein",UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         Brand copied = new(model);
@@ -2122,17 +1801,7 @@ public class BusinessTest : TestBase
     {
         var model = new Business
         {
-            City = "city",
-            Country = "country",
-            CountryOfRegistration = "country_of_registration",
-            EntityType = "entity_type",
-            LegalName = "legal_name",
-            PostalCode = "postal_code",
-            State = "state",
-            Street = "street",
-            TaxID = "tax_id",
-            TaxIDType = "tax_id_type",
-            Url = "url",
+            City = "city",Country = "country",CountryOfRegistration = "country_of_registration",EntityType = "entity_type",LegalName = "legal_name",PostalCode = "postal_code",State = "state",Street = "street",TaxID = "tax_id",TaxIDType = "tax_id_type",Url = "url",
         };
 
         string expectedCity = "city";
@@ -2165,17 +1834,7 @@ public class BusinessTest : TestBase
     {
         var model = new Business
         {
-            City = "city",
-            Country = "country",
-            CountryOfRegistration = "country_of_registration",
-            EntityType = "entity_type",
-            LegalName = "legal_name",
-            PostalCode = "postal_code",
-            State = "state",
-            Street = "street",
-            TaxID = "tax_id",
-            TaxIDType = "tax_id_type",
-            Url = "url",
+            City = "city",Country = "country",CountryOfRegistration = "country_of_registration",EntityType = "entity_type",LegalName = "legal_name",PostalCode = "postal_code",State = "state",Street = "street",TaxID = "tax_id",TaxIDType = "tax_id_type",Url = "url",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -2189,24 +1848,11 @@ public class BusinessTest : TestBase
     {
         var model = new Business
         {
-            City = "city",
-            Country = "country",
-            CountryOfRegistration = "country_of_registration",
-            EntityType = "entity_type",
-            LegalName = "legal_name",
-            PostalCode = "postal_code",
-            State = "state",
-            Street = "street",
-            TaxID = "tax_id",
-            TaxIDType = "tax_id_type",
-            Url = "url",
+            City = "city",Country = "country",CountryOfRegistration = "country_of_registration",EntityType = "entity_type",LegalName = "legal_name",PostalCode = "postal_code",State = "state",Street = "street",TaxID = "tax_id",TaxIDType = "tax_id_type",Url = "url",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Business>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Business>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedCity = "city";
@@ -2239,17 +1885,7 @@ public class BusinessTest : TestBase
     {
         var model = new Business
         {
-            City = "city",
-            Country = "country",
-            CountryOfRegistration = "country_of_registration",
-            EntityType = "entity_type",
-            LegalName = "legal_name",
-            PostalCode = "postal_code",
-            State = "state",
-            Street = "street",
-            TaxID = "tax_id",
-            TaxIDType = "tax_id_type",
-            Url = "url",
+            City = "city",Country = "country",CountryOfRegistration = "country_of_registration",EntityType = "entity_type",LegalName = "legal_name",PostalCode = "postal_code",State = "state",Street = "street",TaxID = "tax_id",TaxIDType = "tax_id_type",Url = "url",
         };
 
         model.Validate();
@@ -2258,36 +1894,33 @@ public class BusinessTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Business { };
+        var model = new Business
+        {
+
+        };
 
         Assert.Null(model.City);
-        Assert.False(model.RawData.ContainsKey("city"));
-        Assert.Null(model.Country);
-        Assert.False(model.RawData.ContainsKey("country"));
-        Assert.Null(model.CountryOfRegistration);
-        Assert.False(model.RawData.ContainsKey("country_of_registration"));
-        Assert.Null(model.EntityType);
-        Assert.False(model.RawData.ContainsKey("entity_type"));
-        Assert.Null(model.LegalName);
-        Assert.False(model.RawData.ContainsKey("legal_name"));
-        Assert.Null(model.PostalCode);
-        Assert.False(model.RawData.ContainsKey("postal_code"));
-        Assert.Null(model.State);
-        Assert.False(model.RawData.ContainsKey("state"));
-        Assert.Null(model.Street);
-        Assert.False(model.RawData.ContainsKey("street"));
-        Assert.Null(model.TaxID);
-        Assert.False(model.RawData.ContainsKey("tax_id"));
-        Assert.Null(model.TaxIDType);
-        Assert.False(model.RawData.ContainsKey("tax_id_type"));
-        Assert.Null(model.Url);
+        Assert.False(model.RawData.ContainsKey("city"));Assert.Null(model.Country);
+        Assert.False(model.RawData.ContainsKey("country"));Assert.Null(model.CountryOfRegistration);
+        Assert.False(model.RawData.ContainsKey("country_of_registration"));Assert.Null(model.EntityType);
+        Assert.False(model.RawData.ContainsKey("entity_type"));Assert.Null(model.LegalName);
+        Assert.False(model.RawData.ContainsKey("legal_name"));Assert.Null(model.PostalCode);
+        Assert.False(model.RawData.ContainsKey("postal_code"));Assert.Null(model.State);
+        Assert.False(model.RawData.ContainsKey("state"));Assert.Null(model.Street);
+        Assert.False(model.RawData.ContainsKey("street"));Assert.Null(model.TaxID);
+        Assert.False(model.RawData.ContainsKey("tax_id"));Assert.Null(model.TaxIDType);
+        Assert.False(model.RawData.ContainsKey("tax_id_type"));Assert.Null(model.Url);
         Assert.False(model.RawData.ContainsKey("url"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Business { };
+        var model = new Business
+        {
+
+        };
 
         model.Validate();
     }
@@ -2297,41 +1930,24 @@ public class BusinessTest : TestBase
     {
         var model = new Business
         {
-            City = null,
-            Country = null,
-            CountryOfRegistration = null,
-            EntityType = null,
-            LegalName = null,
-            PostalCode = null,
-            State = null,
-            Street = null,
-            TaxID = null,
-            TaxIDType = null,
-            Url = null,
+
+
+            City = null,Country = null,CountryOfRegistration = null,EntityType = null,LegalName = null,PostalCode = null,State = null,Street = null,TaxID = null,TaxIDType = null,Url = null,
         };
 
         Assert.Null(model.City);
-        Assert.True(model.RawData.ContainsKey("city"));
-        Assert.Null(model.Country);
-        Assert.True(model.RawData.ContainsKey("country"));
-        Assert.Null(model.CountryOfRegistration);
-        Assert.True(model.RawData.ContainsKey("country_of_registration"));
-        Assert.Null(model.EntityType);
-        Assert.True(model.RawData.ContainsKey("entity_type"));
-        Assert.Null(model.LegalName);
-        Assert.True(model.RawData.ContainsKey("legal_name"));
-        Assert.Null(model.PostalCode);
-        Assert.True(model.RawData.ContainsKey("postal_code"));
-        Assert.Null(model.State);
-        Assert.True(model.RawData.ContainsKey("state"));
-        Assert.Null(model.Street);
-        Assert.True(model.RawData.ContainsKey("street"));
-        Assert.Null(model.TaxID);
-        Assert.True(model.RawData.ContainsKey("tax_id"));
-        Assert.Null(model.TaxIDType);
-        Assert.True(model.RawData.ContainsKey("tax_id_type"));
-        Assert.Null(model.Url);
+        Assert.True(model.RawData.ContainsKey("city"));Assert.Null(model.Country);
+        Assert.True(model.RawData.ContainsKey("country"));Assert.Null(model.CountryOfRegistration);
+        Assert.True(model.RawData.ContainsKey("country_of_registration"));Assert.Null(model.EntityType);
+        Assert.True(model.RawData.ContainsKey("entity_type"));Assert.Null(model.LegalName);
+        Assert.True(model.RawData.ContainsKey("legal_name"));Assert.Null(model.PostalCode);
+        Assert.True(model.RawData.ContainsKey("postal_code"));Assert.Null(model.State);
+        Assert.True(model.RawData.ContainsKey("state"));Assert.Null(model.Street);
+        Assert.True(model.RawData.ContainsKey("street"));Assert.Null(model.TaxID);
+        Assert.True(model.RawData.ContainsKey("tax_id"));Assert.Null(model.TaxIDType);
+        Assert.True(model.RawData.ContainsKey("tax_id_type"));Assert.Null(model.Url);
         Assert.True(model.RawData.ContainsKey("url"));
+
     }
 
     [Fact]
@@ -2339,17 +1955,9 @@ public class BusinessTest : TestBase
     {
         var model = new Business
         {
-            City = null,
-            Country = null,
-            CountryOfRegistration = null,
-            EntityType = null,
-            LegalName = null,
-            PostalCode = null,
-            State = null,
-            Street = null,
-            TaxID = null,
-            TaxIDType = null,
-            Url = null,
+
+
+            City = null,Country = null,CountryOfRegistration = null,EntityType = null,LegalName = null,PostalCode = null,State = null,Street = null,TaxID = null,TaxIDType = null,Url = null,
         };
 
         model.Validate();
@@ -2360,17 +1968,7 @@ public class BusinessTest : TestBase
     {
         var model = new Business
         {
-            City = "city",
-            Country = "country",
-            CountryOfRegistration = "country_of_registration",
-            EntityType = "entity_type",
-            LegalName = "legal_name",
-            PostalCode = "postal_code",
-            State = "state",
-            Street = "street",
-            TaxID = "tax_id",
-            TaxIDType = "tax_id_type",
-            Url = "url",
+            City = "city",Country = "country",CountryOfRegistration = "country_of_registration",EntityType = "entity_type",LegalName = "legal_name",PostalCode = "postal_code",State = "state",Street = "street",TaxID = "tax_id",TaxIDType = "tax_id_type",Url = "url",
         };
 
         Business copied = new(model);
@@ -2386,20 +1984,24 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
-            Notes = "notes",
-            PhoneNumberPrefix = "phone_number_prefix",
-            PrimaryUseCase = "primary_use_case",
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,Notes = "notes",PhoneNumberPrefix = "phone_number_prefix",PrimaryUseCase = "primary_use_case",Vertical = TcrVertical.Professional,
         };
 
-        ApiEnum<string, TcrBrandRelationship> expectedBrandRelationship =
-            TcrBrandRelationship.BasicAccount;
+        ApiEnum<string, TcrBrandRelationship> expectedBrandRelationship = TcrBrandRelationship.BasicAccount;
         List<DestinationCountry> expectedDestinationCountries =
         [
-            new() { ID = "id", IsMain = true },
+            new()
+            {
+                ID = "id",
+                IsMain = true,
+            },
         ];
         bool expectedIsTcrApplication = true;
         string expectedNotes = "notes";
@@ -2426,20 +2028,18 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
-            Notes = "notes",
-            PhoneNumberPrefix = "phone_number_prefix",
-            PrimaryUseCase = "primary_use_case",
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,Notes = "notes",PhoneNumberPrefix = "phone_number_prefix",PrimaryUseCase = "primary_use_case",Vertical = TcrVertical.Professional,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Compliance>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Compliance>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -2449,27 +2049,28 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
-            Notes = "notes",
-            PhoneNumberPrefix = "phone_number_prefix",
-            PrimaryUseCase = "primary_use_case",
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,Notes = "notes",PhoneNumberPrefix = "phone_number_prefix",PrimaryUseCase = "primary_use_case",Vertical = TcrVertical.Professional,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Compliance>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Compliance>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        ApiEnum<string, TcrBrandRelationship> expectedBrandRelationship =
-            TcrBrandRelationship.BasicAccount;
+        ApiEnum<string, TcrBrandRelationship> expectedBrandRelationship = TcrBrandRelationship.BasicAccount;
         List<DestinationCountry> expectedDestinationCountries =
         [
-            new() { ID = "id", IsMain = true },
+            new()
+            {
+                ID = "id",
+                IsMain = true,
+            },
         ];
         bool expectedIsTcrApplication = true;
         string expectedNotes = "notes";
@@ -2496,13 +2097,14 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
-            Notes = "notes",
-            PhoneNumberPrefix = "phone_number_prefix",
-            PrimaryUseCase = "primary_use_case",
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,Notes = "notes",PhoneNumberPrefix = "phone_number_prefix",PrimaryUseCase = "primary_use_case",Vertical = TcrVertical.Professional,
         };
 
         model.Validate();
@@ -2513,17 +2115,13 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Notes = "notes",
-            PhoneNumberPrefix = "phone_number_prefix",
-            PrimaryUseCase = "primary_use_case",
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Notes = "notes",PhoneNumberPrefix = "phone_number_prefix",PrimaryUseCase = "primary_use_case",Vertical = TcrVertical.Professional,
         };
 
         Assert.Null(model.DestinationCountries);
-        Assert.False(model.RawData.ContainsKey("destination_countries"));
-        Assert.Null(model.IsTcrApplication);
+        Assert.False(model.RawData.ContainsKey("destination_countries"));Assert.Null(model.IsTcrApplication);
         Assert.False(model.RawData.ContainsKey("is_tcr_application"));
+
     }
 
     [Fact]
@@ -2531,11 +2129,7 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Notes = "notes",
-            PhoneNumberPrefix = "phone_number_prefix",
-            PrimaryUseCase = "primary_use_case",
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Notes = "notes",PhoneNumberPrefix = "phone_number_prefix",PrimaryUseCase = "primary_use_case",Vertical = TcrVertical.Professional,
         };
 
         model.Validate();
@@ -2546,21 +2140,16 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Notes = "notes",
-            PhoneNumberPrefix = "phone_number_prefix",
-            PrimaryUseCase = "primary_use_case",
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Notes = "notes",PhoneNumberPrefix = "phone_number_prefix",PrimaryUseCase = "primary_use_case",Vertical = TcrVertical.Professional,
 
             // Null should be interpreted as omitted for these properties
-            DestinationCountries = null,
-            IsTcrApplication = null,
+            DestinationCountries = null,IsTcrApplication = null,
         };
 
         Assert.Null(model.DestinationCountries);
-        Assert.False(model.RawData.ContainsKey("destination_countries"));
-        Assert.Null(model.IsTcrApplication);
+        Assert.False(model.RawData.ContainsKey("destination_countries"));Assert.Null(model.IsTcrApplication);
         Assert.False(model.RawData.ContainsKey("is_tcr_application"));
+
     }
 
     [Fact]
@@ -2568,15 +2157,10 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Notes = "notes",
-            PhoneNumberPrefix = "phone_number_prefix",
-            PrimaryUseCase = "primary_use_case",
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Notes = "notes",PhoneNumberPrefix = "phone_number_prefix",PrimaryUseCase = "primary_use_case",Vertical = TcrVertical.Professional,
 
             // Null should be interpreted as omitted for these properties
-            DestinationCountries = null,
-            IsTcrApplication = null,
+            DestinationCountries = null,IsTcrApplication = null,
         };
 
         model.Validate();
@@ -2587,20 +2171,23 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
+            DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,
         };
 
         Assert.Null(model.BrandRelationship);
-        Assert.False(model.RawData.ContainsKey("brand_relationship"));
-        Assert.Null(model.Notes);
-        Assert.False(model.RawData.ContainsKey("notes"));
-        Assert.Null(model.PhoneNumberPrefix);
-        Assert.False(model.RawData.ContainsKey("phone_number_prefix"));
-        Assert.Null(model.PrimaryUseCase);
-        Assert.False(model.RawData.ContainsKey("primary_use_case"));
-        Assert.Null(model.Vertical);
+        Assert.False(model.RawData.ContainsKey("brand_relationship"));Assert.Null(model.Notes);
+        Assert.False(model.RawData.ContainsKey("notes"));Assert.Null(model.PhoneNumberPrefix);
+        Assert.False(model.RawData.ContainsKey("phone_number_prefix"));Assert.Null(model.PrimaryUseCase);
+        Assert.False(model.RawData.ContainsKey("primary_use_case"));Assert.Null(model.Vertical);
         Assert.False(model.RawData.ContainsKey("vertical"));
+
     }
 
     [Fact]
@@ -2608,8 +2195,14 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
+            DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,
         };
 
         model.Validate();
@@ -2620,26 +2213,25 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
+            DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,
 
-            BrandRelationship = null,
-            Notes = null,
-            PhoneNumberPrefix = null,
-            PrimaryUseCase = null,
-            Vertical = null,
+            BrandRelationship = null,Notes = null,PhoneNumberPrefix = null,PrimaryUseCase = null,Vertical = null,
         };
 
         Assert.Null(model.BrandRelationship);
-        Assert.True(model.RawData.ContainsKey("brand_relationship"));
-        Assert.Null(model.Notes);
-        Assert.True(model.RawData.ContainsKey("notes"));
-        Assert.Null(model.PhoneNumberPrefix);
-        Assert.True(model.RawData.ContainsKey("phone_number_prefix"));
-        Assert.Null(model.PrimaryUseCase);
-        Assert.True(model.RawData.ContainsKey("primary_use_case"));
-        Assert.Null(model.Vertical);
+        Assert.True(model.RawData.ContainsKey("brand_relationship"));Assert.Null(model.Notes);
+        Assert.True(model.RawData.ContainsKey("notes"));Assert.Null(model.PhoneNumberPrefix);
+        Assert.True(model.RawData.ContainsKey("phone_number_prefix"));Assert.Null(model.PrimaryUseCase);
+        Assert.True(model.RawData.ContainsKey("primary_use_case"));Assert.Null(model.Vertical);
         Assert.True(model.RawData.ContainsKey("vertical"));
+
     }
 
     [Fact]
@@ -2647,14 +2239,16 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
+            DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,
 
-            BrandRelationship = null,
-            Notes = null,
-            PhoneNumberPrefix = null,
-            PrimaryUseCase = null,
-            Vertical = null,
+            BrandRelationship = null,Notes = null,PhoneNumberPrefix = null,PrimaryUseCase = null,Vertical = null,
         };
 
         model.Validate();
@@ -2665,13 +2259,14 @@ public class ComplianceTest : TestBase
     {
         var model = new Compliance
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
-            Notes = "notes",
-            PhoneNumberPrefix = "phone_number_prefix",
-            PrimaryUseCase = "primary_use_case",
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,Notes = "notes",PhoneNumberPrefix = "phone_number_prefix",PrimaryUseCase = "primary_use_case",Vertical = TcrVertical.Professional,
         };
 
         Compliance copied = new(model);
@@ -2687,12 +2282,7 @@ public class ContactTest : TestBase
     {
         var model = new Contact
         {
-            BusinessName = "business_name",
-            Email = "email",
-            Name = "name",
-            Phone = "phone",
-            PhoneCountryCode = "phone_country_code",
-            Role = "role",
+            BusinessName = "business_name",Email = "email",Name = "name",Phone = "phone",PhoneCountryCode = "phone_country_code",Role = "role",
         };
 
         string expectedBusinessName = "business_name";
@@ -2715,12 +2305,7 @@ public class ContactTest : TestBase
     {
         var model = new Contact
         {
-            BusinessName = "business_name",
-            Email = "email",
-            Name = "name",
-            Phone = "phone",
-            PhoneCountryCode = "phone_country_code",
-            Role = "role",
+            BusinessName = "business_name",Email = "email",Name = "name",Phone = "phone",PhoneCountryCode = "phone_country_code",Role = "role",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -2734,19 +2319,11 @@ public class ContactTest : TestBase
     {
         var model = new Contact
         {
-            BusinessName = "business_name",
-            Email = "email",
-            Name = "name",
-            Phone = "phone",
-            PhoneCountryCode = "phone_country_code",
-            Role = "role",
+            BusinessName = "business_name",Email = "email",Name = "name",Phone = "phone",PhoneCountryCode = "phone_country_code",Role = "role",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Contact>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Contact>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedBusinessName = "business_name";
@@ -2769,12 +2346,7 @@ public class ContactTest : TestBase
     {
         var model = new Contact
         {
-            BusinessName = "business_name",
-            Email = "email",
-            Name = "name",
-            Phone = "phone",
-            PhoneCountryCode = "phone_country_code",
-            Role = "role",
+            BusinessName = "business_name",Email = "email",Name = "name",Phone = "phone",PhoneCountryCode = "phone_country_code",Role = "role",
         };
 
         model.Validate();
@@ -2785,15 +2357,12 @@ public class ContactTest : TestBase
     {
         var model = new Contact
         {
-            BusinessName = "business_name",
-            Email = "email",
-            Phone = "phone",
-            PhoneCountryCode = "phone_country_code",
-            Role = "role",
+            BusinessName = "business_name",Email = "email",Phone = "phone",PhoneCountryCode = "phone_country_code",Role = "role",
         };
 
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+
     }
 
     [Fact]
@@ -2801,11 +2370,7 @@ public class ContactTest : TestBase
     {
         var model = new Contact
         {
-            BusinessName = "business_name",
-            Email = "email",
-            Phone = "phone",
-            PhoneCountryCode = "phone_country_code",
-            Role = "role",
+            BusinessName = "business_name",Email = "email",Phone = "phone",PhoneCountryCode = "phone_country_code",Role = "role",
         };
 
         model.Validate();
@@ -2816,11 +2381,7 @@ public class ContactTest : TestBase
     {
         var model = new Contact
         {
-            BusinessName = "business_name",
-            Email = "email",
-            Phone = "phone",
-            PhoneCountryCode = "phone_country_code",
-            Role = "role",
+            BusinessName = "business_name",Email = "email",Phone = "phone",PhoneCountryCode = "phone_country_code",Role = "role",
 
             // Null should be interpreted as omitted for these properties
             Name = null,
@@ -2828,6 +2389,7 @@ public class ContactTest : TestBase
 
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+
     }
 
     [Fact]
@@ -2835,11 +2397,7 @@ public class ContactTest : TestBase
     {
         var model = new Contact
         {
-            BusinessName = "business_name",
-            Email = "email",
-            Phone = "phone",
-            PhoneCountryCode = "phone_country_code",
-            Role = "role",
+            BusinessName = "business_name",Email = "email",Phone = "phone",PhoneCountryCode = "phone_country_code",Role = "role",
 
             // Null should be interpreted as omitted for these properties
             Name = null,
@@ -2851,24 +2409,27 @@ public class ContactTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Contact { Name = "name" };
+        var model = new Contact
+        {
+            Name = "name",
+        };
 
         Assert.Null(model.BusinessName);
-        Assert.False(model.RawData.ContainsKey("business_name"));
-        Assert.Null(model.Email);
-        Assert.False(model.RawData.ContainsKey("email"));
-        Assert.Null(model.Phone);
-        Assert.False(model.RawData.ContainsKey("phone"));
-        Assert.Null(model.PhoneCountryCode);
-        Assert.False(model.RawData.ContainsKey("phone_country_code"));
-        Assert.Null(model.Role);
+        Assert.False(model.RawData.ContainsKey("business_name"));Assert.Null(model.Email);
+        Assert.False(model.RawData.ContainsKey("email"));Assert.Null(model.Phone);
+        Assert.False(model.RawData.ContainsKey("phone"));Assert.Null(model.PhoneCountryCode);
+        Assert.False(model.RawData.ContainsKey("phone_country_code"));Assert.Null(model.Role);
         Assert.False(model.RawData.ContainsKey("role"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Contact { Name = "name" };
+        var model = new Contact
+        {
+            Name = "name",
+        };
 
         model.Validate();
     }
@@ -2880,23 +2441,16 @@ public class ContactTest : TestBase
         {
             Name = "name",
 
-            BusinessName = null,
-            Email = null,
-            Phone = null,
-            PhoneCountryCode = null,
-            Role = null,
+            BusinessName = null,Email = null,Phone = null,PhoneCountryCode = null,Role = null,
         };
 
         Assert.Null(model.BusinessName);
-        Assert.True(model.RawData.ContainsKey("business_name"));
-        Assert.Null(model.Email);
-        Assert.True(model.RawData.ContainsKey("email"));
-        Assert.Null(model.Phone);
-        Assert.True(model.RawData.ContainsKey("phone"));
-        Assert.Null(model.PhoneCountryCode);
-        Assert.True(model.RawData.ContainsKey("phone_country_code"));
-        Assert.Null(model.Role);
+        Assert.True(model.RawData.ContainsKey("business_name"));Assert.Null(model.Email);
+        Assert.True(model.RawData.ContainsKey("email"));Assert.Null(model.Phone);
+        Assert.True(model.RawData.ContainsKey("phone"));Assert.Null(model.PhoneCountryCode);
+        Assert.True(model.RawData.ContainsKey("phone_country_code"));Assert.Null(model.Role);
         Assert.True(model.RawData.ContainsKey("role"));
+
     }
 
     [Fact]
@@ -2906,11 +2460,7 @@ public class ContactTest : TestBase
         {
             Name = "name",
 
-            BusinessName = null,
-            Email = null,
-            Phone = null,
-            PhoneCountryCode = null,
-            Role = null,
+            BusinessName = null,Email = null,Phone = null,PhoneCountryCode = null,Role = null,
         };
 
         model.Validate();
@@ -2921,12 +2471,7 @@ public class ContactTest : TestBase
     {
         var model = new Contact
         {
-            BusinessName = "business_name",
-            Email = "email",
-            Name = "name",
-            Phone = "phone",
-            PhoneCountryCode = "phone_country_code",
-            Role = "role",
+            BusinessName = "business_name",Email = "email",Name = "name",Phone = "phone",PhoneCountryCode = "phone_country_code",Role = "role",
         };
 
         Contact copied = new(model);
@@ -2937,11 +2482,7 @@ public class ContactTest : TestBase
 
 public class IdentityStatusTest : TestBase
 {
-    [Theory]
-    [InlineData(IdentityStatus.SelfDeclared)]
-    [InlineData(IdentityStatus.Unverified)]
-    [InlineData(IdentityStatus.Verified)]
-    [InlineData(IdentityStatus.VettedVerified)]
+    [Theory][InlineData(IdentityStatus.SelfDeclared)][InlineData(IdentityStatus.Unverified)][InlineData(IdentityStatus.Verified)][InlineData(IdentityStatus.VettedVerified)]
     public void Validation_Works(IdentityStatus rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -2952,30 +2493,20 @@ public class IdentityStatusTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, IdentityStatus>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, IdentityStatus>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<SentInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(IdentityStatus.SelfDeclared)]
-    [InlineData(IdentityStatus.Unverified)]
-    [InlineData(IdentityStatus.Verified)]
-    [InlineData(IdentityStatus.VettedVerified)]
+    [Theory][InlineData(IdentityStatus.SelfDeclared)][InlineData(IdentityStatus.Unverified)][InlineData(IdentityStatus.Verified)][InlineData(IdentityStatus.VettedVerified)]
     public void SerializationRoundtrip_Works(IdentityStatus rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, IdentityStatus> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, IdentityStatus>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, IdentityStatus>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -2983,15 +2514,9 @@ public class IdentityStatusTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, IdentityStatus>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, IdentityStatus>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, IdentityStatus>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, IdentityStatus>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -2999,10 +2524,7 @@ public class IdentityStatusTest : TestBase
 
 public class StatusTest : TestBase
 {
-    [Theory]
-    [InlineData(Status.Active)]
-    [InlineData(Status.Inactive)]
-    [InlineData(Status.Suspended)]
+    [Theory][InlineData(Status.Active)][InlineData(Status.Inactive)][InlineData(Status.Suspended)]
     public void Validation_Works(Status rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -3013,29 +2535,20 @@ public class StatusTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, Status>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, Status>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<SentInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(Status.Active)]
-    [InlineData(Status.Inactive)]
-    [InlineData(Status.Suspended)]
+    [Theory][InlineData(Status.Active)][InlineData(Status.Inactive)][InlineData(Status.Suspended)]
     public void SerializationRoundtrip_Works(Status rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, Status> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Status>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Status>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -3043,15 +2556,9 @@ public class StatusTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, Status>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, Status>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Status>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Status>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

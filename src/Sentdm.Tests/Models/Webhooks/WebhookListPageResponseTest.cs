@@ -17,7 +17,11 @@ public class WebhookListPageResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -34,11 +38,19 @@ public class WebhookListPageResponseTest : TestBase
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
-                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                        )
                         {
-                            { "foo", ["string"] },
+                            { "foo",
+                            [
+                                "string"
+                            ] },
                         },
-                        EventTypes = ["string"],
+                        EventTypes =
+                        [
+                            "string"
+                        ],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -48,28 +60,35 @@ public class WebhookListPageResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Data expectedData = new()
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -86,11 +105,19 @@ public class WebhookListPageResponseTest : TestBase
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
-                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                    )
                     {
-                        { "foo", ["string"] },
+                        { "foo",
+                        [
+                            "string"
+                        ] },
                     },
-                    EventTypes = ["string"],
+                    EventTypes =
+                    [
+                        "string"
+                    ],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -104,7 +131,13 @@ public class WebhookListPageResponseTest : TestBase
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -131,7 +164,11 @@ public class WebhookListPageResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -148,11 +185,19 @@ public class WebhookListPageResponseTest : TestBase
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
-                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                        )
                         {
-                            { "foo", ["string"] },
+                            { "foo",
+                            [
+                                "string"
+                            ] },
                         },
-                        EventTypes = ["string"],
+                        EventTypes =
+                        [
+                            "string"
+                        ],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -162,28 +207,28 @@ public class WebhookListPageResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookListPageResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookListPageResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -197,7 +242,11 @@ public class WebhookListPageResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -214,11 +263,19 @@ public class WebhookListPageResponseTest : TestBase
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
-                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                        )
                         {
-                            { "foo", ["string"] },
+                            { "foo",
+                            [
+                                "string"
+                            ] },
                         },
-                        EventTypes = ["string"],
+                        EventTypes =
+                        [
+                            "string"
+                        ],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -228,35 +285,39 @@ public class WebhookListPageResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookListPageResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookListPageResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         Data expectedData = new()
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
@@ -273,11 +334,19 @@ public class WebhookListPageResponseTest : TestBase
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
-                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                    )
                     {
-                        { "foo", ["string"] },
+                        { "foo",
+                        [
+                            "string"
+                        ] },
                     },
-                    EventTypes = ["string"],
+                    EventTypes =
+                    [
+                        "string"
+                    ],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -291,7 +360,13 @@ public class WebhookListPageResponseTest : TestBase
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -318,7 +393,11 @@ public class WebhookListPageResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -335,11 +414,19 @@ public class WebhookListPageResponseTest : TestBase
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
-                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                        )
                         {
-                            { "foo", ["string"] },
+                            { "foo",
+                            [
+                                "string"
+                            ] },
                         },
-                        EventTypes = ["string"],
+                        EventTypes =
+                        [
+                            "string"
+                        ],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -349,21 +436,24 @@ public class WebhookListPageResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -378,7 +468,11 @@ public class WebhookListPageResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -395,11 +489,19 @@ public class WebhookListPageResponseTest : TestBase
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
-                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                        )
                         {
-                            { "foo", ["string"] },
+                            { "foo",
+                            [
+                                "string"
+                            ] },
                         },
-                        EventTypes = ["string"],
+                        EventTypes =
+                        [
+                            "string"
+                        ],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -409,20 +511,25 @@ public class WebhookListPageResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -434,7 +541,11 @@ public class WebhookListPageResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -451,11 +562,19 @@ public class WebhookListPageResponseTest : TestBase
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
-                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                        )
                         {
-                            { "foo", ["string"] },
+                            { "foo",
+                            [
+                                "string"
+                            ] },
                         },
-                        EventTypes = ["string"],
+                        EventTypes =
+                        [
+                            "string"
+                        ],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -465,11 +584,16 @@ public class WebhookListPageResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
@@ -487,7 +611,11 @@ public class WebhookListPageResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -504,11 +632,19 @@ public class WebhookListPageResponseTest : TestBase
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
-                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                        )
                         {
-                            { "foo", ["string"] },
+                            { "foo",
+                            [
+                                "string"
+                            ] },
                         },
-                        EventTypes = ["string"],
+                        EventTypes =
+                        [
+                            "string"
+                        ],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -518,24 +654,28 @@ public class WebhookListPageResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -547,7 +687,11 @@ public class WebhookListPageResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -564,11 +708,19 @@ public class WebhookListPageResponseTest : TestBase
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
-                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                        )
                         {
-                            { "foo", ["string"] },
+                            { "foo",
+                            [
+                                "string"
+                            ] },
                         },
-                        EventTypes = ["string"],
+                        EventTypes =
+                        [
+                            "string"
+                        ],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -578,18 +730,22 @@ public class WebhookListPageResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         model.Validate();
@@ -605,14 +761,13 @@ public class WebhookListPageResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Assert.Null(model.Data);
-        Assert.False(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.False(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.False(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -625,8 +780,7 @@ public class WebhookListPageResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -642,17 +796,15 @@ public class WebhookListPageResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         Assert.Null(model.Data);
-        Assert.True(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.True(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.True(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -665,11 +817,9 @@ public class WebhookListPageResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         model.Validate();
@@ -684,7 +834,11 @@ public class WebhookListPageResponseTest : TestBase
             {
                 Pagination = new()
                 {
-                    Cursors = new() { After = "after", Before = "before" },
+                    Cursors = new()
+                    {
+                        After = "after",
+                        Before = "before",
+                    },
                     HasMore = true,
                     Page = 0,
                     PageSize = 0,
@@ -701,11 +855,19 @@ public class WebhookListPageResponseTest : TestBase
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         DisplayName = "display_name",
                         EndpointUrl = "endpoint_url",
-                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                        )
                         {
-                            { "foo", ["string"] },
+                            { "foo",
+                            [
+                                "string"
+                            ] },
                         },
-                        EventTypes = ["string"],
+                        EventTypes =
+                        [
+                            "string"
+                        ],
                         IsActive = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -715,21 +877,24 @@ public class WebhookListPageResponseTest : TestBase
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     },
                 ],
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         WebhookListPageResponse copied = new(model);
@@ -747,14 +912,17 @@ public class DataTest : TestBase
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
                 TotalCount = 0,
                 TotalPages = 0,
-            },
-            Webhooks =
+            },Webhooks =
             [
                 new()
                 {
@@ -764,11 +932,19 @@ public class DataTest : TestBase
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
-                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                    )
                     {
-                        { "foo", ["string"] },
+                        { "foo",
+                        [
+                            "string"
+                        ] },
                     },
-                    EventTypes = ["string"],
+                    EventTypes =
+                    [
+                        "string"
+                    ],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -782,7 +958,11 @@ public class DataTest : TestBase
 
         PaginationMeta expectedPagination = new()
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },
             HasMore = true,
             Page = 0,
             PageSize = 0,
@@ -801,9 +981,15 @@ public class DataTest : TestBase
                 EndpointUrl = "endpoint_url",
                 EventFilters = new Dictionary<string, IReadOnlyList<string>>()
                 {
-                    { "foo", ["string"] },
+                    { "foo",
+                    [
+                        "string"
+                    ] },
                 },
-                EventTypes = ["string"],
+                EventTypes =
+                [
+                    "string"
+                ],
                 IsActive = true,
                 LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -830,14 +1016,17 @@ public class DataTest : TestBase
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
                 TotalCount = 0,
                 TotalPages = 0,
-            },
-            Webhooks =
+            },Webhooks =
             [
                 new()
                 {
@@ -847,11 +1036,19 @@ public class DataTest : TestBase
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
-                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                    )
                     {
-                        { "foo", ["string"] },
+                        { "foo",
+                        [
+                            "string"
+                        ] },
                     },
-                    EventTypes = ["string"],
+                    EventTypes =
+                    [
+                        "string"
+                    ],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -876,14 +1073,17 @@ public class DataTest : TestBase
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
                 TotalCount = 0,
                 TotalPages = 0,
-            },
-            Webhooks =
+            },Webhooks =
             [
                 new()
                 {
@@ -893,11 +1093,19 @@ public class DataTest : TestBase
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
-                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                    )
                     {
-                        { "foo", ["string"] },
+                        { "foo",
+                        [
+                            "string"
+                        ] },
                     },
-                    EventTypes = ["string"],
+                    EventTypes =
+                    [
+                        "string"
+                    ],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -915,7 +1123,11 @@ public class DataTest : TestBase
 
         PaginationMeta expectedPagination = new()
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+            },
             HasMore = true,
             Page = 0,
             PageSize = 0,
@@ -934,9 +1146,15 @@ public class DataTest : TestBase
                 EndpointUrl = "endpoint_url",
                 EventFilters = new Dictionary<string, IReadOnlyList<string>>()
                 {
-                    { "foo", ["string"] },
+                    { "foo",
+                    [
+                        "string"
+                    ] },
                 },
-                EventTypes = ["string"],
+                EventTypes =
+                [
+                    "string"
+                ],
                 IsActive = true,
                 LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -963,14 +1181,17 @@ public class DataTest : TestBase
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
                 TotalCount = 0,
                 TotalPages = 0,
-            },
-            Webhooks =
+            },Webhooks =
             [
                 new()
                 {
@@ -980,11 +1201,19 @@ public class DataTest : TestBase
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
-                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                    )
                     {
-                        { "foo", ["string"] },
+                        { "foo",
+                        [
+                            "string"
+                        ] },
                     },
-                    EventTypes = ["string"],
+                    EventTypes =
+                    [
+                        "string"
+                    ],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1002,18 +1231,24 @@ public class DataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Data { };
+        var model = new Data
+        {
+
+        };
 
         Assert.Null(model.Pagination);
-        Assert.False(model.RawData.ContainsKey("pagination"));
-        Assert.Null(model.Webhooks);
+        Assert.False(model.RawData.ContainsKey("pagination"));Assert.Null(model.Webhooks);
         Assert.False(model.RawData.ContainsKey("webhooks"));
+
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Data { };
+        var model = new Data
+        {
+
+        };
 
         model.Validate();
     }
@@ -1023,15 +1258,16 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Pagination = null,
-            Webhooks = null,
+            Pagination = null,Webhooks = null,
         };
 
         Assert.Null(model.Pagination);
-        Assert.False(model.RawData.ContainsKey("pagination"));
-        Assert.Null(model.Webhooks);
+        Assert.False(model.RawData.ContainsKey("pagination"));Assert.Null(model.Webhooks);
         Assert.False(model.RawData.ContainsKey("webhooks"));
+
     }
 
     [Fact]
@@ -1039,9 +1275,10 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
+
+
             // Null should be interpreted as omitted for these properties
-            Pagination = null,
-            Webhooks = null,
+            Pagination = null,Webhooks = null,
         };
 
         model.Validate();
@@ -1054,14 +1291,17 @@ public class DataTest : TestBase
         {
             Pagination = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                },
                 HasMore = true,
                 Page = 0,
                 PageSize = 0,
                 TotalCount = 0,
                 TotalPages = 0,
-            },
-            Webhooks =
+            },Webhooks =
             [
                 new()
                 {
@@ -1071,11 +1311,19 @@ public class DataTest : TestBase
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     DisplayName = "display_name",
                     EndpointUrl = "endpoint_url",
-                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>(
+
+                    )
                     {
-                        { "foo", ["string"] },
+                        { "foo",
+                        [
+                            "string"
+                        ] },
                     },
-                    EventTypes = ["string"],
+                    EventTypes =
+                    [
+                        "string"
+                    ],
                     IsActive = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),

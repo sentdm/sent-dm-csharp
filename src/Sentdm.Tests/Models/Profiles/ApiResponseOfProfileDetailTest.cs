@@ -48,7 +48,14 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     Compliance = new()
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
-                        DestinationCountries = [new() { ID = "id", IsMain = true }],
+                        DestinationCountries =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                IsMain = true,
+                            },
+                        ],
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -93,21 +100,24 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 WabaID = "waba_id",
                 WhatsappPhoneNumber = "whatsapp_phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         ProfileDetail expectedData = new()
@@ -144,7 +154,14 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
-                    DestinationCountries = [new() { ID = "id", IsMain = true }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            IsMain = true,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -193,7 +210,13 @@ public class ApiResponseOfProfileDetailTest : TestBase
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -250,7 +273,14 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     Compliance = new()
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
-                        DestinationCountries = [new() { ID = "id", IsMain = true }],
+                        DestinationCountries =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                IsMain = true,
+                            },
+                        ],
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -295,28 +325,28 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 WabaID = "waba_id",
                 WhatsappPhoneNumber = "whatsapp_phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiResponseOfProfileDetail>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiResponseOfProfileDetail>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -360,7 +390,14 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     Compliance = new()
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
-                        DestinationCountries = [new() { ID = "id", IsMain = true }],
+                        DestinationCountries =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                IsMain = true,
+                            },
+                        ],
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -405,28 +442,28 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 WabaID = "waba_id",
                 WhatsappPhoneNumber = "whatsapp_phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiResponseOfProfileDetail>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiResponseOfProfileDetail>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         ProfileDetail expectedData = new()
@@ -463,7 +500,14 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 Compliance = new()
                 {
                     BrandRelationship = TcrBrandRelationship.BasicAccount,
-                    DestinationCountries = [new() { ID = "id", IsMain = true }],
+                    DestinationCountries =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            IsMain = true,
+                        },
+                    ],
                     IsTcrApplication = true,
                     Notes = "notes",
                     PhoneNumberPrefix = "phone_number_prefix",
@@ -512,7 +556,13 @@ public class ApiResponseOfProfileDetailTest : TestBase
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -569,7 +619,14 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     Compliance = new()
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
-                        DestinationCountries = [new() { ID = "id", IsMain = true }],
+                        DestinationCountries =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                IsMain = true,
+                            },
+                        ],
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -614,21 +671,24 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 WabaID = "waba_id",
                 WhatsappPhoneNumber = "whatsapp_phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -673,7 +733,14 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     Compliance = new()
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
-                        DestinationCountries = [new() { ID = "id", IsMain = true }],
+                        DestinationCountries =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                IsMain = true,
+                            },
+                        ],
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -718,20 +785,25 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 WabaID = "waba_id",
                 WhatsappPhoneNumber = "whatsapp_phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -773,7 +845,14 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     Compliance = new()
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
-                        DestinationCountries = [new() { ID = "id", IsMain = true }],
+                        DestinationCountries =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                IsMain = true,
+                            },
+                        ],
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -818,11 +897,16 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 WabaID = "waba_id",
                 WhatsappPhoneNumber = "whatsapp_phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
@@ -870,7 +954,14 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     Compliance = new()
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
-                        DestinationCountries = [new() { ID = "id", IsMain = true }],
+                        DestinationCountries =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                IsMain = true,
+                            },
+                        ],
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -915,24 +1006,28 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 WabaID = "waba_id",
                 WhatsappPhoneNumber = "whatsapp_phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -974,7 +1069,14 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     Compliance = new()
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
-                        DestinationCountries = [new() { ID = "id", IsMain = true }],
+                        DestinationCountries =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                IsMain = true,
+                            },
+                        ],
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -1019,18 +1121,22 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 WabaID = "waba_id",
                 WhatsappPhoneNumber = "whatsapp_phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         model.Validate();
@@ -1046,14 +1152,13 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Assert.Null(model.Data);
-        Assert.False(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.False(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.False(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -1066,8 +1171,7 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -1083,17 +1187,15 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         Assert.Null(model.Data);
-        Assert.True(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.True(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.True(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -1106,11 +1208,9 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         model.Validate();
@@ -1155,7 +1255,14 @@ public class ApiResponseOfProfileDetailTest : TestBase
                     Compliance = new()
                     {
                         BrandRelationship = TcrBrandRelationship.BasicAccount,
-                        DestinationCountries = [new() { ID = "id", IsMain = true }],
+                        DestinationCountries =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                IsMain = true,
+                            },
+                        ],
                         IsTcrApplication = true,
                         Notes = "notes",
                         PhoneNumberPrefix = "phone_number_prefix",
@@ -1200,21 +1307,24 @@ public class ApiResponseOfProfileDetailTest : TestBase
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 WabaID = "waba_id",
                 WhatsappPhoneNumber = "whatsapp_phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         ApiResponseOfProfileDetail copied = new(model);

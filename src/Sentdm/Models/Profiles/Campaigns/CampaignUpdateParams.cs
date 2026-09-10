@@ -25,9 +25,7 @@ namespace Sentdm.Models.Profiles.Campaigns;
 [Obsolete("deprecated")]
 public record class CampaignUpdateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
@@ -38,12 +36,12 @@ public record class CampaignUpdateParams : ParamsBase
     /// <summary>
     /// Campaign data for create or update operation
     /// </summary>
-    public required CampaignData Campaign
-    {
-        get
-        {
+    public required CampaignData Campaign {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<CampaignData>("campaign");
+            return this._rawBodyData.GetNotNullClass<CampaignData>(
+                "campaign"
+            );
         }
         init { this._rawBodyData.Set("campaign", value); }
     }
@@ -52,17 +50,15 @@ public record class CampaignUpdateParams : ParamsBase
     /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
-    public bool? Sandbox
-    {
-        get
-        {
+    public bool? Sandbox {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("sandbox");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "sandbox"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -70,17 +66,15 @@ public record class CampaignUpdateParams : ParamsBase
         }
     }
 
-    public string? IdempotencyKey
-    {
-        get
-        {
+    public string? IdempotencyKey {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("Idempotency-Key");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "Idempotency-Key"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -88,17 +82,15 @@ public record class CampaignUpdateParams : ParamsBase
         }
     }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -106,21 +98,23 @@ public record class CampaignUpdateParams : ParamsBase
         }
     }
 
-    public CampaignUpdateParams() { }
+    public CampaignUpdateParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public CampaignUpdateParams(CampaignUpdateParams campaignUpdateParams)
-        : base(campaignUpdateParams)
+    public CampaignUpdateParams (
+        CampaignUpdateParams campaignUpdateParams
+    ) : base(campaignUpdateParams)
     {
         this.ProfileID = campaignUpdateParams.ProfileID;
         this.CampaignID = campaignUpdateParams.CampaignID;
 
         this._rawBodyData = new(campaignUpdateParams._rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
-    public CampaignUpdateParams(
+    public CampaignUpdateParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -131,9 +125,9 @@ public record class CampaignUpdateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    CampaignUpdateParams(
+    CampaignUpdateParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData,
@@ -147,7 +141,7 @@ public record class CampaignUpdateParams : ParamsBase
         this.ProfileID = profileID;
         this.CampaignID = campaignID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static CampaignUpdateParams FromRawUnchecked(
@@ -164,27 +158,20 @@ public record class CampaignUpdateParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawBodyData),
             profileID,
             campaignID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["ProfileID"] = JsonSerializer.SerializeToElement(this.ProfileID),
-                    ["CampaignID"] = JsonSerializer.SerializeToElement(this.CampaignID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["ProfileID"] = JsonSerializer.SerializeToElement(this.ProfileID),
+        ["CampaignID"] = JsonSerializer.SerializeToElement(this.CampaignID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(CampaignUpdateParams? other)
     {
@@ -192,22 +179,21 @@ public record class CampaignUpdateParams : ParamsBase
         {
             return false;
         }
-        return this.ProfileID.Equals(other.ProfileID)
-            && (this.CampaignID?.Equals(other.CampaignID) ?? other.CampaignID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return this.ProfileID.Equals(other.ProfileID)&&(this.CampaignID?.Equals(other.CampaignID) ?? other.CampaignID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/v3/profiles/{0}/campaigns/{1}", this.ProfileID, this.CampaignID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v3/profiles/{0}/campaigns/{1}",
+            this.ProfileID,
+            this.CampaignID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -216,10 +202,12 @@ public record class CampaignUpdateParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -229,7 +217,5 @@ public record class CampaignUpdateParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

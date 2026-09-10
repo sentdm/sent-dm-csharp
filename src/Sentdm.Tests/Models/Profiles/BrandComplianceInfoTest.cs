@@ -12,20 +12,25 @@ public class BrandComplianceInfoTest : TestBase
     {
         var model = new BrandComplianceInfo
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Vertical = TcrVertical.Professional,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
-            Notes = "notes",
-            PhoneNumberPrefix = "phoneNumberPrefix",
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Vertical = TcrVertical.Professional,DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,Notes = "notes",PhoneNumberPrefix = "phoneNumberPrefix",
         };
 
-        ApiEnum<string, TcrBrandRelationship> expectedBrandRelationship =
-            TcrBrandRelationship.BasicAccount;
+        ApiEnum<string, TcrBrandRelationship> expectedBrandRelationship = TcrBrandRelationship.BasicAccount;
         ApiEnum<string, TcrVertical> expectedVertical = TcrVertical.Professional;
         List<DestinationCountry> expectedDestinationCountries =
         [
-            new() { ID = "id", IsMain = true },
+            new()
+            {
+                ID = "id",
+                IsMain = true,
+            },
         ];
         bool expectedIsTcrApplication = true;
         string expectedNotes = "notes";
@@ -49,19 +54,18 @@ public class BrandComplianceInfoTest : TestBase
     {
         var model = new BrandComplianceInfo
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Vertical = TcrVertical.Professional,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
-            Notes = "notes",
-            PhoneNumberPrefix = "phoneNumberPrefix",
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Vertical = TcrVertical.Professional,DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,Notes = "notes",PhoneNumberPrefix = "phoneNumberPrefix",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BrandComplianceInfo>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BrandComplianceInfo>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -71,27 +75,29 @@ public class BrandComplianceInfoTest : TestBase
     {
         var model = new BrandComplianceInfo
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Vertical = TcrVertical.Professional,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
-            Notes = "notes",
-            PhoneNumberPrefix = "phoneNumberPrefix",
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Vertical = TcrVertical.Professional,DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,Notes = "notes",PhoneNumberPrefix = "phoneNumberPrefix",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BrandComplianceInfo>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BrandComplianceInfo>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        ApiEnum<string, TcrBrandRelationship> expectedBrandRelationship =
-            TcrBrandRelationship.BasicAccount;
+        ApiEnum<string, TcrBrandRelationship> expectedBrandRelationship = TcrBrandRelationship.BasicAccount;
         ApiEnum<string, TcrVertical> expectedVertical = TcrVertical.Professional;
         List<DestinationCountry> expectedDestinationCountries =
         [
-            new() { ID = "id", IsMain = true },
+            new()
+            {
+                ID = "id",
+                IsMain = true,
+            },
         ];
         bool expectedIsTcrApplication = true;
         string expectedNotes = "notes";
@@ -115,12 +121,14 @@ public class BrandComplianceInfoTest : TestBase
     {
         var model = new BrandComplianceInfo
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Vertical = TcrVertical.Professional,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
-            Notes = "notes",
-            PhoneNumberPrefix = "phoneNumberPrefix",
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Vertical = TcrVertical.Professional,DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,Notes = "notes",PhoneNumberPrefix = "phoneNumberPrefix",
         };
 
         model.Validate();
@@ -131,18 +139,15 @@ public class BrandComplianceInfoTest : TestBase
     {
         var model = new BrandComplianceInfo
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Vertical = TcrVertical.Professional,
         };
 
         Assert.Null(model.DestinationCountries);
-        Assert.False(model.RawData.ContainsKey("destinationCountries"));
-        Assert.Null(model.IsTcrApplication);
-        Assert.False(model.RawData.ContainsKey("isTcrApplication"));
-        Assert.Null(model.Notes);
-        Assert.False(model.RawData.ContainsKey("notes"));
-        Assert.Null(model.PhoneNumberPrefix);
+        Assert.False(model.RawData.ContainsKey("destinationCountries"));Assert.Null(model.IsTcrApplication);
+        Assert.False(model.RawData.ContainsKey("isTcrApplication"));Assert.Null(model.Notes);
+        Assert.False(model.RawData.ContainsKey("notes"));Assert.Null(model.PhoneNumberPrefix);
         Assert.False(model.RawData.ContainsKey("phoneNumberPrefix"));
+
     }
 
     [Fact]
@@ -150,8 +155,7 @@ public class BrandComplianceInfoTest : TestBase
     {
         var model = new BrandComplianceInfo
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Vertical = TcrVertical.Professional,
         };
 
         model.Validate();
@@ -162,23 +166,17 @@ public class BrandComplianceInfoTest : TestBase
     {
         var model = new BrandComplianceInfo
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Vertical = TcrVertical.Professional,
 
-            DestinationCountries = null,
-            IsTcrApplication = null,
-            Notes = null,
-            PhoneNumberPrefix = null,
+            DestinationCountries = null,IsTcrApplication = null,Notes = null,PhoneNumberPrefix = null,
         };
 
         Assert.Null(model.DestinationCountries);
-        Assert.True(model.RawData.ContainsKey("destinationCountries"));
-        Assert.Null(model.IsTcrApplication);
-        Assert.True(model.RawData.ContainsKey("isTcrApplication"));
-        Assert.Null(model.Notes);
-        Assert.True(model.RawData.ContainsKey("notes"));
-        Assert.Null(model.PhoneNumberPrefix);
+        Assert.True(model.RawData.ContainsKey("destinationCountries"));Assert.Null(model.IsTcrApplication);
+        Assert.True(model.RawData.ContainsKey("isTcrApplication"));Assert.Null(model.Notes);
+        Assert.True(model.RawData.ContainsKey("notes"));Assert.Null(model.PhoneNumberPrefix);
         Assert.True(model.RawData.ContainsKey("phoneNumberPrefix"));
+
     }
 
     [Fact]
@@ -186,13 +184,9 @@ public class BrandComplianceInfoTest : TestBase
     {
         var model = new BrandComplianceInfo
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Vertical = TcrVertical.Professional,
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Vertical = TcrVertical.Professional,
 
-            DestinationCountries = null,
-            IsTcrApplication = null,
-            Notes = null,
-            PhoneNumberPrefix = null,
+            DestinationCountries = null,IsTcrApplication = null,Notes = null,PhoneNumberPrefix = null,
         };
 
         model.Validate();
@@ -203,12 +197,14 @@ public class BrandComplianceInfoTest : TestBase
     {
         var model = new BrandComplianceInfo
         {
-            BrandRelationship = TcrBrandRelationship.BasicAccount,
-            Vertical = TcrVertical.Professional,
-            DestinationCountries = [new() { ID = "id", IsMain = true }],
-            IsTcrApplication = true,
-            Notes = "notes",
-            PhoneNumberPrefix = "phoneNumberPrefix",
+            BrandRelationship = TcrBrandRelationship.BasicAccount,Vertical = TcrVertical.Professional,DestinationCountries =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsMain = true,
+                },
+            ],IsTcrApplication = true,Notes = "notes",PhoneNumberPrefix = "phoneNumberPrefix",
         };
 
         BrandComplianceInfo copied = new(model);

@@ -25,21 +25,24 @@ public class NumberLookupResponseTest : TestBase
                 MobileCountryCode = "mobile_country_code",
                 MobileNetworkCode = "mobile_network_code",
                 PhoneNumber = "phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Data expectedData = new()
@@ -57,7 +60,13 @@ public class NumberLookupResponseTest : TestBase
         Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -91,28 +100,28 @@ public class NumberLookupResponseTest : TestBase
                 MobileCountryCode = "mobile_country_code",
                 MobileNetworkCode = "mobile_network_code",
                 PhoneNumber = "phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<NumberLookupResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<NumberLookupResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -133,28 +142,28 @@ public class NumberLookupResponseTest : TestBase
                 MobileCountryCode = "mobile_country_code",
                 MobileNetworkCode = "mobile_network_code",
                 PhoneNumber = "phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<NumberLookupResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<NumberLookupResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         Data expectedData = new()
@@ -172,7 +181,13 @@ public class NumberLookupResponseTest : TestBase
         Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -206,21 +221,24 @@ public class NumberLookupResponseTest : TestBase
                 MobileCountryCode = "mobile_country_code",
                 MobileNetworkCode = "mobile_network_code",
                 PhoneNumber = "phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -242,20 +260,25 @@ public class NumberLookupResponseTest : TestBase
                 MobileCountryCode = "mobile_country_code",
                 MobileNetworkCode = "mobile_network_code",
                 PhoneNumber = "phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -274,11 +297,16 @@ public class NumberLookupResponseTest : TestBase
                 MobileCountryCode = "mobile_country_code",
                 MobileNetworkCode = "mobile_network_code",
                 PhoneNumber = "phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
@@ -303,24 +331,28 @@ public class NumberLookupResponseTest : TestBase
                 MobileCountryCode = "mobile_country_code",
                 MobileNetworkCode = "mobile_network_code",
                 PhoneNumber = "phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -339,18 +371,22 @@ public class NumberLookupResponseTest : TestBase
                 MobileCountryCode = "mobile_country_code",
                 MobileNetworkCode = "mobile_network_code",
                 PhoneNumber = "phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         model.Validate();
@@ -366,14 +402,13 @@ public class NumberLookupResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Assert.Null(model.Data);
-        Assert.False(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.False(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.False(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -386,8 +421,7 @@ public class NumberLookupResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -403,17 +437,15 @@ public class NumberLookupResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         Assert.Null(model.Data);
-        Assert.True(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.True(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.True(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -426,11 +458,9 @@ public class NumberLookupResponseTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         model.Validate();
@@ -452,21 +482,24 @@ public class NumberLookupResponseTest : TestBase
                 MobileCountryCode = "mobile_country_code",
                 MobileNetworkCode = "mobile_network_code",
                 PhoneNumber = "phone_number",
-            },
-            Error = new()
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         NumberLookupResponse copied = new(model);
@@ -482,15 +515,7 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            CarrierName = "carrier_name",
-            CountryCode = "country_code",
-            IsPorted = true,
-            IsValid = true,
-            IsVoip = true,
-            LineType = "line_type",
-            MobileCountryCode = "mobile_country_code",
-            MobileNetworkCode = "mobile_network_code",
-            PhoneNumber = "phone_number",
+            CarrierName = "carrier_name",CountryCode = "country_code",IsPorted = true,IsValid = true,IsVoip = true,LineType = "line_type",MobileCountryCode = "mobile_country_code",MobileNetworkCode = "mobile_network_code",PhoneNumber = "phone_number",
         };
 
         string expectedCarrierName = "carrier_name";
@@ -519,15 +544,7 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            CarrierName = "carrier_name",
-            CountryCode = "country_code",
-            IsPorted = true,
-            IsValid = true,
-            IsVoip = true,
-            LineType = "line_type",
-            MobileCountryCode = "mobile_country_code",
-            MobileNetworkCode = "mobile_network_code",
-            PhoneNumber = "phone_number",
+            CarrierName = "carrier_name",CountryCode = "country_code",IsPorted = true,IsValid = true,IsVoip = true,LineType = "line_type",MobileCountryCode = "mobile_country_code",MobileNetworkCode = "mobile_network_code",PhoneNumber = "phone_number",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -541,15 +558,7 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            CarrierName = "carrier_name",
-            CountryCode = "country_code",
-            IsPorted = true,
-            IsValid = true,
-            IsVoip = true,
-            LineType = "line_type",
-            MobileCountryCode = "mobile_country_code",
-            MobileNetworkCode = "mobile_network_code",
-            PhoneNumber = "phone_number",
+            CarrierName = "carrier_name",CountryCode = "country_code",IsPorted = true,IsValid = true,IsVoip = true,LineType = "line_type",MobileCountryCode = "mobile_country_code",MobileNetworkCode = "mobile_network_code",PhoneNumber = "phone_number",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -582,15 +591,7 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            CarrierName = "carrier_name",
-            CountryCode = "country_code",
-            IsPorted = true,
-            IsValid = true,
-            IsVoip = true,
-            LineType = "line_type",
-            MobileCountryCode = "mobile_country_code",
-            MobileNetworkCode = "mobile_network_code",
-            PhoneNumber = "phone_number",
+            CarrierName = "carrier_name",CountryCode = "country_code",IsPorted = true,IsValid = true,IsVoip = true,LineType = "line_type",MobileCountryCode = "mobile_country_code",MobileNetworkCode = "mobile_network_code",PhoneNumber = "phone_number",
         };
 
         model.Validate();
@@ -601,19 +602,13 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            CarrierName = "carrier_name",
-            CountryCode = "country_code",
-            IsPorted = true,
-            IsVoip = true,
-            LineType = "line_type",
-            MobileCountryCode = "mobile_country_code",
-            MobileNetworkCode = "mobile_network_code",
+            CarrierName = "carrier_name",CountryCode = "country_code",IsPorted = true,IsVoip = true,LineType = "line_type",MobileCountryCode = "mobile_country_code",MobileNetworkCode = "mobile_network_code",
         };
 
         Assert.Null(model.IsValid);
-        Assert.False(model.RawData.ContainsKey("is_valid"));
-        Assert.Null(model.PhoneNumber);
+        Assert.False(model.RawData.ContainsKey("is_valid"));Assert.Null(model.PhoneNumber);
         Assert.False(model.RawData.ContainsKey("phone_number"));
+
     }
 
     [Fact]
@@ -621,13 +616,7 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            CarrierName = "carrier_name",
-            CountryCode = "country_code",
-            IsPorted = true,
-            IsVoip = true,
-            LineType = "line_type",
-            MobileCountryCode = "mobile_country_code",
-            MobileNetworkCode = "mobile_network_code",
+            CarrierName = "carrier_name",CountryCode = "country_code",IsPorted = true,IsVoip = true,LineType = "line_type",MobileCountryCode = "mobile_country_code",MobileNetworkCode = "mobile_network_code",
         };
 
         model.Validate();
@@ -638,23 +627,16 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            CarrierName = "carrier_name",
-            CountryCode = "country_code",
-            IsPorted = true,
-            IsVoip = true,
-            LineType = "line_type",
-            MobileCountryCode = "mobile_country_code",
-            MobileNetworkCode = "mobile_network_code",
+            CarrierName = "carrier_name",CountryCode = "country_code",IsPorted = true,IsVoip = true,LineType = "line_type",MobileCountryCode = "mobile_country_code",MobileNetworkCode = "mobile_network_code",
 
             // Null should be interpreted as omitted for these properties
-            IsValid = null,
-            PhoneNumber = null,
+            IsValid = null,PhoneNumber = null,
         };
 
         Assert.Null(model.IsValid);
-        Assert.False(model.RawData.ContainsKey("is_valid"));
-        Assert.Null(model.PhoneNumber);
+        Assert.False(model.RawData.ContainsKey("is_valid"));Assert.Null(model.PhoneNumber);
         Assert.False(model.RawData.ContainsKey("phone_number"));
+
     }
 
     [Fact]
@@ -662,17 +644,10 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            CarrierName = "carrier_name",
-            CountryCode = "country_code",
-            IsPorted = true,
-            IsVoip = true,
-            LineType = "line_type",
-            MobileCountryCode = "mobile_country_code",
-            MobileNetworkCode = "mobile_network_code",
+            CarrierName = "carrier_name",CountryCode = "country_code",IsPorted = true,IsVoip = true,LineType = "line_type",MobileCountryCode = "mobile_country_code",MobileNetworkCode = "mobile_network_code",
 
             // Null should be interpreted as omitted for these properties
-            IsValid = null,
-            PhoneNumber = null,
+            IsValid = null,PhoneNumber = null,
         };
 
         model.Validate();
@@ -681,28 +656,29 @@ public class DataTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Data { IsValid = true, PhoneNumber = "phone_number" };
+        var model = new Data
+        {
+            IsValid = true,PhoneNumber = "phone_number",
+        };
 
         Assert.Null(model.CarrierName);
-        Assert.False(model.RawData.ContainsKey("carrier_name"));
-        Assert.Null(model.CountryCode);
-        Assert.False(model.RawData.ContainsKey("country_code"));
-        Assert.Null(model.IsPorted);
-        Assert.False(model.RawData.ContainsKey("is_ported"));
-        Assert.Null(model.IsVoip);
-        Assert.False(model.RawData.ContainsKey("is_voip"));
-        Assert.Null(model.LineType);
-        Assert.False(model.RawData.ContainsKey("line_type"));
-        Assert.Null(model.MobileCountryCode);
-        Assert.False(model.RawData.ContainsKey("mobile_country_code"));
-        Assert.Null(model.MobileNetworkCode);
+        Assert.False(model.RawData.ContainsKey("carrier_name"));Assert.Null(model.CountryCode);
+        Assert.False(model.RawData.ContainsKey("country_code"));Assert.Null(model.IsPorted);
+        Assert.False(model.RawData.ContainsKey("is_ported"));Assert.Null(model.IsVoip);
+        Assert.False(model.RawData.ContainsKey("is_voip"));Assert.Null(model.LineType);
+        Assert.False(model.RawData.ContainsKey("line_type"));Assert.Null(model.MobileCountryCode);
+        Assert.False(model.RawData.ContainsKey("mobile_country_code"));Assert.Null(model.MobileNetworkCode);
         Assert.False(model.RawData.ContainsKey("mobile_network_code"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Data { IsValid = true, PhoneNumber = "phone_number" };
+        var model = new Data
+        {
+            IsValid = true,PhoneNumber = "phone_number",
+        };
 
         model.Validate();
     }
@@ -712,32 +688,20 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            IsValid = true,
-            PhoneNumber = "phone_number",
+            IsValid = true,PhoneNumber = "phone_number",
 
-            CarrierName = null,
-            CountryCode = null,
-            IsPorted = null,
-            IsVoip = null,
-            LineType = null,
-            MobileCountryCode = null,
-            MobileNetworkCode = null,
+            CarrierName = null,CountryCode = null,IsPorted = null,IsVoip = null,LineType = null,MobileCountryCode = null,MobileNetworkCode = null,
         };
 
         Assert.Null(model.CarrierName);
-        Assert.True(model.RawData.ContainsKey("carrier_name"));
-        Assert.Null(model.CountryCode);
-        Assert.True(model.RawData.ContainsKey("country_code"));
-        Assert.Null(model.IsPorted);
-        Assert.True(model.RawData.ContainsKey("is_ported"));
-        Assert.Null(model.IsVoip);
-        Assert.True(model.RawData.ContainsKey("is_voip"));
-        Assert.Null(model.LineType);
-        Assert.True(model.RawData.ContainsKey("line_type"));
-        Assert.Null(model.MobileCountryCode);
-        Assert.True(model.RawData.ContainsKey("mobile_country_code"));
-        Assert.Null(model.MobileNetworkCode);
+        Assert.True(model.RawData.ContainsKey("carrier_name"));Assert.Null(model.CountryCode);
+        Assert.True(model.RawData.ContainsKey("country_code"));Assert.Null(model.IsPorted);
+        Assert.True(model.RawData.ContainsKey("is_ported"));Assert.Null(model.IsVoip);
+        Assert.True(model.RawData.ContainsKey("is_voip"));Assert.Null(model.LineType);
+        Assert.True(model.RawData.ContainsKey("line_type"));Assert.Null(model.MobileCountryCode);
+        Assert.True(model.RawData.ContainsKey("mobile_country_code"));Assert.Null(model.MobileNetworkCode);
         Assert.True(model.RawData.ContainsKey("mobile_network_code"));
+
     }
 
     [Fact]
@@ -745,16 +709,9 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            IsValid = true,
-            PhoneNumber = "phone_number",
+            IsValid = true,PhoneNumber = "phone_number",
 
-            CarrierName = null,
-            CountryCode = null,
-            IsPorted = null,
-            IsVoip = null,
-            LineType = null,
-            MobileCountryCode = null,
-            MobileNetworkCode = null,
+            CarrierName = null,CountryCode = null,IsPorted = null,IsVoip = null,LineType = null,MobileCountryCode = null,MobileNetworkCode = null,
         };
 
         model.Validate();
@@ -765,15 +722,7 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            CarrierName = "carrier_name",
-            CountryCode = "country_code",
-            IsPorted = true,
-            IsValid = true,
-            IsVoip = true,
-            LineType = "line_type",
-            MobileCountryCode = "mobile_country_code",
-            MobileNetworkCode = "mobile_network_code",
-            PhoneNumber = "phone_number",
+            CarrierName = "carrier_name",CountryCode = "country_code",IsPorted = true,IsValid = true,IsVoip = true,LineType = "line_type",MobileCountryCode = "mobile_country_code",MobileNetworkCode = "mobile_network_code",PhoneNumber = "phone_number",
         };
 
         Data copied = new(model);

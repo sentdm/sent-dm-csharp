@@ -15,7 +15,8 @@ public class RetriesTest : TestBase
 {
     record class BlankParams : ParamsBase
     {
-        internal override void AddHeadersToRequest(
+        internal override void AddHeadersToRequest
+        (
             HttpRequestMessage _request,
             ClientOptions _options
         )
@@ -31,7 +32,8 @@ public class RetriesTest : TestBase
 
     record class ParamsWithOverwrittenRetryHeader : ParamsBase
     {
-        internal override void AddHeadersToRequest(
+        internal override void AddHeadersToRequest
+        (
             HttpRequestMessage request,
             ClientOptions _options
         )
@@ -66,7 +68,11 @@ public class RetriesTest : TestBase
 
         var httpClient = new HttpClient(handlerMock.Object);
 
-        SentClient client = new() { HttpClient = httpClient, MaxRetries = 2 };
+        SentClient client = new()
+        {
+            HttpClient = httpClient,
+            MaxRetries = 2,
+        };
 
         var resp = await client.WithRawResponse.Execute(
             new HttpRequest<BlankParams> { Method = HttpMethod.Get, Params = new() },
@@ -80,11 +86,8 @@ public class RetriesTest : TestBase
             .Verify(
                 "SendAsync",
                 Times.Exactly(1),
-                ItExpr.Is<HttpRequestMessage>(
-                    (req) =>
-                        req.Method == HttpMethod.Get
-                        && req.RequestUri == new Uri("http://localhost/something")
-                ),
+                ItExpr.Is<HttpRequestMessage>(( req )=>req.Method == HttpMethod.Get
+            && req.RequestUri == new Uri("http://localhost/something")),
                 ItExpr.IsAny<CancellationToken>()
             );
     }
@@ -127,7 +130,11 @@ public class RetriesTest : TestBase
 
         var httpClient = new HttpClient(handlerMock.Object);
 
-        SentClient client = new() { HttpClient = httpClient, MaxRetries = 2 };
+        SentClient client = new()
+        {
+            HttpClient = httpClient,
+            MaxRetries = 2,
+        };
 
         var resp = await client.WithRawResponse.Execute(
             new HttpRequest<BlankParams> { Method = HttpMethod.Get, Params = new() },
@@ -140,13 +147,9 @@ public class RetriesTest : TestBase
             .Verify(
                 "SendAsync",
                 Times.Exactly(1),
-                ItExpr.Is<HttpRequestMessage>(
-                    (req) =>
-                        req.Method == HttpMethod.Get
-                        && req.RequestUri == new Uri("http://localhost/something")
-                        && Enumerable.Single(req.Headers.GetValues("x-stainless-retry-count"))
-                            == "0"
-                ),
+                ItExpr.Is<HttpRequestMessage>(( req )=>req.Method == HttpMethod.Get
+            && req.RequestUri == new Uri("http://localhost/something")
+            && Enumerable.Single(req.Headers.GetValues("x-stainless-retry-count")) == "0"),
                 ItExpr.IsAny<CancellationToken>()
             );
         handlerMock
@@ -154,13 +157,9 @@ public class RetriesTest : TestBase
             .Verify(
                 "SendAsync",
                 Times.Exactly(1),
-                ItExpr.Is<HttpRequestMessage>(
-                    (req) =>
-                        req.Method == HttpMethod.Get
-                        && req.RequestUri == new Uri("http://localhost/something")
-                        && Enumerable.Single(req.Headers.GetValues("x-stainless-retry-count"))
-                            == "1"
-                ),
+                ItExpr.Is<HttpRequestMessage>(( req )=>req.Method == HttpMethod.Get
+            && req.RequestUri == new Uri("http://localhost/something")
+            && Enumerable.Single(req.Headers.GetValues("x-stainless-retry-count")) == "1"),
                 ItExpr.IsAny<CancellationToken>()
             );
         handlerMock
@@ -168,13 +167,9 @@ public class RetriesTest : TestBase
             .Verify(
                 "SendAsync",
                 Times.Exactly(1),
-                ItExpr.Is<HttpRequestMessage>(
-                    (req) =>
-                        req.Method == HttpMethod.Get
-                        && req.RequestUri == new Uri("http://localhost/something")
-                        && Enumerable.Single(req.Headers.GetValues("x-stainless-retry-count"))
-                            == "2"
-                ),
+                ItExpr.Is<HttpRequestMessage>(( req )=>req.Method == HttpMethod.Get
+            && req.RequestUri == new Uri("http://localhost/something")
+            && Enumerable.Single(req.Headers.GetValues("x-stainless-retry-count")) == "2"),
                 ItExpr.IsAny<CancellationToken>()
             );
     }
@@ -207,14 +202,14 @@ public class RetriesTest : TestBase
 
         var httpClient = new HttpClient(handlerMock.Object);
 
-        SentClient client = new() { HttpClient = httpClient, MaxRetries = 2 };
+        SentClient client = new()
+        {
+            HttpClient = httpClient,
+            MaxRetries = 2,
+        };
 
         var resp = await client.WithRawResponse.Execute(
-            new HttpRequest<ParamsWithOverwrittenRetryHeader>
-            {
-                Method = HttpMethod.Get,
-                Params = new(),
-            },
+            new HttpRequest<ParamsWithOverwrittenRetryHeader> { Method = HttpMethod.Get, Params = new() },
             TestContext.Current.CancellationToken
         );
 
@@ -225,13 +220,9 @@ public class RetriesTest : TestBase
             .Verify(
                 "SendAsync",
                 Times.Exactly(2),
-                ItExpr.Is<HttpRequestMessage>(
-                    (req) =>
-                        req.Method == HttpMethod.Get
-                        && req.RequestUri == new Uri("http://localhost/something")
-                        && Enumerable.Single(req.Headers.GetValues("x-stainless-retry-count"))
-                            == "42"
-                ),
+                ItExpr.Is<HttpRequestMessage>(( req )=>req.Method == HttpMethod.Get
+            && req.RequestUri == new Uri("http://localhost/something")
+            && Enumerable.Single(req.Headers.GetValues("x-stainless-retry-count")) == "42"),
                 ItExpr.IsAny<CancellationToken>()
             );
     }
@@ -265,7 +256,11 @@ public class RetriesTest : TestBase
 
         var httpClient = new HttpClient(handlerMock.Object);
 
-        SentClient client = new() { HttpClient = httpClient, MaxRetries = 1 };
+        SentClient client = new()
+        {
+            HttpClient = httpClient,
+            MaxRetries = 1,
+        };
 
         var resp = await client.WithRawResponse.Execute(
             new HttpRequest<BlankParams> { Method = HttpMethod.Get, Params = new() },
@@ -278,11 +273,8 @@ public class RetriesTest : TestBase
             .Verify(
                 "SendAsync",
                 Times.Exactly(2),
-                ItExpr.Is<HttpRequestMessage>(
-                    (req) =>
-                        req.Method == HttpMethod.Get
-                        && req.RequestUri == new Uri("http://localhost/something")
-                ),
+                ItExpr.Is<HttpRequestMessage>(( req )=>req.Method == HttpMethod.Get
+            && req.RequestUri == new Uri("http://localhost/something")),
                 ItExpr.IsAny<CancellationToken>()
             );
     }
@@ -301,8 +293,7 @@ public class RetriesTest : TestBase
                 ItExpr.IsAny<CancellationToken>()
             )
             .Returns<HttpRequestMessage, CancellationToken>(
-                (_, ct) =>
-                {
+                ( _, ct )=>{
                     callCount++;
                     if (callCount == 1)
                         throw new HttpRequestException("Simulated retryable failure");
@@ -319,7 +310,11 @@ public class RetriesTest : TestBase
 
         var httpClient = new HttpClient(handlerMock.Object);
 
-        SentClient client = new() { HttpClient = httpClient, MaxRetries = 2 };
+        SentClient client = new()
+        {
+            HttpClient = httpClient,
+            MaxRetries = 2,
+        };
 
         var resp = await client.WithRawResponse.Execute(
             new HttpRequest<BlankParams> { Method = HttpMethod.Get, Params = new() },
@@ -332,13 +327,9 @@ public class RetriesTest : TestBase
             .Verify(
                 "SendAsync",
                 Times.Exactly(1),
-                ItExpr.Is<HttpRequestMessage>(
-                    (req) =>
-                        req.Method == HttpMethod.Get
-                        && req.RequestUri == new Uri("http://localhost/something")
-                        && Enumerable.Single(req.Headers.GetValues("x-stainless-retry-count"))
-                            == "0"
-                ),
+                ItExpr.Is<HttpRequestMessage>(( req )=>req.Method == HttpMethod.Get
+            && req.RequestUri == new Uri("http://localhost/something")
+            && Enumerable.Single(req.Headers.GetValues("x-stainless-retry-count")) == "0"),
                 ItExpr.IsAny<CancellationToken>()
             );
         handlerMock
@@ -346,13 +337,9 @@ public class RetriesTest : TestBase
             .Verify(
                 "SendAsync",
                 Times.Exactly(1),
-                ItExpr.Is<HttpRequestMessage>(
-                    (req) =>
-                        req.Method == HttpMethod.Get
-                        && req.RequestUri == new Uri("http://localhost/something")
-                        && Enumerable.Single(req.Headers.GetValues("x-stainless-retry-count"))
-                            == "1"
-                ),
+                ItExpr.Is<HttpRequestMessage>(( req )=>req.Method == HttpMethod.Get
+            && req.RequestUri == new Uri("http://localhost/something")
+            && Enumerable.Single(req.Headers.GetValues("x-stainless-retry-count")) == "1"),
                 ItExpr.IsAny<CancellationToken>()
             );
     }

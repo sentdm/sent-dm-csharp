@@ -17,17 +17,15 @@ public sealed record class ContactResponse : JsonModel
     /// <summary>
     /// Unique identifier for the contact
     /// </summary>
-    public string? ID
-    {
-        get
-        {
+    public string? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("id");
+            return this._rawData.GetNullableClass<string>(
+                "id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -38,17 +36,15 @@ public sealed record class ContactResponse : JsonModel
     /// <summary>
     /// Comma-separated list of available messaging channels (e.g., "sms,whatsapp")
     /// </summary>
-    public string? AvailableChannels
-    {
-        get
-        {
+    public string? AvailableChannels {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("available_channels");
+            return this._rawData.GetNullableClass<string>(
+                "available_channels"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -59,17 +55,15 @@ public sealed record class ContactResponse : JsonModel
     /// <summary>
     /// Country calling code (e.g., 1 for US/Canada)
     /// </summary>
-    public string? CountryCode
-    {
-        get
-        {
+    public string? CountryCode {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("country_code");
+            return this._rawData.GetNullableClass<string>(
+                "country_code"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -80,17 +74,15 @@ public sealed record class ContactResponse : JsonModel
     /// <summary>
     /// When the contact was created
     /// </summary>
-    public DateTimeOffset? CreatedAt
-    {
-        get
-        {
+    public DateTimeOffset? CreatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("created_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "created_at"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -102,17 +94,15 @@ public sealed record class ContactResponse : JsonModel
     /// Which customer owns this — the key's own, or the profile named in x-profile-id.
     /// Says whose resource this is, which the resource's own id does not.
     /// </summary>
-    public string? CustomerID
-    {
-        get
-        {
+    public string? CustomerID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("customer_id");
+            return this._rawData.GetNullableClass<string>(
+                "customer_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -123,17 +113,15 @@ public sealed record class ContactResponse : JsonModel
     /// <summary>
     /// Default messaging channel to use (e.g., "sms" or "whatsapp")
     /// </summary>
-    public string? DefaultChannel
-    {
-        get
-        {
+    public string? DefaultChannel {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("default_channel");
+            return this._rawData.GetNullableClass<string>(
+                "default_channel"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -144,17 +132,15 @@ public sealed record class ContactResponse : JsonModel
     /// <summary>
     /// Phone number in E.164 format (e.g., +1234567890)
     /// </summary>
-    public string? FormatE164
-    {
-        get
-        {
+    public string? FormatE164 {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("format_e164");
+            return this._rawData.GetNullableClass<string>(
+                "format_e164"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -165,17 +151,15 @@ public sealed record class ContactResponse : JsonModel
     /// <summary>
     /// Phone number in international format (e.g., +1 234-567-890)
     /// </summary>
-    public string? FormatInternational
-    {
-        get
-        {
+    public string? FormatInternational {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("format_international");
+            return this._rawData.GetNullableClass<string>(
+                "format_international"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -186,17 +170,15 @@ public sealed record class ContactResponse : JsonModel
     /// <summary>
     /// Phone number in national format (e.g., (234) 567-890)
     /// </summary>
-    public string? FormatNational
-    {
-        get
-        {
+    public string? FormatNational {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("format_national");
+            return this._rawData.GetNullableClass<string>(
+                "format_national"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -207,17 +189,15 @@ public sealed record class ContactResponse : JsonModel
     /// <summary>
     /// Phone number in RFC 3966 format (e.g., tel:+1-234-567-890)
     /// </summary>
-    public string? FormatRfc
-    {
-        get
-        {
+    public string? FormatRfc {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("format_rfc");
+            return this._rawData.GetNullableClass<string>(
+                "format_rfc"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -231,17 +211,15 @@ public sealed record class ContactResponse : JsonModel
     /// reading is_inherited keep deserializing; it carries no information.
     /// </summary>
     [Obsolete("deprecated")]
-    public bool? IsInherited
-    {
-        get
-        {
+    public bool? IsInherited {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_inherited");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_inherited"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -253,17 +231,15 @@ public sealed record class ContactResponse : JsonModel
     /// Whether the contact has opted out of messaging. Single source of truth — opt-out
     /// is per-contact, not per-channel.
     /// </summary>
-    public bool? OptOut
-    {
-        get
-        {
+    public bool? OptOut {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("opt_out");
+            return this._rawData.GetNullableStruct<bool>(
+                "opt_out"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -274,17 +250,15 @@ public sealed record class ContactResponse : JsonModel
     /// <summary>
     /// Phone number in original format
     /// </summary>
-    public string? PhoneNumber
-    {
-        get
-        {
+    public string? PhoneNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phone_number");
+            return this._rawData.GetNullableClass<string>(
+                "phone_number"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -295,17 +269,15 @@ public sealed record class ContactResponse : JsonModel
     /// <summary>
     /// ISO 3166-1 alpha-2 country code (e.g., US, CA, GB)
     /// </summary>
-    public string? RegionCode
-    {
-        get
-        {
+    public string? RegionCode {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("region_code");
+            return this._rawData.GetNullableClass<string>(
+                "region_code"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -316,12 +288,12 @@ public sealed record class ContactResponse : JsonModel
     /// <summary>
     /// When the contact was last updated
     /// </summary>
-    public DateTimeOffset? UpdatedAt
-    {
-        get
-        {
+    public DateTimeOffset? UpdatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("updated_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "updated_at"
+            );
         }
         init { this._rawData.Set("updated_at", value); }
     }
@@ -346,37 +318,38 @@ public sealed record class ContactResponse : JsonModel
         _ = this.UpdatedAt;
     }
 
-    public ContactResponse() { }
+    public ContactResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ContactResponse(ContactResponse contactResponse)
-        : base(contactResponse) { }
-#pragma warning restore CS8618
+    public ContactResponse (ContactResponse contactResponse) : base(
+        contactResponse
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public ContactResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public ContactResponse (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ContactResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ContactResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ContactResponseFromRaw.FromRawUnchecked"/>
-    public static ContactResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static ContactResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class ContactResponseFromRaw : IFromRawJson<ContactResponse>
 {
     /// <inheritdoc/>
-    public ContactResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        ContactResponse.FromRawUnchecked(rawData);
+    public ContactResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>ContactResponse.FromRawUnchecked(rawData);
 }

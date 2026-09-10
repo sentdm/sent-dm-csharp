@@ -20,17 +20,15 @@ public record class UserRetrieveParams : ParamsBase
 {
     public string? UserID { get; init; }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -38,18 +36,18 @@ public record class UserRetrieveParams : ParamsBase
         }
     }
 
-    public UserRetrieveParams() { }
+    public UserRetrieveParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public UserRetrieveParams(UserRetrieveParams userRetrieveParams)
-        : base(userRetrieveParams)
-    {
-        this.UserID = userRetrieveParams.UserID;
-    }
-#pragma warning restore CS8618
+    public UserRetrieveParams (UserRetrieveParams userRetrieveParams) : base(
+        userRetrieveParams
+    )
+    { this.UserID = userRetrieveParams.UserID; }
+    #pragma warning restore CS8618
 
-    public UserRetrieveParams(
+    public UserRetrieveParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -58,9 +56,9 @@ public record class UserRetrieveParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    UserRetrieveParams(
+    UserRetrieveParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         string userID
@@ -70,7 +68,7 @@ public record class UserRetrieveParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.UserID = userID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static UserRetrieveParams FromRawUnchecked(
@@ -83,25 +81,18 @@ public record class UserRetrieveParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             userID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["UserID"] = JsonSerializer.SerializeToElement(this.UserID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["UserID"] = JsonSerializer.SerializeToElement(this.UserID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(UserRetrieveParams? other)
     {
@@ -109,22 +100,23 @@ public record class UserRetrieveParams : ParamsBase
         {
             return false;
         }
-        return (this.UserID?.Equals(other.UserID) ?? other.UserID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.UserID?.Equals(other.UserID) ?? other.UserID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v3/users/{0}", this.UserID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v3/users/{0}",
+            this.UserID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -134,7 +126,5 @@ public record class UserRetrieveParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

@@ -17,12 +17,12 @@ public sealed record class ApiResponseOfContact : JsonModel
     /// <summary>
     /// Contact response for v3 API Uses snake_case for JSON property names
     /// </summary>
-    public ContactResponse? Data
-    {
-        get
-        {
+    public ContactResponse? Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ContactResponse>("data");
+            return this._rawData.GetNullableClass<ContactResponse>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class ApiResponseOfContact : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
-    {
-        get
-        {
+    public ErrorDetail? Error {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>(
+                "error"
+            );
         }
         init { this._rawData.Set("error", value); }
     }
@@ -43,17 +43,15 @@ public sealed record class ApiResponseOfContact : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
-    {
-        get
-        {
+    public ApiMeta? Meta {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<ApiMeta>(
+                "meta"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -64,17 +62,15 @@ public sealed record class ApiResponseOfContact : JsonModel
     /// <summary>
     /// Indicates whether the request was successful
     /// </summary>
-    public bool? Success
-    {
-        get
-        {
+    public bool? Success {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("success");
+            return this._rawData.GetNullableStruct<bool>(
+                "success"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -91,34 +87,33 @@ public sealed record class ApiResponseOfContact : JsonModel
         _ = this.Success;
     }
 
-    public ApiResponseOfContact() { }
+    public ApiResponseOfContact ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ApiResponseOfContact(ApiResponseOfContact apiResponseOfContact)
-        : base(apiResponseOfContact) { }
-#pragma warning restore CS8618
+    public ApiResponseOfContact (
+        ApiResponseOfContact apiResponseOfContact
+    ) : base(apiResponseOfContact)
+    {  }
+    #pragma warning restore CS8618
 
-    public ApiResponseOfContact(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public ApiResponseOfContact (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ApiResponseOfContact(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ApiResponseOfContact (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ApiResponseOfContactFromRaw.FromRawUnchecked"/>
     public static ApiResponseOfContact FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class ApiResponseOfContactFromRaw : IFromRawJson<ApiResponseOfContact>
@@ -126,5 +121,6 @@ class ApiResponseOfContactFromRaw : IFromRawJson<ApiResponseOfContact>
     /// <inheritdoc/>
     public ApiResponseOfContact FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ApiResponseOfContact.FromRawUnchecked(rawData);
+    )
+    =>ApiResponseOfContact.FromRawUnchecked(rawData);
 }

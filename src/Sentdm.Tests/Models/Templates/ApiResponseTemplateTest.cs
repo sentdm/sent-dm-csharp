@@ -19,29 +19,38 @@ public class ApiResponseTemplateTest : TestBase
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
-                Channels = ["string"],
+                Channels =
+                [
+                    "string"
+                ],
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 IsPublished = true,
                 Language = "language",
                 Name = "name",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Variables = ["string"],
-            },
-            Error = new()
+                Variables =
+                [
+                    "string"
+                ],
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Template expectedData = new()
@@ -49,19 +58,31 @@ public class ApiResponseTemplateTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
-            Channels = ["string"],
+            Channels =
+            [
+                "string"
+            ],
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             IsPublished = true,
             Language = "language",
             Name = "name",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Variables = ["string"],
+            Variables =
+            [
+                "string"
+            ],
         };
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -89,36 +110,42 @@ public class ApiResponseTemplateTest : TestBase
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
-                Channels = ["string"],
+                Channels =
+                [
+                    "string"
+                ],
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 IsPublished = true,
                 Language = "language",
                 Name = "name",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Variables = ["string"],
-            },
-            Error = new()
+                Variables =
+                [
+                    "string"
+                ],
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiResponseTemplate>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiResponseTemplate>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -133,36 +160,42 @@ public class ApiResponseTemplateTest : TestBase
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
-                Channels = ["string"],
+                Channels =
+                [
+                    "string"
+                ],
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 IsPublished = true,
                 Language = "language",
                 Name = "name",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Variables = ["string"],
-            },
-            Error = new()
+                Variables =
+                [
+                    "string"
+                ],
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiResponseTemplate>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiResponseTemplate>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         Template expectedData = new()
@@ -170,19 +203,31 @@ public class ApiResponseTemplateTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
-            Channels = ["string"],
+            Channels =
+            [
+                "string"
+            ],
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             IsPublished = true,
             Language = "language",
             Name = "name",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Variables = ["string"],
+            Variables =
+            [
+                "string"
+            ],
         };
         ErrorDetail expectedError = new()
         {
             Code = "code",
-            Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+            Details = new Dictionary<string, IReadOnlyList<string>>()
+            {
+                { "foo",
+                [
+                    "string"
+                ] },
+            },
             DocUrl = "doc_url",
             Message = "message",
         };
@@ -210,29 +255,38 @@ public class ApiResponseTemplateTest : TestBase
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
-                Channels = ["string"],
+                Channels =
+                [
+                    "string"
+                ],
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 IsPublished = true,
                 Language = "language",
                 Name = "name",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Variables = ["string"],
-            },
-            Error = new()
+                Variables =
+                [
+                    "string"
+                ],
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -248,28 +302,39 @@ public class ApiResponseTemplateTest : TestBase
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
-                Channels = ["string"],
+                Channels =
+                [
+                    "string"
+                ],
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 IsPublished = true,
                 Language = "language",
                 Name = "name",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Variables = ["string"],
-            },
-            Error = new()
+                Variables =
+                [
+                    "string"
+                ],
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -282,19 +347,30 @@ public class ApiResponseTemplateTest : TestBase
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
-                Channels = ["string"],
+                Channels =
+                [
+                    "string"
+                ],
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 IsPublished = true,
                 Language = "language",
                 Name = "name",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Variables = ["string"],
-            },
-            Error = new()
+                Variables =
+                [
+                    "string"
+                ],
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
@@ -313,32 +389,42 @@ public class ApiResponseTemplateTest : TestBase
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
-                Channels = ["string"],
+                Channels =
+                [
+                    "string"
+                ],
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 IsPublished = true,
                 Language = "language",
                 Name = "name",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Variables = ["string"],
-            },
-            Error = new()
+                Variables =
+                [
+                    "string"
+                ],
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         Assert.Null(model.Meta);
-        Assert.False(model.RawData.ContainsKey("meta"));
-        Assert.Null(model.Success);
+        Assert.False(model.RawData.ContainsKey("meta"));Assert.Null(model.Success);
         Assert.False(model.RawData.ContainsKey("success"));
+
     }
 
     [Fact]
@@ -351,26 +437,36 @@ public class ApiResponseTemplateTest : TestBase
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
-                Channels = ["string"],
+                Channels =
+                [
+                    "string"
+                ],
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 IsPublished = true,
                 Language = "language",
                 Name = "name",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Variables = ["string"],
-            },
-            Error = new()
+                Variables =
+                [
+                    "string"
+                ],
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
             },
 
             // Null should be interpreted as omitted for these properties
-            Meta = null,
-            Success = null,
+            Meta = null,Success = null,
         };
 
         model.Validate();
@@ -386,14 +482,13 @@ public class ApiResponseTemplateTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         Assert.Null(model.Data);
-        Assert.False(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.False(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.False(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -406,8 +501,7 @@ public class ApiResponseTemplateTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         model.Validate();
@@ -423,17 +517,15 @@ public class ApiResponseTemplateTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         Assert.Null(model.Data);
-        Assert.True(model.RawData.ContainsKey("data"));
-        Assert.Null(model.Error);
+        Assert.True(model.RawData.ContainsKey("data"));Assert.Null(model.Error);
         Assert.True(model.RawData.ContainsKey("error"));
+
     }
 
     [Fact]
@@ -446,11 +538,9 @@ public class ApiResponseTemplateTest : TestBase
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
 
-            Data = null,
-            Error = null,
+            Data = null,Error = null,
         };
 
         model.Validate();
@@ -466,29 +556,38 @@ public class ApiResponseTemplateTest : TestBase
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Category = "category",
-                Channels = ["string"],
+                Channels =
+                [
+                    "string"
+                ],
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 IsPublished = true,
                 Language = "language",
                 Name = "name",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Variables = ["string"],
-            },
-            Error = new()
+                Variables =
+                [
+                    "string"
+                ],
+            },Error = new()
             {
                 Code = "code",
-                Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
+                Details = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo",
+                    [
+                        "string"
+                    ] },
+                },
                 DocUrl = "doc_url",
                 Message = "message",
-            },
-            Meta = new()
+            },Meta = new()
             {
                 RequestID = "request_id",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Version = "version",
-            },
-            Success = true,
+            },Success = true,
         };
 
         ApiResponseTemplate copied = new(model);

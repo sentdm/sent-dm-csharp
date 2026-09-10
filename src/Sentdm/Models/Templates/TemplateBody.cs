@@ -17,12 +17,12 @@ public sealed record class TemplateBody : JsonModel
     /// Content that will be used for all channels (SMS and WhatsApp) unless channel-specific
     /// content is provided
     /// </summary>
-    public TemplateBodyContent? MultiChannel
-    {
-        get
-        {
+    public TemplateBodyContent? MultiChannel {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<TemplateBodyContent>("multiChannel");
+            return this._rawData.GetNullableClass<TemplateBodyContent>(
+                "multiChannel"
+            );
         }
         init { this._rawData.Set("multiChannel", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class TemplateBody : JsonModel
     /// <summary>
     /// RCS-specific content that overrides multi-channel content for RCS messages
     /// </summary>
-    public TemplateBodyContent? Rcs
-    {
-        get
-        {
+    public TemplateBodyContent? Rcs {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<TemplateBodyContent>("rcs");
+            return this._rawData.GetNullableClass<TemplateBodyContent>(
+                "rcs"
+            );
         }
         init { this._rawData.Set("rcs", value); }
     }
@@ -43,12 +43,12 @@ public sealed record class TemplateBody : JsonModel
     /// <summary>
     /// SMS-specific content that overrides multi-channel content for SMS messages
     /// </summary>
-    public TemplateBodyContent? Sms
-    {
-        get
-        {
+    public TemplateBodyContent? Sms {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<TemplateBodyContent>("sms");
+            return this._rawData.GetNullableClass<TemplateBodyContent>(
+                "sms"
+            );
         }
         init { this._rawData.Set("sms", value); }
     }
@@ -56,12 +56,12 @@ public sealed record class TemplateBody : JsonModel
     /// <summary>
     /// WhatsApp-specific content that overrides multi-channel content for WhatsApp messages
     /// </summary>
-    public TemplateBodyContent? Whatsapp
-    {
-        get
-        {
+    public TemplateBodyContent? Whatsapp {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<TemplateBodyContent>("whatsapp");
+            return this._rawData.GetNullableClass<TemplateBodyContent>(
+                "whatsapp"
+            );
         }
         init { this._rawData.Set("whatsapp", value); }
     }
@@ -75,37 +75,36 @@ public sealed record class TemplateBody : JsonModel
         this.Whatsapp?.Validate();
     }
 
-    public TemplateBody() { }
+    public TemplateBody ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateBody(TemplateBody templateBody)
-        : base(templateBody) { }
-#pragma warning restore CS8618
+    public TemplateBody (TemplateBody templateBody) : base(templateBody)
+    {  }
+    #pragma warning restore CS8618
 
-    public TemplateBody(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TemplateBody (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateBody(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TemplateBody (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TemplateBodyFromRaw.FromRawUnchecked"/>
-    public static TemplateBody FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static TemplateBody FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TemplateBodyFromRaw : IFromRawJson<TemplateBody>
 {
     /// <inheritdoc/>
-    public TemplateBody FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        TemplateBody.FromRawUnchecked(rawData);
+    public TemplateBody FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>TemplateBody.FromRawUnchecked(rawData);
 }

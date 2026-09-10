@@ -17,12 +17,12 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// Campaign description
     /// </summary>
-    public required string Description
-    {
-        get
-        {
+    public required string Description {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("description");
+            return this._rawData.GetNotNullClass<string>(
+                "description"
+            );
         }
         init { this._rawData.Set("description", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// Campaign name
     /// </summary>
-    public required string Name
-    {
-        get
-        {
+    public required string Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("name");
+            return this._rawData.GetNotNullClass<string>(
+                "name"
+            );
         }
         init { this._rawData.Set("name", value); }
     }
@@ -48,12 +48,12 @@ public sealed record class CampaignData : JsonModel
     /// It stays required so that a request which was valid before is still valid
     /// — dropping it would be the client-visible change, not keeping it.
     /// </summary>
-    public required string Type
-    {
-        get
-        {
+    public required string Type {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("type");
+            return this._rawData.GetNotNullClass<string>(
+                "type"
+            );
         }
         init { this._rawData.Set("type", value); }
     }
@@ -61,15 +61,14 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// List of use cases with sample messages
     /// </summary>
-    public required IReadOnlyList<CampaignUseCaseData> UseCases
-    {
-        get
-        {
+    public required IReadOnlyList<CampaignUseCaseData> UseCases {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<CampaignUseCaseData>>("useCases");
+            return this._rawData.GetNotNullStruct<ImmutableArray<CampaignUseCaseData>>(
+                "useCases"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<CampaignUseCaseData>>(
                 "useCases",
                 ImmutableArray.ToImmutableArray(value)
@@ -80,12 +79,12 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// Comma-separated keywords that trigger help message (e.g., "HELP, INFO, SUPPORT")
     /// </summary>
-    public string? HelpKeywords
-    {
-        get
-        {
+    public string? HelpKeywords {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("helpKeywords");
+            return this._rawData.GetNullableClass<string>(
+                "helpKeywords"
+            );
         }
         init { this._rawData.Set("helpKeywords", value); }
     }
@@ -93,12 +92,12 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// Message sent when user requests help
     /// </summary>
-    public string? HelpMessage
-    {
-        get
-        {
+    public string? HelpMessage {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("helpMessage");
+            return this._rawData.GetNullableClass<string>(
+                "helpMessage"
+            );
         }
         init { this._rawData.Set("helpMessage", value); }
     }
@@ -106,12 +105,12 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// Description of how messages flow in the campaign
     /// </summary>
-    public string? MessageFlow
-    {
-        get
-        {
+    public string? MessageFlow {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("messageFlow");
+            return this._rawData.GetNullableClass<string>(
+                "messageFlow"
+            );
         }
         init { this._rawData.Set("messageFlow", value); }
     }
@@ -119,12 +118,12 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// Comma-separated keywords that trigger opt-in (e.g., "YES, START, SUBSCRIBE")
     /// </summary>
-    public string? OptinKeywords
-    {
-        get
-        {
+    public string? OptinKeywords {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("optinKeywords");
+            return this._rawData.GetNullableClass<string>(
+                "optinKeywords"
+            );
         }
         init { this._rawData.Set("optinKeywords", value); }
     }
@@ -132,12 +131,12 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// Message sent when user opts in
     /// </summary>
-    public string? OptinMessage
-    {
-        get
-        {
+    public string? OptinMessage {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("optinMessage");
+            return this._rawData.GetNullableClass<string>(
+                "optinMessage"
+            );
         }
         init { this._rawData.Set("optinMessage", value); }
     }
@@ -145,12 +144,12 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// Comma-separated keywords that trigger opt-out (e.g., "STOP, UNSUBSCRIBE, END")
     /// </summary>
-    public string? OptoutKeywords
-    {
-        get
-        {
+    public string? OptoutKeywords {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("optoutKeywords");
+            return this._rawData.GetNullableClass<string>(
+                "optoutKeywords"
+            );
         }
         init { this._rawData.Set("optoutKeywords", value); }
     }
@@ -158,12 +157,12 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// Message sent when user opts out
     /// </summary>
-    public string? OptoutMessage
-    {
-        get
-        {
+    public string? OptoutMessage {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("optoutMessage");
+            return this._rawData.GetNullableClass<string>(
+                "optoutMessage"
+            );
         }
         init { this._rawData.Set("optoutMessage", value); }
     }
@@ -171,12 +170,12 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// URL to privacy policy
     /// </summary>
-    public string? PrivacyPolicyLink
-    {
-        get
-        {
+    public string? PrivacyPolicyLink {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("privacyPolicyLink");
+            return this._rawData.GetNullableClass<string>(
+                "privacyPolicyLink"
+            );
         }
         init { this._rawData.Set("privacyPolicyLink", value); }
     }
@@ -184,12 +183,12 @@ public sealed record class CampaignData : JsonModel
     /// <summary>
     /// URL to terms and conditions
     /// </summary>
-    public string? TermsAndConditionsLink
-    {
-        get
-        {
+    public string? TermsAndConditionsLink {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("termsAndConditionsLink");
+            return this._rawData.GetNullableClass<string>(
+                "termsAndConditionsLink"
+            );
         }
         init { this._rawData.Set("termsAndConditionsLink", value); }
     }
@@ -198,12 +197,12 @@ public sealed record class CampaignData : JsonModel
     /// Expected messaging volume for this campaign. Numeric string (e.g. "1999",
     /// "5000"). Values below 2000 bill at the low-volume tier.
     /// </summary>
-    public string? Volume
-    {
-        get
-        {
+    public string? Volume {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("volume");
+            return this._rawData.GetNullableClass<string>(
+                "volume"
+            );
         }
         init { this._rawData.Set("volume", value); }
     }
@@ -230,37 +229,36 @@ public sealed record class CampaignData : JsonModel
         _ = this.Volume;
     }
 
-    public CampaignData() { }
+    public CampaignData ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public CampaignData(CampaignData campaignData)
-        : base(campaignData) { }
-#pragma warning restore CS8618
+    public CampaignData (CampaignData campaignData) : base(campaignData)
+    {  }
+    #pragma warning restore CS8618
 
-    public CampaignData(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public CampaignData (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    CampaignData(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    CampaignData (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="CampaignDataFromRaw.FromRawUnchecked"/>
-    public static CampaignData FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static CampaignData FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class CampaignDataFromRaw : IFromRawJson<CampaignData>
 {
     /// <inheritdoc/>
-    public CampaignData FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        CampaignData.FromRawUnchecked(rawData);
+    public CampaignData FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>CampaignData.FromRawUnchecked(rawData);
 }

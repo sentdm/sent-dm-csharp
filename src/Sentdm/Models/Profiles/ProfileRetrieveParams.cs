@@ -26,17 +26,15 @@ public record class ProfileRetrieveParams : ParamsBase
 {
     public string? ProfileID { get; init; }
 
-    public string? XProfileID
-    {
-        get
-        {
+    public string? XProfileID {
+        get {
             this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("x-profile-id");
+            return this._rawHeaderData.GetNullableClass<string>(
+                "x-profile-id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -44,18 +42,18 @@ public record class ProfileRetrieveParams : ParamsBase
         }
     }
 
-    public ProfileRetrieveParams() { }
+    public ProfileRetrieveParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ProfileRetrieveParams(ProfileRetrieveParams profileRetrieveParams)
-        : base(profileRetrieveParams)
-    {
-        this.ProfileID = profileRetrieveParams.ProfileID;
-    }
-#pragma warning restore CS8618
+    public ProfileRetrieveParams (
+        ProfileRetrieveParams profileRetrieveParams
+    ) : base(profileRetrieveParams)
+    { this.ProfileID = profileRetrieveParams.ProfileID; }
+    #pragma warning restore CS8618
 
-    public ProfileRetrieveParams(
+    public ProfileRetrieveParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -64,9 +62,9 @@ public record class ProfileRetrieveParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ProfileRetrieveParams(
+    ProfileRetrieveParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         string profileID
@@ -76,7 +74,7 @@ public record class ProfileRetrieveParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.ProfileID = profileID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static ProfileRetrieveParams FromRawUnchecked(
@@ -89,25 +87,18 @@ public record class ProfileRetrieveParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             profileID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["ProfileID"] = JsonSerializer.SerializeToElement(this.ProfileID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["ProfileID"] = JsonSerializer.SerializeToElement(this.ProfileID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(ProfileRetrieveParams? other)
     {
@@ -115,23 +106,23 @@ public record class ProfileRetrieveParams : ParamsBase
         {
             return false;
         }
-        return (this.ProfileID?.Equals(other.ProfileID) ?? other.ProfileID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.ProfileID?.Equals(other.ProfileID) ?? other.ProfileID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/v3/profiles/{0}", this.ProfileID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/v3/profiles/{0}",
+            this.ProfileID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -141,7 +132,5 @@ public record class ProfileRetrieveParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

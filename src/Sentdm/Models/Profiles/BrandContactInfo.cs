@@ -16,12 +16,12 @@ public sealed record class BrandContactInfo : JsonModel
     /// <summary>
     /// Primary contact name (required)
     /// </summary>
-    public required string Name
-    {
-        get
-        {
+    public required string Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("name");
+            return this._rawData.GetNotNullClass<string>(
+                "name"
+            );
         }
         init { this._rawData.Set("name", value); }
     }
@@ -29,12 +29,12 @@ public sealed record class BrandContactInfo : JsonModel
     /// <summary>
     /// Business/brand name
     /// </summary>
-    public string? BusinessName
-    {
-        get
-        {
+    public string? BusinessName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("businessName");
+            return this._rawData.GetNullableClass<string>(
+                "businessName"
+            );
         }
         init { this._rawData.Set("businessName", value); }
     }
@@ -42,12 +42,12 @@ public sealed record class BrandContactInfo : JsonModel
     /// <summary>
     /// Contact email address
     /// </summary>
-    public string? Email
-    {
-        get
-        {
+    public string? Email {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("email");
+            return this._rawData.GetNullableClass<string>(
+                "email"
+            );
         }
         init { this._rawData.Set("email", value); }
     }
@@ -55,12 +55,12 @@ public sealed record class BrandContactInfo : JsonModel
     /// <summary>
     /// Contact phone number in E.164 format
     /// </summary>
-    public string? Phone
-    {
-        get
-        {
+    public string? Phone {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phone");
+            return this._rawData.GetNullableClass<string>(
+                "phone"
+            );
         }
         init { this._rawData.Set("phone", value); }
     }
@@ -68,12 +68,12 @@ public sealed record class BrandContactInfo : JsonModel
     /// <summary>
     /// Contact phone country code (e.g., "1" for US)
     /// </summary>
-    public string? PhoneCountryCode
-    {
-        get
-        {
+    public string? PhoneCountryCode {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("phoneCountryCode");
+            return this._rawData.GetNullableClass<string>(
+                "phoneCountryCode"
+            );
         }
         init { this._rawData.Set("phoneCountryCode", value); }
     }
@@ -81,12 +81,12 @@ public sealed record class BrandContactInfo : JsonModel
     /// <summary>
     /// Contact's role in the business
     /// </summary>
-    public string? Role
-    {
-        get
-        {
+    public string? Role {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("role");
+            return this._rawData.GetNullableClass<string>(
+                "role"
+            );
         }
         init { this._rawData.Set("role", value); }
     }
@@ -102,46 +102,42 @@ public sealed record class BrandContactInfo : JsonModel
         _ = this.Role;
     }
 
-    public BrandContactInfo() { }
+    public BrandContactInfo ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public BrandContactInfo(BrandContactInfo brandContactInfo)
-        : base(brandContactInfo) { }
-#pragma warning restore CS8618
+    public BrandContactInfo (BrandContactInfo brandContactInfo) : base(
+        brandContactInfo
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public BrandContactInfo(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public BrandContactInfo (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    BrandContactInfo(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    BrandContactInfo (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="BrandContactInfoFromRaw.FromRawUnchecked"/>
     public static BrandContactInfo FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 
     [SetsRequiredMembers]
-    public BrandContactInfo(string name)
-        : this()
-    {
-        this.Name = name;
-    }
+    public BrandContactInfo (string name) : this()
+    { this.Name = name; }
 }
 
 class BrandContactInfoFromRaw : IFromRawJson<BrandContactInfo>
 {
     /// <inheritdoc/>
-    public BrandContactInfo FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        BrandContactInfo.FromRawUnchecked(rawData);
+    public BrandContactInfo FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>BrandContactInfo.FromRawUnchecked(rawData);
 }

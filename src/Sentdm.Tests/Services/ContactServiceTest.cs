@@ -7,32 +7,26 @@ public class ContactServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var apiResponseOfContact = await this.client.Contacts.Create(
-            new() { PhoneNumber = "+1234567890" },
-            TestContext.Current.CancellationToken
-        );
+        var apiResponseOfContact = await this.client.Contacts.Create(new()
+        {
+            PhoneNumber = "+1234567890"
+        }, TestContext.Current.CancellationToken);
         apiResponseOfContact.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var apiResponseOfContact = await this.client.Contacts.Retrieve(
-            "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        var apiResponseOfContact = await this.client.Contacts.Retrieve("6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+        new(), TestContext.Current.CancellationToken);
         apiResponseOfContact.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var apiResponseOfContact = await this.client.Contacts.Update(
-            "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        var apiResponseOfContact = await this.client.Contacts.Update("6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+        new(), TestContext.Current.CancellationToken);
         apiResponseOfContact.Validate();
     }
 
@@ -46,21 +40,15 @@ public class ContactServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
-        await this.client.Contacts.Delete(
-            "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        await this.client.Contacts.Delete("6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+        new(), TestContext.Current.CancellationToken);
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task RetrieveMessageSummary_Works()
     {
-        var apiResponseOfContactMessageSummary = await this.client.Contacts.RetrieveMessageSummary(
-            "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        var apiResponseOfContactMessageSummary = await this.client.Contacts.RetrieveMessageSummary("6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+        new(), TestContext.Current.CancellationToken);
         apiResponseOfContactMessageSummary.Validate();
     }
 }

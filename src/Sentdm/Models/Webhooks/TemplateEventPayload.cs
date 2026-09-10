@@ -17,12 +17,12 @@ public sealed record class TemplateEventPayload : JsonModel
     /// <summary>
     /// The review status the template just reached, for example APPROVED or REJECTED.
     /// </summary>
-    public required string Status
-    {
-        get
-        {
+    public required string Status {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("status");
+            return this._rawData.GetNotNullClass<string>(
+                "status"
+            );
         }
         init { this._rawData.Set("status", value); }
     }
@@ -31,12 +31,12 @@ public sealed record class TemplateEventPayload : JsonModel
     /// The template's identifier with Meta, assigned when the template is submitted
     /// for review.
     /// </summary>
-    public required string WhatsappTemplateID
-    {
-        get
-        {
+    public required string WhatsappTemplateID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("whatsapp_template_id");
+            return this._rawData.GetNotNullClass<string>(
+                "whatsapp_template_id"
+            );
         }
         init { this._rawData.Set("whatsapp_template_id", value); }
     }
@@ -44,17 +44,15 @@ public sealed record class TemplateEventPayload : JsonModel
     /// <summary>
     /// The account the template belongs to.
     /// </summary>
-    public string? AccountID
-    {
-        get
-        {
+    public string? AccountID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("account_id");
+            return this._rawData.GetNullableClass<string>(
+                "account_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -65,17 +63,15 @@ public sealed record class TemplateEventPayload : JsonModel
     /// <summary>
     /// The template's category, for example UTILITY, MARKETING, or AUTHENTICATION.
     /// </summary>
-    public string? Category
-    {
-        get
-        {
+    public string? Category {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("category");
+            return this._rawData.GetNullableClass<string>(
+                "category"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -86,17 +82,15 @@ public sealed record class TemplateEventPayload : JsonModel
     /// <summary>
     /// The channel the template applies to.
     /// </summary>
-    public string? Channel
-    {
-        get
-        {
+    public string? Channel {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("channel");
+            return this._rawData.GetNullableClass<string>(
+                "channel"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -107,17 +101,15 @@ public sealed record class TemplateEventPayload : JsonModel
     /// <summary>
     /// The template's language code, for example en_US.
     /// </summary>
-    public string? Language
-    {
-        get
-        {
+    public string? Language {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("language");
+            return this._rawData.GetNullableClass<string>(
+                "language"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -128,12 +120,12 @@ public sealed record class TemplateEventPayload : JsonModel
     /// <summary>
     /// Why the template reached Status, when a reason was given. Populated on a rejection.
     /// </summary>
-    public string? Reason
-    {
-        get
-        {
+    public string? Reason {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("reason");
+            return this._rawData.GetNullableClass<string>(
+                "reason"
+            );
         }
         init { this._rawData.Set("reason", value); }
     }
@@ -141,17 +133,15 @@ public sealed record class TemplateEventPayload : JsonModel
     /// <summary>
     /// The template in Sent.
     /// </summary>
-    public string? TemplateID
-    {
-        get
-        {
+    public string? TemplateID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("template_id");
+            return this._rawData.GetNullableClass<string>(
+                "template_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -162,17 +152,15 @@ public sealed record class TemplateEventPayload : JsonModel
     /// <summary>
     /// The template's display name.
     /// </summary>
-    public string? TemplateName
-    {
-        get
-        {
+    public string? TemplateName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("template_name");
+            return this._rawData.GetNullableClass<string>(
+                "template_name"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -194,34 +182,33 @@ public sealed record class TemplateEventPayload : JsonModel
         _ = this.TemplateName;
     }
 
-    public TemplateEventPayload() { }
+    public TemplateEventPayload ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TemplateEventPayload(TemplateEventPayload templateEventPayload)
-        : base(templateEventPayload) { }
-#pragma warning restore CS8618
+    public TemplateEventPayload (
+        TemplateEventPayload templateEventPayload
+    ) : base(templateEventPayload)
+    {  }
+    #pragma warning restore CS8618
 
-    public TemplateEventPayload(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TemplateEventPayload (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TemplateEventPayload(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TemplateEventPayload (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TemplateEventPayloadFromRaw.FromRawUnchecked"/>
     public static TemplateEventPayload FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TemplateEventPayloadFromRaw : IFromRawJson<TemplateEventPayload>
@@ -229,5 +216,6 @@ class TemplateEventPayloadFromRaw : IFromRawJson<TemplateEventPayload>
     /// <inheritdoc/>
     public TemplateEventPayload FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => TemplateEventPayload.FromRawUnchecked(rawData);
+    )
+    =>TemplateEventPayload.FromRawUnchecked(rawData);
 }

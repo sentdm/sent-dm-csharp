@@ -12,9 +12,7 @@ public class ApiMetaTest : TestBase
     {
         var model = new ApiMeta
         {
-            RequestID = "request_id",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Version = "version",
+            RequestID = "request_id",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Version = "version",
         };
 
         string expectedRequestID = "request_id";
@@ -31,9 +29,7 @@ public class ApiMetaTest : TestBase
     {
         var model = new ApiMeta
         {
-            RequestID = "request_id",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Version = "version",
+            RequestID = "request_id",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Version = "version",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -47,16 +43,11 @@ public class ApiMetaTest : TestBase
     {
         var model = new ApiMeta
         {
-            RequestID = "request_id",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Version = "version",
+            RequestID = "request_id",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Version = "version",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiMeta>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiMeta>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedRequestID = "request_id";
@@ -73,9 +64,7 @@ public class ApiMetaTest : TestBase
     {
         var model = new ApiMeta
         {
-            RequestID = "request_id",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Version = "version",
+            RequestID = "request_id",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Version = "version",
         };
 
         model.Validate();
@@ -84,20 +73,25 @@ public class ApiMetaTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new ApiMeta { };
+        var model = new ApiMeta
+        {
+
+        };
 
         Assert.Null(model.RequestID);
-        Assert.False(model.RawData.ContainsKey("request_id"));
-        Assert.Null(model.Timestamp);
-        Assert.False(model.RawData.ContainsKey("timestamp"));
-        Assert.Null(model.Version);
+        Assert.False(model.RawData.ContainsKey("request_id"));Assert.Null(model.Timestamp);
+        Assert.False(model.RawData.ContainsKey("timestamp"));Assert.Null(model.Version);
         Assert.False(model.RawData.ContainsKey("version"));
+
     }
 
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new ApiMeta { };
+        var model = new ApiMeta
+        {
+
+        };
 
         model.Validate();
     }
@@ -107,18 +101,17 @@ public class ApiMetaTest : TestBase
     {
         var model = new ApiMeta
         {
+
+
             // Null should be interpreted as omitted for these properties
-            RequestID = null,
-            Timestamp = null,
-            Version = null,
+            RequestID = null,Timestamp = null,Version = null,
         };
 
         Assert.Null(model.RequestID);
-        Assert.False(model.RawData.ContainsKey("request_id"));
-        Assert.Null(model.Timestamp);
-        Assert.False(model.RawData.ContainsKey("timestamp"));
-        Assert.Null(model.Version);
+        Assert.False(model.RawData.ContainsKey("request_id"));Assert.Null(model.Timestamp);
+        Assert.False(model.RawData.ContainsKey("timestamp"));Assert.Null(model.Version);
         Assert.False(model.RawData.ContainsKey("version"));
+
     }
 
     [Fact]
@@ -126,10 +119,10 @@ public class ApiMetaTest : TestBase
     {
         var model = new ApiMeta
         {
+
+
             // Null should be interpreted as omitted for these properties
-            RequestID = null,
-            Timestamp = null,
-            Version = null,
+            RequestID = null,Timestamp = null,Version = null,
         };
 
         model.Validate();
@@ -140,9 +133,7 @@ public class ApiMetaTest : TestBase
     {
         var model = new ApiMeta
         {
-            RequestID = "request_id",
-            Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Version = "version",
+            RequestID = "request_id",Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Version = "version",
         };
 
         ApiMeta copied = new(model);

@@ -8,11 +8,7 @@ namespace Sentdm.Models.Profiles;
 [JsonConverter(typeof(TcrBrandRelationshipConverter))]
 public enum TcrBrandRelationship
 {
-    BasicAccount,
-    MediumAccount,
-    LargeAccount,
-    SmallAccount,
-    KeyAccount,
+    BasicAccount, MediumAccount, LargeAccount, SmallAccount, KeyAccount
 }
 
 sealed class TcrBrandRelationshipConverter : JsonConverter<TcrBrandRelationship>
@@ -25,12 +21,12 @@ sealed class TcrBrandRelationshipConverter : JsonConverter<TcrBrandRelationship>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "BASIC_ACCOUNT" => TcrBrandRelationship.BasicAccount,
-            "MEDIUM_ACCOUNT" => TcrBrandRelationship.MediumAccount,
-            "LARGE_ACCOUNT" => TcrBrandRelationship.LargeAccount,
-            "SMALL_ACCOUNT" => TcrBrandRelationship.SmallAccount,
-            "KEY_ACCOUNT" => TcrBrandRelationship.KeyAccount,
-            _ => (TcrBrandRelationship)(-1),
+            "BASIC_ACCOUNT"=>TcrBrandRelationship.BasicAccount,
+            "MEDIUM_ACCOUNT"=>TcrBrandRelationship.MediumAccount,
+            "LARGE_ACCOUNT"=>TcrBrandRelationship.LargeAccount,
+            "SMALL_ACCOUNT"=>TcrBrandRelationship.SmallAccount,
+            "KEY_ACCOUNT"=>TcrBrandRelationship.KeyAccount,
+            _ =>(TcrBrandRelationship)(-1)
         };
     }
 
@@ -40,20 +36,16 @@ sealed class TcrBrandRelationshipConverter : JsonConverter<TcrBrandRelationship>
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                TcrBrandRelationship.BasicAccount => "BASIC_ACCOUNT",
-                TcrBrandRelationship.MediumAccount => "MEDIUM_ACCOUNT",
-                TcrBrandRelationship.LargeAccount => "LARGE_ACCOUNT",
-                TcrBrandRelationship.SmallAccount => "SMALL_ACCOUNT",
-                TcrBrandRelationship.KeyAccount => "KEY_ACCOUNT",
-                _ => throw new SentInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            TcrBrandRelationship.BasicAccount=>"BASIC_ACCOUNT",
+            TcrBrandRelationship.MediumAccount=>"MEDIUM_ACCOUNT",
+            TcrBrandRelationship.LargeAccount=>"LARGE_ACCOUNT",
+            TcrBrandRelationship.SmallAccount=>"SMALL_ACCOUNT",
+            TcrBrandRelationship.KeyAccount=>"KEY_ACCOUNT",
+            _ => throw new SentInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

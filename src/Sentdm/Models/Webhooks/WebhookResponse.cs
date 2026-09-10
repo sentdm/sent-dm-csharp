@@ -12,17 +12,15 @@ namespace Sentdm.Models.Webhooks;
 [JsonConverter(typeof(JsonModelConverter<WebhookResponse, WebhookResponseFromRaw>))]
 public sealed record class WebhookResponse : JsonModel
 {
-    public string? ID
-    {
-        get
-        {
+    public string? ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("id");
+            return this._rawData.GetNullableClass<string>(
+                "id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -30,17 +28,15 @@ public sealed record class WebhookResponse : JsonModel
         }
     }
 
-    public int? ConsecutiveFailures
-    {
-        get
-        {
+    public int? ConsecutiveFailures {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("consecutive_failures");
+            return this._rawData.GetNullableStruct<int>(
+                "consecutive_failures"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -48,17 +44,15 @@ public sealed record class WebhookResponse : JsonModel
         }
     }
 
-    public DateTimeOffset? CreatedAt
-    {
-        get
-        {
+    public DateTimeOffset? CreatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("created_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "created_at"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -70,17 +64,15 @@ public sealed record class WebhookResponse : JsonModel
     /// Which customer owns this — the key's own, or the profile named in x-profile-id.
     /// Says whose resource this is, which the resource's own id does not.
     /// </summary>
-    public string? CustomerID
-    {
-        get
-        {
+    public string? CustomerID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("customer_id");
+            return this._rawData.GetNullableClass<string>(
+                "customer_id"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -88,17 +80,15 @@ public sealed record class WebhookResponse : JsonModel
         }
     }
 
-    public string? DisplayName
-    {
-        get
-        {
+    public string? DisplayName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("display_name");
+            return this._rawData.GetNullableClass<string>(
+                "display_name"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -106,17 +96,15 @@ public sealed record class WebhookResponse : JsonModel
         }
     }
 
-    public string? EndpointUrl
-    {
-        get
-        {
+    public string? EndpointUrl {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("endpoint_url");
+            return this._rawData.GetNullableClass<string>(
+                "endpoint_url"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -124,51 +112,35 @@ public sealed record class WebhookResponse : JsonModel
         }
     }
 
-    public IReadOnlyDictionary<string, IReadOnlyList<string>>? EventFilters
-    {
-        get
-        {
+    public IReadOnlyDictionary<string, IReadOnlyList<string>>? EventFilters {
+        get {
             this._rawData.Freeze();
-            var value = this._rawData.GetNullableClass<
-                FrozenDictionary<string, ImmutableArray<string>>
-            >("event_filters");
-            if (value == null)
-            {
+            var value = this._rawData.GetNullableClass<FrozenDictionary<string, ImmutableArray<string>>>(
+                "event_filters"
+            );
+            if (value == null) {
                 return null;
             }
 
-            return FrozenDictionary.ToFrozenDictionary(
-                value,
-                entry => entry.Key,
-                (entry) => (IReadOnlyList<string>)entry.Value
-            );
+            return FrozenDictionary.ToFrozenDictionary(value, entry => entry.Key, ( entry )=>(IReadOnlyList<string>)entry.Value);
         }
-        init
-        {
+        init {
             this._rawData.Set<FrozenDictionary<string, ImmutableArray<string>>?>(
                 "event_filters",
-                value == null
-                    ? null
-                    : FrozenDictionary.ToFrozenDictionary(
-                        value,
-                        entry => entry.Key,
-                        (entry) => ImmutableArray.ToImmutableArray(entry.Value)
-                    )
+                value == null ? null : FrozenDictionary.ToFrozenDictionary(value, entry => entry.Key, ( entry )=>ImmutableArray.ToImmutableArray(entry.Value))
             );
         }
     }
 
-    public IReadOnlyList<string>? EventTypes
-    {
-        get
-        {
+    public IReadOnlyList<string>? EventTypes {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("event_types");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "event_types"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -179,17 +151,15 @@ public sealed record class WebhookResponse : JsonModel
         }
     }
 
-    public bool? IsActive
-    {
-        get
-        {
+    public bool? IsActive {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_active");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_active"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -197,37 +167,35 @@ public sealed record class WebhookResponse : JsonModel
         }
     }
 
-    public DateTimeOffset? LastDeliveryAttemptAt
-    {
-        get
-        {
+    public DateTimeOffset? LastDeliveryAttemptAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("last_delivery_attempt_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "last_delivery_attempt_at"
+            );
         }
         init { this._rawData.Set("last_delivery_attempt_at", value); }
     }
 
-    public DateTimeOffset? LastSuccessfulDeliveryAt
-    {
-        get
-        {
+    public DateTimeOffset? LastSuccessfulDeliveryAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("last_successful_delivery_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "last_successful_delivery_at"
+            );
         }
         init { this._rawData.Set("last_successful_delivery_at", value); }
     }
 
-    public int? RetryCount
-    {
-        get
-        {
+    public int? RetryCount {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("retry_count");
+            return this._rawData.GetNullableStruct<int>(
+                "retry_count"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -235,27 +203,25 @@ public sealed record class WebhookResponse : JsonModel
         }
     }
 
-    public string? SigningSecret
-    {
-        get
-        {
+    public string? SigningSecret {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("signing_secret");
+            return this._rawData.GetNullableClass<string>(
+                "signing_secret"
+            );
         }
         init { this._rawData.Set("signing_secret", value); }
     }
 
-    public int? TimeoutSeconds
-    {
-        get
-        {
+    public int? TimeoutSeconds {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("timeout_seconds");
+            return this._rawData.GetNullableStruct<int>(
+                "timeout_seconds"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -263,12 +229,12 @@ public sealed record class WebhookResponse : JsonModel
         }
     }
 
-    public DateTimeOffset? UpdatedAt
-    {
-        get
-        {
+    public DateTimeOffset? UpdatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<DateTimeOffset>("updated_at");
+            return this._rawData.GetNullableStruct<DateTimeOffset>(
+                "updated_at"
+            );
         }
         init { this._rawData.Set("updated_at", value); }
     }
@@ -293,37 +259,38 @@ public sealed record class WebhookResponse : JsonModel
         _ = this.UpdatedAt;
     }
 
-    public WebhookResponse() { }
+    public WebhookResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WebhookResponse(WebhookResponse webhookResponse)
-        : base(webhookResponse) { }
-#pragma warning restore CS8618
+    public WebhookResponse (WebhookResponse webhookResponse) : base(
+        webhookResponse
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public WebhookResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public WebhookResponse (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WebhookResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    WebhookResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="WebhookResponseFromRaw.FromRawUnchecked"/>
-    public static WebhookResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static WebhookResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class WebhookResponseFromRaw : IFromRawJson<WebhookResponse>
 {
     /// <inheritdoc/>
-    public WebhookResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        WebhookResponse.FromRawUnchecked(rawData);
+    public WebhookResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>WebhookResponse.FromRawUnchecked(rawData);
 }

@@ -9,13 +9,11 @@ public class WebhookToggleStatusParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new WebhookToggleStatusParams
         {
-            ID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
-            IsActive = false,
-            Sandbox = false,
-            IdempotencyKey = "req_abc123_retry1",
-            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",IsActive = false,Sandbox = false,IdempotencyKey = "req_abc123_retry1",XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8";
@@ -34,43 +32,40 @@ public class WebhookToggleStatusParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new WebhookToggleStatusParams
         {
             ID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
         };
 
         Assert.Null(parameters.IsActive);
-        Assert.False(parameters.RawBodyData.ContainsKey("is_active"));
-        Assert.Null(parameters.Sandbox);
-        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.IdempotencyKey);
-        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("is_active"));Assert.Null(parameters.Sandbox);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));Assert.Null(parameters.IdempotencyKey);
+        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new WebhookToggleStatusParams
         {
             ID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
 
             // Null should be interpreted as omitted for these properties
-            IsActive = null,
-            Sandbox = null,
-            IdempotencyKey = null,
-            XProfileID = null,
+            IsActive = null,Sandbox = null,IdempotencyKey = null,XProfileID = null,
         };
 
         Assert.Null(parameters.IsActive);
-        Assert.False(parameters.RawBodyData.ContainsKey("is_active"));
-        Assert.Null(parameters.Sandbox);
-        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.IdempotencyKey);
-        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
-        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawBodyData.ContainsKey("is_active"));Assert.Null(parameters.Sandbox);
+        Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));Assert.Null(parameters.IdempotencyKey);
+        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+
     }
 
     [Fact]
@@ -78,19 +73,17 @@ public class WebhookToggleStatusParamsTest : TestBase
     {
         WebhookToggleStatusParams parameters = new()
         {
-            ID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
+            ID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8"
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
-
-        Assert.True(
-            TestBase.UrisEqual(
-                new Uri(
-                    "https://api.sent.dm/v3/webhooks/d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8/toggle-status"
-                ),
-                url
-            )
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.True(TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/webhooks/d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8/toggle-status"), url));
     }
 
     [Fact]
@@ -104,13 +97,15 @@ public class WebhookToggleStatusParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
-
-        Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));
-        Assert.Equal(
-            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-            requestMessage.Headers.GetValues("x-profile-id")
+        parameters.AddHeadersToRequest(
+            requestMessage,
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(["req_abc123_retry1"], requestMessage.Headers.GetValues("Idempotency-Key"));Assert.Equal(["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"], requestMessage.Headers.GetValues("x-profile-id"));
     }
 
     [Fact]
