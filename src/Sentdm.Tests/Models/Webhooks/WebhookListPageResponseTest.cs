@@ -2,17 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
-using Sentdm.Models.Templates;
-using Webhooks = Sentdm.Models.Webhooks;
+using Sentdm.Models.Webhooks;
 
-namespace Sentdm.Tests.Models.Templates;
+namespace Sentdm.Tests.Models.Webhooks;
 
-public class TemplateListResponseTest : TestBase
+public class WebhookListPageResponseTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Data = new()
             {
@@ -25,21 +24,28 @@ public class TemplateListResponseTest : TestBase
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-                Templates =
+                Webhooks =
                 [
                     new()
                     {
-                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                        Category = "category",
-                        Channels = ["string"],
+                        ConsecutiveFailures = 0,
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        IsPublished = true,
-                        Language = "language",
-                        Name = "name",
-                        Status = "status",
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        DisplayName = "display_name",
+                        EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                        IsActive = true,
+                        LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        RetryCount = 0,
+                        SigningSecret = "signing_secret",
+                        TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        Variables = ["string"],
                     },
                 ],
             },
@@ -70,32 +76,39 @@ public class TemplateListResponseTest : TestBase
                 TotalCount = 0,
                 TotalPages = 0,
             },
-            Templates =
+            Webhooks =
             [
                 new()
                 {
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Category = "category",
-                    Channels = ["string"],
+                    ConsecutiveFailures = 0,
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    IsPublished = true,
-                    Language = "language",
-                    Name = "name",
-                    Status = "status",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    DisplayName = "display_name",
+                    EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
+                    EventTypes = ["string"],
+                    IsActive = true,
+                    LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    RetryCount = 0,
+                    SigningSecret = "signing_secret",
+                    TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Variables = ["string"],
                 },
             ],
         };
-        Webhooks::ErrorDetail expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        Webhooks::ApiMeta expectedMeta = new()
+        ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -112,7 +125,7 @@ public class TemplateListResponseTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Data = new()
             {
@@ -125,21 +138,28 @@ public class TemplateListResponseTest : TestBase
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-                Templates =
+                Webhooks =
                 [
                     new()
                     {
-                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                        Category = "category",
-                        Channels = ["string"],
+                        ConsecutiveFailures = 0,
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        IsPublished = true,
-                        Language = "language",
-                        Name = "name",
-                        Status = "status",
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        DisplayName = "display_name",
+                        EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                        IsActive = true,
+                        LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        RetryCount = 0,
+                        SigningSecret = "signing_secret",
+                        TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        Variables = ["string"],
                     },
                 ],
             },
@@ -160,7 +180,7 @@ public class TemplateListResponseTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateListResponse>(
+        var deserialized = JsonSerializer.Deserialize<WebhookListPageResponse>(
             json,
             ModelBase.SerializerOptions
         );
@@ -171,7 +191,7 @@ public class TemplateListResponseTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Data = new()
             {
@@ -184,21 +204,28 @@ public class TemplateListResponseTest : TestBase
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-                Templates =
+                Webhooks =
                 [
                     new()
                     {
-                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                        Category = "category",
-                        Channels = ["string"],
+                        ConsecutiveFailures = 0,
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        IsPublished = true,
-                        Language = "language",
-                        Name = "name",
-                        Status = "status",
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        DisplayName = "display_name",
+                        EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                        IsActive = true,
+                        LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        RetryCount = 0,
+                        SigningSecret = "signing_secret",
+                        TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        Variables = ["string"],
                     },
                 ],
             },
@@ -219,7 +246,7 @@ public class TemplateListResponseTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TemplateListResponse>(
+        var deserialized = JsonSerializer.Deserialize<WebhookListPageResponse>(
             element,
             ModelBase.SerializerOptions
         );
@@ -236,32 +263,39 @@ public class TemplateListResponseTest : TestBase
                 TotalCount = 0,
                 TotalPages = 0,
             },
-            Templates =
+            Webhooks =
             [
                 new()
                 {
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Category = "category",
-                    Channels = ["string"],
+                    ConsecutiveFailures = 0,
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    IsPublished = true,
-                    Language = "language",
-                    Name = "name",
-                    Status = "status",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    DisplayName = "display_name",
+                    EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
+                    EventTypes = ["string"],
+                    IsActive = true,
+                    LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    RetryCount = 0,
+                    SigningSecret = "signing_secret",
+                    TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Variables = ["string"],
                 },
             ],
         };
-        Webhooks::ErrorDetail expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        Webhooks::ApiMeta expectedMeta = new()
+        ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -278,7 +312,7 @@ public class TemplateListResponseTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Data = new()
             {
@@ -291,21 +325,28 @@ public class TemplateListResponseTest : TestBase
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-                Templates =
+                Webhooks =
                 [
                     new()
                     {
-                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                        Category = "category",
-                        Channels = ["string"],
+                        ConsecutiveFailures = 0,
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        IsPublished = true,
-                        Language = "language",
-                        Name = "name",
-                        Status = "status",
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        DisplayName = "display_name",
+                        EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                        IsActive = true,
+                        LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        RetryCount = 0,
+                        SigningSecret = "signing_secret",
+                        TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        Variables = ["string"],
                     },
                 ],
             },
@@ -331,7 +372,7 @@ public class TemplateListResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Data = new()
             {
@@ -344,21 +385,28 @@ public class TemplateListResponseTest : TestBase
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-                Templates =
+                Webhooks =
                 [
                     new()
                     {
-                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                        Category = "category",
-                        Channels = ["string"],
+                        ConsecutiveFailures = 0,
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        IsPublished = true,
-                        Language = "language",
-                        Name = "name",
-                        Status = "status",
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        DisplayName = "display_name",
+                        EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                        IsActive = true,
+                        LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        RetryCount = 0,
+                        SigningSecret = "signing_secret",
+                        TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        Variables = ["string"],
                     },
                 ],
             },
@@ -380,7 +428,7 @@ public class TemplateListResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Data = new()
             {
@@ -393,21 +441,28 @@ public class TemplateListResponseTest : TestBase
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-                Templates =
+                Webhooks =
                 [
                     new()
                     {
-                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                        Category = "category",
-                        Channels = ["string"],
+                        ConsecutiveFailures = 0,
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        IsPublished = true,
-                        Language = "language",
-                        Name = "name",
-                        Status = "status",
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        DisplayName = "display_name",
+                        EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                        IsActive = true,
+                        LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        RetryCount = 0,
+                        SigningSecret = "signing_secret",
+                        TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        Variables = ["string"],
                     },
                 ],
             },
@@ -426,7 +481,7 @@ public class TemplateListResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Data = new()
             {
@@ -439,21 +494,28 @@ public class TemplateListResponseTest : TestBase
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-                Templates =
+                Webhooks =
                 [
                     new()
                     {
-                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                        Category = "category",
-                        Channels = ["string"],
+                        ConsecutiveFailures = 0,
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        IsPublished = true,
-                        Language = "language",
-                        Name = "name",
-                        Status = "status",
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        DisplayName = "display_name",
+                        EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                        IsActive = true,
+                        LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        RetryCount = 0,
+                        SigningSecret = "signing_secret",
+                        TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        Variables = ["string"],
                     },
                 ],
             },
@@ -479,7 +541,7 @@ public class TemplateListResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Data = new()
             {
@@ -492,21 +554,28 @@ public class TemplateListResponseTest : TestBase
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-                Templates =
+                Webhooks =
                 [
                     new()
                     {
-                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                        Category = "category",
-                        Channels = ["string"],
+                        ConsecutiveFailures = 0,
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        IsPublished = true,
-                        Language = "language",
-                        Name = "name",
-                        Status = "status",
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        DisplayName = "display_name",
+                        EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                        IsActive = true,
+                        LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        RetryCount = 0,
+                        SigningSecret = "signing_secret",
+                        TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        Variables = ["string"],
                     },
                 ],
             },
@@ -529,7 +598,7 @@ public class TemplateListResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Meta = new()
             {
@@ -549,7 +618,7 @@ public class TemplateListResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Meta = new()
             {
@@ -566,7 +635,7 @@ public class TemplateListResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Meta = new()
             {
@@ -589,7 +658,7 @@ public class TemplateListResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Meta = new()
             {
@@ -609,7 +678,7 @@ public class TemplateListResponseTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new TemplateListResponse
+        var model = new WebhookListPageResponse
         {
             Data = new()
             {
@@ -622,21 +691,28 @@ public class TemplateListResponseTest : TestBase
                     TotalCount = 0,
                     TotalPages = 0,
                 },
-                Templates =
+                Webhooks =
                 [
                     new()
                     {
-                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                        Category = "category",
-                        Channels = ["string"],
+                        ConsecutiveFailures = 0,
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        IsPublished = true,
-                        Language = "language",
-                        Name = "name",
-                        Status = "status",
+                        CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        DisplayName = "display_name",
+                        EndpointUrl = "endpoint_url",
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                        IsActive = true,
+                        LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        RetryCount = 0,
+                        SigningSecret = "signing_secret",
+                        TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                        Variables = ["string"],
                     },
                 ],
             },
@@ -656,7 +732,7 @@ public class TemplateListResponseTest : TestBase
             Success = true,
         };
 
-        TemplateListResponse copied = new(model);
+        WebhookListPageResponse copied = new(model);
 
         Assert.Equal(model, copied);
     }
@@ -678,26 +754,33 @@ public class DataTest : TestBase
                 TotalCount = 0,
                 TotalPages = 0,
             },
-            Templates =
+            Webhooks =
             [
                 new()
                 {
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Category = "category",
-                    Channels = ["string"],
+                    ConsecutiveFailures = 0,
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    IsPublished = true,
-                    Language = "language",
-                    Name = "name",
-                    Status = "status",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    DisplayName = "display_name",
+                    EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
+                    EventTypes = ["string"],
+                    IsActive = true,
+                    LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    RetryCount = 0,
+                    SigningSecret = "signing_secret",
+                    TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Variables = ["string"],
                 },
             ],
         };
 
-        Webhooks::PaginationMeta expectedPagination = new()
+        PaginationMeta expectedPagination = new()
         {
             Cursors = new() { After = "after", Before = "before" },
             HasMore = true,
@@ -706,30 +789,37 @@ public class DataTest : TestBase
             TotalCount = 0,
             TotalPages = 0,
         };
-        List<Template> expectedTemplates =
+        List<WebhookResponse> expectedWebhooks =
         [
             new()
             {
-                CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                Category = "category",
-                Channels = ["string"],
+                ConsecutiveFailures = 0,
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                IsPublished = true,
-                Language = "language",
-                Name = "name",
-                Status = "status",
+                CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                DisplayName = "display_name",
+                EndpointUrl = "endpoint_url",
+                EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo", ["string"] },
+                },
+                EventTypes = ["string"],
+                IsActive = true,
+                LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                RetryCount = 0,
+                SigningSecret = "signing_secret",
+                TimeoutSeconds = 0,
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Variables = ["string"],
             },
         ];
 
         Assert.Equal(expectedPagination, model.Pagination);
-        Assert.NotNull(model.Templates);
-        Assert.Equal(expectedTemplates.Count, model.Templates.Count);
-        for (int i = 0; i < expectedTemplates.Count; i++)
+        Assert.NotNull(model.Webhooks);
+        Assert.Equal(expectedWebhooks.Count, model.Webhooks.Count);
+        for (int i = 0; i < expectedWebhooks.Count; i++)
         {
-            Assert.Equal(expectedTemplates[i], model.Templates[i]);
+            Assert.Equal(expectedWebhooks[i], model.Webhooks[i]);
         }
     }
 
@@ -747,21 +837,28 @@ public class DataTest : TestBase
                 TotalCount = 0,
                 TotalPages = 0,
             },
-            Templates =
+            Webhooks =
             [
                 new()
                 {
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Category = "category",
-                    Channels = ["string"],
+                    ConsecutiveFailures = 0,
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    IsPublished = true,
-                    Language = "language",
-                    Name = "name",
-                    Status = "status",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    DisplayName = "display_name",
+                    EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
+                    EventTypes = ["string"],
+                    IsActive = true,
+                    LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    RetryCount = 0,
+                    SigningSecret = "signing_secret",
+                    TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Variables = ["string"],
                 },
             ],
         };
@@ -786,21 +883,28 @@ public class DataTest : TestBase
                 TotalCount = 0,
                 TotalPages = 0,
             },
-            Templates =
+            Webhooks =
             [
                 new()
                 {
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Category = "category",
-                    Channels = ["string"],
+                    ConsecutiveFailures = 0,
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    IsPublished = true,
-                    Language = "language",
-                    Name = "name",
-                    Status = "status",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    DisplayName = "display_name",
+                    EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
+                    EventTypes = ["string"],
+                    IsActive = true,
+                    LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    RetryCount = 0,
+                    SigningSecret = "signing_secret",
+                    TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Variables = ["string"],
                 },
             ],
         };
@@ -809,7 +913,7 @@ public class DataTest : TestBase
         var deserialized = JsonSerializer.Deserialize<Data>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        Webhooks::PaginationMeta expectedPagination = new()
+        PaginationMeta expectedPagination = new()
         {
             Cursors = new() { After = "after", Before = "before" },
             HasMore = true,
@@ -818,30 +922,37 @@ public class DataTest : TestBase
             TotalCount = 0,
             TotalPages = 0,
         };
-        List<Template> expectedTemplates =
+        List<WebhookResponse> expectedWebhooks =
         [
             new()
             {
-                CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                Category = "category",
-                Channels = ["string"],
+                ConsecutiveFailures = 0,
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                IsPublished = true,
-                Language = "language",
-                Name = "name",
-                Status = "status",
+                CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                DisplayName = "display_name",
+                EndpointUrl = "endpoint_url",
+                EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                {
+                    { "foo", ["string"] },
+                },
+                EventTypes = ["string"],
+                IsActive = true,
+                LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                RetryCount = 0,
+                SigningSecret = "signing_secret",
+                TimeoutSeconds = 0,
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                Variables = ["string"],
             },
         ];
 
         Assert.Equal(expectedPagination, deserialized.Pagination);
-        Assert.NotNull(deserialized.Templates);
-        Assert.Equal(expectedTemplates.Count, deserialized.Templates.Count);
-        for (int i = 0; i < expectedTemplates.Count; i++)
+        Assert.NotNull(deserialized.Webhooks);
+        Assert.Equal(expectedWebhooks.Count, deserialized.Webhooks.Count);
+        for (int i = 0; i < expectedWebhooks.Count; i++)
         {
-            Assert.Equal(expectedTemplates[i], deserialized.Templates[i]);
+            Assert.Equal(expectedWebhooks[i], deserialized.Webhooks[i]);
         }
     }
 
@@ -859,21 +970,28 @@ public class DataTest : TestBase
                 TotalCount = 0,
                 TotalPages = 0,
             },
-            Templates =
+            Webhooks =
             [
                 new()
                 {
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Category = "category",
-                    Channels = ["string"],
+                    ConsecutiveFailures = 0,
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    IsPublished = true,
-                    Language = "language",
-                    Name = "name",
-                    Status = "status",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    DisplayName = "display_name",
+                    EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
+                    EventTypes = ["string"],
+                    IsActive = true,
+                    LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    RetryCount = 0,
+                    SigningSecret = "signing_secret",
+                    TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Variables = ["string"],
                 },
             ],
         };
@@ -888,8 +1006,8 @@ public class DataTest : TestBase
 
         Assert.Null(model.Pagination);
         Assert.False(model.RawData.ContainsKey("pagination"));
-        Assert.Null(model.Templates);
-        Assert.False(model.RawData.ContainsKey("templates"));
+        Assert.Null(model.Webhooks);
+        Assert.False(model.RawData.ContainsKey("webhooks"));
     }
 
     [Fact]
@@ -907,13 +1025,13 @@ public class DataTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             Pagination = null,
-            Templates = null,
+            Webhooks = null,
         };
 
         Assert.Null(model.Pagination);
         Assert.False(model.RawData.ContainsKey("pagination"));
-        Assert.Null(model.Templates);
-        Assert.False(model.RawData.ContainsKey("templates"));
+        Assert.Null(model.Webhooks);
+        Assert.False(model.RawData.ContainsKey("webhooks"));
     }
 
     [Fact]
@@ -923,7 +1041,7 @@ public class DataTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             Pagination = null,
-            Templates = null,
+            Webhooks = null,
         };
 
         model.Validate();
@@ -943,21 +1061,28 @@ public class DataTest : TestBase
                 TotalCount = 0,
                 TotalPages = 0,
             },
-            Templates =
+            Webhooks =
             [
                 new()
                 {
-                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    Category = "category",
-                    Channels = ["string"],
+                    ConsecutiveFailures = 0,
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    IsPublished = true,
-                    Language = "language",
-                    Name = "name",
-                    Status = "status",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    DisplayName = "display_name",
+                    EndpointUrl = "endpoint_url",
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
+                    EventTypes = ["string"],
+                    IsActive = true,
+                    LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    RetryCount = 0,
+                    SigningSecret = "signing_secret",
+                    TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                    Variables = ["string"],
                 },
             ],
         };

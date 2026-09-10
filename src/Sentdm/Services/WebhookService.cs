@@ -95,8 +95,8 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public async Task<WebhookListResponse> List(
-        WebhookListParams parameters,
+    public async Task<WebhookListPage> List(
+        WebhookListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -140,7 +140,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public async Task<WebhookListEventsResponse> ListEvents(
+    public async Task<WebhookListEventsPage> ListEvents(
         WebhookListEventsParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -152,12 +152,14 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public Task<WebhookListEventsResponse> ListEvents(
+    public Task<WebhookListEventsPage> ListEvents(
         string id,
-        WebhookListEventsParams parameters,
+        WebhookListEventsParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.ListEvents(parameters with { ID = id }, cancellationToken);
     }
 
@@ -371,11 +373,13 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<WebhookListResponse>> List(
-        WebhookListParams parameters,
+    public async Task<HttpResponse<WebhookListPage>> List(
+        WebhookListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         HttpRequest<WebhookListParams> request = new()
         {
             Method = HttpMethod.Get,
@@ -386,14 +390,14 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
             response,
             async (token) =>
             {
-                var webhooks = await response
-                    .Deserialize<WebhookListResponse>(token)
+                var page = await response
+                    .Deserialize<WebhookListPageResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    webhooks.Validate();
+                    page.Validate();
                 }
-                return webhooks;
+                return new WebhookListPage(this, parameters, page);
             }
         );
     }
@@ -460,7 +464,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<WebhookListEventsResponse>> ListEvents(
+    public async Task<HttpResponse<WebhookListEventsPage>> ListEvents(
         WebhookListEventsParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -480,25 +484,27 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
             response,
             async (token) =>
             {
-                var deserializedResponse = await response
-                    .Deserialize<WebhookListEventsResponse>(token)
+                var page = await response
+                    .Deserialize<WebhookListEventsPageResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    deserializedResponse.Validate();
+                    page.Validate();
                 }
-                return deserializedResponse;
+                return new WebhookListEventsPage(this, parameters, page);
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<WebhookListEventsResponse>> ListEvents(
+    public Task<HttpResponse<WebhookListEventsPage>> ListEvents(
         string id,
-        WebhookListEventsParams parameters,
+        WebhookListEventsParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.ListEvents(parameters with { ID = id }, cancellationToken);
     }
 

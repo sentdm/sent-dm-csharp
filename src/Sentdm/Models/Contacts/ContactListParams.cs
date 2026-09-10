@@ -19,32 +19,6 @@ namespace Sentdm.Models.Contacts;
 public record class ContactListParams : ParamsBase
 {
     /// <summary>
-    /// Page number (1-indexed)
-    /// </summary>
-    public required int Page
-    {
-        get
-        {
-            this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNotNullStruct<int>("page");
-        }
-        init { this._rawQueryData.Set("page", value); }
-    }
-
-    /// <summary>
-    /// Number of items per page
-    /// </summary>
-    public required int PageSize
-    {
-        get
-        {
-            this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNotNullStruct<int>("page_size");
-        }
-        init { this._rawQueryData.Set("page_size", value); }
-    }
-
-    /// <summary>
     /// Optional channel filter (sms, whatsapp)
     /// </summary>
     public string? Channel
@@ -55,6 +29,48 @@ public record class ContactListParams : ParamsBase
             return this._rawQueryData.GetNullableClass<string>("channel");
         }
         init { this._rawQueryData.Set("channel", value); }
+    }
+
+    /// <summary>
+    /// Page number (1-indexed)
+    /// </summary>
+    public int? Page
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<int>("page");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawQueryData.Set("page", value);
+        }
+    }
+
+    /// <summary>
+    /// Number of items per page
+    /// </summary>
+    public int? PageSize
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<int>("page_size");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawQueryData.Set("page_size", value);
+        }
     }
 
     /// <summary>

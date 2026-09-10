@@ -80,8 +80,8 @@ public interface IContactService
     /// Retrieves a paginated list of contacts for the authenticated customer. Supports
     /// filtering by search term, channel, or phone number.
     /// </summary>
-    Task<ContactListResponse> List(
-        ContactListParams parameters,
+    Task<ContactListPage> List(
+        ContactListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -183,10 +183,10 @@ public interface IContactServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for <c>get /v3/contacts</c>, but is otherwise the
-    /// same as <see cref="IContactService.List(ContactListParams, CancellationToken)"/>.
+    /// same as <see cref="IContactService.List(ContactListParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ContactListResponse>> List(
-        ContactListParams parameters,
+    Task<HttpResponse<ContactListPage>> List(
+        ContactListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
