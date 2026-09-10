@@ -95,8 +95,8 @@ public sealed class TemplateService : ITemplateService
     }
 
     /// <inheritdoc/>
-    public async Task<TemplateListResponse> List(
-        TemplateListParams parameters,
+    public async Task<TemplateListPage> List(
+        TemplateListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -265,11 +265,13 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<TemplateListResponse>> List(
-        TemplateListParams parameters,
+    public async Task<HttpResponse<TemplateListPage>> List(
+        TemplateListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         HttpRequest<TemplateListParams> request = new()
         {
             Method = HttpMethod.Get,
@@ -280,14 +282,14 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
             response,
             async (token) =>
             {
-                var templates = await response
-                    .Deserialize<TemplateListResponse>(token)
+                var page = await response
+                    .Deserialize<TemplateListPageResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    templates.Validate();
+                    page.Validate();
                 }
-                return templates;
+                return new TemplateListPage(this, parameters, page);
             }
         );
     }

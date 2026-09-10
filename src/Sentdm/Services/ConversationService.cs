@@ -37,8 +37,8 @@ public sealed class ConversationService : IConversationService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfConversationMessagesList> List(
-        ConversationListParams parameters,
+    public async Task<ConversationListPage> List(
+        ConversationListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -49,7 +49,7 @@ public sealed class ConversationService : IConversationService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfConversationMessagesList> ListMessages(
+    public async Task<ConversationListMessagesPage> ListMessages(
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -61,12 +61,14 @@ public sealed class ConversationService : IConversationService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfConversationMessagesList> ListMessages(
+    public Task<ConversationListMessagesPage> ListMessages(
         string id,
-        ConversationListMessagesParams parameters,
+        ConversationListMessagesParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.ListMessages(parameters with { ID = id }, cancellationToken);
     }
 }
@@ -90,11 +92,13 @@ public sealed class ConversationServiceWithRawResponse : IConversationServiceWit
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfConversationMessagesList>> List(
-        ConversationListParams parameters,
+    public async Task<HttpResponse<ConversationListPage>> List(
+        ConversationListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         HttpRequest<ConversationListParams> request = new()
         {
             Method = HttpMethod.Get,
@@ -105,20 +109,20 @@ public sealed class ConversationServiceWithRawResponse : IConversationServiceWit
             response,
             async (token) =>
             {
-                var apiResponseOfConversationMessagesList = await response
+                var page = await response
                     .Deserialize<ApiResponseOfConversationMessagesList>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfConversationMessagesList.Validate();
+                    page.Validate();
                 }
-                return apiResponseOfConversationMessagesList;
+                return new ConversationListPage(this, parameters, page);
             }
         );
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfConversationMessagesList>> ListMessages(
+    public async Task<HttpResponse<ConversationListMessagesPage>> ListMessages(
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -138,25 +142,27 @@ public sealed class ConversationServiceWithRawResponse : IConversationServiceWit
             response,
             async (token) =>
             {
-                var apiResponseOfConversationMessagesList = await response
+                var page = await response
                     .Deserialize<ApiResponseOfConversationMessagesList>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfConversationMessagesList.Validate();
+                    page.Validate();
                 }
-                return apiResponseOfConversationMessagesList;
+                return new ConversationListMessagesPage(this, parameters, page);
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfConversationMessagesList>> ListMessages(
+    public Task<HttpResponse<ConversationListMessagesPage>> ListMessages(
         string id,
-        ConversationListMessagesParams parameters,
+        ConversationListMessagesParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         return this.ListMessages(parameters with { ID = id }, cancellationToken);
     }
 }

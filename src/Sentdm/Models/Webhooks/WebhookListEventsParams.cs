@@ -19,24 +19,40 @@ public record class WebhookListEventsParams : ParamsBase
 {
     public string? ID { get; init; }
 
-    public required int Page
+    public int? Page
     {
         get
         {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNotNullStruct<int>("page");
+            return this._rawQueryData.GetNullableStruct<int>("page");
         }
-        init { this._rawQueryData.Set("page", value); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawQueryData.Set("page", value);
+        }
     }
 
-    public required int PageSize
+    public int? PageSize
     {
         get
         {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNotNullStruct<int>("page_size");
+            return this._rawQueryData.GetNullableStruct<int>("page_size");
         }
-        init { this._rawQueryData.Set("page_size", value); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawQueryData.Set("page_size", value);
+        }
     }
 
     public string? Search
