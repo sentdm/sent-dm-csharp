@@ -80,7 +80,7 @@ public interface ITemplateService
     /// Retrieves a paginated list of message templates for the authenticated customer.
     /// Supports filtering by status, category, and search term.
     /// </summary>
-    Task<TemplateListResponse> List(
+    Task<TemplateListPage> List(
         TemplateListParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -157,7 +157,7 @@ public interface ITemplateServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/templates</c>, but is otherwise the
     /// same as <see cref="ITemplateService.List(TemplateListParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<TemplateListResponse>> List(
+    Task<HttpResponse<TemplateListPage>> List(
         TemplateListParams parameters,
         CancellationToken cancellationToken = default
     );

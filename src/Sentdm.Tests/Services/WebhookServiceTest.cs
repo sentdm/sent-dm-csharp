@@ -39,11 +39,11 @@ public class WebhookServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
-        var webhooks = await this.client.Webhooks.List(
+        var page = await this.client.Webhooks.List(
             new() { Page = 0, PageSize = 0 },
             TestContext.Current.CancellationToken
         );
-        webhooks.Validate();
+        page.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
@@ -69,12 +69,12 @@ public class WebhookServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListEvents_Works()
     {
-        var response = await this.client.Webhooks.ListEvents(
+        var page = await this.client.Webhooks.ListEvents(
             "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
             new() { Page = 0, PageSize = 0 },
             TestContext.Current.CancellationToken
         );
-        response.Validate();
+        page.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]

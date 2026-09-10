@@ -79,7 +79,7 @@ public interface IWebhookService
     /// <summary>
     /// Retrieves a paginated list of webhooks for the authenticated customer.
     /// </summary>
-    Task<WebhookListResponse> List(
+    Task<WebhookListPage> List(
         WebhookListParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -107,13 +107,13 @@ public interface IWebhookService
     /// <summary>
     /// Retrieves a paginated list of delivery events for the specified webhook.
     /// </summary>
-    Task<WebhookListEventsResponse> ListEvents(
+    Task<WebhookListEventsPage> ListEvents(
         WebhookListEventsParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListEvents(WebhookListEventsParams, CancellationToken)"/>
-    Task<WebhookListEventsResponse> ListEvents(
+    Task<WebhookListEventsPage> ListEvents(
         string id,
         WebhookListEventsParams parameters,
         CancellationToken cancellationToken = default
@@ -224,7 +224,7 @@ public interface IWebhookServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/webhooks</c>, but is otherwise the
     /// same as <see cref="IWebhookService.List(WebhookListParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<WebhookListResponse>> List(
+    Task<HttpResponse<WebhookListPage>> List(
         WebhookListParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -258,13 +258,13 @@ public interface IWebhookServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/webhooks/{id}/events</c>, but is otherwise the
     /// same as <see cref="IWebhookService.ListEvents(WebhookListEventsParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<WebhookListEventsResponse>> ListEvents(
+    Task<HttpResponse<WebhookListEventsPage>> ListEvents(
         WebhookListEventsParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListEvents(WebhookListEventsParams, CancellationToken)"/>
-    Task<HttpResponse<WebhookListEventsResponse>> ListEvents(
+    Task<HttpResponse<WebhookListEventsPage>> ListEvents(
         string id,
         WebhookListEventsParams parameters,
         CancellationToken cancellationToken = default
