@@ -4,7 +4,6 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
-using Sentdm.Exceptions;
 using Sentdm.Services;
 
 namespace Sentdm.Models.Conversations;
@@ -27,26 +26,7 @@ public sealed class ConversationListMessagesPage(
     /// <inheritdoc/>
     public bool HasNext()
     {
-        try
-        {
-            if (this.Items.Count == 0)
-            {
-                return false;
-            }
-            var pageNumber = response.Data?.Pagination?.Page ?? 1;
-            var pageCount = response.Data?.Pagination?.TotalPages;
-            if (pageCount == null)
-            {
-                return true;
-            }
-            return pageNumber < pageCount;
-        }
-        catch (SentInvalidDataException)
-        {
-            // If accessing the response data to determine if there's a next page failed, then just
-            // assume there's no next page.
-            return false;
-        }
+        return this.Items.Count > 0;
     }
 
     /// <inheritdoc/>
