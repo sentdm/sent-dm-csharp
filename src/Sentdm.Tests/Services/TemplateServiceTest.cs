@@ -39,11 +39,11 @@ public class TemplateServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
-        var templates = await this.client.Templates.List(
+        var page = await this.client.Templates.List(
             new() { Page = 0, PageSize = 0 },
             TestContext.Current.CancellationToken
         );
-        templates.Validate();
+        page.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
