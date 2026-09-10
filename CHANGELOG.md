@@ -3,6 +3,10 @@
 ## [0.33.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.32.0...v0.33.0) (2026-09-09)
 
 
+### Highlights
+
+This release is breaking for the webhook endpoints. Webhook responses now use one shared model instead of a separate type per operation: the create, retrieve, update and toggle-status response types are gone, and all four now return the shared webhook API response model (`ApiResponseWebhook`, in this language's casing). If your code references one of the removed types, or its nested data, error or meta members, point it at the shared model. The list, list-event-types, list-events, rotate-secret and test responses are unchanged, because each returns a different envelope.
+
 ### Features
 
 * **api:** repoint dangling model refs at current v3 schema names ([245d2c9](https://github.com/sentdm/sent-dm-csharp/commit/245d2c99b1c99576cabb46894e77be5da0c4d963))
