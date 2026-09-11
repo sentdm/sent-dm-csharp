@@ -38,8 +38,8 @@ public interface IConversationService
     /// Retrieves a paginated list of the authenticated customer's messages across all
     /// conversations, ordered by created date (most recent first).
     /// </summary>
-    Task<ConversationListResponse> List(
-        ConversationListParams parameters,
+    Task<ConversationListPage> List(
+        ConversationListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -47,15 +47,15 @@ public interface IConversationService
     /// Retrieves a paginated list of the messages in a single conversation (scoped to
     /// the authenticated customer), ordered by created date (most recent first).
     /// </summary>
-    Task<ConversationListMessagesResponse> ListMessages(
+    Task<ConversationListMessagesPage> ListMessages(
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListMessages(ConversationListMessagesParams, CancellationToken)"/>
-    Task<ConversationListMessagesResponse> ListMessages(
+    Task<ConversationListMessagesPage> ListMessages(
         string id,
-        ConversationListMessagesParams parameters,
+        ConversationListMessagesParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }
@@ -75,10 +75,10 @@ public interface IConversationServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for <c>get /v3/conversations</c>, but is otherwise the
-    /// same as <see cref="IConversationService.List(ConversationListParams, CancellationToken)"/>.
+    /// same as <see cref="IConversationService.List(ConversationListParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ConversationListResponse>> List(
-        ConversationListParams parameters,
+    Task<HttpResponse<ConversationListPage>> List(
+        ConversationListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -86,15 +86,15 @@ public interface IConversationServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/conversations/{id}</c>, but is otherwise the
     /// same as <see cref="IConversationService.ListMessages(ConversationListMessagesParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ConversationListMessagesResponse>> ListMessages(
+    Task<HttpResponse<ConversationListMessagesPage>> ListMessages(
         ConversationListMessagesParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListMessages(ConversationListMessagesParams, CancellationToken)"/>
-    Task<HttpResponse<ConversationListMessagesResponse>> ListMessages(
+    Task<HttpResponse<ConversationListMessagesPage>> ListMessages(
         string id,
-        ConversationListMessagesParams parameters,
+        ConversationListMessagesParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }

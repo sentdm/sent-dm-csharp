@@ -7,43 +7,40 @@ public class TemplateServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var template = await this.client.Templates.Create(
+        var apiResponseTemplate = await this.client.Templates.Create(
             new(),
             TestContext.Current.CancellationToken
         );
-        template.Validate();
+        apiResponseTemplate.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var template = await this.client.Templates.Retrieve(
+        var apiResponseTemplate = await this.client.Templates.Retrieve(
             "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
             new(),
             TestContext.Current.CancellationToken
         );
-        template.Validate();
+        apiResponseTemplate.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var template = await this.client.Templates.Update(
+        var apiResponseTemplate = await this.client.Templates.Update(
             "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
             new(),
             TestContext.Current.CancellationToken
         );
-        template.Validate();
+        apiResponseTemplate.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
-        var templates = await this.client.Templates.List(
-            new() { Page = 0, PageSize = 0 },
-            TestContext.Current.CancellationToken
-        );
-        templates.Validate();
+        var page = await this.client.Templates.List(new(), TestContext.Current.CancellationToken);
+        page.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
