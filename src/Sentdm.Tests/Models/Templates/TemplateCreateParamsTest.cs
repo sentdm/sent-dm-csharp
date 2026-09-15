@@ -20,7 +20,7 @@ public class TemplateCreateParamsTest : TestBase
                     MultiChannel = new()
                     {
                         Template = "Hello {{0:variable}}! Welcome to {{1:variable}}.",
-                        Type = null,
+                        Type = "type",
                         Variables =
                         [
                             new()
@@ -32,9 +32,9 @@ public class TemplateCreateParamsTest : TestBase
                                     Sample = "John",
                                     Url = "x",
                                     VariableType = "text",
-                                    Alt = null,
-                                    Regex = null,
-                                    ShortUrl = null,
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
                                 },
                                 Type = "variable",
                                 ID = 0,
@@ -48,9 +48,9 @@ public class TemplateCreateParamsTest : TestBase
                                     Sample = "SentDM",
                                     Url = "x",
                                     VariableType = "text",
-                                    Alt = null,
-                                    Regex = null,
-                                    ShortUrl = null,
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
                                 },
                                 Type = "variable",
                                 ID = 1,
@@ -242,7 +242,7 @@ public class TemplateCreateParamsTest : TestBase
                 MultiChannel = new()
                 {
                     Template = "Hello {{0:variable}}! Welcome to {{1:variable}}.",
-                    Type = null,
+                    Type = "type",
                     Variables =
                     [
                         new()
@@ -254,9 +254,9 @@ public class TemplateCreateParamsTest : TestBase
                                 Sample = "John",
                                 Url = "x",
                                 VariableType = "text",
-                                Alt = null,
-                                Regex = null,
-                                ShortUrl = null,
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
                             },
                             Type = "variable",
                             ID = 0,
@@ -270,9 +270,9 @@ public class TemplateCreateParamsTest : TestBase
                                 Sample = "SentDM",
                                 Url = "x",
                                 VariableType = "text",
-                                Alt = null,
-                                Regex = null,
-                                ShortUrl = null,
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
                             },
                             Type = "variable",
                             ID = 1,
@@ -528,7 +528,7 @@ public class TemplateCreateParamsTest : TestBase
                     MultiChannel = new()
                     {
                         Template = "Hello {{0:variable}}! Welcome to {{1:variable}}.",
-                        Type = null,
+                        Type = "type",
                         Variables =
                         [
                             new()
@@ -540,9 +540,9 @@ public class TemplateCreateParamsTest : TestBase
                                     Sample = "John",
                                     Url = "x",
                                     VariableType = "text",
-                                    Alt = null,
-                                    Regex = null,
-                                    ShortUrl = null,
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
                                 },
                                 Type = "variable",
                                 ID = 0,
@@ -556,9 +556,9 @@ public class TemplateCreateParamsTest : TestBase
                                     Sample = "SentDM",
                                     Url = "x",
                                     VariableType = "text",
-                                    Alt = null,
-                                    Regex = null,
-                                    ShortUrl = null,
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
                                 },
                                 Type = "variable",
                                 ID = 1,
@@ -761,7 +761,7 @@ public class TemplateCreateParamsTest : TestBase
                     MultiChannel = new()
                     {
                         Template = "Hello {{0:variable}}! Welcome to {{1:variable}}.",
-                        Type = null,
+                        Type = "type",
                         Variables =
                         [
                             new()
@@ -773,9 +773,9 @@ public class TemplateCreateParamsTest : TestBase
                                     Sample = "John",
                                     Url = "x",
                                     VariableType = "text",
-                                    Alt = null,
-                                    Regex = null,
-                                    ShortUrl = null,
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
                                 },
                                 Type = "variable",
                                 ID = 0,
@@ -789,9 +789,9 @@ public class TemplateCreateParamsTest : TestBase
                                     Sample = "SentDM",
                                     Url = "x",
                                     VariableType = "text",
-                                    Alt = null,
-                                    Regex = null,
-                                    ShortUrl = null,
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
                                 },
                                 Type = "variable",
                                 ID = 1,
@@ -1029,7 +1029,7 @@ public class TemplateCreateParamsTest : TestBase
                     MultiChannel = new()
                     {
                         Template = "Hello {{0:variable}}! Welcome to {{1:variable}}.",
-                        Type = null,
+                        Type = "type",
                         Variables =
                         [
                             new()
@@ -1041,9 +1041,9 @@ public class TemplateCreateParamsTest : TestBase
                                     Sample = "John",
                                     Url = "x",
                                     VariableType = "text",
-                                    Alt = null,
-                                    Regex = null,
-                                    ShortUrl = null,
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
                                 },
                                 Type = "variable",
                                 ID = 0,
@@ -1057,9 +1057,9 @@ public class TemplateCreateParamsTest : TestBase
                                     Sample = "SentDM",
                                     Url = "x",
                                     VariableType = "text",
-                                    Alt = null,
-                                    Regex = null,
-                                    ShortUrl = null,
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
                                 },
                                 Type = "variable",
                                 ID = 1,
