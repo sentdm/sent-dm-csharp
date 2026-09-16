@@ -175,7 +175,8 @@ public sealed record class Template : JsonModel
     }
 
     /// <summary>
-    /// Template status: APPROVED, PENDING, REJECTED
+    /// Template status: DRAFT, PENDING, APPROVED, REJECTED. A template created with
+    /// submit_for_review: false starts as DRAFT and stays there until it is submitted.
     /// </summary>
     public string? Status
     {

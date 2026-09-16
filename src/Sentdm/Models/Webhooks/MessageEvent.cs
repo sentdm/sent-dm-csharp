@@ -15,8 +15,8 @@ namespace Sentdm.Models.Webhooks;
 public sealed record class MessageEvent : JsonModel
 {
     /// <summary>
-    /// The specific event within the family, for example message.delivered or message.received.
-    /// Absent on events that have no subtype, so treat it as optional.
+    /// The specific event within the family, for example message.delivered, message.received
+    /// or contact.opt_out. Absent on events that have no subtype, so treat it as optional.
     /// </summary>
     public string? Event
     {
@@ -29,8 +29,8 @@ public sealed record class MessageEvent : JsonModel
     }
 
     /// <summary>
-    /// The event family, for example message or templates. Route on this first,
-    /// then on event for the specific change.
+    /// The event family, for example message, templates or contact. Route on this
+    /// first, then on event for the specific change.
     /// </summary>
     public string? Field
     {
@@ -65,6 +65,19 @@ public sealed record class MessageEvent : JsonModel
     }
 
     /// <summary>
+    /// The event-specific body.
+    /// </summary>
+    public string? RequestID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("request_id");
+        }
+        init { this._rawData.Set("request_id", value); }
+    }
+
+    /// <summary>
     /// When Sent emitted the event, in UTC (yyyy-MM-ddTHH:mm:ssZ). This is the emission
     /// time, not the time the underlying change happened. Use the timestamp inside
     /// the payload for the latter.
@@ -93,6 +106,7 @@ public sealed record class MessageEvent : JsonModel
         _ = this.Event;
         _ = this.Field;
         this.Payload?.Validate();
+        _ = this.RequestID;
         _ = this.Timestamp;
     }
 

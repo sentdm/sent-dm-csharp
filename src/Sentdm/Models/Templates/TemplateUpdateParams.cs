@@ -11,7 +11,9 @@ namespace Sentdm.Models.Templates;
 
 /// <summary>
 /// Updates an existing template's name, category, language, definition, or submits
-/// it for review.
+/// it for review. While the template is in review (status PENDING, or any channel
+/// awaiting a verdict) its definition, category and language are frozen and a resubmission
+/// is refused — those requests answer 409 CONFLICT_006. The display name stays editable throughout.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
