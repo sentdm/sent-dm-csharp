@@ -11,6 +11,19 @@ namespace Sentdm.Models.Templates;
 [JsonConverter(typeof(JsonModelConverter<TemplateBodyContent, TemplateBodyContentFromRaw>))]
 public sealed record class TemplateBodyContent : JsonModel
 {
+    /// <summary>
+    /// The body copy, with variables written as {{index:variable}}.
+    ///  Meta requires every variable to carry surrounding context, so a body is
+    /// refused unless it also satisfies all of the following (enforced by TemplateDefinitionValidator):
+    /// At least one letter before the first variable and after the last — trailing
+    /// punctuation such as "... {{1:variable}}." does not count. At least (2 × variable
+    /// count) + 1 words once the placeholders are removed. No two variables adjacent
+    /// with only whitespace between them. No leading or trailing newline, no more
+    /// than two consecutive line breaks, and no more than four consecutive spaces.
+    ///              Example: "Hello {{0:variable}}! Welcome to {{1:variable}}. We
+    /// are glad to have you on board." — two variables, so at least five words are
+    /// required, and the copy after the final variable contains letters.
+    /// </summary>
     public required string Template
     {
         get
@@ -21,6 +34,11 @@ public sealed record class TemplateBodyContent : JsonModel
         init { this._rawData.Set("template", value); }
     }
 
+    /// <summary>
+    /// The type of body content — send "text". It is dropped from the stored definition
+    /// when null, so a body posted without it is saved with no type key at all and
+    /// the template editor has nothing to render the block from.
+    /// </summary>
     public string? Type
     {
         get
@@ -31,6 +49,9 @@ public sealed record class TemplateBodyContent : JsonModel
         init { this._rawData.Set("type", value); }
     }
 
+    /// <summary>
+    /// The variables referenced by the body copy, one entry per {{index:variable}} placeholder.
+    /// </summary>
     public IReadOnlyList<TemplateVariable>? Variables
     {
         get

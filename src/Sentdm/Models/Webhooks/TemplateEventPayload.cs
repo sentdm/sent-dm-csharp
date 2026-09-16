@@ -84,7 +84,12 @@ public sealed record class TemplateEventPayload : JsonModel
     }
 
     /// <summary>
-    /// The channel the template applies to.
+    /// The channel leg this decision is about, for example whatsapp, sms, or rcs.
+    /// A template is reviewed per channel and the legs come back independently, so
+    /// each one reports separately.              Omitted when the decision applies
+    /// to the template as a whole rather than to one leg. That event is the broader
+    /// news: a template-wide rejection blocks every channel, whatever the individual
+    /// legs say.
     /// </summary>
     public string? Channel
     {
@@ -93,15 +98,7 @@ public sealed record class TemplateEventPayload : JsonModel
             this._rawData.Freeze();
             return this._rawData.GetNullableClass<string>("channel");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("channel", value);
-        }
+        init { this._rawData.Set("channel", value); }
     }
 
     /// <summary>

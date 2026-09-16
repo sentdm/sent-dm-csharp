@@ -138,6 +138,7 @@ public class TemplateEventPayloadTest : TestBase
         {
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
+            Channel = "channel",
             Reason = "reason",
         };
 
@@ -145,8 +146,6 @@ public class TemplateEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("account_id"));
         Assert.Null(model.Category);
         Assert.False(model.RawData.ContainsKey("category"));
-        Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
         Assert.Null(model.Language);
         Assert.False(model.RawData.ContainsKey("language"));
         Assert.Null(model.TemplateID);
@@ -162,6 +161,7 @@ public class TemplateEventPayloadTest : TestBase
         {
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
+            Channel = "channel",
             Reason = "reason",
         };
 
@@ -175,12 +175,12 @@ public class TemplateEventPayloadTest : TestBase
         {
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
+            Channel = "channel",
             Reason = "reason",
 
             // Null should be interpreted as omitted for these properties
             AccountID = null,
             Category = null,
-            Channel = null,
             Language = null,
             TemplateID = null,
             TemplateName = null,
@@ -190,8 +190,6 @@ public class TemplateEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("account_id"));
         Assert.Null(model.Category);
         Assert.False(model.RawData.ContainsKey("category"));
-        Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
         Assert.Null(model.Language);
         Assert.False(model.RawData.ContainsKey("language"));
         Assert.Null(model.TemplateID);
@@ -207,12 +205,12 @@ public class TemplateEventPayloadTest : TestBase
         {
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
+            Channel = "channel",
             Reason = "reason",
 
             // Null should be interpreted as omitted for these properties
             AccountID = null,
             Category = null,
-            Channel = null,
             Language = null,
             TemplateID = null,
             TemplateName = null,
@@ -230,12 +228,13 @@ public class TemplateEventPayloadTest : TestBase
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
-            Channel = "channel",
             Language = "language",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
         };
 
+        Assert.Null(model.Channel);
+        Assert.False(model.RawData.ContainsKey("channel"));
         Assert.Null(model.Reason);
         Assert.False(model.RawData.ContainsKey("reason"));
     }
@@ -249,7 +248,6 @@ public class TemplateEventPayloadTest : TestBase
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
-            Channel = "channel",
             Language = "language",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -267,14 +265,16 @@ public class TemplateEventPayloadTest : TestBase
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
-            Channel = "channel",
             Language = "language",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
 
+            Channel = null,
             Reason = null,
         };
 
+        Assert.Null(model.Channel);
+        Assert.True(model.RawData.ContainsKey("channel"));
         Assert.Null(model.Reason);
         Assert.True(model.RawData.ContainsKey("reason"));
     }
@@ -288,11 +288,11 @@ public class TemplateEventPayloadTest : TestBase
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
-            Channel = "channel",
             Language = "language",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
 
+            Channel = null,
             Reason = null,
         };
 
