@@ -17,8 +17,9 @@ public class WebhookCreateParamsTest : TestBase
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()
             {
                 { "message", ["delivered", "failed"] },
+                { "templates", ["approved", "rejected"] },
             },
-            EventTypes = ["message", "templates"],
+            EventTypes = ["contact", "message", "templates"],
             RetryCount = 3,
             Sandbox = false,
             TimeoutSeconds = 30,
@@ -31,8 +32,9 @@ public class WebhookCreateParamsTest : TestBase
         Dictionary<string, List<string>> expectedEventFilters = new()
         {
             { "message", ["delivered", "failed"] },
+            { "templates", ["approved", "rejected"] },
         };
-        List<string> expectedEventTypes = ["message", "templates"];
+        List<string> expectedEventTypes = ["contact", "message", "templates"];
         int expectedRetryCount = 3;
         bool expectedSandbox = false;
         int expectedTimeoutSeconds = 30;
@@ -74,6 +76,7 @@ public class WebhookCreateParamsTest : TestBase
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()
             {
                 { "message", ["delivered", "failed"] },
+                { "templates", ["approved", "rejected"] },
             },
         };
 
@@ -103,6 +106,7 @@ public class WebhookCreateParamsTest : TestBase
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()
             {
                 { "message", ["delivered", "failed"] },
+                { "templates", ["approved", "rejected"] },
             },
 
             // Null should be interpreted as omitted for these properties
@@ -141,7 +145,7 @@ public class WebhookCreateParamsTest : TestBase
         {
             DisplayName = "Order Notifications",
             EndpointUrl = "https://example.com/webhooks/orders",
-            EventTypes = ["message", "templates"],
+            EventTypes = ["contact", "message", "templates"],
             RetryCount = 3,
             Sandbox = false,
             TimeoutSeconds = 30,
@@ -160,7 +164,7 @@ public class WebhookCreateParamsTest : TestBase
         {
             DisplayName = "Order Notifications",
             EndpointUrl = "https://example.com/webhooks/orders",
-            EventTypes = ["message", "templates"],
+            EventTypes = ["contact", "message", "templates"],
             RetryCount = 3,
             Sandbox = false,
             TimeoutSeconds = 30,
@@ -213,8 +217,9 @@ public class WebhookCreateParamsTest : TestBase
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()
             {
                 { "message", ["delivered", "failed"] },
+                { "templates", ["approved", "rejected"] },
             },
-            EventTypes = ["message", "templates"],
+            EventTypes = ["contact", "message", "templates"],
             RetryCount = 3,
             Sandbox = false,
             TimeoutSeconds = 30,
