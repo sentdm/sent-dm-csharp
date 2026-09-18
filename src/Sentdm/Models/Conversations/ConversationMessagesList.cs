@@ -577,6 +577,19 @@ public sealed record class MessageBody : JsonModel
         init { this._rawData.Set("header", value); }
     }
 
+    /// <summary>
+    /// The media asset that rode a message's header, recorded as sent.
+    /// </summary>
+    public HeaderMedia? HeaderMedia
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<HeaderMedia>("headerMedia");
+        }
+        init { this._rawData.Set("headerMedia", value); }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
@@ -587,6 +600,7 @@ public sealed record class MessageBody : JsonModel
         _ = this.Content;
         _ = this.Footer;
         _ = this.Header;
+        this.HeaderMedia?.Validate();
     }
 
     public MessageBody() { }
@@ -725,4 +739,95 @@ class ButtonFromRaw : IFromRawJson<Button>
     /// <inheritdoc/>
     public Button FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         Button.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// The media asset that rode a message's header, recorded as sent.
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<HeaderMedia, HeaderMediaFromRaw>))]
+public sealed record class HeaderMedia : JsonModel
+{
+    /// <summary>
+    /// "image", "video" or "document" — taken from the header's media variable.
+    /// </summary>
+    public string? Type
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("type");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("type", value);
+        }
+    }
+
+    /// <summary>
+    /// The https URL the caller supplied for this send. Never the template's stored
+    /// props.sample, which is Meta's expiring header_handle rather than what was delivered.
+    /// </summary>
+    public string? Url
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("url");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("url", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Type;
+        _ = this.Url;
+    }
+
+    public HeaderMedia() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public HeaderMedia(HeaderMedia headerMedia)
+        : base(headerMedia) { }
+#pragma warning restore CS8618
+
+    public HeaderMedia(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    HeaderMedia(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="HeaderMediaFromRaw.FromRawUnchecked"/>
+    public static HeaderMedia FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class HeaderMediaFromRaw : IFromRawJson<HeaderMedia>
+{
+    /// <inheritdoc/>
+    public HeaderMedia FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        HeaderMedia.FromRawUnchecked(rawData);
 }
