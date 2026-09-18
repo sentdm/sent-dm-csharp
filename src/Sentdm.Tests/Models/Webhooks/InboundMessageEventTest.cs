@@ -24,6 +24,7 @@ public class InboundMessageEventTest : TestBase
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
 
@@ -40,11 +41,13 @@ public class InboundMessageEventTest : TestBase
             Text = "text",
             UpdatedAt = "updated_at",
         };
+        string expectedRequestID = "request_id";
         string expectedTimestamp = "timestamp";
 
         Assert.Equal(expectedEvent, model.Event);
         Assert.Equal(expectedField, model.Field);
         Assert.Equal(expectedPayload, model.Payload);
+        Assert.Equal(expectedRequestID, model.RequestID);
         Assert.Equal(expectedTimestamp, model.Timestamp);
     }
 
@@ -66,6 +69,7 @@ public class InboundMessageEventTest : TestBase
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
 
@@ -96,6 +100,7 @@ public class InboundMessageEventTest : TestBase
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
 
@@ -119,11 +124,13 @@ public class InboundMessageEventTest : TestBase
             Text = "text",
             UpdatedAt = "updated_at",
         };
+        string expectedRequestID = "request_id";
         string expectedTimestamp = "timestamp";
 
         Assert.Equal(expectedEvent, deserialized.Event);
         Assert.Equal(expectedField, deserialized.Field);
         Assert.Equal(expectedPayload, deserialized.Payload);
+        Assert.Equal(expectedRequestID, deserialized.RequestID);
         Assert.Equal(expectedTimestamp, deserialized.Timestamp);
     }
 
@@ -145,6 +152,7 @@ public class InboundMessageEventTest : TestBase
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
 
@@ -168,6 +176,7 @@ public class InboundMessageEventTest : TestBase
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
         };
 
         Assert.Null(model.Field);
@@ -193,6 +202,7 @@ public class InboundMessageEventTest : TestBase
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
         };
 
         model.Validate();
@@ -215,6 +225,7 @@ public class InboundMessageEventTest : TestBase
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
 
             // Null should be interpreted as omitted for these properties
             Field = null,
@@ -244,6 +255,7 @@ public class InboundMessageEventTest : TestBase
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
 
             // Null should be interpreted as omitted for these properties
             Field = null,
@@ -262,6 +274,8 @@ public class InboundMessageEventTest : TestBase
         Assert.False(model.RawData.ContainsKey("event"));
         Assert.Null(model.Payload);
         Assert.False(model.RawData.ContainsKey("payload"));
+        Assert.Null(model.RequestID);
+        Assert.False(model.RawData.ContainsKey("request_id"));
     }
 
     [Fact]
@@ -282,12 +296,15 @@ public class InboundMessageEventTest : TestBase
 
             Event = null,
             Payload = null,
+            RequestID = null,
         };
 
         Assert.Null(model.Event);
         Assert.True(model.RawData.ContainsKey("event"));
         Assert.Null(model.Payload);
         Assert.True(model.RawData.ContainsKey("payload"));
+        Assert.Null(model.RequestID);
+        Assert.True(model.RawData.ContainsKey("request_id"));
     }
 
     [Fact]
@@ -300,6 +317,7 @@ public class InboundMessageEventTest : TestBase
 
             Event = null,
             Payload = null,
+            RequestID = null,
         };
 
         model.Validate();
@@ -323,6 +341,7 @@ public class InboundMessageEventTest : TestBase
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
 

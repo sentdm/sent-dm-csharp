@@ -31,6 +31,7 @@ public class TemplateListPageResponseTest : TestBase
                     {
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AutoReplyAction = "auto_reply_action",
                         Category = "category",
                         Channels = ["string"],
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -76,6 +77,7 @@ public class TemplateListPageResponseTest : TestBase
                 {
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AutoReplyAction = "auto_reply_action",
                     Category = "category",
                     Channels = ["string"],
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -131,6 +133,7 @@ public class TemplateListPageResponseTest : TestBase
                     {
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AutoReplyAction = "auto_reply_action",
                         Category = "category",
                         Channels = ["string"],
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -190,6 +193,7 @@ public class TemplateListPageResponseTest : TestBase
                     {
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AutoReplyAction = "auto_reply_action",
                         Category = "category",
                         Channels = ["string"],
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -242,6 +246,7 @@ public class TemplateListPageResponseTest : TestBase
                 {
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AutoReplyAction = "auto_reply_action",
                     Category = "category",
                     Channels = ["string"],
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -297,6 +302,7 @@ public class TemplateListPageResponseTest : TestBase
                     {
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AutoReplyAction = "auto_reply_action",
                         Category = "category",
                         Channels = ["string"],
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -350,6 +356,7 @@ public class TemplateListPageResponseTest : TestBase
                     {
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AutoReplyAction = "auto_reply_action",
                         Category = "category",
                         Channels = ["string"],
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -399,6 +406,7 @@ public class TemplateListPageResponseTest : TestBase
                     {
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AutoReplyAction = "auto_reply_action",
                         Category = "category",
                         Channels = ["string"],
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -445,6 +453,7 @@ public class TemplateListPageResponseTest : TestBase
                     {
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AutoReplyAction = "auto_reply_action",
                         Category = "category",
                         Channels = ["string"],
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -498,6 +507,7 @@ public class TemplateListPageResponseTest : TestBase
                     {
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AutoReplyAction = "auto_reply_action",
                         Category = "category",
                         Channels = ["string"],
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -628,6 +638,7 @@ public class TemplateListPageResponseTest : TestBase
                     {
                         CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AutoReplyAction = "auto_reply_action",
                         Category = "category",
                         Channels = ["string"],
                         CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -684,6 +695,7 @@ public class DataTest : TestBase
                 {
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AutoReplyAction = "auto_reply_action",
                     Category = "category",
                     Channels = ["string"],
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -712,6 +724,7 @@ public class DataTest : TestBase
             {
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                AutoReplyAction = "auto_reply_action",
                 Category = "category",
                 Channels = ["string"],
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -753,6 +766,7 @@ public class DataTest : TestBase
                 {
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AutoReplyAction = "auto_reply_action",
                     Category = "category",
                     Channels = ["string"],
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -792,6 +806,7 @@ public class DataTest : TestBase
                 {
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AutoReplyAction = "auto_reply_action",
                     Category = "category",
                     Channels = ["string"],
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -824,6 +839,7 @@ public class DataTest : TestBase
             {
                 CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                AutoReplyAction = "auto_reply_action",
                 Category = "category",
                 Channels = ["string"],
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -865,6 +881,7 @@ public class DataTest : TestBase
                 {
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AutoReplyAction = "auto_reply_action",
                     Category = "category",
                     Channels = ["string"],
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -949,6 +966,7 @@ public class DataTest : TestBase
                 {
                     CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AutoReplyAction = "auto_reply_action",
                     Category = "category",
                     Channels = ["string"],
                     CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),

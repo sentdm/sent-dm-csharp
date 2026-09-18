@@ -63,6 +63,21 @@ public sealed record class MessageEventPayload : JsonModel
     }
 
     /// <summary>
+    /// The rendered message body, as plain text. Sent as null when we aren't asserting
+    /// a body for this event. The field is always present, so read it and check for
+    /// null rather than checking whether the key exists. Truncated to 3072 characters.
+    /// </summary>
+    public string? Body
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("body");
+        }
+        init { this._rawData.Set("body", value); }
+    }
+
+    /// <summary>
     /// The channel the message went out on, for example sms or whatsapp. A message
     /// that falls back to another channel reports the channel actually used.
     /// </summary>
@@ -180,6 +195,7 @@ public sealed record class MessageEventPayload : JsonModel
         _ = this.MessageStatus;
         _ = this.AccountID;
         _ = this.AgentID;
+        _ = this.Body;
         _ = this.Channel;
         _ = this.MessageID;
         _ = this.OutboundNumber;

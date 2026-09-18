@@ -10,6 +10,10 @@ namespace Sentdm.Models.Templates;
 [JsonConverter(typeof(JsonModelConverter<TemplateVariable, TemplateVariableFromRaw>))]
 public sealed record class TemplateVariable : JsonModel
 {
+    /// <summary>
+    /// The variable's name, and the key callers use for it in a send request's parameters
+    /// object. Must start with a letter and hold only letters, digits and underscores.
+    /// </summary>
     public required string Name
     {
         get
@@ -30,6 +34,9 @@ public sealed record class TemplateVariable : JsonModel
         init { this._rawData.Set("props", value); }
     }
 
+    /// <summary>
+    /// One of variable, link or media. Decides which Props fields are required.
+    /// </summary>
     public required string Type
     {
         get
@@ -40,6 +47,14 @@ public sealed record class TemplateVariable : JsonModel
         init { this._rawData.Set("type", value); }
     }
 
+    /// <summary>
+    /// The variable's index, and the number its {{index:variable}} placeholder refers
+    /// to.              Omitting it is only safe for a section holding a single
+    /// variable. The field is a non-nullable int, so every variable that leaves
+    /// it out defaults to 0, and a section with two such variables is refused by
+    /// the unique-id rule ("variables must have unique IDs"). Number them from 0
+    /// in the order they appear.
+    /// </summary>
     public int? ID
     {
         get

@@ -63,6 +63,30 @@ public sealed record class TemplateEventPayload : JsonModel
     }
 
     /// <summary>
+    /// Which consent keyword this template answers, when it is one of Sent's auto-replies:
+    /// OPT_IN, OPT_OUT, HELP, or OTHER for a customer-defined keyword.
+    ///     Omitted for an ordinary template, so its presence is the answer to "is
+    /// this an auto-reply". Sent creates the three compliance auto-replies at signup
+    /// and they go through review like any other template, so their events arrive
+    /// mixed in with the customer's own with nothing else to tell them apart.
+    ///            Named for the reader rather than after Template.OptAction, which
+    /// it is mapped from. The MCP tool result deliberately keeps OptAction, OptKeywords
+    /// and IsOpt: it mirrors the internal shape on purpose and publishes the keywords
+    /// too, so renaming one of the three there would leave a surface half in each
+    /// vocabulary. Two names for one concept, each consistent within its own surface,
+    /// chosen over a rename that breaks MCP clients silently.
+    /// </summary>
+    public string? AutoReplyAction
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("auto_reply_action");
+        }
+        init { this._rawData.Set("auto_reply_action", value); }
+    }
+
+    /// <summary>
     /// The template's category, for example UTILITY, MARKETING, or AUTHENTICATION.
     /// </summary>
     public string? Category
@@ -84,7 +108,12 @@ public sealed record class TemplateEventPayload : JsonModel
     }
 
     /// <summary>
-    /// The channel the template applies to.
+    /// The channel leg this decision is about, for example whatsapp, sms, or rcs.
+    /// A template is reviewed per channel and the legs come back independently, so
+    /// each one reports separately.              Omitted when the decision applies
+    /// to the template as a whole rather than to one leg. That event is the broader
+    /// news: a template-wide rejection blocks every channel, whatever the individual
+    /// legs say.
     /// </summary>
     public string? Channel
     {
@@ -93,15 +122,7 @@ public sealed record class TemplateEventPayload : JsonModel
             this._rawData.Freeze();
             return this._rawData.GetNullableClass<string>("channel");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("channel", value);
-        }
+        init { this._rawData.Set("channel", value); }
     }
 
     /// <summary>
@@ -186,6 +207,7 @@ public sealed record class TemplateEventPayload : JsonModel
         _ = this.Status;
         _ = this.WhatsappTemplateID;
         _ = this.AccountID;
+        _ = this.AutoReplyAction;
         _ = this.Category;
         _ = this.Channel;
         _ = this.Language;

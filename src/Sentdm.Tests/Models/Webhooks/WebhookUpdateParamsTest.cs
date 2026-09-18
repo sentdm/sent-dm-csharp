@@ -19,7 +19,7 @@ public class WebhookUpdateParamsTest : TestBase
             {
                 { "message", ["delivered", "failed"] },
             },
-            EventTypes = ["message", "templates"],
+            EventTypes = ["contact", "message", "templates"],
             RetryCount = 5,
             Sandbox = false,
             TimeoutSeconds = 60,
@@ -34,7 +34,7 @@ public class WebhookUpdateParamsTest : TestBase
         {
             { "message", ["delivered", "failed"] },
         };
-        List<string> expectedEventTypes = ["message", "templates"];
+        List<string> expectedEventTypes = ["contact", "message", "templates"];
         int expectedRetryCount = 5;
         bool expectedSandbox = false;
         int expectedTimeoutSeconds = 60;
@@ -147,7 +147,7 @@ public class WebhookUpdateParamsTest : TestBase
             ID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
             DisplayName = "Updated Order Notifications",
             EndpointUrl = "https://example.com/webhooks/orders-v2",
-            EventTypes = ["message", "templates"],
+            EventTypes = ["contact", "message", "templates"],
             RetryCount = 5,
             Sandbox = false,
             TimeoutSeconds = 60,
@@ -167,7 +167,7 @@ public class WebhookUpdateParamsTest : TestBase
             ID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
             DisplayName = "Updated Order Notifications",
             EndpointUrl = "https://example.com/webhooks/orders-v2",
-            EventTypes = ["message", "templates"],
+            EventTypes = ["contact", "message", "templates"],
             RetryCount = 5,
             Sandbox = false,
             TimeoutSeconds = 60,
@@ -228,7 +228,7 @@ public class WebhookUpdateParamsTest : TestBase
             {
                 { "message", ["delivered", "failed"] },
             },
-            EventTypes = ["message", "templates"],
+            EventTypes = ["contact", "message", "templates"],
             RetryCount = 5,
             Sandbox = false,
             TimeoutSeconds = 60,
