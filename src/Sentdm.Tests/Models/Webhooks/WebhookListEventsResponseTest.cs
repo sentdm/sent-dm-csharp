@@ -26,6 +26,7 @@ public class WebhookListEventsResponseTest : TestBase
                     MessageStatus = "message_status",
                     AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AgentID = "agent_id",
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
@@ -33,6 +34,7 @@ public class WebhookListEventsResponseTest : TestBase
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
                 },
+                RequestID = "request_id",
                 Timestamp = "timestamp",
             },
             EventType = "event_type",
@@ -56,6 +58,7 @@ public class WebhookListEventsResponseTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -63,6 +66,7 @@ public class WebhookListEventsResponseTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
         string expectedEventType = "event_type";
@@ -107,6 +111,7 @@ public class WebhookListEventsResponseTest : TestBase
                     MessageStatus = "message_status",
                     AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AgentID = "agent_id",
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
@@ -114,6 +119,7 @@ public class WebhookListEventsResponseTest : TestBase
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
                 },
+                RequestID = "request_id",
                 Timestamp = "timestamp",
             },
             EventType = "event_type",
@@ -151,6 +157,7 @@ public class WebhookListEventsResponseTest : TestBase
                     MessageStatus = "message_status",
                     AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AgentID = "agent_id",
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
@@ -158,6 +165,7 @@ public class WebhookListEventsResponseTest : TestBase
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
                 },
+                RequestID = "request_id",
                 Timestamp = "timestamp",
             },
             EventType = "event_type",
@@ -188,6 +196,7 @@ public class WebhookListEventsResponseTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -195,6 +204,7 @@ public class WebhookListEventsResponseTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
         string expectedEventType = "event_type";
@@ -239,6 +249,7 @@ public class WebhookListEventsResponseTest : TestBase
                     MessageStatus = "message_status",
                     AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AgentID = "agent_id",
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
@@ -246,6 +257,7 @@ public class WebhookListEventsResponseTest : TestBase
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
                 },
+                RequestID = "request_id",
                 Timestamp = "timestamp",
             },
             EventType = "event_type",
@@ -374,6 +386,7 @@ public class WebhookListEventsResponseTest : TestBase
                     MessageStatus = "message_status",
                     AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AgentID = "agent_id",
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
@@ -381,6 +394,7 @@ public class WebhookListEventsResponseTest : TestBase
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
                 },
+                RequestID = "request_id",
                 Timestamp = "timestamp",
             },
             EventType = "event_type",
@@ -416,6 +430,7 @@ public class WebhookListEventsResponseTest : TestBase
                     MessageStatus = "message_status",
                     AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AgentID = "agent_id",
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
@@ -423,6 +438,7 @@ public class WebhookListEventsResponseTest : TestBase
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
                 },
+                RequestID = "request_id",
                 Timestamp = "timestamp",
             },
             EventType = "event_type",
@@ -449,6 +465,7 @@ public class WebhookListEventsResponseTest : TestBase
                     MessageStatus = "message_status",
                     AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AgentID = "agent_id",
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
@@ -456,6 +473,7 @@ public class WebhookListEventsResponseTest : TestBase
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
                 },
+                RequestID = "request_id",
                 Timestamp = "timestamp",
             },
             EventType = "event_type",
@@ -497,6 +515,7 @@ public class WebhookListEventsResponseTest : TestBase
                     MessageStatus = "message_status",
                     AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AgentID = "agent_id",
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
@@ -504,6 +523,7 @@ public class WebhookListEventsResponseTest : TestBase
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
                 },
+                RequestID = "request_id",
                 Timestamp = "timestamp",
             },
             EventType = "event_type",
@@ -537,6 +557,7 @@ public class WebhookListEventsResponseTest : TestBase
                     MessageStatus = "message_status",
                     AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     AgentID = "agent_id",
+                    Body = "body",
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
@@ -544,6 +565,7 @@ public class WebhookListEventsResponseTest : TestBase
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
                 },
+                RequestID = "request_id",
                 Timestamp = "timestamp",
             },
             EventType = "event_type",
@@ -573,6 +595,7 @@ public class EventDataTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -580,6 +603,7 @@ public class EventDataTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
         value.Validate();
@@ -603,6 +627,7 @@ public class EventDataTest : TestBase
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
         value.Validate();
@@ -620,6 +645,7 @@ public class EventDataTest : TestBase
                 Status = "status",
                 WhatsappTemplateID = "whatsapp_template_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                AutoReplyAction = "auto_reply_action",
                 Category = "category",
                 Channel = "channel",
                 Language = "language",
@@ -627,6 +653,55 @@ public class EventDataTest : TestBase
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
             },
+            RequestID = "request_id",
+            Timestamp = "timestamp",
+        };
+        value.Validate();
+    }
+
+    [Fact]
+    public void ChannelEventValidationWorks()
+    {
+        EventData value = new ChannelEvent()
+        {
+            Event = "event",
+            Field = "field",
+            Payload = new()
+            {
+                Country = "country",
+                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channel = "channel",
+                NumberType = "number_type",
+                Reason = "reason",
+                SenderValue = "sender_value",
+                Status = "status",
+                UpdatedAt = "updated_at",
+            },
+            RequestID = "request_id",
+            Timestamp = "timestamp",
+        };
+        value.Validate();
+    }
+
+    [Fact]
+    public void ContactEventValidationWorks()
+    {
+        EventData value = new ContactEvent()
+        {
+            Event = "event",
+            Field = "field",
+            Payload = new()
+            {
+                OptOut = true,
+                Source = "source",
+                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channel = "channel",
+                ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                PhoneNumber = "phone_number",
+                Text = "text",
+            },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
         value.Validate();
@@ -644,6 +719,7 @@ public class EventDataTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -651,6 +727,7 @@ public class EventDataTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
@@ -680,6 +757,7 @@ public class EventDataTest : TestBase
                 Text = "text",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
@@ -703,6 +781,7 @@ public class EventDataTest : TestBase
                 Status = "status",
                 WhatsappTemplateID = "whatsapp_template_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                AutoReplyAction = "auto_reply_action",
                 Category = "category",
                 Channel = "channel",
                 Language = "language",
@@ -710,6 +789,67 @@ public class EventDataTest : TestBase
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
             },
+            RequestID = "request_id",
+            Timestamp = "timestamp",
+        };
+        string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<EventData>(
+            element,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void ChannelEventSerializationRoundtripWorks()
+    {
+        EventData value = new ChannelEvent()
+        {
+            Event = "event",
+            Field = "field",
+            Payload = new()
+            {
+                Country = "country",
+                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channel = "channel",
+                NumberType = "number_type",
+                Reason = "reason",
+                SenderValue = "sender_value",
+                Status = "status",
+                UpdatedAt = "updated_at",
+            },
+            RequestID = "request_id",
+            Timestamp = "timestamp",
+        };
+        string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<EventData>(
+            element,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void ContactEventSerializationRoundtripWorks()
+    {
+        EventData value = new ContactEvent()
+        {
+            Event = "event",
+            Field = "field",
+            Payload = new()
+            {
+                OptOut = true,
+                Source = "source",
+                AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                Channel = "channel",
+                ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                PhoneNumber = "phone_number",
+                Text = "text",
+            },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
