@@ -15,6 +15,7 @@ public class TemplateTest : TestBase
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Category = "category",
             Channels = ["string"],
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -28,6 +29,7 @@ public class TemplateTest : TestBase
 
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedAutoReplyAction = "auto_reply_action";
         string expectedCategory = "category";
         List<string> expectedChannels = ["string"];
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
@@ -40,6 +42,7 @@ public class TemplateTest : TestBase
 
         Assert.Equal(expectedCustomerID, model.CustomerID);
         Assert.Equal(expectedID, model.ID);
+        Assert.Equal(expectedAutoReplyAction, model.AutoReplyAction);
         Assert.Equal(expectedCategory, model.Category);
         Assert.NotNull(model.Channels);
         Assert.Equal(expectedChannels.Count, model.Channels.Count);
@@ -68,6 +71,7 @@ public class TemplateTest : TestBase
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Category = "category",
             Channels = ["string"],
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -92,6 +96,7 @@ public class TemplateTest : TestBase
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Category = "category",
             Channels = ["string"],
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -112,6 +117,7 @@ public class TemplateTest : TestBase
 
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedAutoReplyAction = "auto_reply_action";
         string expectedCategory = "category";
         List<string> expectedChannels = ["string"];
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
@@ -124,6 +130,7 @@ public class TemplateTest : TestBase
 
         Assert.Equal(expectedCustomerID, deserialized.CustomerID);
         Assert.Equal(expectedID, deserialized.ID);
+        Assert.Equal(expectedAutoReplyAction, deserialized.AutoReplyAction);
         Assert.Equal(expectedCategory, deserialized.Category);
         Assert.NotNull(deserialized.Channels);
         Assert.Equal(expectedChannels.Count, deserialized.Channels.Count);
@@ -152,6 +159,7 @@ public class TemplateTest : TestBase
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Category = "category",
             Channels = ["string"],
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -172,6 +180,7 @@ public class TemplateTest : TestBase
         var model = new Template
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Channels = ["string"],
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
@@ -199,6 +208,7 @@ public class TemplateTest : TestBase
         var model = new Template
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Channels = ["string"],
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
@@ -213,6 +223,7 @@ public class TemplateTest : TestBase
         var model = new Template
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Channels = ["string"],
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
@@ -249,6 +260,7 @@ public class TemplateTest : TestBase
         var model = new Template
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Channels = ["string"],
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
@@ -281,6 +293,8 @@ public class TemplateTest : TestBase
             Status = "status",
         };
 
+        Assert.Null(model.AutoReplyAction);
+        Assert.False(model.RawData.ContainsKey("auto_reply_action"));
         Assert.Null(model.Channels);
         Assert.False(model.RawData.ContainsKey("channels"));
         Assert.Null(model.UpdatedAt);
@@ -321,11 +335,14 @@ public class TemplateTest : TestBase
             Name = "name",
             Status = "status",
 
+            AutoReplyAction = null,
             Channels = null,
             UpdatedAt = null,
             Variables = null,
         };
 
+        Assert.Null(model.AutoReplyAction);
+        Assert.True(model.RawData.ContainsKey("auto_reply_action"));
         Assert.Null(model.Channels);
         Assert.True(model.RawData.ContainsKey("channels"));
         Assert.Null(model.UpdatedAt);
@@ -348,6 +365,7 @@ public class TemplateTest : TestBase
             Name = "name",
             Status = "status",
 
+            AutoReplyAction = null,
             Channels = null,
             UpdatedAt = null,
             Variables = null,
@@ -363,6 +381,7 @@ public class TemplateTest : TestBase
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Category = "category",
             Channels = ["string"],
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),

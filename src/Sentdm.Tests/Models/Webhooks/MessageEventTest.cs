@@ -18,6 +18,7 @@ public class MessageEventTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -25,6 +26,7 @@ public class MessageEventTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
 
@@ -35,6 +37,7 @@ public class MessageEventTest : TestBase
             MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AgentID = "agent_id",
+            Body = "body",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
@@ -42,11 +45,13 @@ public class MessageEventTest : TestBase
             TemplateName = "template_name",
             UpdatedAt = "updated_at",
         };
+        string expectedRequestID = "request_id";
         string expectedTimestamp = "timestamp";
 
         Assert.Equal(expectedEvent, model.Event);
         Assert.Equal(expectedField, model.Field);
         Assert.Equal(expectedPayload, model.Payload);
+        Assert.Equal(expectedRequestID, model.RequestID);
         Assert.Equal(expectedTimestamp, model.Timestamp);
     }
 
@@ -62,6 +67,7 @@ public class MessageEventTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -69,6 +75,7 @@ public class MessageEventTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
 
@@ -93,6 +100,7 @@ public class MessageEventTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -100,6 +108,7 @@ public class MessageEventTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
 
@@ -117,6 +126,7 @@ public class MessageEventTest : TestBase
             MessageStatus = "message_status",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AgentID = "agent_id",
+            Body = "body",
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
@@ -124,11 +134,13 @@ public class MessageEventTest : TestBase
             TemplateName = "template_name",
             UpdatedAt = "updated_at",
         };
+        string expectedRequestID = "request_id";
         string expectedTimestamp = "timestamp";
 
         Assert.Equal(expectedEvent, deserialized.Event);
         Assert.Equal(expectedField, deserialized.Field);
         Assert.Equal(expectedPayload, deserialized.Payload);
+        Assert.Equal(expectedRequestID, deserialized.RequestID);
         Assert.Equal(expectedTimestamp, deserialized.Timestamp);
     }
 
@@ -144,6 +156,7 @@ public class MessageEventTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -151,6 +164,7 @@ public class MessageEventTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
 
@@ -168,6 +182,7 @@ public class MessageEventTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -175,6 +190,7 @@ public class MessageEventTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
         };
 
         Assert.Null(model.Field);
@@ -194,6 +210,7 @@ public class MessageEventTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -201,6 +218,7 @@ public class MessageEventTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
         };
 
         model.Validate();
@@ -217,6 +235,7 @@ public class MessageEventTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -224,6 +243,7 @@ public class MessageEventTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
 
             // Null should be interpreted as omitted for these properties
             Field = null,
@@ -247,6 +267,7 @@ public class MessageEventTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -254,6 +275,7 @@ public class MessageEventTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
 
             // Null should be interpreted as omitted for these properties
             Field = null,
@@ -272,6 +294,8 @@ public class MessageEventTest : TestBase
         Assert.False(model.RawData.ContainsKey("event"));
         Assert.Null(model.Payload);
         Assert.False(model.RawData.ContainsKey("payload"));
+        Assert.Null(model.RequestID);
+        Assert.False(model.RawData.ContainsKey("request_id"));
     }
 
     [Fact]
@@ -292,12 +316,15 @@ public class MessageEventTest : TestBase
 
             Event = null,
             Payload = null,
+            RequestID = null,
         };
 
         Assert.Null(model.Event);
         Assert.True(model.RawData.ContainsKey("event"));
         Assert.Null(model.Payload);
         Assert.True(model.RawData.ContainsKey("payload"));
+        Assert.Null(model.RequestID);
+        Assert.True(model.RawData.ContainsKey("request_id"));
     }
 
     [Fact]
@@ -310,6 +337,7 @@ public class MessageEventTest : TestBase
 
             Event = null,
             Payload = null,
+            RequestID = null,
         };
 
         model.Validate();
@@ -327,6 +355,7 @@ public class MessageEventTest : TestBase
                 MessageStatus = "message_status",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 AgentID = "agent_id",
+                Body = "body",
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
@@ -334,6 +363,7 @@ public class MessageEventTest : TestBase
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
             },
+            RequestID = "request_id",
             Timestamp = "timestamp",
         };
 

@@ -98,9 +98,9 @@ public sealed record class WebhookListEventsResponse : JsonModel
 
     /// <summary>
     /// The exact event body that was delivered, or attempted, for this record. One
-    /// of the three webhook envelopes: a message status change, an inbound message,
-    /// or a template status change. Read field and event to tell which, the same
-    /// way your endpoint does.
+    /// of the four webhook envelopes: a message status change, an inbound message,
+    /// a template status change, or a contact consent signal. Read field and event
+    /// to tell which, the same way your endpoint does.
     /// </summary>
     public EventData? EventData
     {
@@ -234,9 +234,9 @@ class WebhookListEventsResponseFromRaw : IFromRawJson<WebhookListEventsResponse>
 
 /// <summary>
 /// The exact event body that was delivered, or attempted, for this record. One of
-/// the three webhook envelopes: a message status change, an inbound message, or
-/// a template status change. Read field and event to tell which, the same way your
-/// endpoint does.
+/// the four webhook envelopes: a message status change, an inbound message, a template
+/// status change, or a contact consent signal. Read field and event to tell which,
+/// the same way your endpoint does.
 /// </summary>
 [JsonConverter(typeof(EventDataConverter))]
 public record class EventData : ModelBase
@@ -263,7 +263,9 @@ public record class EventData : ModelBase
             return Match<string?>(
                 messageEvent: (x) => x.Event,
                 inboundMessageEvent: (x) => x.Event,
-                templateEvent: (x) => x.Event
+                templateEvent: (x) => x.Event,
+                channelEvent: (x) => x.Event,
+                contactEvent: (x) => x.Event
             );
         }
     }
@@ -275,7 +277,23 @@ public record class EventData : ModelBase
             return Match<string?>(
                 messageEvent: (x) => x.Field,
                 inboundMessageEvent: (x) => x.Field,
-                templateEvent: (x) => x.Field
+                templateEvent: (x) => x.Field,
+                channelEvent: (x) => x.Field,
+                contactEvent: (x) => x.Field
+            );
+        }
+    }
+
+    public string? RequestID
+    {
+        get
+        {
+            return Match<string?>(
+                messageEvent: (x) => x.RequestID,
+                inboundMessageEvent: (x) => x.RequestID,
+                templateEvent: (x) => x.RequestID,
+                channelEvent: (x) => x.RequestID,
+                contactEvent: (x) => x.RequestID
             );
         }
     }
@@ -287,7 +305,9 @@ public record class EventData : ModelBase
             return Match<string?>(
                 messageEvent: (x) => x.Timestamp,
                 inboundMessageEvent: (x) => x.Timestamp,
-                templateEvent: (x) => x.Timestamp
+                templateEvent: (x) => x.Timestamp,
+                channelEvent: (x) => x.Timestamp,
+                contactEvent: (x) => x.Timestamp
             );
         }
     }
@@ -305,6 +325,18 @@ public record class EventData : ModelBase
     }
 
     public EventData(TemplateEvent value, JsonElement? element = null)
+    {
+        this.Value = value;
+        this._element = element;
+    }
+
+    public EventData(ChannelEvent value, JsonElement? element = null)
+    {
+        this.Value = value;
+        this._element = element;
+    }
+
+    public EventData(ContactEvent value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
@@ -379,6 +411,48 @@ public record class EventData : ModelBase
     }
 
     /// <summary>
+    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+    /// type <see cref="ChannelEvent"/>.
+    ///
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+    ///
+    /// <example>
+    /// <code>
+    /// if (instance.TryPickChannelEvent(out var value)) {
+    ///     // `value` is of type `ChannelEvent`
+    ///     Console.WriteLine(value);
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
+    public bool TryPickChannelEvent([NotNullWhen(true)] out ChannelEvent? value)
+    {
+        value = this.Value as ChannelEvent;
+        return value != null;
+    }
+
+    /// <summary>
+    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+    /// type <see cref="ContactEvent"/>.
+    ///
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+    ///
+    /// <example>
+    /// <code>
+    /// if (instance.TryPickContactEvent(out var value)) {
+    ///     // `value` is of type `ContactEvent`
+    ///     Console.WriteLine(value);
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
+    public bool TryPickContactEvent([NotNullWhen(true)] out ContactEvent? value)
+    {
+        value = this.Value as ContactEvent;
+        return value != null;
+    }
+
+    /// <summary>
     /// Calls the function parameter corresponding to the variant the instance was constructed with.
     ///
     /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
@@ -394,7 +468,9 @@ public record class EventData : ModelBase
     /// instance.Switch(
     ///     (MessageEvent value) =&gt; {...},
     ///     (InboundMessageEvent value) =&gt; {...},
-    ///     (TemplateEvent value) =&gt; {...}
+    ///     (TemplateEvent value) =&gt; {...},
+    ///     (ChannelEvent value) =&gt; {...},
+    ///     (ContactEvent value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -402,7 +478,9 @@ public record class EventData : ModelBase
     public void Switch(
         Action<MessageEvent> messageEvent,
         Action<InboundMessageEvent> inboundMessageEvent,
-        Action<TemplateEvent> templateEvent
+        Action<TemplateEvent> templateEvent,
+        Action<ChannelEvent> channelEvent,
+        Action<ContactEvent> contactEvent
     )
     {
         switch (this.Value)
@@ -415,6 +493,12 @@ public record class EventData : ModelBase
                 break;
             case TemplateEvent value:
                 templateEvent(value);
+                break;
+            case ChannelEvent value:
+                channelEvent(value);
+                break;
+            case ContactEvent value:
+                contactEvent(value);
                 break;
             default:
                 throw new SentInvalidDataException("Data did not match any variant of EventData");
@@ -438,7 +522,9 @@ public record class EventData : ModelBase
     /// var result = instance.Match(
     ///     (MessageEvent value) =&gt; {...},
     ///     (InboundMessageEvent value) =&gt; {...},
-    ///     (TemplateEvent value) =&gt; {...}
+    ///     (TemplateEvent value) =&gt; {...},
+    ///     (ChannelEvent value) =&gt; {...},
+    ///     (ContactEvent value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -446,7 +532,9 @@ public record class EventData : ModelBase
     public T Match<T>(
         Func<MessageEvent, T> messageEvent,
         Func<InboundMessageEvent, T> inboundMessageEvent,
-        Func<TemplateEvent, T> templateEvent
+        Func<TemplateEvent, T> templateEvent,
+        Func<ChannelEvent, T> channelEvent,
+        Func<ContactEvent, T> contactEvent
     )
     {
         return this.Value switch
@@ -454,6 +542,8 @@ public record class EventData : ModelBase
             MessageEvent value => messageEvent(value),
             InboundMessageEvent value => inboundMessageEvent(value),
             TemplateEvent value => templateEvent(value),
+            ChannelEvent value => channelEvent(value),
+            ContactEvent value => contactEvent(value),
             _ => throw new SentInvalidDataException("Data did not match any variant of EventData"),
         };
     }
@@ -463,6 +553,10 @@ public record class EventData : ModelBase
     public static implicit operator EventData(InboundMessageEvent value) => new(value);
 
     public static implicit operator EventData(TemplateEvent value) => new(value);
+
+    public static implicit operator EventData(ChannelEvent value) => new(value);
+
+    public static implicit operator EventData(ContactEvent value) => new(value);
 
     /// <summary>
     /// Validates that the instance was constructed with a known variant and that this variant is valid
@@ -483,7 +577,9 @@ public record class EventData : ModelBase
         this.Switch(
             (messageEvent) => messageEvent.Validate(),
             (inboundMessageEvent) => inboundMessageEvent.Validate(),
-            (templateEvent) => templateEvent.Validate()
+            (templateEvent) => templateEvent.Validate(),
+            (channelEvent) => channelEvent.Validate(),
+            (contactEvent) => contactEvent.Validate()
         );
     }
 
@@ -510,6 +606,8 @@ public record class EventData : ModelBase
             MessageEvent _ => 0,
             InboundMessageEvent _ => 1,
             TemplateEvent _ => 2,
+            ChannelEvent _ => 3,
+            ContactEvent _ => 4,
             _ => -1,
         };
     }
@@ -555,6 +653,34 @@ sealed class EventDataConverter : JsonConverter<EventData>
         try
         {
             var deserialized = JsonSerializer.Deserialize<TemplateEvent>(element, options);
+            if (deserialized != null)
+            {
+                deserialized.Validate();
+                return new(deserialized, element);
+            }
+        }
+        catch (Exception e) when (e is JsonException || e is SentInvalidDataException)
+        {
+            // ignore
+        }
+
+        try
+        {
+            var deserialized = JsonSerializer.Deserialize<ChannelEvent>(element, options);
+            if (deserialized != null)
+            {
+                deserialized.Validate();
+                return new(deserialized, element);
+            }
+        }
+        catch (Exception e) when (e is JsonException || e is SentInvalidDataException)
+        {
+            // ignore
+        }
+
+        try
+        {
+            var deserialized = JsonSerializer.Deserialize<ContactEvent>(element, options);
             if (deserialized != null)
             {
                 deserialized.Validate();

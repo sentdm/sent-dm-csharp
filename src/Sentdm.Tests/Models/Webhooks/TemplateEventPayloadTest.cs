@@ -14,6 +14,7 @@ public class TemplateEventPayloadTest : TestBase
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Category = "category",
             Channel = "channel",
             Language = "language",
@@ -25,6 +26,7 @@ public class TemplateEventPayloadTest : TestBase
         string expectedStatus = "status";
         string expectedWhatsappTemplateID = "whatsapp_template_id";
         string expectedAccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedAutoReplyAction = "auto_reply_action";
         string expectedCategory = "category";
         string expectedChannel = "channel";
         string expectedLanguage = "language";
@@ -35,6 +37,7 @@ public class TemplateEventPayloadTest : TestBase
         Assert.Equal(expectedStatus, model.Status);
         Assert.Equal(expectedWhatsappTemplateID, model.WhatsappTemplateID);
         Assert.Equal(expectedAccountID, model.AccountID);
+        Assert.Equal(expectedAutoReplyAction, model.AutoReplyAction);
         Assert.Equal(expectedCategory, model.Category);
         Assert.Equal(expectedChannel, model.Channel);
         Assert.Equal(expectedLanguage, model.Language);
@@ -51,6 +54,7 @@ public class TemplateEventPayloadTest : TestBase
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Category = "category",
             Channel = "channel",
             Language = "language",
@@ -76,6 +80,7 @@ public class TemplateEventPayloadTest : TestBase
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Category = "category",
             Channel = "channel",
             Language = "language",
@@ -94,6 +99,7 @@ public class TemplateEventPayloadTest : TestBase
         string expectedStatus = "status";
         string expectedWhatsappTemplateID = "whatsapp_template_id";
         string expectedAccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedAutoReplyAction = "auto_reply_action";
         string expectedCategory = "category";
         string expectedChannel = "channel";
         string expectedLanguage = "language";
@@ -104,6 +110,7 @@ public class TemplateEventPayloadTest : TestBase
         Assert.Equal(expectedStatus, deserialized.Status);
         Assert.Equal(expectedWhatsappTemplateID, deserialized.WhatsappTemplateID);
         Assert.Equal(expectedAccountID, deserialized.AccountID);
+        Assert.Equal(expectedAutoReplyAction, deserialized.AutoReplyAction);
         Assert.Equal(expectedCategory, deserialized.Category);
         Assert.Equal(expectedChannel, deserialized.Channel);
         Assert.Equal(expectedLanguage, deserialized.Language);
@@ -120,6 +127,7 @@ public class TemplateEventPayloadTest : TestBase
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Category = "category",
             Channel = "channel",
             Language = "language",
@@ -138,6 +146,8 @@ public class TemplateEventPayloadTest : TestBase
         {
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
+            AutoReplyAction = "auto_reply_action",
+            Channel = "channel",
             Reason = "reason",
         };
 
@@ -145,8 +155,6 @@ public class TemplateEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("account_id"));
         Assert.Null(model.Category);
         Assert.False(model.RawData.ContainsKey("category"));
-        Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
         Assert.Null(model.Language);
         Assert.False(model.RawData.ContainsKey("language"));
         Assert.Null(model.TemplateID);
@@ -162,6 +170,8 @@ public class TemplateEventPayloadTest : TestBase
         {
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
+            AutoReplyAction = "auto_reply_action",
+            Channel = "channel",
             Reason = "reason",
         };
 
@@ -175,12 +185,13 @@ public class TemplateEventPayloadTest : TestBase
         {
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
+            AutoReplyAction = "auto_reply_action",
+            Channel = "channel",
             Reason = "reason",
 
             // Null should be interpreted as omitted for these properties
             AccountID = null,
             Category = null,
-            Channel = null,
             Language = null,
             TemplateID = null,
             TemplateName = null,
@@ -190,8 +201,6 @@ public class TemplateEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("account_id"));
         Assert.Null(model.Category);
         Assert.False(model.RawData.ContainsKey("category"));
-        Assert.Null(model.Channel);
-        Assert.False(model.RawData.ContainsKey("channel"));
         Assert.Null(model.Language);
         Assert.False(model.RawData.ContainsKey("language"));
         Assert.Null(model.TemplateID);
@@ -207,12 +216,13 @@ public class TemplateEventPayloadTest : TestBase
         {
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
+            AutoReplyAction = "auto_reply_action",
+            Channel = "channel",
             Reason = "reason",
 
             // Null should be interpreted as omitted for these properties
             AccountID = null,
             Category = null,
-            Channel = null,
             Language = null,
             TemplateID = null,
             TemplateName = null,
@@ -230,12 +240,15 @@ public class TemplateEventPayloadTest : TestBase
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
-            Channel = "channel",
             Language = "language",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
         };
 
+        Assert.Null(model.AutoReplyAction);
+        Assert.False(model.RawData.ContainsKey("auto_reply_action"));
+        Assert.Null(model.Channel);
+        Assert.False(model.RawData.ContainsKey("channel"));
         Assert.Null(model.Reason);
         Assert.False(model.RawData.ContainsKey("reason"));
     }
@@ -249,7 +262,6 @@ public class TemplateEventPayloadTest : TestBase
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
-            Channel = "channel",
             Language = "language",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -267,14 +279,19 @@ public class TemplateEventPayloadTest : TestBase
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
-            Channel = "channel",
             Language = "language",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
 
+            AutoReplyAction = null,
+            Channel = null,
             Reason = null,
         };
 
+        Assert.Null(model.AutoReplyAction);
+        Assert.True(model.RawData.ContainsKey("auto_reply_action"));
+        Assert.Null(model.Channel);
+        Assert.True(model.RawData.ContainsKey("channel"));
         Assert.Null(model.Reason);
         Assert.True(model.RawData.ContainsKey("reason"));
     }
@@ -288,11 +305,12 @@ public class TemplateEventPayloadTest : TestBase
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Category = "category",
-            Channel = "channel",
             Language = "language",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
 
+            AutoReplyAction = null,
+            Channel = null,
             Reason = null,
         };
 
@@ -307,6 +325,7 @@ public class TemplateEventPayloadTest : TestBase
             Status = "status",
             WhatsappTemplateID = "whatsapp_template_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AutoReplyAction = "auto_reply_action",
             Category = "category",
             Channel = "channel",
             Language = "language",
