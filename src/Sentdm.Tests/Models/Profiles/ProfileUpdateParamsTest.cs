@@ -31,7 +31,7 @@ public class ProfileUpdateParamsTest : TestBase
                     Vertical = TcrVertical.Professional,
                     DestinationCountries = [new() { ID = "US", IsMain = false }],
                     IsTcrApplication = true,
-                    Notes = null,
+                    Notes = "notes",
                     PhoneNumberPrefix = "+1",
                 },
                 Contact = new()
@@ -99,7 +99,7 @@ public class ProfileUpdateParamsTest : TestBase
                 Vertical = TcrVertical.Professional,
                 DestinationCountries = [new() { ID = "US", IsMain = false }],
                 IsTcrApplication = true,
-                Notes = null,
+                Notes = "notes",
                 PhoneNumberPrefix = "+1",
             },
             Contact = new()
@@ -190,7 +190,7 @@ public class ProfileUpdateParamsTest : TestBase
                     Vertical = TcrVertical.Professional,
                     DestinationCountries = [new() { ID = "US", IsMain = false }],
                     IsTcrApplication = true,
-                    Notes = null,
+                    Notes = "notes",
                     PhoneNumberPrefix = "+1",
                 },
                 Contact = new()
@@ -271,7 +271,7 @@ public class ProfileUpdateParamsTest : TestBase
                     Vertical = TcrVertical.Professional,
                     DestinationCountries = [new() { ID = "US", IsMain = false }],
                     IsTcrApplication = true,
-                    Notes = null,
+                    Notes = "notes",
                     PhoneNumberPrefix = "+1",
                 },
                 Contact = new()
@@ -517,7 +517,7 @@ public class ProfileUpdateParamsTest : TestBase
                     Vertical = TcrVertical.Professional,
                     DestinationCountries = [new() { ID = "US", IsMain = false }],
                     IsTcrApplication = true,
-                    Notes = null,
+                    Notes = "notes",
                     PhoneNumberPrefix = "+1",
                 },
                 Contact = new()
