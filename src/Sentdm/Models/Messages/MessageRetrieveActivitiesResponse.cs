@@ -257,7 +257,9 @@ class DataFromRaw : IFromRawJson<Data>
 }
 
 /// <summary>
-/// A single message activity event for v3 API
+/// A single message activity event for v3 API.              The activity list mixes
+/// statuses, so unlike a message it is one shape rather than two: a SCHEDULED entry
+/// carries scheduled_at, and every other entry has no such key.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Activity, ActivityFromRaw>))]
 public sealed record class Activity : JsonModel
@@ -325,8 +327,24 @@ public sealed record class Activity : JsonModel
     }
 
     /// <summary>
-    /// Activity status. Outbound: QUEUED, PROCESSED, ROUTED, SENT, DELIVERED, READ,
-    /// FAILED. Inbound (from contact): RECEIVED (terminal).
+    /// SCHEDULED activities only: when the held message will be released for delivery,
+    /// in UTC. Same wire name as on the send response, the message and the webhook.
+    /// Omitted on every other activity. A message that quiet hours moved at release
+    /// has two SCHEDULED entries, each carrying the instant as it stood at that moment.
+    /// </summary>
+    public DateTimeOffset? ScheduledAt
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<DateTimeOffset>("scheduled_at");
+        }
+        init { this._rawData.Set("scheduled_at", value); }
+    }
+
+    /// <summary>
+    /// Activity status. Outbound: QUEUED, PROCESSED, ROUTED, SCHEDULED, SENT, DELIVERED,
+    /// READ, FAILED. Inbound (from contact): RECEIVED (terminal).
     /// </summary>
     public string? Status
     {
@@ -374,6 +392,7 @@ public sealed record class Activity : JsonModel
         _ = this.Description;
         _ = this.From;
         _ = this.Price;
+        _ = this.ScheduledAt;
         _ = this.Status;
         _ = this.Timestamp;
     }
