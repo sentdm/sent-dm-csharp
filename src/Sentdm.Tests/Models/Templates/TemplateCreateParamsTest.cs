@@ -17,6 +17,32 @@ public class TemplateCreateParamsTest : TestBase
             {
                 Body = new()
                 {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
                     MultiChannel = new()
                     {
                         Template =
@@ -240,6 +266,32 @@ public class TemplateCreateParamsTest : TestBase
         {
             Body = new()
             {
+                Mms = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Subject = "subject",
+                },
                 MultiChannel = new()
                 {
                     Template =
@@ -527,6 +579,32 @@ public class TemplateCreateParamsTest : TestBase
             {
                 Body = new()
                 {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
                     MultiChannel = new()
                     {
                         Template =
@@ -761,6 +839,32 @@ public class TemplateCreateParamsTest : TestBase
             {
                 Body = new()
                 {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
                     MultiChannel = new()
                     {
                         Template =
@@ -1030,6 +1134,32 @@ public class TemplateCreateParamsTest : TestBase
             {
                 Body = new()
                 {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
                     MultiChannel = new()
                     {
                         Template =

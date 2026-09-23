@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Webhooks;
@@ -30,6 +31,8 @@ public class WebhookListEventsResponseTest : TestBase
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
+                    ScheduleReason = "schedule_reason",
+                    ScheduledAt = "scheduled_at",
                     TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
@@ -62,6 +65,8 @@ public class WebhookListEventsResponseTest : TestBase
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
+                ScheduleReason = "schedule_reason",
+                ScheduledAt = "scheduled_at",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
@@ -115,6 +120,8 @@ public class WebhookListEventsResponseTest : TestBase
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
+                    ScheduleReason = "schedule_reason",
+                    ScheduledAt = "scheduled_at",
                     TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
@@ -161,6 +168,8 @@ public class WebhookListEventsResponseTest : TestBase
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
+                    ScheduleReason = "schedule_reason",
+                    ScheduledAt = "scheduled_at",
                     TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
@@ -200,6 +209,8 @@ public class WebhookListEventsResponseTest : TestBase
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
+                ScheduleReason = "schedule_reason",
+                ScheduledAt = "scheduled_at",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
@@ -253,6 +264,8 @@ public class WebhookListEventsResponseTest : TestBase
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
+                    ScheduleReason = "schedule_reason",
+                    ScheduledAt = "scheduled_at",
                     TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
@@ -390,6 +403,8 @@ public class WebhookListEventsResponseTest : TestBase
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
+                    ScheduleReason = "schedule_reason",
+                    ScheduledAt = "scheduled_at",
                     TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
@@ -434,6 +449,8 @@ public class WebhookListEventsResponseTest : TestBase
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
+                    ScheduleReason = "schedule_reason",
+                    ScheduledAt = "scheduled_at",
                     TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
@@ -469,6 +486,8 @@ public class WebhookListEventsResponseTest : TestBase
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
+                    ScheduleReason = "schedule_reason",
+                    ScheduledAt = "scheduled_at",
                     TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
@@ -519,6 +538,8 @@ public class WebhookListEventsResponseTest : TestBase
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
+                    ScheduleReason = "schedule_reason",
+                    ScheduledAt = "scheduled_at",
                     TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
@@ -561,6 +582,8 @@ public class WebhookListEventsResponseTest : TestBase
                     Channel = "channel",
                     MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     OutboundNumber = "outbound_number",
+                    ScheduleReason = "schedule_reason",
+                    ScheduledAt = "scheduled_at",
                     TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     TemplateName = "template_name",
                     UpdatedAt = "updated_at",
@@ -599,6 +622,8 @@ public class EventDataTest : TestBase
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
+                ScheduleReason = "schedule_reason",
+                ScheduledAt = "scheduled_at",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
@@ -671,6 +696,26 @@ public class EventDataTest : TestBase
                 Country = "country",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Compliance = new()
+                {
+                    Brand = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Campaign = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Documents =
+                    [
+                        new()
+                        {
+                            DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            FileName = "file_name",
+                            Key = "key",
+                        },
+                    ],
+                },
                 NumberType = "number_type",
                 Reason = "reason",
                 SenderValue = "sender_value",
@@ -695,15 +740,52 @@ public class EventDataTest : TestBase
                 OptOut = true,
                 Source = "source",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                AgentID = "agent_id",
                 Channel = "channel",
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                From = "from",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                PhoneNumber = "phone_number",
+                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Text = "text",
+                To = "to",
             },
             RequestID = "request_id",
             Timestamp = "timestamp",
         };
+        value.Validate();
+    }
+
+    [Fact]
+    public void SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayloadValidationWorks()
+    {
+        EventData value =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload()
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    RecordID = "record_id",
+                    AccessCountry = "access_country",
+                    AccessOutcome = "access_outcome",
+                    Browser = "browser",
+                    BytesServed = 0,
+                    Channel = "channel",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    Device = "device",
+                    LinkKind = "link_kind",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    OccurredAt = "occurred_at",
+                    ReferenceKey = "reference_key",
+                    ReferrerHost = "referrer_host",
+                    RequestMethod = "request_method",
+                    SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    StatusCode = 0,
+                    TrafficClass = "traffic_class",
+                },
+                RequestID = "request_id",
+                Timestamp = "timestamp",
+            };
         value.Validate();
     }
 
@@ -723,6 +805,8 @@ public class EventDataTest : TestBase
                 Channel = "channel",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
+                ScheduleReason = "schedule_reason",
+                ScheduledAt = "scheduled_at",
                 TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 TemplateName = "template_name",
                 UpdatedAt = "updated_at",
@@ -813,6 +897,26 @@ public class EventDataTest : TestBase
                 Country = "country",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Compliance = new()
+                {
+                    Brand = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Campaign = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Documents =
+                    [
+                        new()
+                        {
+                            DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            FileName = "file_name",
+                            Key = "key",
+                        },
+                    ],
+                },
                 NumberType = "number_type",
                 Reason = "reason",
                 SenderValue = "sender_value",
@@ -843,11 +947,14 @@ public class EventDataTest : TestBase
                 OptOut = true,
                 Source = "source",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                AgentID = "agent_id",
                 Channel = "channel",
                 ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                From = "from",
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                PhoneNumber = "phone_number",
+                TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Text = "text",
+                To = "to",
             },
             RequestID = "request_id",
             Timestamp = "timestamp",
@@ -859,5 +966,985 @@ public class EventDataTest : TestBase
         );
 
         Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayloadSerializationRoundtripWorks()
+    {
+        EventData value =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload()
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    RecordID = "record_id",
+                    AccessCountry = "access_country",
+                    AccessOutcome = "access_outcome",
+                    Browser = "browser",
+                    BytesServed = 0,
+                    Channel = "channel",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    Device = "device",
+                    LinkKind = "link_kind",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    OccurredAt = "occurred_at",
+                    ReferenceKey = "reference_key",
+                    ReferrerHost = "referrer_host",
+                    RequestMethod = "request_method",
+                    SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    StatusCode = 0,
+                    TrafficClass = "traffic_class",
+                },
+                RequestID = "request_id",
+                Timestamp = "timestamp",
+            };
+        string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<EventData>(
+            element,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
+    }
+}
+
+public class SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayloadTest
+    : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    RecordID = "record_id",
+                    AccessCountry = "access_country",
+                    AccessOutcome = "access_outcome",
+                    Browser = "browser",
+                    BytesServed = 0,
+                    Channel = "channel",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    Device = "device",
+                    LinkKind = "link_kind",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    OccurredAt = "occurred_at",
+                    ReferenceKey = "reference_key",
+                    ReferrerHost = "referrer_host",
+                    RequestMethod = "request_method",
+                    SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    StatusCode = 0,
+                    TrafficClass = "traffic_class",
+                },
+                RequestID = "request_id",
+                Timestamp = "timestamp",
+            };
+
+        string expectedEvent = "event";
+        string expectedField = "field";
+        Payload expectedPayload = new()
+        {
+            RecordID = "record_id",
+            AccessCountry = "access_country",
+            AccessOutcome = "access_outcome",
+            Browser = "browser",
+            BytesServed = 0,
+            Channel = "channel",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Device = "device",
+            LinkKind = "link_kind",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            OccurredAt = "occurred_at",
+            ReferenceKey = "reference_key",
+            ReferrerHost = "referrer_host",
+            RequestMethod = "request_method",
+            SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            StatusCode = 0,
+            TrafficClass = "traffic_class",
+        };
+        string expectedRequestID = "request_id";
+        string expectedTimestamp = "timestamp";
+
+        Assert.Equal(expectedEvent, model.Event);
+        Assert.Equal(expectedField, model.Field);
+        Assert.Equal(expectedPayload, model.Payload);
+        Assert.Equal(expectedRequestID, model.RequestID);
+        Assert.Equal(expectedTimestamp, model.Timestamp);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    RecordID = "record_id",
+                    AccessCountry = "access_country",
+                    AccessOutcome = "access_outcome",
+                    Browser = "browser",
+                    BytesServed = 0,
+                    Channel = "channel",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    Device = "device",
+                    LinkKind = "link_kind",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    OccurredAt = "occurred_at",
+                    ReferenceKey = "reference_key",
+                    ReferrerHost = "referrer_host",
+                    RequestMethod = "request_method",
+                    SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    StatusCode = 0,
+                    TrafficClass = "traffic_class",
+                },
+                RequestID = "request_id",
+                Timestamp = "timestamp",
+            };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized =
+            JsonSerializer.Deserialize<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload>(
+                json,
+                ModelBase.SerializerOptions
+            );
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    RecordID = "record_id",
+                    AccessCountry = "access_country",
+                    AccessOutcome = "access_outcome",
+                    Browser = "browser",
+                    BytesServed = 0,
+                    Channel = "channel",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    Device = "device",
+                    LinkKind = "link_kind",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    OccurredAt = "occurred_at",
+                    ReferenceKey = "reference_key",
+                    ReferrerHost = "referrer_host",
+                    RequestMethod = "request_method",
+                    SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    StatusCode = 0,
+                    TrafficClass = "traffic_class",
+                },
+                RequestID = "request_id",
+                Timestamp = "timestamp",
+            };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized =
+            JsonSerializer.Deserialize<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload>(
+                element,
+                ModelBase.SerializerOptions
+            );
+        Assert.NotNull(deserialized);
+
+        string expectedEvent = "event";
+        string expectedField = "field";
+        Payload expectedPayload = new()
+        {
+            RecordID = "record_id",
+            AccessCountry = "access_country",
+            AccessOutcome = "access_outcome",
+            Browser = "browser",
+            BytesServed = 0,
+            Channel = "channel",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Device = "device",
+            LinkKind = "link_kind",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            OccurredAt = "occurred_at",
+            ReferenceKey = "reference_key",
+            ReferrerHost = "referrer_host",
+            RequestMethod = "request_method",
+            SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            StatusCode = 0,
+            TrafficClass = "traffic_class",
+        };
+        string expectedRequestID = "request_id";
+        string expectedTimestamp = "timestamp";
+
+        Assert.Equal(expectedEvent, deserialized.Event);
+        Assert.Equal(expectedField, deserialized.Field);
+        Assert.Equal(expectedPayload, deserialized.Payload);
+        Assert.Equal(expectedRequestID, deserialized.RequestID);
+        Assert.Equal(expectedTimestamp, deserialized.Timestamp);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    RecordID = "record_id",
+                    AccessCountry = "access_country",
+                    AccessOutcome = "access_outcome",
+                    Browser = "browser",
+                    BytesServed = 0,
+                    Channel = "channel",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    Device = "device",
+                    LinkKind = "link_kind",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    OccurredAt = "occurred_at",
+                    ReferenceKey = "reference_key",
+                    ReferrerHost = "referrer_host",
+                    RequestMethod = "request_method",
+                    SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    StatusCode = 0,
+                    TrafficClass = "traffic_class",
+                },
+                RequestID = "request_id",
+                Timestamp = "timestamp",
+            };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Event = "event",
+                Payload = new()
+                {
+                    RecordID = "record_id",
+                    AccessCountry = "access_country",
+                    AccessOutcome = "access_outcome",
+                    Browser = "browser",
+                    BytesServed = 0,
+                    Channel = "channel",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    Device = "device",
+                    LinkKind = "link_kind",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    OccurredAt = "occurred_at",
+                    ReferenceKey = "reference_key",
+                    ReferrerHost = "referrer_host",
+                    RequestMethod = "request_method",
+                    SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    StatusCode = 0,
+                    TrafficClass = "traffic_class",
+                },
+                RequestID = "request_id",
+            };
+
+        Assert.Null(model.Field);
+        Assert.False(model.RawData.ContainsKey("field"));
+        Assert.Null(model.Timestamp);
+        Assert.False(model.RawData.ContainsKey("timestamp"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Event = "event",
+                Payload = new()
+                {
+                    RecordID = "record_id",
+                    AccessCountry = "access_country",
+                    AccessOutcome = "access_outcome",
+                    Browser = "browser",
+                    BytesServed = 0,
+                    Channel = "channel",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    Device = "device",
+                    LinkKind = "link_kind",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    OccurredAt = "occurred_at",
+                    ReferenceKey = "reference_key",
+                    ReferrerHost = "referrer_host",
+                    RequestMethod = "request_method",
+                    SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    StatusCode = 0,
+                    TrafficClass = "traffic_class",
+                },
+                RequestID = "request_id",
+            };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Event = "event",
+                Payload = new()
+                {
+                    RecordID = "record_id",
+                    AccessCountry = "access_country",
+                    AccessOutcome = "access_outcome",
+                    Browser = "browser",
+                    BytesServed = 0,
+                    Channel = "channel",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    Device = "device",
+                    LinkKind = "link_kind",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    OccurredAt = "occurred_at",
+                    ReferenceKey = "reference_key",
+                    ReferrerHost = "referrer_host",
+                    RequestMethod = "request_method",
+                    SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    StatusCode = 0,
+                    TrafficClass = "traffic_class",
+                },
+                RequestID = "request_id",
+
+                // Null should be interpreted as omitted for these properties
+                Field = null,
+                Timestamp = null,
+            };
+
+        Assert.Null(model.Field);
+        Assert.False(model.RawData.ContainsKey("field"));
+        Assert.Null(model.Timestamp);
+        Assert.False(model.RawData.ContainsKey("timestamp"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Event = "event",
+                Payload = new()
+                {
+                    RecordID = "record_id",
+                    AccessCountry = "access_country",
+                    AccessOutcome = "access_outcome",
+                    Browser = "browser",
+                    BytesServed = 0,
+                    Channel = "channel",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    Device = "device",
+                    LinkKind = "link_kind",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    OccurredAt = "occurred_at",
+                    ReferenceKey = "reference_key",
+                    ReferrerHost = "referrer_host",
+                    RequestMethod = "request_method",
+                    SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    StatusCode = 0,
+                    TrafficClass = "traffic_class",
+                },
+                RequestID = "request_id",
+
+                // Null should be interpreted as omitted for these properties
+                Field = null,
+                Timestamp = null,
+            };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Field = "field",
+                Timestamp = "timestamp",
+            };
+
+        Assert.Null(model.Event);
+        Assert.False(model.RawData.ContainsKey("event"));
+        Assert.Null(model.Payload);
+        Assert.False(model.RawData.ContainsKey("payload"));
+        Assert.Null(model.RequestID);
+        Assert.False(model.RawData.ContainsKey("request_id"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetValidation_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Field = "field",
+                Timestamp = "timestamp",
+            };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Field = "field",
+                Timestamp = "timestamp",
+
+                Event = null,
+                Payload = null,
+                RequestID = null,
+            };
+
+        Assert.Null(model.Event);
+        Assert.True(model.RawData.ContainsKey("event"));
+        Assert.Null(model.Payload);
+        Assert.True(model.RawData.ContainsKey("payload"));
+        Assert.Null(model.RequestID);
+        Assert.True(model.RawData.ContainsKey("request_id"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullValidation_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Field = "field",
+                Timestamp = "timestamp",
+
+                Event = null,
+                Payload = null,
+                RequestID = null,
+            };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model =
+            new SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+            {
+                Event = "event",
+                Field = "field",
+                Payload = new()
+                {
+                    RecordID = "record_id",
+                    AccessCountry = "access_country",
+                    AccessOutcome = "access_outcome",
+                    Browser = "browser",
+                    BytesServed = 0,
+                    Channel = "channel",
+                    CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    Device = "device",
+                    LinkKind = "link_kind",
+                    MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    OccurredAt = "occurred_at",
+                    ReferenceKey = "reference_key",
+                    ReferrerHost = "referrer_host",
+                    RequestMethod = "request_method",
+                    SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    StatusCode = 0,
+                    TrafficClass = "traffic_class",
+                },
+                RequestID = "request_id",
+                Timestamp = "timestamp",
+            };
+
+        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload copied = new(
+            model
+        );
+
+        Assert.Equal(model, copied);
+    }
+}
+
+public class PayloadTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            AccessCountry = "access_country",
+            AccessOutcome = "access_outcome",
+            Browser = "browser",
+            BytesServed = 0,
+            Channel = "channel",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Device = "device",
+            LinkKind = "link_kind",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            OccurredAt = "occurred_at",
+            ReferenceKey = "reference_key",
+            ReferrerHost = "referrer_host",
+            RequestMethod = "request_method",
+            SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            StatusCode = 0,
+            TrafficClass = "traffic_class",
+        };
+
+        string expectedRecordID = "record_id";
+        string expectedAccessCountry = "access_country";
+        string expectedAccessOutcome = "access_outcome";
+        string expectedBrowser = "browser";
+        long expectedBytesServed = 0;
+        string expectedChannel = "channel";
+        string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedDevice = "device";
+        string expectedLinkKind = "link_kind";
+        string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedOccurredAt = "occurred_at";
+        string expectedReferenceKey = "reference_key";
+        string expectedReferrerHost = "referrer_host";
+        string expectedRequestMethod = "request_method";
+        string expectedSenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        int expectedStatusCode = 0;
+        string expectedTrafficClass = "traffic_class";
+
+        Assert.Equal(expectedRecordID, model.RecordID);
+        Assert.Equal(expectedAccessCountry, model.AccessCountry);
+        Assert.Equal(expectedAccessOutcome, model.AccessOutcome);
+        Assert.Equal(expectedBrowser, model.Browser);
+        Assert.Equal(expectedBytesServed, model.BytesServed);
+        Assert.Equal(expectedChannel, model.Channel);
+        Assert.Equal(expectedCustomerID, model.CustomerID);
+        Assert.Equal(expectedDevice, model.Device);
+        Assert.Equal(expectedLinkKind, model.LinkKind);
+        Assert.Equal(expectedMessageID, model.MessageID);
+        Assert.Equal(expectedOccurredAt, model.OccurredAt);
+        Assert.Equal(expectedReferenceKey, model.ReferenceKey);
+        Assert.Equal(expectedReferrerHost, model.ReferrerHost);
+        Assert.Equal(expectedRequestMethod, model.RequestMethod);
+        Assert.Equal(expectedSenderProfileID, model.SenderProfileID);
+        Assert.Equal(expectedStatusCode, model.StatusCode);
+        Assert.Equal(expectedTrafficClass, model.TrafficClass);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            AccessCountry = "access_country",
+            AccessOutcome = "access_outcome",
+            Browser = "browser",
+            BytesServed = 0,
+            Channel = "channel",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Device = "device",
+            LinkKind = "link_kind",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            OccurredAt = "occurred_at",
+            ReferenceKey = "reference_key",
+            ReferrerHost = "referrer_host",
+            RequestMethod = "request_method",
+            SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            StatusCode = 0,
+            TrafficClass = "traffic_class",
+        };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Payload>(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            AccessCountry = "access_country",
+            AccessOutcome = "access_outcome",
+            Browser = "browser",
+            BytesServed = 0,
+            Channel = "channel",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Device = "device",
+            LinkKind = "link_kind",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            OccurredAt = "occurred_at",
+            ReferenceKey = "reference_key",
+            ReferrerHost = "referrer_host",
+            RequestMethod = "request_method",
+            SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            StatusCode = 0,
+            TrafficClass = "traffic_class",
+        };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Payload>(
+            element,
+            ModelBase.SerializerOptions
+        );
+        Assert.NotNull(deserialized);
+
+        string expectedRecordID = "record_id";
+        string expectedAccessCountry = "access_country";
+        string expectedAccessOutcome = "access_outcome";
+        string expectedBrowser = "browser";
+        long expectedBytesServed = 0;
+        string expectedChannel = "channel";
+        string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedDevice = "device";
+        string expectedLinkKind = "link_kind";
+        string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedOccurredAt = "occurred_at";
+        string expectedReferenceKey = "reference_key";
+        string expectedReferrerHost = "referrer_host";
+        string expectedRequestMethod = "request_method";
+        string expectedSenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        int expectedStatusCode = 0;
+        string expectedTrafficClass = "traffic_class";
+
+        Assert.Equal(expectedRecordID, deserialized.RecordID);
+        Assert.Equal(expectedAccessCountry, deserialized.AccessCountry);
+        Assert.Equal(expectedAccessOutcome, deserialized.AccessOutcome);
+        Assert.Equal(expectedBrowser, deserialized.Browser);
+        Assert.Equal(expectedBytesServed, deserialized.BytesServed);
+        Assert.Equal(expectedChannel, deserialized.Channel);
+        Assert.Equal(expectedCustomerID, deserialized.CustomerID);
+        Assert.Equal(expectedDevice, deserialized.Device);
+        Assert.Equal(expectedLinkKind, deserialized.LinkKind);
+        Assert.Equal(expectedMessageID, deserialized.MessageID);
+        Assert.Equal(expectedOccurredAt, deserialized.OccurredAt);
+        Assert.Equal(expectedReferenceKey, deserialized.ReferenceKey);
+        Assert.Equal(expectedReferrerHost, deserialized.ReferrerHost);
+        Assert.Equal(expectedRequestMethod, deserialized.RequestMethod);
+        Assert.Equal(expectedSenderProfileID, deserialized.SenderProfileID);
+        Assert.Equal(expectedStatusCode, deserialized.StatusCode);
+        Assert.Equal(expectedTrafficClass, deserialized.TrafficClass);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            AccessCountry = "access_country",
+            AccessOutcome = "access_outcome",
+            Browser = "browser",
+            BytesServed = 0,
+            Channel = "channel",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Device = "device",
+            LinkKind = "link_kind",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            OccurredAt = "occurred_at",
+            ReferenceKey = "reference_key",
+            ReferrerHost = "referrer_host",
+            RequestMethod = "request_method",
+            SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            StatusCode = 0,
+            TrafficClass = "traffic_class",
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            AccessCountry = "access_country",
+            AccessOutcome = "access_outcome",
+            Browser = "browser",
+            BytesServed = 0,
+            Channel = "channel",
+            Device = "device",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ReferenceKey = "reference_key",
+            ReferrerHost = "referrer_host",
+            RequestMethod = "request_method",
+            SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            StatusCode = 0,
+            TrafficClass = "traffic_class",
+        };
+
+        Assert.Null(model.CustomerID);
+        Assert.False(model.RawData.ContainsKey("customer_id"));
+        Assert.Null(model.LinkKind);
+        Assert.False(model.RawData.ContainsKey("link_kind"));
+        Assert.Null(model.OccurredAt);
+        Assert.False(model.RawData.ContainsKey("occurred_at"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            AccessCountry = "access_country",
+            AccessOutcome = "access_outcome",
+            Browser = "browser",
+            BytesServed = 0,
+            Channel = "channel",
+            Device = "device",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ReferenceKey = "reference_key",
+            ReferrerHost = "referrer_host",
+            RequestMethod = "request_method",
+            SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            StatusCode = 0,
+            TrafficClass = "traffic_class",
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            AccessCountry = "access_country",
+            AccessOutcome = "access_outcome",
+            Browser = "browser",
+            BytesServed = 0,
+            Channel = "channel",
+            Device = "device",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ReferenceKey = "reference_key",
+            ReferrerHost = "referrer_host",
+            RequestMethod = "request_method",
+            SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            StatusCode = 0,
+            TrafficClass = "traffic_class",
+
+            // Null should be interpreted as omitted for these properties
+            CustomerID = null,
+            LinkKind = null,
+            OccurredAt = null,
+        };
+
+        Assert.Null(model.CustomerID);
+        Assert.False(model.RawData.ContainsKey("customer_id"));
+        Assert.Null(model.LinkKind);
+        Assert.False(model.RawData.ContainsKey("link_kind"));
+        Assert.Null(model.OccurredAt);
+        Assert.False(model.RawData.ContainsKey("occurred_at"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            AccessCountry = "access_country",
+            AccessOutcome = "access_outcome",
+            Browser = "browser",
+            BytesServed = 0,
+            Channel = "channel",
+            Device = "device",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ReferenceKey = "reference_key",
+            ReferrerHost = "referrer_host",
+            RequestMethod = "request_method",
+            SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            StatusCode = 0,
+            TrafficClass = "traffic_class",
+
+            // Null should be interpreted as omitted for these properties
+            CustomerID = null,
+            LinkKind = null,
+            OccurredAt = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            LinkKind = "link_kind",
+            OccurredAt = "occurred_at",
+        };
+
+        Assert.Null(model.AccessCountry);
+        Assert.False(model.RawData.ContainsKey("access_country"));
+        Assert.Null(model.AccessOutcome);
+        Assert.False(model.RawData.ContainsKey("access_outcome"));
+        Assert.Null(model.Browser);
+        Assert.False(model.RawData.ContainsKey("browser"));
+        Assert.Null(model.BytesServed);
+        Assert.False(model.RawData.ContainsKey("bytes_served"));
+        Assert.Null(model.Channel);
+        Assert.False(model.RawData.ContainsKey("channel"));
+        Assert.Null(model.Device);
+        Assert.False(model.RawData.ContainsKey("device"));
+        Assert.Null(model.MessageID);
+        Assert.False(model.RawData.ContainsKey("message_id"));
+        Assert.Null(model.ReferenceKey);
+        Assert.False(model.RawData.ContainsKey("reference_key"));
+        Assert.Null(model.ReferrerHost);
+        Assert.False(model.RawData.ContainsKey("referrer_host"));
+        Assert.Null(model.RequestMethod);
+        Assert.False(model.RawData.ContainsKey("request_method"));
+        Assert.Null(model.SenderProfileID);
+        Assert.False(model.RawData.ContainsKey("sender_profile_id"));
+        Assert.Null(model.StatusCode);
+        Assert.False(model.RawData.ContainsKey("status_code"));
+        Assert.Null(model.TrafficClass);
+        Assert.False(model.RawData.ContainsKey("traffic_class"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            LinkKind = "link_kind",
+            OccurredAt = "occurred_at",
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            LinkKind = "link_kind",
+            OccurredAt = "occurred_at",
+
+            AccessCountry = null,
+            AccessOutcome = null,
+            Browser = null,
+            BytesServed = null,
+            Channel = null,
+            Device = null,
+            MessageID = null,
+            ReferenceKey = null,
+            ReferrerHost = null,
+            RequestMethod = null,
+            SenderProfileID = null,
+            StatusCode = null,
+            TrafficClass = null,
+        };
+
+        Assert.Null(model.AccessCountry);
+        Assert.True(model.RawData.ContainsKey("access_country"));
+        Assert.Null(model.AccessOutcome);
+        Assert.True(model.RawData.ContainsKey("access_outcome"));
+        Assert.Null(model.Browser);
+        Assert.True(model.RawData.ContainsKey("browser"));
+        Assert.Null(model.BytesServed);
+        Assert.True(model.RawData.ContainsKey("bytes_served"));
+        Assert.Null(model.Channel);
+        Assert.True(model.RawData.ContainsKey("channel"));
+        Assert.Null(model.Device);
+        Assert.True(model.RawData.ContainsKey("device"));
+        Assert.Null(model.MessageID);
+        Assert.True(model.RawData.ContainsKey("message_id"));
+        Assert.Null(model.ReferenceKey);
+        Assert.True(model.RawData.ContainsKey("reference_key"));
+        Assert.Null(model.ReferrerHost);
+        Assert.True(model.RawData.ContainsKey("referrer_host"));
+        Assert.Null(model.RequestMethod);
+        Assert.True(model.RawData.ContainsKey("request_method"));
+        Assert.Null(model.SenderProfileID);
+        Assert.True(model.RawData.ContainsKey("sender_profile_id"));
+        Assert.Null(model.StatusCode);
+        Assert.True(model.RawData.ContainsKey("status_code"));
+        Assert.Null(model.TrafficClass);
+        Assert.True(model.RawData.ContainsKey("traffic_class"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            LinkKind = "link_kind",
+            OccurredAt = "occurred_at",
+
+            AccessCountry = null,
+            AccessOutcome = null,
+            Browser = null,
+            BytesServed = null,
+            Channel = null,
+            Device = null,
+            MessageID = null,
+            ReferenceKey = null,
+            ReferrerHost = null,
+            RequestMethod = null,
+            SenderProfileID = null,
+            StatusCode = null,
+            TrafficClass = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Payload
+        {
+            RecordID = "record_id",
+            AccessCountry = "access_country",
+            AccessOutcome = "access_outcome",
+            Browser = "browser",
+            BytesServed = 0,
+            Channel = "channel",
+            CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            Device = "device",
+            LinkKind = "link_kind",
+            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            OccurredAt = "occurred_at",
+            ReferenceKey = "reference_key",
+            ReferrerHost = "referrer_host",
+            RequestMethod = "request_method",
+            SenderProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            StatusCode = 0,
+            TrafficClass = "traffic_class",
+        };
+
+        Payload copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }

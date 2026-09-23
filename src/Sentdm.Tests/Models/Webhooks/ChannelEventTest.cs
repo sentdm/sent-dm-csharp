@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Webhooks;
@@ -18,6 +19,26 @@ public class ChannelEventTest : TestBase
                 Country = "country",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Compliance = new()
+                {
+                    Brand = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Campaign = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Documents =
+                    [
+                        new()
+                        {
+                            DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            FileName = "file_name",
+                            Key = "key",
+                        },
+                    ],
+                },
                 NumberType = "number_type",
                 Reason = "reason",
                 SenderValue = "sender_value",
@@ -35,6 +56,26 @@ public class ChannelEventTest : TestBase
             Country = "country",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
+            Compliance = new()
+            {
+                Brand = new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+                Campaign = new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+                Documents =
+                [
+                    new()
+                    {
+                        DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        FileName = "file_name",
+                        Key = "key",
+                    },
+                ],
+            },
             NumberType = "number_type",
             Reason = "reason",
             SenderValue = "sender_value",
@@ -63,6 +104,26 @@ public class ChannelEventTest : TestBase
                 Country = "country",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Compliance = new()
+                {
+                    Brand = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Campaign = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Documents =
+                    [
+                        new()
+                        {
+                            DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            FileName = "file_name",
+                            Key = "key",
+                        },
+                    ],
+                },
                 NumberType = "number_type",
                 Reason = "reason",
                 SenderValue = "sender_value",
@@ -94,6 +155,26 @@ public class ChannelEventTest : TestBase
                 Country = "country",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Compliance = new()
+                {
+                    Brand = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Campaign = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Documents =
+                    [
+                        new()
+                        {
+                            DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            FileName = "file_name",
+                            Key = "key",
+                        },
+                    ],
+                },
                 NumberType = "number_type",
                 Reason = "reason",
                 SenderValue = "sender_value",
@@ -118,6 +199,26 @@ public class ChannelEventTest : TestBase
             Country = "country",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
+            Compliance = new()
+            {
+                Brand = new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+                Campaign = new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+                Documents =
+                [
+                    new()
+                    {
+                        DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        FileName = "file_name",
+                        Key = "key",
+                    },
+                ],
+            },
             NumberType = "number_type",
             Reason = "reason",
             SenderValue = "sender_value",
@@ -146,6 +247,26 @@ public class ChannelEventTest : TestBase
                 Country = "country",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Compliance = new()
+                {
+                    Brand = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Campaign = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Documents =
+                    [
+                        new()
+                        {
+                            DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            FileName = "file_name",
+                            Key = "key",
+                        },
+                    ],
+                },
                 NumberType = "number_type",
                 Reason = "reason",
                 SenderValue = "sender_value",
@@ -170,6 +291,26 @@ public class ChannelEventTest : TestBase
                 Country = "country",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Compliance = new()
+                {
+                    Brand = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Campaign = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Documents =
+                    [
+                        new()
+                        {
+                            DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            FileName = "file_name",
+                            Key = "key",
+                        },
+                    ],
+                },
                 NumberType = "number_type",
                 Reason = "reason",
                 SenderValue = "sender_value",
@@ -196,6 +337,26 @@ public class ChannelEventTest : TestBase
                 Country = "country",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Compliance = new()
+                {
+                    Brand = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Campaign = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Documents =
+                    [
+                        new()
+                        {
+                            DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            FileName = "file_name",
+                            Key = "key",
+                        },
+                    ],
+                },
                 NumberType = "number_type",
                 Reason = "reason",
                 SenderValue = "sender_value",
@@ -219,6 +380,26 @@ public class ChannelEventTest : TestBase
                 Country = "country",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Compliance = new()
+                {
+                    Brand = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Campaign = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Documents =
+                    [
+                        new()
+                        {
+                            DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            FileName = "file_name",
+                            Key = "key",
+                        },
+                    ],
+                },
                 NumberType = "number_type",
                 Reason = "reason",
                 SenderValue = "sender_value",
@@ -249,6 +430,26 @@ public class ChannelEventTest : TestBase
                 Country = "country",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Compliance = new()
+                {
+                    Brand = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Campaign = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Documents =
+                    [
+                        new()
+                        {
+                            DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            FileName = "file_name",
+                            Key = "key",
+                        },
+                    ],
+                },
                 NumberType = "number_type",
                 Reason = "reason",
                 SenderValue = "sender_value",
@@ -335,6 +536,26 @@ public class ChannelEventTest : TestBase
                 Country = "country",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Compliance = new()
+                {
+                    Brand = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Campaign = new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                    Documents =
+                    [
+                        new()
+                        {
+                            DocumentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                            FileName = "file_name",
+                            Key = "key",
+                        },
+                    ],
+                },
                 NumberType = "number_type",
                 Reason = "reason",
                 SenderValue = "sender_value",
