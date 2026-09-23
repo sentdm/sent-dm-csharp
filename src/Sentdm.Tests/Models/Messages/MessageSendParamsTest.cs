@@ -15,7 +15,10 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
+            MediaUrls = ["string"],
             Sandbox = false,
+            ScheduledAt = null,
+            Subject = null,
             Template = new()
             {
                 ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
@@ -33,6 +36,7 @@ public class MessageSendParamsTest : TestBase
         };
 
         List<string> expectedChannel = ["sms", "whatsapp"];
+        List<string> expectedMediaUrls = ["string"];
         bool expectedSandbox = false;
         Template expectedTemplate = new()
         {
@@ -54,7 +58,15 @@ public class MessageSendParamsTest : TestBase
         {
             Assert.Equal(expectedChannel[i], parameters.Channel[i]);
         }
+        Assert.NotNull(parameters.MediaUrls);
+        Assert.Equal(expectedMediaUrls.Count, parameters.MediaUrls.Count);
+        for (int i = 0; i < expectedMediaUrls.Count; i++)
+        {
+            Assert.Equal(expectedMediaUrls[i], parameters.MediaUrls[i]);
+        }
         Assert.Equal(expectedSandbox, parameters.Sandbox);
+        Assert.Null(parameters.ScheduledAt);
+        Assert.Null(parameters.Subject);
         Assert.Equal(expectedTemplate, parameters.Template);
         Assert.Null(parameters.Text);
         Assert.NotNull(parameters.To);
@@ -73,6 +85,9 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
+            MediaUrls = ["string"],
+            ScheduledAt = null,
+            Subject = null,
             Template = new()
             {
                 ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
@@ -102,6 +117,9 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
+            MediaUrls = ["string"],
+            ScheduledAt = null,
+            Subject = null,
             Template = new()
             {
                 ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
@@ -144,6 +162,12 @@ public class MessageSendParamsTest : TestBase
 
         Assert.Null(parameters.Channel);
         Assert.False(parameters.RawBodyData.ContainsKey("channel"));
+        Assert.Null(parameters.MediaUrls);
+        Assert.False(parameters.RawBodyData.ContainsKey("media_urls"));
+        Assert.Null(parameters.ScheduledAt);
+        Assert.False(parameters.RawBodyData.ContainsKey("scheduled_at"));
+        Assert.Null(parameters.Subject);
+        Assert.False(parameters.RawBodyData.ContainsKey("subject"));
         Assert.Null(parameters.Template);
         Assert.False(parameters.RawBodyData.ContainsKey("template"));
         Assert.Null(parameters.Text);
@@ -161,12 +185,21 @@ public class MessageSendParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
             Channel = null,
+            MediaUrls = null,
+            ScheduledAt = null,
+            Subject = null,
             Template = null,
             Text = null,
         };
 
         Assert.Null(parameters.Channel);
         Assert.True(parameters.RawBodyData.ContainsKey("channel"));
+        Assert.Null(parameters.MediaUrls);
+        Assert.True(parameters.RawBodyData.ContainsKey("media_urls"));
+        Assert.Null(parameters.ScheduledAt);
+        Assert.True(parameters.RawBodyData.ContainsKey("scheduled_at"));
+        Assert.Null(parameters.Subject);
+        Assert.True(parameters.RawBodyData.ContainsKey("subject"));
         Assert.Null(parameters.Template);
         Assert.True(parameters.RawBodyData.ContainsKey("template"));
         Assert.Null(parameters.Text);
@@ -208,7 +241,10 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
+            MediaUrls = ["string"],
             Sandbox = false,
+            ScheduledAt = null,
+            Subject = null,
             Template = new()
             {
                 ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
