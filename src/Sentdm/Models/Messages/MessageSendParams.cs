@@ -20,7 +20,17 @@ namespace Sentdm.Models.Messages;
 /// an account-level precondition such as insufficient balance, a template not approved
 /// for sending, or free-form content with no open conversation with the contact.
 /// The send is accepted with 202 and the affected messages are reported as BLOCKED
-/// on GET /messages/{id} and the message.blocked webhook.
+/// on GET /messages/{id} and the message.blocked webhook. To send later, set scheduled_at
+/// (ISO-8601 with an explicit UTC offset; a value without one is rejected) between
+/// 1 minute and 30 days ahead: the response is a ScheduledSendMessageResponse (the
+/// same fields plus scheduled_at; status is still QUEUED), each message then moves
+/// to SCHEDULED, is held and released at that time (within a few minutes), and a
+/// message.scheduled webhook fires once it is held. Balance and template approval
+/// are evaluated at release, not at acceptance. Quiet hours are not checked when
+/// the request is accepted: if the time falls inside a legally protected quiet-hours
+/// window for a recipient, that message is moved to the next allowed time at release
+/// and a second message.scheduled webhook reports the new scheduled_at. An account
+/// may hold at most 1,000,000 scheduled messages at once (429 LIMIT_001).
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -56,6 +66,34 @@ public record class MessageSendParams : ParamsBase
     }
 
     /// <summary>
+    /// Attachments for this send, as publicly fetchable https URLs. Used by the
+    /// MMS channel and ignored by every other one.              Supplying these
+    /// replaces the media on the template's mms body rather than adding to it, so
+    /// a template can hold a default creative while a caller still sends something
+    /// recipient-specific.              Their presence is also what makes a message
+    /// eligible for MMS on an auto-detect send: a message with nothing attached
+    /// is delivered as SMS, because an MMS with no media is a more expensive text
+    /// message.              The recipient's carrier fetches each URL after the
+    /// send is accepted, so it must stay publicly reachable — a link that expires,
+    /// or one behind auth, arrives as a failed message.
+    /// </summary>
+    public IReadOnlyList<string>? MediaUrls
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("media_urls");
+        }
+        init
+        {
+            this._rawBodyData.Set<ImmutableArray<string>?>(
+                "media_urls",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
+    /// <summary>
     /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
     /// </summary>
@@ -75,6 +113,43 @@ public record class MessageSendParams : ParamsBase
 
             this._rawBodyData.Set("sandbox", value);
         }
+    }
+
+    /// <summary>
+    /// Optional future send time as an ISO-8601 timestamp with an explicit UTC offset,
+    /// e.g. 2026-10-01T09:00:00+02:00 or 2026-10-01T07:00:00Z. A value without an
+    /// offset is rejected (400) rather than read in the server's zone. The offset
+    /// only fixes the instant: it is stored and echoed in UTC as scheduled_at. Omit
+    /// to send now. Must be at least one minute ahead and at most 30 days ahead.
+    /// Accepted messages report SCHEDULED and are released for delivery at this time.
+    /// Quiet hours, balance and template approval are evaluated at release, not at
+    /// acceptance: a message whose time falls inside a recipient's protected quiet-hours
+    /// window is moved to the next allowed time and a second message.scheduled webhook
+    /// reports the new scheduled_at.
+    /// </summary>
+    public DateTimeOffset? ScheduledAt
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<DateTimeOffset>("scheduled_at");
+        }
+        init { this._rawBodyData.Set("scheduled_at", value); }
+    }
+
+    /// <summary>
+    /// Subject line for this send, overriding the template's. MMS only; ignored on
+    /// every other channel. Most handsets render it above the body, some ignore
+    /// it entirely.
+    /// </summary>
+    public string? Subject
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("subject");
+        }
+        init { this._rawBodyData.Set("subject", value); }
     }
 
     /// <summary>
@@ -306,7 +381,17 @@ public sealed record class Template : JsonModel
     }
 
     /// <summary>
-    /// Template variable parameters for personalization
+    /// Template variable parameters for personalization, keyed by variable name.
+    ///              Every variable the template declares is required; GET /v3/templates/{id}
+    /// lists them. Supplying a key the template does not declare is ignored.
+    ///           Media headers. A template whose header is an image (designed in
+    /// WhatsApp Manager and imported into Sent) declares a reserved header_image
+    /// key. Its value is a publicly reachable https URL that Meta fetches at send
+    /// time — Sent does not host the asset, and the sample approved with the template
+    /// is not reused. The key is derived from the header's media type, so header_video
+    /// and header_document follow the same shape when those formats ship.
+    ///        "parameters": {   "header_image": "https://cdn.example.com/banner.jpg",
+    ///   "name": "John Doe" }
     /// </summary>
     public IReadOnlyDictionary<string, string>? Parameters
     {

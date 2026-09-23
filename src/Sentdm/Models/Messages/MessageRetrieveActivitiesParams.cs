@@ -11,6 +11,8 @@ namespace Sentdm.Models.Messages;
 /// <summary>
 /// Retrieves the activity log for a specific message. Activities track the message
 /// lifecycle including acceptance, processing, sending, delivery, and any errors.
+/// A SCHEDULED entry carries scheduled_at, the release instant in UTC as it stood
+/// at that moment. Other entries have no scheduled_at key.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
