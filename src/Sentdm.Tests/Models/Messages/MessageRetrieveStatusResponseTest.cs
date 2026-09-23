@@ -47,6 +47,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                     Content = "content",
                     Footer = "footer",
                     Header = "header",
+                    HeaderMedia = new() { Type = "type", Url = "url" },
+                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Subject = "subject",
                 },
                 Phone = "phone",
                 PhoneInternational = "phone_international",
@@ -106,6 +109,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
+                HeaderMedia = new() { Type = "type", Url = "url" },
+                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Subject = "subject",
             },
             Phone = "phone",
             PhoneInternational = "phone_international",
@@ -175,6 +181,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                     Content = "content",
                     Footer = "footer",
                     Header = "header",
+                    HeaderMedia = new() { Type = "type", Url = "url" },
+                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Subject = "subject",
                 },
                 Phone = "phone",
                 PhoneInternational = "phone_international",
@@ -248,6 +257,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                     Content = "content",
                     Footer = "footer",
                     Header = "header",
+                    HeaderMedia = new() { Type = "type", Url = "url" },
+                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Subject = "subject",
                 },
                 Phone = "phone",
                 PhoneInternational = "phone_international",
@@ -314,6 +326,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
+                HeaderMedia = new() { Type = "type", Url = "url" },
+                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Subject = "subject",
             },
             Phone = "phone",
             PhoneInternational = "phone_international",
@@ -383,6 +398,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                     Content = "content",
                     Footer = "footer",
                     Header = "header",
+                    HeaderMedia = new() { Type = "type", Url = "url" },
+                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Subject = "subject",
                 },
                 Phone = "phone",
                 PhoneInternational = "phone_international",
@@ -450,6 +468,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                     Content = "content",
                     Footer = "footer",
                     Header = "header",
+                    HeaderMedia = new() { Type = "type", Url = "url" },
+                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Subject = "subject",
                 },
                 Phone = "phone",
                 PhoneInternational = "phone_international",
@@ -513,6 +534,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                     Content = "content",
                     Footer = "footer",
                     Header = "header",
+                    HeaderMedia = new() { Type = "type", Url = "url" },
+                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Subject = "subject",
                 },
                 Phone = "phone",
                 PhoneInternational = "phone_international",
@@ -573,6 +597,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                     Content = "content",
                     Footer = "footer",
                     Header = "header",
+                    HeaderMedia = new() { Type = "type", Url = "url" },
+                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Subject = "subject",
                 },
                 Phone = "phone",
                 PhoneInternational = "phone_international",
@@ -640,6 +667,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                     Content = "content",
                     Footer = "footer",
                     Header = "header",
+                    HeaderMedia = new() { Type = "type", Url = "url" },
+                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Subject = "subject",
                 },
                 Phone = "phone",
                 PhoneInternational = "phone_international",
@@ -784,6 +814,9 @@ public class MessageRetrieveStatusResponseTest : TestBase
                     Content = "content",
                     Footer = "footer",
                     Header = "header",
+                    HeaderMedia = new() { Type = "type", Url = "url" },
+                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Subject = "subject",
                 },
                 Phone = "phone",
                 PhoneInternational = "phone_international",
@@ -854,6 +887,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
+                HeaderMedia = new() { Type = "type", Url = "url" },
+                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Subject = "subject",
             },
             Phone = "phone",
             PhoneInternational = "phone_international",
@@ -896,6 +932,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             Content = "content",
             Footer = "footer",
             Header = "header",
+            HeaderMedia = new() { Type = "type", Url = "url" },
+            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Subject = "subject",
         };
         string expectedPhone = "phone";
         string expectedPhoneInternational = "phone_international";
@@ -966,6 +1005,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
+                HeaderMedia = new() { Type = "type", Url = "url" },
+                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Subject = "subject",
             },
             Phone = "phone",
             PhoneInternational = "phone_international",
@@ -1022,6 +1064,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
+                HeaderMedia = new() { Type = "type", Url = "url" },
+                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Subject = "subject",
             },
             Phone = "phone",
             PhoneInternational = "phone_international",
@@ -1071,6 +1116,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
             Content = "content",
             Footer = "footer",
             Header = "header",
+            HeaderMedia = new() { Type = "type", Url = "url" },
+            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Subject = "subject",
         };
         string expectedPhone = "phone";
         string expectedPhoneInternational = "phone_international";
@@ -1141,6 +1189,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
+                HeaderMedia = new() { Type = "type", Url = "url" },
+                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Subject = "subject",
             },
             Phone = "phone",
             PhoneInternational = "phone_international",
@@ -1185,6 +1236,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
+                HeaderMedia = new() { Type = "type", Url = "url" },
+                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Subject = "subject",
             },
             Price = 0,
             TemplateCategory = "template_category",
@@ -1244,6 +1298,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
+                HeaderMedia = new() { Type = "type", Url = "url" },
+                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Subject = "subject",
             },
             Price = 0,
             TemplateCategory = "template_category",
@@ -1284,6 +1341,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
+                HeaderMedia = new() { Type = "type", Url = "url" },
+                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Subject = "subject",
             },
             Price = 0,
             TemplateCategory = "template_category",
@@ -1355,6 +1415,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
+                HeaderMedia = new() { Type = "type", Url = "url" },
+                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Subject = "subject",
             },
             Price = 0,
             TemplateCategory = "template_category",
@@ -1535,6 +1598,9 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 Content = "content",
                 Footer = "footer",
                 Header = "header",
+                HeaderMedia = new() { Type = "type", Url = "url" },
+                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Subject = "subject",
             },
             Phone = "phone",
             PhoneInternational = "phone_international",
@@ -1715,6 +1781,9 @@ public class MessageBodyTest : TestBase
             Content = "content",
             Footer = "footer",
             Header = "header",
+            HeaderMedia = new() { Type = "type", Url = "url" },
+            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Subject = "subject",
         };
 
         List<Button> expectedButtons =
@@ -1730,6 +1799,9 @@ public class MessageBodyTest : TestBase
         string expectedContent = "content";
         string expectedFooter = "footer";
         string expectedHeader = "header";
+        HeaderMedia expectedHeaderMedia = new() { Type = "type", Url = "url" };
+        List<Media> expectedMedia = [new() { MediaType = "mediaType", Url = "url" }];
+        string expectedSubject = "subject";
 
         Assert.NotNull(model.Buttons);
         Assert.Equal(expectedButtons.Count, model.Buttons.Count);
@@ -1740,6 +1812,14 @@ public class MessageBodyTest : TestBase
         Assert.Equal(expectedContent, model.Content);
         Assert.Equal(expectedFooter, model.Footer);
         Assert.Equal(expectedHeader, model.Header);
+        Assert.Equal(expectedHeaderMedia, model.HeaderMedia);
+        Assert.NotNull(model.Media);
+        Assert.Equal(expectedMedia.Count, model.Media.Count);
+        for (int i = 0; i < expectedMedia.Count; i++)
+        {
+            Assert.Equal(expectedMedia[i], model.Media[i]);
+        }
+        Assert.Equal(expectedSubject, model.Subject);
     }
 
     [Fact]
@@ -1760,6 +1840,9 @@ public class MessageBodyTest : TestBase
             Content = "content",
             Footer = "footer",
             Header = "header",
+            HeaderMedia = new() { Type = "type", Url = "url" },
+            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Subject = "subject",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -1789,6 +1872,9 @@ public class MessageBodyTest : TestBase
             Content = "content",
             Footer = "footer",
             Header = "header",
+            HeaderMedia = new() { Type = "type", Url = "url" },
+            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Subject = "subject",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -1811,6 +1897,9 @@ public class MessageBodyTest : TestBase
         string expectedContent = "content";
         string expectedFooter = "footer";
         string expectedHeader = "header";
+        HeaderMedia expectedHeaderMedia = new() { Type = "type", Url = "url" };
+        List<Media> expectedMedia = [new() { MediaType = "mediaType", Url = "url" }];
+        string expectedSubject = "subject";
 
         Assert.NotNull(deserialized.Buttons);
         Assert.Equal(expectedButtons.Count, deserialized.Buttons.Count);
@@ -1821,6 +1910,14 @@ public class MessageBodyTest : TestBase
         Assert.Equal(expectedContent, deserialized.Content);
         Assert.Equal(expectedFooter, deserialized.Footer);
         Assert.Equal(expectedHeader, deserialized.Header);
+        Assert.Equal(expectedHeaderMedia, deserialized.HeaderMedia);
+        Assert.NotNull(deserialized.Media);
+        Assert.Equal(expectedMedia.Count, deserialized.Media.Count);
+        for (int i = 0; i < expectedMedia.Count; i++)
+        {
+            Assert.Equal(expectedMedia[i], deserialized.Media[i]);
+        }
+        Assert.Equal(expectedSubject, deserialized.Subject);
     }
 
     [Fact]
@@ -1841,6 +1938,9 @@ public class MessageBodyTest : TestBase
             Content = "content",
             Footer = "footer",
             Header = "header",
+            HeaderMedia = new() { Type = "type", Url = "url" },
+            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Subject = "subject",
         };
 
         model.Validate();
@@ -1863,6 +1963,9 @@ public class MessageBodyTest : TestBase
             ],
             Footer = "footer",
             Header = "header",
+            HeaderMedia = new() { Type = "type", Url = "url" },
+            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Subject = "subject",
         };
 
         Assert.Null(model.Content);
@@ -1886,6 +1989,9 @@ public class MessageBodyTest : TestBase
             ],
             Footer = "footer",
             Header = "header",
+            HeaderMedia = new() { Type = "type", Url = "url" },
+            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Subject = "subject",
         };
 
         model.Validate();
@@ -1908,6 +2014,9 @@ public class MessageBodyTest : TestBase
             ],
             Footer = "footer",
             Header = "header",
+            HeaderMedia = new() { Type = "type", Url = "url" },
+            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Subject = "subject",
 
             // Null should be interpreted as omitted for these properties
             Content = null,
@@ -1934,6 +2043,9 @@ public class MessageBodyTest : TestBase
             ],
             Footer = "footer",
             Header = "header",
+            HeaderMedia = new() { Type = "type", Url = "url" },
+            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Subject = "subject",
 
             // Null should be interpreted as omitted for these properties
             Content = null,
@@ -1953,6 +2065,12 @@ public class MessageBodyTest : TestBase
         Assert.False(model.RawData.ContainsKey("footer"));
         Assert.Null(model.Header);
         Assert.False(model.RawData.ContainsKey("header"));
+        Assert.Null(model.HeaderMedia);
+        Assert.False(model.RawData.ContainsKey("headerMedia"));
+        Assert.Null(model.Media);
+        Assert.False(model.RawData.ContainsKey("media"));
+        Assert.Null(model.Subject);
+        Assert.False(model.RawData.ContainsKey("subject"));
     }
 
     [Fact]
@@ -1973,6 +2091,9 @@ public class MessageBodyTest : TestBase
             Buttons = null,
             Footer = null,
             Header = null,
+            HeaderMedia = null,
+            Media = null,
+            Subject = null,
         };
 
         Assert.Null(model.Buttons);
@@ -1981,6 +2102,12 @@ public class MessageBodyTest : TestBase
         Assert.True(model.RawData.ContainsKey("footer"));
         Assert.Null(model.Header);
         Assert.True(model.RawData.ContainsKey("header"));
+        Assert.Null(model.HeaderMedia);
+        Assert.True(model.RawData.ContainsKey("headerMedia"));
+        Assert.Null(model.Media);
+        Assert.True(model.RawData.ContainsKey("media"));
+        Assert.Null(model.Subject);
+        Assert.True(model.RawData.ContainsKey("subject"));
     }
 
     [Fact]
@@ -1993,6 +2120,9 @@ public class MessageBodyTest : TestBase
             Buttons = null,
             Footer = null,
             Header = null,
+            HeaderMedia = null,
+            Media = null,
+            Subject = null,
         };
 
         model.Validate();
@@ -2016,6 +2146,9 @@ public class MessageBodyTest : TestBase
             Content = "content",
             Footer = "footer",
             Header = "header",
+            HeaderMedia = new() { Type = "type", Url = "url" },
+            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Subject = "subject",
         };
 
         MessageBody copied = new(model);
@@ -2223,6 +2356,270 @@ public class ButtonTest : TestBase
         };
 
         Button copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
+}
+
+public class HeaderMediaTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new HeaderMedia { Type = "type", Url = "url" };
+
+        string expectedType = "type";
+        string expectedUrl = "url";
+
+        Assert.Equal(expectedType, model.Type);
+        Assert.Equal(expectedUrl, model.Url);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new HeaderMedia { Type = "type", Url = "url" };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<HeaderMedia>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new HeaderMedia { Type = "type", Url = "url" };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<HeaderMedia>(
+            element,
+            ModelBase.SerializerOptions
+        );
+        Assert.NotNull(deserialized);
+
+        string expectedType = "type";
+        string expectedUrl = "url";
+
+        Assert.Equal(expectedType, deserialized.Type);
+        Assert.Equal(expectedUrl, deserialized.Url);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new HeaderMedia { Type = "type", Url = "url" };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new HeaderMedia { };
+
+        Assert.Null(model.Type);
+        Assert.False(model.RawData.ContainsKey("type"));
+        Assert.Null(model.Url);
+        Assert.False(model.RawData.ContainsKey("url"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new HeaderMedia { };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new HeaderMedia
+        {
+            // Null should be interpreted as omitted for these properties
+            Type = null,
+            Url = null,
+        };
+
+        Assert.Null(model.Type);
+        Assert.False(model.RawData.ContainsKey("type"));
+        Assert.Null(model.Url);
+        Assert.False(model.RawData.ContainsKey("url"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new HeaderMedia
+        {
+            // Null should be interpreted as omitted for these properties
+            Type = null,
+            Url = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new HeaderMedia { Type = "type", Url = "url" };
+
+        HeaderMedia copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
+}
+
+public class MediaTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new Media { MediaType = "mediaType", Url = "url" };
+
+        string expectedMediaType = "mediaType";
+        string expectedUrl = "url";
+
+        Assert.Equal(expectedMediaType, model.MediaType);
+        Assert.Equal(expectedUrl, model.Url);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new Media { MediaType = "mediaType", Url = "url" };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Media>(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new Media { MediaType = "mediaType", Url = "url" };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Media>(element, ModelBase.SerializerOptions);
+        Assert.NotNull(deserialized);
+
+        string expectedMediaType = "mediaType";
+        string expectedUrl = "url";
+
+        Assert.Equal(expectedMediaType, deserialized.MediaType);
+        Assert.Equal(expectedUrl, deserialized.Url);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new Media { MediaType = "mediaType", Url = "url" };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Media { MediaType = "mediaType" };
+
+        Assert.Null(model.Url);
+        Assert.False(model.RawData.ContainsKey("url"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Media { MediaType = "mediaType" };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new Media
+        {
+            MediaType = "mediaType",
+
+            // Null should be interpreted as omitted for these properties
+            Url = null,
+        };
+
+        Assert.Null(model.Url);
+        Assert.False(model.RawData.ContainsKey("url"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Media
+        {
+            MediaType = "mediaType",
+
+            // Null should be interpreted as omitted for these properties
+            Url = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Media { Url = "url" };
+
+        Assert.Null(model.MediaType);
+        Assert.False(model.RawData.ContainsKey("mediaType"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Media { Url = "url" };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
+    {
+        var model = new Media
+        {
+            Url = "url",
+
+            MediaType = null,
+        };
+
+        Assert.Null(model.MediaType);
+        Assert.True(model.RawData.ContainsKey("mediaType"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Media
+        {
+            Url = "url",
+
+            MediaType = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Media { MediaType = "mediaType", Url = "url" };
+
+        Media copied = new(model);
 
         Assert.Equal(model, copied);
     }

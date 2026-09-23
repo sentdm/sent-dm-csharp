@@ -132,6 +132,12 @@ public sealed record class Props : JsonModel
         init { this._rawData.Set("mediaType", value); }
     }
 
+    /// <summary>
+    /// Example value substituted into the template when previewing it and when submitting
+    /// it to Meta for review. Free text by nature, so the converter accepts a JSON
+    /// number or boolean here and normalizes it — see JsonScalarToStringConverter
+    /// for why — and guarantees it is always serialized back out as a JSON string.
+    /// </summary>
     public required string Sample
     {
         get

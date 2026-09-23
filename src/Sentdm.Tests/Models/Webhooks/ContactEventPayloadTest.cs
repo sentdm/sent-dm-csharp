@@ -14,30 +14,39 @@ public class ContactEventPayloadTest : TestBase
             OptOut = true,
             Source = "source",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "agent_id",
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            From = "from",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            PhoneNumber = "phone_number",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Text = "text",
+            To = "to",
         };
 
         bool expectedOptOut = true;
         string expectedSource = "source";
         string expectedAccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedAgentID = "agent_id";
         string expectedChannel = "channel";
         string expectedContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedFrom = "from";
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        string expectedPhoneNumber = "phone_number";
+        string expectedTemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedText = "text";
+        string expectedTo = "to";
 
         Assert.Equal(expectedOptOut, model.OptOut);
         Assert.Equal(expectedSource, model.Source);
         Assert.Equal(expectedAccountID, model.AccountID);
+        Assert.Equal(expectedAgentID, model.AgentID);
         Assert.Equal(expectedChannel, model.Channel);
         Assert.Equal(expectedContactID, model.ContactID);
+        Assert.Equal(expectedFrom, model.From);
         Assert.Equal(expectedMessageID, model.MessageID);
-        Assert.Equal(expectedPhoneNumber, model.PhoneNumber);
+        Assert.Equal(expectedTemplateID, model.TemplateID);
         Assert.Equal(expectedText, model.Text);
+        Assert.Equal(expectedTo, model.To);
     }
 
     [Fact]
@@ -48,11 +57,14 @@ public class ContactEventPayloadTest : TestBase
             OptOut = true,
             Source = "source",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "agent_id",
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            From = "from",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            PhoneNumber = "phone_number",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Text = "text",
+            To = "to",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -72,11 +84,14 @@ public class ContactEventPayloadTest : TestBase
             OptOut = true,
             Source = "source",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "agent_id",
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            From = "from",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            PhoneNumber = "phone_number",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Text = "text",
+            To = "to",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -89,20 +104,26 @@ public class ContactEventPayloadTest : TestBase
         bool expectedOptOut = true;
         string expectedSource = "source";
         string expectedAccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedAgentID = "agent_id";
         string expectedChannel = "channel";
         string expectedContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedFrom = "from";
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        string expectedPhoneNumber = "phone_number";
+        string expectedTemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedText = "text";
+        string expectedTo = "to";
 
         Assert.Equal(expectedOptOut, deserialized.OptOut);
         Assert.Equal(expectedSource, deserialized.Source);
         Assert.Equal(expectedAccountID, deserialized.AccountID);
+        Assert.Equal(expectedAgentID, deserialized.AgentID);
         Assert.Equal(expectedChannel, deserialized.Channel);
         Assert.Equal(expectedContactID, deserialized.ContactID);
+        Assert.Equal(expectedFrom, deserialized.From);
         Assert.Equal(expectedMessageID, deserialized.MessageID);
-        Assert.Equal(expectedPhoneNumber, deserialized.PhoneNumber);
+        Assert.Equal(expectedTemplateID, deserialized.TemplateID);
         Assert.Equal(expectedText, deserialized.Text);
+        Assert.Equal(expectedTo, deserialized.To);
     }
 
     [Fact]
@@ -113,11 +134,14 @@ public class ContactEventPayloadTest : TestBase
             OptOut = true,
             Source = "source",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "agent_id",
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            From = "from",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            PhoneNumber = "phone_number",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Text = "text",
+            To = "to",
         };
 
         model.Validate();
@@ -130,8 +154,11 @@ public class ContactEventPayloadTest : TestBase
         {
             OptOut = true,
             Source = "source",
+            AgentID = "agent_id",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Text = "text",
+            To = "to",
         };
 
         Assert.Null(model.AccountID);
@@ -140,8 +167,8 @@ public class ContactEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("channel"));
         Assert.Null(model.ContactID);
         Assert.False(model.RawData.ContainsKey("contact_id"));
-        Assert.Null(model.PhoneNumber);
-        Assert.False(model.RawData.ContainsKey("phone_number"));
+        Assert.Null(model.From);
+        Assert.False(model.RawData.ContainsKey("from"));
     }
 
     [Fact]
@@ -151,8 +178,11 @@ public class ContactEventPayloadTest : TestBase
         {
             OptOut = true,
             Source = "source",
+            AgentID = "agent_id",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Text = "text",
+            To = "to",
         };
 
         model.Validate();
@@ -165,14 +195,17 @@ public class ContactEventPayloadTest : TestBase
         {
             OptOut = true,
             Source = "source",
+            AgentID = "agent_id",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Text = "text",
+            To = "to",
 
             // Null should be interpreted as omitted for these properties
             AccountID = null,
             Channel = null,
             ContactID = null,
-            PhoneNumber = null,
+            From = null,
         };
 
         Assert.Null(model.AccountID);
@@ -181,8 +214,8 @@ public class ContactEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("channel"));
         Assert.Null(model.ContactID);
         Assert.False(model.RawData.ContainsKey("contact_id"));
-        Assert.Null(model.PhoneNumber);
-        Assert.False(model.RawData.ContainsKey("phone_number"));
+        Assert.Null(model.From);
+        Assert.False(model.RawData.ContainsKey("from"));
     }
 
     [Fact]
@@ -192,14 +225,17 @@ public class ContactEventPayloadTest : TestBase
         {
             OptOut = true,
             Source = "source",
+            AgentID = "agent_id",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Text = "text",
+            To = "to",
 
             // Null should be interpreted as omitted for these properties
             AccountID = null,
             Channel = null,
             ContactID = null,
-            PhoneNumber = null,
+            From = null,
         };
 
         model.Validate();
@@ -215,13 +251,19 @@ public class ContactEventPayloadTest : TestBase
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            PhoneNumber = "phone_number",
+            From = "from",
         };
 
+        Assert.Null(model.AgentID);
+        Assert.False(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.MessageID);
         Assert.False(model.RawData.ContainsKey("message_id"));
+        Assert.Null(model.TemplateID);
+        Assert.False(model.RawData.ContainsKey("template_id"));
         Assert.Null(model.Text);
         Assert.False(model.RawData.ContainsKey("text"));
+        Assert.Null(model.To);
+        Assert.False(model.RawData.ContainsKey("to"));
     }
 
     [Fact]
@@ -234,7 +276,7 @@ public class ContactEventPayloadTest : TestBase
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            PhoneNumber = "phone_number",
+            From = "from",
         };
 
         model.Validate();
@@ -250,16 +292,25 @@ public class ContactEventPayloadTest : TestBase
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            PhoneNumber = "phone_number",
+            From = "from",
 
+            AgentID = null,
             MessageID = null,
+            TemplateID = null,
             Text = null,
+            To = null,
         };
 
+        Assert.Null(model.AgentID);
+        Assert.True(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.MessageID);
         Assert.True(model.RawData.ContainsKey("message_id"));
+        Assert.Null(model.TemplateID);
+        Assert.True(model.RawData.ContainsKey("template_id"));
         Assert.Null(model.Text);
         Assert.True(model.RawData.ContainsKey("text"));
+        Assert.Null(model.To);
+        Assert.True(model.RawData.ContainsKey("to"));
     }
 
     [Fact]
@@ -272,10 +323,13 @@ public class ContactEventPayloadTest : TestBase
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            PhoneNumber = "phone_number",
+            From = "from",
 
+            AgentID = null,
             MessageID = null,
+            TemplateID = null,
             Text = null,
+            To = null,
         };
 
         model.Validate();
@@ -289,11 +343,14 @@ public class ContactEventPayloadTest : TestBase
             OptOut = true,
             Source = "source",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "agent_id",
             Channel = "channel",
             ContactID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            From = "from",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            PhoneNumber = "phone_number",
+            TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Text = "text",
+            To = "to",
         };
 
         ContactEventPayload copied = new(model);

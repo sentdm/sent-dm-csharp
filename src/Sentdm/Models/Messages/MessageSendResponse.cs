@@ -22,7 +22,10 @@ public sealed record class MessageSendResponse : JsonModel
     /// was whatever the send service happened to return, and changing that service
     /// for an internal reason changed the API. The service keeps its result; this
     /// is what a caller sees, and the mapping between them is a decision the endpoint
-    /// makes.              The wire is unchanged by the move: same names, same values.
+    /// makes.              The shape of an immediate send: it never has a scheduled_at
+    /// key. A send that carried scheduled_at is a ScheduledSendMessageResponse, and
+    /// the endpoint decides which of the two to answer with. From always returns
+    /// this type.
     /// </summary>
     public MessageSendResponseData? Data
     {
@@ -142,7 +145,9 @@ class MessageSendResponseFromRaw : IFromRawJson<MessageSendResponse>
 /// the send service happened to return, and changing that service for an internal
 /// reason changed the API. The service keeps its result; this is what a caller sees,
 /// and the mapping between them is a decision the endpoint makes.              The
-/// wire is unchanged by the move: same names, same values.
+/// shape of an immediate send: it never has a scheduled_at key. A send that carried
+/// scheduled_at is a ScheduledSendMessageResponse, and the endpoint decides which
+/// of the two to answer with. From always returns this type.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<MessageSendResponseData, MessageSendResponseDataFromRaw>))]
 public sealed record class MessageSendResponseData : JsonModel
@@ -169,7 +174,9 @@ public sealed record class MessageSendResponseData : JsonModel
     }
 
     /// <summary>
-    /// Overall status — QUEUED once the batch is accepted for delivery.
+    /// QUEUED: the batch is accepted. A request that carried scheduled_at is QUEUED
+    ///             here too; each message moves to SCHEDULED once it is held, as
+    /// GET /v3/messages/{id} and the             message.scheduled webhook report.
     /// </summary>
     public string? Status
     {

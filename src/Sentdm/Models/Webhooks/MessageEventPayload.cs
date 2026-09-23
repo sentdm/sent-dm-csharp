@@ -143,6 +143,35 @@ public sealed record class MessageEventPayload : JsonModel
     }
 
     /// <summary>
+    /// message.scheduled only: why the message is held, either because you scheduled
+    /// it or because the recipient is inside a protected quiet-hours window. Omitted
+    /// on every other event.
+    /// </summary>
+    public string? ScheduleReason
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("schedule_reason");
+        }
+        init { this._rawData.Set("schedule_reason", value); }
+    }
+
+    /// <summary>
+    /// message.scheduled only: when the held message will be released for delivery,
+    /// in UTC (yyyy-MM-ddTHH:mm:ssZ). Omitted on every other event.
+    /// </summary>
+    public string? ScheduledAt
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("scheduled_at");
+        }
+        init { this._rawData.Set("scheduled_at", value); }
+    }
+
+    /// <summary>
     /// The template the message was sent from, when it was sent from one.
     /// </summary>
     public string? TemplateID
@@ -199,6 +228,8 @@ public sealed record class MessageEventPayload : JsonModel
         _ = this.Channel;
         _ = this.MessageID;
         _ = this.OutboundNumber;
+        _ = this.ScheduleReason;
+        _ = this.ScheduledAt;
         _ = this.TemplateID;
         _ = this.TemplateName;
         _ = this.UpdatedAt;

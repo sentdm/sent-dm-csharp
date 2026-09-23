@@ -112,7 +112,11 @@ class ConversationMessagesListFromRaw : IFromRawJson<ConversationMessagesList>
 }
 
 /// <summary>
-/// Message response for v3 API — same shape as v2 with snake_case JSON conventions
+/// Message response for v3 API — same shape as v2 with snake_case JSON conventions.
+///              The shape of a message that was sent immediately: it never has a
+/// scheduled_at key. A message that is or was held for a later instant is a ScheduledMessageResponse,
+/// and the endpoint decides which of the two to answer with. From always returns
+/// this type.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<Message, MessageFromRaw>))]
 public sealed record class Message : JsonModel
@@ -253,7 +257,13 @@ public sealed record class Message : JsonModel
 
     /// <summary>
     /// Structured message body format for database storage. Preserves channel-specific
-    /// components (header, body, footer, buttons).
+    /// components (header, header media, body, footer, buttons, MMS subject and media).
+    ///              Persisted as the messageBody jsonb column on Messages. Every
+    /// write path goes through MessageUtils.MessageBodyJsonOptions, which writes
+    /// nulls, so the envelope shape is stable regardless of channel or status. Anything
+    /// that rebuilds this object field by field — the four IMessageBodyStrategy
+    /// implementations and MessageUtils.BuildSegmentBody — has to carry every member,
+    /// or that member is silently dropped on whichever path forgot it.
     /// </summary>
     public MessageBody? MessageBody
     {
@@ -518,7 +528,13 @@ class EventFromRaw : IFromRawJson<Event>
 
 /// <summary>
 /// Structured message body format for database storage. Preserves channel-specific
-/// components (header, body, footer, buttons).
+/// components (header, header media, body, footer, buttons, MMS subject and media).
+///              Persisted as the messageBody jsonb column on Messages. Every write
+/// path goes through MessageUtils.MessageBodyJsonOptions, which writes nulls, so
+/// the envelope shape is stable regardless of channel or status. Anything that rebuilds
+/// this object field by field — the four IMessageBodyStrategy implementations and
+/// MessageUtils.BuildSegmentBody — has to carry every member, or that member is silently
+/// dropped on whichever path forgot it.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<MessageBody, MessageBodyFromRaw>))]
 public sealed record class MessageBody : JsonModel
@@ -577,6 +593,55 @@ public sealed record class MessageBody : JsonModel
         init { this._rawData.Set("header", value); }
     }
 
+    /// <summary>
+    /// The media asset that rode a message's header, recorded as sent.
+    /// </summary>
+    public HeaderMedia? HeaderMedia
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<HeaderMedia>("headerMedia");
+        }
+        init { this._rawData.Set("headerMedia", value); }
+    }
+
+    /// <summary>
+    /// MMS attachments, as the publicly fetchable URLs handed to the carrier. Null
+    /// on every other channel.              Persisted rather than derived because
+    /// a resend and a curfew release rebuild the send from the stored row — MessageReplayCommandBuilder
+    /// reads templateId and templateVariables and nothing else — so media that lives
+    /// only on the original request would silently turn a replayed MMS into a text message.
+    /// </summary>
+    public IReadOnlyList<Media>? Media
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<Media>>("media");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<Media>?>(
+                "media",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
+    /// <summary>
+    /// MMS subject line. Null on every other channel.
+    /// </summary>
+    public string? Subject
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("subject");
+        }
+        init { this._rawData.Set("subject", value); }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
@@ -587,6 +652,12 @@ public sealed record class MessageBody : JsonModel
         _ = this.Content;
         _ = this.Footer;
         _ = this.Header;
+        this.HeaderMedia?.Validate();
+        foreach (var item in this.Media ?? [])
+        {
+            item.Validate();
+        }
+        _ = this.Subject;
     }
 
     public MessageBody() { }
@@ -725,4 +796,180 @@ class ButtonFromRaw : IFromRawJson<Button>
     /// <inheritdoc/>
     public Button FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         Button.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// The media asset that rode a message's header, recorded as sent.
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<HeaderMedia, HeaderMediaFromRaw>))]
+public sealed record class HeaderMedia : JsonModel
+{
+    /// <summary>
+    /// "image", "video" or "document" — taken from the header's media variable.
+    /// </summary>
+    public string? Type
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("type");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("type", value);
+        }
+    }
+
+    /// <summary>
+    /// The https URL the caller supplied for this send. Never the template's stored
+    /// props.sample, which is Meta's expiring header_handle rather than what was delivered.
+    /// </summary>
+    public string? Url
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("url");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("url", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Type;
+        _ = this.Url;
+    }
+
+    public HeaderMedia() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public HeaderMedia(HeaderMedia headerMedia)
+        : base(headerMedia) { }
+#pragma warning restore CS8618
+
+    public HeaderMedia(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    HeaderMedia(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="HeaderMediaFromRaw.FromRawUnchecked"/>
+    public static HeaderMedia FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class HeaderMediaFromRaw : IFromRawJson<HeaderMedia>
+{
+    /// <inheritdoc/>
+    public HeaderMedia FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        HeaderMedia.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// One attachment on a message: a customer-supplied public URL handed to the carrier
+/// as-is.                           A URL and nothing else. sent.dm never takes
+/// custody of MMS media — the customer hosts it and we              pass the link
+/// through at send time — so there is no storage key, size or expiry to record.
+/// If we ever              do host attachments, that belongs with the change that
+/// introduces the hosting, not here.
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Media, MediaFromRaw>))]
+public sealed record class Media : JsonModel
+{
+    /// <summary>
+    /// One of Constants.MmsMediaTypes when known. Advisory — the carrier reads the
+    ///             fetched object's Content-Type, not this.
+    /// </summary>
+    public string? MediaType
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("mediaType");
+        }
+        init { this._rawData.Set("mediaType", value); }
+    }
+
+    public string? Url
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("url");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("url", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.MediaType;
+        _ = this.Url;
+    }
+
+    public Media() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Media(Media media)
+        : base(media) { }
+#pragma warning restore CS8618
+
+    public Media(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Media(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="MediaFromRaw.FromRawUnchecked"/>
+    public static Media FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class MediaFromRaw : IFromRawJson<Media>
+{
+    /// <inheritdoc/>
+    public Media FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Media.FromRawUnchecked(rawData);
 }
