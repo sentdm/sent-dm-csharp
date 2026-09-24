@@ -212,6 +212,15 @@ public class TemplateDefinitionTest : TestBase
             Header = new()
             {
                 Template = "template",
+                ExampleUrl = "example_url",
+                Location = new()
+                {
+                    Address = "x",
+                    Latitude = "x",
+                    Longitude = "x",
+                    Name = "x",
+                },
+                StaticResource = true,
                 Type = "type",
                 Variables =
                 [
@@ -435,6 +444,15 @@ public class TemplateDefinitionTest : TestBase
         TemplateHeader expectedHeader = new()
         {
             Template = "template",
+            ExampleUrl = "example_url",
+            Location = new()
+            {
+                Address = "x",
+                Latitude = "x",
+                Longitude = "x",
+                Name = "x",
+            },
+            StaticResource = true,
             Type = "type",
             Variables =
             [
@@ -675,6 +693,15 @@ public class TemplateDefinitionTest : TestBase
             Header = new()
             {
                 Template = "template",
+                ExampleUrl = "example_url",
+                Location = new()
+                {
+                    Address = "x",
+                    Latitude = "x",
+                    Longitude = "x",
+                    Name = "x",
+                },
+                StaticResource = true,
                 Type = "type",
                 Variables =
                 [
@@ -912,6 +939,15 @@ public class TemplateDefinitionTest : TestBase
             Header = new()
             {
                 Template = "template",
+                ExampleUrl = "example_url",
+                Location = new()
+                {
+                    Address = "x",
+                    Latitude = "x",
+                    Longitude = "x",
+                    Name = "x",
+                },
+                StaticResource = true,
                 Type = "type",
                 Variables =
                 [
@@ -1142,6 +1178,15 @@ public class TemplateDefinitionTest : TestBase
         TemplateHeader expectedHeader = new()
         {
             Template = "template",
+            ExampleUrl = "example_url",
+            Location = new()
+            {
+                Address = "x",
+                Latitude = "x",
+                Longitude = "x",
+                Name = "x",
+            },
+            StaticResource = true,
             Type = "type",
             Variables =
             [
@@ -1382,6 +1427,15 @@ public class TemplateDefinitionTest : TestBase
             Header = new()
             {
                 Template = "template",
+                ExampleUrl = "example_url",
+                Location = new()
+                {
+                    Address = "x",
+                    Latitude = "x",
+                    Longitude = "x",
+                    Name = "x",
+                },
+                StaticResource = true,
                 Type = "type",
                 Variables =
                 [
@@ -2183,6 +2237,15 @@ public class TemplateDefinitionTest : TestBase
             Header = new()
             {
                 Template = "template",
+                ExampleUrl = "example_url",
+                Location = new()
+                {
+                    Address = "x",
+                    Latitude = "x",
+                    Longitude = "x",
+                    Name = "x",
+                },
+                StaticResource = true,
                 Type = "type",
                 Variables =
                 [
