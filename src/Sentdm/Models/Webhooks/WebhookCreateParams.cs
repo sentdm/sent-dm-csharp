@@ -6,6 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Sentdm.Core;
 
 namespace Sentdm.Models.Webhooks;
@@ -154,6 +155,20 @@ public record class WebhookCreateParams : ParamsBase
 
             this._rawBodyData.Set("sandbox", value);
         }
+    }
+
+    /// <summary>
+    /// Request-only: the events an organization webhook's sender profile clones receive,
+    /// one clone per existing and future profile. Responses never return it.
+    /// </summary>
+    public SenderProfile? SenderProfile
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<SenderProfile>("sender_profile");
+        }
+        init { this._rawBodyData.Set("sender_profile", value); }
     }
 
     public int? TimeoutSeconds
@@ -318,4 +333,108 @@ public record class WebhookCreateParams : ParamsBase
     {
         return 0;
     }
+}
+
+/// <summary>
+/// Request-only: the events an organization webhook's sender profile clones receive,
+/// one clone per existing and future profile. Responses never return it.
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<SenderProfile, SenderProfileFromRaw>))]
+public sealed record class SenderProfile : JsonModel
+{
+    public IReadOnlyDictionary<string, IReadOnlyList<string>>? EventFilters
+    {
+        get
+        {
+            this._rawData.Freeze();
+            var value = this._rawData.GetNullableClass<
+                FrozenDictionary<string, ImmutableArray<string>>
+            >("event_filters");
+            if (value == null)
+            {
+                return null;
+            }
+
+            return FrozenDictionary.ToFrozenDictionary(
+                value,
+                entry => entry.Key,
+                (entry) => (IReadOnlyList<string>)entry.Value
+            );
+        }
+        init
+        {
+            this._rawData.Set<FrozenDictionary<string, ImmutableArray<string>>?>(
+                "event_filters",
+                value == null
+                    ? null
+                    : FrozenDictionary.ToFrozenDictionary(
+                        value,
+                        entry => entry.Key,
+                        (entry) => ImmutableArray.ToImmutableArray(entry.Value)
+                    )
+            );
+        }
+    }
+
+    public IReadOnlyList<string>? EventTypes
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>("event_types");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set<ImmutableArray<string>?>(
+                "event_types",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.EventFilters;
+        _ = this.EventTypes;
+    }
+
+    public SenderProfile() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public SenderProfile(SenderProfile senderProfile)
+        : base(senderProfile) { }
+#pragma warning restore CS8618
+
+    public SenderProfile(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    SenderProfile(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="SenderProfileFromRaw.FromRawUnchecked"/>
+    public static SenderProfile FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class SenderProfileFromRaw : IFromRawJson<SenderProfile>
+{
+    /// <inheritdoc/>
+    public SenderProfile FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        SenderProfile.FromRawUnchecked(rawData);
 }
