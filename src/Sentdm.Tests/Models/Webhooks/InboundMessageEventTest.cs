@@ -19,6 +19,16 @@ public class InboundMessageEventTest : TestBase
                 ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Media =
+                [
+                    new()
+                    {
+                        HashSha256 = "hash_sha256",
+                        MimeType = "mime_type",
+                        SizeBytes = 0,
+                        Url = "url",
+                    },
+                ],
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
                 Text = "text",
@@ -36,6 +46,16 @@ public class InboundMessageEventTest : TestBase
             ReceivedAt = "received_at",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
+            Media =
+            [
+                new()
+                {
+                    HashSha256 = "hash_sha256",
+                    MimeType = "mime_type",
+                    SizeBytes = 0,
+                    Url = "url",
+                },
+            ],
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
             Text = "text",
@@ -64,6 +84,16 @@ public class InboundMessageEventTest : TestBase
                 ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Media =
+                [
+                    new()
+                    {
+                        HashSha256 = "hash_sha256",
+                        MimeType = "mime_type",
+                        SizeBytes = 0,
+                        Url = "url",
+                    },
+                ],
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
                 Text = "text",
@@ -95,6 +125,16 @@ public class InboundMessageEventTest : TestBase
                 ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Media =
+                [
+                    new()
+                    {
+                        HashSha256 = "hash_sha256",
+                        MimeType = "mime_type",
+                        SizeBytes = 0,
+                        Url = "url",
+                    },
+                ],
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
                 Text = "text",
@@ -119,6 +159,16 @@ public class InboundMessageEventTest : TestBase
             ReceivedAt = "received_at",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
+            Media =
+            [
+                new()
+                {
+                    HashSha256 = "hash_sha256",
+                    MimeType = "mime_type",
+                    SizeBytes = 0,
+                    Url = "url",
+                },
+            ],
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
             Text = "text",
@@ -147,6 +197,16 @@ public class InboundMessageEventTest : TestBase
                 ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Media =
+                [
+                    new()
+                    {
+                        HashSha256 = "hash_sha256",
+                        MimeType = "mime_type",
+                        SizeBytes = 0,
+                        Url = "url",
+                    },
+                ],
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
                 Text = "text",
@@ -171,6 +231,16 @@ public class InboundMessageEventTest : TestBase
                 ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Media =
+                [
+                    new()
+                    {
+                        HashSha256 = "hash_sha256",
+                        MimeType = "mime_type",
+                        SizeBytes = 0,
+                        Url = "url",
+                    },
+                ],
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
                 Text = "text",
@@ -197,6 +267,16 @@ public class InboundMessageEventTest : TestBase
                 ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Media =
+                [
+                    new()
+                    {
+                        HashSha256 = "hash_sha256",
+                        MimeType = "mime_type",
+                        SizeBytes = 0,
+                        Url = "url",
+                    },
+                ],
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
                 Text = "text",
@@ -220,6 +300,16 @@ public class InboundMessageEventTest : TestBase
                 ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Media =
+                [
+                    new()
+                    {
+                        HashSha256 = "hash_sha256",
+                        MimeType = "mime_type",
+                        SizeBytes = 0,
+                        Url = "url",
+                    },
+                ],
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
                 Text = "text",
@@ -250,6 +340,16 @@ public class InboundMessageEventTest : TestBase
                 ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Media =
+                [
+                    new()
+                    {
+                        HashSha256 = "hash_sha256",
+                        MimeType = "mime_type",
+                        SizeBytes = 0,
+                        Url = "url",
+                    },
+                ],
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
                 Text = "text",
@@ -336,6 +436,16 @@ public class InboundMessageEventTest : TestBase
                 ReceivedAt = "received_at",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 Channel = "channel",
+                Media =
+                [
+                    new()
+                    {
+                        HashSha256 = "hash_sha256",
+                        MimeType = "mime_type",
+                        SizeBytes = 0,
+                        Url = "url",
+                    },
+                ],
                 MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 OutboundNumber = "outbound_number",
                 Text = "text",
