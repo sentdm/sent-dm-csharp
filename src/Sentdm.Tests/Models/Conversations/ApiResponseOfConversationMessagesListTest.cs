@@ -34,6 +34,8 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                                 Status = "status",
                                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                                 Description = "description",
+                                Reason = "reason",
+                                ReasonCode = "reason_code",
                             },
                         ],
                         MessageBody = new()
@@ -52,12 +54,24 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                             Footer = "footer",
                             Header = "header",
                             HeaderMedia = new() { Type = "type", Url = "url" },
-                            Media = [new() { MediaType = "mediaType", Url = "url" }],
+                            Media =
+                            [
+                                new()
+                                {
+                                    MediaType = "mediaType",
+                                    MimeType = "mimeType",
+                                    SizeBytes = 0,
+                                    SourceHashSha256 = "sourceHashSha256",
+                                    Url = "url",
+                                },
+                            ],
                             Subject = "subject",
                         },
                         Phone = "phone",
                         PhoneInternational = "phone_international",
                         Price = 0,
+                        Reason = "reason",
+                        ReasonCode = "reason_code",
                         RegionCode = "region_code",
                         Status = "status",
                         TemplateCategory = "template_category",
@@ -111,6 +125,8 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                             Status = "status",
                             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                             Description = "description",
+                            Reason = "reason",
+                            ReasonCode = "reason_code",
                         },
                     ],
                     MessageBody = new()
@@ -129,12 +145,24 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                         Footer = "footer",
                         Header = "header",
                         HeaderMedia = new() { Type = "type", Url = "url" },
-                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Media =
+                        [
+                            new()
+                            {
+                                MediaType = "mediaType",
+                                MimeType = "mimeType",
+                                SizeBytes = 0,
+                                SourceHashSha256 = "sourceHashSha256",
+                                Url = "url",
+                            },
+                        ],
                         Subject = "subject",
                     },
                     Phone = "phone",
                     PhoneInternational = "phone_international",
                     Price = 0,
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                     RegionCode = "region_code",
                     Status = "status",
                     TemplateCategory = "template_category",
@@ -198,6 +226,8 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                                 Status = "status",
                                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                                 Description = "description",
+                                Reason = "reason",
+                                ReasonCode = "reason_code",
                             },
                         ],
                         MessageBody = new()
@@ -216,12 +246,24 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                             Footer = "footer",
                             Header = "header",
                             HeaderMedia = new() { Type = "type", Url = "url" },
-                            Media = [new() { MediaType = "mediaType", Url = "url" }],
+                            Media =
+                            [
+                                new()
+                                {
+                                    MediaType = "mediaType",
+                                    MimeType = "mimeType",
+                                    SizeBytes = 0,
+                                    SourceHashSha256 = "sourceHashSha256",
+                                    Url = "url",
+                                },
+                            ],
                             Subject = "subject",
                         },
                         Phone = "phone",
                         PhoneInternational = "phone_international",
                         Price = 0,
+                        Reason = "reason",
+                        ReasonCode = "reason_code",
                         RegionCode = "region_code",
                         Status = "status",
                         TemplateCategory = "template_category",
@@ -289,6 +331,8 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                                 Status = "status",
                                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                                 Description = "description",
+                                Reason = "reason",
+                                ReasonCode = "reason_code",
                             },
                         ],
                         MessageBody = new()
@@ -307,12 +351,24 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                             Footer = "footer",
                             Header = "header",
                             HeaderMedia = new() { Type = "type", Url = "url" },
-                            Media = [new() { MediaType = "mediaType", Url = "url" }],
+                            Media =
+                            [
+                                new()
+                                {
+                                    MediaType = "mediaType",
+                                    MimeType = "mimeType",
+                                    SizeBytes = 0,
+                                    SourceHashSha256 = "sourceHashSha256",
+                                    Url = "url",
+                                },
+                            ],
                             Subject = "subject",
                         },
                         Phone = "phone",
                         PhoneInternational = "phone_international",
                         Price = 0,
+                        Reason = "reason",
+                        ReasonCode = "reason_code",
                         RegionCode = "region_code",
                         Status = "status",
                         TemplateCategory = "template_category",
@@ -373,6 +429,8 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                             Status = "status",
                             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                             Description = "description",
+                            Reason = "reason",
+                            ReasonCode = "reason_code",
                         },
                     ],
                     MessageBody = new()
@@ -391,12 +449,24 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                         Footer = "footer",
                         Header = "header",
                         HeaderMedia = new() { Type = "type", Url = "url" },
-                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Media =
+                        [
+                            new()
+                            {
+                                MediaType = "mediaType",
+                                MimeType = "mimeType",
+                                SizeBytes = 0,
+                                SourceHashSha256 = "sourceHashSha256",
+                                Url = "url",
+                            },
+                        ],
                         Subject = "subject",
                     },
                     Phone = "phone",
                     PhoneInternational = "phone_international",
                     Price = 0,
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                     RegionCode = "region_code",
                     Status = "status",
                     TemplateCategory = "template_category",
@@ -460,6 +530,8 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                                 Status = "status",
                                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                                 Description = "description",
+                                Reason = "reason",
+                                ReasonCode = "reason_code",
                             },
                         ],
                         MessageBody = new()
@@ -478,12 +550,24 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                             Footer = "footer",
                             Header = "header",
                             HeaderMedia = new() { Type = "type", Url = "url" },
-                            Media = [new() { MediaType = "mediaType", Url = "url" }],
+                            Media =
+                            [
+                                new()
+                                {
+                                    MediaType = "mediaType",
+                                    MimeType = "mimeType",
+                                    SizeBytes = 0,
+                                    SourceHashSha256 = "sourceHashSha256",
+                                    Url = "url",
+                                },
+                            ],
                             Subject = "subject",
                         },
                         Phone = "phone",
                         PhoneInternational = "phone_international",
                         Price = 0,
+                        Reason = "reason",
+                        ReasonCode = "reason_code",
                         RegionCode = "region_code",
                         Status = "status",
                         TemplateCategory = "template_category",
@@ -545,6 +629,8 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                                 Status = "status",
                                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                                 Description = "description",
+                                Reason = "reason",
+                                ReasonCode = "reason_code",
                             },
                         ],
                         MessageBody = new()
@@ -563,12 +649,24 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                             Footer = "footer",
                             Header = "header",
                             HeaderMedia = new() { Type = "type", Url = "url" },
-                            Media = [new() { MediaType = "mediaType", Url = "url" }],
+                            Media =
+                            [
+                                new()
+                                {
+                                    MediaType = "mediaType",
+                                    MimeType = "mimeType",
+                                    SizeBytes = 0,
+                                    SourceHashSha256 = "sourceHashSha256",
+                                    Url = "url",
+                                },
+                            ],
                             Subject = "subject",
                         },
                         Phone = "phone",
                         PhoneInternational = "phone_international",
                         Price = 0,
+                        Reason = "reason",
+                        ReasonCode = "reason_code",
                         RegionCode = "region_code",
                         Status = "status",
                         TemplateCategory = "template_category",
@@ -626,6 +724,8 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                                 Status = "status",
                                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                                 Description = "description",
+                                Reason = "reason",
+                                ReasonCode = "reason_code",
                             },
                         ],
                         MessageBody = new()
@@ -644,12 +744,24 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                             Footer = "footer",
                             Header = "header",
                             HeaderMedia = new() { Type = "type", Url = "url" },
-                            Media = [new() { MediaType = "mediaType", Url = "url" }],
+                            Media =
+                            [
+                                new()
+                                {
+                                    MediaType = "mediaType",
+                                    MimeType = "mimeType",
+                                    SizeBytes = 0,
+                                    SourceHashSha256 = "sourceHashSha256",
+                                    Url = "url",
+                                },
+                            ],
                             Subject = "subject",
                         },
                         Phone = "phone",
                         PhoneInternational = "phone_international",
                         Price = 0,
+                        Reason = "reason",
+                        ReasonCode = "reason_code",
                         RegionCode = "region_code",
                         Status = "status",
                         TemplateCategory = "template_category",
@@ -704,6 +816,8 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                                 Status = "status",
                                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                                 Description = "description",
+                                Reason = "reason",
+                                ReasonCode = "reason_code",
                             },
                         ],
                         MessageBody = new()
@@ -722,12 +836,24 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                             Footer = "footer",
                             Header = "header",
                             HeaderMedia = new() { Type = "type", Url = "url" },
-                            Media = [new() { MediaType = "mediaType", Url = "url" }],
+                            Media =
+                            [
+                                new()
+                                {
+                                    MediaType = "mediaType",
+                                    MimeType = "mimeType",
+                                    SizeBytes = 0,
+                                    SourceHashSha256 = "sourceHashSha256",
+                                    Url = "url",
+                                },
+                            ],
                             Subject = "subject",
                         },
                         Phone = "phone",
                         PhoneInternational = "phone_international",
                         Price = 0,
+                        Reason = "reason",
+                        ReasonCode = "reason_code",
                         RegionCode = "region_code",
                         Status = "status",
                         TemplateCategory = "template_category",
@@ -789,6 +915,8 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                                 Status = "status",
                                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                                 Description = "description",
+                                Reason = "reason",
+                                ReasonCode = "reason_code",
                             },
                         ],
                         MessageBody = new()
@@ -807,12 +935,24 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                             Footer = "footer",
                             Header = "header",
                             HeaderMedia = new() { Type = "type", Url = "url" },
-                            Media = [new() { MediaType = "mediaType", Url = "url" }],
+                            Media =
+                            [
+                                new()
+                                {
+                                    MediaType = "mediaType",
+                                    MimeType = "mimeType",
+                                    SizeBytes = 0,
+                                    SourceHashSha256 = "sourceHashSha256",
+                                    Url = "url",
+                                },
+                            ],
                             Subject = "subject",
                         },
                         Phone = "phone",
                         PhoneInternational = "phone_international",
                         Price = 0,
+                        Reason = "reason",
+                        ReasonCode = "reason_code",
                         RegionCode = "region_code",
                         Status = "status",
                         TemplateCategory = "template_category",
@@ -951,6 +1091,8 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                                 Status = "status",
                                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                                 Description = "description",
+                                Reason = "reason",
+                                ReasonCode = "reason_code",
                             },
                         ],
                         MessageBody = new()
@@ -969,12 +1111,24 @@ public class ApiResponseOfConversationMessagesListTest : TestBase
                             Footer = "footer",
                             Header = "header",
                             HeaderMedia = new() { Type = "type", Url = "url" },
-                            Media = [new() { MediaType = "mediaType", Url = "url" }],
+                            Media =
+                            [
+                                new()
+                                {
+                                    MediaType = "mediaType",
+                                    MimeType = "mimeType",
+                                    SizeBytes = 0,
+                                    SourceHashSha256 = "sourceHashSha256",
+                                    Url = "url",
+                                },
+                            ],
                             Subject = "subject",
                         },
                         Phone = "phone",
                         PhoneInternational = "phone_international",
                         Price = 0,
+                        Reason = "reason",
+                        ReasonCode = "reason_code",
                         RegionCode = "region_code",
                         Status = "status",
                         TemplateCategory = "template_category",
