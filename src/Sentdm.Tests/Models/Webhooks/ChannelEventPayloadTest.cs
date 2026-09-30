@@ -37,6 +37,7 @@ public class ChannelEventPayloadTest : TestBase
             },
             NumberType = "number_type",
             Reason = "reason",
+            ReasonCode = "reason_code",
             SenderValue = "sender_value",
             Status = "status",
             UpdatedAt = "updated_at",
@@ -67,6 +68,7 @@ public class ChannelEventPayloadTest : TestBase
         };
         string expectedNumberType = "number_type";
         string expectedReason = "reason";
+        string expectedReasonCode = "reason_code";
         string expectedSenderValue = "sender_value";
         string expectedStatus = "status";
         string expectedUpdatedAt = "updated_at";
@@ -77,6 +79,7 @@ public class ChannelEventPayloadTest : TestBase
         Assert.Equal(expectedCompliance, model.Compliance);
         Assert.Equal(expectedNumberType, model.NumberType);
         Assert.Equal(expectedReason, model.Reason);
+        Assert.Equal(expectedReasonCode, model.ReasonCode);
         Assert.Equal(expectedSenderValue, model.SenderValue);
         Assert.Equal(expectedStatus, model.Status);
         Assert.Equal(expectedUpdatedAt, model.UpdatedAt);
@@ -112,6 +115,7 @@ public class ChannelEventPayloadTest : TestBase
             },
             NumberType = "number_type",
             Reason = "reason",
+            ReasonCode = "reason_code",
             SenderValue = "sender_value",
             Status = "status",
             UpdatedAt = "updated_at",
@@ -156,6 +160,7 @@ public class ChannelEventPayloadTest : TestBase
             },
             NumberType = "number_type",
             Reason = "reason",
+            ReasonCode = "reason_code",
             SenderValue = "sender_value",
             Status = "status",
             UpdatedAt = "updated_at",
@@ -193,6 +198,7 @@ public class ChannelEventPayloadTest : TestBase
         };
         string expectedNumberType = "number_type";
         string expectedReason = "reason";
+        string expectedReasonCode = "reason_code";
         string expectedSenderValue = "sender_value";
         string expectedStatus = "status";
         string expectedUpdatedAt = "updated_at";
@@ -203,6 +209,7 @@ public class ChannelEventPayloadTest : TestBase
         Assert.Equal(expectedCompliance, deserialized.Compliance);
         Assert.Equal(expectedNumberType, deserialized.NumberType);
         Assert.Equal(expectedReason, deserialized.Reason);
+        Assert.Equal(expectedReasonCode, deserialized.ReasonCode);
         Assert.Equal(expectedSenderValue, deserialized.SenderValue);
         Assert.Equal(expectedStatus, deserialized.Status);
         Assert.Equal(expectedUpdatedAt, deserialized.UpdatedAt);
@@ -238,6 +245,7 @@ public class ChannelEventPayloadTest : TestBase
             },
             NumberType = "number_type",
             Reason = "reason",
+            ReasonCode = "reason_code",
             SenderValue = "sender_value",
             Status = "status",
             UpdatedAt = "updated_at",
@@ -274,6 +282,7 @@ public class ChannelEventPayloadTest : TestBase
             },
             NumberType = "number_type",
             Reason = "reason",
+            ReasonCode = "reason_code",
             SenderValue = "sender_value",
         };
 
@@ -315,6 +324,7 @@ public class ChannelEventPayloadTest : TestBase
             },
             NumberType = "number_type",
             Reason = "reason",
+            ReasonCode = "reason_code",
             SenderValue = "sender_value",
         };
 
@@ -349,6 +359,7 @@ public class ChannelEventPayloadTest : TestBase
             },
             NumberType = "number_type",
             Reason = "reason",
+            ReasonCode = "reason_code",
             SenderValue = "sender_value",
 
             // Null should be interpreted as omitted for these properties
@@ -396,6 +407,7 @@ public class ChannelEventPayloadTest : TestBase
             },
             NumberType = "number_type",
             Reason = "reason",
+            ReasonCode = "reason_code",
             SenderValue = "sender_value",
 
             // Null should be interpreted as omitted for these properties
@@ -426,6 +438,8 @@ public class ChannelEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("number_type"));
         Assert.Null(model.Reason);
         Assert.False(model.RawData.ContainsKey("reason"));
+        Assert.Null(model.ReasonCode);
+        Assert.False(model.RawData.ContainsKey("reason_code"));
         Assert.Null(model.SenderValue);
         Assert.False(model.RawData.ContainsKey("sender_value"));
     }
@@ -459,6 +473,7 @@ public class ChannelEventPayloadTest : TestBase
             Compliance = null,
             NumberType = null,
             Reason = null,
+            ReasonCode = null,
             SenderValue = null,
         };
 
@@ -468,6 +483,8 @@ public class ChannelEventPayloadTest : TestBase
         Assert.True(model.RawData.ContainsKey("number_type"));
         Assert.Null(model.Reason);
         Assert.True(model.RawData.ContainsKey("reason"));
+        Assert.Null(model.ReasonCode);
+        Assert.True(model.RawData.ContainsKey("reason_code"));
         Assert.Null(model.SenderValue);
         Assert.True(model.RawData.ContainsKey("sender_value"));
     }
@@ -486,6 +503,7 @@ public class ChannelEventPayloadTest : TestBase
             Compliance = null,
             NumberType = null,
             Reason = null,
+            ReasonCode = null,
             SenderValue = null,
         };
 
@@ -522,6 +540,7 @@ public class ChannelEventPayloadTest : TestBase
             },
             NumberType = "number_type",
             Reason = "reason",
+            ReasonCode = "reason_code",
             SenderValue = "sender_value",
             Status = "status",
             UpdatedAt = "updated_at",
