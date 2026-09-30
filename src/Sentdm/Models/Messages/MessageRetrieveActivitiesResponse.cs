@@ -327,6 +327,37 @@ public sealed record class Activity : JsonModel
     }
 
     /// <summary>
+    /// A human-readable sentence for reason_code, for example "The recipient is
+    /// not registered on this channel" Omitted whenever reason_code is.
+    /// </summary>
+    public string? Reason
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("reason");
+        }
+        init { this._rawData.Set("reason", value); }
+    }
+
+    /// <summary>
+    /// Why the message reached this status, as a stable platform code such as DELIVERY_007
+    /// or BUSINESS_003. Present on FAILED, FILTERED and BLOCKED activities; omitted
+    /// on every status that needs no explanation. Switch on this rather than on reason:
+    /// the code is stable, the wording may be improved. Same wire name and vocabulary
+    /// as on the message and the webhook.
+    /// </summary>
+    public string? ReasonCode
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("reason_code");
+        }
+        init { this._rawData.Set("reason_code", value); }
+    }
+
+    /// <summary>
     /// SCHEDULED activities only: when the held message will be released for delivery,
     /// in UTC. Same wire name as on the send response, the message and the webhook.
     /// Omitted on every other activity. A message that quiet hours moved at release
@@ -392,6 +423,8 @@ public sealed record class Activity : JsonModel
         _ = this.Description;
         _ = this.From;
         _ = this.Price;
+        _ = this.Reason;
+        _ = this.ReasonCode;
         _ = this.ScheduledAt;
         _ = this.Status;
         _ = this.Timestamp;

@@ -31,6 +31,7 @@ public class MeRetrieveResponseTest : TestBase
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
                 Email = "email",
+                EnableTemplateAutoCreationForSp = true,
                 Icon = "icon",
                 Name = "name",
                 OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -107,6 +108,7 @@ public class MeRetrieveResponseTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
             Email = "email",
+            EnableTemplateAutoCreationForSp = true,
             Icon = "icon",
             Name = "name",
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -193,6 +195,7 @@ public class MeRetrieveResponseTest : TestBase
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
                 Email = "email",
+                EnableTemplateAutoCreationForSp = true,
                 Icon = "icon",
                 Name = "name",
                 OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -283,6 +286,7 @@ public class MeRetrieveResponseTest : TestBase
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
                 Email = "email",
+                EnableTemplateAutoCreationForSp = true,
                 Icon = "icon",
                 Name = "name",
                 OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -366,6 +370,7 @@ public class MeRetrieveResponseTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
             Email = "email",
+            EnableTemplateAutoCreationForSp = true,
             Icon = "icon",
             Name = "name",
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -452,6 +457,7 @@ public class MeRetrieveResponseTest : TestBase
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
                 Email = "email",
+                EnableTemplateAutoCreationForSp = true,
                 Icon = "icon",
                 Name = "name",
                 OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -536,6 +542,7 @@ public class MeRetrieveResponseTest : TestBase
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
                 Email = "email",
+                EnableTemplateAutoCreationForSp = true,
                 Icon = "icon",
                 Name = "name",
                 OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -616,6 +623,7 @@ public class MeRetrieveResponseTest : TestBase
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
                 Email = "email",
+                EnableTemplateAutoCreationForSp = true,
                 Icon = "icon",
                 Name = "name",
                 OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -693,6 +701,7 @@ public class MeRetrieveResponseTest : TestBase
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
                 Email = "email",
+                EnableTemplateAutoCreationForSp = true,
                 Icon = "icon",
                 Name = "name",
                 OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -777,6 +786,7 @@ public class MeRetrieveResponseTest : TestBase
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
                 Email = "email",
+                EnableTemplateAutoCreationForSp = true,
                 Icon = "icon",
                 Name = "name",
                 OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -938,6 +948,7 @@ public class MeRetrieveResponseTest : TestBase
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
                 Email = "email",
+                EnableTemplateAutoCreationForSp = true,
                 Icon = "icon",
                 Name = "name",
                 OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1025,6 +1036,7 @@ public class DataTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
             Email = "email",
+            EnableTemplateAutoCreationForSp = true,
             Icon = "icon",
             Name = "name",
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1084,6 +1096,7 @@ public class DataTest : TestBase
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedDescription = "description";
         string expectedEmail = "email";
+        bool expectedEnableTemplateAutoCreationForSp = true;
         string expectedIcon = "icon";
         string expectedName = "name";
         string expectedOrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -1132,6 +1145,10 @@ public class DataTest : TestBase
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedDescription, model.Description);
         Assert.Equal(expectedEmail, model.Email);
+        Assert.Equal(
+            expectedEnableTemplateAutoCreationForSp,
+            model.EnableTemplateAutoCreationForSp
+        );
         Assert.Equal(expectedIcon, model.Icon);
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedOrganizationID, model.OrganizationID);
@@ -1169,6 +1186,7 @@ public class DataTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
             Email = "email",
+            EnableTemplateAutoCreationForSp = true,
             Icon = "icon",
             Name = "name",
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1239,6 +1257,7 @@ public class DataTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
             Email = "email",
+            EnableTemplateAutoCreationForSp = true,
             Icon = "icon",
             Name = "name",
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1302,6 +1321,7 @@ public class DataTest : TestBase
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedDescription = "description";
         string expectedEmail = "email";
+        bool expectedEnableTemplateAutoCreationForSp = true;
         string expectedIcon = "icon";
         string expectedName = "name";
         string expectedOrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -1350,6 +1370,10 @@ public class DataTest : TestBase
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedDescription, deserialized.Description);
         Assert.Equal(expectedEmail, deserialized.Email);
+        Assert.Equal(
+            expectedEnableTemplateAutoCreationForSp,
+            deserialized.EnableTemplateAutoCreationForSp
+        );
         Assert.Equal(expectedIcon, deserialized.Icon);
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedOrganizationID, deserialized.OrganizationID);
@@ -1387,6 +1411,7 @@ public class DataTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
             Email = "email",
+            EnableTemplateAutoCreationForSp = true,
             Icon = "icon",
             Name = "name",
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1465,6 +1490,8 @@ public class DataTest : TestBase
         Assert.False(model.RawData.ContainsKey("channels"));
         Assert.Null(model.CreatedAt);
         Assert.False(model.RawData.ContainsKey("created_at"));
+        Assert.Null(model.EnableTemplateAutoCreationForSp);
+        Assert.False(model.RawData.ContainsKey("enable_template_auto_creation_for_sp"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Profiles);
@@ -1529,6 +1556,7 @@ public class DataTest : TestBase
             ID = null,
             Channels = null,
             CreatedAt = null,
+            EnableTemplateAutoCreationForSp = null,
             Name = null,
             Profiles = null,
             Type = null,
@@ -1540,6 +1568,8 @@ public class DataTest : TestBase
         Assert.False(model.RawData.ContainsKey("channels"));
         Assert.Null(model.CreatedAt);
         Assert.False(model.RawData.ContainsKey("created_at"));
+        Assert.Null(model.EnableTemplateAutoCreationForSp);
+        Assert.False(model.RawData.ContainsKey("enable_template_auto_creation_for_sp"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Profiles);
@@ -1576,6 +1606,7 @@ public class DataTest : TestBase
             ID = null,
             Channels = null,
             CreatedAt = null,
+            EnableTemplateAutoCreationForSp = null,
             Name = null,
             Profiles = null,
             Type = null,
@@ -1602,6 +1633,7 @@ public class DataTest : TestBase
                 },
             },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            EnableTemplateAutoCreationForSp = true,
             Name = "name",
             Profiles =
             [
@@ -1668,6 +1700,7 @@ public class DataTest : TestBase
                 },
             },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            EnableTemplateAutoCreationForSp = true,
             Name = "name",
             Profiles =
             [
@@ -1717,6 +1750,7 @@ public class DataTest : TestBase
                 },
             },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            EnableTemplateAutoCreationForSp = true,
             Name = "name",
             Profiles =
             [
@@ -1793,6 +1827,7 @@ public class DataTest : TestBase
                 },
             },
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            EnableTemplateAutoCreationForSp = true,
             Name = "name",
             Profiles =
             [
@@ -1854,6 +1889,7 @@ public class DataTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
             Email = "email",
+            EnableTemplateAutoCreationForSp = true,
             Icon = "icon",
             Name = "name",
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

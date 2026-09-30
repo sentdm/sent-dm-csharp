@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Conversations;
-using Sentdm.Models.Webhooks;
+using Webhooks = Sentdm.Models.Webhooks;
 
 namespace Sentdm.Tests.Models.Conversations;
 
@@ -32,6 +32,8 @@ public class ConversationMessagesListTest : TestBase
                             Status = "status",
                             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                             Description = "description",
+                            Reason = "reason",
+                            ReasonCode = "reason_code",
                         },
                     ],
                     MessageBody = new()
@@ -50,12 +52,24 @@ public class ConversationMessagesListTest : TestBase
                         Footer = "footer",
                         Header = "header",
                         HeaderMedia = new() { Type = "type", Url = "url" },
-                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Media =
+                        [
+                            new()
+                            {
+                                MediaType = "mediaType",
+                                MimeType = "mimeType",
+                                SizeBytes = 0,
+                                SourceHashSha256 = "sourceHashSha256",
+                                Url = "url",
+                            },
+                        ],
                         Subject = "subject",
                     },
                     Phone = "phone",
                     PhoneInternational = "phone_international",
                     Price = 0,
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                     RegionCode = "region_code",
                     Status = "status",
                     TemplateCategory = "template_category",
@@ -92,6 +106,8 @@ public class ConversationMessagesListTest : TestBase
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         Description = "description",
+                        Reason = "reason",
+                        ReasonCode = "reason_code",
                     },
                 ],
                 MessageBody = new()
@@ -110,12 +126,24 @@ public class ConversationMessagesListTest : TestBase
                     Footer = "footer",
                     Header = "header",
                     HeaderMedia = new() { Type = "type", Url = "url" },
-                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Media =
+                    [
+                        new()
+                        {
+                            MediaType = "mediaType",
+                            MimeType = "mimeType",
+                            SizeBytes = 0,
+                            SourceHashSha256 = "sourceHashSha256",
+                            Url = "url",
+                        },
+                    ],
                     Subject = "subject",
                 },
                 Phone = "phone",
                 PhoneInternational = "phone_international",
                 Price = 0,
+                Reason = "reason",
+                ReasonCode = "reason_code",
                 RegionCode = "region_code",
                 Status = "status",
                 TemplateCategory = "template_category",
@@ -123,7 +151,7 @@ public class ConversationMessagesListTest : TestBase
                 TemplateName = "template_name",
             },
         ];
-        PaginationMeta expectedPagination = new()
+        Webhooks::PaginationMeta expectedPagination = new()
         {
             Cursors = new() { After = "after", Before = "before" },
             HasMore = true,
@@ -165,6 +193,8 @@ public class ConversationMessagesListTest : TestBase
                             Status = "status",
                             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                             Description = "description",
+                            Reason = "reason",
+                            ReasonCode = "reason_code",
                         },
                     ],
                     MessageBody = new()
@@ -183,12 +213,24 @@ public class ConversationMessagesListTest : TestBase
                         Footer = "footer",
                         Header = "header",
                         HeaderMedia = new() { Type = "type", Url = "url" },
-                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Media =
+                        [
+                            new()
+                            {
+                                MediaType = "mediaType",
+                                MimeType = "mimeType",
+                                SizeBytes = 0,
+                                SourceHashSha256 = "sourceHashSha256",
+                                Url = "url",
+                            },
+                        ],
                         Subject = "subject",
                     },
                     Phone = "phone",
                     PhoneInternational = "phone_international",
                     Price = 0,
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                     RegionCode = "region_code",
                     Status = "status",
                     TemplateCategory = "template_category",
@@ -239,6 +281,8 @@ public class ConversationMessagesListTest : TestBase
                             Status = "status",
                             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                             Description = "description",
+                            Reason = "reason",
+                            ReasonCode = "reason_code",
                         },
                     ],
                     MessageBody = new()
@@ -257,12 +301,24 @@ public class ConversationMessagesListTest : TestBase
                         Footer = "footer",
                         Header = "header",
                         HeaderMedia = new() { Type = "type", Url = "url" },
-                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Media =
+                        [
+                            new()
+                            {
+                                MediaType = "mediaType",
+                                MimeType = "mimeType",
+                                SizeBytes = 0,
+                                SourceHashSha256 = "sourceHashSha256",
+                                Url = "url",
+                            },
+                        ],
                         Subject = "subject",
                     },
                     Phone = "phone",
                     PhoneInternational = "phone_international",
                     Price = 0,
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                     RegionCode = "region_code",
                     Status = "status",
                     TemplateCategory = "template_category",
@@ -306,6 +362,8 @@ public class ConversationMessagesListTest : TestBase
                         Status = "status",
                         Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         Description = "description",
+                        Reason = "reason",
+                        ReasonCode = "reason_code",
                     },
                 ],
                 MessageBody = new()
@@ -324,12 +382,24 @@ public class ConversationMessagesListTest : TestBase
                     Footer = "footer",
                     Header = "header",
                     HeaderMedia = new() { Type = "type", Url = "url" },
-                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Media =
+                    [
+                        new()
+                        {
+                            MediaType = "mediaType",
+                            MimeType = "mimeType",
+                            SizeBytes = 0,
+                            SourceHashSha256 = "sourceHashSha256",
+                            Url = "url",
+                        },
+                    ],
                     Subject = "subject",
                 },
                 Phone = "phone",
                 PhoneInternational = "phone_international",
                 Price = 0,
+                Reason = "reason",
+                ReasonCode = "reason_code",
                 RegionCode = "region_code",
                 Status = "status",
                 TemplateCategory = "template_category",
@@ -337,7 +407,7 @@ public class ConversationMessagesListTest : TestBase
                 TemplateName = "template_name",
             },
         ];
-        PaginationMeta expectedPagination = new()
+        Webhooks::PaginationMeta expectedPagination = new()
         {
             Cursors = new() { After = "after", Before = "before" },
             HasMore = true,
@@ -379,6 +449,8 @@ public class ConversationMessagesListTest : TestBase
                             Status = "status",
                             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                             Description = "description",
+                            Reason = "reason",
+                            ReasonCode = "reason_code",
                         },
                     ],
                     MessageBody = new()
@@ -397,12 +469,24 @@ public class ConversationMessagesListTest : TestBase
                         Footer = "footer",
                         Header = "header",
                         HeaderMedia = new() { Type = "type", Url = "url" },
-                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Media =
+                        [
+                            new()
+                            {
+                                MediaType = "mediaType",
+                                MimeType = "mimeType",
+                                SizeBytes = 0,
+                                SourceHashSha256 = "sourceHashSha256",
+                                Url = "url",
+                            },
+                        ],
                         Subject = "subject",
                     },
                     Phone = "phone",
                     PhoneInternational = "phone_international",
                     Price = 0,
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                     RegionCode = "region_code",
                     Status = "status",
                     TemplateCategory = "template_category",
@@ -495,6 +579,8 @@ public class ConversationMessagesListTest : TestBase
                             Status = "status",
                             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                             Description = "description",
+                            Reason = "reason",
+                            ReasonCode = "reason_code",
                         },
                     ],
                     MessageBody = new()
@@ -513,12 +599,24 @@ public class ConversationMessagesListTest : TestBase
                         Footer = "footer",
                         Header = "header",
                         HeaderMedia = new() { Type = "type", Url = "url" },
-                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Media =
+                        [
+                            new()
+                            {
+                                MediaType = "mediaType",
+                                MimeType = "mimeType",
+                                SizeBytes = 0,
+                                SourceHashSha256 = "sourceHashSha256",
+                                Url = "url",
+                            },
+                        ],
                         Subject = "subject",
                     },
                     Phone = "phone",
                     PhoneInternational = "phone_international",
                     Price = 0,
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                     RegionCode = "region_code",
                     Status = "status",
                     TemplateCategory = "template_category",
@@ -564,6 +662,8 @@ public class MessageTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                 },
             ],
             MessageBody = new()
@@ -582,12 +682,24 @@ public class MessageTest : TestBase
                 Footer = "footer",
                 Header = "header",
                 HeaderMedia = new() { Type = "type", Url = "url" },
-                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Media =
+                [
+                    new()
+                    {
+                        MediaType = "mediaType",
+                        MimeType = "mimeType",
+                        SizeBytes = 0,
+                        SourceHashSha256 = "sourceHashSha256",
+                        Url = "url",
+                    },
+                ],
                 Subject = "subject",
             },
             Phone = "phone",
             PhoneInternational = "phone_international",
             Price = 0,
+            Reason = "reason",
+            ReasonCode = "reason_code",
             RegionCode = "region_code",
             Status = "status",
             TemplateCategory = "template_category",
@@ -609,6 +721,8 @@ public class MessageTest : TestBase
                 Status = "status",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
+                Reason = "reason",
+                ReasonCode = "reason_code",
             },
         ];
         MessageBody expectedMessageBody = new()
@@ -627,12 +741,24 @@ public class MessageTest : TestBase
             Footer = "footer",
             Header = "header",
             HeaderMedia = new() { Type = "type", Url = "url" },
-            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Media =
+            [
+                new()
+                {
+                    MediaType = "mediaType",
+                    MimeType = "mimeType",
+                    SizeBytes = 0,
+                    SourceHashSha256 = "sourceHashSha256",
+                    Url = "url",
+                },
+            ],
             Subject = "subject",
         };
         string expectedPhone = "phone";
         string expectedPhoneInternational = "phone_international";
         double expectedPrice = 0;
+        string expectedReason = "reason";
+        string expectedReasonCode = "reason_code";
         string expectedRegionCode = "region_code";
         string expectedStatus = "status";
         string expectedTemplateCategory = "template_category";
@@ -656,6 +782,8 @@ public class MessageTest : TestBase
         Assert.Equal(expectedPhone, model.Phone);
         Assert.Equal(expectedPhoneInternational, model.PhoneInternational);
         Assert.Equal(expectedPrice, model.Price);
+        Assert.Equal(expectedReason, model.Reason);
+        Assert.Equal(expectedReasonCode, model.ReasonCode);
         Assert.Equal(expectedRegionCode, model.RegionCode);
         Assert.Equal(expectedStatus, model.Status);
         Assert.Equal(expectedTemplateCategory, model.TemplateCategory);
@@ -682,6 +810,8 @@ public class MessageTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                 },
             ],
             MessageBody = new()
@@ -700,12 +830,24 @@ public class MessageTest : TestBase
                 Footer = "footer",
                 Header = "header",
                 HeaderMedia = new() { Type = "type", Url = "url" },
-                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Media =
+                [
+                    new()
+                    {
+                        MediaType = "mediaType",
+                        MimeType = "mimeType",
+                        SizeBytes = 0,
+                        SourceHashSha256 = "sourceHashSha256",
+                        Url = "url",
+                    },
+                ],
                 Subject = "subject",
             },
             Phone = "phone",
             PhoneInternational = "phone_international",
             Price = 0,
+            Reason = "reason",
+            ReasonCode = "reason_code",
             RegionCode = "region_code",
             Status = "status",
             TemplateCategory = "template_category",
@@ -738,6 +880,8 @@ public class MessageTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                 },
             ],
             MessageBody = new()
@@ -756,12 +900,24 @@ public class MessageTest : TestBase
                 Footer = "footer",
                 Header = "header",
                 HeaderMedia = new() { Type = "type", Url = "url" },
-                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Media =
+                [
+                    new()
+                    {
+                        MediaType = "mediaType",
+                        MimeType = "mimeType",
+                        SizeBytes = 0,
+                        SourceHashSha256 = "sourceHashSha256",
+                        Url = "url",
+                    },
+                ],
                 Subject = "subject",
             },
             Phone = "phone",
             PhoneInternational = "phone_international",
             Price = 0,
+            Reason = "reason",
+            ReasonCode = "reason_code",
             RegionCode = "region_code",
             Status = "status",
             TemplateCategory = "template_category",
@@ -790,6 +946,8 @@ public class MessageTest : TestBase
                 Status = "status",
                 Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 Description = "description",
+                Reason = "reason",
+                ReasonCode = "reason_code",
             },
         ];
         MessageBody expectedMessageBody = new()
@@ -808,12 +966,24 @@ public class MessageTest : TestBase
             Footer = "footer",
             Header = "header",
             HeaderMedia = new() { Type = "type", Url = "url" },
-            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Media =
+            [
+                new()
+                {
+                    MediaType = "mediaType",
+                    MimeType = "mimeType",
+                    SizeBytes = 0,
+                    SourceHashSha256 = "sourceHashSha256",
+                    Url = "url",
+                },
+            ],
             Subject = "subject",
         };
         string expectedPhone = "phone";
         string expectedPhoneInternational = "phone_international";
         double expectedPrice = 0;
+        string expectedReason = "reason";
+        string expectedReasonCode = "reason_code";
         string expectedRegionCode = "region_code";
         string expectedStatus = "status";
         string expectedTemplateCategory = "template_category";
@@ -837,6 +1007,8 @@ public class MessageTest : TestBase
         Assert.Equal(expectedPhone, deserialized.Phone);
         Assert.Equal(expectedPhoneInternational, deserialized.PhoneInternational);
         Assert.Equal(expectedPrice, deserialized.Price);
+        Assert.Equal(expectedReason, deserialized.Reason);
+        Assert.Equal(expectedReasonCode, deserialized.ReasonCode);
         Assert.Equal(expectedRegionCode, deserialized.RegionCode);
         Assert.Equal(expectedStatus, deserialized.Status);
         Assert.Equal(expectedTemplateCategory, deserialized.TemplateCategory);
@@ -863,6 +1035,8 @@ public class MessageTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                 },
             ],
             MessageBody = new()
@@ -881,12 +1055,24 @@ public class MessageTest : TestBase
                 Footer = "footer",
                 Header = "header",
                 HeaderMedia = new() { Type = "type", Url = "url" },
-                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Media =
+                [
+                    new()
+                    {
+                        MediaType = "mediaType",
+                        MimeType = "mimeType",
+                        SizeBytes = 0,
+                        SourceHashSha256 = "sourceHashSha256",
+                        Url = "url",
+                    },
+                ],
                 Subject = "subject",
             },
             Phone = "phone",
             PhoneInternational = "phone_international",
             Price = 0,
+            Reason = "reason",
+            ReasonCode = "reason_code",
             RegionCode = "region_code",
             Status = "status",
             TemplateCategory = "template_category",
@@ -910,6 +1096,8 @@ public class MessageTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                 },
             ],
             MessageBody = new()
@@ -928,10 +1116,22 @@ public class MessageTest : TestBase
                 Footer = "footer",
                 Header = "header",
                 HeaderMedia = new() { Type = "type", Url = "url" },
-                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Media =
+                [
+                    new()
+                    {
+                        MediaType = "mediaType",
+                        MimeType = "mimeType",
+                        SizeBytes = 0,
+                        SourceHashSha256 = "sourceHashSha256",
+                        Url = "url",
+                    },
+                ],
                 Subject = "subject",
             },
             Price = 0,
+            Reason = "reason",
+            ReasonCode = "reason_code",
             TemplateCategory = "template_category",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -972,6 +1172,8 @@ public class MessageTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                 },
             ],
             MessageBody = new()
@@ -990,10 +1192,22 @@ public class MessageTest : TestBase
                 Footer = "footer",
                 Header = "header",
                 HeaderMedia = new() { Type = "type", Url = "url" },
-                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Media =
+                [
+                    new()
+                    {
+                        MediaType = "mediaType",
+                        MimeType = "mimeType",
+                        SizeBytes = 0,
+                        SourceHashSha256 = "sourceHashSha256",
+                        Url = "url",
+                    },
+                ],
                 Subject = "subject",
             },
             Price = 0,
+            Reason = "reason",
+            ReasonCode = "reason_code",
             TemplateCategory = "template_category",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -1015,6 +1229,8 @@ public class MessageTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                 },
             ],
             MessageBody = new()
@@ -1033,10 +1249,22 @@ public class MessageTest : TestBase
                 Footer = "footer",
                 Header = "header",
                 HeaderMedia = new() { Type = "type", Url = "url" },
-                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Media =
+                [
+                    new()
+                    {
+                        MediaType = "mediaType",
+                        MimeType = "mimeType",
+                        SizeBytes = 0,
+                        SourceHashSha256 = "sourceHashSha256",
+                        Url = "url",
+                    },
+                ],
                 Subject = "subject",
             },
             Price = 0,
+            Reason = "reason",
+            ReasonCode = "reason_code",
             TemplateCategory = "template_category",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -1089,6 +1317,8 @@ public class MessageTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                 },
             ],
             MessageBody = new()
@@ -1107,10 +1337,22 @@ public class MessageTest : TestBase
                 Footer = "footer",
                 Header = "header",
                 HeaderMedia = new() { Type = "type", Url = "url" },
-                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Media =
+                [
+                    new()
+                    {
+                        MediaType = "mediaType",
+                        MimeType = "mimeType",
+                        SizeBytes = 0,
+                        SourceHashSha256 = "sourceHashSha256",
+                        Url = "url",
+                    },
+                ],
                 Subject = "subject",
             },
             Price = 0,
+            Reason = "reason",
+            ReasonCode = "reason_code",
             TemplateCategory = "template_category",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
@@ -1156,6 +1398,10 @@ public class MessageTest : TestBase
         Assert.False(model.RawData.ContainsKey("message_body"));
         Assert.Null(model.Price);
         Assert.False(model.RawData.ContainsKey("price"));
+        Assert.Null(model.Reason);
+        Assert.False(model.RawData.ContainsKey("reason"));
+        Assert.Null(model.ReasonCode);
+        Assert.False(model.RawData.ContainsKey("reason_code"));
         Assert.Null(model.TemplateCategory);
         Assert.False(model.RawData.ContainsKey("template_category"));
         Assert.Null(model.TemplateID);
@@ -1204,6 +1450,8 @@ public class MessageTest : TestBase
             Events = null,
             MessageBody = null,
             Price = null,
+            Reason = null,
+            ReasonCode = null,
             TemplateCategory = null,
             TemplateID = null,
             TemplateName = null,
@@ -1217,6 +1465,10 @@ public class MessageTest : TestBase
         Assert.True(model.RawData.ContainsKey("message_body"));
         Assert.Null(model.Price);
         Assert.True(model.RawData.ContainsKey("price"));
+        Assert.Null(model.Reason);
+        Assert.True(model.RawData.ContainsKey("reason"));
+        Assert.Null(model.ReasonCode);
+        Assert.True(model.RawData.ContainsKey("reason_code"));
         Assert.Null(model.TemplateCategory);
         Assert.True(model.RawData.ContainsKey("template_category"));
         Assert.Null(model.TemplateID);
@@ -1245,6 +1497,8 @@ public class MessageTest : TestBase
             Events = null,
             MessageBody = null,
             Price = null,
+            Reason = null,
+            ReasonCode = null,
             TemplateCategory = null,
             TemplateID = null,
             TemplateName = null,
@@ -1272,6 +1526,8 @@ public class MessageTest : TestBase
                     Status = "status",
                     Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     Description = "description",
+                    Reason = "reason",
+                    ReasonCode = "reason_code",
                 },
             ],
             MessageBody = new()
@@ -1290,12 +1546,24 @@ public class MessageTest : TestBase
                 Footer = "footer",
                 Header = "header",
                 HeaderMedia = new() { Type = "type", Url = "url" },
-                Media = [new() { MediaType = "mediaType", Url = "url" }],
+                Media =
+                [
+                    new()
+                    {
+                        MediaType = "mediaType",
+                        MimeType = "mimeType",
+                        SizeBytes = 0,
+                        SourceHashSha256 = "sourceHashSha256",
+                        Url = "url",
+                    },
+                ],
                 Subject = "subject",
             },
             Phone = "phone",
             PhoneInternational = "phone_international",
             Price = 0,
+            Reason = "reason",
+            ReasonCode = "reason_code",
             RegionCode = "region_code",
             Status = "status",
             TemplateCategory = "template_category",
@@ -1319,15 +1587,21 @@ public class EventTest : TestBase
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            Reason = "reason",
+            ReasonCode = "reason_code",
         };
 
         string expectedStatus = "status";
         DateTimeOffset expectedTimestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedDescription = "description";
+        string expectedReason = "reason";
+        string expectedReasonCode = "reason_code";
 
         Assert.Equal(expectedStatus, model.Status);
         Assert.Equal(expectedTimestamp, model.Timestamp);
         Assert.Equal(expectedDescription, model.Description);
+        Assert.Equal(expectedReason, model.Reason);
+        Assert.Equal(expectedReasonCode, model.ReasonCode);
     }
 
     [Fact]
@@ -1338,6 +1612,8 @@ public class EventTest : TestBase
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            Reason = "reason",
+            ReasonCode = "reason_code",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -1354,6 +1630,8 @@ public class EventTest : TestBase
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            Reason = "reason",
+            ReasonCode = "reason_code",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -1363,10 +1641,14 @@ public class EventTest : TestBase
         string expectedStatus = "status";
         DateTimeOffset expectedTimestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedDescription = "description";
+        string expectedReason = "reason";
+        string expectedReasonCode = "reason_code";
 
         Assert.Equal(expectedStatus, deserialized.Status);
         Assert.Equal(expectedTimestamp, deserialized.Timestamp);
         Assert.Equal(expectedDescription, deserialized.Description);
+        Assert.Equal(expectedReason, deserialized.Reason);
+        Assert.Equal(expectedReasonCode, deserialized.ReasonCode);
     }
 
     [Fact]
@@ -1377,6 +1659,8 @@ public class EventTest : TestBase
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            Reason = "reason",
+            ReasonCode = "reason_code",
         };
 
         model.Validate();
@@ -1393,6 +1677,10 @@ public class EventTest : TestBase
 
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
+        Assert.Null(model.Reason);
+        Assert.False(model.RawData.ContainsKey("reason"));
+        Assert.Null(model.ReasonCode);
+        Assert.False(model.RawData.ContainsKey("reason_code"));
     }
 
     [Fact]
@@ -1416,10 +1704,16 @@ public class EventTest : TestBase
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             Description = null,
+            Reason = null,
+            ReasonCode = null,
         };
 
         Assert.Null(model.Description);
         Assert.True(model.RawData.ContainsKey("description"));
+        Assert.Null(model.Reason);
+        Assert.True(model.RawData.ContainsKey("reason"));
+        Assert.Null(model.ReasonCode);
+        Assert.True(model.RawData.ContainsKey("reason_code"));
     }
 
     [Fact]
@@ -1431,6 +1725,8 @@ public class EventTest : TestBase
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
             Description = null,
+            Reason = null,
+            ReasonCode = null,
         };
 
         model.Validate();
@@ -1444,6 +1740,8 @@ public class EventTest : TestBase
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Description = "description",
+            Reason = "reason",
+            ReasonCode = "reason_code",
         };
 
         Event copied = new(model);
@@ -1473,7 +1771,17 @@ public class MessageBodyTest : TestBase
             Footer = "footer",
             Header = "header",
             HeaderMedia = new() { Type = "type", Url = "url" },
-            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Media =
+            [
+                new()
+                {
+                    MediaType = "mediaType",
+                    MimeType = "mimeType",
+                    SizeBytes = 0,
+                    SourceHashSha256 = "sourceHashSha256",
+                    Url = "url",
+                },
+            ],
             Subject = "subject",
         };
 
@@ -1491,7 +1799,17 @@ public class MessageBodyTest : TestBase
         string expectedFooter = "footer";
         string expectedHeader = "header";
         HeaderMedia expectedHeaderMedia = new() { Type = "type", Url = "url" };
-        List<Media> expectedMedia = [new() { MediaType = "mediaType", Url = "url" }];
+        List<Media> expectedMedia =
+        [
+            new()
+            {
+                MediaType = "mediaType",
+                MimeType = "mimeType",
+                SizeBytes = 0,
+                SourceHashSha256 = "sourceHashSha256",
+                Url = "url",
+            },
+        ];
         string expectedSubject = "subject";
 
         Assert.NotNull(model.Buttons);
@@ -1532,7 +1850,17 @@ public class MessageBodyTest : TestBase
             Footer = "footer",
             Header = "header",
             HeaderMedia = new() { Type = "type", Url = "url" },
-            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Media =
+            [
+                new()
+                {
+                    MediaType = "mediaType",
+                    MimeType = "mimeType",
+                    SizeBytes = 0,
+                    SourceHashSha256 = "sourceHashSha256",
+                    Url = "url",
+                },
+            ],
             Subject = "subject",
         };
 
@@ -1564,7 +1892,17 @@ public class MessageBodyTest : TestBase
             Footer = "footer",
             Header = "header",
             HeaderMedia = new() { Type = "type", Url = "url" },
-            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Media =
+            [
+                new()
+                {
+                    MediaType = "mediaType",
+                    MimeType = "mimeType",
+                    SizeBytes = 0,
+                    SourceHashSha256 = "sourceHashSha256",
+                    Url = "url",
+                },
+            ],
             Subject = "subject",
         };
 
@@ -1589,7 +1927,17 @@ public class MessageBodyTest : TestBase
         string expectedFooter = "footer";
         string expectedHeader = "header";
         HeaderMedia expectedHeaderMedia = new() { Type = "type", Url = "url" };
-        List<Media> expectedMedia = [new() { MediaType = "mediaType", Url = "url" }];
+        List<Media> expectedMedia =
+        [
+            new()
+            {
+                MediaType = "mediaType",
+                MimeType = "mimeType",
+                SizeBytes = 0,
+                SourceHashSha256 = "sourceHashSha256",
+                Url = "url",
+            },
+        ];
         string expectedSubject = "subject";
 
         Assert.NotNull(deserialized.Buttons);
@@ -1630,7 +1978,17 @@ public class MessageBodyTest : TestBase
             Footer = "footer",
             Header = "header",
             HeaderMedia = new() { Type = "type", Url = "url" },
-            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Media =
+            [
+                new()
+                {
+                    MediaType = "mediaType",
+                    MimeType = "mimeType",
+                    SizeBytes = 0,
+                    SourceHashSha256 = "sourceHashSha256",
+                    Url = "url",
+                },
+            ],
             Subject = "subject",
         };
 
@@ -1655,7 +2013,17 @@ public class MessageBodyTest : TestBase
             Footer = "footer",
             Header = "header",
             HeaderMedia = new() { Type = "type", Url = "url" },
-            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Media =
+            [
+                new()
+                {
+                    MediaType = "mediaType",
+                    MimeType = "mimeType",
+                    SizeBytes = 0,
+                    SourceHashSha256 = "sourceHashSha256",
+                    Url = "url",
+                },
+            ],
             Subject = "subject",
         };
 
@@ -1681,7 +2049,17 @@ public class MessageBodyTest : TestBase
             Footer = "footer",
             Header = "header",
             HeaderMedia = new() { Type = "type", Url = "url" },
-            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Media =
+            [
+                new()
+                {
+                    MediaType = "mediaType",
+                    MimeType = "mimeType",
+                    SizeBytes = 0,
+                    SourceHashSha256 = "sourceHashSha256",
+                    Url = "url",
+                },
+            ],
             Subject = "subject",
         };
 
@@ -1706,7 +2084,17 @@ public class MessageBodyTest : TestBase
             Footer = "footer",
             Header = "header",
             HeaderMedia = new() { Type = "type", Url = "url" },
-            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Media =
+            [
+                new()
+                {
+                    MediaType = "mediaType",
+                    MimeType = "mimeType",
+                    SizeBytes = 0,
+                    SourceHashSha256 = "sourceHashSha256",
+                    Url = "url",
+                },
+            ],
             Subject = "subject",
 
             // Null should be interpreted as omitted for these properties
@@ -1735,7 +2123,17 @@ public class MessageBodyTest : TestBase
             Footer = "footer",
             Header = "header",
             HeaderMedia = new() { Type = "type", Url = "url" },
-            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Media =
+            [
+                new()
+                {
+                    MediaType = "mediaType",
+                    MimeType = "mimeType",
+                    SizeBytes = 0,
+                    SourceHashSha256 = "sourceHashSha256",
+                    Url = "url",
+                },
+            ],
             Subject = "subject",
 
             // Null should be interpreted as omitted for these properties
@@ -1838,7 +2236,17 @@ public class MessageBodyTest : TestBase
             Footer = "footer",
             Header = "header",
             HeaderMedia = new() { Type = "type", Url = "url" },
-            Media = [new() { MediaType = "mediaType", Url = "url" }],
+            Media =
+            [
+                new()
+                {
+                    MediaType = "mediaType",
+                    MimeType = "mimeType",
+                    SizeBytes = 0,
+                    SourceHashSha256 = "sourceHashSha256",
+                    Url = "url",
+                },
+            ],
             Subject = "subject",
         };
 
@@ -2171,19 +2579,39 @@ public class MediaTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Media { MediaType = "mediaType", Url = "url" };
+        var model = new Media
+        {
+            MediaType = "mediaType",
+            MimeType = "mimeType",
+            SizeBytes = 0,
+            SourceHashSha256 = "sourceHashSha256",
+            Url = "url",
+        };
 
         string expectedMediaType = "mediaType";
+        string expectedMimeType = "mimeType";
+        long expectedSizeBytes = 0;
+        string expectedSourceHashSha256 = "sourceHashSha256";
         string expectedUrl = "url";
 
         Assert.Equal(expectedMediaType, model.MediaType);
+        Assert.Equal(expectedMimeType, model.MimeType);
+        Assert.Equal(expectedSizeBytes, model.SizeBytes);
+        Assert.Equal(expectedSourceHashSha256, model.SourceHashSha256);
         Assert.Equal(expectedUrl, model.Url);
     }
 
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Media { MediaType = "mediaType", Url = "url" };
+        var model = new Media
+        {
+            MediaType = "mediaType",
+            MimeType = "mimeType",
+            SizeBytes = 0,
+            SourceHashSha256 = "sourceHashSha256",
+            Url = "url",
+        };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<Media>(json, ModelBase.SerializerOptions);
@@ -2194,68 +2622,42 @@ public class MediaTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Media { MediaType = "mediaType", Url = "url" };
+        var model = new Media
+        {
+            MediaType = "mediaType",
+            MimeType = "mimeType",
+            SizeBytes = 0,
+            SourceHashSha256 = "sourceHashSha256",
+            Url = "url",
+        };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<Media>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedMediaType = "mediaType";
+        string expectedMimeType = "mimeType";
+        long expectedSizeBytes = 0;
+        string expectedSourceHashSha256 = "sourceHashSha256";
         string expectedUrl = "url";
 
         Assert.Equal(expectedMediaType, deserialized.MediaType);
+        Assert.Equal(expectedMimeType, deserialized.MimeType);
+        Assert.Equal(expectedSizeBytes, deserialized.SizeBytes);
+        Assert.Equal(expectedSourceHashSha256, deserialized.SourceHashSha256);
         Assert.Equal(expectedUrl, deserialized.Url);
     }
 
     [Fact]
     public void Validation_Works()
     {
-        var model = new Media { MediaType = "mediaType", Url = "url" };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
-    {
-        var model = new Media { MediaType = "mediaType" };
-
-        Assert.Null(model.Url);
-        Assert.False(model.RawData.ContainsKey("url"));
-    }
-
-    [Fact]
-    public void OptionalNonNullablePropertiesUnsetValidation_Works()
-    {
-        var model = new Media { MediaType = "mediaType" };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
-    {
         var model = new Media
         {
             MediaType = "mediaType",
-
-            // Null should be interpreted as omitted for these properties
-            Url = null,
-        };
-
-        Assert.Null(model.Url);
-        Assert.False(model.RawData.ContainsKey("url"));
-    }
-
-    [Fact]
-    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
-    {
-        var model = new Media
-        {
-            MediaType = "mediaType",
-
-            // Null should be interpreted as omitted for these properties
-            Url = null,
+            MimeType = "mimeType",
+            SizeBytes = 0,
+            SourceHashSha256 = "sourceHashSha256",
+            Url = "url",
         };
 
         model.Validate();
@@ -2264,16 +2666,24 @@ public class MediaTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Media { Url = "url" };
+        var model = new Media { };
 
         Assert.Null(model.MediaType);
         Assert.False(model.RawData.ContainsKey("mediaType"));
+        Assert.Null(model.MimeType);
+        Assert.False(model.RawData.ContainsKey("mimeType"));
+        Assert.Null(model.SizeBytes);
+        Assert.False(model.RawData.ContainsKey("sizeBytes"));
+        Assert.Null(model.SourceHashSha256);
+        Assert.False(model.RawData.ContainsKey("sourceHashSha256"));
+        Assert.Null(model.Url);
+        Assert.False(model.RawData.ContainsKey("url"));
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Media { Url = "url" };
+        var model = new Media { };
 
         model.Validate();
     }
@@ -2283,13 +2693,23 @@ public class MediaTest : TestBase
     {
         var model = new Media
         {
-            Url = "url",
-
             MediaType = null,
+            MimeType = null,
+            SizeBytes = null,
+            SourceHashSha256 = null,
+            Url = null,
         };
 
         Assert.Null(model.MediaType);
         Assert.True(model.RawData.ContainsKey("mediaType"));
+        Assert.Null(model.MimeType);
+        Assert.True(model.RawData.ContainsKey("mimeType"));
+        Assert.Null(model.SizeBytes);
+        Assert.True(model.RawData.ContainsKey("sizeBytes"));
+        Assert.Null(model.SourceHashSha256);
+        Assert.True(model.RawData.ContainsKey("sourceHashSha256"));
+        Assert.Null(model.Url);
+        Assert.True(model.RawData.ContainsKey("url"));
     }
 
     [Fact]
@@ -2297,9 +2717,11 @@ public class MediaTest : TestBase
     {
         var model = new Media
         {
-            Url = "url",
-
             MediaType = null,
+            MimeType = null,
+            SizeBytes = null,
+            SourceHashSha256 = null,
+            Url = null,
         };
 
         model.Validate();
@@ -2308,7 +2730,14 @@ public class MediaTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Media { MediaType = "mediaType", Url = "url" };
+        var model = new Media
+        {
+            MediaType = "mediaType",
+            MimeType = "mimeType",
+            SizeBytes = 0,
+            SourceHashSha256 = "sourceHashSha256",
+            Url = "url",
+        };
 
         Media copied = new(model);
 

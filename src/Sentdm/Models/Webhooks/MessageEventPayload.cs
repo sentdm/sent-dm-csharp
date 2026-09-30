@@ -143,6 +143,37 @@ public sealed record class MessageEventPayload : JsonModel
     }
 
     /// <summary>
+    /// A human-readable sentence for ReasonCode, for example "The recipient is not
+    /// registered on this channel". Omitted whenever reason_code is.
+    /// </summary>
+    public string? Reason
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("reason");
+        }
+        init { this._rawData.Set("reason", value); }
+    }
+
+    /// <summary>
+    /// Why the message reached this status, as a stable platform code such as DELIVERY_007
+    /// or BUSINESS_003. Present on message.failed, message.filtered and message.blocked;
+    /// omitted on every status that needs no explanation. Switch on this rather
+    /// than on Reason: the code is stable, the wording may be improved. It is the
+    /// platform's classification of the outcome and never a carrier or vendor code.
+    /// </summary>
+    public string? ReasonCode
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("reason_code");
+        }
+        init { this._rawData.Set("reason_code", value); }
+    }
+
+    /// <summary>
     /// message.scheduled only: why the message is held, either because you scheduled
     /// it or because the recipient is inside a protected quiet-hours window. Omitted
     /// on every other event.
@@ -228,6 +259,8 @@ public sealed record class MessageEventPayload : JsonModel
         _ = this.Channel;
         _ = this.MessageID;
         _ = this.OutboundNumber;
+        _ = this.Reason;
+        _ = this.ReasonCode;
         _ = this.ScheduleReason;
         _ = this.ScheduledAt;
         _ = this.TemplateID;

@@ -11,6 +11,7 @@ public class TemplateCreateParamsTest : TestBase
     {
         var parameters = new TemplateCreateParams
         {
+            AutoCreateForSp = false,
             Category = "MARKETING",
             CreationSource = null,
             Definition = new()
@@ -270,6 +271,7 @@ public class TemplateCreateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        bool expectedAutoCreateForSp = false;
         string expectedCategory = "MARKETING";
         TemplateDefinition expectedDefinition = new()
         {
@@ -527,6 +529,7 @@ public class TemplateCreateParamsTest : TestBase
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
+        Assert.Equal(expectedAutoCreateForSp, parameters.AutoCreateForSp);
         Assert.Equal(expectedCategory, parameters.Category);
         Assert.Null(parameters.CreationSource);
         Assert.Equal(expectedDefinition, parameters.Definition);
@@ -547,6 +550,8 @@ public class TemplateCreateParamsTest : TestBase
             Language = "en_US",
         };
 
+        Assert.Null(parameters.AutoCreateForSp);
+        Assert.False(parameters.RawBodyData.ContainsKey("auto_create_for_sp"));
         Assert.Null(parameters.Definition);
         Assert.False(parameters.RawBodyData.ContainsKey("definition"));
         Assert.Null(parameters.Sandbox);
@@ -569,6 +574,7 @@ public class TemplateCreateParamsTest : TestBase
             Language = "en_US",
 
             // Null should be interpreted as omitted for these properties
+            AutoCreateForSp = null,
             Definition = null,
             Sandbox = null,
             SubmitForReview = null,
@@ -576,6 +582,8 @@ public class TemplateCreateParamsTest : TestBase
             XProfileID = null,
         };
 
+        Assert.Null(parameters.AutoCreateForSp);
+        Assert.False(parameters.RawBodyData.ContainsKey("auto_create_for_sp"));
         Assert.Null(parameters.Definition);
         Assert.False(parameters.RawBodyData.ContainsKey("definition"));
         Assert.Null(parameters.Sandbox);
@@ -593,6 +601,7 @@ public class TemplateCreateParamsTest : TestBase
     {
         var parameters = new TemplateCreateParams
         {
+            AutoCreateForSp = false,
             Definition = new()
             {
                 Body = new()
@@ -862,6 +871,7 @@ public class TemplateCreateParamsTest : TestBase
     {
         var parameters = new TemplateCreateParams
         {
+            AutoCreateForSp = false,
             Definition = new()
             {
                 Body = new()
@@ -1164,6 +1174,7 @@ public class TemplateCreateParamsTest : TestBase
     {
         var parameters = new TemplateCreateParams
         {
+            AutoCreateForSp = false,
             Category = "MARKETING",
             CreationSource = null,
             Definition = new()

@@ -321,6 +321,38 @@ public sealed record class Message : JsonModel
         init { this._rawData.Set("price", value); }
     }
 
+    /// <summary>
+    /// A human-readable sentence for reason_code, for example "Insufficient balance".
+    /// Omitted whenever reason_code is.
+    /// </summary>
+    public string? Reason
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("reason");
+        }
+        init { this._rawData.Set("reason", value); }
+    }
+
+    /// <summary>
+    /// Why the message is at its current status, as a stable platform code such
+    /// as DELIVERY_007, BUSINESS_003 or DELIVERY_003. Present when the current status
+    /// is FAILED, FILTERED or BLOCKED and the lifecycle was loaded; omitted otherwise.
+    /// Switch on this rather than on reason: the code is stable, the wording may
+    /// be improved. It is the platform's classification of the outcome, never a
+    /// carrier or vendor code.
+    /// </summary>
+    public string? ReasonCode
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("reason_code");
+        }
+        init { this._rawData.Set("reason_code", value); }
+    }
+
     public string? RegionCode
     {
         get
@@ -405,6 +437,8 @@ public sealed record class Message : JsonModel
         _ = this.Phone;
         _ = this.PhoneInternational;
         _ = this.Price;
+        _ = this.Reason;
+        _ = this.ReasonCode;
         _ = this.RegionCode;
         _ = this.Status;
         _ = this.TemplateCategory;
@@ -483,12 +517,43 @@ public sealed record class Event : JsonModel
         init { this._rawData.Set("description", value); }
     }
 
+    /// <summary>
+    /// A human-readable sentence for reason_code. Omitted whenever reason_code is.
+    /// </summary>
+    public string? Reason
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("reason");
+        }
+        init { this._rawData.Set("reason", value); }
+    }
+
+    /// <summary>
+    /// Why the message reached this status, as a stable platform code such as DELIVERY_007.
+    /// Present on FAILED, FILTERED and BLOCKED events; omitted on every status that
+    /// needs no explanation. Same wire name and vocabulary as on the activities
+    /// list and the webhook.
+    /// </summary>
+    public string? ReasonCode
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("reason_code");
+        }
+        init { this._rawData.Set("reason_code", value); }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
         _ = this.Status;
         _ = this.Timestamp;
         _ = this.Description;
+        _ = this.Reason;
+        _ = this.ReasonCode;
     }
 
     public Event() { }
@@ -613,16 +678,18 @@ public sealed record class MessageBody : JsonModel
     /// reads templateId and templateVariables and nothing else — so media that lives
     /// only on the original request would silently turn a replayed MMS into a text message.
     /// </summary>
-    public IReadOnlyList<Media>? Media
+    public IReadOnlyList<global::Sentdm.Models.Conversations.Media>? Media
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Media>>("media");
+            return this._rawData.GetNullableStruct<
+                ImmutableArray<global::Sentdm.Models.Conversations.Media>
+            >("media");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<Media>?>(
+            this._rawData.Set<ImmutableArray<global::Sentdm.Models.Conversations.Media>?>(
                 "media",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -890,19 +957,29 @@ class HeaderMediaFromRaw : IFromRawJson<HeaderMedia>
 }
 
 /// <summary>
-/// One attachment on a message: a customer-supplied public URL handed to the carrier
-/// as-is.                           A URL and nothing else. sent.dm never takes
-/// custody of MMS media — the customer hosts it and we              pass the link
-/// through at send time — so there is no storage key, size or expiry to record.
-/// If we ever              do host attachments, that belongs with the change that
-/// introduces the hosting, not here.
+/// One attachment on a message, in either direction — and in both, a URL somebody
+/// else hosts.              Outbound: the customer supplied a public URL and we
+/// handed it to the carrier. Inbound: the carrier hosts the file and we record where.
+/// sent.dm never holds the bytes, so there is no key, no expiry bookkeeping and nothing
+/// minted per read — what is stored is what is served.              An inbound link
+/// expires on the carrier's own schedule and is unauthenticated. That is the customer's
+/// to manage, and it is documented where they will see it rather than only here
+/// — a recipient who needs an attachment to outlive that window copies it on receipt.
+///              Storing a presigned URL is the specific mistake this shape still
+/// avoids: M260826130000 and M260826140000 exist because RCS assets were stored
+/// as signed URLs and went stale. Nothing here is signed.
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<Media, MediaFromRaw>))]
+[JsonConverter(
+    typeof(JsonModelConverter<
+        global::Sentdm.Models.Conversations.Media,
+        global::Sentdm.Models.Conversations.MediaFromRaw
+    >)
+)]
 public sealed record class Media : JsonModel
 {
     /// <summary>
-    /// One of Constants.MmsMediaTypes when known. Advisory — the carrier reads the
-    ///             fetched object's Content-Type, not this.
+    /// One of MmsMediaTypes when the content type is known. Advisory — a reader should
+    ///             trust the fetched object's own Content-Type.
     /// </summary>
     public string? MediaType
     {
@@ -914,6 +991,53 @@ public sealed record class Media : JsonModel
         init { this._rawData.Set("mediaType", value); }
     }
 
+    /// <summary>
+    /// Content type as the provider declared it. Null when it declared none.
+    /// </summary>
+    public string? MimeType
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("mimeType");
+        }
+        init { this._rawData.Set("mimeType", value); }
+    }
+
+    /// <summary>
+    /// Size as the provider declared it. Never measured here — nothing downloads
+    /// the file.
+    /// </summary>
+    public long? SizeBytes
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("sizeBytes");
+        }
+        init { this._rawData.Set("sizeBytes", value); }
+    }
+
+    /// <summary>
+    /// Inbound only: the SHA-256 the provider declared alongside the attachment,
+    /// when it declared one. Relayed to the customer so they can verify what they
+    /// fetch matches what the carrier said it sent. It is the only integrity signal
+    /// available on an attachment nobody here has read.
+    /// </summary>
+    public string? SourceHashSha256
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("sourceHashSha256");
+        }
+        init { this._rawData.Set("sourceHashSha256", value); }
+    }
+
+    /// <summary>
+    /// Where the file lives. Outbound: the URL the customer gave us and the carrier
+    /// fetched. Inbound: the URL the carrier hosts it at, relayed unchanged.
+    /// </summary>
     public string? Url
     {
         get
@@ -921,21 +1045,16 @@ public sealed record class Media : JsonModel
             this._rawData.Freeze();
             return this._rawData.GetNullableClass<string>("url");
         }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("url", value);
-        }
+        init { this._rawData.Set("url", value); }
     }
 
     /// <inheritdoc/>
     public override void Validate()
     {
         _ = this.MediaType;
+        _ = this.MimeType;
+        _ = this.SizeBytes;
+        _ = this.SourceHashSha256;
         _ = this.Url;
     }
 
@@ -943,7 +1062,7 @@ public sealed record class Media : JsonModel
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Media(Media media)
+    public Media(global::Sentdm.Models.Conversations.Media media)
         : base(media) { }
 #pragma warning restore CS8618
 
@@ -960,16 +1079,19 @@ public sealed record class Media : JsonModel
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="MediaFromRaw.FromRawUnchecked"/>
-    public static Media FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="global::Sentdm.Models.Conversations.MediaFromRaw.FromRawUnchecked"/>
+    public static global::Sentdm.Models.Conversations.Media FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class MediaFromRaw : IFromRawJson<Media>
+class MediaFromRaw : IFromRawJson<global::Sentdm.Models.Conversations.Media>
 {
     /// <inheritdoc/>
-    public Media FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Media.FromRawUnchecked(rawData);
+    public global::Sentdm.Models.Conversations.Media FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => global::Sentdm.Models.Conversations.Media.FromRawUnchecked(rawData);
 }

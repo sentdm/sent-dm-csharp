@@ -28,6 +28,29 @@ public record class TemplateCreateParams : ParamsBase
     }
 
     /// <summary>
+    /// Create this template automatically on every sender profile of the organization,
+    /// now and in future (default: false). Accepted only from an organization that
+    /// has been enabled for it, and only at creation — it cannot be changed afterwards.
+    /// </summary>
+    public bool? AutoCreateForSp
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("auto_create_for_sp");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("auto_create_for_sp", value);
+        }
+    }
+
+    /// <summary>
     /// Template category: MARKETING, UTILITY, AUTHENTICATION (optional, auto-detected
     /// if not provided)
     /// </summary>

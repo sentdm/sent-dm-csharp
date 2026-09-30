@@ -231,6 +231,37 @@ public sealed record class Data : JsonModel
     }
 
     /// <summary>
+    /// Whether this account may mark a template for automatic creation on its sender
+    /// profiles. Granted by Sent per account and off by default, so it is what a
+    /// template-create form reads to decide whether to offer the option at all —
+    /// marking a template without it does nothing.              Top-level rather
+    /// than inside settings, which is written for type: "profile" only and so would
+    /// never carry it to the account type that can act on it.              This
+    /// is the capability, not the stored flag: a profile reports false whatever
+    /// its own row holds. A sender profile owns no sender profiles, so a template
+    /// it marked would have nothing to be created on and the fan-out would never
+    /// read the flag. The admin GET /customers/{id} reports the stored value instead,
+    /// because that is the one an operator granted.
+    /// </summary>
+    public bool? EnableTemplateAutoCreationForSp
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("enable_template_auto_creation_for_sp");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("enable_template_auto_creation_for_sp", value);
+        }
+    }
+
+    /// <summary>
     /// Account icon URL
     /// </summary>
     public string? Icon
@@ -407,6 +438,7 @@ public sealed record class Data : JsonModel
         _ = this.CreatedAt;
         _ = this.Description;
         _ = this.Email;
+        _ = this.EnableTemplateAutoCreationForSp;
         _ = this.Icon;
         _ = this.Name;
         _ = this.OrganizationID;
