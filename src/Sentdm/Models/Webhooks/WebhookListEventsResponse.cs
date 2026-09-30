@@ -284,6 +284,9 @@ public record class EventData : ModelBase
                 contactEvent: (x) => x.Event,
                 sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload: (
                     x
+                ) => x.Event,
+                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload: (
+                    x
                 ) => x.Event
             );
         }
@@ -300,6 +303,9 @@ public record class EventData : ModelBase
                 channelEvent: (x) => x.Field,
                 contactEvent: (x) => x.Field,
                 sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload: (
+                    x
+                ) => x.Field,
+                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload: (
                     x
                 ) => x.Field
             );
@@ -318,6 +324,9 @@ public record class EventData : ModelBase
                 contactEvent: (x) => x.RequestID,
                 sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload: (
                     x
+                ) => x.RequestID,
+                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload: (
+                    x
                 ) => x.RequestID
             );
         }
@@ -334,6 +343,9 @@ public record class EventData : ModelBase
                 channelEvent: (x) => x.Timestamp,
                 contactEvent: (x) => x.Timestamp,
                 sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload: (
+                    x
+                ) => x.Timestamp,
+                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload: (
                     x
                 ) => x.Timestamp
             );
@@ -372,6 +384,15 @@ public record class EventData : ModelBase
 
     public EventData(
         SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload value,
+        JsonElement? element = null
+    )
+    {
+        this.Value = value;
+        this._element = element;
+    }
+
+    public EventData(
+        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload value,
         JsonElement? element = null
     )
     {
@@ -516,6 +537,32 @@ public record class EventData : ModelBase
     }
 
     /// <summary>
+    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+    /// type <see cref="SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload"/>.
+    ///
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+    ///
+    /// <example>
+    /// <code>
+    /// if (instance.TryPickSentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload(out var value)) {
+    ///     // `value` is of type `SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload`
+    ///     Console.WriteLine(value);
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
+    public bool TryPickSentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload(
+        [NotNullWhen(true)]
+            out SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload? value
+    )
+    {
+        value =
+            this.Value
+            as SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload;
+        return value != null;
+    }
+
+    /// <summary>
     /// Calls the function parameter corresponding to the variant the instance was constructed with.
     ///
     /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
@@ -534,7 +581,8 @@ public record class EventData : ModelBase
     ///     (TemplateEvent value) =&gt; {...},
     ///     (ChannelEvent value) =&gt; {...},
     ///     (ContactEvent value) =&gt; {...},
-    ///     (SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload value) =&gt; {...}
+    ///     (SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload value) =&gt; {...},
+    ///     (SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -545,7 +593,8 @@ public record class EventData : ModelBase
         Action<TemplateEvent> templateEvent,
         Action<ChannelEvent> channelEvent,
         Action<ContactEvent> contactEvent,
-        Action<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload> sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+        Action<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload> sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload,
+        Action<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload> sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload
     )
     {
         switch (this.Value)
@@ -567,6 +616,11 @@ public record class EventData : ModelBase
                 break;
             case SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload value:
                 sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload(
+                    value
+                );
+                break;
+            case SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload value:
+                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload(
                     value
                 );
                 break;
@@ -595,7 +649,8 @@ public record class EventData : ModelBase
     ///     (TemplateEvent value) =&gt; {...},
     ///     (ChannelEvent value) =&gt; {...},
     ///     (ContactEvent value) =&gt; {...},
-    ///     (SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload value) =&gt; {...}
+    ///     (SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload value) =&gt; {...},
+    ///     (SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -609,7 +664,11 @@ public record class EventData : ModelBase
         Func<
             SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload,
             T
-        > sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload
+        > sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload,
+        Func<
+            SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload,
+            T
+        > sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload
     )
     {
         return this.Value switch
@@ -621,6 +680,10 @@ public record class EventData : ModelBase
             ContactEvent value => contactEvent(value),
             SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload value =>
                 sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload(
+                    value
+                ),
+            SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload value =>
+                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload(
                     value
                 ),
             _ => throw new SentInvalidDataException("Data did not match any variant of EventData"),
@@ -639,6 +702,10 @@ public record class EventData : ModelBase
 
     public static implicit operator EventData(
         SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload value
+    ) => new(value);
+
+    public static implicit operator EventData(
+        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload value
     ) => new(value);
 
     /// <summary>
@@ -664,7 +731,9 @@ public record class EventData : ModelBase
             (channelEvent) => channelEvent.Validate(),
             (contactEvent) => contactEvent.Validate(),
             (sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload) =>
-                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload.Validate()
+                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload.Validate(),
+            (sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload) =>
+                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload.Validate()
         );
     }
 
@@ -694,6 +763,7 @@ public record class EventData : ModelBase
             ChannelEvent _ => 3,
             ContactEvent _ => 4,
             SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload _ => 5,
+            SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload _ => 6,
             _ => -1,
         };
     }
@@ -782,6 +852,24 @@ sealed class EventDataConverter : JsonConverter<EventData>
         {
             var deserialized =
                 JsonSerializer.Deserialize<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfLinkWebhookPayload>(
+                    element,
+                    options
+                );
+            if (deserialized != null)
+            {
+                deserialized.Validate();
+                return new(deserialized, element);
+            }
+        }
+        catch (Exception e) when (e is JsonException || e is SentInvalidDataException)
+        {
+            // ignore
+        }
+
+        try
+        {
+            var deserialized =
+                JsonSerializer.Deserialize<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload>(
                     element,
                     options
                 );
@@ -1346,4 +1434,420 @@ class PayloadFromRaw : IFromRawJson<Payload>
     /// <inheritdoc/>
     public Payload FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         Payload.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// The envelope Sent POSTs to a subscribed webhook endpoint. Every event shares
+/// this shape and varies only in Payload.
+/// </summary>
+[JsonConverter(
+    typeof(JsonModelConverter<
+        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload,
+        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadFromRaw
+    >)
+)]
+public sealed record class SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload
+    : JsonModel
+{
+    /// <summary>
+    /// The specific event within the family, for example message.delivered, message.received
+    /// or contact.opt_out. Absent on events that have no subtype, so treat it as optional.
+    /// </summary>
+    public string? Event
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("event");
+        }
+        init { this._rawData.Set("event", value); }
+    }
+
+    /// <summary>
+    /// The event family, for example message, templates or contact. Route on this
+    /// first, then on event for the specific change.
+    /// </summary>
+    public string? Field
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("field");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("field", value);
+        }
+    }
+
+    /// <summary>
+    /// Body of a call.initiated, call.answered, call.completed, call.failed or call.recording_ready
+    /// event. Which of them occurred is the envelope's event.              Shaped
+    /// like the message, inbound, template and channel payloads: account_id names
+    /// the account the event is about, channel names the channel, and updated_at
+    /// is when the change happened on the call, in the same yyyy-MM-ddTHH:mm:ssZ
+    /// form. duration_seconds and price are added on call.completed, reason on call.failed
+    /// and recording_id on call.recording_ready; each is omitted rather than sent
+    /// as null when it does not apply.              Casing is snake_case because
+    /// these ride the same webhook stream customers already parse message_id from;
+    /// the question/answer contract is a separate surface and stays camelCase. Nothing
+    /// here is provider-shaped: no provider call id, no namespaced identity.
+    /// </summary>
+    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload? Payload
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload>(
+                "payload"
+            );
+        }
+        init { this._rawData.Set("payload", value); }
+    }
+
+    /// <summary>
+    /// The event-specific body.
+    /// </summary>
+    public string? RequestID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("request_id");
+        }
+        init { this._rawData.Set("request_id", value); }
+    }
+
+    /// <summary>
+    /// When Sent emitted the event, in UTC (yyyy-MM-ddTHH:mm:ssZ). This is the emission
+    /// time, not the time the underlying change happened. Use the timestamp inside
+    /// the payload for the latter.
+    /// </summary>
+    public string? Timestamp
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("timestamp");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("timestamp", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Event;
+        _ = this.Field;
+        this.Payload?.Validate();
+        _ = this.RequestID;
+        _ = this.Timestamp;
+    }
+
+    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload(
+        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload
+    )
+        : base(sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload) { }
+#pragma warning restore CS8618
+
+    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload(
+        FrozenDictionary<string, JsonElement> rawData
+    )
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadFromRaw.FromRawUnchecked"/>
+    public static SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadFromRaw
+    : IFromRawJson<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload>
+{
+    /// <inheritdoc/>
+    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) =>
+        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayload.FromRawUnchecked(
+            rawData
+        );
+}
+
+/// <summary>
+/// Body of a call.initiated, call.answered, call.completed, call.failed or call.recording_ready
+/// event. Which of them occurred is the envelope's event.              Shaped like
+/// the message, inbound, template and channel payloads: account_id names the account
+/// the event is about, channel names the channel, and updated_at is when the change
+/// happened on the call, in the same yyyy-MM-ddTHH:mm:ssZ form. duration_seconds
+/// and price are added on call.completed, reason on call.failed and recording_id
+/// on call.recording_ready; each is omitted rather than sent as null when it does
+/// not apply.              Casing is snake_case because these ride the same webhook
+/// stream customers already parse message_id from; the question/answer contract is
+/// a separate surface and stays camelCase. Nothing here is provider-shaped: no provider
+/// call id, no namespaced identity.
+/// </summary>
+[JsonConverter(
+    typeof(JsonModelConverter<
+        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload,
+        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayloadFromRaw
+    >)
+)]
+public sealed record class SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload
+    : JsonModel
+{
+    /// <summary>
+    /// Sent's call id, the same one the customer saw on the first question.
+    /// </summary>
+    public required string CallID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("call_id");
+        }
+        init { this._rawData.Set("call_id", value); }
+    }
+
+    /// <summary>
+    /// The account the call belongs to: the key's own customer, or the sender profile
+    /// it acted as.
+    /// </summary>
+    public string? AccountID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("account_id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("account_id", value);
+        }
+    }
+
+    /// <summary>
+    /// Always voice.
+    /// </summary>
+    public string? Channel
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("channel");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("channel", value);
+        }
+    }
+
+    /// <summary>
+    /// How long the call lasted. Only on call.completed.
+    /// </summary>
+    public int? DurationSeconds
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<int>("duration_seconds");
+        }
+        init { this._rawData.Set("duration_seconds", value); }
+    }
+
+    /// <summary>
+    /// The customer number that owns the call, in E.164 format.
+    /// </summary>
+    public string? Number
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("number");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("number", value);
+        }
+    }
+
+    /// <summary>
+    /// What the call was charged. Only on call.completed, and omitted there until
+    /// billing has recorded the charge.
+    /// </summary>
+    public double? Price
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<double>("price");
+        }
+        init { this._rawData.Set("price", value); }
+    }
+
+    /// <summary>
+    /// The machine-readable reason the call did not complete. Only on call.failed,
+    /// and omitted when no reason was recorded.
+    /// </summary>
+    public string? Reason
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("reason");
+        }
+        init { this._rawData.Set("reason", value); }
+    }
+
+    /// <summary>
+    /// The recording that became available, the same id GET /v3/calls/{id}/recordings
+    /// lists it under. Only on call.recording_ready, which is sent once per recording.
+    /// </summary>
+    public string? RecordingID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("recording_id");
+        }
+        init { this._rawData.Set("recording_id", value); }
+    }
+
+    /// <summary>
+    /// When the change happened on the call, as opposed to when the event was emitted.
+    /// </summary>
+    public string? UpdatedAt
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("updated_at");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("updated_at", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.CallID;
+        _ = this.AccountID;
+        _ = this.Channel;
+        _ = this.DurationSeconds;
+        _ = this.Number;
+        _ = this.Price;
+        _ = this.Reason;
+        _ = this.RecordingID;
+        _ = this.UpdatedAt;
+    }
+
+    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload()
+    { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload(
+        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload
+    )
+        : base(sentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload)
+    { }
+#pragma warning restore CS8618
+
+    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload(
+        FrozenDictionary<string, JsonElement> rawData
+    )
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayloadFromRaw.FromRawUnchecked"/>
+    public static SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+
+    [SetsRequiredMembers]
+    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload(
+        string callID
+    )
+        : this()
+    {
+        this.CallID = callID;
+    }
+}
+
+class SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayloadFromRaw
+    : IFromRawJson<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload>
+{
+    /// <inheritdoc/>
+    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) =>
+        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfCallWebhookPayloadPayload.FromRawUnchecked(
+            rawData
+        );
 }

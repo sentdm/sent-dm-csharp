@@ -135,10 +135,9 @@ public sealed record class ChannelEventPayload : JsonModel
     }
 
     /// <summary>
-    /// Why the market reached this state, when a reason was given — a correction
-    /// explained, or a campaign lapse. Free text, passed through from the registry
-    /// or carrier that wrote it, so treat it as a message to show a human rather
-    /// than a value to branch on.
+    /// Why the market reached this state, as a sentence to show a person: the specific
+    /// explanation when one was given (a correction explained, a campaign lapse),
+    /// otherwise what reason_code means for this market. Not a value to branch on.
     /// </summary>
     public string? Reason
     {
@@ -148,6 +147,22 @@ public sealed record class ChannelEventPayload : JsonModel
             return this._rawData.GetNullableClass<string>("reason");
         }
         init { this._rawData.Set("reason", value); }
+    }
+
+    /// <summary>
+    /// Why the market is not ACTIVE, as a stable code: an ErrorCodes CHANNEL_xxx
+    /// value such as CHANNEL_001 (something you owe) or CHANNEL_002 (a correction
+    /// was requested). The same code the channels resource reports for the market.
+    /// Switch on this rather than on reason. Omitted while ACTIVE.
+    /// </summary>
+    public string? ReasonCode
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("reason_code");
+        }
+        init { this._rawData.Set("reason_code", value); }
     }
 
     /// <summary>
@@ -230,6 +245,7 @@ public sealed record class ChannelEventPayload : JsonModel
         this.Compliance?.Validate();
         _ = this.NumberType;
         _ = this.Reason;
+        _ = this.ReasonCode;
         _ = this.SenderValue;
         _ = this.Status;
         _ = this.UpdatedAt;
