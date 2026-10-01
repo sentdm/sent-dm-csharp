@@ -2,6 +2,7 @@ using System.Text.Json;
 using Sentdm.Exceptions;
 using Sentdm.Models.Profiles;
 using Campaigns = Sentdm.Models.Profiles.Campaigns;
+using Voice = Sentdm.Models.Channels.Voice;
 
 namespace Sentdm.Core;
 
@@ -29,6 +30,7 @@ public abstract record class ModelBase
             new ApiEnumConverter<string, TcrVertical>(),
             new ApiEnumConverter<string, Campaigns::Status>(),
             new ApiEnumConverter<string, Campaigns::MessagingUseCaseUs>(),
+            new ApiEnumConverter<string, Voice::Status>(),
         },
     };
 

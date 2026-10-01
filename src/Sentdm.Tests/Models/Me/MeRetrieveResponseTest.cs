@@ -1082,7 +1082,7 @@ public class DataTest : TestBase
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        Channels expectedChannels = new()
+        DataChannels expectedChannels = new()
         {
             Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
             Sms = new() { Configured = true, PhoneNumber = "phone_number" },
@@ -1307,7 +1307,7 @@ public class DataTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        Channels expectedChannels = new()
+        DataChannels expectedChannels = new()
         {
             Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
             Sms = new() { Configured = true, PhoneNumber = "phone_number" },
@@ -1940,12 +1940,12 @@ public class DataTest : TestBase
     }
 }
 
-public class ChannelsTest : TestBase
+public class DataChannelsTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Channels
+        var model = new DataChannels
         {
             Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
             Sms = new() { Configured = true, PhoneNumber = "phone_number" },
@@ -1974,7 +1974,7 @@ public class ChannelsTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Channels
+        var model = new DataChannels
         {
             Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
             Sms = new() { Configured = true, PhoneNumber = "phone_number" },
@@ -1987,7 +1987,10 @@ public class ChannelsTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Channels>(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<DataChannels>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -1995,7 +1998,7 @@ public class ChannelsTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Channels
+        var model = new DataChannels
         {
             Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
             Sms = new() { Configured = true, PhoneNumber = "phone_number" },
@@ -2008,7 +2011,7 @@ public class ChannelsTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Channels>(
+        var deserialized = JsonSerializer.Deserialize<DataChannels>(
             element,
             ModelBase.SerializerOptions
         );
@@ -2031,7 +2034,7 @@ public class ChannelsTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Channels
+        var model = new DataChannels
         {
             Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
             Sms = new() { Configured = true, PhoneNumber = "phone_number" },
@@ -2049,7 +2052,7 @@ public class ChannelsTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Channels { };
+        var model = new DataChannels { };
 
         Assert.Null(model.Rcs);
         Assert.False(model.RawData.ContainsKey("rcs"));
@@ -2062,7 +2065,7 @@ public class ChannelsTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Channels { };
+        var model = new DataChannels { };
 
         model.Validate();
     }
@@ -2070,7 +2073,7 @@ public class ChannelsTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new Channels
+        var model = new DataChannels
         {
             // Null should be interpreted as omitted for these properties
             Rcs = null,
@@ -2089,7 +2092,7 @@ public class ChannelsTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Channels
+        var model = new DataChannels
         {
             // Null should be interpreted as omitted for these properties
             Rcs = null,
@@ -2103,7 +2106,7 @@ public class ChannelsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Channels
+        var model = new DataChannels
         {
             Rcs = new() { Configured = true, PhoneNumber = "phone_number" },
             Sms = new() { Configured = true, PhoneNumber = "phone_number" },
@@ -2115,7 +2118,7 @@ public class ChannelsTest : TestBase
             },
         };
 
-        Channels copied = new(model);
+        DataChannels copied = new(model);
 
         Assert.Equal(model, copied);
     }
