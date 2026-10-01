@@ -165,12 +165,12 @@ public sealed record class Data : JsonModel
     /// Messaging channel configuration. All three channels are always present. Each
     /// channel has a "configured" flag; configured channels expose additional details.
     /// </summary>
-    public Channels? Channels
+    public DataChannels? Channels
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Channels>("channels");
+            return this._rawData.GetNullableClass<DataChannels>("channels");
         }
         init
         {
@@ -493,8 +493,8 @@ class DataFromRaw : IFromRawJson<Data>
 /// Messaging channel configuration. All three channels are always present. Each
 /// channel has a "configured" flag; configured channels expose additional details.
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<Channels, ChannelsFromRaw>))]
-public sealed record class Channels : JsonModel
+[JsonConverter(typeof(JsonModelConverter<DataChannels, DataChannelsFromRaw>))]
+public sealed record class DataChannels : JsonModel
 {
     /// <summary>
     /// RCS channel configuration. When configured, includes the RCS phone number.
@@ -568,39 +568,39 @@ public sealed record class Channels : JsonModel
         this.Whatsapp?.Validate();
     }
 
-    public Channels() { }
+    public DataChannels() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Channels(Channels channels)
-        : base(channels) { }
+    public DataChannels(DataChannels dataChannels)
+        : base(dataChannels) { }
 #pragma warning restore CS8618
 
-    public Channels(IReadOnlyDictionary<string, JsonElement> rawData)
+    public DataChannels(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Channels(FrozenDictionary<string, JsonElement> rawData)
+    DataChannels(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="ChannelsFromRaw.FromRawUnchecked"/>
-    public static Channels FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="DataChannelsFromRaw.FromRawUnchecked"/>
+    public static DataChannels FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class ChannelsFromRaw : IFromRawJson<Channels>
+class DataChannelsFromRaw : IFromRawJson<DataChannels>
 {
     /// <inheritdoc/>
-    public Channels FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Channels.FromRawUnchecked(rawData);
+    public DataChannels FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        DataChannels.FromRawUnchecked(rawData);
 }
 
 /// <summary>
