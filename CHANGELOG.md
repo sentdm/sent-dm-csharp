@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.37.0...v0.38.0) (2026-10-01)
+
+
+### Features
+
+* **api:** add voice and calls endpoints to the SDKs ([ce96e2b](https://github.com/sentdm/sent-dm-csharp/commit/ce96e2b2c2cc2707e7b4649da5827f73337e8efd))
+
 ## [0.37.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.36.0...v0.37.0) (2026-09-30)
 
 
