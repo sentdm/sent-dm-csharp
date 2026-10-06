@@ -13,11 +13,11 @@ namespace Sentdm.Models.Calls.Participants;
 /// Dials one of your app users or a phone number into a call that is in a conference
 /// room, and answers with the participant's own call record. The participant is
 /// a call of their own: it has its own id, can be looked up and hung up, and is billed
-/// and reported through call.completed and call.failed like any other call. A phone
-/// participant is called from caller_id, which must be one of your numbers, or from
-/// the call's owning number when omitted, and needs a destination you may call and
-/// a positive balance. Only a call your answer connected to a conference can take
-/// participants: a call connected to a user or a number answers 409.
+/// and reported through call.completed and call.failed like any other call. Every
+/// participant needs a positive balance. A phone participant is called from caller_id,
+/// which must be one of your numbers, or from the call's owning number when omitted,
+/// and needs a destination you may call. Only a call your answer connected to a conference
+/// can take participants: a call connected to a user or a number answers 409.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
