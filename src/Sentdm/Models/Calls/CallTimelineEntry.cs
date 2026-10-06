@@ -15,7 +15,7 @@ namespace Sentdm.Models.Calls;
 public sealed record class CallTimelineEntry : JsonModel
 {
     /// <summary>
-    /// initiated, ringing, answered, completed, failed, no_answer or rejected
+    /// INITIATED, RINGING, ANSWERED, COMPLETED, FAILED, NO_ANSWER or REJECTED
     /// </summary>
     public string? Status
     {
