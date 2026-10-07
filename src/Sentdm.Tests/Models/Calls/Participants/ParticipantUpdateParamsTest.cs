@@ -13,7 +13,6 @@ public class ParticipantUpdateParamsTest : TestBase
         {
             ID = "call_9f2ab000-0000-4000-8000-000000000001",
             ParticipantID = "call_9f2ab000-0000-4000-8000-000000000002",
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Muted = true,
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
@@ -22,7 +21,6 @@ public class ParticipantUpdateParamsTest : TestBase
 
         string expectedID = "call_9f2ab000-0000-4000-8000-000000000001";
         string expectedParticipantID = "call_9f2ab000-0000-4000-8000-000000000002";
-        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         bool expectedMuted = true;
         bool expectedSandbox = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
@@ -30,7 +28,6 @@ public class ParticipantUpdateParamsTest : TestBase
 
         Assert.Equal(expectedID, parameters.ID);
         Assert.Equal(expectedParticipantID, parameters.ParticipantID);
-        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedMuted, parameters.Muted);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
@@ -46,8 +43,6 @@ public class ParticipantUpdateParamsTest : TestBase
             ParticipantID = "call_9f2ab000-0000-4000-8000-000000000002",
         };
 
-        Assert.Null(parameters.ApiKey);
-        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Muted);
         Assert.False(parameters.RawBodyData.ContainsKey("muted"));
         Assert.Null(parameters.Sandbox);
@@ -67,15 +62,12 @@ public class ParticipantUpdateParamsTest : TestBase
             ParticipantID = "call_9f2ab000-0000-4000-8000-000000000002",
 
             // Null should be interpreted as omitted for these properties
-            ApiKey = null,
             Muted = null,
             Sandbox = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
-        Assert.Null(parameters.ApiKey);
-        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Muted);
         Assert.False(parameters.RawBodyData.ContainsKey("muted"));
         Assert.Null(parameters.Sandbox);
@@ -135,7 +127,6 @@ public class ParticipantUpdateParamsTest : TestBase
         {
             ID = "call_9f2ab000-0000-4000-8000-000000000001",
             ParticipantID = "call_9f2ab000-0000-4000-8000-000000000002",
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Muted = true,
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",

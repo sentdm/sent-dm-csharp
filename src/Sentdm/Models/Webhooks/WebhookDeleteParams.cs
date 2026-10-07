@@ -3,7 +3,6 @@ using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
-using System.Text;
 using System.Text.Json;
 using Sentdm.Core;
 
@@ -18,39 +17,7 @@ namespace Sentdm.Models.Webhooks;
 /// </summary>
 public record class WebhookDeleteParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
-        get { return this._rawBodyData.Freeze(); }
-    }
-
     public string? ID { get; init; }
-
-    /// <summary>
-    /// API key from the x-api-key header, or empty when the caller sent it as Authorization:
-    /// Bearer instead.              Optional on purpose. CustomerV3AuthenticationHandler
-    /// accepts the key in either header, and [FromHeader] is required by default,
-    /// so a Bearer-only request would authenticate and then be refused with a 400
-    /// for a header it never needed. Endpoints read the customer from the CustomerId
-    /// claim, not from this value.
-    /// </summary>
-    public string? ApiKey
-    {
-        get
-        {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("apiKey");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawBodyData.Set("apiKey", value);
-        }
-    }
 
     public string? XProfileID
     {
@@ -78,20 +45,16 @@ public record class WebhookDeleteParams : ParamsBase
         : base(webhookDeleteParams)
     {
         this.ID = webhookDeleteParams.ID;
-
-        this._rawBodyData = new(webhookDeleteParams._rawBodyData);
     }
 #pragma warning restore CS8618
 
     public WebhookDeleteParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
-        IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
     }
 
 #pragma warning disable CS8618
@@ -99,13 +62,11 @@ public record class WebhookDeleteParams : ParamsBase
     WebhookDeleteParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, JsonElement> rawBodyData,
         string id
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
         this.ID = id;
     }
 #pragma warning restore CS8618
@@ -114,14 +75,12 @@ public record class WebhookDeleteParams : ParamsBase
     public static WebhookDeleteParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData,
         string id
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            FrozenDictionary.ToFrozenDictionary(rawBodyData),
             id
         );
     }
@@ -138,7 +97,6 @@ public record class WebhookDeleteParams : ParamsBase
                     ["QueryData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
                     ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
                 }
             ),
             ModelBase.ToStringSerializerOptions
@@ -152,8 +110,7 @@ public record class WebhookDeleteParams : ParamsBase
         }
         return (this.ID?.Equals(other.ID) ?? other.ID == null)
             && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+            && this._rawQueryData.Equals(other._rawQueryData);
     }
 
     public override Uri Url(ClientOptions options)
@@ -164,15 +121,6 @@ public record class WebhookDeleteParams : ParamsBase
         {
             Query = this.QueryString(options),
         }.Uri;
-    }
-
-    internal override HttpContent? BodyContent()
-    {
-        return new StringContent(
-            JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
-            Encoding.UTF8,
-            "application/json"
-        );
     }
 
     internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)

@@ -14,7 +14,6 @@ public class WebhookCreateParamsTest : TestBase
     {
         var parameters = new WebhookCreateParams
         {
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             DisplayName = "Order Notifications",
             EndpointUrl = "https://example.com/webhooks/orders",
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()
@@ -38,7 +37,6 @@ public class WebhookCreateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         string expectedDisplayName = "Order Notifications";
         string expectedEndpointUrl = "https://example.com/webhooks/orders";
         Dictionary<string, List<string>> expectedEventFilters = new()
@@ -61,7 +59,6 @@ public class WebhookCreateParamsTest : TestBase
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
-        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedDisplayName, parameters.DisplayName);
         Assert.Equal(expectedEndpointUrl, parameters.EndpointUrl);
         Assert.NotNull(parameters.EventFilters);
@@ -110,8 +107,6 @@ public class WebhookCreateParamsTest : TestBase
             },
         };
 
-        Assert.Null(parameters.ApiKey);
-        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.DisplayName);
         Assert.False(parameters.RawBodyData.ContainsKey("display_name"));
         Assert.Null(parameters.EndpointUrl);
@@ -150,7 +145,6 @@ public class WebhookCreateParamsTest : TestBase
             },
 
             // Null should be interpreted as omitted for these properties
-            ApiKey = null,
             DisplayName = null,
             EndpointUrl = null,
             EventTypes = null,
@@ -161,8 +155,6 @@ public class WebhookCreateParamsTest : TestBase
             XProfileID = null,
         };
 
-        Assert.Null(parameters.ApiKey);
-        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.DisplayName);
         Assert.False(parameters.RawBodyData.ContainsKey("display_name"));
         Assert.Null(parameters.EndpointUrl);
@@ -186,7 +178,6 @@ public class WebhookCreateParamsTest : TestBase
     {
         var parameters = new WebhookCreateParams
         {
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             DisplayName = "Order Notifications",
             EndpointUrl = "https://example.com/webhooks/orders",
             EventTypes = ["contact", "message", "templates"],
@@ -208,7 +199,6 @@ public class WebhookCreateParamsTest : TestBase
     {
         var parameters = new WebhookCreateParams
         {
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             DisplayName = "Order Notifications",
             EndpointUrl = "https://example.com/webhooks/orders",
             EventTypes = ["contact", "message", "templates"],
@@ -262,7 +252,6 @@ public class WebhookCreateParamsTest : TestBase
     {
         var parameters = new WebhookCreateParams
         {
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             DisplayName = "Order Notifications",
             EndpointUrl = "https://example.com/webhooks/orders",
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()

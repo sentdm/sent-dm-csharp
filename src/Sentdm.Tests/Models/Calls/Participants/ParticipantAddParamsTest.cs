@@ -12,7 +12,6 @@ public class ParticipantAddParamsTest : TestBase
         var parameters = new ParticipantAddParams
         {
             ID = "call_9f2ab000-0000-4000-8000-000000000001",
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             CallerID = "+12025550123",
             Sandbox = false,
             To = new() { Kind = "number", Value = "+14155551234" },
@@ -21,7 +20,6 @@ public class ParticipantAddParamsTest : TestBase
         };
 
         string expectedID = "call_9f2ab000-0000-4000-8000-000000000001";
-        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         string expectedCallerID = "+12025550123";
         bool expectedSandbox = false;
         CallParticipantTarget expectedTo = new() { Kind = "number", Value = "+14155551234" };
@@ -29,7 +27,6 @@ public class ParticipantAddParamsTest : TestBase
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedID, parameters.ID);
-        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedCallerID, parameters.CallerID);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedTo, parameters.To);
@@ -46,8 +43,6 @@ public class ParticipantAddParamsTest : TestBase
             CallerID = "+12025550123",
         };
 
-        Assert.Null(parameters.ApiKey);
-        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.To);
@@ -67,15 +62,12 @@ public class ParticipantAddParamsTest : TestBase
             CallerID = "+12025550123",
 
             // Null should be interpreted as omitted for these properties
-            ApiKey = null,
             Sandbox = null,
             To = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
-        Assert.Null(parameters.ApiKey);
-        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.To);
@@ -92,7 +84,6 @@ public class ParticipantAddParamsTest : TestBase
         var parameters = new ParticipantAddParams
         {
             ID = "call_9f2ab000-0000-4000-8000-000000000001",
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             To = new() { Kind = "number", Value = "+14155551234" },
             IdempotencyKey = "req_abc123_retry1",
@@ -109,7 +100,6 @@ public class ParticipantAddParamsTest : TestBase
         var parameters = new ParticipantAddParams
         {
             ID = "call_9f2ab000-0000-4000-8000-000000000001",
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             To = new() { Kind = "number", Value = "+14155551234" },
             IdempotencyKey = "req_abc123_retry1",
@@ -168,7 +158,6 @@ public class ParticipantAddParamsTest : TestBase
         var parameters = new ParticipantAddParams
         {
             ID = "call_9f2ab000-0000-4000-8000-000000000001",
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             CallerID = "+12025550123",
             Sandbox = false,
             To = new() { Kind = "number", Value = "+14155551234" },

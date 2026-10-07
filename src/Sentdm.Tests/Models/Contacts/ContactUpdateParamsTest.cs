@@ -12,7 +12,6 @@ public class ContactUpdateParamsTest : TestBase
         var parameters = new ContactUpdateParams
         {
             ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             DefaultChannel = "whatsapp",
             OptOut = false,
             Sandbox = false,
@@ -21,7 +20,6 @@ public class ContactUpdateParamsTest : TestBase
         };
 
         string expectedID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
-        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         string expectedDefaultChannel = "whatsapp";
         bool expectedOptOut = false;
         bool expectedSandbox = false;
@@ -29,7 +27,6 @@ public class ContactUpdateParamsTest : TestBase
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedID, parameters.ID);
-        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedDefaultChannel, parameters.DefaultChannel);
         Assert.Equal(expectedOptOut, parameters.OptOut);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
@@ -47,8 +44,6 @@ public class ContactUpdateParamsTest : TestBase
             OptOut = false,
         };
 
-        Assert.Null(parameters.ApiKey);
-        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -67,14 +62,11 @@ public class ContactUpdateParamsTest : TestBase
             OptOut = false,
 
             // Null should be interpreted as omitted for these properties
-            ApiKey = null,
             Sandbox = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
-        Assert.Null(parameters.ApiKey);
-        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -89,7 +81,6 @@ public class ContactUpdateParamsTest : TestBase
         var parameters = new ContactUpdateParams
         {
             ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -107,7 +98,6 @@ public class ContactUpdateParamsTest : TestBase
         var parameters = new ContactUpdateParams
         {
             ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -163,7 +153,6 @@ public class ContactUpdateParamsTest : TestBase
         var parameters = new ContactUpdateParams
         {
             ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             DefaultChannel = "whatsapp",
             OptOut = false,
             Sandbox = false,

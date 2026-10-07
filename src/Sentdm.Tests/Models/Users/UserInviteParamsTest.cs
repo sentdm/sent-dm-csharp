@@ -11,7 +11,6 @@ public class UserInviteParamsTest : TestBase
     {
         var parameters = new UserInviteParams
         {
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Email = "newuser@example.com",
             Name = "New User",
             Role = "developer",
@@ -20,7 +19,6 @@ public class UserInviteParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         string expectedEmail = "newuser@example.com";
         string expectedName = "New User";
         string expectedRole = "developer";
@@ -28,7 +26,6 @@ public class UserInviteParamsTest : TestBase
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
-        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedEmail, parameters.Email);
         Assert.Equal(expectedName, parameters.Name);
         Assert.Equal(expectedRole, parameters.Role);
@@ -42,8 +39,6 @@ public class UserInviteParamsTest : TestBase
     {
         var parameters = new UserInviteParams { };
 
-        Assert.Null(parameters.ApiKey);
-        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Email);
         Assert.False(parameters.RawBodyData.ContainsKey("email"));
         Assert.Null(parameters.Name);
@@ -64,7 +59,6 @@ public class UserInviteParamsTest : TestBase
         var parameters = new UserInviteParams
         {
             // Null should be interpreted as omitted for these properties
-            ApiKey = null,
             Email = null,
             Name = null,
             Role = null,
@@ -73,8 +67,6 @@ public class UserInviteParamsTest : TestBase
             XProfileID = null,
         };
 
-        Assert.Null(parameters.ApiKey);
-        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Email);
         Assert.False(parameters.RawBodyData.ContainsKey("email"));
         Assert.Null(parameters.Name);
@@ -123,7 +115,6 @@ public class UserInviteParamsTest : TestBase
     {
         var parameters = new UserInviteParams
         {
-            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Email = "newuser@example.com",
             Name = "New User",
             Role = "developer",
