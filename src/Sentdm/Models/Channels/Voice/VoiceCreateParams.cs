@@ -65,6 +65,32 @@ public record class VoiceCreateParams : ParamsBase
     }
 
     /// <summary>
+    /// API key from the x-api-key header, or empty when the caller sent it as Authorization:
+    /// Bearer instead.              Optional on purpose. CustomerV3AuthenticationHandler
+    /// accepts the key in either header, and [FromHeader] is required by default,
+    /// so a Bearer-only request would authenticate and then be refused with a 400
+    /// for a header it never needed. Endpoints read the customer from the CustomerId
+    /// claim, not from this value.
+    /// </summary>
+    public string? ApiKey
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("apiKey");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("apiKey", value);
+        }
+    }
+
+    /// <summary>
     /// The US area code a new number should be in, as 212. Only for a request that
     /// leaves number out — sending both says two different things about which number
     /// to use, and is refused. Omit it too and the number comes from anywhere in

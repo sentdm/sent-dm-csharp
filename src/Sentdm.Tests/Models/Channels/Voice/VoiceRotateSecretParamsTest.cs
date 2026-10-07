@@ -12,17 +12,20 @@ public class VoiceRotateSecretParamsTest : TestBase
         var parameters = new VoiceRotateSecretParams
         {
             Number = "+12125550100",
+            ApiKey = "sntdm_live_xxxxxxxxxxxx",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedNumber = "+12125550100";
+        string expectedApiKey = "sntdm_live_xxxxxxxxxxxx";
         bool expectedSandbox = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedNumber, parameters.Number);
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
         Assert.Equal(expectedXProfileID, parameters.XProfileID);
@@ -33,6 +36,8 @@ public class VoiceRotateSecretParamsTest : TestBase
     {
         var parameters = new VoiceRotateSecretParams { Number = "+12125550100" };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -49,11 +54,14 @@ public class VoiceRotateSecretParamsTest : TestBase
             Number = "+12125550100",
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             Sandbox = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -103,6 +111,7 @@ public class VoiceRotateSecretParamsTest : TestBase
         var parameters = new VoiceRotateSecretParams
         {
             Number = "+12125550100",
+            ApiKey = "sntdm_live_xxxxxxxxxxxx",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

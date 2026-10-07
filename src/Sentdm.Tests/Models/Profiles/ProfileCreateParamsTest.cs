@@ -15,6 +15,7 @@ public class ProfileCreateParamsTest : TestBase
         {
             AllowContactSharing = null,
             AllowTemplateSharing = null,
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             BillingContact = new()
             {
                 Email = "billing@acmecorp.com",
@@ -84,6 +85,7 @@ public class ProfileCreateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         BillingContactInfo expectedBillingContact = new()
         {
             Email = "billing@acmecorp.com",
@@ -152,6 +154,7 @@ public class ProfileCreateParamsTest : TestBase
 
         Assert.Null(parameters.AllowContactSharing);
         Assert.Null(parameters.AllowTemplateSharing);
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedBillingContact, parameters.BillingContact);
         Assert.Equal(expectedBillingModel, parameters.BillingModel);
         Assert.Equal(expectedBrand, parameters.Brand);
@@ -242,6 +245,8 @@ public class ProfileCreateParamsTest : TestBase
             },
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Name);
         Assert.False(parameters.RawBodyData.ContainsKey("name"));
         Assert.Null(parameters.Sandbox);
@@ -324,12 +329,15 @@ public class ProfileCreateParamsTest : TestBase
             },
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             Name = null,
             Sandbox = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Name);
         Assert.False(parameters.RawBodyData.ContainsKey("name"));
         Assert.Null(parameters.Sandbox);
@@ -345,6 +353,7 @@ public class ProfileCreateParamsTest : TestBase
     {
         var parameters = new ProfileCreateParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Name = "Sales Team",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
@@ -386,6 +395,7 @@ public class ProfileCreateParamsTest : TestBase
     {
         var parameters = new ProfileCreateParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Name = "Sales Team",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
@@ -473,6 +483,7 @@ public class ProfileCreateParamsTest : TestBase
         {
             AllowContactSharing = null,
             AllowTemplateSharing = null,
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             BillingContact = new()
             {
                 Email = "billing@acmecorp.com",

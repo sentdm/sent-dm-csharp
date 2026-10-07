@@ -71,6 +71,32 @@ public record class VoiceUpdateParams : ParamsBase
     public string? Number { get; init; }
 
     /// <summary>
+    /// API key from the x-api-key header, or empty when the caller sent it as Authorization:
+    /// Bearer instead.              Optional on purpose. CustomerV3AuthenticationHandler
+    /// accepts the key in either header, and [FromHeader] is required by default,
+    /// so a Bearer-only request would authenticate and then be refused with a 400
+    /// for a header it never needed. Endpoints read the customer from the CustomerId
+    /// claim, not from this value.
+    /// </summary>
+    public string? ApiKey
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("apiKey");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("apiKey", value);
+        }
+    }
+
+    /// <summary>
     /// A new callback URL for the number, active or not: an absolute HTTP or HTTPS
     /// URL on a public host, where Sent asks what to do with each call. The signing
     /// secret is kept.

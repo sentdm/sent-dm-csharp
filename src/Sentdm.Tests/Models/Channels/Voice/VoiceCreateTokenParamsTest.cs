@@ -11,6 +11,7 @@ public class VoiceCreateTokenParamsTest : TestBase
     {
         var parameters = new VoiceCreateTokenParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Identity = "agent-42",
             Number = "+12025550123",
             Sandbox = false,
@@ -19,6 +20,7 @@ public class VoiceCreateTokenParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         string expectedIdentity = "agent-42";
         string expectedNumber = "+12025550123";
         bool expectedSandbox = false;
@@ -26,6 +28,7 @@ public class VoiceCreateTokenParamsTest : TestBase
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedIdentity, parameters.Identity);
         Assert.Equal(expectedNumber, parameters.Number);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
@@ -39,6 +42,8 @@ public class VoiceCreateTokenParamsTest : TestBase
     {
         var parameters = new VoiceCreateTokenParams { Number = "+12025550123", Ttl = 600 };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Identity);
         Assert.False(parameters.RawBodyData.ContainsKey("identity"));
         Assert.Null(parameters.Sandbox);
@@ -58,12 +63,15 @@ public class VoiceCreateTokenParamsTest : TestBase
             Ttl = 600,
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             Identity = null,
             Sandbox = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Identity);
         Assert.False(parameters.RawBodyData.ContainsKey("identity"));
         Assert.Null(parameters.Sandbox);
@@ -79,6 +87,7 @@ public class VoiceCreateTokenParamsTest : TestBase
     {
         var parameters = new VoiceCreateTokenParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Identity = "agent-42",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
@@ -96,6 +105,7 @@ public class VoiceCreateTokenParamsTest : TestBase
     {
         var parameters = new VoiceCreateTokenParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Identity = "agent-42",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
@@ -147,6 +157,7 @@ public class VoiceCreateTokenParamsTest : TestBase
     {
         var parameters = new VoiceCreateTokenParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Identity = "agent-42",
             Number = "+12025550123",
             Sandbox = false,

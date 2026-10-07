@@ -15,6 +15,7 @@ public class ProfileUpdateParamsTest : TestBase
             AllowContactSharing = null,
             AllowNumberChangeDuringOnboarding = null,
             AllowTemplateSharing = null,
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             BillingContact = new()
             {
                 Email = "dev@stainless.com",
@@ -83,6 +84,7 @@ public class ProfileUpdateParamsTest : TestBase
         };
 
         string expectedProfileID = "770e8400-e29b-41d4-a716-446655440002";
+        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         BillingContactInfo expectedBillingContact = new()
         {
             Email = "dev@stainless.com",
@@ -144,6 +146,7 @@ public class ProfileUpdateParamsTest : TestBase
         Assert.Null(parameters.AllowContactSharing);
         Assert.Null(parameters.AllowNumberChangeDuringOnboarding);
         Assert.Null(parameters.AllowTemplateSharing);
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedBillingContact, parameters.BillingContact);
         Assert.Equal(expectedBillingModel, parameters.BillingModel);
         Assert.Equal(expectedBrand, parameters.Brand);
@@ -238,6 +241,8 @@ public class ProfileUpdateParamsTest : TestBase
             WhatsappPhoneNumber = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -319,11 +324,14 @@ public class ProfileUpdateParamsTest : TestBase
             WhatsappPhoneNumber = null,
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             Sandbox = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -338,6 +346,7 @@ public class ProfileUpdateParamsTest : TestBase
         var parameters = new ProfileUpdateParams
         {
             ProfileID = "770e8400-e29b-41d4-a716-446655440002",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -389,6 +398,7 @@ public class ProfileUpdateParamsTest : TestBase
         var parameters = new ProfileUpdateParams
         {
             ProfileID = "770e8400-e29b-41d4-a716-446655440002",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -501,6 +511,7 @@ public class ProfileUpdateParamsTest : TestBase
             AllowContactSharing = null,
             AllowNumberChangeDuringOnboarding = null,
             AllowTemplateSharing = null,
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             BillingContact = new()
             {
                 Email = "dev@stainless.com",

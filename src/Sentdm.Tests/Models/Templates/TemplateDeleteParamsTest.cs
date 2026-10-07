@@ -12,17 +12,20 @@ public class TemplateDeleteParamsTest : TestBase
         var parameters = new TemplateDeleteParams
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             DeleteFromMeta = false,
             Sandbox = false,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8";
+        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         bool expectedDeleteFromMeta = false;
         bool expectedSandbox = false;
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedID, parameters.ID);
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedDeleteFromMeta, parameters.DeleteFromMeta);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedXProfileID, parameters.XProfileID);
@@ -37,6 +40,8 @@ public class TemplateDeleteParamsTest : TestBase
             DeleteFromMeta = false,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.XProfileID);
@@ -52,10 +57,13 @@ public class TemplateDeleteParamsTest : TestBase
             DeleteFromMeta = false,
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             Sandbox = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.XProfileID);
@@ -68,6 +76,7 @@ public class TemplateDeleteParamsTest : TestBase
         var parameters = new TemplateDeleteParams
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
@@ -82,6 +91,7 @@ public class TemplateDeleteParamsTest : TestBase
         var parameters = new TemplateDeleteParams
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
@@ -131,6 +141,7 @@ public class TemplateDeleteParamsTest : TestBase
         var parameters = new TemplateDeleteParams
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             DeleteFromMeta = false,
             Sandbox = false,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

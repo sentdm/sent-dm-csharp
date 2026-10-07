@@ -13,17 +13,20 @@ public class CampaignDeleteParamsTest : TestBase
         {
             ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             CampaignID = "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedProfileID = "770e8400-e29b-41d4-a716-446655440002";
         string expectedCampaignID = "b2c3d4e5-f6a7-8901-bcde-f12345678901";
+        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         bool expectedSandbox = false;
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedProfileID, parameters.ProfileID);
         Assert.Equal(expectedCampaignID, parameters.CampaignID);
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedXProfileID, parameters.XProfileID);
     }
@@ -37,6 +40,8 @@ public class CampaignDeleteParamsTest : TestBase
             CampaignID = "b2c3d4e5-f6a7-8901-bcde-f12345678901",
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.XProfileID);
@@ -52,10 +57,13 @@ public class CampaignDeleteParamsTest : TestBase
             CampaignID = "b2c3d4e5-f6a7-8901-bcde-f12345678901",
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             Sandbox = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.XProfileID);
@@ -109,6 +117,7 @@ public class CampaignDeleteParamsTest : TestBase
         {
             ProfileID = "770e8400-e29b-41d4-a716-446655440002",
             CampaignID = "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };

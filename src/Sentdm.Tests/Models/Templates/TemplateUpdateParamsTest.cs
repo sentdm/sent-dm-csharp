@@ -12,6 +12,7 @@ public class TemplateUpdateParamsTest : TestBase
         var parameters = new TemplateUpdateParams
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Category = "MARKETING",
             Definition = new()
             {
@@ -255,6 +256,7 @@ public class TemplateUpdateParamsTest : TestBase
         };
 
         string expectedID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8";
+        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         string expectedCategory = "MARKETING";
         TemplateDefinition expectedDefinition = new()
         {
@@ -496,6 +498,7 @@ public class TemplateUpdateParamsTest : TestBase
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedID, parameters.ID);
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedCategory, parameters.Category);
         Assert.Equal(expectedDefinition, parameters.Definition);
         Assert.Null(parameters.Language);
@@ -750,6 +753,8 @@ public class TemplateUpdateParamsTest : TestBase
             Name = "Updated Welcome Message",
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.SubmitForReview);
@@ -1004,12 +1009,15 @@ public class TemplateUpdateParamsTest : TestBase
             Name = "Updated Welcome Message",
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             Sandbox = null,
             SubmitForReview = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.SubmitForReview);
@@ -1026,6 +1034,7 @@ public class TemplateUpdateParamsTest : TestBase
         var parameters = new TemplateUpdateParams
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             SubmitForReview = false,
             IdempotencyKey = "req_abc123_retry1",
@@ -1048,6 +1057,7 @@ public class TemplateUpdateParamsTest : TestBase
         var parameters = new TemplateUpdateParams
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             SubmitForReview = false,
             IdempotencyKey = "req_abc123_retry1",
@@ -1110,6 +1120,7 @@ public class TemplateUpdateParamsTest : TestBase
         var parameters = new TemplateUpdateParams
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Category = "MARKETING",
             Definition = new()
             {
