@@ -12,6 +12,7 @@ public class UserUpdateRoleParamsTest : TestBase
         var parameters = new UserUpdateRoleParams
         {
             UserID = "aa0e8400-e29b-41d4-a716-446655440005",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Role = "billing",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
@@ -19,12 +20,14 @@ public class UserUpdateRoleParamsTest : TestBase
         };
 
         string expectedUserID = "aa0e8400-e29b-41d4-a716-446655440005";
+        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         string expectedRole = "billing";
         bool expectedSandbox = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedUserID, parameters.UserID);
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedRole, parameters.Role);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
@@ -39,6 +42,8 @@ public class UserUpdateRoleParamsTest : TestBase
             UserID = "aa0e8400-e29b-41d4-a716-446655440005",
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Role);
         Assert.False(parameters.RawBodyData.ContainsKey("role"));
         Assert.Null(parameters.Sandbox);
@@ -57,12 +62,15 @@ public class UserUpdateRoleParamsTest : TestBase
             UserID = "aa0e8400-e29b-41d4-a716-446655440005",
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             Role = null,
             Sandbox = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Role);
         Assert.False(parameters.RawBodyData.ContainsKey("role"));
         Assert.Null(parameters.Sandbox);
@@ -114,6 +122,7 @@ public class UserUpdateRoleParamsTest : TestBase
         var parameters = new UserUpdateRoleParams
         {
             UserID = "aa0e8400-e29b-41d4-a716-446655440005",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Role = "billing",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",

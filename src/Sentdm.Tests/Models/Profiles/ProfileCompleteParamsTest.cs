@@ -13,6 +13,7 @@ public class ProfileCompleteParamsTest : TestBase
         {
             ProfileID = "660e8400-e29b-41d4-a716-446655440000",
             WebHookUrl = "https://your-app.com/webhook/profile-complete",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -20,12 +21,14 @@ public class ProfileCompleteParamsTest : TestBase
 
         string expectedProfileID = "660e8400-e29b-41d4-a716-446655440000";
         string expectedWebHookUrl = "https://your-app.com/webhook/profile-complete";
+        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         bool expectedSandbox = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedProfileID, parameters.ProfileID);
         Assert.Equal(expectedWebHookUrl, parameters.WebHookUrl);
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
         Assert.Equal(expectedXProfileID, parameters.XProfileID);
@@ -40,6 +43,8 @@ public class ProfileCompleteParamsTest : TestBase
             WebHookUrl = "https://your-app.com/webhook/profile-complete",
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -57,11 +62,14 @@ public class ProfileCompleteParamsTest : TestBase
             WebHookUrl = "https://your-app.com/webhook/profile-complete",
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             Sandbox = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -119,6 +127,7 @@ public class ProfileCompleteParamsTest : TestBase
         {
             ProfileID = "660e8400-e29b-41d4-a716-446655440000",
             WebHookUrl = "https://your-app.com/webhook/profile-complete",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

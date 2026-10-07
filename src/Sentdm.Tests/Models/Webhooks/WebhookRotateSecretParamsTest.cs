@@ -12,17 +12,20 @@ public class WebhookRotateSecretParamsTest : TestBase
         var parameters = new WebhookRotateSecretParams
         {
             ID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8";
+        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         bool expectedSandbox = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedID, parameters.ID);
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
         Assert.Equal(expectedXProfileID, parameters.XProfileID);
@@ -36,6 +39,8 @@ public class WebhookRotateSecretParamsTest : TestBase
             ID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -52,11 +57,14 @@ public class WebhookRotateSecretParamsTest : TestBase
             ID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             Sandbox = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -111,6 +119,7 @@ public class WebhookRotateSecretParamsTest : TestBase
         var parameters = new WebhookRotateSecretParams
         {
             ID = "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

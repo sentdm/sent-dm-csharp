@@ -14,6 +14,7 @@ public class MessageSendParamsTest : TestBase
     {
         var parameters = new MessageSendParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Channel = ["sms", "whatsapp"],
             MediaUrls = ["string"],
             Sandbox = false,
@@ -35,6 +36,7 @@ public class MessageSendParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         List<string> expectedChannel = ["sms", "whatsapp"];
         List<string> expectedMediaUrls = ["string"];
         bool expectedSandbox = false;
@@ -52,6 +54,7 @@ public class MessageSendParamsTest : TestBase
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.NotNull(parameters.Channel);
         Assert.Equal(expectedChannel.Count, parameters.Channel.Count);
         for (int i = 0; i < expectedChannel.Count; i++)
@@ -101,6 +104,8 @@ public class MessageSendParamsTest : TestBase
             Text = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.To);
@@ -133,12 +138,15 @@ public class MessageSendParamsTest : TestBase
             Text = null,
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             Sandbox = null,
             To = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.To);
@@ -154,6 +162,7 @@ public class MessageSendParamsTest : TestBase
     {
         var parameters = new MessageSendParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             To = ["+14155551234", "+14155555678"],
             IdempotencyKey = "req_abc123_retry1",
@@ -179,6 +188,7 @@ public class MessageSendParamsTest : TestBase
     {
         var parameters = new MessageSendParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             To = ["+14155551234", "+14155555678"],
             IdempotencyKey = "req_abc123_retry1",
@@ -240,6 +250,7 @@ public class MessageSendParamsTest : TestBase
     {
         var parameters = new MessageSendParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Channel = ["sms", "whatsapp"],
             MediaUrls = ["string"],
             Sandbox = false,

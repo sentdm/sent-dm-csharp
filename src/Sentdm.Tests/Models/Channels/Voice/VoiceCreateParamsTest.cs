@@ -12,6 +12,7 @@ public class VoiceCreateParamsTest : TestBase
         var parameters = new VoiceCreateParams
         {
             CallbackUrl = "https://example.com/voice",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             AreaCode = null,
             DefaultForAppCalls = false,
             Number = "+12125550100",
@@ -21,6 +22,7 @@ public class VoiceCreateParamsTest : TestBase
         };
 
         string expectedCallbackUrl = "https://example.com/voice";
+        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         bool expectedDefaultForAppCalls = false;
         string expectedNumber = "+12125550100";
         bool expectedSandbox = false;
@@ -28,6 +30,7 @@ public class VoiceCreateParamsTest : TestBase
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedCallbackUrl, parameters.CallbackUrl);
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Null(parameters.AreaCode);
         Assert.Equal(expectedDefaultForAppCalls, parameters.DefaultForAppCalls);
         Assert.Equal(expectedNumber, parameters.Number);
@@ -47,6 +50,8 @@ public class VoiceCreateParamsTest : TestBase
             Number = "+12125550100",
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -66,11 +71,14 @@ public class VoiceCreateParamsTest : TestBase
             Number = "+12125550100",
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             Sandbox = null,
             IdempotencyKey = null,
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -85,6 +93,7 @@ public class VoiceCreateParamsTest : TestBase
         var parameters = new VoiceCreateParams
         {
             CallbackUrl = "https://example.com/voice",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -104,6 +113,7 @@ public class VoiceCreateParamsTest : TestBase
         var parameters = new VoiceCreateParams
         {
             CallbackUrl = "https://example.com/voice",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -157,6 +167,7 @@ public class VoiceCreateParamsTest : TestBase
         var parameters = new VoiceCreateParams
         {
             CallbackUrl = "https://example.com/voice",
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             AreaCode = null,
             DefaultForAppCalls = false,
             Number = "+12125550100",

@@ -11,6 +11,7 @@ public class TemplateCreateParamsTest : TestBase
     {
         var parameters = new TemplateCreateParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             AutoCreateForSp = false,
             Category = "MARKETING",
             CreationSource = null,
@@ -271,6 +272,7 @@ public class TemplateCreateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        string expectedApiKey = "sntdm_test_xxxxxxxxxxxx";
         bool expectedAutoCreateForSp = false;
         string expectedCategory = "MARKETING";
         TemplateDefinition expectedDefinition = new()
@@ -529,6 +531,7 @@ public class TemplateCreateParamsTest : TestBase
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
+        Assert.Equal(expectedApiKey, parameters.ApiKey);
         Assert.Equal(expectedAutoCreateForSp, parameters.AutoCreateForSp);
         Assert.Equal(expectedCategory, parameters.Category);
         Assert.Null(parameters.CreationSource);
@@ -550,6 +553,8 @@ public class TemplateCreateParamsTest : TestBase
             Language = "en_US",
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.AutoCreateForSp);
         Assert.False(parameters.RawBodyData.ContainsKey("auto_create_for_sp"));
         Assert.Null(parameters.Definition);
@@ -574,6 +579,7 @@ public class TemplateCreateParamsTest : TestBase
             Language = "en_US",
 
             // Null should be interpreted as omitted for these properties
+            ApiKey = null,
             AutoCreateForSp = null,
             Definition = null,
             Sandbox = null,
@@ -582,6 +588,8 @@ public class TemplateCreateParamsTest : TestBase
             XProfileID = null,
         };
 
+        Assert.Null(parameters.ApiKey);
+        Assert.False(parameters.RawBodyData.ContainsKey("apiKey"));
         Assert.Null(parameters.AutoCreateForSp);
         Assert.False(parameters.RawBodyData.ContainsKey("auto_create_for_sp"));
         Assert.Null(parameters.Definition);
@@ -601,6 +609,7 @@ public class TemplateCreateParamsTest : TestBase
     {
         var parameters = new TemplateCreateParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             AutoCreateForSp = false,
             Definition = new()
             {
@@ -871,6 +880,7 @@ public class TemplateCreateParamsTest : TestBase
     {
         var parameters = new TemplateCreateParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             AutoCreateForSp = false,
             Definition = new()
             {
@@ -1174,6 +1184,7 @@ public class TemplateCreateParamsTest : TestBase
     {
         var parameters = new TemplateCreateParams
         {
+            ApiKey = "sntdm_test_xxxxxxxxxxxx",
             AutoCreateForSp = false,
             Category = "MARKETING",
             CreationSource = null,
