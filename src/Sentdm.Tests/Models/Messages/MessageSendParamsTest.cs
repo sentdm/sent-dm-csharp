@@ -15,6 +15,23 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
+            Channels = new Dictionary<
+                string,
+                IReadOnlyList<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
+            >()
+            {
+                {
+                    "foo",
+                    [
+                        new()
+                        {
+                            Country = "country",
+                            From = ["string"],
+                            Strategy = "strategy",
+                        },
+                    ]
+                },
+            },
             MediaUrls = ["string"],
             Sandbox = false,
             ScheduledAt = null,
@@ -36,6 +53,23 @@ public class MessageSendParamsTest : TestBase
         };
 
         List<string> expectedChannel = ["sms", "whatsapp"];
+        Dictionary<
+            string,
+            List<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
+        > expectedChannels = new()
+        {
+            {
+                "foo",
+                [
+                    new()
+                    {
+                        Country = "country",
+                        From = ["string"],
+                        Strategy = "strategy",
+                    },
+                ]
+            },
+        };
         List<string> expectedMediaUrls = ["string"];
         bool expectedSandbox = false;
         Template expectedTemplate = new()
@@ -57,6 +91,18 @@ public class MessageSendParamsTest : TestBase
         for (int i = 0; i < expectedChannel.Count; i++)
         {
             Assert.Equal(expectedChannel[i], parameters.Channel[i]);
+        }
+        Assert.NotNull(parameters.Channels);
+        Assert.Equal(expectedChannels.Count, parameters.Channels.Count);
+        foreach (var item in expectedChannels)
+        {
+            Assert.True(parameters.Channels.TryGetValue(item.Key, out var value));
+
+            Assert.Equal(value.Count, parameters.Channels[item.Key].Count);
+            for (int i = 0; i < value.Count; i++)
+            {
+                Assert.Equal(value[i], parameters.Channels[item.Key][i]);
+            }
         }
         Assert.NotNull(parameters.MediaUrls);
         Assert.Equal(expectedMediaUrls.Count, parameters.MediaUrls.Count);
@@ -85,6 +131,23 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
+            Channels = new Dictionary<
+                string,
+                IReadOnlyList<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
+            >()
+            {
+                {
+                    "foo",
+                    [
+                        new()
+                        {
+                            Country = "country",
+                            From = ["string"],
+                            Strategy = "strategy",
+                        },
+                    ]
+                },
+            },
             MediaUrls = ["string"],
             ScheduledAt = null,
             Subject = null,
@@ -117,6 +180,23 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
+            Channels = new Dictionary<
+                string,
+                IReadOnlyList<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
+            >()
+            {
+                {
+                    "foo",
+                    [
+                        new()
+                        {
+                            Country = "country",
+                            From = ["string"],
+                            Strategy = "strategy",
+                        },
+                    ]
+                },
+            },
             MediaUrls = ["string"],
             ScheduledAt = null,
             Subject = null,
@@ -162,6 +242,8 @@ public class MessageSendParamsTest : TestBase
 
         Assert.Null(parameters.Channel);
         Assert.False(parameters.RawBodyData.ContainsKey("channel"));
+        Assert.Null(parameters.Channels);
+        Assert.False(parameters.RawBodyData.ContainsKey("channels"));
         Assert.Null(parameters.MediaUrls);
         Assert.False(parameters.RawBodyData.ContainsKey("media_urls"));
         Assert.Null(parameters.ScheduledAt);
@@ -185,6 +267,7 @@ public class MessageSendParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
             Channel = null,
+            Channels = null,
             MediaUrls = null,
             ScheduledAt = null,
             Subject = null,
@@ -194,6 +277,8 @@ public class MessageSendParamsTest : TestBase
 
         Assert.Null(parameters.Channel);
         Assert.True(parameters.RawBodyData.ContainsKey("channel"));
+        Assert.Null(parameters.Channels);
+        Assert.True(parameters.RawBodyData.ContainsKey("channels"));
         Assert.Null(parameters.MediaUrls);
         Assert.True(parameters.RawBodyData.ContainsKey("media_urls"));
         Assert.Null(parameters.ScheduledAt);
@@ -241,6 +326,23 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
+            Channels = new Dictionary<
+                string,
+                IReadOnlyList<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
+            >()
+            {
+                {
+                    "foo",
+                    [
+                        new()
+                        {
+                            Country = "country",
+                            From = ["string"],
+                            Strategy = "strategy",
+                        },
+                    ]
+                },
+            },
             MediaUrls = ["string"],
             Sandbox = false,
             ScheduledAt = null,
@@ -264,6 +366,178 @@ public class MessageSendParamsTest : TestBase
         MessageSendParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
+    }
+}
+
+public class SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequestTest
+    : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model =
+            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
+            {
+                Country = "country",
+                From = ["string"],
+                Strategy = "strategy",
+            };
+
+        string expectedCountry = "country";
+        List<string> expectedFrom = ["string"];
+        string expectedStrategy = "strategy";
+
+        Assert.Equal(expectedCountry, model.Country);
+        Assert.NotNull(model.From);
+        Assert.Equal(expectedFrom.Count, model.From.Count);
+        for (int i = 0; i < expectedFrom.Count; i++)
+        {
+            Assert.Equal(expectedFrom[i], model.From[i]);
+        }
+        Assert.Equal(expectedStrategy, model.Strategy);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model =
+            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
+            {
+                Country = "country",
+                From = ["string"],
+                Strategy = "strategy",
+            };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized =
+            JsonSerializer.Deserialize<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>(
+                json,
+                ModelBase.SerializerOptions
+            );
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model =
+            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
+            {
+                Country = "country",
+                From = ["string"],
+                Strategy = "strategy",
+            };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized =
+            JsonSerializer.Deserialize<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>(
+                element,
+                ModelBase.SerializerOptions
+            );
+        Assert.NotNull(deserialized);
+
+        string expectedCountry = "country";
+        List<string> expectedFrom = ["string"];
+        string expectedStrategy = "strategy";
+
+        Assert.Equal(expectedCountry, deserialized.Country);
+        Assert.NotNull(deserialized.From);
+        Assert.Equal(expectedFrom.Count, deserialized.From.Count);
+        for (int i = 0; i < expectedFrom.Count; i++)
+        {
+            Assert.Equal(expectedFrom[i], deserialized.From[i]);
+        }
+        Assert.Equal(expectedStrategy, deserialized.Strategy);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model =
+            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
+            {
+                Country = "country",
+                From = ["string"],
+                Strategy = "strategy",
+            };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model =
+            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
+            { };
+
+        Assert.Null(model.Country);
+        Assert.False(model.RawData.ContainsKey("country"));
+        Assert.Null(model.From);
+        Assert.False(model.RawData.ContainsKey("from"));
+        Assert.Null(model.Strategy);
+        Assert.False(model.RawData.ContainsKey("strategy"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetValidation_Works()
+    {
+        var model =
+            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
+            { };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
+    {
+        var model =
+            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
+            {
+                Country = null,
+                From = null,
+                Strategy = null,
+            };
+
+        Assert.Null(model.Country);
+        Assert.True(model.RawData.ContainsKey("country"));
+        Assert.Null(model.From);
+        Assert.True(model.RawData.ContainsKey("from"));
+        Assert.Null(model.Strategy);
+        Assert.True(model.RawData.ContainsKey("strategy"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullValidation_Works()
+    {
+        var model =
+            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
+            {
+                Country = null,
+                From = null,
+                Strategy = null,
+            };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model =
+            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
+            {
+                Country = "country",
+                From = ["string"],
+                Strategy = "strategy",
+            };
+
+        SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest copied =
+            new(model);
+
+        Assert.Equal(model, copied);
     }
 }
 
