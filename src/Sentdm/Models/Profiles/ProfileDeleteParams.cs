@@ -20,6 +20,13 @@ namespace Sentdm.Models.Profiles;
 /// to our inventory and can go to whoever asks next, its own WhatsApp account is
 /// deregistered, and its routing rules stop being used. Requires admin role in the organization.</para>
 ///
+/// <para>A number it holds that your WhatsApp Business Account still carries refuses
+/// the delete with a `409 CONFLICT_012`, and nothing is deleted: the number would
+/// return to our shared inventory while Meta still routes WhatsApp to it, and only
+/// you can take it off the account — deregister **and** delete it in WhatsApp Manager,
+/// then try again. A `409 CONFLICT_013` means the account could not be read, so
+/// we cannot tell.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
