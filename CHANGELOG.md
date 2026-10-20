@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.41.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.40.0...v0.41.0) (2026-10-20)
+
+
+### Features
+
+* **api:** sync generated SDKs from the committed spec ([2cb098c](https://github.com/sentdm/sent-dm-csharp/commit/2cb098cfe5b09d9f2c406935c612111b80017a6a))
+
 ## [0.40.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.39.0...v0.40.0) (2026-10-09)
 
 
