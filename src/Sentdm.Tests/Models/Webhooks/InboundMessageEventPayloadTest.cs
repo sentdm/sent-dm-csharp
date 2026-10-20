@@ -28,6 +28,7 @@ public class InboundMessageEventPayloadTest : TestBase
             ],
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
+            Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
             Text = "text",
             UpdatedAt = "updated_at",
         };
@@ -48,6 +49,7 @@ public class InboundMessageEventPayloadTest : TestBase
         ];
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedOutboundNumber = "outbound_number";
+        JsonElement expectedReferral = JsonSerializer.Deserialize<JsonElement>("{}");
         string expectedText = "text";
         string expectedUpdatedAt = "updated_at";
 
@@ -63,6 +65,8 @@ public class InboundMessageEventPayloadTest : TestBase
         }
         Assert.Equal(expectedMessageID, model.MessageID);
         Assert.Equal(expectedOutboundNumber, model.OutboundNumber);
+        Assert.NotNull(model.Referral);
+        Assert.True(JsonElement.DeepEquals(expectedReferral, model.Referral.Value));
         Assert.Equal(expectedText, model.Text);
         Assert.Equal(expectedUpdatedAt, model.UpdatedAt);
     }
@@ -88,6 +92,7 @@ public class InboundMessageEventPayloadTest : TestBase
             ],
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
+            Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
             Text = "text",
             UpdatedAt = "updated_at",
         };
@@ -122,6 +127,7 @@ public class InboundMessageEventPayloadTest : TestBase
             ],
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
+            Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
             Text = "text",
             UpdatedAt = "updated_at",
         };
@@ -149,6 +155,7 @@ public class InboundMessageEventPayloadTest : TestBase
         ];
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedOutboundNumber = "outbound_number";
+        JsonElement expectedReferral = JsonSerializer.Deserialize<JsonElement>("{}");
         string expectedText = "text";
         string expectedUpdatedAt = "updated_at";
 
@@ -164,6 +171,8 @@ public class InboundMessageEventPayloadTest : TestBase
         }
         Assert.Equal(expectedMessageID, deserialized.MessageID);
         Assert.Equal(expectedOutboundNumber, deserialized.OutboundNumber);
+        Assert.NotNull(deserialized.Referral);
+        Assert.True(JsonElement.DeepEquals(expectedReferral, deserialized.Referral.Value));
         Assert.Equal(expectedText, deserialized.Text);
         Assert.Equal(expectedUpdatedAt, deserialized.UpdatedAt);
     }
@@ -189,6 +198,7 @@ public class InboundMessageEventPayloadTest : TestBase
             ],
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
+            Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
             Text = "text",
             UpdatedAt = "updated_at",
         };
@@ -213,6 +223,7 @@ public class InboundMessageEventPayloadTest : TestBase
                     Url = "url",
                 },
             ],
+            Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
             Text = "text",
         };
 
@@ -245,6 +256,7 @@ public class InboundMessageEventPayloadTest : TestBase
                     Url = "url",
                 },
             ],
+            Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
             Text = "text",
         };
 
@@ -268,6 +280,7 @@ public class InboundMessageEventPayloadTest : TestBase
                     Url = "url",
                 },
             ],
+            Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
             Text = "text",
 
             // Null should be interpreted as omitted for these properties
@@ -307,6 +320,7 @@ public class InboundMessageEventPayloadTest : TestBase
                     Url = "url",
                 },
             ],
+            Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
             Text = "text",
 
             // Null should be interpreted as omitted for these properties
@@ -336,6 +350,8 @@ public class InboundMessageEventPayloadTest : TestBase
 
         Assert.Null(model.Media);
         Assert.False(model.RawData.ContainsKey("media"));
+        Assert.Null(model.Referral);
+        Assert.False(model.RawData.ContainsKey("referral"));
         Assert.Null(model.Text);
         Assert.False(model.RawData.ContainsKey("text"));
     }
@@ -371,11 +387,14 @@ public class InboundMessageEventPayloadTest : TestBase
             UpdatedAt = "updated_at",
 
             Media = null,
+            Referral = null,
             Text = null,
         };
 
         Assert.Null(model.Media);
         Assert.True(model.RawData.ContainsKey("media"));
+        Assert.Null(model.Referral);
+        Assert.True(model.RawData.ContainsKey("referral"));
         Assert.Null(model.Text);
         Assert.True(model.RawData.ContainsKey("text"));
     }
@@ -394,6 +413,7 @@ public class InboundMessageEventPayloadTest : TestBase
             UpdatedAt = "updated_at",
 
             Media = null,
+            Referral = null,
             Text = null,
         };
 
@@ -421,6 +441,7 @@ public class InboundMessageEventPayloadTest : TestBase
             ],
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
+            Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
             Text = "text",
             UpdatedAt = "updated_at",
         };
