@@ -154,6 +154,26 @@ public sealed record class InboundMessageEventPayload : JsonModel
     }
 
     /// <summary>
+    /// The ad the contact tapped to start the conversation, present only on whatsapp
+    /// messages sent from a Click to WhatsApp ad and omitted entirely otherwise.
+    ///              This is Meta's referral object passed through unchanged, with
+    /// Meta's field names and nesting: source_url, source_id, source_type, headline,
+    /// body, media_type, image_url (image ads), video_url and thumbnail_url (video
+    /// ads), ctwa_clid and welcome_message.text. Which fields appear is Meta's decision:
+    /// ctwa_clid in particular is not sent for ads shown in WhatsApp Status, so treat
+    /// every field as optional.
+    /// </summary>
+    public JsonElement? Referral
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<JsonElement>("referral");
+        }
+        init { this._rawData.Set("referral", value); }
+    }
+
+    /// <summary>
     /// The message body. Sent as null when the inbound message carried no text, for
     /// example a media-only message. The field is always present, so read it and
     /// check for null rather than checking whether the key exists.
@@ -203,6 +223,7 @@ public sealed record class InboundMessageEventPayload : JsonModel
         }
         _ = this.MessageID;
         _ = this.OutboundNumber;
+        _ = this.Referral;
         _ = this.Text;
         _ = this.UpdatedAt;
     }
