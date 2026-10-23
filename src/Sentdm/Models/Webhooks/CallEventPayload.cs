@@ -142,7 +142,7 @@ public sealed record class CallEventPayload : JsonModel
     }
 
     /// <summary>
-    /// The recording that became available, the same id GET /v3/calls/{id}/recordings
+    /// The recording that became available, the same id GET /v3/voice/calls/{id}/recordings
     /// lists it under. Only on call.recording_ready, which is sent once per recording.
     /// </summary>
     public string? RecordingID
