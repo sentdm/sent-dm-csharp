@@ -91,11 +91,15 @@ public record class MessageSendParams : ParamsBase
     /// routes may win, so with Channel left at auto-detect a recipient best served
     /// by a channel with no list still goes out on it. Routing itself is unchanged:
     /// the same rules are scored and ranked the same way, with routes pinned to
-    /// numbers you did not list removed from the running.              Every number
-    /// must be an active sender on your account. The request itself is still accepted
-    /// (202) if one is not — like every other send-time rule, that is decided per
-    /// message, so each affected message is recorded BLOCKED with error code BUSINESS_029
-    /// and reported on GET /v3/messages and the status webhook.
+    /// numbers you did not list removed from the running.              Each channel's
+    /// list is independent: an sms list does not restrict MMS. To choose the numbers
+    /// a message may go out from as MMS, name them under mms. MMS sends from your
+    /// SMS numbers, so an mms list may name any of your active SMS numbers whose
+    /// market carries MMS — the ones listed under mms in your channels.
+    ///      Every number must be an active sender on your account. The request itself
+    /// is still accepted (202) if one is not — like every other send-time rule, that
+    /// is decided per message, so each affected message is recorded BLOCKED with
+    /// error code BUSINESS_029 and reported on GET /v3/messages and the status webhook.
     /// </summary>
     public IReadOnlyDictionary<
         string,
@@ -150,9 +154,11 @@ public record class MessageSendParams : ParamsBase
     /// recipient-specific.              Their presence is also what makes a message
     /// eligible for MMS on an auto-detect send: a message with nothing attached
     /// is delivered as SMS, because an MMS with no media is a more expensive text
-    /// message.              The recipient's carrier fetches each URL after the
-    /// send is accepted, so it must stay publicly reachable — a link that expires,
-    /// or one behind auth, arrives as a failed message.
+    /// message. For the same reason a send that names mms in channel with nothing
+    /// attached, here or on the template, is refused with a 400.              The
+    /// recipient's carrier fetches each URL after the send is accepted, so it must
+    /// stay publicly reachable — a link that expires, or one behind auth, arrives
+    /// as a failed message.
     /// </summary>
     public IReadOnlyList<string>? MediaUrls
     {
