@@ -1,6 +1,6 @@
 using System;
 using Sentdm.Core;
-using Sentdm.Services.Channels;
+using Channels = Sentdm.Services.Channels;
 
 namespace Sentdm.Services;
 
@@ -24,7 +24,7 @@ public interface IChannelService
     /// </summary>
     IChannelService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
-    IVoiceService Voice { get; }
+    Channels::IVoiceService Voice { get; }
 }
 
 /// <summary>
@@ -40,5 +40,5 @@ public interface IChannelServiceWithRawResponse
     /// </summary>
     IChannelServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
-    IVoiceServiceWithRawResponse Voice { get; }
+    Channels::IVoiceServiceWithRawResponse Voice { get; }
 }

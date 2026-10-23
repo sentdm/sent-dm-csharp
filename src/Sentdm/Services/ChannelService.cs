@@ -1,6 +1,6 @@
 using System;
 using Sentdm.Core;
-using Sentdm.Services.Channels;
+using Channels = Sentdm.Services.Channels;
 
 namespace Sentdm.Services;
 
@@ -28,11 +28,11 @@ public sealed class ChannelService : IChannelService
         _client = client;
 
         _withRawResponse = new(() => new ChannelServiceWithRawResponse(client.WithRawResponse));
-        _voice = new(() => new VoiceService(client));
+        _voice = new(() => new Channels::VoiceService(client));
     }
 
-    readonly Lazy<IVoiceService> _voice;
-    public IVoiceService Voice
+    readonly Lazy<Channels::IVoiceService> _voice;
+    public Channels::IVoiceService Voice
     {
         get { return _voice.Value; }
     }
@@ -53,11 +53,11 @@ public sealed class ChannelServiceWithRawResponse : IChannelServiceWithRawRespon
     {
         _client = client;
 
-        _voice = new(() => new VoiceServiceWithRawResponse(client));
+        _voice = new(() => new Channels::VoiceServiceWithRawResponse(client));
     }
 
-    readonly Lazy<IVoiceServiceWithRawResponse> _voice;
-    public IVoiceServiceWithRawResponse Voice
+    readonly Lazy<Channels::IVoiceServiceWithRawResponse> _voice;
+    public Channels::IVoiceServiceWithRawResponse Voice
     {
         get { return _voice.Value; }
     }
