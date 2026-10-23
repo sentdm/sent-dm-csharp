@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.42.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.41.0...v0.42.0) (2026-10-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** move calls and voice tokens under the voice resource
+
+### Features
+
+* **api:** move calls and voice tokens under the voice resource ([2756f52](https://github.com/sentdm/sent-dm-csharp/commit/2756f52f3941fa7ef0cb719467efda297bc483d0))
+
 ## [0.41.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.40.0...v0.41.0) (2026-10-20)
 
 
