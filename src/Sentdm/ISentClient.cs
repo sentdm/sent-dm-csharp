@@ -71,7 +71,7 @@ public interface ISentClient : IDisposable
 
     IConversationService Conversations { get; }
 
-    ICallService Calls { get; }
+    IVoiceService Voice { get; }
 
     IChannelService Channels { get; }
 
@@ -127,7 +127,7 @@ public interface ISentClientWithRawResponse : IDisposable
 
     IConversationServiceWithRawResponse Conversations { get; }
 
-    ICallServiceWithRawResponse Calls { get; }
+    IVoiceServiceWithRawResponse Voice { get; }
 
     IChannelServiceWithRawResponse Channels { get; }
 

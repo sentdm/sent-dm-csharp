@@ -47,16 +47,6 @@ public class VoiceServiceTest : TestBase
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
-    public async Task CreateToken_Works()
-    {
-        var apiResponseOfVoiceToken = await this.client.Channels.Voice.CreateToken(
-            new(),
-            TestContext.Current.CancellationToken
-        );
-        apiResponseOfVoiceToken.Validate();
-    }
-
-    [Fact(Skip = "Mock server tests are disabled")]
     public async Task RotateSecret_Works()
     {
         var apiResponseOfVoiceSecret = await this.client.Channels.Voice.RotateSecret(
