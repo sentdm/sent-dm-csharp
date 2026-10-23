@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Channels.Voice;
-using Sentdm.Models.Webhooks;
+using Webhooks = Sentdm.Models.Webhooks;
 
 namespace Sentdm.Tests.Models.Channels.Voice;
 
@@ -37,21 +37,21 @@ public class ApiResponseOfVoiceTokenTest : TestBase
             Success = true,
         };
 
-        VoiceToken expectedData = new()
+        Data expectedData = new()
         {
             Token = "token",
             ExpiresAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Identity = "identity",
             Number = "number",
         };
-        ErrorDetail expectedError = new()
+        Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        ApiMeta expectedMeta = new()
+        Webhooks::ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -137,21 +137,21 @@ public class ApiResponseOfVoiceTokenTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        VoiceToken expectedData = new()
+        Data expectedData = new()
         {
             Token = "token",
             ExpiresAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Identity = "identity",
             Number = "number",
         };
-        ErrorDetail expectedError = new()
+        Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        ApiMeta expectedMeta = new()
+        Webhooks::ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -415,6 +415,164 @@ public class ApiResponseOfVoiceTokenTest : TestBase
         };
 
         ApiResponseOfVoiceToken copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
+}
+
+public class DataTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new Data
+        {
+            Token = "token",
+            ExpiresAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Identity = "identity",
+            Number = "number",
+        };
+
+        string expectedToken = "token";
+        DateTimeOffset expectedExpiresAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedIdentity = "identity";
+        string expectedNumber = "number";
+
+        Assert.Equal(expectedToken, model.Token);
+        Assert.Equal(expectedExpiresAt, model.ExpiresAt);
+        Assert.Equal(expectedIdentity, model.Identity);
+        Assert.Equal(expectedNumber, model.Number);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new Data
+        {
+            Token = "token",
+            ExpiresAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Identity = "identity",
+            Number = "number",
+        };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Data>(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new Data
+        {
+            Token = "token",
+            ExpiresAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Identity = "identity",
+            Number = "number",
+        };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Data>(element, ModelBase.SerializerOptions);
+        Assert.NotNull(deserialized);
+
+        string expectedToken = "token";
+        DateTimeOffset expectedExpiresAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedIdentity = "identity";
+        string expectedNumber = "number";
+
+        Assert.Equal(expectedToken, deserialized.Token);
+        Assert.Equal(expectedExpiresAt, deserialized.ExpiresAt);
+        Assert.Equal(expectedIdentity, deserialized.Identity);
+        Assert.Equal(expectedNumber, deserialized.Number);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new Data
+        {
+            Token = "token",
+            ExpiresAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Identity = "identity",
+            Number = "number",
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Data { };
+
+        Assert.Null(model.Token);
+        Assert.False(model.RawData.ContainsKey("token"));
+        Assert.Null(model.ExpiresAt);
+        Assert.False(model.RawData.ContainsKey("expires_at"));
+        Assert.Null(model.Identity);
+        Assert.False(model.RawData.ContainsKey("identity"));
+        Assert.Null(model.Number);
+        Assert.False(model.RawData.ContainsKey("number"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Data { };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new Data
+        {
+            // Null should be interpreted as omitted for these properties
+            Token = null,
+            ExpiresAt = null,
+            Identity = null,
+            Number = null,
+        };
+
+        Assert.Null(model.Token);
+        Assert.False(model.RawData.ContainsKey("token"));
+        Assert.Null(model.ExpiresAt);
+        Assert.False(model.RawData.ContainsKey("expires_at"));
+        Assert.Null(model.Identity);
+        Assert.False(model.RawData.ContainsKey("identity"));
+        Assert.Null(model.Number);
+        Assert.False(model.RawData.ContainsKey("number"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Data
+        {
+            // Null should be interpreted as omitted for these properties
+            Token = null,
+            ExpiresAt = null,
+            Identity = null,
+            Number = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Data
+        {
+            Token = "token",
+            ExpiresAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Identity = "identity",
+            Number = "number",
+        };
+
+        Data copied = new(model);
 
         Assert.Equal(model, copied);
     }
