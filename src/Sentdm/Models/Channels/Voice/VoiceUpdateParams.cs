@@ -23,13 +23,16 @@ namespace Sentdm.Models.Channels.Voice;
 /// stay on the number | | `"default_for_app_calls": true` | makes this the line app-originated
 /// calls are placed from when a voice token names no number | | `"callback_url":
 /// "https://example.com/voice"` | replaces where Sent asks what to do with each call
-/// on the number; the signing secret is kept, and a number that was waiting for its
-/// first URL is turned on | | key omitted | left exactly as it is |</para>
+/// on the number; the signing secret and the status are kept | | key omitted | left
+/// exactly as it is |</para>
 ///
 /// <para>`status` is matched ignoring case. Any combination is accepted: `status:
 /// "ACTIVE"` with `default_for_app_calls: true` turns a number on as the new default,
 /// and a `callback_url` sent with either status is written too. A body that names
 /// none of the three is refused.</para>
+///
+/// <para>A number can be on without a callback URL: calls placed from your app then
+/// connect straight to the number or user they dial, and calls to the number are declined.</para>
 ///
 /// <para>## What it will refuse</para>
 ///
@@ -42,11 +45,6 @@ namespace Sentdm.Models.Channels.Voice;
 ///
 /// <para>**Making an inactive number the default is `400`.** Send `status: "ACTIVE"`
 /// in the same call.</para>
-///
-/// <para>A number added without a `callback_url` is `INACTIVE` for that one reason,
-/// so sending it a `callback_url` turns it on by itself, and it becomes your default
-/// line if you have no other active voice number. A number you turned off while
-/// it had a URL stays off.</para>
 ///
 /// <para>**A number you never turned voice on for is `404`.** Add it with `POST /v3/channels/voice`.</para>
 ///
