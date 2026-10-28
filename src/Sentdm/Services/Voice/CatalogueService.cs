@@ -3,17 +3,17 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
-using Sentdm.Models.Voice.Voices;
+using Sentdm.Models.Voice.Catalogue;
 
 namespace Sentdm.Services.Voice;
 
 /// <inheritdoc/>
-public sealed class VoiceService : IVoiceService
+public sealed class CatalogueService : ICatalogueService
 {
-    readonly Lazy<IVoiceServiceWithRawResponse> _withRawResponse;
+    readonly Lazy<ICatalogueServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IVoiceServiceWithRawResponse WithRawResponse
+    public ICatalogueServiceWithRawResponse WithRawResponse
     {
         get { return _withRawResponse.Value; }
     }
@@ -21,21 +21,21 @@ public sealed class VoiceService : IVoiceService
     readonly ISentClient _client;
 
     /// <inheritdoc/>
-    public IVoiceService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public ICatalogueService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new VoiceService(this._client.WithOptions(modifier));
+        return new CatalogueService(this._client.WithOptions(modifier));
     }
 
-    public VoiceService(ISentClient client)
+    public CatalogueService(ISentClient client)
     {
         _client = client;
 
-        _withRawResponse = new(() => new VoiceServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse = new(() => new CatalogueServiceWithRawResponse(client.WithRawResponse));
     }
 
     /// <inheritdoc/>
     public async Task<ApiResponseOfVoiceCatalogue> List(
-        VoiceListParams? parameters = null,
+        CatalogueListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -47,30 +47,30 @@ public sealed class VoiceService : IVoiceService
 }
 
 /// <inheritdoc/>
-public sealed class VoiceServiceWithRawResponse : IVoiceServiceWithRawResponse
+public sealed class CatalogueServiceWithRawResponse : ICatalogueServiceWithRawResponse
 {
     readonly ISentClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IVoiceServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public ICatalogueServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new VoiceServiceWithRawResponse(this._client.WithOptions(modifier));
+        return new CatalogueServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public VoiceServiceWithRawResponse(ISentClientWithRawResponse client)
+    public CatalogueServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
     }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<ApiResponseOfVoiceCatalogue>> List(
-        VoiceListParams? parameters = null,
+        CatalogueListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
         parameters ??= new();
 
-        HttpRequest<VoiceListParams> request = new()
+        HttpRequest<CatalogueListParams> request = new()
         {
             Method = HttpMethod.Get,
             Params = parameters,

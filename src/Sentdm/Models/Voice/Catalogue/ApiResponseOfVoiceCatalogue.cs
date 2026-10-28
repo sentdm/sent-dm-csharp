@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 using Sentdm.Core;
 using Sentdm.Models.Webhooks;
 
-namespace Sentdm.Models.Voice.Voices;
+namespace Sentdm.Models.Voice.Catalogue;
 
 /// <summary>
 /// Standard API response envelope for all v3 endpoints

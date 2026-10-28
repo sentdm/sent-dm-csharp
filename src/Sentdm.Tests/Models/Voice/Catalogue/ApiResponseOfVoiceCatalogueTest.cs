@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
-using Sentdm.Models.Voice.Voices;
+using Sentdm.Models.Voice.Catalogue;
 using Sentdm.Models.Webhooks;
 
-namespace Sentdm.Tests.Models.Voice.Voices;
+namespace Sentdm.Tests.Models.Voice.Catalogue;
 
 public class ApiResponseOfVoiceCatalogueTest : TestBase
 {

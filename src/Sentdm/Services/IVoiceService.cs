@@ -1,6 +1,6 @@
 using System;
 using Sentdm.Core;
-using Voice = Sentdm.Services.Voice;
+using Sentdm.Services.Voice;
 
 namespace Sentdm.Services;
 
@@ -24,13 +24,13 @@ public interface IVoiceService
     /// </summary>
     IVoiceService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
-    Voice::ICallService Calls { get; }
+    ICallService Calls { get; }
 
-    Voice::ITokenService Tokens { get; }
+    ITokenService Tokens { get; }
 
-    Voice::IAgentService Agents { get; }
+    IAgentService Agents { get; }
 
-    Voice::IVoiceService Voices { get; }
+    ICatalogueService Catalogue { get; }
 }
 
 /// <summary>
@@ -46,11 +46,11 @@ public interface IVoiceServiceWithRawResponse
     /// </summary>
     IVoiceServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
-    Voice::ICallServiceWithRawResponse Calls { get; }
+    ICallServiceWithRawResponse Calls { get; }
 
-    Voice::ITokenServiceWithRawResponse Tokens { get; }
+    ITokenServiceWithRawResponse Tokens { get; }
 
-    Voice::IAgentServiceWithRawResponse Agents { get; }
+    IAgentServiceWithRawResponse Agents { get; }
 
-    Voice::IVoiceServiceWithRawResponse Voices { get; }
+    ICatalogueServiceWithRawResponse Catalogue { get; }
 }

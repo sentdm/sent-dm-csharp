@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
-using Sentdm.Models.Voice.Voices;
+using Sentdm.Models.Voice.Catalogue;
 
 namespace Sentdm.Services.Voice;
 
@@ -37,20 +37,20 @@ namespace Sentdm.Services.Voice;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
-public interface IVoiceService
+public interface ICatalogueService
 {
     /// <summary>
     /// Returns a view of this service that provides access to raw HTTP responses
     /// for each method.
     /// </summary>
-    IVoiceServiceWithRawResponse WithRawResponse { get; }
+    ICatalogueServiceWithRawResponse WithRawResponse { get; }
 
     /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IVoiceService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ICatalogueService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
     /// The names a voice agent's `speech.voice` and `speech.language` accept, with the
@@ -58,30 +58,30 @@ public interface IVoiceService
     /// without notice.
     /// </summary>
     Task<ApiResponseOfVoiceCatalogue> List(
-        VoiceListParams? parameters = null,
+        CatalogueListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }
 
 /// <summary>
-/// A view of <see cref="IVoiceService"/> that provides access to raw
+/// A view of <see cref="ICatalogueService"/> that provides access to raw
 /// HTTP responses for each method.
 /// </summary>
-public interface IVoiceServiceWithRawResponse
+public interface ICatalogueServiceWithRawResponse
 {
     /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IVoiceServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ICatalogueServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
     /// Returns a raw HTTP response for <c>get /v3/voice/voices</c>, but is otherwise the
-    /// same as <see cref="IVoiceService.List(VoiceListParams?, CancellationToken)"/>.
+    /// same as <see cref="ICatalogueService.List(CatalogueListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfVoiceCatalogue>> List(
-        VoiceListParams? parameters = null,
+        CatalogueListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }

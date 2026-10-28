@@ -5,7 +5,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
 
-namespace Sentdm.Models.Voice.Voices;
+namespace Sentdm.Models.Voice.Catalogue;
 
 [JsonConverter(typeof(JsonModelConverter<VoiceCatalogueVoice, VoiceCatalogueVoiceFromRaw>))]
 public sealed record class VoiceCatalogueVoice : JsonModel

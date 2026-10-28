@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
-using Sentdm.Models.Voice.Voices;
+using Sentdm.Models.Voice.Catalogue;
 
-namespace Sentdm.Tests.Models.Voice.Voices;
+namespace Sentdm.Tests.Models.Voice.Catalogue;
 
 public class VoiceCatalogueTest : TestBase
 {

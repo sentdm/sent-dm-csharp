@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text.Json;
 using Sentdm.Core;
 
-namespace Sentdm.Models.Voice.Voices;
+namespace Sentdm.Models.Voice.Catalogue;
 
 /// <summary>
 /// The names a voice agent's `speech.voice` and `speech.language` accept, with the
@@ -16,7 +16,7 @@ namespace Sentdm.Models.Voice.Voices;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
-public record class VoiceListParams : ParamsBase
+public record class CatalogueListParams : ParamsBase
 {
     public string? XProfileID
     {
@@ -36,15 +36,15 @@ public record class VoiceListParams : ParamsBase
         }
     }
 
-    public VoiceListParams() { }
+    public CatalogueListParams() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public VoiceListParams(VoiceListParams voiceListParams)
-        : base(voiceListParams) { }
+    public CatalogueListParams(CatalogueListParams catalogueListParams)
+        : base(catalogueListParams) { }
 #pragma warning restore CS8618
 
-    public VoiceListParams(
+    public CatalogueListParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -55,7 +55,7 @@ public record class VoiceListParams : ParamsBase
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    VoiceListParams(
+    CatalogueListParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -66,7 +66,7 @@ public record class VoiceListParams : ParamsBase
 #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
-    public static VoiceListParams FromRawUnchecked(
+    public static CatalogueListParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -93,7 +93,7 @@ public record class VoiceListParams : ParamsBase
             ModelBase.ToStringSerializerOptions
         );
 
-    public virtual bool Equals(VoiceListParams? other)
+    public virtual bool Equals(CatalogueListParams? other)
     {
         if (other == null)
         {

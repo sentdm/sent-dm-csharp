@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
 
-namespace Sentdm.Models.Voice.Voices;
+namespace Sentdm.Models.Voice.Catalogue;
 
 /// <summary>
 /// The voices and languages a text-session agent may name in its speech settings:

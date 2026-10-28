@@ -1,6 +1,6 @@
 using System;
 using Sentdm.Core;
-using Voice = Sentdm.Services.Voice;
+using Sentdm.Services.Voice;
 
 namespace Sentdm.Services;
 
@@ -28,34 +28,34 @@ public sealed class VoiceService : IVoiceService
         _client = client;
 
         _withRawResponse = new(() => new VoiceServiceWithRawResponse(client.WithRawResponse));
-        _calls = new(() => new Voice::CallService(client));
-        _tokens = new(() => new Voice::TokenService(client));
-        _agents = new(() => new Voice::AgentService(client));
-        _voices = new(() => new Voice::VoiceService(client));
+        _calls = new(() => new CallService(client));
+        _tokens = new(() => new TokenService(client));
+        _agents = new(() => new AgentService(client));
+        _catalogue = new(() => new CatalogueService(client));
     }
 
-    readonly Lazy<Voice::ICallService> _calls;
-    public Voice::ICallService Calls
+    readonly Lazy<ICallService> _calls;
+    public ICallService Calls
     {
         get { return _calls.Value; }
     }
 
-    readonly Lazy<Voice::ITokenService> _tokens;
-    public Voice::ITokenService Tokens
+    readonly Lazy<ITokenService> _tokens;
+    public ITokenService Tokens
     {
         get { return _tokens.Value; }
     }
 
-    readonly Lazy<Voice::IAgentService> _agents;
-    public Voice::IAgentService Agents
+    readonly Lazy<IAgentService> _agents;
+    public IAgentService Agents
     {
         get { return _agents.Value; }
     }
 
-    readonly Lazy<Voice::IVoiceService> _voices;
-    public Voice::IVoiceService Voices
+    readonly Lazy<ICatalogueService> _catalogue;
+    public ICatalogueService Catalogue
     {
-        get { return _voices.Value; }
+        get { return _catalogue.Value; }
     }
 }
 
@@ -74,33 +74,33 @@ public sealed class VoiceServiceWithRawResponse : IVoiceServiceWithRawResponse
     {
         _client = client;
 
-        _calls = new(() => new Voice::CallServiceWithRawResponse(client));
-        _tokens = new(() => new Voice::TokenServiceWithRawResponse(client));
-        _agents = new(() => new Voice::AgentServiceWithRawResponse(client));
-        _voices = new(() => new Voice::VoiceServiceWithRawResponse(client));
+        _calls = new(() => new CallServiceWithRawResponse(client));
+        _tokens = new(() => new TokenServiceWithRawResponse(client));
+        _agents = new(() => new AgentServiceWithRawResponse(client));
+        _catalogue = new(() => new CatalogueServiceWithRawResponse(client));
     }
 
-    readonly Lazy<Voice::ICallServiceWithRawResponse> _calls;
-    public Voice::ICallServiceWithRawResponse Calls
+    readonly Lazy<ICallServiceWithRawResponse> _calls;
+    public ICallServiceWithRawResponse Calls
     {
         get { return _calls.Value; }
     }
 
-    readonly Lazy<Voice::ITokenServiceWithRawResponse> _tokens;
-    public Voice::ITokenServiceWithRawResponse Tokens
+    readonly Lazy<ITokenServiceWithRawResponse> _tokens;
+    public ITokenServiceWithRawResponse Tokens
     {
         get { return _tokens.Value; }
     }
 
-    readonly Lazy<Voice::IAgentServiceWithRawResponse> _agents;
-    public Voice::IAgentServiceWithRawResponse Agents
+    readonly Lazy<IAgentServiceWithRawResponse> _agents;
+    public IAgentServiceWithRawResponse Agents
     {
         get { return _agents.Value; }
     }
 
-    readonly Lazy<Voice::IVoiceServiceWithRawResponse> _voices;
-    public Voice::IVoiceServiceWithRawResponse Voices
+    readonly Lazy<ICatalogueServiceWithRawResponse> _catalogue;
+    public ICatalogueServiceWithRawResponse Catalogue
     {
-        get { return _voices.Value; }
+        get { return _catalogue.Value; }
     }
 }
