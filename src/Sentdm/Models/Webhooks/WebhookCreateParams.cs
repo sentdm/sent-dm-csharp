@@ -12,7 +12,14 @@ using Sentdm.Core;
 namespace Sentdm.Models.Webhooks;
 
 /// <summary>
-/// Creates a new webhook endpoint for the authenticated customer.
+/// Creates a new webhook endpoint for the authenticated customer. A webhook is version
+/// 2 unless the request sets webhook_version to 1: Svix delivers it, signed with
+/// the webhook-id, webhook-timestamp and webhook-signature headers, and retries
+/// it on its own schedule, so retry_count and timeout_seconds apply to version 1
+/// only. sender_profile applies to version 1 only and is ignored on version 2; is_inheritable
+/// applies to version 2 only. A version 1 webhook's response returns its sender_profile
+/// selection, with an empty event_types when it is not cloned onto sender profiles;
+/// a version 2 webhook's response leaves sender_profile out.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -117,6 +124,34 @@ public record class WebhookCreateParams : ParamsBase
         }
     }
 
+    /// <summary>
+    /// Also delivers every sender profile's events to this webhook, at the same
+    /// URL and with the same signing secret, and lets each profile see the webhook
+    /// and read the events about itself. Off by default: the organization's own
+    /// events only. Only an organization's version 2 webhook can set it.
+    /// </summary>
+    public bool? IsInheritable
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("is_inheritable");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("is_inheritable", value);
+        }
+    }
+
+    /// <summary>
+    /// Delivery retries. Applies to version 1 only: Svix retries a version 2 webhook
+    /// on its own schedule.
+    /// </summary>
     public int? RetryCount
     {
         get
@@ -159,7 +194,8 @@ public record class WebhookCreateParams : ParamsBase
 
     /// <summary>
     /// Request-only: the events an organization webhook's sender profile clones receive,
-    /// one clone per existing and future profile. Responses never return it.
+    /// one clone per existing and future profile. A version 1 webhook's responses
+    /// report it as WebhookSenderProfileV3Response.
     /// </summary>
     public SenderProfile? SenderProfile
     {
@@ -171,6 +207,9 @@ public record class WebhookCreateParams : ParamsBase
         init { this._rawBodyData.Set("sender_profile", value); }
     }
 
+    /// <summary>
+    /// Delivery timeout. Applies to version 1 only.
+    /// </summary>
     public int? TimeoutSeconds
     {
         get
@@ -187,6 +226,21 @@ public record class WebhookCreateParams : ParamsBase
 
             this._rawBodyData.Set("timeout_seconds", value);
         }
+    }
+
+    /// <summary>
+    /// Who delivers the webhook: 2, the default, is delivered by Svix and signed
+    /// with the webhook-id, webhook-timestamp and webhook-signature headers; 1 is
+    /// the older delivery, signed with the X-Webhook-* headers, which will be retired.
+    /// </summary>
+    public long? WebhookVersion
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<long>("webhook_version");
+        }
+        init { this._rawBodyData.Set("webhook_version", value); }
     }
 
     public string? IdempotencyKey
@@ -337,7 +391,8 @@ public record class WebhookCreateParams : ParamsBase
 
 /// <summary>
 /// Request-only: the events an organization webhook's sender profile clones receive,
-/// one clone per existing and future profile. Responses never return it.
+/// one clone per existing and future profile. A version 1 webhook's responses report
+/// it as WebhookSenderProfileV3Response.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<SenderProfile, SenderProfileFromRaw>))]
 public sealed record class SenderProfile : JsonModel

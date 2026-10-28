@@ -30,6 +30,10 @@ public sealed record class WebhookResponse : JsonModel
         }
     }
 
+    /// <summary>
+    /// Failed attempts since the last success. Version 1 only: always 0 on a version
+    /// 2 webhook, whose deliveries are in its events (GET /v3/webhooks/{id}/events).
+    /// </summary>
     public int? ConsecutiveFailures
     {
         get
@@ -197,6 +201,33 @@ public sealed record class WebhookResponse : JsonModel
         }
     }
 
+    /// <summary>
+    /// Whether the webhook also receives its organization's sender profiles' events,
+    /// and each profile sees it and reads the events about itself. Always false on
+    /// a version 1 webhook.
+    /// </summary>
+    public bool? IsInheritable
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_inheritable");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("is_inheritable", value);
+        }
+    }
+
+    /// <summary>
+    /// When the webhook was last attempted. Version 1 only: always null on a version
+    /// 2 webhook.
+    /// </summary>
     public DateTimeOffset? LastDeliveryAttemptAt
     {
         get
@@ -207,6 +238,10 @@ public sealed record class WebhookResponse : JsonModel
         init { this._rawData.Set("last_delivery_attempt_at", value); }
     }
 
+    /// <summary>
+    /// When the webhook last received an event. Version 1 only: always null on a
+    /// version 2 webhook.
+    /// </summary>
     public DateTimeOffset? LastSuccessfulDeliveryAt
     {
         get
@@ -233,6 +268,21 @@ public sealed record class WebhookResponse : JsonModel
 
             this._rawData.Set("retry_count", value);
         }
+    }
+
+    /// <summary>
+    /// The events a version 1 webhook's sender profile clones receive, as a response
+    /// reports them.              Its own type, field for field the same as the request's
+    /// sender_profile. A response is not a request, whatever it carries.
+    /// </summary>
+    public WebhookResponseSenderProfile? SenderProfile
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<WebhookResponseSenderProfile>("sender_profile");
+        }
+        init { this._rawData.Set("sender_profile", value); }
     }
 
     public string? SigningSecret
@@ -273,6 +323,28 @@ public sealed record class WebhookResponse : JsonModel
         init { this._rawData.Set("updated_at", value); }
     }
 
+    /// <summary>
+    /// Who delivers the webhook: 1 the older delivery, which will be retired, or
+    /// 2 Svix. A webhook is created as version 2 unless the request asks for 1.
+    /// </summary>
+    public long? WebhookVersion
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("webhook_version");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("webhook_version", value);
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
@@ -285,12 +357,15 @@ public sealed record class WebhookResponse : JsonModel
         _ = this.EventFilters;
         _ = this.EventTypes;
         _ = this.IsActive;
+        _ = this.IsInheritable;
         _ = this.LastDeliveryAttemptAt;
         _ = this.LastSuccessfulDeliveryAt;
         _ = this.RetryCount;
+        this.SenderProfile?.Validate();
         _ = this.SigningSecret;
         _ = this.TimeoutSeconds;
         _ = this.UpdatedAt;
+        _ = this.WebhookVersion;
     }
 
     public WebhookResponse() { }
@@ -326,4 +401,114 @@ class WebhookResponseFromRaw : IFromRawJson<WebhookResponse>
     /// <inheritdoc/>
     public WebhookResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         WebhookResponse.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// The events a version 1 webhook's sender profile clones receive, as a response
+/// reports them.              Its own type, field for field the same as the request's
+/// sender_profile. A response is not a request, whatever it carries.
+/// </summary>
+[JsonConverter(
+    typeof(JsonModelConverter<WebhookResponseSenderProfile, WebhookResponseSenderProfileFromRaw>)
+)]
+public sealed record class WebhookResponseSenderProfile : JsonModel
+{
+    public IReadOnlyDictionary<string, IReadOnlyList<string>>? EventFilters
+    {
+        get
+        {
+            this._rawData.Freeze();
+            var value = this._rawData.GetNullableClass<
+                FrozenDictionary<string, ImmutableArray<string>>
+            >("event_filters");
+            if (value == null)
+            {
+                return null;
+            }
+
+            return FrozenDictionary.ToFrozenDictionary(
+                value,
+                entry => entry.Key,
+                (entry) => (IReadOnlyList<string>)entry.Value
+            );
+        }
+        init
+        {
+            this._rawData.Set<FrozenDictionary<string, ImmutableArray<string>>?>(
+                "event_filters",
+                value == null
+                    ? null
+                    : FrozenDictionary.ToFrozenDictionary(
+                        value,
+                        entry => entry.Key,
+                        (entry) => ImmutableArray.ToImmutableArray(entry.Value)
+                    )
+            );
+        }
+    }
+
+    public IReadOnlyList<string>? EventTypes
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>("event_types");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set<ImmutableArray<string>?>(
+                "event_types",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.EventFilters;
+        _ = this.EventTypes;
+    }
+
+    public WebhookResponseSenderProfile() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public WebhookResponseSenderProfile(WebhookResponseSenderProfile webhookResponseSenderProfile)
+        : base(webhookResponseSenderProfile) { }
+#pragma warning restore CS8618
+
+    public WebhookResponseSenderProfile(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    WebhookResponseSenderProfile(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="WebhookResponseSenderProfileFromRaw.FromRawUnchecked"/>
+    public static WebhookResponseSenderProfile FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class WebhookResponseSenderProfileFromRaw : IFromRawJson<WebhookResponseSenderProfile>
+{
+    /// <inheritdoc/>
+    public WebhookResponseSenderProfile FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => WebhookResponseSenderProfile.FromRawUnchecked(rawData);
 }

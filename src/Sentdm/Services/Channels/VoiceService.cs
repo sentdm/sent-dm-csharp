@@ -36,7 +36,7 @@ public sealed class VoiceService : IVoiceService
 
     /// <inheritdoc/>
     public async Task<ApiResponseOfVoiceNumberCreated> Create(
-        VoiceCreateParams parameters,
+        VoiceCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -173,10 +173,12 @@ public sealed class VoiceServiceWithRawResponse : IVoiceServiceWithRawResponse
 
     /// <inheritdoc/>
     public async Task<HttpResponse<ApiResponseOfVoiceNumberCreated>> Create(
-        VoiceCreateParams parameters,
+        VoiceCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
+        parameters ??= new();
+
         HttpRequest<VoiceCreateParams> request = new()
         {
             Method = HttpMethod.Post,

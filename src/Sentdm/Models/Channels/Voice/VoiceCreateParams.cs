@@ -22,6 +22,15 @@ namespace Sentdm.Models.Channels.Voice;
 /// question the way you verify a webhook. `POST /v3/channels/voice/{number}/test`
 /// sends a test question and reports the verdict.</para>
 ///
+/// <para>Send `agent_id` instead of `callback_url`, or with it, to have one of your
+/// voice agents (`GET /v3/voice/agents`) answer calls to the number. The agent wins
+/// over the callback URL for calls to the number; calls your app places from it
+/// still follow your app. `routes_to` in the response says which answers, and reads
+/// `agent_pending` while the number is still being moved to the agent. Calls follow
+/// the move within about an hour, as the provider applies it on its own clock. While
+/// numbers cannot be bound to agents, a request with `agent_id` is refused with `502`
+/// before any number is obtained or anything is written; send `callback_url` instead.</para>
+///
 /// <para>Your first voice number becomes the line app-originated calls are placed
 /// from when a voice token names no number; send `default_for_app_calls: true` to
 /// give that role to another number. A number you turned off earlier is turned back
@@ -47,21 +56,19 @@ public record class VoiceCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Where Sent asks what to do with each call on this number: an absolute HTTP
-    /// or HTTPS URL on a public host. A signed question is POSTed here when a call
-    /// arrives or a caller presses a key, and the answer decides the call. Every
-    /// question is signed with the callback_secret the response returns, the same
-    /// way your webhooks are signed. Turning the number on again with a different
-    /// URL replaces it and keeps the secret.
+    /// One of your voice agents (GET /v3/voice/agents), such as agent_9f2ab000-0000-4000-8000-000000000001,
+    /// to answer calls to this number. It wins over callback_url for calls to the
+    /// number, and both may be sent; calls your app places from the number still
+    /// follow your app. Send it instead of callback_url for a number only an agent answers.
     /// </summary>
-    public required string CallbackUrl
+    public string? AgentID
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("callback_url");
+            return this._rawBodyData.GetNullableClass<string>("agent_id");
         }
-        init { this._rawBodyData.Set("callback_url", value); }
+        init { this._rawBodyData.Set("agent_id", value); }
     }
 
     /// <summary>
@@ -78,6 +85,24 @@ public record class VoiceCreateParams : ParamsBase
             return this._rawBodyData.GetNullableClass<string>("area_code");
         }
         init { this._rawBodyData.Set("area_code", value); }
+    }
+
+    /// <summary>
+    /// Where Sent asks what to do with each call on this number: an absolute HTTP
+    /// or HTTPS URL on a public host. A signed question is POSTed here when a call
+    /// arrives or a caller presses a key, and the answer decides the call. Every
+    /// question is signed with the callback_secret the response returns, the same
+    /// way your webhooks are signed. Turning the number on again with a different
+    /// URL replaces it and keeps the secret. Required unless agent_id is sent.
+    /// </summary>
+    public string? CallbackUrl
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("callback_url");
+        }
+        init { this._rawBodyData.Set("callback_url", value); }
     }
 
     /// <summary>

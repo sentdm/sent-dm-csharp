@@ -9,7 +9,8 @@ using Sentdm.Core;
 namespace Sentdm.Models.Webhooks;
 
 /// <summary>
-/// Retrieves a paginated list of webhooks for the authenticated customer.
+/// Retrieves a paginated list of webhooks for the authenticated customer. Each version
+/// 1 webhook includes its sender_profile selection.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

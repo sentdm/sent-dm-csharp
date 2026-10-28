@@ -9,9 +9,10 @@ using Sentdm.Core;
 namespace Sentdm.Models.Voice.Calls;
 
 /// <summary>
-/// Retrieves one of your calls by id: the parties, the owning number, the current
-/// status with its failure reason, duration, price, recording availability, and
-/// a timeline of when the call entered each status.
+/// Retrieves one of your calls by id: the parties, the owning number, the phone
+/// number the call was connected to and the caller id it showed, the current status
+/// with its failure reason, duration, price with the billed legs and what each cost,
+/// recording availability, and a timeline of when the call entered each status.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

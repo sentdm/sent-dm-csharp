@@ -9,7 +9,8 @@ using Sentdm.Core;
 namespace Sentdm.Models.Webhooks;
 
 /// <summary>
-/// Retrieves a single webhook by ID for the authenticated customer.
+/// Retrieves a single webhook by ID for the authenticated customer. A version 1 webhook
+/// includes its sender_profile selection.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
