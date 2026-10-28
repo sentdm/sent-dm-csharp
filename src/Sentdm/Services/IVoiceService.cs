@@ -27,6 +27,10 @@ public interface IVoiceService
     ICallService Calls { get; }
 
     ITokenService Tokens { get; }
+
+    IAgentService Agents { get; }
+
+    ICatalogueService Catalogue { get; }
 }
 
 /// <summary>
@@ -45,4 +49,8 @@ public interface IVoiceServiceWithRawResponse
     ICallServiceWithRawResponse Calls { get; }
 
     ITokenServiceWithRawResponse Tokens { get; }
+
+    IAgentServiceWithRawResponse Agents { get; }
+
+    ICatalogueServiceWithRawResponse Catalogue { get; }
 }

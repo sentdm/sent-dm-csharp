@@ -30,6 +30,8 @@ public sealed class VoiceService : IVoiceService
         _withRawResponse = new(() => new VoiceServiceWithRawResponse(client.WithRawResponse));
         _calls = new(() => new CallService(client));
         _tokens = new(() => new TokenService(client));
+        _agents = new(() => new AgentService(client));
+        _catalogue = new(() => new CatalogueService(client));
     }
 
     readonly Lazy<ICallService> _calls;
@@ -42,6 +44,18 @@ public sealed class VoiceService : IVoiceService
     public ITokenService Tokens
     {
         get { return _tokens.Value; }
+    }
+
+    readonly Lazy<IAgentService> _agents;
+    public IAgentService Agents
+    {
+        get { return _agents.Value; }
+    }
+
+    readonly Lazy<ICatalogueService> _catalogue;
+    public ICatalogueService Catalogue
+    {
+        get { return _catalogue.Value; }
     }
 }
 
@@ -62,6 +76,8 @@ public sealed class VoiceServiceWithRawResponse : IVoiceServiceWithRawResponse
 
         _calls = new(() => new CallServiceWithRawResponse(client));
         _tokens = new(() => new TokenServiceWithRawResponse(client));
+        _agents = new(() => new AgentServiceWithRawResponse(client));
+        _catalogue = new(() => new CatalogueServiceWithRawResponse(client));
     }
 
     readonly Lazy<ICallServiceWithRawResponse> _calls;
@@ -74,5 +90,17 @@ public sealed class VoiceServiceWithRawResponse : IVoiceServiceWithRawResponse
     public ITokenServiceWithRawResponse Tokens
     {
         get { return _tokens.Value; }
+    }
+
+    readonly Lazy<IAgentServiceWithRawResponse> _agents;
+    public IAgentServiceWithRawResponse Agents
+    {
+        get { return _agents.Value; }
+    }
+
+    readonly Lazy<ICatalogueServiceWithRawResponse> _catalogue;
+    public ICatalogueServiceWithRawResponse Catalogue
+    {
+        get { return _catalogue.Value; }
     }
 }
