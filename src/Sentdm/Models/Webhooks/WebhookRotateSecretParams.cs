@@ -10,7 +10,11 @@ using Sentdm.Core;
 namespace Sentdm.Models.Webhooks;
 
 /// <summary>
-/// Generates a new signing secret for the specified webhook. The old secret is immediately invalidated.
+/// Generates a new signing secret for the specified webhook. A version 1 webhook's
+/// old secret stops verifying at once. A version 2 webhook's deliveries are signed
+/// with the new secret at once, and with the old one as well for the next 24 hours,
+/// so a receiver can switch over without rejecting any; after that the old secret
+/// no longer verifies.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

@@ -9,9 +9,11 @@ using Sentdm.Core;
 namespace Sentdm.Models.Webhooks;
 
 /// <summary>
-/// Retrieves a paginated list of delivery events for the specified webhook. If the
-/// webhook is cloned onto your sender profiles, the list includes what those clones
-/// received; read payload.account_id to tell whose event it is.
+/// Retrieves a paginated list of delivery events for the specified webhook, newest
+/// first. If the webhook is cloned onto your sender profiles (version 1) or inheritable
+/// by them (version 2, is_inheritable), the list includes their events; read payload.account_id
+/// to tell whose event it is. A sender profile may read its organization's inheritable
+/// webhook too, and gets the events about itself.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

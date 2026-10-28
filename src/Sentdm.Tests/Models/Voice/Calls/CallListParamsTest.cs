@@ -11,8 +11,10 @@ public class CallListParamsTest : TestBase
     {
         var parameters = new CallListParams
         {
+            AgentID = "agent_id",
             Direction = "direction",
             From = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Mode = "mode",
             Number = "number",
             Page = 0,
             PageSize = 0,
@@ -21,8 +23,10 @@ public class CallListParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        string expectedAgentID = "agent_id";
         string expectedDirection = "direction";
         DateTimeOffset expectedFrom = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedMode = "mode";
         string expectedNumber = "number";
         int expectedPage = 0;
         int expectedPageSize = 0;
@@ -30,8 +34,10 @@ public class CallListParamsTest : TestBase
         DateTimeOffset expectedTo = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
+        Assert.Equal(expectedAgentID, parameters.AgentID);
         Assert.Equal(expectedDirection, parameters.Direction);
         Assert.Equal(expectedFrom, parameters.From);
+        Assert.Equal(expectedMode, parameters.Mode);
         Assert.Equal(expectedNumber, parameters.Number);
         Assert.Equal(expectedPage, parameters.Page);
         Assert.Equal(expectedPageSize, parameters.PageSize);
@@ -45,8 +51,10 @@ public class CallListParamsTest : TestBase
     {
         var parameters = new CallListParams
         {
+            AgentID = "agent_id",
             Direction = "direction",
             From = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Mode = "mode",
             Number = "number",
             Status = "status",
             To = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -65,8 +73,10 @@ public class CallListParamsTest : TestBase
     {
         var parameters = new CallListParams
         {
+            AgentID = "agent_id",
             Direction = "direction",
             From = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Mode = "mode",
             Number = "number",
             Status = "status",
             To = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -95,10 +105,14 @@ public class CallListParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        Assert.Null(parameters.AgentID);
+        Assert.False(parameters.RawQueryData.ContainsKey("agent_id"));
         Assert.Null(parameters.Direction);
         Assert.False(parameters.RawQueryData.ContainsKey("direction"));
         Assert.Null(parameters.From);
         Assert.False(parameters.RawQueryData.ContainsKey("from"));
+        Assert.Null(parameters.Mode);
+        Assert.False(parameters.RawQueryData.ContainsKey("mode"));
         Assert.Null(parameters.Number);
         Assert.False(parameters.RawQueryData.ContainsKey("number"));
         Assert.Null(parameters.Status);
@@ -116,17 +130,23 @@ public class CallListParamsTest : TestBase
             PageSize = 0,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
+            AgentID = null,
             Direction = null,
             From = null,
+            Mode = null,
             Number = null,
             Status = null,
             To = null,
         };
 
+        Assert.Null(parameters.AgentID);
+        Assert.True(parameters.RawQueryData.ContainsKey("agent_id"));
         Assert.Null(parameters.Direction);
         Assert.True(parameters.RawQueryData.ContainsKey("direction"));
         Assert.Null(parameters.From);
         Assert.True(parameters.RawQueryData.ContainsKey("from"));
+        Assert.Null(parameters.Mode);
+        Assert.True(parameters.RawQueryData.ContainsKey("mode"));
         Assert.Null(parameters.Number);
         Assert.True(parameters.RawQueryData.ContainsKey("number"));
         Assert.Null(parameters.Status);
@@ -140,8 +160,10 @@ public class CallListParamsTest : TestBase
     {
         CallListParams parameters = new()
         {
+            AgentID = "agent_id",
             Direction = "direction",
             From = DateTimeOffset.Parse("2019-12-27T18:11:19.117+00:00"),
+            Mode = "mode",
             Number = "number",
             Page = 0,
             PageSize = 0,
@@ -154,7 +176,7 @@ public class CallListParamsTest : TestBase
         Assert.True(
             TestBase.UrisEqual(
                 new Uri(
-                    "https://api.sent.dm/v3/voice/calls?direction=direction&from=2019-12-27T18%3a11%3a19.117%2b00%3a00&number=number&page=0&page_size=0&status=status&to=2019-12-27T18%3a11%3a19.117%2b00%3a00"
+                    "https://api.sent.dm/v3/voice/calls?agent_id=agent_id&direction=direction&from=2019-12-27T18%3a11%3a19.117%2b00%3a00&mode=mode&number=number&page=0&page_size=0&status=status&to=2019-12-27T18%3a11%3a19.117%2b00%3a00"
                 ),
                 url
             )
@@ -180,8 +202,10 @@ public class CallListParamsTest : TestBase
     {
         var parameters = new CallListParams
         {
+            AgentID = "agent_id",
             Direction = "direction",
             From = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Mode = "mode",
             Number = "number",
             Page = 0,
             PageSize = 0,

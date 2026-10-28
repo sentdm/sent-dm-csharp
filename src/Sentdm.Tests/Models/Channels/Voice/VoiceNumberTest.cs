@@ -12,25 +12,31 @@ public class VoiceNumberTest : TestBase
     {
         var model = new VoiceNumber
         {
+            AgentID = "agent_id",
             CallbackUrl = "callback_url",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultForAppCalls = true,
             Number = "number",
+            RoutesTo = "routes_to",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
+        string expectedAgentID = "agent_id";
         string expectedCallbackUrl = "callback_url";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         bool expectedDefaultForAppCalls = true;
         string expectedNumber = "number";
+        string expectedRoutesTo = "routes_to";
         string expectedStatus = "status";
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
 
+        Assert.Equal(expectedAgentID, model.AgentID);
         Assert.Equal(expectedCallbackUrl, model.CallbackUrl);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedDefaultForAppCalls, model.DefaultForAppCalls);
         Assert.Equal(expectedNumber, model.Number);
+        Assert.Equal(expectedRoutesTo, model.RoutesTo);
         Assert.Equal(expectedStatus, model.Status);
         Assert.Equal(expectedUpdatedAt, model.UpdatedAt);
     }
@@ -40,10 +46,12 @@ public class VoiceNumberTest : TestBase
     {
         var model = new VoiceNumber
         {
+            AgentID = "agent_id",
             CallbackUrl = "callback_url",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultForAppCalls = true,
             Number = "number",
+            RoutesTo = "routes_to",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
@@ -62,10 +70,12 @@ public class VoiceNumberTest : TestBase
     {
         var model = new VoiceNumber
         {
+            AgentID = "agent_id",
             CallbackUrl = "callback_url",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultForAppCalls = true,
             Number = "number",
+            RoutesTo = "routes_to",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
@@ -77,17 +87,21 @@ public class VoiceNumberTest : TestBase
         );
         Assert.NotNull(deserialized);
 
+        string expectedAgentID = "agent_id";
         string expectedCallbackUrl = "callback_url";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         bool expectedDefaultForAppCalls = true;
         string expectedNumber = "number";
+        string expectedRoutesTo = "routes_to";
         string expectedStatus = "status";
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
 
+        Assert.Equal(expectedAgentID, deserialized.AgentID);
         Assert.Equal(expectedCallbackUrl, deserialized.CallbackUrl);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedDefaultForAppCalls, deserialized.DefaultForAppCalls);
         Assert.Equal(expectedNumber, deserialized.Number);
+        Assert.Equal(expectedRoutesTo, deserialized.RoutesTo);
         Assert.Equal(expectedStatus, deserialized.Status);
         Assert.Equal(expectedUpdatedAt, deserialized.UpdatedAt);
     }
@@ -97,10 +111,12 @@ public class VoiceNumberTest : TestBase
     {
         var model = new VoiceNumber
         {
+            AgentID = "agent_id",
             CallbackUrl = "callback_url",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultForAppCalls = true,
             Number = "number",
+            RoutesTo = "routes_to",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
@@ -111,7 +127,7 @@ public class VoiceNumberTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new VoiceNumber { CallbackUrl = "callback_url" };
+        var model = new VoiceNumber { AgentID = "agent_id", CallbackUrl = "callback_url" };
 
         Assert.Null(model.CreatedAt);
         Assert.False(model.RawData.ContainsKey("created_at"));
@@ -119,6 +135,8 @@ public class VoiceNumberTest : TestBase
         Assert.False(model.RawData.ContainsKey("default_for_app_calls"));
         Assert.Null(model.Number);
         Assert.False(model.RawData.ContainsKey("number"));
+        Assert.Null(model.RoutesTo);
+        Assert.False(model.RawData.ContainsKey("routes_to"));
         Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
         Assert.Null(model.UpdatedAt);
@@ -128,7 +146,7 @@ public class VoiceNumberTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new VoiceNumber { CallbackUrl = "callback_url" };
+        var model = new VoiceNumber { AgentID = "agent_id", CallbackUrl = "callback_url" };
 
         model.Validate();
     }
@@ -138,12 +156,14 @@ public class VoiceNumberTest : TestBase
     {
         var model = new VoiceNumber
         {
+            AgentID = "agent_id",
             CallbackUrl = "callback_url",
 
             // Null should be interpreted as omitted for these properties
             CreatedAt = null,
             DefaultForAppCalls = null,
             Number = null,
+            RoutesTo = null,
             Status = null,
             UpdatedAt = null,
         };
@@ -154,6 +174,8 @@ public class VoiceNumberTest : TestBase
         Assert.False(model.RawData.ContainsKey("default_for_app_calls"));
         Assert.Null(model.Number);
         Assert.False(model.RawData.ContainsKey("number"));
+        Assert.Null(model.RoutesTo);
+        Assert.False(model.RawData.ContainsKey("routes_to"));
         Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
         Assert.Null(model.UpdatedAt);
@@ -165,12 +187,14 @@ public class VoiceNumberTest : TestBase
     {
         var model = new VoiceNumber
         {
+            AgentID = "agent_id",
             CallbackUrl = "callback_url",
 
             // Null should be interpreted as omitted for these properties
             CreatedAt = null,
             DefaultForAppCalls = null,
             Number = null,
+            RoutesTo = null,
             Status = null,
             UpdatedAt = null,
         };
@@ -186,10 +210,13 @@ public class VoiceNumberTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultForAppCalls = true,
             Number = "number",
+            RoutesTo = "routes_to",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
+        Assert.Null(model.AgentID);
+        Assert.False(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.CallbackUrl);
         Assert.False(model.RawData.ContainsKey("callback_url"));
     }
@@ -202,6 +229,7 @@ public class VoiceNumberTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultForAppCalls = true,
             Number = "number",
+            RoutesTo = "routes_to",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
@@ -217,12 +245,16 @@ public class VoiceNumberTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultForAppCalls = true,
             Number = "number",
+            RoutesTo = "routes_to",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
+            AgentID = null,
             CallbackUrl = null,
         };
 
+        Assert.Null(model.AgentID);
+        Assert.True(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.CallbackUrl);
         Assert.True(model.RawData.ContainsKey("callback_url"));
     }
@@ -235,9 +267,11 @@ public class VoiceNumberTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultForAppCalls = true,
             Number = "number",
+            RoutesTo = "routes_to",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
 
+            AgentID = null,
             CallbackUrl = null,
         };
 
@@ -249,10 +283,12 @@ public class VoiceNumberTest : TestBase
     {
         var model = new VoiceNumber
         {
+            AgentID = "agent_id",
             CallbackUrl = "callback_url",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultForAppCalls = true,
             Number = "number",
+            RoutesTo = "routes_to",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };

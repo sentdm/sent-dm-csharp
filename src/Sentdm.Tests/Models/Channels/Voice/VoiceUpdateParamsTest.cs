@@ -14,8 +14,9 @@ public class VoiceUpdateParamsTest : TestBase
     {
         var parameters = new VoiceUpdateParams
         {
-            Number = "+12125550100",
-            CallbackUrl = "https://example.com/voice",
+            Number = "number",
+            AgentID = "agent_id",
+            CallbackUrl = "callback_url",
             DefaultForAppCalls = true,
             Sandbox = false,
             Status = Status.Active,
@@ -23,8 +24,9 @@ public class VoiceUpdateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        string expectedNumber = "+12125550100";
-        string expectedCallbackUrl = "https://example.com/voice";
+        string expectedNumber = "number";
+        string expectedAgentID = "agent_id";
+        string expectedCallbackUrl = "callback_url";
         bool expectedDefaultForAppCalls = true;
         bool expectedSandbox = false;
         ApiEnum<string, Status> expectedStatus = Status.Active;
@@ -32,6 +34,7 @@ public class VoiceUpdateParamsTest : TestBase
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedNumber, parameters.Number);
+        Assert.Equal(expectedAgentID, parameters.AgentID);
         Assert.Equal(expectedCallbackUrl, parameters.CallbackUrl);
         Assert.Equal(expectedDefaultForAppCalls, parameters.DefaultForAppCalls);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
@@ -45,8 +48,9 @@ public class VoiceUpdateParamsTest : TestBase
     {
         var parameters = new VoiceUpdateParams
         {
-            Number = "+12125550100",
-            CallbackUrl = "https://example.com/voice",
+            Number = "number",
+            AgentID = "agent_id",
+            CallbackUrl = "callback_url",
             DefaultForAppCalls = true,
             Status = Status.Active,
         };
@@ -64,8 +68,9 @@ public class VoiceUpdateParamsTest : TestBase
     {
         var parameters = new VoiceUpdateParams
         {
-            Number = "+12125550100",
-            CallbackUrl = "https://example.com/voice",
+            Number = "number",
+            AgentID = "agent_id",
+            CallbackUrl = "callback_url",
             DefaultForAppCalls = true,
             Status = Status.Active,
 
@@ -88,12 +93,14 @@ public class VoiceUpdateParamsTest : TestBase
     {
         var parameters = new VoiceUpdateParams
         {
-            Number = "+12125550100",
+            Number = "number",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        Assert.Null(parameters.AgentID);
+        Assert.False(parameters.RawBodyData.ContainsKey("agent_id"));
         Assert.Null(parameters.CallbackUrl);
         Assert.False(parameters.RawBodyData.ContainsKey("callback_url"));
         Assert.Null(parameters.DefaultForAppCalls);
@@ -107,16 +114,19 @@ public class VoiceUpdateParamsTest : TestBase
     {
         var parameters = new VoiceUpdateParams
         {
-            Number = "+12125550100",
+            Number = "number",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
+            AgentID = null,
             CallbackUrl = null,
             DefaultForAppCalls = null,
             Status = null,
         };
 
+        Assert.Null(parameters.AgentID);
+        Assert.True(parameters.RawBodyData.ContainsKey("agent_id"));
         Assert.Null(parameters.CallbackUrl);
         Assert.True(parameters.RawBodyData.ContainsKey("callback_url"));
         Assert.Null(parameters.DefaultForAppCalls);
@@ -128,12 +138,12 @@ public class VoiceUpdateParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        VoiceUpdateParams parameters = new() { Number = "+12125550100" };
+        VoiceUpdateParams parameters = new() { Number = "number" };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
         Assert.True(
-            TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/channels/voice/+12125550100"), url)
+            TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/channels/voice/number"), url)
         );
     }
 
@@ -143,7 +153,7 @@ public class VoiceUpdateParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         VoiceUpdateParams parameters = new()
         {
-            Number = "+12125550100",
+            Number = "number",
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
@@ -162,8 +172,9 @@ public class VoiceUpdateParamsTest : TestBase
     {
         var parameters = new VoiceUpdateParams
         {
-            Number = "+12125550100",
-            CallbackUrl = "https://example.com/voice",
+            Number = "number",
+            AgentID = "agent_id",
+            CallbackUrl = "callback_url",
             DefaultForAppCalls = true,
             Sandbox = false,
             Status = Status.Active,

@@ -10,8 +10,11 @@ namespace Sentdm.Models.Voice.Calls;
 
 /// <summary>
 /// Retrieves a paginated list of your calls, most recent first. Filter by direction,
-/// status, the owning number, and the time the call started (from and to are inclusive).
-/// Use the call webhooks for real-time updates; this list is for looking calls up afterwards.
+/// status, the owning number, the mode (inapp, or agent for calls your voice agents
+/// answered), the agent that answered, and the time the call started (from and to
+/// are inclusive). Each call carries the phone number it was connected to, the caller
+/// id it showed, and the billed legs with what each cost. Use the call webhooks
+/// for real-time updates; this list is for looking calls up afterwards.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -19,6 +22,19 @@ namespace Sentdm.Models.Voice.Calls;
 /// </summary>
 public record class CallListParams : ParamsBase
 {
+    /// <summary>
+    /// Optional filter on the voice agent that answered the call, such as agent_9f2ab000-0000-4000-8000-000000000001
+    /// </summary>
+    public string? AgentID
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("agent_id");
+        }
+        init { this._rawQueryData.Set("agent_id", value); }
+    }
+
     /// <summary>
     /// Optional direction filter: outbound for calls placed from your app, inbound
     /// for calls to one of your numbers
@@ -44,6 +60,20 @@ public record class CallListParams : ParamsBase
             return this._rawQueryData.GetNullableStruct<DateTimeOffset>("from");
         }
         init { this._rawQueryData.Set("from", value); }
+    }
+
+    /// <summary>
+    /// Optional mode filter: inapp for calls routed by your number's callback URL,
+    /// agent for calls one of your voice agents answered
+    /// </summary>
+    public string? Mode
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("mode");
+        }
+        init { this._rawQueryData.Set("mode", value); }
     }
 
     /// <summary>

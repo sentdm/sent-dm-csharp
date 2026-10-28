@@ -37,6 +37,20 @@ public sealed record class Call : JsonModel
     }
 
     /// <summary>
+    /// The voice agent that answered the call, such as agent_9f2ab000-0000-4000-8000-000000000001.
+    /// Null for an inapp call
+    /// </summary>
+    public string? AgentID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("agent_id");
+        }
+        init { this._rawData.Set("agent_id", value); }
+    }
+
+    /// <summary>
     /// When the call was answered (UTC). Null until then, and always null for a
     /// call between two of your app users
     /// </summary>
@@ -48,6 +62,35 @@ public sealed record class Call : JsonModel
             return this._rawData.GetNullableStruct<DateTimeOffset>("answered_at");
         }
         init { this._rawData.Set("answered_at", value); }
+    }
+
+    /// <summary>
+    /// The caller id shown on the phone leg, in E.164 format: the one your answer
+    /// chose, or the owning number when it chose none. Null for a call with no phone leg
+    /// </summary>
+    public string? CallerIDUsed
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("caller_id_used");
+        }
+        init { this._rawData.Set("caller_id_used", value); }
+    }
+
+    /// <summary>
+    /// The phone number the call was connected to, in E.164 format: the number your
+    /// answer dialed, or the fallback number a call to one of your voice agents
+    /// reached. Null when the call was not connected to a phone number
+    /// </summary>
+    public string? ConnectedNumber
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("connected_number");
+        }
+        init { this._rawData.Set("connected_number", value); }
     }
 
     /// <summary>
@@ -99,8 +142,9 @@ public sealed record class Call : JsonModel
 
     /// <summary>
     /// Why the call did not complete: callback_timeout, invalid_answer, insufficient_balance,
-    /// destination_blocked, callback_not_configured, rejected or no_answer. Null
-    /// while the call is live, when it completed, and when it failed without a recorded reason
+    /// destination_blocked, callback_not_configured, rejected, no_answer, or for
+    /// an agent call agent_busy or agent_unreachable. Null while the call is live,
+    /// when it completed, and when it failed without a recorded reason
     /// </summary>
     public string? FailureReason
     {
@@ -134,8 +178,30 @@ public sealed record class Call : JsonModel
     }
 
     /// <summary>
+    /// The legs the price covers, one entry per billed leg, each with its own cost:
+    /// a call your answer connected to a phone number ran the caller's leg to your
+    /// number and the leg to the connected number at once, and both are billed.
+    /// Null until the call has been priced
+    /// </summary>
+    public IReadOnlyList<Leg>? Legs
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<Leg>>("legs");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<Leg>?>(
+                "legs",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
+    /// <summary>
     /// The calling mode: inapp for a call between people in your app and phone numbers,
-    /// routed by your number's callback URL
+    /// routed by your number's callback URL; agent for a call one of your voice agents answered
     /// </summary>
     public string? Mode
     {
@@ -298,12 +364,19 @@ public sealed record class Call : JsonModel
     public override void Validate()
     {
         _ = this.ID;
+        _ = this.AgentID;
         _ = this.AnsweredAt;
+        _ = this.CallerIDUsed;
+        _ = this.ConnectedNumber;
         _ = this.Direction;
         _ = this.DurationSeconds;
         _ = this.EndedAt;
         _ = this.FailureReason;
         this.From?.Validate();
+        foreach (var item in this.Legs ?? [])
+        {
+            item.Validate();
+        }
         _ = this.Mode;
         _ = this.Number;
         _ = this.Price;
@@ -350,4 +423,155 @@ class CallFromRaw : IFromRawJson<Call>
     /// <inheritdoc/>
     public Call FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         Call.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// One leg of a call the price covers
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Leg, LegFromRaw>))]
+public sealed record class Leg : JsonModel
+{
+    /// <summary>
+    /// The whole minutes the leg was billed for
+    /// </summary>
+    public int? BilledMinutes
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<int>("billed_minutes");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("billed_minutes", value);
+        }
+    }
+
+    /// <summary>
+    /// What the leg cost, in the same unit as the call's price
+    /// </summary>
+    public double? Cost
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<double>("cost");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("cost", value);
+        }
+    }
+
+    /// <summary>
+    /// The currency of the cost: USD
+    /// </summary>
+    public string? Currency
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("currency");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("currency", value);
+        }
+    }
+
+    /// <summary>
+    /// inbound for the caller's leg to your number, outbound for a leg placed on
+    /// your behalf
+    /// </summary>
+    public string? Direction
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("direction");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("direction", value);
+        }
+    }
+
+    /// <summary>
+    /// The phone number the leg reached, in E.164 format: your number for the inbound
+    /// leg, the number dialed for an outbound one. Null for a leg to one of your
+    /// app users or a room
+    /// </summary>
+    public string? Number
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("number");
+        }
+        init { this._rawData.Set("number", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.BilledMinutes;
+        _ = this.Cost;
+        _ = this.Currency;
+        _ = this.Direction;
+        _ = this.Number;
+    }
+
+    public Leg() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Leg(Leg leg)
+        : base(leg) { }
+#pragma warning restore CS8618
+
+    public Leg(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Leg(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="LegFromRaw.FromRawUnchecked"/>
+    public static Leg FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class LegFromRaw : IFromRawJson<Leg>
+{
+    /// <inheritdoc/>
+    public Leg FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Leg.FromRawUnchecked(rawData);
 }
