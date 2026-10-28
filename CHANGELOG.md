@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.43.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.42.0...v0.43.0) (2026-10-28)
+
+
+### Features
+
+* **api:** add voice agents, the voice catalogue and agent_id ([c7f0138](https://github.com/sentdm/sent-dm-csharp/commit/c7f0138ee12f53c24e98deefa2d5dc9528cf37f6))
+* **api:** sync OpenAPI spec from production ([3c34fab](https://github.com/sentdm/sent-dm-csharp/commit/3c34fab079ae566c0018c4e84c6579405c38a964))
+
 ## [0.42.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.41.0...v0.42.0) (2026-10-23)
 
 
