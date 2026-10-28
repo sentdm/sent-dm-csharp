@@ -8,7 +8,7 @@ public class VoiceServiceTest : TestBase
     public async Task Create_Works()
     {
         var apiResponseOfVoiceNumberCreated = await this.client.Channels.Voice.Create(
-            new() { CallbackUrl = "https://example.com/voice" },
+            new(),
             TestContext.Current.CancellationToken
         );
         apiResponseOfVoiceNumberCreated.Validate();
@@ -29,7 +29,7 @@ public class VoiceServiceTest : TestBase
     public async Task Update_Works()
     {
         var apiResponseOfVoiceNumber = await this.client.Channels.Voice.Update(
-            "+12125550100",
+            "number",
             new(),
             TestContext.Current.CancellationToken
         );

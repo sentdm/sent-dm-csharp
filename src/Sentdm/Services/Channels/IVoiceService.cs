@@ -66,6 +66,16 @@ public interface IVoiceService
     /// without rotating; verify a question the way you verify a webhook. `POST
     /// /v3/channels/voice/{number}/test` sends a test question and reports the verdict.</para>
     ///
+    /// <para>Send `agent_id` instead of `callback_url`, or with it, to have one of your
+    /// voice agents (`GET /v3/voice/agents`) answer calls to the number. The agent wins
+    /// over the callback URL for calls to the number; calls your app places from it
+    /// still follow your app. `routes_to` in the response says which answers, and reads
+    /// `agent_pending` while the number is still being moved to the agent. Calls follow
+    /// the move within about an hour, as the provider applies it on its own clock.
+    /// While numbers cannot be bound to agents, a request with `agent_id` is refused
+    /// with `502` before any number is obtained or anything is written; send
+    /// `callback_url` instead.</para>
+    ///
     /// <para>Your first voice number becomes the line app-originated calls are placed
     /// from when a voice token names no number; send `default_for_app_calls: true` to
     /// give that role to another number. A number you turned off earlier is turned back
@@ -79,7 +89,7 @@ public interface IVoiceService
     /// reported with `202`; nothing is written and no number is bought.</para>
     /// </summary>
     Task<ApiResponseOfVoiceNumberCreated> Create(
-        VoiceCreateParams parameters,
+        VoiceCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -119,12 +129,22 @@ public interface IVoiceService
     /// line app-originated calls are placed from when a voice token names no number | |
     /// `"callback_url": "https://example.com/voice"` | replaces where Sent asks what to
     /// do with each call on the number; the signing secret and the status are kept | |
-    /// key omitted | left exactly as it is |</para>
+    /// `"agent_id": "agent_…"` | one of your voice agents answers calls to the number,
+    /// within about an hour of the change (the provider applies the move on its own
+    /// clock, and `routes_to` reads `agent` as soon as it has recorded it); it wins
+    /// over `callback_url` for calls to the number, and calls your app places from it
+    /// still follow your app. `routes_to` reads `agent_pending` while the number is
+    /// still being moved to the agent | | `"agent_id": null` | unbinds the agent, so
+    /// `callback_url` answers calls to the number again | | key omitted | left exactly
+    /// as it is |</para>
     ///
     /// <para>`status` is matched ignoring case. Any combination is accepted: `status:
     /// "ACTIVE"` with `default_for_app_calls: true` turns a number on as the new
-    /// default, and a `callback_url` sent with either status is written too. A body
-    /// that names none of the three is refused.</para>
+    /// default, and a `callback_url` sent with either status is written too. `agent_id`
+    /// is applied first, so a refusal to move the number to or from the agent leaves
+    /// everything as it was, and the `409` and `400` refusals below are decided before
+    /// anything is written, so they leave everything as it was too. A body that names
+    /// none of them is refused.</para>
     ///
     /// <para>A number can be on without a callback URL: calls placed from your app then
     /// connect straight to the number or user they dial, and calls to the number are
@@ -143,8 +163,13 @@ public interface IVoiceService
     /// <para>**Making an inactive number the default is `400`.** Send `status:
     /// "ACTIVE"` in the same call.</para>
     ///
-    /// <para>**A number you never turned voice on for is `404`.** Add it with `POST
+    /// <para>**A number you never turned voice on for is `404`**, and so is an
+    /// `agent_id` that is not one of your agents. Add the number with `POST
     /// /v3/channels/voice`.</para>
+    ///
+    /// <para>**`502` means the number could not be moved to or from the agent**, or an
+    /// `agent_id` was sent while numbers cannot be bound to agents; nothing was
+    /// written.</para>
     ///
     /// <para>The number is the E.164 value in the path with the plus sign URL-encoded
     /// (`%2B`).</para>
@@ -244,10 +269,10 @@ public interface IVoiceServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for <c>post /v3/channels/voice</c>, but is otherwise the
-    /// same as <see cref="IVoiceService.Create(VoiceCreateParams, CancellationToken)"/>.
+    /// same as <see cref="IVoiceService.Create(VoiceCreateParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfVoiceNumberCreated>> Create(
-        VoiceCreateParams parameters,
+        VoiceCreateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 

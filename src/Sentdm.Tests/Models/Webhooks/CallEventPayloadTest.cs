@@ -13,8 +13,10 @@ public class CallEventPayloadTest : TestBase
         {
             CallID = "call_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "agent_id",
             Channel = "channel",
             DurationSeconds = 0,
+            Mode = "mode",
             Number = "number",
             Price = 0,
             Reason = "reason",
@@ -24,8 +26,10 @@ public class CallEventPayloadTest : TestBase
 
         string expectedCallID = "call_id";
         string expectedAccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedAgentID = "agent_id";
         string expectedChannel = "channel";
         int expectedDurationSeconds = 0;
+        string expectedMode = "mode";
         string expectedNumber = "number";
         double expectedPrice = 0;
         string expectedReason = "reason";
@@ -34,8 +38,10 @@ public class CallEventPayloadTest : TestBase
 
         Assert.Equal(expectedCallID, model.CallID);
         Assert.Equal(expectedAccountID, model.AccountID);
+        Assert.Equal(expectedAgentID, model.AgentID);
         Assert.Equal(expectedChannel, model.Channel);
         Assert.Equal(expectedDurationSeconds, model.DurationSeconds);
+        Assert.Equal(expectedMode, model.Mode);
         Assert.Equal(expectedNumber, model.Number);
         Assert.Equal(expectedPrice, model.Price);
         Assert.Equal(expectedReason, model.Reason);
@@ -50,8 +56,10 @@ public class CallEventPayloadTest : TestBase
         {
             CallID = "call_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "agent_id",
             Channel = "channel",
             DurationSeconds = 0,
+            Mode = "mode",
             Number = "number",
             Price = 0,
             Reason = "reason",
@@ -75,8 +83,10 @@ public class CallEventPayloadTest : TestBase
         {
             CallID = "call_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "agent_id",
             Channel = "channel",
             DurationSeconds = 0,
+            Mode = "mode",
             Number = "number",
             Price = 0,
             Reason = "reason",
@@ -93,8 +103,10 @@ public class CallEventPayloadTest : TestBase
 
         string expectedCallID = "call_id";
         string expectedAccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedAgentID = "agent_id";
         string expectedChannel = "channel";
         int expectedDurationSeconds = 0;
+        string expectedMode = "mode";
         string expectedNumber = "number";
         double expectedPrice = 0;
         string expectedReason = "reason";
@@ -103,8 +115,10 @@ public class CallEventPayloadTest : TestBase
 
         Assert.Equal(expectedCallID, deserialized.CallID);
         Assert.Equal(expectedAccountID, deserialized.AccountID);
+        Assert.Equal(expectedAgentID, deserialized.AgentID);
         Assert.Equal(expectedChannel, deserialized.Channel);
         Assert.Equal(expectedDurationSeconds, deserialized.DurationSeconds);
+        Assert.Equal(expectedMode, deserialized.Mode);
         Assert.Equal(expectedNumber, deserialized.Number);
         Assert.Equal(expectedPrice, deserialized.Price);
         Assert.Equal(expectedReason, deserialized.Reason);
@@ -119,8 +133,10 @@ public class CallEventPayloadTest : TestBase
         {
             CallID = "call_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "agent_id",
             Channel = "channel",
             DurationSeconds = 0,
+            Mode = "mode",
             Number = "number",
             Price = 0,
             Reason = "reason",
@@ -137,6 +153,7 @@ public class CallEventPayloadTest : TestBase
         var model = new CallEventPayload
         {
             CallID = "call_id",
+            AgentID = "agent_id",
             DurationSeconds = 0,
             Price = 0,
             Reason = "reason",
@@ -147,6 +164,8 @@ public class CallEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("account_id"));
         Assert.Null(model.Channel);
         Assert.False(model.RawData.ContainsKey("channel"));
+        Assert.Null(model.Mode);
+        Assert.False(model.RawData.ContainsKey("mode"));
         Assert.Null(model.Number);
         Assert.False(model.RawData.ContainsKey("number"));
         Assert.Null(model.UpdatedAt);
@@ -159,6 +178,7 @@ public class CallEventPayloadTest : TestBase
         var model = new CallEventPayload
         {
             CallID = "call_id",
+            AgentID = "agent_id",
             DurationSeconds = 0,
             Price = 0,
             Reason = "reason",
@@ -174,6 +194,7 @@ public class CallEventPayloadTest : TestBase
         var model = new CallEventPayload
         {
             CallID = "call_id",
+            AgentID = "agent_id",
             DurationSeconds = 0,
             Price = 0,
             Reason = "reason",
@@ -182,6 +203,7 @@ public class CallEventPayloadTest : TestBase
             // Null should be interpreted as omitted for these properties
             AccountID = null,
             Channel = null,
+            Mode = null,
             Number = null,
             UpdatedAt = null,
         };
@@ -190,6 +212,8 @@ public class CallEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("account_id"));
         Assert.Null(model.Channel);
         Assert.False(model.RawData.ContainsKey("channel"));
+        Assert.Null(model.Mode);
+        Assert.False(model.RawData.ContainsKey("mode"));
         Assert.Null(model.Number);
         Assert.False(model.RawData.ContainsKey("number"));
         Assert.Null(model.UpdatedAt);
@@ -202,6 +226,7 @@ public class CallEventPayloadTest : TestBase
         var model = new CallEventPayload
         {
             CallID = "call_id",
+            AgentID = "agent_id",
             DurationSeconds = 0,
             Price = 0,
             Reason = "reason",
@@ -210,6 +235,7 @@ public class CallEventPayloadTest : TestBase
             // Null should be interpreted as omitted for these properties
             AccountID = null,
             Channel = null,
+            Mode = null,
             Number = null,
             UpdatedAt = null,
         };
@@ -225,10 +251,13 @@ public class CallEventPayloadTest : TestBase
             CallID = "call_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
+            Mode = "mode",
             Number = "number",
             UpdatedAt = "updated_at",
         };
 
+        Assert.Null(model.AgentID);
+        Assert.False(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.DurationSeconds);
         Assert.False(model.RawData.ContainsKey("duration_seconds"));
         Assert.Null(model.Price);
@@ -247,6 +276,7 @@ public class CallEventPayloadTest : TestBase
             CallID = "call_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
+            Mode = "mode",
             Number = "number",
             UpdatedAt = "updated_at",
         };
@@ -262,15 +292,19 @@ public class CallEventPayloadTest : TestBase
             CallID = "call_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
+            Mode = "mode",
             Number = "number",
             UpdatedAt = "updated_at",
 
+            AgentID = null,
             DurationSeconds = null,
             Price = null,
             Reason = null,
             RecordingID = null,
         };
 
+        Assert.Null(model.AgentID);
+        Assert.True(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.DurationSeconds);
         Assert.True(model.RawData.ContainsKey("duration_seconds"));
         Assert.Null(model.Price);
@@ -289,9 +323,11 @@ public class CallEventPayloadTest : TestBase
             CallID = "call_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Channel = "channel",
+            Mode = "mode",
             Number = "number",
             UpdatedAt = "updated_at",
 
+            AgentID = null,
             DurationSeconds = null,
             Price = null,
             Reason = null,
@@ -308,8 +344,10 @@ public class CallEventPayloadTest : TestBase
         {
             CallID = "call_id",
             AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "agent_id",
             Channel = "channel",
             DurationSeconds = 0,
+            Mode = "mode",
             Number = "number",
             Price = 0,
             Reason = "reason",

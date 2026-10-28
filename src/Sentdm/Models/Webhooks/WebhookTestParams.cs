@@ -11,6 +11,9 @@ namespace Sentdm.Models.Webhooks;
 
 /// <summary>
 /// Sends a test event to the specified webhook endpoint to verify connectivity.
+/// A version 1 webhook is tested at once and the answer says whether it was delivered;
+/// a version 2 webhook's test is queued with Svix, which delivers it right after,
+/// and the answer says it was queued.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
