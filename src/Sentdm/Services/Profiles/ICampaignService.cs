@@ -66,7 +66,8 @@ public interface ICampaignService
     /// explicitly.
     ///
     /// <para>Updates an existing campaign under the brand of the specified profile.
-    /// Cannot update campaigns that have already been submitted to TCR.</para>
+    /// Once the campaign has been submitted to TCR its volume can no longer move
+    /// between low volume (under 2,000 messages a day) and high volume.</para>
     /// </summary>
     [Obsolete("deprecated")]
     Task<ApiResponseOfBrandCampaign> Update(

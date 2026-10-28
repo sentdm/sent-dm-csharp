@@ -39,7 +39,15 @@ public interface IWebhookService
     IWebhookService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Creates a new webhook endpoint for the authenticated customer.
+    /// Creates a new webhook endpoint for the authenticated customer. A webhook is
+    /// version 2 unless the request sets webhook_version to 1: Svix delivers it, signed
+    /// with the webhook-id, webhook-timestamp and webhook-signature headers, and
+    /// retries it on its own schedule, so retry_count and timeout_seconds apply to
+    /// version 1 only. sender_profile applies to version 1 only and is ignored on
+    /// version 2; is_inheritable applies to version 2 only. A version 1 webhook's
+    /// response returns its sender_profile selection, with an empty event_types when it
+    /// is not cloned onto sender profiles; a version 2 webhook's response leaves
+    /// sender_profile out.
     /// </summary>
     Task<ApiResponseWebhook> Create(
         WebhookCreateParams? parameters = null,
@@ -47,7 +55,8 @@ public interface IWebhookService
     );
 
     /// <summary>
-    /// Retrieves a single webhook by ID for the authenticated customer.
+    /// Retrieves a single webhook by ID for the authenticated customer. A version 1
+    /// webhook includes its sender_profile selection.
     /// </summary>
     Task<ApiResponseWebhook> Retrieve(
         WebhookRetrieveParams parameters,
@@ -62,7 +71,11 @@ public interface IWebhookService
     );
 
     /// <summary>
-    /// Updates an existing webhook for the authenticated customer.
+    /// Updates an existing webhook for the authenticated customer. Its version does not
+    /// change. sender_profile applies to a version 1 webhook and is_inheritable to a
+    /// version 2 one; retry_count and timeout_seconds apply to version 1 only. A
+    /// version 1 webhook's response returns its sender_profile selection as saved; a
+    /// version 2 webhook's response leaves sender_profile out.
     /// </summary>
     Task<ApiResponseWebhook> Update(
         WebhookUpdateParams parameters,
@@ -77,7 +90,8 @@ public interface IWebhookService
     );
 
     /// <summary>
-    /// Retrieves a paginated list of webhooks for the authenticated customer.
+    /// Retrieves a paginated list of webhooks for the authenticated customer. Each
+    /// version 1 webhook includes its sender_profile selection.
     /// </summary>
     Task<WebhookListPage> List(
         WebhookListParams? parameters = null,
@@ -105,9 +119,11 @@ public interface IWebhookService
     );
 
     /// <summary>
-    /// Retrieves a paginated list of delivery events for the specified webhook. If the
-    /// webhook is cloned onto your sender profiles, the list includes what those clones
-    /// received; read payload.account_id to tell whose event it is.
+    /// Retrieves a paginated list of delivery events for the specified webhook, newest
+    /// first. If the webhook is cloned onto your sender profiles (version 1) or
+    /// inheritable by them (version 2, is_inheritable), the list includes their events;
+    /// read payload.account_id to tell whose event it is. A sender profile may read its
+    /// organization's inheritable webhook too, and gets the events about itself.
     /// </summary>
     Task<WebhookListEventsPage> ListEvents(
         WebhookListEventsParams parameters,
@@ -122,8 +138,11 @@ public interface IWebhookService
     );
 
     /// <summary>
-    /// Generates a new signing secret for the specified webhook. The old secret is
-    /// immediately invalidated.
+    /// Generates a new signing secret for the specified webhook. A version 1 webhook's
+    /// old secret stops verifying at once. A version 2 webhook's deliveries are signed
+    /// with the new secret at once, and with the old one as well for the next 24 hours,
+    /// so a receiver can switch over without rejecting any; after that the old secret
+    /// no longer verifies.
     /// </summary>
     Task<WebhookRotateSecretResponse> RotateSecret(
         WebhookRotateSecretParams parameters,
@@ -138,7 +157,10 @@ public interface IWebhookService
     );
 
     /// <summary>
-    /// Sends a test event to the specified webhook endpoint to verify connectivity.
+    /// Sends a test event to the specified webhook endpoint to verify connectivity. A
+    /// version 1 webhook is tested at once and the answer says whether it was
+    /// delivered; a version 2 webhook's test is queued with Svix, which delivers it
+    /// right after, and the answer says it was queued.
     /// </summary>
     Task<WebhookTestResponse> Test(
         WebhookTestParams parameters,

@@ -15,6 +15,21 @@ namespace Sentdm.Models.Channels.Voice;
 public sealed record class VoiceNumberCreated : JsonModel
 {
     /// <summary>
+    /// The voice agent calls to this number go to, such as agent_9f2ab000-0000-4000-8000-000000000001.
+    /// It wins over callback_url for calls to the number; calls your app places from
+    /// the number still follow your app. Null when no agent answers the number.
+    /// </summary>
+    public string? AgentID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("agent_id");
+        }
+        init { this._rawData.Set("agent_id", value); }
+    }
+
+    /// <summary>
     /// Where Sent asks what to do with each call on this number: a signed question
     /// is POSTed here when a call arrives or a caller presses a key, and the answer
     /// decides the call. The signing secret is not on this read; it is shown when
@@ -93,6 +108,30 @@ public sealed record class VoiceNumberCreated : JsonModel
     }
 
     /// <summary>
+    /// Who answers calls to this number: agent, the voice agent in agent_id; agent_pending,
+    /// that agent once the number has finished moving to it, with calls possibly
+    /// unanswered until then; callback, your callback_url; or none, in which case
+    /// calls to it are declined.
+    /// </summary>
+    public string? RoutesTo
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("routes_to");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("routes_to", value);
+        }
+    }
+
+    /// <summary>
     /// ACTIVE while the number carries calls, INACTIVE once it was turned off. Nothing
     /// provisions: a number the customer holds can carry calls the moment voice is
     /// turned on for it.
@@ -160,10 +199,12 @@ public sealed record class VoiceNumberCreated : JsonModel
     public static implicit operator VoiceNumber(VoiceNumberCreated voiceNumberCreated) =>
         new()
         {
+            AgentID = voiceNumberCreated.AgentID,
             CallbackUrl = voiceNumberCreated.CallbackUrl,
             CreatedAt = voiceNumberCreated.CreatedAt,
             DefaultForAppCalls = voiceNumberCreated.DefaultForAppCalls,
             Number = voiceNumberCreated.Number,
+            RoutesTo = voiceNumberCreated.RoutesTo,
             Status = voiceNumberCreated.Status,
             UpdatedAt = voiceNumberCreated.UpdatedAt,
         };
@@ -171,10 +212,12 @@ public sealed record class VoiceNumberCreated : JsonModel
     /// <inheritdoc/>
     public override void Validate()
     {
+        _ = this.AgentID;
         _ = this.CallbackUrl;
         _ = this.CreatedAt;
         _ = this.DefaultForAppCalls;
         _ = this.Number;
+        _ = this.RoutesTo;
         _ = this.Status;
         _ = this.UpdatedAt;
         _ = this.CallbackSecret;

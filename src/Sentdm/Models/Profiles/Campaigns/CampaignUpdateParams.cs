@@ -15,8 +15,9 @@ namespace Sentdm.Models.Profiles.Campaigns;
 /// to change today — but new integrations should use `/v3/sender-profiles`, which
 /// models a profile's markets, compliance, brand, campaigns and billing explicitly.
 ///
-/// <para>Updates an existing campaign under the brand of the specified profile. Cannot
-/// update campaigns that have already been submitted to TCR.</para>
+/// <para>Updates an existing campaign under the brand of the specified profile. Once
+/// the campaign has been submitted to TCR its volume can no longer move between
+/// low volume (under 2,000 messages a day) and high volume.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

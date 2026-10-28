@@ -19,12 +19,26 @@ public class CallsListTest : TestBase
                 new()
                 {
                     ID = "id",
+                    AgentID = "agent_id",
                     AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    CallerIDUsed = "caller_id_used",
+                    ConnectedNumber = "connected_number",
                     Direction = "direction",
                     DurationSeconds = 0,
                     EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     FailureReason = "failure_reason",
                     From = new() { Kind = "kind", Value = "value" },
+                    Legs =
+                    [
+                        new()
+                        {
+                            BilledMinutes = 0,
+                            Cost = 0,
+                            Currency = "currency",
+                            Direction = "direction",
+                            Number = "number",
+                        },
+                    ],
                     Mode = "mode",
                     Number = "number",
                     Price = 0,
@@ -58,12 +72,26 @@ public class CallsListTest : TestBase
             new()
             {
                 ID = "id",
+                AgentID = "agent_id",
                 AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                CallerIDUsed = "caller_id_used",
+                ConnectedNumber = "connected_number",
                 Direction = "direction",
                 DurationSeconds = 0,
                 EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 FailureReason = "failure_reason",
                 From = new() { Kind = "kind", Value = "value" },
+                Legs =
+                [
+                    new()
+                    {
+                        BilledMinutes = 0,
+                        Cost = 0,
+                        Currency = "currency",
+                        Direction = "direction",
+                        Number = "number",
+                    },
+                ],
                 Mode = "mode",
                 Number = "number",
                 Price = 0,
@@ -110,12 +138,26 @@ public class CallsListTest : TestBase
                 new()
                 {
                     ID = "id",
+                    AgentID = "agent_id",
                     AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    CallerIDUsed = "caller_id_used",
+                    ConnectedNumber = "connected_number",
                     Direction = "direction",
                     DurationSeconds = 0,
                     EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     FailureReason = "failure_reason",
                     From = new() { Kind = "kind", Value = "value" },
+                    Legs =
+                    [
+                        new()
+                        {
+                            BilledMinutes = 0,
+                            Cost = 0,
+                            Currency = "currency",
+                            Direction = "direction",
+                            Number = "number",
+                        },
+                    ],
                     Mode = "mode",
                     Number = "number",
                     Price = 0,
@@ -160,12 +202,26 @@ public class CallsListTest : TestBase
                 new()
                 {
                     ID = "id",
+                    AgentID = "agent_id",
                     AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    CallerIDUsed = "caller_id_used",
+                    ConnectedNumber = "connected_number",
                     Direction = "direction",
                     DurationSeconds = 0,
                     EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     FailureReason = "failure_reason",
                     From = new() { Kind = "kind", Value = "value" },
+                    Legs =
+                    [
+                        new()
+                        {
+                            BilledMinutes = 0,
+                            Cost = 0,
+                            Currency = "currency",
+                            Direction = "direction",
+                            Number = "number",
+                        },
+                    ],
                     Mode = "mode",
                     Number = "number",
                     Price = 0,
@@ -206,12 +262,26 @@ public class CallsListTest : TestBase
             new()
             {
                 ID = "id",
+                AgentID = "agent_id",
                 AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                CallerIDUsed = "caller_id_used",
+                ConnectedNumber = "connected_number",
                 Direction = "direction",
                 DurationSeconds = 0,
                 EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 FailureReason = "failure_reason",
                 From = new() { Kind = "kind", Value = "value" },
+                Legs =
+                [
+                    new()
+                    {
+                        BilledMinutes = 0,
+                        Cost = 0,
+                        Currency = "currency",
+                        Direction = "direction",
+                        Number = "number",
+                    },
+                ],
                 Mode = "mode",
                 Number = "number",
                 Price = 0,
@@ -258,12 +328,26 @@ public class CallsListTest : TestBase
                 new()
                 {
                     ID = "id",
+                    AgentID = "agent_id",
                     AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    CallerIDUsed = "caller_id_used",
+                    ConnectedNumber = "connected_number",
                     Direction = "direction",
                     DurationSeconds = 0,
                     EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     FailureReason = "failure_reason",
                     From = new() { Kind = "kind", Value = "value" },
+                    Legs =
+                    [
+                        new()
+                        {
+                            BilledMinutes = 0,
+                            Cost = 0,
+                            Currency = "currency",
+                            Direction = "direction",
+                            Number = "number",
+                        },
+                    ],
                     Mode = "mode",
                     Number = "number",
                     Price = 0,
@@ -353,12 +437,26 @@ public class CallsListTest : TestBase
                 new()
                 {
                     ID = "id",
+                    AgentID = "agent_id",
                     AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    CallerIDUsed = "caller_id_used",
+                    ConnectedNumber = "connected_number",
                     Direction = "direction",
                     DurationSeconds = 0,
                     EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     FailureReason = "failure_reason",
                     From = new() { Kind = "kind", Value = "value" },
+                    Legs =
+                    [
+                        new()
+                        {
+                            BilledMinutes = 0,
+                            Cost = 0,
+                            Currency = "currency",
+                            Direction = "direction",
+                            Number = "number",
+                        },
+                    ],
                     Mode = "mode",
                     Number = "number",
                     Price = 0,
