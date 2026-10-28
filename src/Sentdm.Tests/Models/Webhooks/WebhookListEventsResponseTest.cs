@@ -836,8 +836,10 @@ public class EventDataTest : TestBase
             {
                 CallID = "call_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                AgentID = "agent_id",
                 Channel = "channel",
                 DurationSeconds = 0,
+                Mode = "mode",
                 Number = "number",
                 Price = 0,
                 Reason = "reason",
@@ -1094,8 +1096,10 @@ public class EventDataTest : TestBase
             {
                 CallID = "call_id",
                 AccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                AgentID = "agent_id",
                 Channel = "channel",
                 DurationSeconds = 0,
+                Mode = "mode",
                 Number = "number",
                 Price = 0,
                 Reason = "reason",

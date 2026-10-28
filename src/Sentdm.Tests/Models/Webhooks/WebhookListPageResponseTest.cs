@@ -40,12 +40,22 @@ public class WebhookListPageResponseTest : TestBase
                         },
                         EventTypes = ["string"],
                         IsActive = true,
+                        IsInheritable = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         RetryCount = 0,
+                        SenderProfile = new()
+                        {
+                            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                            {
+                                { "foo", ["string"] },
+                            },
+                            EventTypes = ["string"],
+                        },
                         SigningSecret = "signing_secret",
                         TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        WebhookVersion = 0,
                     },
                 ],
             },
@@ -92,12 +102,22 @@ public class WebhookListPageResponseTest : TestBase
                     },
                     EventTypes = ["string"],
                     IsActive = true,
+                    IsInheritable = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     RetryCount = 0,
+                    SenderProfile = new()
+                    {
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                    },
                     SigningSecret = "signing_secret",
                     TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    WebhookVersion = 0,
                 },
             ],
         };
@@ -154,12 +174,22 @@ public class WebhookListPageResponseTest : TestBase
                         },
                         EventTypes = ["string"],
                         IsActive = true,
+                        IsInheritable = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         RetryCount = 0,
+                        SenderProfile = new()
+                        {
+                            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                            {
+                                { "foo", ["string"] },
+                            },
+                            EventTypes = ["string"],
+                        },
                         SigningSecret = "signing_secret",
                         TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        WebhookVersion = 0,
                     },
                 ],
             },
@@ -220,12 +250,22 @@ public class WebhookListPageResponseTest : TestBase
                         },
                         EventTypes = ["string"],
                         IsActive = true,
+                        IsInheritable = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         RetryCount = 0,
+                        SenderProfile = new()
+                        {
+                            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                            {
+                                { "foo", ["string"] },
+                            },
+                            EventTypes = ["string"],
+                        },
                         SigningSecret = "signing_secret",
                         TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        WebhookVersion = 0,
                     },
                 ],
             },
@@ -279,12 +319,22 @@ public class WebhookListPageResponseTest : TestBase
                     },
                     EventTypes = ["string"],
                     IsActive = true,
+                    IsInheritable = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     RetryCount = 0,
+                    SenderProfile = new()
+                    {
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                    },
                     SigningSecret = "signing_secret",
                     TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    WebhookVersion = 0,
                 },
             ],
         };
@@ -341,12 +391,22 @@ public class WebhookListPageResponseTest : TestBase
                         },
                         EventTypes = ["string"],
                         IsActive = true,
+                        IsInheritable = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         RetryCount = 0,
+                        SenderProfile = new()
+                        {
+                            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                            {
+                                { "foo", ["string"] },
+                            },
+                            EventTypes = ["string"],
+                        },
                         SigningSecret = "signing_secret",
                         TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        WebhookVersion = 0,
                     },
                 ],
             },
@@ -401,12 +461,22 @@ public class WebhookListPageResponseTest : TestBase
                         },
                         EventTypes = ["string"],
                         IsActive = true,
+                        IsInheritable = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         RetryCount = 0,
+                        SenderProfile = new()
+                        {
+                            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                            {
+                                { "foo", ["string"] },
+                            },
+                            EventTypes = ["string"],
+                        },
                         SigningSecret = "signing_secret",
                         TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        WebhookVersion = 0,
                     },
                 ],
             },
@@ -457,12 +527,22 @@ public class WebhookListPageResponseTest : TestBase
                         },
                         EventTypes = ["string"],
                         IsActive = true,
+                        IsInheritable = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         RetryCount = 0,
+                        SenderProfile = new()
+                        {
+                            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                            {
+                                { "foo", ["string"] },
+                            },
+                            EventTypes = ["string"],
+                        },
                         SigningSecret = "signing_secret",
                         TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        WebhookVersion = 0,
                     },
                 ],
             },
@@ -510,12 +590,22 @@ public class WebhookListPageResponseTest : TestBase
                         },
                         EventTypes = ["string"],
                         IsActive = true,
+                        IsInheritable = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         RetryCount = 0,
+                        SenderProfile = new()
+                        {
+                            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                            {
+                                { "foo", ["string"] },
+                            },
+                            EventTypes = ["string"],
+                        },
                         SigningSecret = "signing_secret",
                         TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        WebhookVersion = 0,
                     },
                 ],
             },
@@ -570,12 +660,22 @@ public class WebhookListPageResponseTest : TestBase
                         },
                         EventTypes = ["string"],
                         IsActive = true,
+                        IsInheritable = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         RetryCount = 0,
+                        SenderProfile = new()
+                        {
+                            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                            {
+                                { "foo", ["string"] },
+                            },
+                            EventTypes = ["string"],
+                        },
                         SigningSecret = "signing_secret",
                         TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        WebhookVersion = 0,
                     },
                 ],
             },
@@ -707,12 +807,22 @@ public class WebhookListPageResponseTest : TestBase
                         },
                         EventTypes = ["string"],
                         IsActive = true,
+                        IsInheritable = true,
                         LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                         RetryCount = 0,
+                        SenderProfile = new()
+                        {
+                            EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                            {
+                                { "foo", ["string"] },
+                            },
+                            EventTypes = ["string"],
+                        },
                         SigningSecret = "signing_secret",
                         TimeoutSeconds = 0,
                         UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        WebhookVersion = 0,
                     },
                 ],
             },
@@ -770,12 +880,22 @@ public class DataTest : TestBase
                     },
                     EventTypes = ["string"],
                     IsActive = true,
+                    IsInheritable = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     RetryCount = 0,
+                    SenderProfile = new()
+                    {
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                    },
                     SigningSecret = "signing_secret",
                     TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    WebhookVersion = 0,
                 },
             ],
         };
@@ -805,12 +925,22 @@ public class DataTest : TestBase
                 },
                 EventTypes = ["string"],
                 IsActive = true,
+                IsInheritable = true,
                 LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 RetryCount = 0,
+                SenderProfile = new()
+                {
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
+                    EventTypes = ["string"],
+                },
                 SigningSecret = "signing_secret",
                 TimeoutSeconds = 0,
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                WebhookVersion = 0,
             },
         ];
 
@@ -853,12 +983,22 @@ public class DataTest : TestBase
                     },
                     EventTypes = ["string"],
                     IsActive = true,
+                    IsInheritable = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     RetryCount = 0,
+                    SenderProfile = new()
+                    {
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                    },
                     SigningSecret = "signing_secret",
                     TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    WebhookVersion = 0,
                 },
             ],
         };
@@ -899,12 +1039,22 @@ public class DataTest : TestBase
                     },
                     EventTypes = ["string"],
                     IsActive = true,
+                    IsInheritable = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     RetryCount = 0,
+                    SenderProfile = new()
+                    {
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                    },
                     SigningSecret = "signing_secret",
                     TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    WebhookVersion = 0,
                 },
             ],
         };
@@ -938,12 +1088,22 @@ public class DataTest : TestBase
                 },
                 EventTypes = ["string"],
                 IsActive = true,
+                IsInheritable = true,
                 LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 RetryCount = 0,
+                SenderProfile = new()
+                {
+                    EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                    {
+                        { "foo", ["string"] },
+                    },
+                    EventTypes = ["string"],
+                },
                 SigningSecret = "signing_secret",
                 TimeoutSeconds = 0,
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                WebhookVersion = 0,
             },
         ];
 
@@ -986,12 +1146,22 @@ public class DataTest : TestBase
                     },
                     EventTypes = ["string"],
                     IsActive = true,
+                    IsInheritable = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     RetryCount = 0,
+                    SenderProfile = new()
+                    {
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                    },
                     SigningSecret = "signing_secret",
                     TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    WebhookVersion = 0,
                 },
             ],
         };
@@ -1077,12 +1247,22 @@ public class DataTest : TestBase
                     },
                     EventTypes = ["string"],
                     IsActive = true,
+                    IsInheritable = true,
                     LastDeliveryAttemptAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     LastSuccessfulDeliveryAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                     RetryCount = 0,
+                    SenderProfile = new()
+                    {
+                        EventFilters = new Dictionary<string, IReadOnlyList<string>>()
+                        {
+                            { "foo", ["string"] },
+                        },
+                        EventTypes = ["string"],
+                    },
                     SigningSecret = "signing_secret",
                     TimeoutSeconds = 0,
                     UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    WebhookVersion = 0,
                 },
             ],
         };

@@ -11,8 +11,9 @@ public class VoiceCreateParamsTest : TestBase
     {
         var parameters = new VoiceCreateParams
         {
-            CallbackUrl = "https://example.com/voice",
+            AgentID = null,
             AreaCode = null,
+            CallbackUrl = "https://example.com/voice",
             DefaultForAppCalls = false,
             Number = "+12125550100",
             Sandbox = false,
@@ -27,8 +28,9 @@ public class VoiceCreateParamsTest : TestBase
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
-        Assert.Equal(expectedCallbackUrl, parameters.CallbackUrl);
+        Assert.Null(parameters.AgentID);
         Assert.Null(parameters.AreaCode);
+        Assert.Equal(expectedCallbackUrl, parameters.CallbackUrl);
         Assert.Equal(expectedDefaultForAppCalls, parameters.DefaultForAppCalls);
         Assert.Equal(expectedNumber, parameters.Number);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
@@ -41,8 +43,9 @@ public class VoiceCreateParamsTest : TestBase
     {
         var parameters = new VoiceCreateParams
         {
-            CallbackUrl = "https://example.com/voice",
+            AgentID = null,
             AreaCode = null,
+            CallbackUrl = "https://example.com/voice",
             DefaultForAppCalls = false,
             Number = "+12125550100",
         };
@@ -60,8 +63,9 @@ public class VoiceCreateParamsTest : TestBase
     {
         var parameters = new VoiceCreateParams
         {
-            CallbackUrl = "https://example.com/voice",
+            AgentID = null,
             AreaCode = null,
+            CallbackUrl = "https://example.com/voice",
             DefaultForAppCalls = false,
             Number = "+12125550100",
 
@@ -84,14 +88,17 @@ public class VoiceCreateParamsTest : TestBase
     {
         var parameters = new VoiceCreateParams
         {
-            CallbackUrl = "https://example.com/voice",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        Assert.Null(parameters.AgentID);
+        Assert.False(parameters.RawBodyData.ContainsKey("agent_id"));
         Assert.Null(parameters.AreaCode);
         Assert.False(parameters.RawBodyData.ContainsKey("area_code"));
+        Assert.Null(parameters.CallbackUrl);
+        Assert.False(parameters.RawBodyData.ContainsKey("callback_url"));
         Assert.Null(parameters.DefaultForAppCalls);
         Assert.False(parameters.RawBodyData.ContainsKey("default_for_app_calls"));
         Assert.Null(parameters.Number);
@@ -103,18 +110,23 @@ public class VoiceCreateParamsTest : TestBase
     {
         var parameters = new VoiceCreateParams
         {
-            CallbackUrl = "https://example.com/voice",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
+            AgentID = null,
             AreaCode = null,
+            CallbackUrl = null,
             DefaultForAppCalls = null,
             Number = null,
         };
 
+        Assert.Null(parameters.AgentID);
+        Assert.True(parameters.RawBodyData.ContainsKey("agent_id"));
         Assert.Null(parameters.AreaCode);
         Assert.True(parameters.RawBodyData.ContainsKey("area_code"));
+        Assert.Null(parameters.CallbackUrl);
+        Assert.True(parameters.RawBodyData.ContainsKey("callback_url"));
         Assert.Null(parameters.DefaultForAppCalls);
         Assert.True(parameters.RawBodyData.ContainsKey("default_for_app_calls"));
         Assert.Null(parameters.Number);
@@ -124,7 +136,7 @@ public class VoiceCreateParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        VoiceCreateParams parameters = new() { CallbackUrl = "https://example.com/voice" };
+        VoiceCreateParams parameters = new();
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
@@ -137,7 +149,6 @@ public class VoiceCreateParamsTest : TestBase
         HttpRequestMessage requestMessage = new();
         VoiceCreateParams parameters = new()
         {
-            CallbackUrl = "https://example.com/voice",
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
@@ -156,8 +167,9 @@ public class VoiceCreateParamsTest : TestBase
     {
         var parameters = new VoiceCreateParams
         {
-            CallbackUrl = "https://example.com/voice",
+            AgentID = null,
             AreaCode = null,
+            CallbackUrl = "https://example.com/voice",
             DefaultForAppCalls = false,
             Number = "+12125550100",
             Sandbox = false,

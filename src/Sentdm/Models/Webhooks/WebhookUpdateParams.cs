@@ -12,7 +12,11 @@ using Sentdm.Core;
 namespace Sentdm.Models.Webhooks;
 
 /// <summary>
-/// Updates an existing webhook for the authenticated customer.
+/// Updates an existing webhook for the authenticated customer. Its version does not
+/// change. sender_profile applies to a version 1 webhook and is_inheritable to a
+/// version 2 one; retry_count and timeout_seconds apply to version 1 only. A version
+/// 1 webhook's response returns its sender_profile selection as saved; a version
+/// 2 webhook's response leaves sender_profile out.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -119,6 +123,21 @@ public record class WebhookUpdateParams : ParamsBase
         }
     }
 
+    /// <summary>
+    /// Makes this webhook inheritable by the organization's sender profiles (see
+    /// create), or stops it being inheritable. Omit or pass null to keep it as it
+    /// is. Only a version 2 webhook can be inheritable.
+    /// </summary>
+    public bool? IsInheritable
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("is_inheritable");
+        }
+        init { this._rawBodyData.Set("is_inheritable", value); }
+    }
+
     public int? RetryCount
     {
         get
@@ -161,7 +180,8 @@ public record class WebhookUpdateParams : ParamsBase
 
     /// <summary>
     /// Request-only: the events an organization webhook's sender profile clones receive,
-    /// one clone per existing and future profile. Responses never return it.
+    /// one clone per existing and future profile. A version 1 webhook's responses
+    /// report it as WebhookSenderProfileV3Response.
     /// </summary>
     public WebhookUpdateParamsSenderProfile? SenderProfile
     {
@@ -351,7 +371,8 @@ public record class WebhookUpdateParams : ParamsBase
 
 /// <summary>
 /// Request-only: the events an organization webhook's sender profile clones receive,
-/// one clone per existing and future profile. Responses never return it.
+/// one clone per existing and future profile. A version 1 webhook's responses report
+/// it as WebhookSenderProfileV3Response.
 /// </summary>
 [JsonConverter(
     typeof(JsonModelConverter<

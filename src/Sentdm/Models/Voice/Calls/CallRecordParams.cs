@@ -12,8 +12,9 @@ namespace Sentdm.Models.Voice.Calls;
 /// <summary>
 /// Starts or stops recording one of your live calls. Use start to begin recording
 /// mid-call, or stop to end a recording, whether it was started here or by a connect
-/// answer with record set. A call that has already ended answers 409, and so does
-/// a call with no phone leg, such as one between two app users, which can't be recorded.
+/// answer with record set. A call that has already ended answers 409, as do a call
+/// with no phone leg, such as one between two app users, and a call one of your voice
+/// agents answers, neither of which can be recorded this way.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

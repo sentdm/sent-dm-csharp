@@ -14,12 +14,26 @@ public class CallTest : TestBase
         var model = new Call
         {
             ID = "id",
+            AgentID = "agent_id",
             AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CallerIDUsed = "caller_id_used",
+            ConnectedNumber = "connected_number",
             Direction = "direction",
             DurationSeconds = 0,
             EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             FailureReason = "failure_reason",
             From = new() { Kind = "kind", Value = "value" },
+            Legs =
+            [
+                new()
+                {
+                    BilledMinutes = 0,
+                    Cost = 0,
+                    Currency = "currency",
+                    Direction = "direction",
+                    Number = "number",
+                },
+            ],
             Mode = "mode",
             Number = "number",
             Price = 0,
@@ -38,12 +52,26 @@ public class CallTest : TestBase
         };
 
         string expectedID = "id";
+        string expectedAgentID = "agent_id";
         DateTimeOffset expectedAnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedCallerIDUsed = "caller_id_used";
+        string expectedConnectedNumber = "connected_number";
         string expectedDirection = "direction";
         int expectedDurationSeconds = 0;
         DateTimeOffset expectedEndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedFailureReason = "failure_reason";
         CallParty expectedFrom = new() { Kind = "kind", Value = "value" };
+        List<Leg> expectedLegs =
+        [
+            new()
+            {
+                BilledMinutes = 0,
+                Cost = 0,
+                Currency = "currency",
+                Direction = "direction",
+                Number = "number",
+            },
+        ];
         string expectedMode = "mode";
         string expectedNumber = "number";
         double expectedPrice = 0;
@@ -61,12 +89,21 @@ public class CallTest : TestBase
         CallParty expectedTo = new() { Kind = "kind", Value = "value" };
 
         Assert.Equal(expectedID, model.ID);
+        Assert.Equal(expectedAgentID, model.AgentID);
         Assert.Equal(expectedAnsweredAt, model.AnsweredAt);
+        Assert.Equal(expectedCallerIDUsed, model.CallerIDUsed);
+        Assert.Equal(expectedConnectedNumber, model.ConnectedNumber);
         Assert.Equal(expectedDirection, model.Direction);
         Assert.Equal(expectedDurationSeconds, model.DurationSeconds);
         Assert.Equal(expectedEndedAt, model.EndedAt);
         Assert.Equal(expectedFailureReason, model.FailureReason);
         Assert.Equal(expectedFrom, model.From);
+        Assert.NotNull(model.Legs);
+        Assert.Equal(expectedLegs.Count, model.Legs.Count);
+        for (int i = 0; i < expectedLegs.Count; i++)
+        {
+            Assert.Equal(expectedLegs[i], model.Legs[i]);
+        }
         Assert.Equal(expectedMode, model.Mode);
         Assert.Equal(expectedNumber, model.Number);
         Assert.Equal(expectedPrice, model.Price);
@@ -88,12 +125,26 @@ public class CallTest : TestBase
         var model = new Call
         {
             ID = "id",
+            AgentID = "agent_id",
             AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CallerIDUsed = "caller_id_used",
+            ConnectedNumber = "connected_number",
             Direction = "direction",
             DurationSeconds = 0,
             EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             FailureReason = "failure_reason",
             From = new() { Kind = "kind", Value = "value" },
+            Legs =
+            [
+                new()
+                {
+                    BilledMinutes = 0,
+                    Cost = 0,
+                    Currency = "currency",
+                    Direction = "direction",
+                    Number = "number",
+                },
+            ],
             Mode = "mode",
             Number = "number",
             Price = 0,
@@ -123,12 +174,26 @@ public class CallTest : TestBase
         var model = new Call
         {
             ID = "id",
+            AgentID = "agent_id",
             AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CallerIDUsed = "caller_id_used",
+            ConnectedNumber = "connected_number",
             Direction = "direction",
             DurationSeconds = 0,
             EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             FailureReason = "failure_reason",
             From = new() { Kind = "kind", Value = "value" },
+            Legs =
+            [
+                new()
+                {
+                    BilledMinutes = 0,
+                    Cost = 0,
+                    Currency = "currency",
+                    Direction = "direction",
+                    Number = "number",
+                },
+            ],
             Mode = "mode",
             Number = "number",
             Price = 0,
@@ -151,12 +216,26 @@ public class CallTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
+        string expectedAgentID = "agent_id";
         DateTimeOffset expectedAnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedCallerIDUsed = "caller_id_used";
+        string expectedConnectedNumber = "connected_number";
         string expectedDirection = "direction";
         int expectedDurationSeconds = 0;
         DateTimeOffset expectedEndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedFailureReason = "failure_reason";
         CallParty expectedFrom = new() { Kind = "kind", Value = "value" };
+        List<Leg> expectedLegs =
+        [
+            new()
+            {
+                BilledMinutes = 0,
+                Cost = 0,
+                Currency = "currency",
+                Direction = "direction",
+                Number = "number",
+            },
+        ];
         string expectedMode = "mode";
         string expectedNumber = "number";
         double expectedPrice = 0;
@@ -174,12 +253,21 @@ public class CallTest : TestBase
         CallParty expectedTo = new() { Kind = "kind", Value = "value" };
 
         Assert.Equal(expectedID, deserialized.ID);
+        Assert.Equal(expectedAgentID, deserialized.AgentID);
         Assert.Equal(expectedAnsweredAt, deserialized.AnsweredAt);
+        Assert.Equal(expectedCallerIDUsed, deserialized.CallerIDUsed);
+        Assert.Equal(expectedConnectedNumber, deserialized.ConnectedNumber);
         Assert.Equal(expectedDirection, deserialized.Direction);
         Assert.Equal(expectedDurationSeconds, deserialized.DurationSeconds);
         Assert.Equal(expectedEndedAt, deserialized.EndedAt);
         Assert.Equal(expectedFailureReason, deserialized.FailureReason);
         Assert.Equal(expectedFrom, deserialized.From);
+        Assert.NotNull(deserialized.Legs);
+        Assert.Equal(expectedLegs.Count, deserialized.Legs.Count);
+        for (int i = 0; i < expectedLegs.Count; i++)
+        {
+            Assert.Equal(expectedLegs[i], deserialized.Legs[i]);
+        }
         Assert.Equal(expectedMode, deserialized.Mode);
         Assert.Equal(expectedNumber, deserialized.Number);
         Assert.Equal(expectedPrice, deserialized.Price);
@@ -201,12 +289,26 @@ public class CallTest : TestBase
         var model = new Call
         {
             ID = "id",
+            AgentID = "agent_id",
             AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CallerIDUsed = "caller_id_used",
+            ConnectedNumber = "connected_number",
             Direction = "direction",
             DurationSeconds = 0,
             EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             FailureReason = "failure_reason",
             From = new() { Kind = "kind", Value = "value" },
+            Legs =
+            [
+                new()
+                {
+                    BilledMinutes = 0,
+                    Cost = 0,
+                    Currency = "currency",
+                    Direction = "direction",
+                    Number = "number",
+                },
+            ],
             Mode = "mode",
             Number = "number",
             Price = 0,
@@ -232,10 +334,24 @@ public class CallTest : TestBase
     {
         var model = new Call
         {
+            AgentID = "agent_id",
             AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CallerIDUsed = "caller_id_used",
+            ConnectedNumber = "connected_number",
             DurationSeconds = 0,
             EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             FailureReason = "failure_reason",
+            Legs =
+            [
+                new()
+                {
+                    BilledMinutes = 0,
+                    Cost = 0,
+                    Currency = "currency",
+                    Direction = "direction",
+                    Number = "number",
+                },
+            ],
             Price = 0,
             Timeline =
             [
@@ -272,10 +388,24 @@ public class CallTest : TestBase
     {
         var model = new Call
         {
+            AgentID = "agent_id",
             AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CallerIDUsed = "caller_id_used",
+            ConnectedNumber = "connected_number",
             DurationSeconds = 0,
             EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             FailureReason = "failure_reason",
+            Legs =
+            [
+                new()
+                {
+                    BilledMinutes = 0,
+                    Cost = 0,
+                    Currency = "currency",
+                    Direction = "direction",
+                    Number = "number",
+                },
+            ],
             Price = 0,
             Timeline =
             [
@@ -295,10 +425,24 @@ public class CallTest : TestBase
     {
         var model = new Call
         {
+            AgentID = "agent_id",
             AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CallerIDUsed = "caller_id_used",
+            ConnectedNumber = "connected_number",
             DurationSeconds = 0,
             EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             FailureReason = "failure_reason",
+            Legs =
+            [
+                new()
+                {
+                    BilledMinutes = 0,
+                    Cost = 0,
+                    Currency = "currency",
+                    Direction = "direction",
+                    Number = "number",
+                },
+            ],
             Price = 0,
             Timeline =
             [
@@ -346,10 +490,24 @@ public class CallTest : TestBase
     {
         var model = new Call
         {
+            AgentID = "agent_id",
             AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CallerIDUsed = "caller_id_used",
+            ConnectedNumber = "connected_number",
             DurationSeconds = 0,
             EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             FailureReason = "failure_reason",
+            Legs =
+            [
+                new()
+                {
+                    BilledMinutes = 0,
+                    Cost = 0,
+                    Currency = "currency",
+                    Direction = "direction",
+                    Number = "number",
+                },
+            ],
             Price = 0,
             Timeline =
             [
@@ -391,14 +549,22 @@ public class CallTest : TestBase
             To = new() { Kind = "kind", Value = "value" },
         };
 
+        Assert.Null(model.AgentID);
+        Assert.False(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.AnsweredAt);
         Assert.False(model.RawData.ContainsKey("answered_at"));
+        Assert.Null(model.CallerIDUsed);
+        Assert.False(model.RawData.ContainsKey("caller_id_used"));
+        Assert.Null(model.ConnectedNumber);
+        Assert.False(model.RawData.ContainsKey("connected_number"));
         Assert.Null(model.DurationSeconds);
         Assert.False(model.RawData.ContainsKey("duration_seconds"));
         Assert.Null(model.EndedAt);
         Assert.False(model.RawData.ContainsKey("ended_at"));
         Assert.Null(model.FailureReason);
         Assert.False(model.RawData.ContainsKey("failure_reason"));
+        Assert.Null(model.Legs);
+        Assert.False(model.RawData.ContainsKey("legs"));
         Assert.Null(model.Price);
         Assert.False(model.RawData.ContainsKey("price"));
         Assert.Null(model.Timeline);
@@ -439,22 +605,34 @@ public class CallTest : TestBase
             Status = "status",
             To = new() { Kind = "kind", Value = "value" },
 
+            AgentID = null,
             AnsweredAt = null,
+            CallerIDUsed = null,
+            ConnectedNumber = null,
             DurationSeconds = null,
             EndedAt = null,
             FailureReason = null,
+            Legs = null,
             Price = null,
             Timeline = null,
         };
 
+        Assert.Null(model.AgentID);
+        Assert.True(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.AnsweredAt);
         Assert.True(model.RawData.ContainsKey("answered_at"));
+        Assert.Null(model.CallerIDUsed);
+        Assert.True(model.RawData.ContainsKey("caller_id_used"));
+        Assert.Null(model.ConnectedNumber);
+        Assert.True(model.RawData.ContainsKey("connected_number"));
         Assert.Null(model.DurationSeconds);
         Assert.True(model.RawData.ContainsKey("duration_seconds"));
         Assert.Null(model.EndedAt);
         Assert.True(model.RawData.ContainsKey("ended_at"));
         Assert.Null(model.FailureReason);
         Assert.True(model.RawData.ContainsKey("failure_reason"));
+        Assert.Null(model.Legs);
+        Assert.True(model.RawData.ContainsKey("legs"));
         Assert.Null(model.Price);
         Assert.True(model.RawData.ContainsKey("price"));
         Assert.Null(model.Timeline);
@@ -476,10 +654,14 @@ public class CallTest : TestBase
             Status = "status",
             To = new() { Kind = "kind", Value = "value" },
 
+            AgentID = null,
             AnsweredAt = null,
+            CallerIDUsed = null,
+            ConnectedNumber = null,
             DurationSeconds = null,
             EndedAt = null,
             FailureReason = null,
+            Legs = null,
             Price = null,
             Timeline = null,
         };
@@ -493,12 +675,26 @@ public class CallTest : TestBase
         var model = new Call
         {
             ID = "id",
+            AgentID = "agent_id",
             AnsweredAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CallerIDUsed = "caller_id_used",
+            ConnectedNumber = "connected_number",
             Direction = "direction",
             DurationSeconds = 0,
             EndedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             FailureReason = "failure_reason",
             From = new() { Kind = "kind", Value = "value" },
+            Legs =
+            [
+                new()
+                {
+                    BilledMinutes = 0,
+                    Cost = 0,
+                    Currency = "currency",
+                    Direction = "direction",
+                    Number = "number",
+                },
+            ],
             Mode = "mode",
             Number = "number",
             Price = 0,
@@ -517,6 +713,239 @@ public class CallTest : TestBase
         };
 
         Call copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
+}
+
+public class LegTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new Leg
+        {
+            BilledMinutes = 0,
+            Cost = 0,
+            Currency = "currency",
+            Direction = "direction",
+            Number = "number",
+        };
+
+        int expectedBilledMinutes = 0;
+        double expectedCost = 0;
+        string expectedCurrency = "currency";
+        string expectedDirection = "direction";
+        string expectedNumber = "number";
+
+        Assert.Equal(expectedBilledMinutes, model.BilledMinutes);
+        Assert.Equal(expectedCost, model.Cost);
+        Assert.Equal(expectedCurrency, model.Currency);
+        Assert.Equal(expectedDirection, model.Direction);
+        Assert.Equal(expectedNumber, model.Number);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new Leg
+        {
+            BilledMinutes = 0,
+            Cost = 0,
+            Currency = "currency",
+            Direction = "direction",
+            Number = "number",
+        };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Leg>(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new Leg
+        {
+            BilledMinutes = 0,
+            Cost = 0,
+            Currency = "currency",
+            Direction = "direction",
+            Number = "number",
+        };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Leg>(element, ModelBase.SerializerOptions);
+        Assert.NotNull(deserialized);
+
+        int expectedBilledMinutes = 0;
+        double expectedCost = 0;
+        string expectedCurrency = "currency";
+        string expectedDirection = "direction";
+        string expectedNumber = "number";
+
+        Assert.Equal(expectedBilledMinutes, deserialized.BilledMinutes);
+        Assert.Equal(expectedCost, deserialized.Cost);
+        Assert.Equal(expectedCurrency, deserialized.Currency);
+        Assert.Equal(expectedDirection, deserialized.Direction);
+        Assert.Equal(expectedNumber, deserialized.Number);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new Leg
+        {
+            BilledMinutes = 0,
+            Cost = 0,
+            Currency = "currency",
+            Direction = "direction",
+            Number = "number",
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Leg { Number = "number" };
+
+        Assert.Null(model.BilledMinutes);
+        Assert.False(model.RawData.ContainsKey("billed_minutes"));
+        Assert.Null(model.Cost);
+        Assert.False(model.RawData.ContainsKey("cost"));
+        Assert.Null(model.Currency);
+        Assert.False(model.RawData.ContainsKey("currency"));
+        Assert.Null(model.Direction);
+        Assert.False(model.RawData.ContainsKey("direction"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Leg { Number = "number" };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new Leg
+        {
+            Number = "number",
+
+            // Null should be interpreted as omitted for these properties
+            BilledMinutes = null,
+            Cost = null,
+            Currency = null,
+            Direction = null,
+        };
+
+        Assert.Null(model.BilledMinutes);
+        Assert.False(model.RawData.ContainsKey("billed_minutes"));
+        Assert.Null(model.Cost);
+        Assert.False(model.RawData.ContainsKey("cost"));
+        Assert.Null(model.Currency);
+        Assert.False(model.RawData.ContainsKey("currency"));
+        Assert.Null(model.Direction);
+        Assert.False(model.RawData.ContainsKey("direction"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Leg
+        {
+            Number = "number",
+
+            // Null should be interpreted as omitted for these properties
+            BilledMinutes = null,
+            Cost = null,
+            Currency = null,
+            Direction = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Leg
+        {
+            BilledMinutes = 0,
+            Cost = 0,
+            Currency = "currency",
+            Direction = "direction",
+        };
+
+        Assert.Null(model.Number);
+        Assert.False(model.RawData.ContainsKey("number"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Leg
+        {
+            BilledMinutes = 0,
+            Cost = 0,
+            Currency = "currency",
+            Direction = "direction",
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
+    {
+        var model = new Leg
+        {
+            BilledMinutes = 0,
+            Cost = 0,
+            Currency = "currency",
+            Direction = "direction",
+
+            Number = null,
+        };
+
+        Assert.Null(model.Number);
+        Assert.True(model.RawData.ContainsKey("number"));
+    }
+
+    [Fact]
+    public void OptionalNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Leg
+        {
+            BilledMinutes = 0,
+            Cost = 0,
+            Currency = "currency",
+            Direction = "direction",
+
+            Number = null,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Leg
+        {
+            BilledMinutes = 0,
+            Cost = 0,
+            Currency = "currency",
+            Direction = "direction",
+            Number = "number",
+        };
+
+        Leg copied = new(model);
 
         Assert.Equal(model, copied);
     }

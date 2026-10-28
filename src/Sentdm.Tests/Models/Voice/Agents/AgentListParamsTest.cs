@@ -1,0 +1,103 @@
+using System;
+using System.Net.Http;
+using Sentdm.Models.Voice.Agents;
+
+namespace Sentdm.Tests.Models.Voice.Agents;
+
+public class AgentListParamsTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var parameters = new AgentListParams
+        {
+            Page = 0,
+            PageSize = 0,
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        };
+
+        int expectedPage = 0;
+        int expectedPageSize = 0;
+        string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+
+        Assert.Equal(expectedPage, parameters.Page);
+        Assert.Equal(expectedPageSize, parameters.PageSize);
+        Assert.Equal(expectedXProfileID, parameters.XProfileID);
+    }
+
+    [Fact]
+    public void OptionalNonNullableParamsUnsetAreNotSet_Works()
+    {
+        var parameters = new AgentListParams { };
+
+        Assert.Null(parameters.Page);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+    }
+
+    [Fact]
+    public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
+    {
+        var parameters = new AgentListParams
+        {
+            // Null should be interpreted as omitted for these properties
+            Page = null,
+            PageSize = null,
+            XProfileID = null,
+        };
+
+        Assert.Null(parameters.Page);
+        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.PageSize);
+        Assert.False(parameters.RawQueryData.ContainsKey("page_size"));
+        Assert.Null(parameters.XProfileID);
+        Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        AgentListParams parameters = new() { Page = 0, PageSize = 0 };
+
+        var url = parameters.Url(new() { ApiKey = "My API Key" });
+
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri("https://api.sent.dm/v3/voice/agents?page=0&page_size=0"),
+                url
+            )
+        );
+    }
+
+    [Fact]
+    public void AddHeadersToRequest_Works()
+    {
+        HttpRequestMessage requestMessage = new();
+        AgentListParams parameters = new() { XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e" };
+
+        parameters.AddHeadersToRequest(requestMessage, new() { ApiKey = "My API Key" });
+
+        Assert.Equal(
+            ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+            requestMessage.Headers.GetValues("x-profile-id")
+        );
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AgentListParams
+        {
+            Page = 0,
+            PageSize = 0,
+            XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        };
+
+        AgentListParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
+}
