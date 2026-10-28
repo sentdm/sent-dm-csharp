@@ -22,6 +22,7 @@ public class WebhookCreateParamsTest : TestBase
                 { "templates", ["approved", "rejected"] },
             },
             EventTypes = ["contact", "message", "templates"],
+            IsInheritable = false,
             RetryCount = 3,
             Sandbox = false,
             SenderProfile = new()
@@ -33,6 +34,7 @@ public class WebhookCreateParamsTest : TestBase
                 EventTypes = ["string"],
             },
             TimeoutSeconds = 30,
+            WebhookVersion = null,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
@@ -45,6 +47,7 @@ public class WebhookCreateParamsTest : TestBase
             { "templates", ["approved", "rejected"] },
         };
         List<string> expectedEventTypes = ["contact", "message", "templates"];
+        bool expectedIsInheritable = false;
         int expectedRetryCount = 3;
         bool expectedSandbox = false;
         SenderProfile expectedSenderProfile = new()
@@ -79,10 +82,12 @@ public class WebhookCreateParamsTest : TestBase
         {
             Assert.Equal(expectedEventTypes[i], parameters.EventTypes[i]);
         }
+        Assert.Equal(expectedIsInheritable, parameters.IsInheritable);
         Assert.Equal(expectedRetryCount, parameters.RetryCount);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedSenderProfile, parameters.SenderProfile);
         Assert.Equal(expectedTimeoutSeconds, parameters.TimeoutSeconds);
+        Assert.Null(parameters.WebhookVersion);
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
         Assert.Equal(expectedXProfileID, parameters.XProfileID);
     }
@@ -105,6 +110,7 @@ public class WebhookCreateParamsTest : TestBase
                 },
                 EventTypes = ["string"],
             },
+            WebhookVersion = null,
         };
 
         Assert.Null(parameters.DisplayName);
@@ -113,6 +119,8 @@ public class WebhookCreateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("endpoint_url"));
         Assert.Null(parameters.EventTypes);
         Assert.False(parameters.RawBodyData.ContainsKey("event_types"));
+        Assert.Null(parameters.IsInheritable);
+        Assert.False(parameters.RawBodyData.ContainsKey("is_inheritable"));
         Assert.Null(parameters.RetryCount);
         Assert.False(parameters.RawBodyData.ContainsKey("retry_count"));
         Assert.Null(parameters.Sandbox);
@@ -143,11 +151,13 @@ public class WebhookCreateParamsTest : TestBase
                 },
                 EventTypes = ["string"],
             },
+            WebhookVersion = null,
 
             // Null should be interpreted as omitted for these properties
             DisplayName = null,
             EndpointUrl = null,
             EventTypes = null,
+            IsInheritable = null,
             RetryCount = null,
             Sandbox = null,
             TimeoutSeconds = null,
@@ -161,6 +171,8 @@ public class WebhookCreateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("endpoint_url"));
         Assert.Null(parameters.EventTypes);
         Assert.False(parameters.RawBodyData.ContainsKey("event_types"));
+        Assert.Null(parameters.IsInheritable);
+        Assert.False(parameters.RawBodyData.ContainsKey("is_inheritable"));
         Assert.Null(parameters.RetryCount);
         Assert.False(parameters.RawBodyData.ContainsKey("retry_count"));
         Assert.Null(parameters.Sandbox);
@@ -181,6 +193,7 @@ public class WebhookCreateParamsTest : TestBase
             DisplayName = "Order Notifications",
             EndpointUrl = "https://example.com/webhooks/orders",
             EventTypes = ["contact", "message", "templates"],
+            IsInheritable = false,
             RetryCount = 3,
             Sandbox = false,
             TimeoutSeconds = 30,
@@ -192,6 +205,8 @@ public class WebhookCreateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("event_filters"));
         Assert.Null(parameters.SenderProfile);
         Assert.False(parameters.RawBodyData.ContainsKey("sender_profile"));
+        Assert.Null(parameters.WebhookVersion);
+        Assert.False(parameters.RawBodyData.ContainsKey("webhook_version"));
     }
 
     [Fact]
@@ -202,6 +217,7 @@ public class WebhookCreateParamsTest : TestBase
             DisplayName = "Order Notifications",
             EndpointUrl = "https://example.com/webhooks/orders",
             EventTypes = ["contact", "message", "templates"],
+            IsInheritable = false,
             RetryCount = 3,
             Sandbox = false,
             TimeoutSeconds = 30,
@@ -210,12 +226,15 @@ public class WebhookCreateParamsTest : TestBase
 
             EventFilters = null,
             SenderProfile = null,
+            WebhookVersion = null,
         };
 
         Assert.Null(parameters.EventFilters);
         Assert.True(parameters.RawBodyData.ContainsKey("event_filters"));
         Assert.Null(parameters.SenderProfile);
         Assert.True(parameters.RawBodyData.ContainsKey("sender_profile"));
+        Assert.Null(parameters.WebhookVersion);
+        Assert.True(parameters.RawBodyData.ContainsKey("webhook_version"));
     }
 
     [Fact]
@@ -260,6 +279,7 @@ public class WebhookCreateParamsTest : TestBase
                 { "templates", ["approved", "rejected"] },
             },
             EventTypes = ["contact", "message", "templates"],
+            IsInheritable = false,
             RetryCount = 3,
             Sandbox = false,
             SenderProfile = new()
@@ -271,6 +291,7 @@ public class WebhookCreateParamsTest : TestBase
                 EventTypes = ["string"],
             },
             TimeoutSeconds = 30,
+            WebhookVersion = null,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };

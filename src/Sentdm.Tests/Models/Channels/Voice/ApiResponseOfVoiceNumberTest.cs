@@ -16,10 +16,12 @@ public class ApiResponseOfVoiceNumberTest : TestBase
         {
             Data = new()
             {
+                AgentID = "agent_id",
                 CallbackUrl = "callback_url",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DefaultForAppCalls = true,
                 Number = "number",
+                RoutesTo = "routes_to",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },
@@ -41,10 +43,12 @@ public class ApiResponseOfVoiceNumberTest : TestBase
 
         VoiceNumber expectedData = new()
         {
+            AgentID = "agent_id",
             CallbackUrl = "callback_url",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultForAppCalls = true,
             Number = "number",
+            RoutesTo = "routes_to",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
@@ -76,10 +80,12 @@ public class ApiResponseOfVoiceNumberTest : TestBase
         {
             Data = new()
             {
+                AgentID = "agent_id",
                 CallbackUrl = "callback_url",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DefaultForAppCalls = true,
                 Number = "number",
+                RoutesTo = "routes_to",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },
@@ -115,10 +121,12 @@ public class ApiResponseOfVoiceNumberTest : TestBase
         {
             Data = new()
             {
+                AgentID = "agent_id",
                 CallbackUrl = "callback_url",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DefaultForAppCalls = true,
                 Number = "number",
+                RoutesTo = "routes_to",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },
@@ -147,10 +155,12 @@ public class ApiResponseOfVoiceNumberTest : TestBase
 
         VoiceNumber expectedData = new()
         {
+            AgentID = "agent_id",
             CallbackUrl = "callback_url",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             DefaultForAppCalls = true,
             Number = "number",
+            RoutesTo = "routes_to",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
@@ -182,10 +192,12 @@ public class ApiResponseOfVoiceNumberTest : TestBase
         {
             Data = new()
             {
+                AgentID = "agent_id",
                 CallbackUrl = "callback_url",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DefaultForAppCalls = true,
                 Number = "number",
+                RoutesTo = "routes_to",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },
@@ -215,10 +227,12 @@ public class ApiResponseOfVoiceNumberTest : TestBase
         {
             Data = new()
             {
+                AgentID = "agent_id",
                 CallbackUrl = "callback_url",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DefaultForAppCalls = true,
                 Number = "number",
+                RoutesTo = "routes_to",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },
@@ -244,10 +258,12 @@ public class ApiResponseOfVoiceNumberTest : TestBase
         {
             Data = new()
             {
+                AgentID = "agent_id",
                 CallbackUrl = "callback_url",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DefaultForAppCalls = true,
                 Number = "number",
+                RoutesTo = "routes_to",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },
@@ -270,10 +286,12 @@ public class ApiResponseOfVoiceNumberTest : TestBase
         {
             Data = new()
             {
+                AgentID = "agent_id",
                 CallbackUrl = "callback_url",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DefaultForAppCalls = true,
                 Number = "number",
+                RoutesTo = "routes_to",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },
@@ -303,10 +321,12 @@ public class ApiResponseOfVoiceNumberTest : TestBase
         {
             Data = new()
             {
+                AgentID = "agent_id",
                 CallbackUrl = "callback_url",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DefaultForAppCalls = true,
                 Number = "number",
+                RoutesTo = "routes_to",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },
@@ -413,10 +433,12 @@ public class ApiResponseOfVoiceNumberTest : TestBase
         {
             Data = new()
             {
+                AgentID = "agent_id",
                 CallbackUrl = "callback_url",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 DefaultForAppCalls = true,
                 Number = "number",
+                RoutesTo = "routes_to",
                 Status = "status",
                 UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },

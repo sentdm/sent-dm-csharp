@@ -22,6 +22,7 @@ public class WebhookUpdateParamsTest : TestBase
                 { "message", ["delivered", "failed"] },
             },
             EventTypes = ["contact", "message", "templates"],
+            IsInheritable = null,
             RetryCount = 5,
             Sandbox = false,
             SenderProfile = new()
@@ -80,6 +81,7 @@ public class WebhookUpdateParamsTest : TestBase
         {
             Assert.Equal(expectedEventTypes[i], parameters.EventTypes[i]);
         }
+        Assert.Null(parameters.IsInheritable);
         Assert.Equal(expectedRetryCount, parameters.RetryCount);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedSenderProfile, parameters.SenderProfile);
@@ -98,6 +100,7 @@ public class WebhookUpdateParamsTest : TestBase
             {
                 { "message", ["delivered", "failed"] },
             },
+            IsInheritable = null,
             SenderProfile = new()
             {
                 EventFilters = new Dictionary<string, IReadOnlyList<string>>()
@@ -136,6 +139,7 @@ public class WebhookUpdateParamsTest : TestBase
             {
                 { "message", ["delivered", "failed"] },
             },
+            IsInheritable = null,
             SenderProfile = new()
             {
                 EventFilters = new Dictionary<string, IReadOnlyList<string>>()
@@ -192,6 +196,8 @@ public class WebhookUpdateParamsTest : TestBase
 
         Assert.Null(parameters.EventFilters);
         Assert.False(parameters.RawBodyData.ContainsKey("event_filters"));
+        Assert.Null(parameters.IsInheritable);
+        Assert.False(parameters.RawBodyData.ContainsKey("is_inheritable"));
         Assert.Null(parameters.SenderProfile);
         Assert.False(parameters.RawBodyData.ContainsKey("sender_profile"));
     }
@@ -212,11 +218,14 @@ public class WebhookUpdateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
             EventFilters = null,
+            IsInheritable = null,
             SenderProfile = null,
         };
 
         Assert.Null(parameters.EventFilters);
         Assert.True(parameters.RawBodyData.ContainsKey("event_filters"));
+        Assert.Null(parameters.IsInheritable);
+        Assert.True(parameters.RawBodyData.ContainsKey("is_inheritable"));
         Assert.Null(parameters.SenderProfile);
         Assert.True(parameters.RawBodyData.ContainsKey("sender_profile"));
     }
@@ -269,6 +278,7 @@ public class WebhookUpdateParamsTest : TestBase
                 { "message", ["delivered", "failed"] },
             },
             EventTypes = ["contact", "message", "templates"],
+            IsInheritable = null,
             RetryCount = 5,
             Sandbox = false,
             SenderProfile = new()
