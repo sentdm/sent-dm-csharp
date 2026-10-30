@@ -63,8 +63,6 @@ public interface ISentClient : IDisposable
 
     IProfileService Profiles { get; }
 
-    INumberService Numbers { get; }
-
     IMessageService Messages { get; }
 
     IContactService Contacts { get; }
@@ -118,8 +116,6 @@ public interface ISentClientWithRawResponse : IDisposable
     ITemplateServiceWithRawResponse Templates { get; }
 
     IProfileServiceWithRawResponse Profiles { get; }
-
-    INumberServiceWithRawResponse Numbers { get; }
 
     IMessageServiceWithRawResponse Messages { get; }
 
