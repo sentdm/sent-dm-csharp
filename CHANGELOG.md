@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.43.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.43.0...v0.43.1) (2026-10-30)
+
+
+### Chores
+
+* **repo:** add the contributor contract and review rubric ([b40fa45](https://github.com/sentdm/sent-dm-csharp/commit/b40fa455f8290c1ebbcc80d15e8577bad47afee3))
+* **repo:** add the contributor contract and the review workflow ([a91a0ec](https://github.com/sentdm/sent-dm-csharp/commit/a91a0ec7433cec85c113a6fadbc0337c71fbfcd1))
+* **repo:** rely on the managed Claude Code Review, drop the workflow ([d0c7334](https://github.com/sentdm/sent-dm-csharp/commit/d0c7334f55532807e844c9e44718f40cda465ebb))
+
 ## [0.43.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.42.0...v0.43.0) (2026-10-28)
 
 
