@@ -96,12 +96,6 @@ public sealed class SentClient : ISentClient
         get { return _profiles.Value; }
     }
 
-    readonly Lazy<INumberService> _numbers;
-    public INumberService Numbers
-    {
-        get { return _numbers.Value; }
-    }
-
     readonly Lazy<IMessageService> _messages;
     public IMessageService Messages
     {
@@ -149,7 +143,6 @@ public sealed class SentClient : ISentClient
         _users = new(() => new UserService(this));
         _templates = new(() => new TemplateService(this));
         _profiles = new(() => new ProfileService(this));
-        _numbers = new(() => new NumberService(this));
         _messages = new(() => new MessageService(this));
         _contacts = new(() => new ContactService(this));
         _conversations = new(() => new ConversationService(this));
@@ -253,12 +246,6 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
     public IProfileServiceWithRawResponse Profiles
     {
         get { return _profiles.Value; }
-    }
-
-    readonly Lazy<INumberServiceWithRawResponse> _numbers;
-    public INumberServiceWithRawResponse Numbers
-    {
-        get { return _numbers.Value; }
     }
 
     readonly Lazy<IMessageServiceWithRawResponse> _messages;
@@ -499,7 +486,6 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
         _users = new(() => new UserServiceWithRawResponse(this));
         _templates = new(() => new TemplateServiceWithRawResponse(this));
         _profiles = new(() => new ProfileServiceWithRawResponse(this));
-        _numbers = new(() => new NumberServiceWithRawResponse(this));
         _messages = new(() => new MessageServiceWithRawResponse(this));
         _contacts = new(() => new ContactServiceWithRawResponse(this));
         _conversations = new(() => new ConversationServiceWithRawResponse(this));
