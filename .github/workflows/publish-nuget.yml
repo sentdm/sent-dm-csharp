@@ -3,8 +3,12 @@
 # You can run this workflow by navigating to https://www.github.com/sentdm/sent-dm-csharp/actions/workflows/publish-nuget.yml
 #
 # Publishing uses nuget.org trusted publishing: the job's GitHub OIDC token is
-# exchanged for a one-hour API key, so no long-lived key is stored in this
-# repository. The nuget.org policy matches this repository and this file name.
+# exchanged for a one-hour API key by NuGet/login, against a Trusted Publishing
+# policy on nuget.org created by the `sent` profile with the `sentdm`
+# organisation as the package owner (repository owner sentdm, repository
+# sent-dm-csharp, workflow file publish-nuget.yml, environment blank, glob
+# Sentdm). No long-lived key exists anywhere. A version nuget.org already has is
+# skipped, so a re-run is safe.
 name: Publish to NuGet
 on:
   workflow_dispatch:
@@ -35,10 +39,14 @@ jobs:
         id: login
         uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
         with:
-          user: sentdm
+          # The nuget.org profile that created the policy (not the organisation that
+          # owns the package, and not an email address); the NUGET_USER repository
+          # variable overrides it for a policy created by someone else.
+          user: ${{ vars.NUGET_USER || 'sent' }}
 
       - name: Publish package to nuget.org
         run: dotnet nuget push
           $(find ${{ github.workspace }}/artifacts/packages/*.nupkg ! -name "*.symbols.nupkg")
           --source https://api.nuget.org/v3/index.json
           --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
+          --skip-duplicate
