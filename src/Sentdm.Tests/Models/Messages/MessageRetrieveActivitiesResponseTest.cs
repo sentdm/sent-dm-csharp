@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Messages;
-using Webhooks = Sentdm.Models.Webhooks;
+using Sentdm.Models.Webhooks;
 
 namespace Sentdm.Tests.Models.Messages;
 
@@ -58,7 +58,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
             Success = true,
         };
 
-        Data expectedData = new()
+        MessageRetrieveActivitiesResponseData expectedData = new()
         {
             Activities =
             [
@@ -86,14 +86,14 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 TotalPages = 0,
             },
         };
-        Webhooks::ErrorDetail expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        Webhooks::ApiMeta expectedMeta = new()
+        ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -221,7 +221,7 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        Data expectedData = new()
+        MessageRetrieveActivitiesResponseData expectedData = new()
         {
             Activities =
             [
@@ -249,14 +249,14 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
                 TotalPages = 0,
             },
         };
-        Webhooks::ErrorDetail expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        Webhooks::ApiMeta expectedMeta = new()
+        ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -651,12 +651,12 @@ public class MessageRetrieveActivitiesResponseTest : TestBase
     }
 }
 
-public class DataTest : TestBase
+public class MessageRetrieveActivitiesResponseDataTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Data
+        var model = new MessageRetrieveActivitiesResponseData
         {
             Activities =
             [
@@ -701,7 +701,7 @@ public class DataTest : TestBase
             },
         ];
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        Webhooks::PaginationMeta expectedPagination = new()
+        PaginationMeta expectedPagination = new()
         {
             Cursors = new() { After = "after", Before = "before" },
             HasMore = true,
@@ -724,7 +724,7 @@ public class DataTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Data
+        var model = new MessageRetrieveActivitiesResponseData
         {
             Activities =
             [
@@ -754,7 +754,10 @@ public class DataTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Data>(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<MessageRetrieveActivitiesResponseData>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -762,7 +765,7 @@ public class DataTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Data
+        var model = new MessageRetrieveActivitiesResponseData
         {
             Activities =
             [
@@ -792,7 +795,10 @@ public class DataTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Data>(element, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<MessageRetrieveActivitiesResponseData>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         List<Activity> expectedActivities =
@@ -811,7 +817,7 @@ public class DataTest : TestBase
             },
         ];
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        Webhooks::PaginationMeta expectedPagination = new()
+        PaginationMeta expectedPagination = new()
         {
             Cursors = new() { After = "after", Before = "before" },
             HasMore = true,
@@ -834,7 +840,7 @@ public class DataTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Data
+        var model = new MessageRetrieveActivitiesResponseData
         {
             Activities =
             [
@@ -869,7 +875,7 @@ public class DataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Data { };
+        var model = new MessageRetrieveActivitiesResponseData { };
 
         Assert.Null(model.Activities);
         Assert.False(model.RawData.ContainsKey("activities"));
@@ -882,7 +888,7 @@ public class DataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Data { };
+        var model = new MessageRetrieveActivitiesResponseData { };
 
         model.Validate();
     }
@@ -890,7 +896,7 @@ public class DataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new Data
+        var model = new MessageRetrieveActivitiesResponseData
         {
             // Null should be interpreted as omitted for these properties
             Activities = null,
@@ -909,7 +915,7 @@ public class DataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Data
+        var model = new MessageRetrieveActivitiesResponseData
         {
             // Null should be interpreted as omitted for these properties
             Activities = null,
@@ -923,7 +929,7 @@ public class DataTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Data
+        var model = new MessageRetrieveActivitiesResponseData
         {
             Activities =
             [
@@ -952,7 +958,7 @@ public class DataTest : TestBase
             },
         };
 
-        Data copied = new(model);
+        MessageRetrieveActivitiesResponseData copied = new(model);
 
         Assert.Equal(model, copied);
     }

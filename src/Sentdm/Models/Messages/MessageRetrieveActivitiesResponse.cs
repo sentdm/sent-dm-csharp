@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
-using Webhooks = Sentdm.Models.Webhooks;
+using Sentdm.Models.Webhooks;
 
 namespace Sentdm.Models.Messages;
 
@@ -24,12 +24,12 @@ public sealed record class MessageRetrieveActivitiesResponse : JsonModel
     /// <summary>
     /// Response for GET /messages/{id}/activities
     /// </summary>
-    public Data? Data
+    public MessageRetrieveActivitiesResponseData? Data
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Data>("data");
+            return this._rawData.GetNullableClass<MessageRetrieveActivitiesResponseData>("data");
         }
         init { this._rawData.Set("data", value); }
     }
@@ -37,12 +37,12 @@ public sealed record class MessageRetrieveActivitiesResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public Webhooks::ErrorDetail? Error
+    public ErrorDetail? Error
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>("error");
+            return this._rawData.GetNullableClass<ErrorDetail>("error");
         }
         init { this._rawData.Set("error", value); }
     }
@@ -50,12 +50,12 @@ public sealed record class MessageRetrieveActivitiesResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public Webhooks::ApiMeta? Meta
+    public ApiMeta? Meta
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::ApiMeta>("meta");
+            return this._rawData.GetNullableClass<ApiMeta>("meta");
         }
         init
         {
@@ -141,8 +141,13 @@ class MessageRetrieveActivitiesResponseFromRaw : IFromRawJson<MessageRetrieveAct
 /// <summary>
 /// Response for GET /messages/{id}/activities
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<Data, DataFromRaw>))]
-public sealed record class Data : JsonModel
+[JsonConverter(
+    typeof(JsonModelConverter<
+        MessageRetrieveActivitiesResponseData,
+        MessageRetrieveActivitiesResponseDataFromRaw
+    >)
+)]
+public sealed record class MessageRetrieveActivitiesResponseData : JsonModel
 {
     /// <summary>
     /// List of activity events ordered by most recent first
@@ -192,12 +197,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Pagination metadata for list responses
     /// </summary>
-    public Webhooks::PaginationMeta? Pagination
+    public PaginationMeta? Pagination
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Webhooks::PaginationMeta>("pagination");
+            return this._rawData.GetNullableClass<PaginationMeta>("pagination");
         }
         init
         {
@@ -221,39 +226,45 @@ public sealed record class Data : JsonModel
         this.Pagination?.Validate();
     }
 
-    public Data() { }
+    public MessageRetrieveActivitiesResponseData() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Data(Data data)
-        : base(data) { }
+    public MessageRetrieveActivitiesResponseData(
+        MessageRetrieveActivitiesResponseData messageRetrieveActivitiesResponseData
+    )
+        : base(messageRetrieveActivitiesResponseData) { }
 #pragma warning restore CS8618
 
-    public Data(IReadOnlyDictionary<string, JsonElement> rawData)
+    public MessageRetrieveActivitiesResponseData(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Data(FrozenDictionary<string, JsonElement> rawData)
+    MessageRetrieveActivitiesResponseData(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="DataFromRaw.FromRawUnchecked"/>
-    public static Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="MessageRetrieveActivitiesResponseDataFromRaw.FromRawUnchecked"/>
+    public static MessageRetrieveActivitiesResponseData FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class DataFromRaw : IFromRawJson<Data>
+class MessageRetrieveActivitiesResponseDataFromRaw
+    : IFromRawJson<MessageRetrieveActivitiesResponseData>
 {
     /// <inheritdoc/>
-    public Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Data.FromRawUnchecked(rawData);
+    public MessageRetrieveActivitiesResponseData FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => MessageRetrieveActivitiesResponseData.FromRawUnchecked(rawData);
 }
 
 /// <summary>
