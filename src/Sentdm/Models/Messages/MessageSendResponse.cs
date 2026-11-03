@@ -152,12 +152,14 @@ class MessageSendResponseFromRaw : IFromRawJson<MessageSendResponse>
 [JsonConverter(typeof(JsonModelConverter<MessageSendResponseData, MessageSendResponseDataFromRaw>))]
 public sealed record class MessageSendResponseData : JsonModel
 {
-    public IReadOnlyList<Recipient>? Recipients
+    public IReadOnlyList<MessageSendResponseDataRecipient>? Recipients
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Recipient>>("recipients");
+            return this._rawData.GetNullableStruct<
+                ImmutableArray<MessageSendResponseDataRecipient>
+            >("recipients");
         }
         init
         {
@@ -166,7 +168,7 @@ public sealed record class MessageSendResponseData : JsonModel
                 return;
             }
 
-            this._rawData.Set<ImmutableArray<Recipient>?>(
+            this._rawData.Set<ImmutableArray<MessageSendResponseDataRecipient>?>(
                 "recipients",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -285,8 +287,13 @@ class MessageSendResponseDataFromRaw : IFromRawJson<MessageSendResponseData>
 /// <summary>
 /// What one recipient of a send got, as the API reports it.
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<Recipient, RecipientFromRaw>))]
-public sealed record class Recipient : JsonModel
+[JsonConverter(
+    typeof(JsonModelConverter<
+        MessageSendResponseDataRecipient,
+        MessageSendResponseDataRecipientFromRaw
+    >)
+)]
+public sealed record class MessageSendResponseDataRecipient : JsonModel
 {
     /// <summary>
     /// Resolved template body for this recipient's channel, or null when the channel
@@ -366,37 +373,42 @@ public sealed record class Recipient : JsonModel
         _ = this.To;
     }
 
-    public Recipient() { }
+    public MessageSendResponseDataRecipient() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Recipient(Recipient recipient)
-        : base(recipient) { }
+    public MessageSendResponseDataRecipient(
+        MessageSendResponseDataRecipient messageSendResponseDataRecipient
+    )
+        : base(messageSendResponseDataRecipient) { }
 #pragma warning restore CS8618
 
-    public Recipient(IReadOnlyDictionary<string, JsonElement> rawData)
+    public MessageSendResponseDataRecipient(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Recipient(FrozenDictionary<string, JsonElement> rawData)
+    MessageSendResponseDataRecipient(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="RecipientFromRaw.FromRawUnchecked"/>
-    public static Recipient FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="MessageSendResponseDataRecipientFromRaw.FromRawUnchecked"/>
+    public static MessageSendResponseDataRecipient FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class RecipientFromRaw : IFromRawJson<Recipient>
+class MessageSendResponseDataRecipientFromRaw : IFromRawJson<MessageSendResponseDataRecipient>
 {
     /// <inheritdoc/>
-    public Recipient FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Recipient.FromRawUnchecked(rawData);
+    public MessageSendResponseDataRecipient FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => MessageSendResponseDataRecipient.FromRawUnchecked(rawData);
 }

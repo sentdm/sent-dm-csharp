@@ -35,6 +35,30 @@ public sealed class MessageService : IMessageService
     }
 
     /// <inheritdoc/>
+    public async Task<MessageResendResponse> Resend(
+        MessageResendParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Resend(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<MessageResendResponse> Resend(
+        string id,
+        MessageResendParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Resend(parameters with { ID = id }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
     public async Task<MessageRetrieveActivitiesResponse> RetrieveActivities(
         MessageRetrieveActivitiesParams parameters,
         CancellationToken cancellationToken = default
@@ -109,6 +133,51 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     public MessageServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<MessageResendResponse>> Resend(
+        MessageResendParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        if (parameters.ID == null)
+        {
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
+        }
+
+        HttpRequest<MessageResendParams> request = new()
+        {
+            Method = HttpMethod.Post,
+            Params = parameters,
+        };
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var deserializedResponse = await response
+                    .Deserialize<MessageResendResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    deserializedResponse.Validate();
+                }
+                return deserializedResponse;
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public Task<HttpResponse<MessageResendResponse>> Resend(
+        string id,
+        MessageResendParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Resend(parameters with { ID = id }, cancellationToken);
     }
 
     /// <inheritdoc/>
