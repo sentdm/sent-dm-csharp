@@ -35,7 +35,9 @@ jobs:
         id: login
         uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
         with:
-          user: sentdm
+          # nuget.org wants the username of the account that created the policy,
+          # not the organisation that owns it. Repository secret NUGET_USER.
+          user: ${{ secrets.NUGET_USER }}
 
       - name: Publish package to nuget.org
         run: dotnet nuget push
