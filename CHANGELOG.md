@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.43.2](https://github.com/sentdm/sent-dm-csharp/compare/v0.43.1...v0.43.2) (2026-10-30)
+
+
+### Documentation
+
+* **api:** describe the default body type on template bodies ([cfd715c](https://github.com/sentdm/sent-dm-csharp/commit/cfd715cede31048034bb0808fb0551f9d096a05f))
+
 ## [0.43.1](https://github.com/sentdm/sent-dm-csharp/compare/v0.43.0...v0.43.1) (2026-10-30)
 
 
