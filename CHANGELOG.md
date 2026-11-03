@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.44.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.43.2...v0.44.0) (2026-11-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** in `Sentdm.Models.Messages`, the type of `MessageSendResponse.Data` is now `Data` (was `MessageSendResponseData`), and the type of `MessageRetrieveActivitiesResponse.Data` is now `MessageRetrieveActivitiesResponseData` (was `Data`). Code that reads `response.Data` and its members is unaffected. Code that names either type needs the new name; the compiler points at every place.
+
+### Features
+
+* **api:** add messages.resend to resend a message on its id ([bb36139](https://github.com/sentdm/sent-dm-csharp/commit/bb36139c1904d273f4a8598863d69e72d885f862))
+
+
+### Refactors
+
+* **api:** rename the nested data types of two message responses ([4ca1852](https://github.com/sentdm/sent-dm-csharp/commit/4ca18529c06fb6f72e9333e9fe2386abe359197d))
+
 ## [0.43.2](https://github.com/sentdm/sent-dm-csharp/compare/v0.43.1...v0.43.2) (2026-10-30)
 
 
