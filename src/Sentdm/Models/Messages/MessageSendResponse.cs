@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
-using Sentdm.Models.Webhooks;
+using Webhooks = Sentdm.Models.Webhooks;
 
 namespace Sentdm.Models.Messages;
 
@@ -27,12 +27,12 @@ public sealed record class MessageSendResponse : JsonModel
     /// the endpoint decides which of the two to answer with. From always returns
     /// this type.
     /// </summary>
-    public MessageSendResponseData? Data
+    public Data? Data
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<MessageSendResponseData>("data");
+            return this._rawData.GetNullableClass<Data>("data");
         }
         init { this._rawData.Set("data", value); }
     }
@@ -40,12 +40,12 @@ public sealed record class MessageSendResponse : JsonModel
     /// <summary>
     /// Error information
     /// </summary>
-    public ErrorDetail? Error
+    public Webhooks::ErrorDetail? Error
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ErrorDetail>("error");
+            return this._rawData.GetNullableClass<Webhooks::ErrorDetail>("error");
         }
         init { this._rawData.Set("error", value); }
     }
@@ -53,12 +53,12 @@ public sealed record class MessageSendResponse : JsonModel
     /// <summary>
     /// Request and response metadata
     /// </summary>
-    public ApiMeta? Meta
+    public Webhooks::ApiMeta? Meta
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiMeta>("meta");
+            return this._rawData.GetNullableClass<Webhooks::ApiMeta>("meta");
         }
         init
         {
@@ -149,8 +149,8 @@ class MessageSendResponseFromRaw : IFromRawJson<MessageSendResponse>
 /// scheduled_at is a ScheduledSendMessageResponse, and the endpoint decides which
 /// of the two to answer with. From always returns this type.
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<MessageSendResponseData, MessageSendResponseDataFromRaw>))]
-public sealed record class MessageSendResponseData : JsonModel
+[JsonConverter(typeof(JsonModelConverter<Data, DataFromRaw>))]
+public sealed record class Data : JsonModel
 {
     public IReadOnlyList<Recipient>? Recipients
     {
@@ -244,42 +244,39 @@ public sealed record class MessageSendResponseData : JsonModel
         _ = this.TemplateName;
     }
 
-    public MessageSendResponseData() { }
+    public Data() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MessageSendResponseData(MessageSendResponseData messageSendResponseData)
-        : base(messageSendResponseData) { }
+    public Data(Data data)
+        : base(data) { }
 #pragma warning restore CS8618
 
-    public MessageSendResponseData(IReadOnlyDictionary<string, JsonElement> rawData)
+    public Data(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MessageSendResponseData(FrozenDictionary<string, JsonElement> rawData)
+    Data(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="MessageSendResponseDataFromRaw.FromRawUnchecked"/>
-    public static MessageSendResponseData FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="DataFromRaw.FromRawUnchecked"/>
+    public static Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class MessageSendResponseDataFromRaw : IFromRawJson<MessageSendResponseData>
+class DataFromRaw : IFromRawJson<Data>
 {
     /// <inheritdoc/>
-    public MessageSendResponseData FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => MessageSendResponseData.FromRawUnchecked(rawData);
+    public Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Data.FromRawUnchecked(rawData);
 }
 
 /// <summary>
