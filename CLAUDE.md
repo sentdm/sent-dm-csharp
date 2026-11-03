@@ -17,14 +17,16 @@ release-please from the commit history on `main`.
 - **Everything is generated unless this file says otherwise.** There is no
   hand-written directory, and generated files carry no marker comment.
 - **Generator-owned, so don't edit them here**: `.stats.yml`,
-  `.github/workflows/ci.yml`, the publish, release and sync workflows,
+  `.github/workflows/ci.yml`, the release and sync workflows,
   `scripts/`, and `release-please-config.json`. The next generated commit
   rewrites them, and an edit conflicts.
 - **release-please-owned**: `CHANGELOG.md`, `.release-please-manifest.json`
   and the version constant. They are rewritten in each release PR.
 - **Hand-written and kept across regenerations**: this file, `REVIEW.md`
   and `.github/CODEOWNERS`.
-- **Custom code in this repository today**: the project file.
+- **Custom code in this repository today**: the project file, and
+  `.github/workflows/publish-nuget.yml`, which publishes with nuget.org
+  trusted publishing (OIDC) instead of a stored API key.
 
 ### Editing generated files
 
