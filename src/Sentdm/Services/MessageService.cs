@@ -35,7 +35,7 @@ public sealed class MessageService : IMessageService
     }
 
     /// <inheritdoc/>
-    public async Task<MessageResendResponse> Resend(
+    public async Task<MessageSendResponse> Resend(
         MessageResendParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -47,7 +47,7 @@ public sealed class MessageService : IMessageService
     }
 
     /// <inheritdoc/>
-    public Task<MessageResendResponse> Resend(
+    public Task<MessageSendResponse> Resend(
         string id,
         MessageResendParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -136,7 +136,7 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<MessageResendResponse>> Resend(
+    public async Task<HttpResponse<MessageSendResponse>> Resend(
         MessageResendParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -156,20 +156,20 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
             response,
             async (token) =>
             {
-                var deserializedResponse = await response
-                    .Deserialize<MessageResendResponse>(token)
+                var messageSendResponse = await response
+                    .Deserialize<MessageSendResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    deserializedResponse.Validate();
+                    messageSendResponse.Validate();
                 }
-                return deserializedResponse;
+                return messageSendResponse;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<MessageResendResponse>> Resend(
+    public Task<HttpResponse<MessageSendResponse>> Resend(
         string id,
         MessageResendParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -288,14 +288,14 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
             response,
             async (token) =>
             {
-                var deserializedResponse = await response
+                var messageSendResponse = await response
                     .Deserialize<MessageSendResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    deserializedResponse.Validate();
+                    messageSendResponse.Validate();
                 }
-                return deserializedResponse;
+                return messageSendResponse;
             }
         );
     }

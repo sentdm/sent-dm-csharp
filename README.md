@@ -51,9 +51,9 @@ MessageSendParams parameters = new()
     ],
 };
 
-var response = await client.Messages.Send(parameters);
+var messageSendResponse = await client.Messages.Send(parameters);
 
-Console.WriteLine(response);
+Console.WriteLine(messageSendResponse);
 ```
 
 ## Client configuration
@@ -91,7 +91,7 @@ To temporarily use a modified client configuration, while reusing the same conne
 ```csharp
 using System;
 
-var response = await client
+var messageSendResponse = await client
     .WithOptions(options =>
         options with
         {
@@ -101,7 +101,7 @@ var response = await client
     )
     .Messages.Send(parameters);
 
-Console.WriteLine(response);
+Console.WriteLine(messageSendResponse);
 ```
 
 Using a [`with` expression](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/with-expression) makes it easy to construct the modified options.
@@ -233,13 +233,13 @@ Or configure a single method call using [`WithOptions`](#modifying-configuration
 ```csharp
 using System;
 
-var response = await client
+var messageSendResponse = await client
     .WithOptions(options =>
         options with { MaxRetries = 3 }
     )
     .Messages.Send(parameters);
 
-Console.WriteLine(response);
+Console.WriteLine(messageSendResponse);
 ```
 
 ### Timeouts
@@ -260,13 +260,13 @@ Or configure a single method call using [`WithOptions`](#modifying-configuration
 ```csharp
 using System;
 
-var response = await client
+var messageSendResponse = await client
     .WithOptions(options =>
         options with { Timeout = TimeSpan.FromSeconds(42) }
     )
     .Messages.Send(parameters);
 
-Console.WriteLine(response);
+Console.WriteLine(messageSendResponse);
 ```
 
 ### Proxies
@@ -415,8 +415,8 @@ By default, the SDK will not throw an exception in this case. It will throw `Sen
 If you would prefer to check that the response is completely well-typed upfront, then either call `Validate`:
 
 ```csharp
-var response = client.Messages.Send();
-response.Validate();
+var messageSendResponse = client.Messages.Send();
+messageSendResponse.Validate();
 ```
 
 Or configure the client using the `ResponseValidation` option:
@@ -432,13 +432,13 @@ Or configure a single method call using [`WithOptions`](#modifying-configuration
 ```csharp
 using System;
 
-var response = await client
+var messageSendResponse = await client
     .WithOptions(options =>
         options with { ResponseValidation = true }
     )
     .Messages.Send(parameters);
 
-Console.WriteLine(response);
+Console.WriteLine(messageSendResponse);
 ```
 
 ## Semantic versioning

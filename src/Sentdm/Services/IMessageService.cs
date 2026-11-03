@@ -80,13 +80,13 @@ public interface IMessageService
     /// <para>The response has the same shape as `POST /v3/messages`: `recipients` has a
     /// single entry whose `message_id` is the id you resent.</para>
     /// </summary>
-    Task<MessageResendResponse> Resend(
+    Task<MessageSendResponse> Resend(
         MessageResendParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Resend(MessageResendParams, CancellationToken)"/>
-    Task<MessageResendResponse> Resend(
+    Task<MessageSendResponse> Resend(
         string id,
         MessageResendParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -190,13 +190,13 @@ public interface IMessageServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/messages/{id}/resend</c>, but is otherwise the
     /// same as <see cref="IMessageService.Resend(MessageResendParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<MessageResendResponse>> Resend(
+    Task<HttpResponse<MessageSendResponse>> Resend(
         MessageResendParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Resend(MessageResendParams, CancellationToken)"/>
-    Task<HttpResponse<MessageResendResponse>> Resend(
+    Task<HttpResponse<MessageSendResponse>> Resend(
         string id,
         MessageResendParams? parameters = null,
         CancellationToken cancellationToken = default

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Messages;
-using Sentdm.Models.Webhooks;
+using Webhooks = Sentdm.Models.Webhooks;
 
 namespace Sentdm.Tests.Models.Messages;
 
@@ -46,7 +46,7 @@ public class MessageSendResponseTest : TestBase
             Success = true,
         };
 
-        MessageSendResponseData expectedData = new()
+        Data expectedData = new()
         {
             Recipients =
             [
@@ -62,14 +62,14 @@ public class MessageSendResponseTest : TestBase
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
         };
-        ErrorDetail expectedError = new()
+        Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        ApiMeta expectedMeta = new()
+        Webhooks::ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -173,7 +173,7 @@ public class MessageSendResponseTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        MessageSendResponseData expectedData = new()
+        Data expectedData = new()
         {
             Recipients =
             [
@@ -189,14 +189,14 @@ public class MessageSendResponseTest : TestBase
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
         };
-        ErrorDetail expectedError = new()
+        Webhooks::ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        ApiMeta expectedMeta = new()
+        Webhooks::ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -519,12 +519,12 @@ public class MessageSendResponseTest : TestBase
     }
 }
 
-public class MessageSendResponseDataTest : TestBase
+public class DataTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new MessageSendResponseData
+        var model = new Data
         {
             Recipients =
             [
@@ -541,7 +541,7 @@ public class MessageSendResponseDataTest : TestBase
             TemplateName = "template_name",
         };
 
-        List<MessageSendResponseDataRecipient> expectedRecipients =
+        List<Recipient> expectedRecipients =
         [
             new()
             {
@@ -569,7 +569,7 @@ public class MessageSendResponseDataTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new MessageSendResponseData
+        var model = new Data
         {
             Recipients =
             [
@@ -587,10 +587,7 @@ public class MessageSendResponseDataTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageSendResponseData>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Data>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -598,7 +595,7 @@ public class MessageSendResponseDataTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new MessageSendResponseData
+        var model = new Data
         {
             Recipients =
             [
@@ -616,13 +613,10 @@ public class MessageSendResponseDataTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageSendResponseData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Data>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        List<MessageSendResponseDataRecipient> expectedRecipients =
+        List<Recipient> expectedRecipients =
         [
             new()
             {
@@ -650,7 +644,7 @@ public class MessageSendResponseDataTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new MessageSendResponseData
+        var model = new Data
         {
             Recipients =
             [
@@ -673,7 +667,7 @@ public class MessageSendResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new MessageSendResponseData { };
+        var model = new Data { };
 
         Assert.Null(model.Recipients);
         Assert.False(model.RawData.ContainsKey("recipients"));
@@ -688,7 +682,7 @@ public class MessageSendResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new MessageSendResponseData { };
+        var model = new Data { };
 
         model.Validate();
     }
@@ -696,7 +690,7 @@ public class MessageSendResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new MessageSendResponseData
+        var model = new Data
         {
             // Null should be interpreted as omitted for these properties
             Recipients = null,
@@ -718,7 +712,7 @@ public class MessageSendResponseDataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new MessageSendResponseData
+        var model = new Data
         {
             // Null should be interpreted as omitted for these properties
             Recipients = null,
@@ -733,7 +727,7 @@ public class MessageSendResponseDataTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new MessageSendResponseData
+        var model = new Data
         {
             Recipients =
             [
@@ -750,18 +744,18 @@ public class MessageSendResponseDataTest : TestBase
             TemplateName = "template_name",
         };
 
-        MessageSendResponseData copied = new(model);
+        Data copied = new(model);
 
         Assert.Equal(model, copied);
     }
 }
 
-public class MessageSendResponseDataRecipientTest : TestBase
+public class RecipientTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new MessageSendResponseDataRecipient
+        var model = new Recipient
         {
             Body = "body",
             Channel = "channel",
@@ -783,7 +777,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new MessageSendResponseDataRecipient
+        var model = new Recipient
         {
             Body = "body",
             Channel = "channel",
@@ -792,10 +786,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageSendResponseDataRecipient>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Recipient>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -803,7 +794,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new MessageSendResponseDataRecipient
+        var model = new Recipient
         {
             Body = "body",
             Channel = "channel",
@@ -812,7 +803,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageSendResponseDataRecipient>(
+        var deserialized = JsonSerializer.Deserialize<Recipient>(
             element,
             ModelBase.SerializerOptions
         );
@@ -832,7 +823,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new MessageSendResponseDataRecipient
+        var model = new Recipient
         {
             Body = "body",
             Channel = "channel",
@@ -846,7 +837,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new MessageSendResponseDataRecipient { Body = "body", Channel = "channel" };
+        var model = new Recipient { Body = "body", Channel = "channel" };
 
         Assert.Null(model.MessageID);
         Assert.False(model.RawData.ContainsKey("message_id"));
@@ -857,7 +848,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new MessageSendResponseDataRecipient { Body = "body", Channel = "channel" };
+        var model = new Recipient { Body = "body", Channel = "channel" };
 
         model.Validate();
     }
@@ -865,7 +856,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new MessageSendResponseDataRecipient
+        var model = new Recipient
         {
             Body = "body",
             Channel = "channel",
@@ -884,7 +875,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new MessageSendResponseDataRecipient
+        var model = new Recipient
         {
             Body = "body",
             Channel = "channel",
@@ -900,11 +891,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new MessageSendResponseDataRecipient
-        {
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            To = "to",
-        };
+        var model = new Recipient { MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", To = "to" };
 
         Assert.Null(model.Body);
         Assert.False(model.RawData.ContainsKey("body"));
@@ -915,11 +902,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new MessageSendResponseDataRecipient
-        {
-            MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            To = "to",
-        };
+        var model = new Recipient { MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", To = "to" };
 
         model.Validate();
     }
@@ -927,7 +910,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new MessageSendResponseDataRecipient
+        var model = new Recipient
         {
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             To = "to",
@@ -945,7 +928,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new MessageSendResponseDataRecipient
+        var model = new Recipient
         {
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             To = "to",
@@ -960,7 +943,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new MessageSendResponseDataRecipient
+        var model = new Recipient
         {
             Body = "body",
             Channel = "channel",
@@ -968,7 +951,7 @@ public class MessageSendResponseDataRecipientTest : TestBase
             To = "to",
         };
 
-        MessageSendResponseDataRecipient copied = new(model);
+        Recipient copied = new(model);
 
         Assert.Equal(model, copied);
     }
