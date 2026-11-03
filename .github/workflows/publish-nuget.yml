@@ -1,6 +1,14 @@
 # This workflow is triggered when a GitHub release is created.
 # It can also be run manually to re-publish to NuGet in case it failed for some reason.
 # You can run this workflow by navigating to https://www.github.com/sentdm/sent-dm-csharp/actions/workflows/publish-nuget.yml
+#
+# Publishing uses nuget.org trusted publishing: the job's GitHub OIDC token is
+# exchanged for a one-hour API key by NuGet/login, against a Trusted Publishing
+# policy on nuget.org created by the `sent` profile with the `sentdm`
+# organisation as the package owner (repository owner sentdm, repository
+# sent-dm-csharp, workflow file publish-nuget.yml, environment blank, glob
+# Sentdm). No long-lived key exists anywhere. A version nuget.org already has is
+# skipped, so a re-run is safe.
 name: Publish to NuGet
 on:
   workflow_dispatch:
@@ -10,6 +18,9 @@ jobs:
   publish:
     name: publish
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -24,10 +35,18 @@ jobs:
           --configuration Release
           --output "${{github.workspace}}/artifacts/packages"
 
+      - name: Get a short-lived NuGet API key
+        id: login
+        uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
+        with:
+          # The nuget.org profile that created the policy (not the organisation that
+          # owns the package, and not an email address); the NUGET_USER repository
+          # variable overrides it for a policy created by someone else.
+          user: ${{ vars.NUGET_USER || 'sent' }}
+
       - name: Publish package to nuget.org
         run: dotnet nuget push
           $(find ${{ github.workspace }}/artifacts/packages/*.nupkg ! -name "*.symbols.nupkg")
           --source https://api.nuget.org/v3/index.json
-          --api-key $NUGET_API_KEY
-        env:
-          NUGET_API_KEY: ${{ secrets.SENT_NUGET_API_KEY || secrets.NUGET_API_KEY }}
+          --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
+          --skip-duplicate
