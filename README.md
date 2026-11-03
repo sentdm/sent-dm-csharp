@@ -8,10 +8,9 @@ The REST API documentation can be found on [docs.sent.dm](https://docs.sent.dm).
 
 ## Installation
 
-Install the package from [NuGet](https://www.nuget.org/packages/Sentdm):
-
 ```bash
-dotnet add package Sentdm
+git clone git@github.com:sentdm/sent-dm-csharp.git
+dotnet add reference sent-dm-csharp/src/Sentdm
 ```
 
 ## Requirements
