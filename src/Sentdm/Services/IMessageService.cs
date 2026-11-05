@@ -50,6 +50,49 @@ public interface IMessageService
     IMessageService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
+    /// Resends a message you already sent, on the same message id, without rebuilding
+    /// the request. The typical use is recovering a BLOCKED message — for example one
+    /// refused for insufficient balance — after the account has been topped up.
+    ///
+    /// <para>**A resend bills again.** Each accepted resend is a new delivery attempt
+    /// and records a new charge against the same message id; a client that resends on
+    /// every failure is charged on every loop.</para>
+    ///
+    /// <para>**Every policy runs again.** The resend goes back through the full send
+    /// pipeline — consent, balance, KYC and channel quota, template approval, quiet
+    /// hours and channel health — so it can land on BLOCKED, FILTERED or SCHEDULED
+    /// again rather than being sent, exactly as a fresh send would. Status webhooks
+    /// (message.sent, message.blocked, message.filtered, message.failed) fire again for
+    /// the same message id, so consumers keyed on the id will see repeated transitions.</para>
+    ///
+    /// <para>**What can be resent.** A message in a terminal state — DELIVERED, FAILED,
+    /// READ or BLOCKED — or one stuck at SENT for more than 15 minutes. A FILTERED
+    /// message can never be resent: the recipient opted out or a routing rule refused
+    /// the send. A message still in flight (QUEUED, PROCESSED, ROUTED), held for quiet
+    /// hours (SCHEDULED), or SENT less than 15 minutes ago returns 409. Two concurrent
+    /// resends of one id are serialised: one is accepted, the other gets 409.</para>
+    ///
+    /// <para>The resend keeps the channel the message was originally requested on; the
+    /// channel cannot be changed on a resend — send a new message instead.
+    /// `Idempotency-Key` is honoured, so a retried request replays the first accepted
+    /// response instead of resending twice.</para>
+    ///
+    /// <para>The response has the same shape as `POST /v3/messages`: `recipients` has a
+    /// single entry whose `message_id` is the id you resent.</para>
+    /// </summary>
+    Task<MessageSendResponse> Resend(
+        MessageResendParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Resend(MessageResendParams, CancellationToken)"/>
+    Task<MessageSendResponse> Resend(
+        string id,
+        MessageResendParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Retrieves the activity log for a specific message. Activities track the message
     /// lifecycle including acceptance, processing, sending, delivery, and any errors. A
     /// SCHEDULED entry carries scheduled_at, the release instant in UTC as it stood at
@@ -142,6 +185,22 @@ public interface IMessageServiceWithRawResponse
     /// <para>The original service is not modified.</para>
     /// </summary>
     IMessageServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    /// <summary>
+    /// Returns a raw HTTP response for <c>post /v3/messages/{id}/resend</c>, but is otherwise the
+    /// same as <see cref="IMessageService.Resend(MessageResendParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<MessageSendResponse>> Resend(
+        MessageResendParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Resend(MessageResendParams, CancellationToken)"/>
+    Task<HttpResponse<MessageSendResponse>> Resend(
+        string id,
+        MessageResendParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     /// Returns a raw HTTP response for <c>get /v3/messages/{id}/activities</c>, but is otherwise the
