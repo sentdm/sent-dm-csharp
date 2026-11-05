@@ -265,6 +265,7 @@ public class TemplateCreateParamsTest : TestBase
                 },
             },
             Language = "en_US",
+            Name = "Welcome Message",
             Sandbox = false,
             SubmitForReview = false,
             IdempotencyKey = "req_abc123_retry1",
@@ -524,6 +525,7 @@ public class TemplateCreateParamsTest : TestBase
             },
         };
         string expectedLanguage = "en_US";
+        string expectedName = "Welcome Message";
         bool expectedSandbox = false;
         bool expectedSubmitForReview = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
@@ -534,6 +536,7 @@ public class TemplateCreateParamsTest : TestBase
         Assert.Null(parameters.CreationSource);
         Assert.Equal(expectedDefinition, parameters.Definition);
         Assert.Equal(expectedLanguage, parameters.Language);
+        Assert.Equal(expectedName, parameters.Name);
         Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedSubmitForReview, parameters.SubmitForReview);
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
@@ -548,6 +551,7 @@ public class TemplateCreateParamsTest : TestBase
             Category = "MARKETING",
             CreationSource = null,
             Language = "en_US",
+            Name = "Welcome Message",
         };
 
         Assert.Null(parameters.AutoCreateForSp);
@@ -572,6 +576,7 @@ public class TemplateCreateParamsTest : TestBase
             Category = "MARKETING",
             CreationSource = null,
             Language = "en_US",
+            Name = "Welcome Message",
 
             // Null should be interpreted as omitted for these properties
             AutoCreateForSp = null,
@@ -864,6 +869,8 @@ public class TemplateCreateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("creation_source"));
         Assert.Null(parameters.Language);
         Assert.False(parameters.RawBodyData.ContainsKey("language"));
+        Assert.Null(parameters.Name);
+        Assert.False(parameters.RawBodyData.ContainsKey("name"));
     }
 
     [Fact]
@@ -1130,6 +1137,7 @@ public class TemplateCreateParamsTest : TestBase
             Category = null,
             CreationSource = null,
             Language = null,
+            Name = null,
         };
 
         Assert.Null(parameters.Category);
@@ -1138,6 +1146,8 @@ public class TemplateCreateParamsTest : TestBase
         Assert.True(parameters.RawBodyData.ContainsKey("creation_source"));
         Assert.Null(parameters.Language);
         Assert.True(parameters.RawBodyData.ContainsKey("language"));
+        Assert.Null(parameters.Name);
+        Assert.True(parameters.RawBodyData.ContainsKey("name"));
     }
 
     [Fact]
@@ -1428,6 +1438,7 @@ public class TemplateCreateParamsTest : TestBase
                 },
             },
             Language = "en_US",
+            Name = "Welcome Message",
             Sandbox = false,
             SubmitForReview = false,
             IdempotencyKey = "req_abc123_retry1",
