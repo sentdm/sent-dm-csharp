@@ -234,7 +234,7 @@ public sealed record class MessageEventPayload : JsonModel
     }
 
     /// <summary>
-    /// When the message reached MessageStatus, in UTC (yyyy-MM-ddTHH:mm:ssZ).
+    /// When the message reached the status this event reports, in UTC (yyyy-MM-ddTHH:mm:ssZ).
     /// </summary>
     public string? UpdatedAt
     {
