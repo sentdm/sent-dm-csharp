@@ -275,12 +275,12 @@ public sealed record class WebhookResponse : JsonModel
     /// reports them.              Its own type, field for field the same as the request's
     /// sender_profile. A response is not a request, whatever it carries.
     /// </summary>
-    public WebhookResponseSenderProfile? SenderProfile
+    public WebhookSenderProfile? SenderProfile
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<WebhookResponseSenderProfile>("sender_profile");
+            return this._rawData.GetNullableClass<WebhookSenderProfile>("sender_profile");
         }
         init { this._rawData.Set("sender_profile", value); }
     }
@@ -401,114 +401,4 @@ class WebhookResponseFromRaw : IFromRawJson<WebhookResponse>
     /// <inheritdoc/>
     public WebhookResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         WebhookResponse.FromRawUnchecked(rawData);
-}
-
-/// <summary>
-/// The events a version 1 webhook's sender profile clones receive, as a response
-/// reports them.              Its own type, field for field the same as the request's
-/// sender_profile. A response is not a request, whatever it carries.
-/// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<WebhookResponseSenderProfile, WebhookResponseSenderProfileFromRaw>)
-)]
-public sealed record class WebhookResponseSenderProfile : JsonModel
-{
-    public IReadOnlyDictionary<string, IReadOnlyList<string>>? EventFilters
-    {
-        get
-        {
-            this._rawData.Freeze();
-            var value = this._rawData.GetNullableClass<
-                FrozenDictionary<string, ImmutableArray<string>>
-            >("event_filters");
-            if (value == null)
-            {
-                return null;
-            }
-
-            return FrozenDictionary.ToFrozenDictionary(
-                value,
-                entry => entry.Key,
-                (entry) => (IReadOnlyList<string>)entry.Value
-            );
-        }
-        init
-        {
-            this._rawData.Set<FrozenDictionary<string, ImmutableArray<string>>?>(
-                "event_filters",
-                value == null
-                    ? null
-                    : FrozenDictionary.ToFrozenDictionary(
-                        value,
-                        entry => entry.Key,
-                        (entry) => ImmutableArray.ToImmutableArray(entry.Value)
-                    )
-            );
-        }
-    }
-
-    public IReadOnlyList<string>? EventTypes
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("event_types");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set<ImmutableArray<string>?>(
-                "event_types",
-                value == null ? null : ImmutableArray.ToImmutableArray(value)
-            );
-        }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.EventFilters;
-        _ = this.EventTypes;
-    }
-
-    public WebhookResponseSenderProfile() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public WebhookResponseSenderProfile(WebhookResponseSenderProfile webhookResponseSenderProfile)
-        : base(webhookResponseSenderProfile) { }
-#pragma warning restore CS8618
-
-    public WebhookResponseSenderProfile(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    WebhookResponseSenderProfile(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="WebhookResponseSenderProfileFromRaw.FromRawUnchecked"/>
-    public static WebhookResponseSenderProfile FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class WebhookResponseSenderProfileFromRaw : IFromRawJson<WebhookResponseSenderProfile>
-{
-    /// <inheritdoc/>
-    public WebhookResponseSenderProfile FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => WebhookResponseSenderProfile.FromRawUnchecked(rawData);
 }

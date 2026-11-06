@@ -35,7 +35,7 @@ public sealed class NumberService : INumberService
     }
 
     /// <inheritdoc/>
-    public async Task<NumberLookupResponse> Lookup(
+    public async Task<ApiResponseOfNumberLookupResult> Lookup(
         NumberLookupParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -47,7 +47,7 @@ public sealed class NumberService : INumberService
     }
 
     /// <inheritdoc/>
-    public Task<NumberLookupResponse> Lookup(
+    public Task<ApiResponseOfNumberLookupResult> Lookup(
         string phoneNumber,
         NumberLookupParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -76,7 +76,7 @@ public sealed class NumberServiceWithRawResponse : INumberServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<NumberLookupResponse>> Lookup(
+    public async Task<HttpResponse<ApiResponseOfNumberLookupResult>> Lookup(
         NumberLookupParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -96,20 +96,20 @@ public sealed class NumberServiceWithRawResponse : INumberServiceWithRawResponse
             response,
             async (token) =>
             {
-                var deserializedResponse = await response
-                    .Deserialize<NumberLookupResponse>(token)
+                var apiResponseOfNumberLookupResult = await response
+                    .Deserialize<ApiResponseOfNumberLookupResult>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    deserializedResponse.Validate();
+                    apiResponseOfNumberLookupResult.Validate();
                 }
-                return deserializedResponse;
+                return apiResponseOfNumberLookupResult;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<NumberLookupResponse>> Lookup(
+    public Task<HttpResponse<ApiResponseOfNumberLookupResult>> Lookup(
         string phoneNumber,
         NumberLookupParams? parameters = null,
         CancellationToken cancellationToken = default

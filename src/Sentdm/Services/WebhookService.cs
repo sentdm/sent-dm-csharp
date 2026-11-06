@@ -128,7 +128,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public async Task<WebhookListEventTypesResponse> ListEventTypes(
+    public async Task<ApiResponseOfWebhookEventTypesList> ListEventTypes(
         WebhookListEventTypesParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -164,7 +164,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public async Task<WebhookRotateSecretResponse> RotateSecret(
+    public async Task<ApiResponseOfWebhookSecret> RotateSecret(
         WebhookRotateSecretParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -176,7 +176,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public Task<WebhookRotateSecretResponse> RotateSecret(
+    public Task<ApiResponseOfWebhookSecret> RotateSecret(
         string id,
         WebhookRotateSecretParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -188,7 +188,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public async Task<WebhookTestResponse> Test(
+    public async Task<ApiResponseOfWebhookTest> Test(
         WebhookTestParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -200,7 +200,7 @@ public sealed class WebhookService : IWebhookService
     }
 
     /// <inheritdoc/>
-    public Task<WebhookTestResponse> Test(
+    public Task<ApiResponseOfWebhookTest> Test(
         string id,
         WebhookTestParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -391,7 +391,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
             async (token) =>
             {
                 var page = await response
-                    .Deserialize<WebhookListPageResponse>(token)
+                    .Deserialize<ApiResponseOfWebhooksList>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
@@ -434,7 +434,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<WebhookListEventTypesResponse>> ListEventTypes(
+    public async Task<HttpResponse<ApiResponseOfWebhookEventTypesList>> ListEventTypes(
         WebhookListEventTypesParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -451,14 +451,14 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
             response,
             async (token) =>
             {
-                var deserializedResponse = await response
-                    .Deserialize<WebhookListEventTypesResponse>(token)
+                var apiResponseOfWebhookEventTypesList = await response
+                    .Deserialize<ApiResponseOfWebhookEventTypesList>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    deserializedResponse.Validate();
+                    apiResponseOfWebhookEventTypesList.Validate();
                 }
-                return deserializedResponse;
+                return apiResponseOfWebhookEventTypesList;
             }
         );
     }
@@ -485,7 +485,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
             async (token) =>
             {
                 var page = await response
-                    .Deserialize<WebhookListEventsPageResponse>(token)
+                    .Deserialize<ApiResponseOfWebhookEventsList>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
@@ -509,7 +509,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<WebhookRotateSecretResponse>> RotateSecret(
+    public async Task<HttpResponse<ApiResponseOfWebhookSecret>> RotateSecret(
         WebhookRotateSecretParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -529,20 +529,20 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
             response,
             async (token) =>
             {
-                var deserializedResponse = await response
-                    .Deserialize<WebhookRotateSecretResponse>(token)
+                var apiResponseOfWebhookSecret = await response
+                    .Deserialize<ApiResponseOfWebhookSecret>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    deserializedResponse.Validate();
+                    apiResponseOfWebhookSecret.Validate();
                 }
-                return deserializedResponse;
+                return apiResponseOfWebhookSecret;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<WebhookRotateSecretResponse>> RotateSecret(
+    public Task<HttpResponse<ApiResponseOfWebhookSecret>> RotateSecret(
         string id,
         WebhookRotateSecretParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -554,7 +554,7 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<WebhookTestResponse>> Test(
+    public async Task<HttpResponse<ApiResponseOfWebhookTest>> Test(
         WebhookTestParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -574,20 +574,20 @@ public sealed class WebhookServiceWithRawResponse : IWebhookServiceWithRawRespon
             response,
             async (token) =>
             {
-                var deserializedResponse = await response
-                    .Deserialize<WebhookTestResponse>(token)
+                var apiResponseOfWebhookTest = await response
+                    .Deserialize<ApiResponseOfWebhookTest>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    deserializedResponse.Validate();
+                    apiResponseOfWebhookTest.Validate();
                 }
-                return deserializedResponse;
+                return apiResponseOfWebhookTest;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<WebhookTestResponse>> Test(
+    public Task<HttpResponse<ApiResponseOfWebhookTest>> Test(
         string id,
         WebhookTestParams? parameters = null,
         CancellationToken cancellationToken = default

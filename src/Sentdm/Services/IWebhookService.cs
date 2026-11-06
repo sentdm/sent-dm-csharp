@@ -113,7 +113,7 @@ public interface IWebhookService
     /// <summary>
     /// Retrieves all available webhook event types that can be subscribed to.
     /// </summary>
-    Task<WebhookListEventTypesResponse> ListEventTypes(
+    Task<ApiResponseOfWebhookEventTypesList> ListEventTypes(
         WebhookListEventTypesParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -144,13 +144,13 @@ public interface IWebhookService
     /// so a receiver can switch over without rejecting any; after that the old secret
     /// no longer verifies.
     /// </summary>
-    Task<WebhookRotateSecretResponse> RotateSecret(
+    Task<ApiResponseOfWebhookSecret> RotateSecret(
         WebhookRotateSecretParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="RotateSecret(WebhookRotateSecretParams, CancellationToken)"/>
-    Task<WebhookRotateSecretResponse> RotateSecret(
+    Task<ApiResponseOfWebhookSecret> RotateSecret(
         string id,
         WebhookRotateSecretParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -162,13 +162,13 @@ public interface IWebhookService
     /// delivered; a version 2 webhook's test is queued with Svix, which delivers it
     /// right after, and the answer says it was queued.
     /// </summary>
-    Task<WebhookTestResponse> Test(
+    Task<ApiResponseOfWebhookTest> Test(
         WebhookTestParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Test(WebhookTestParams, CancellationToken)"/>
-    Task<WebhookTestResponse> Test(
+    Task<ApiResponseOfWebhookTest> Test(
         string id,
         WebhookTestParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -273,7 +273,7 @@ public interface IWebhookServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/webhooks/event-types</c>, but is otherwise the
     /// same as <see cref="IWebhookService.ListEventTypes(WebhookListEventTypesParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<WebhookListEventTypesResponse>> ListEventTypes(
+    Task<HttpResponse<ApiResponseOfWebhookEventTypesList>> ListEventTypes(
         WebhookListEventTypesParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -298,13 +298,13 @@ public interface IWebhookServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/webhooks/{id}/rotate-secret</c>, but is otherwise the
     /// same as <see cref="IWebhookService.RotateSecret(WebhookRotateSecretParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<WebhookRotateSecretResponse>> RotateSecret(
+    Task<HttpResponse<ApiResponseOfWebhookSecret>> RotateSecret(
         WebhookRotateSecretParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="RotateSecret(WebhookRotateSecretParams, CancellationToken)"/>
-    Task<HttpResponse<WebhookRotateSecretResponse>> RotateSecret(
+    Task<HttpResponse<ApiResponseOfWebhookSecret>> RotateSecret(
         string id,
         WebhookRotateSecretParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -314,13 +314,13 @@ public interface IWebhookServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/webhooks/{id}/test</c>, but is otherwise the
     /// same as <see cref="IWebhookService.Test(WebhookTestParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<WebhookTestResponse>> Test(
+    Task<HttpResponse<ApiResponseOfWebhookTest>> Test(
         WebhookTestParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Test(WebhookTestParams, CancellationToken)"/>
-    Task<HttpResponse<WebhookTestResponse>> Test(
+    Task<HttpResponse<ApiResponseOfWebhookTest>> Test(
         string id,
         WebhookTestParams? parameters = null,
         CancellationToken cancellationToken = default
