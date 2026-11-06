@@ -53,7 +53,7 @@ public interface IUserService
     /// the API key, including their roles and status. Shows invited users (pending
     /// acceptance) and active users. Requires developer role or higher.
     /// </summary>
-    Task<UserListResponse> List(
+    Task<ApiResponseOfUsersList> List(
         UserListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -131,7 +131,7 @@ public interface IUserServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/users</c>, but is otherwise the
     /// same as <see cref="IUserService.List(UserListParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<UserListResponse>> List(
+    Task<HttpResponse<ApiResponseOfUsersList>> List(
         UserListParams? parameters = null,
         CancellationToken cancellationToken = default
     );

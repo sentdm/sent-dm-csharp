@@ -283,7 +283,7 @@ public sealed class TemplateServiceWithRawResponse : ITemplateServiceWithRawResp
             async (token) =>
             {
                 var page = await response
-                    .Deserialize<TemplateListPageResponse>(token)
+                    .Deserialize<ApiResponseOfTemplatesList>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {

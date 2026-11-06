@@ -14,11 +14,11 @@ namespace Sentdm.Models.Webhooks;
 public sealed class WebhookListEventsPage(
     IWebhookServiceWithRawResponse service,
     WebhookListEventsParams parameters,
-    WebhookListEventsPageResponse response
-) : IPage<WebhookListEventsResponse>
+    ApiResponseOfWebhookEventsList response
+) : IPage<WebhookDelivery>
 {
     /// <inheritdoc/>
-    public IReadOnlyList<WebhookListEventsResponse> Items
+    public IReadOnlyList<WebhookDelivery> Items
     {
         get { return response.Data?.Events ?? []; }
     }
@@ -30,7 +30,7 @@ public sealed class WebhookListEventsPage(
     }
 
     /// <inheritdoc/>
-    async Task<IPage<WebhookListEventsResponse>> IPage<WebhookListEventsResponse>.Next(
+    async Task<IPage<WebhookDelivery>> IPage<WebhookDelivery>.Next(
         CancellationToken cancellationToken
     ) => await this.Next(cancellationToken).ConfigureAwait(false);
 

@@ -55,12 +55,12 @@ public sealed record class TemplateHeader : JsonModel
     /// exist for Sent: a preview, and the default a StaticResource header falls
     /// back to at send.
     /// </summary>
-    public Location? Location
+    public TemplateHeaderLocation? Location
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Location>("location");
+            return this._rawData.GetNullableClass<TemplateHeaderLocation>("location");
         }
         init { this._rawData.Set("location", value); }
     }
@@ -185,96 +185,4 @@ class TemplateHeaderFromRaw : IFromRawJson<TemplateHeader>
     /// <inheritdoc/>
     public TemplateHeader FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         TemplateHeader.FromRawUnchecked(rawData);
-}
-
-/// <summary>
-/// The map pin a location header drops. Meta wants none of this at creation — the
-/// component is just {"type":"header","format":"location"} — so these values exist
-/// for Sent: a preview, and the default a StaticResource header falls back to at send.
-/// </summary>
-[JsonConverter(typeof(JsonModelConverter<Location, LocationFromRaw>))]
-public sealed record class Location : JsonModel
-{
-    public required string Address
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("address");
-        }
-        init { this._rawData.Set("address", value); }
-    }
-
-    public required string Latitude
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("latitude");
-        }
-        init { this._rawData.Set("latitude", value); }
-    }
-
-    public required string Longitude
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("longitude");
-        }
-        init { this._rawData.Set("longitude", value); }
-    }
-
-    public required string Name
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("name");
-        }
-        init { this._rawData.Set("name", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.Address;
-        _ = this.Latitude;
-        _ = this.Longitude;
-        _ = this.Name;
-    }
-
-    public Location() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public Location(Location location)
-        : base(location) { }
-#pragma warning restore CS8618
-
-    public Location(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    Location(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="LocationFromRaw.FromRawUnchecked"/>
-    public static Location FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class LocationFromRaw : IFromRawJson<Location>
-{
-    /// <inheritdoc/>
-    public Location FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Location.FromRawUnchecked(rawData);
 }

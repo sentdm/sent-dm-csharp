@@ -14,7 +14,7 @@ namespace Sentdm.Models.Contacts;
 public sealed class ContactListPage(
     IContactServiceWithRawResponse service,
     ContactListParams parameters,
-    ContactListPageResponse response
+    ApiResponseOfContactsList response
 ) : IPage<ContactResponse>
 {
     /// <inheritdoc/>

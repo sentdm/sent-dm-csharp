@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
+using Sentdm.Models.Messages;
 using Sentdm.Services;
 
 namespace Sentdm.Models.Conversations;

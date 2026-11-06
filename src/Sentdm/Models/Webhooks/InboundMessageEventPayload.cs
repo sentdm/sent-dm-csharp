@@ -95,16 +95,16 @@ public sealed record class InboundMessageEventPayload : JsonModel
     /// remains with whatever the carrier declared about the file but the file is
     /// no longer reachable.
     /// </summary>
-    public IReadOnlyList<Media>? Media
+    public IReadOnlyList<InboundMedia>? Media
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Media>>("media");
+            return this._rawData.GetNullableStruct<ImmutableArray<InboundMedia>>("media");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<Media>?>(
+            this._rawData.Set<ImmutableArray<InboundMedia>?>(
                 "media",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -264,113 +264,4 @@ class InboundMessageEventPayloadFromRaw : IFromRawJson<InboundMessageEventPayloa
     public InboundMessageEventPayload FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     ) => InboundMessageEventPayload.FromRawUnchecked(rawData);
-}
-
-/// <summary>
-/// One attachment on an inbound message.
-/// </summary>
-[JsonConverter(typeof(JsonModelConverter<Media, MediaFromRaw>))]
-public sealed record class Media : JsonModel
-{
-    /// <summary>
-    /// SHA-256 of the file as the carrier declared it, when it declares one. Verify
-    /// what you download against this — sent.dm never reads the bytes, so it is
-    /// the only integrity signal available.
-    /// </summary>
-    public string? HashSha256
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("hash_sha256");
-        }
-        init { this._rawData.Set("hash_sha256", value); }
-    }
-
-    /// <summary>
-    /// Content type as the carrier reported it, for example image/jpeg.
-    /// </summary>
-    public string? MimeType
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("mime_type");
-        }
-        init { this._rawData.Set("mime_type", value); }
-    }
-
-    /// <summary>
-    /// Size in bytes as the carrier declared it. Absent when it declared none.
-    /// </summary>
-    public long? SizeBytes
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("size_bytes");
-        }
-        init { this._rawData.Set("size_bytes", value); }
-    }
-
-    /// <summary>
-    /// Where the carrier hosts the attachment.              This link expires and
-    /// is not authenticated. sent.dm relays it rather than copying the file, so
-    /// how long it stays fetchable is the carrier's decision and differs between
-    /// them — assume days, not months. Anyone holding the URL can fetch it until
-    /// it lapses. Copy the file on receipt if you need it to outlive that window;
-    /// do not store this URL as a permanent reference.
-    /// </summary>
-    public string? Url
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("url");
-        }
-        init { this._rawData.Set("url", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.HashSha256;
-        _ = this.MimeType;
-        _ = this.SizeBytes;
-        _ = this.Url;
-    }
-
-    public Media() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public Media(Media media)
-        : base(media) { }
-#pragma warning restore CS8618
-
-    public Media(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    Media(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="MediaFromRaw.FromRawUnchecked"/>
-    public static Media FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class MediaFromRaw : IFromRawJson<Media>
-{
-    /// <inheritdoc/>
-    public Media FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Media.FromRawUnchecked(rawData);
 }

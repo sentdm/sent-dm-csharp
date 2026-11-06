@@ -6,8 +6,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Sentdm.Core;
+using Sentdm.Models.Templates;
 
 namespace Sentdm.Models.Messages;
 
@@ -102,19 +102,13 @@ public record class MessageSendParams : ParamsBase
     /// is decided per message, so each affected message is recorded BLOCKED with
     /// error code BUSINESS_029 and reported on GET /v3/messages and the status webhook.
     /// </summary>
-    public IReadOnlyDictionary<
-        string,
-        IReadOnlyList<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
-    >? Channels
+    public IReadOnlyDictionary<string, IReadOnlyList<MessageChannelOptions>>? Channels
     {
         get
         {
             this._rawBodyData.Freeze();
             var value = this._rawBodyData.GetNullableClass<
-                FrozenDictionary<
-                    string,
-                    ImmutableArray<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
-                >
+                FrozenDictionary<string, ImmutableArray<MessageChannelOptions>>
             >("channels");
             if (value == null)
             {
@@ -124,17 +118,12 @@ public record class MessageSendParams : ParamsBase
             return FrozenDictionary.ToFrozenDictionary(
                 value,
                 entry => entry.Key,
-                (entry) =>
-                    (IReadOnlyList<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>)
-                        entry.Value
+                (entry) => (IReadOnlyList<MessageChannelOptions>)entry.Value
             );
         }
         init
         {
-            this._rawBodyData.Set<FrozenDictionary<
-                string,
-                ImmutableArray<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
-            >?>(
+            this._rawBodyData.Set<FrozenDictionary<string, ImmutableArray<MessageChannelOptions>>?>(
                 "channels",
                 value == null
                     ? null
@@ -239,12 +228,12 @@ public record class MessageSendParams : ParamsBase
     /// <summary>
     /// SDK-style template reference: resolve by ID or by name, with optional parameters.
     /// </summary>
-    public Template? Template
+    public TemplateRef? Template
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<Template>("template");
+            return this._rawBodyData.GetNullableClass<TemplateRef>("template");
         }
         init { this._rawBodyData.Set("template", value); }
     }
@@ -430,227 +419,4 @@ public record class MessageSendParams : ParamsBase
     {
         return 0;
     }
-}
-
-/// <summary>
-/// One entry of a channel's list in Channels, e.g. {"country": "US", "from": ["+15559990002",
-/// "+15559990003"], "strategy": "sticky"}.
-/// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest,
-        SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequestFromRaw
-    >)
-)]
-public sealed record class SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
-    : JsonModel
-{
-    /// <summary>
-    /// Recipient country this entry is meant for (ISO 3166-1 alpha-2, e.g. US).
-    /// Optional. Accepted and stored, not acted on yet.
-    /// </summary>
-    public string? Country
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("country");
-        }
-        init { this._rawData.Set("country", value); }
-    }
-
-    /// <summary>
-    /// Sender numbers in E.164. Each must be an active sender on your account for
-    /// this channel. That is account state rather than request shape, so it is decided
-    /// per message: the request is accepted with 202 and a message naming an unusable
-    /// number is recorded BLOCKED with error code BUSINESS_029.
-    /// </summary>
-    public IReadOnlyList<string>? From
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("from");
-        }
-        init
-        {
-            this._rawData.Set<ImmutableArray<string>?>(
-                "from",
-                value == null ? null : ImmutableArray.ToImmutableArray(value)
-            );
-        }
-    }
-
-    /// <summary>
-    /// How to pick a number from From, e.g. sticky or geo. Optional. Accepted and
-    /// stored, not acted on yet.
-    /// </summary>
-    public string? Strategy
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("strategy");
-        }
-        init { this._rawData.Set("strategy", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.Country;
-        _ = this.From;
-        _ = this.Strategy;
-    }
-
-    public SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest(
-        SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest sentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
-    )
-        : base(sentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest) { }
-#pragma warning restore CS8618
-
-    public SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest(
-        FrozenDictionary<string, JsonElement> rawData
-    )
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequestFromRaw.FromRawUnchecked"/>
-    public static SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequestFromRaw
-    : IFromRawJson<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
-{
-    /// <inheritdoc/>
-    public SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) =>
-        SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest.FromRawUnchecked(
-            rawData
-        );
-}
-
-/// <summary>
-/// SDK-style template reference: resolve by ID or by name, with optional parameters.
-/// </summary>
-[JsonConverter(typeof(JsonModelConverter<Template, TemplateFromRaw>))]
-public sealed record class Template : JsonModel
-{
-    /// <summary>
-    /// Template ID (mutually exclusive with name)
-    /// </summary>
-    public string? ID
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("id");
-        }
-        init { this._rawData.Set("id", value); }
-    }
-
-    /// <summary>
-    /// Template name (mutually exclusive with id)
-    /// </summary>
-    public string? Name
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("name");
-        }
-        init { this._rawData.Set("name", value); }
-    }
-
-    /// <summary>
-    /// Template variable parameters for personalization, keyed by variable name.
-    ///              Every variable the template declares is required; GET /v3/templates/{id}
-    /// lists them. Supplying a key the template does not declare is ignored.
-    ///           Media headers. A template whose header is an image (designed in
-    /// WhatsApp Manager and imported into Sent) declares a reserved header_image
-    /// key. Its value is a publicly reachable https URL that Meta fetches at send
-    /// time — Sent does not host the asset, and the sample approved with the template
-    /// is not reused. The key is derived from the header's media type, so header_video
-    /// and header_document follow the same shape when those formats ship.
-    ///        "parameters": {   "header_image": "https://cdn.example.com/banner.jpg",
-    ///   "name": "John Doe" }
-    /// </summary>
-    public IReadOnlyDictionary<string, string>? Parameters
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<FrozenDictionary<string, string>>("parameters");
-        }
-        init
-        {
-            this._rawData.Set<FrozenDictionary<string, string>?>(
-                "parameters",
-                value == null ? null : FrozenDictionary.ToFrozenDictionary(value)
-            );
-        }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.ID;
-        _ = this.Name;
-        _ = this.Parameters;
-    }
-
-    public Template() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public Template(Template template)
-        : base(template) { }
-#pragma warning restore CS8618
-
-    public Template(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    Template(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="TemplateFromRaw.FromRawUnchecked"/>
-    public static Template FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class TemplateFromRaw : IFromRawJson<Template>
-{
-    /// <inheritdoc/>
-    public Template FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Template.FromRawUnchecked(rawData);
 }

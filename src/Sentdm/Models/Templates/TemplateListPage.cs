@@ -14,7 +14,7 @@ namespace Sentdm.Models.Templates;
 public sealed class TemplateListPage(
     ITemplateServiceWithRawResponse service,
     TemplateListParams parameters,
-    TemplateListPageResponse response
+    ApiResponseOfTemplatesList response
 ) : IPage<Template>
 {
     /// <inheritdoc/>
