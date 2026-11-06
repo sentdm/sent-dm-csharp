@@ -63,6 +63,8 @@ public interface ISentClient : IDisposable
 
     IProfileService Profiles { get; }
 
+    ISenderProfileService SenderProfiles { get; }
+
     INumberService Numbers { get; }
 
     IMessageService Messages { get; }
@@ -74,6 +76,8 @@ public interface ISentClient : IDisposable
     IVoiceService Voice { get; }
 
     IChannelService Channels { get; }
+
+    IComplianceService Compliance { get; }
 
     IMeService Me { get; }
 }
@@ -119,6 +123,8 @@ public interface ISentClientWithRawResponse : IDisposable
 
     IProfileServiceWithRawResponse Profiles { get; }
 
+    ISenderProfileServiceWithRawResponse SenderProfiles { get; }
+
     INumberServiceWithRawResponse Numbers { get; }
 
     IMessageServiceWithRawResponse Messages { get; }
@@ -130,6 +136,8 @@ public interface ISentClientWithRawResponse : IDisposable
     IVoiceServiceWithRawResponse Voice { get; }
 
     IChannelServiceWithRawResponse Channels { get; }
+
+    IComplianceServiceWithRawResponse Compliance { get; }
 
     IMeServiceWithRawResponse Me { get; }
 

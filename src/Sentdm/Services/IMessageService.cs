@@ -50,6 +50,53 @@ public interface IMessageService
     IMessageService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
+    /// Calls off a message you scheduled with `scheduled_at`, before it is released for
+    /// sending. The message moves to `CANCELLED`, which is terminal, and it is never
+    /// sent.
+    ///
+    /// <para>**Only a SCHEDULED message can be cancelled.** A message that has already
+    /// been released — queued, in flight, or finished — returns 409. The release
+    /// sweeper runs continuously, so a cancellation sent within about a minute of the
+    /// scheduled instant can lose that race and be refused; cancel with time to spare.</para>
+    ///
+    /// <para>**One message per call.** A send to many recipients, or on several
+    /// channels, becomes one message per recipient × channel, each with its own id;
+    /// cancel the ones you want stopped. There is no bulk cancellation.</para>
+    ///
+    /// <para>**Cancelling is free**, and nothing was charged for the hold in the first
+    /// place — a scheduled message is only priced and billed at release.</para>
+    ///
+    /// <para>**A cancellation fires `message.cancelled`** on your webhook, exactly
+    /// once, carrying the `scheduled_at` that was called off so a consumer can
+    /// un-record the send it was expecting. Cancelling the same message again returns
+    /// this same response and fires no second event. `Idempotency-Key` is honoured.</para>
+    ///
+    /// <para>A cancelled message cannot be resent — send a new one.</para>
+    ///
+    /// <para>The response is the message itself, in the same shape `GET
+    /// /v3/messages/{id}` returns, so the `status` you read back is the one now stored
+    /// on the row, and `scheduled_at` is the time it would have gone out. `GET
+    /// /v3/messages/{id}` keeps reporting both afterwards.</para>
+    ///
+    /// <para>`events` is the message lifecycle as it stood immediately before the
+    /// cancellation: the CANCELLED entry is written asynchronously and lands a moment
+    /// later, so read `status` for the outcome. If you need the entry itself, re-fetch
+    /// the message after a few seconds — `GET /v3/messages/{id}` is cached briefly, so
+    /// an immediate re-fetch can still show the pre-cancellation state.</para>
+    /// </summary>
+    Task<MessageCancelResponse> Cancel(
+        MessageCancelParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Cancel(MessageCancelParams, CancellationToken)"/>
+    Task<MessageCancelResponse> Cancel(
+        string id,
+        MessageCancelParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Resends a message you already sent, on the same message id, without rebuilding
     /// the request. The typical use is recovering a BLOCKED message — for example one
     /// refused for insufficient balance — after the account has been topped up.
@@ -186,6 +233,22 @@ public interface IMessageServiceWithRawResponse
     /// <para>The original service is not modified.</para>
     /// </summary>
     IMessageServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    /// <summary>
+    /// Returns a raw HTTP response for <c>post /v3/messages/{id}/cancel</c>, but is otherwise the
+    /// same as <see cref="IMessageService.Cancel(MessageCancelParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<MessageCancelResponse>> Cancel(
+        MessageCancelParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Cancel(MessageCancelParams, CancellationToken)"/>
+    Task<HttpResponse<MessageCancelResponse>> Cancel(
+        string id,
+        MessageCancelParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     /// Returns a raw HTTP response for <c>post /v3/messages/{id}/resend</c>, but is otherwise the

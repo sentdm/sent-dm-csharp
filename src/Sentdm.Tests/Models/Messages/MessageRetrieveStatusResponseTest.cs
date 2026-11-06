@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Messages;
-using Webhooks = Sentdm.Models.Webhooks;
+using Sentdm.Models.Webhooks;
 
 namespace Sentdm.Tests.Models.Messages;
 
@@ -150,14 +150,14 @@ public class MessageRetrieveStatusResponseTest : TestBase
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
         };
-        Webhooks::ErrorDetail expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        Webhooks::ApiMeta expectedMeta = new()
+        ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -409,14 +409,14 @@ public class MessageRetrieveStatusResponseTest : TestBase
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
         };
-        Webhooks::ErrorDetail expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        Webhooks::ApiMeta expectedMeta = new()
+        ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1076,7 +1076,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedDirection = "direction";
-        List<Event> expectedEvents =
+        List<MessageRetrieveStatusResponseDataEvent> expectedEvents =
         [
             new()
             {
@@ -1087,7 +1087,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 ReasonCode = "reason_code",
             },
         ];
-        MessageBody expectedMessageBody = new()
+        MessageRetrieveStatusResponseDataMessageBody expectedMessageBody = new()
         {
             Buttons =
             [
@@ -1304,7 +1304,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedDirection = "direction";
-        List<Event> expectedEvents =
+        List<MessageRetrieveStatusResponseDataEvent> expectedEvents =
         [
             new()
             {
@@ -1315,7 +1315,7 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
                 ReasonCode = "reason_code",
             },
         ];
-        MessageBody expectedMessageBody = new()
+        MessageRetrieveStatusResponseDataMessageBody expectedMessageBody = new()
         {
             Buttons =
             [
@@ -1942,12 +1942,12 @@ public class MessageRetrieveStatusResponseDataTest : TestBase
     }
 }
 
-public class EventTest : TestBase
+public class MessageRetrieveStatusResponseDataEventTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Event
+        var model = new MessageRetrieveStatusResponseDataEvent
         {
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1972,7 +1972,7 @@ public class EventTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Event
+        var model = new MessageRetrieveStatusResponseDataEvent
         {
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -1982,7 +1982,10 @@ public class EventTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Event>(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<MessageRetrieveStatusResponseDataEvent>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -1990,7 +1993,7 @@ public class EventTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Event
+        var model = new MessageRetrieveStatusResponseDataEvent
         {
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -2000,7 +2003,10 @@ public class EventTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Event>(element, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<MessageRetrieveStatusResponseDataEvent>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedStatus = "status";
@@ -2019,7 +2025,7 @@ public class EventTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Event
+        var model = new MessageRetrieveStatusResponseDataEvent
         {
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -2034,7 +2040,7 @@ public class EventTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Event
+        var model = new MessageRetrieveStatusResponseDataEvent
         {
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -2051,7 +2057,7 @@ public class EventTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Event
+        var model = new MessageRetrieveStatusResponseDataEvent
         {
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -2063,7 +2069,7 @@ public class EventTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new Event
+        var model = new MessageRetrieveStatusResponseDataEvent
         {
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -2084,7 +2090,7 @@ public class EventTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Event
+        var model = new MessageRetrieveStatusResponseDataEvent
         {
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -2100,7 +2106,7 @@ public class EventTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Event
+        var model = new MessageRetrieveStatusResponseDataEvent
         {
             Status = "status",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -2109,18 +2115,18 @@ public class EventTest : TestBase
             ReasonCode = "reason_code",
         };
 
-        Event copied = new(model);
+        MessageRetrieveStatusResponseDataEvent copied = new(model);
 
         Assert.Equal(model, copied);
     }
 }
 
-public class MessageBodyTest : TestBase
+public class MessageRetrieveStatusResponseDataMessageBodyTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new MessageBody
+        var model = new MessageRetrieveStatusResponseDataMessageBody
         {
             Buttons =
             [
@@ -2150,7 +2156,7 @@ public class MessageBodyTest : TestBase
             Subject = "subject",
         };
 
-        List<Button> expectedButtons =
+        List<MessageRetrieveStatusResponseDataMessageBodyButton> expectedButtons =
         [
             new()
             {
@@ -2163,8 +2169,12 @@ public class MessageBodyTest : TestBase
         string expectedContent = "content";
         string expectedFooter = "footer";
         string expectedHeader = "header";
-        HeaderMedia expectedHeaderMedia = new() { Type = "type", Url = "url" };
-        List<Media> expectedMedia =
+        MessageRetrieveStatusResponseDataMessageBodyHeaderMedia expectedHeaderMedia = new()
+        {
+            Type = "type",
+            Url = "url",
+        };
+        List<MessageRetrieveStatusResponseDataMessageBodyMedia> expectedMedia =
         [
             new()
             {
@@ -2199,7 +2209,7 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new MessageBody
+        var model = new MessageRetrieveStatusResponseDataMessageBody
         {
             Buttons =
             [
@@ -2230,7 +2240,7 @@ public class MessageBodyTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageBody>(
+        var deserialized = JsonSerializer.Deserialize<MessageRetrieveStatusResponseDataMessageBody>(
             json,
             ModelBase.SerializerOptions
         );
@@ -2241,7 +2251,7 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new MessageBody
+        var model = new MessageRetrieveStatusResponseDataMessageBody
         {
             Buttons =
             [
@@ -2272,13 +2282,13 @@ public class MessageBodyTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MessageBody>(
+        var deserialized = JsonSerializer.Deserialize<MessageRetrieveStatusResponseDataMessageBody>(
             element,
             ModelBase.SerializerOptions
         );
         Assert.NotNull(deserialized);
 
-        List<Button> expectedButtons =
+        List<MessageRetrieveStatusResponseDataMessageBodyButton> expectedButtons =
         [
             new()
             {
@@ -2291,8 +2301,12 @@ public class MessageBodyTest : TestBase
         string expectedContent = "content";
         string expectedFooter = "footer";
         string expectedHeader = "header";
-        HeaderMedia expectedHeaderMedia = new() { Type = "type", Url = "url" };
-        List<Media> expectedMedia =
+        MessageRetrieveStatusResponseDataMessageBodyHeaderMedia expectedHeaderMedia = new()
+        {
+            Type = "type",
+            Url = "url",
+        };
+        List<MessageRetrieveStatusResponseDataMessageBodyMedia> expectedMedia =
         [
             new()
             {
@@ -2327,7 +2341,7 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new MessageBody
+        var model = new MessageRetrieveStatusResponseDataMessageBody
         {
             Buttons =
             [
@@ -2363,7 +2377,7 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new MessageBody
+        var model = new MessageRetrieveStatusResponseDataMessageBody
         {
             Buttons =
             [
@@ -2399,7 +2413,7 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new MessageBody
+        var model = new MessageRetrieveStatusResponseDataMessageBody
         {
             Buttons =
             [
@@ -2434,7 +2448,7 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new MessageBody
+        var model = new MessageRetrieveStatusResponseDataMessageBody
         {
             Buttons =
             [
@@ -2473,7 +2487,7 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new MessageBody
+        var model = new MessageRetrieveStatusResponseDataMessageBody
         {
             Buttons =
             [
@@ -2511,7 +2525,7 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new MessageBody { Content = "content" };
+        var model = new MessageRetrieveStatusResponseDataMessageBody { Content = "content" };
 
         Assert.Null(model.Buttons);
         Assert.False(model.RawData.ContainsKey("buttons"));
@@ -2530,7 +2544,7 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new MessageBody { Content = "content" };
+        var model = new MessageRetrieveStatusResponseDataMessageBody { Content = "content" };
 
         model.Validate();
     }
@@ -2538,7 +2552,7 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new MessageBody
+        var model = new MessageRetrieveStatusResponseDataMessageBody
         {
             Content = "content",
 
@@ -2567,7 +2581,7 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new MessageBody
+        var model = new MessageRetrieveStatusResponseDataMessageBody
         {
             Content = "content",
 
@@ -2585,7 +2599,7 @@ public class MessageBodyTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new MessageBody
+        var model = new MessageRetrieveStatusResponseDataMessageBody
         {
             Buttons =
             [
@@ -2615,18 +2629,18 @@ public class MessageBodyTest : TestBase
             Subject = "subject",
         };
 
-        MessageBody copied = new(model);
+        MessageRetrieveStatusResponseDataMessageBody copied = new(model);
 
         Assert.Equal(model, copied);
     }
 }
 
-public class ButtonTest : TestBase
+public class MessageRetrieveStatusResponseDataMessageBodyButtonTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Button
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
         {
             PostbackData = "postbackData",
             Text = "text",
@@ -2648,7 +2662,7 @@ public class ButtonTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Button
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
         {
             PostbackData = "postbackData",
             Text = "text",
@@ -2657,7 +2671,11 @@ public class ButtonTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Button>(json, ModelBase.SerializerOptions);
+        var deserialized =
+            JsonSerializer.Deserialize<MessageRetrieveStatusResponseDataMessageBodyButton>(
+                json,
+                ModelBase.SerializerOptions
+            );
 
         Assert.Equal(model, deserialized);
     }
@@ -2665,7 +2683,7 @@ public class ButtonTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Button
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
         {
             PostbackData = "postbackData",
             Text = "text",
@@ -2674,7 +2692,11 @@ public class ButtonTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Button>(element, ModelBase.SerializerOptions);
+        var deserialized =
+            JsonSerializer.Deserialize<MessageRetrieveStatusResponseDataMessageBodyButton>(
+                element,
+                ModelBase.SerializerOptions
+            );
         Assert.NotNull(deserialized);
 
         string expectedPostbackData = "postbackData";
@@ -2691,7 +2713,7 @@ public class ButtonTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Button
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
         {
             PostbackData = "postbackData",
             Text = "text",
@@ -2705,7 +2727,11 @@ public class ButtonTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Button { PostbackData = "postbackData", Text = "text" };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
+        {
+            PostbackData = "postbackData",
+            Text = "text",
+        };
 
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
@@ -2716,7 +2742,11 @@ public class ButtonTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Button { PostbackData = "postbackData", Text = "text" };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
+        {
+            PostbackData = "postbackData",
+            Text = "text",
+        };
 
         model.Validate();
     }
@@ -2724,7 +2754,7 @@ public class ButtonTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new Button
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
         {
             PostbackData = "postbackData",
             Text = "text",
@@ -2743,7 +2773,7 @@ public class ButtonTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Button
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
         {
             PostbackData = "postbackData",
             Text = "text",
@@ -2759,7 +2789,11 @@ public class ButtonTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Button { Type = "type", Value = "value" };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
+        {
+            Type = "type",
+            Value = "value",
+        };
 
         Assert.Null(model.PostbackData);
         Assert.False(model.RawData.ContainsKey("postbackData"));
@@ -2770,7 +2804,11 @@ public class ButtonTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Button { Type = "type", Value = "value" };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
+        {
+            Type = "type",
+            Value = "value",
+        };
 
         model.Validate();
     }
@@ -2778,7 +2816,7 @@ public class ButtonTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new Button
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
         {
             Type = "type",
             Value = "value",
@@ -2796,7 +2834,7 @@ public class ButtonTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Button
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
         {
             Type = "type",
             Value = "value",
@@ -2811,7 +2849,7 @@ public class ButtonTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Button
+        var model = new MessageRetrieveStatusResponseDataMessageBodyButton
         {
             PostbackData = "postbackData",
             Text = "text",
@@ -2819,18 +2857,22 @@ public class ButtonTest : TestBase
             Value = "value",
         };
 
-        Button copied = new(model);
+        MessageRetrieveStatusResponseDataMessageBodyButton copied = new(model);
 
         Assert.Equal(model, copied);
     }
 }
 
-public class HeaderMediaTest : TestBase
+public class MessageRetrieveStatusResponseDataMessageBodyHeaderMediaTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new HeaderMedia { Type = "type", Url = "url" };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyHeaderMedia
+        {
+            Type = "type",
+            Url = "url",
+        };
 
         string expectedType = "type";
         string expectedUrl = "url";
@@ -2842,13 +2884,18 @@ public class HeaderMediaTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new HeaderMedia { Type = "type", Url = "url" };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyHeaderMedia
+        {
+            Type = "type",
+            Url = "url",
+        };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<HeaderMedia>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized =
+            JsonSerializer.Deserialize<MessageRetrieveStatusResponseDataMessageBodyHeaderMedia>(
+                json,
+                ModelBase.SerializerOptions
+            );
 
         Assert.Equal(model, deserialized);
     }
@@ -2856,13 +2903,18 @@ public class HeaderMediaTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new HeaderMedia { Type = "type", Url = "url" };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyHeaderMedia
+        {
+            Type = "type",
+            Url = "url",
+        };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<HeaderMedia>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized =
+            JsonSerializer.Deserialize<MessageRetrieveStatusResponseDataMessageBodyHeaderMedia>(
+                element,
+                ModelBase.SerializerOptions
+            );
         Assert.NotNull(deserialized);
 
         string expectedType = "type";
@@ -2875,7 +2927,11 @@ public class HeaderMediaTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new HeaderMedia { Type = "type", Url = "url" };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyHeaderMedia
+        {
+            Type = "type",
+            Url = "url",
+        };
 
         model.Validate();
     }
@@ -2883,7 +2939,7 @@ public class HeaderMediaTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new HeaderMedia { };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyHeaderMedia { };
 
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
@@ -2894,7 +2950,7 @@ public class HeaderMediaTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new HeaderMedia { };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyHeaderMedia { };
 
         model.Validate();
     }
@@ -2902,7 +2958,7 @@ public class HeaderMediaTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new HeaderMedia
+        var model = new MessageRetrieveStatusResponseDataMessageBodyHeaderMedia
         {
             // Null should be interpreted as omitted for these properties
             Type = null,
@@ -2918,7 +2974,7 @@ public class HeaderMediaTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new HeaderMedia
+        var model = new MessageRetrieveStatusResponseDataMessageBodyHeaderMedia
         {
             // Null should be interpreted as omitted for these properties
             Type = null,
@@ -2931,20 +2987,24 @@ public class HeaderMediaTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new HeaderMedia { Type = "type", Url = "url" };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyHeaderMedia
+        {
+            Type = "type",
+            Url = "url",
+        };
 
-        HeaderMedia copied = new(model);
+        MessageRetrieveStatusResponseDataMessageBodyHeaderMedia copied = new(model);
 
         Assert.Equal(model, copied);
     }
 }
 
-public class MediaTest : TestBase
+public class MessageRetrieveStatusResponseDataMessageBodyMediaTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Media
+        var model = new MessageRetrieveStatusResponseDataMessageBodyMedia
         {
             MediaType = "mediaType",
             MimeType = "mimeType",
@@ -2969,7 +3029,7 @@ public class MediaTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Media
+        var model = new MessageRetrieveStatusResponseDataMessageBodyMedia
         {
             MediaType = "mediaType",
             MimeType = "mimeType",
@@ -2979,7 +3039,11 @@ public class MediaTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Media>(json, ModelBase.SerializerOptions);
+        var deserialized =
+            JsonSerializer.Deserialize<MessageRetrieveStatusResponseDataMessageBodyMedia>(
+                json,
+                ModelBase.SerializerOptions
+            );
 
         Assert.Equal(model, deserialized);
     }
@@ -2987,7 +3051,7 @@ public class MediaTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Media
+        var model = new MessageRetrieveStatusResponseDataMessageBodyMedia
         {
             MediaType = "mediaType",
             MimeType = "mimeType",
@@ -2997,7 +3061,11 @@ public class MediaTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Media>(element, ModelBase.SerializerOptions);
+        var deserialized =
+            JsonSerializer.Deserialize<MessageRetrieveStatusResponseDataMessageBodyMedia>(
+                element,
+                ModelBase.SerializerOptions
+            );
         Assert.NotNull(deserialized);
 
         string expectedMediaType = "mediaType";
@@ -3016,7 +3084,7 @@ public class MediaTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Media
+        var model = new MessageRetrieveStatusResponseDataMessageBodyMedia
         {
             MediaType = "mediaType",
             MimeType = "mimeType",
@@ -3031,7 +3099,7 @@ public class MediaTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Media { };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyMedia { };
 
         Assert.Null(model.MediaType);
         Assert.False(model.RawData.ContainsKey("mediaType"));
@@ -3048,7 +3116,7 @@ public class MediaTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Media { };
+        var model = new MessageRetrieveStatusResponseDataMessageBodyMedia { };
 
         model.Validate();
     }
@@ -3056,7 +3124,7 @@ public class MediaTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new Media
+        var model = new MessageRetrieveStatusResponseDataMessageBodyMedia
         {
             MediaType = null,
             MimeType = null,
@@ -3080,7 +3148,7 @@ public class MediaTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Media
+        var model = new MessageRetrieveStatusResponseDataMessageBodyMedia
         {
             MediaType = null,
             MimeType = null,
@@ -3095,7 +3163,7 @@ public class MediaTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Media
+        var model = new MessageRetrieveStatusResponseDataMessageBodyMedia
         {
             MediaType = "mediaType",
             MimeType = "mimeType",
@@ -3104,7 +3172,7 @@ public class MediaTest : TestBase
             Url = "url",
         };
 
-        Media copied = new(model);
+        MessageRetrieveStatusResponseDataMessageBodyMedia copied = new(model);
 
         Assert.Equal(model, copied);
     }
