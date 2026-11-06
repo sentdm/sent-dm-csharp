@@ -38,13 +38,13 @@ public interface INumberService
     /// type, porting status, and VoIP detection. Uses the customer's messaging provider
     /// for rich data, with fallback to the internal index.
     /// </summary>
-    Task<NumberLookupResponse> Lookup(
+    Task<ApiResponseOfNumberLookupResult> Lookup(
         NumberLookupParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Lookup(NumberLookupParams, CancellationToken)"/>
-    Task<NumberLookupResponse> Lookup(
+    Task<ApiResponseOfNumberLookupResult> Lookup(
         string phoneNumber,
         NumberLookupParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -68,13 +68,13 @@ public interface INumberServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/numbers/lookup/{phoneNumber}</c>, but is otherwise the
     /// same as <see cref="INumberService.Lookup(NumberLookupParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<NumberLookupResponse>> Lookup(
+    Task<HttpResponse<ApiResponseOfNumberLookupResult>> Lookup(
         NumberLookupParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Lookup(NumberLookupParams, CancellationToken)"/>
-    Task<HttpResponse<NumberLookupResponse>> Lookup(
+    Task<HttpResponse<ApiResponseOfNumberLookupResult>> Lookup(
         string phoneNumber,
         NumberLookupParams? parameters = null,
         CancellationToken cancellationToken = default

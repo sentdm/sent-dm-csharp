@@ -56,11 +56,11 @@ public class WebhookServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListEventTypes_Works()
     {
-        var response = await this.client.Webhooks.ListEventTypes(
+        var apiResponseOfWebhookEventTypesList = await this.client.Webhooks.ListEventTypes(
             new(),
             TestContext.Current.CancellationToken
         );
-        response.Validate();
+        apiResponseOfWebhookEventTypesList.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
@@ -77,23 +77,23 @@ public class WebhookServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task RotateSecret_Works()
     {
-        var response = await this.client.Webhooks.RotateSecret(
+        var apiResponseOfWebhookSecret = await this.client.Webhooks.RotateSecret(
             "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
             new(),
             TestContext.Current.CancellationToken
         );
-        response.Validate();
+        apiResponseOfWebhookSecret.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Test_Works()
     {
-        var response = await this.client.Webhooks.Test(
+        var apiResponseOfWebhookTest = await this.client.Webhooks.Test(
             "d4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8",
             new(),
             TestContext.Current.CancellationToken
         );
-        response.Validate();
+        apiResponseOfWebhookTest.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]

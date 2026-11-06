@@ -14,7 +14,7 @@ namespace Sentdm.Models.Webhooks;
 public sealed class WebhookListPage(
     IWebhookServiceWithRawResponse service,
     WebhookListParams parameters,
-    WebhookListPageResponse response
+    ApiResponseOfWebhooksList response
 ) : IPage<WebhookResponse>
 {
     /// <inheritdoc/>

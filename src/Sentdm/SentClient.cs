@@ -96,6 +96,12 @@ public sealed class SentClient : ISentClient
         get { return _profiles.Value; }
     }
 
+    readonly Lazy<ISenderProfileService> _senderProfiles;
+    public ISenderProfileService SenderProfiles
+    {
+        get { return _senderProfiles.Value; }
+    }
+
     readonly Lazy<INumberService> _numbers;
     public INumberService Numbers
     {
@@ -132,6 +138,12 @@ public sealed class SentClient : ISentClient
         get { return _channels.Value; }
     }
 
+    readonly Lazy<IComplianceService> _compliance;
+    public IComplianceService Compliance
+    {
+        get { return _compliance.Value; }
+    }
+
     readonly Lazy<IMeService> _me;
     public IMeService Me
     {
@@ -149,12 +161,14 @@ public sealed class SentClient : ISentClient
         _users = new(() => new UserService(this));
         _templates = new(() => new TemplateService(this));
         _profiles = new(() => new ProfileService(this));
+        _senderProfiles = new(() => new SenderProfileService(this));
         _numbers = new(() => new NumberService(this));
         _messages = new(() => new MessageService(this));
         _contacts = new(() => new ContactService(this));
         _conversations = new(() => new ConversationService(this));
         _voice = new(() => new VoiceService(this));
         _channels = new(() => new ChannelService(this));
+        _compliance = new(() => new ComplianceService(this));
         _me = new(() => new MeService(this));
     }
 
@@ -255,6 +269,12 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
         get { return _profiles.Value; }
     }
 
+    readonly Lazy<ISenderProfileServiceWithRawResponse> _senderProfiles;
+    public ISenderProfileServiceWithRawResponse SenderProfiles
+    {
+        get { return _senderProfiles.Value; }
+    }
+
     readonly Lazy<INumberServiceWithRawResponse> _numbers;
     public INumberServiceWithRawResponse Numbers
     {
@@ -289,6 +309,12 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
     public IChannelServiceWithRawResponse Channels
     {
         get { return _channels.Value; }
+    }
+
+    readonly Lazy<IComplianceServiceWithRawResponse> _compliance;
+    public IComplianceServiceWithRawResponse Compliance
+    {
+        get { return _compliance.Value; }
     }
 
     readonly Lazy<IMeServiceWithRawResponse> _me;
@@ -499,12 +525,14 @@ public sealed class SentClientWithRawResponse : ISentClientWithRawResponse
         _users = new(() => new UserServiceWithRawResponse(this));
         _templates = new(() => new TemplateServiceWithRawResponse(this));
         _profiles = new(() => new ProfileServiceWithRawResponse(this));
+        _senderProfiles = new(() => new SenderProfileServiceWithRawResponse(this));
         _numbers = new(() => new NumberServiceWithRawResponse(this));
         _messages = new(() => new MessageServiceWithRawResponse(this));
         _contacts = new(() => new ContactServiceWithRawResponse(this));
         _conversations = new(() => new ConversationServiceWithRawResponse(this));
         _voice = new(() => new VoiceServiceWithRawResponse(this));
         _channels = new(() => new ChannelServiceWithRawResponse(this));
+        _compliance = new(() => new ComplianceServiceWithRawResponse(this));
         _me = new(() => new MeServiceWithRawResponse(this));
     }
 
