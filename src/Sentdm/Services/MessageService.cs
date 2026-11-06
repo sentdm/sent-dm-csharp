@@ -35,6 +35,30 @@ public sealed class MessageService : IMessageService
     }
 
     /// <inheritdoc/>
+    public async Task<ApiResponseOfCancelledMessage> Cancel(
+        MessageCancelParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Cancel(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<ApiResponseOfCancelledMessage> Cancel(
+        string id,
+        MessageCancelParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Cancel(parameters with { ID = id }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
     public async Task<MessageSendResponse> Resend(
         MessageResendParams parameters,
         CancellationToken cancellationToken = default
@@ -59,7 +83,7 @@ public sealed class MessageService : IMessageService
     }
 
     /// <inheritdoc/>
-    public async Task<MessageRetrieveActivitiesResponse> RetrieveActivities(
+    public async Task<ApiResponseOfMessageActivities> RetrieveActivities(
         MessageRetrieveActivitiesParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -71,7 +95,7 @@ public sealed class MessageService : IMessageService
     }
 
     /// <inheritdoc/>
-    public Task<MessageRetrieveActivitiesResponse> RetrieveActivities(
+    public Task<ApiResponseOfMessageActivities> RetrieveActivities(
         string id,
         MessageRetrieveActivitiesParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -83,7 +107,7 @@ public sealed class MessageService : IMessageService
     }
 
     /// <inheritdoc/>
-    public async Task<MessageRetrieveStatusResponse> RetrieveStatus(
+    public async Task<ApiResponseOfMessage> RetrieveStatus(
         MessageRetrieveStatusParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -95,7 +119,7 @@ public sealed class MessageService : IMessageService
     }
 
     /// <inheritdoc/>
-    public Task<MessageRetrieveStatusResponse> RetrieveStatus(
+    public Task<ApiResponseOfMessage> RetrieveStatus(
         string id,
         MessageRetrieveStatusParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -133,6 +157,51 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     public MessageServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<ApiResponseOfCancelledMessage>> Cancel(
+        MessageCancelParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        if (parameters.ID == null)
+        {
+            throw new SentInvalidDataException("'parameters.ID' cannot be null");
+        }
+
+        HttpRequest<MessageCancelParams> request = new()
+        {
+            Method = HttpMethod.Post,
+            Params = parameters,
+        };
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var apiResponseOfCancelledMessage = await response
+                    .Deserialize<ApiResponseOfCancelledMessage>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    apiResponseOfCancelledMessage.Validate();
+                }
+                return apiResponseOfCancelledMessage;
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public Task<HttpResponse<ApiResponseOfCancelledMessage>> Cancel(
+        string id,
+        MessageCancelParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Cancel(parameters with { ID = id }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -181,7 +250,7 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<MessageRetrieveActivitiesResponse>> RetrieveActivities(
+    public async Task<HttpResponse<ApiResponseOfMessageActivities>> RetrieveActivities(
         MessageRetrieveActivitiesParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -201,20 +270,20 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
             response,
             async (token) =>
             {
-                var deserializedResponse = await response
-                    .Deserialize<MessageRetrieveActivitiesResponse>(token)
+                var apiResponseOfMessageActivities = await response
+                    .Deserialize<ApiResponseOfMessageActivities>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    deserializedResponse.Validate();
+                    apiResponseOfMessageActivities.Validate();
                 }
-                return deserializedResponse;
+                return apiResponseOfMessageActivities;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<MessageRetrieveActivitiesResponse>> RetrieveActivities(
+    public Task<HttpResponse<ApiResponseOfMessageActivities>> RetrieveActivities(
         string id,
         MessageRetrieveActivitiesParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -226,7 +295,7 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<MessageRetrieveStatusResponse>> RetrieveStatus(
+    public async Task<HttpResponse<ApiResponseOfMessage>> RetrieveStatus(
         MessageRetrieveStatusParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -246,20 +315,20 @@ public sealed class MessageServiceWithRawResponse : IMessageServiceWithRawRespon
             response,
             async (token) =>
             {
-                var deserializedResponse = await response
-                    .Deserialize<MessageRetrieveStatusResponse>(token)
+                var apiResponseOfMessage = await response
+                    .Deserialize<ApiResponseOfMessage>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    deserializedResponse.Validate();
+                    apiResponseOfMessage.Validate();
                 }
-                return deserializedResponse;
+                return apiResponseOfMessage;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<MessageRetrieveStatusResponse>> RetrieveStatus(
+    public Task<HttpResponse<ApiResponseOfMessage>> RetrieveStatus(
         string id,
         MessageRetrieveStatusParams? parameters = null,
         CancellationToken cancellationToken = default

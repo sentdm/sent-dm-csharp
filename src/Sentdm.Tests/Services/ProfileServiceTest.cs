@@ -39,11 +39,11 @@ public class ProfileServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
-        var profiles = await this.client.Profiles.List(
+        var apiResponseOfProfilesList = await this.client.Profiles.List(
             new(),
             TestContext.Current.CancellationToken
         );
-        profiles.Validate();
+        apiResponseOfProfilesList.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
@@ -59,11 +59,11 @@ public class ProfileServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Complete_Works()
     {
-        var response = await this.client.Profiles.Complete(
+        var apiResponseOfProfileCompletionResult = await this.client.Profiles.Complete(
             "660e8400-e29b-41d4-a716-446655440000",
             new() { WebHookUrl = "https://your-app.com/webhook/profile-complete" },
             TestContext.Current.CancellationToken
         );
-        response.Validate();
+        apiResponseOfProfileCompletionResult.Validate();
     }
 }

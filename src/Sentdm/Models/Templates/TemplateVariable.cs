@@ -24,12 +24,12 @@ public sealed record class TemplateVariable : JsonModel
         init { this._rawData.Set("name", value); }
     }
 
-    public required Props Props
+    public required TemplateVariableProps Props
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<Props>("props");
+            return this._rawData.GetNotNullClass<TemplateVariableProps>("props");
         }
         init { this._rawData.Set("props", value); }
     }
@@ -117,130 +117,4 @@ class TemplateVariableFromRaw : IFromRawJson<TemplateVariable>
     /// <inheritdoc/>
     public TemplateVariable FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         TemplateVariable.FromRawUnchecked(rawData);
-}
-
-[JsonConverter(typeof(JsonModelConverter<Props, PropsFromRaw>))]
-public sealed record class Props : JsonModel
-{
-    public required string MediaType
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("mediaType");
-        }
-        init { this._rawData.Set("mediaType", value); }
-    }
-
-    /// <summary>
-    /// Example value substituted into the template when previewing it and when submitting
-    /// it to Meta for review. Free text by nature, so the converter accepts a JSON
-    /// number or boolean here and normalizes it — see JsonScalarToStringConverter
-    /// for why — and guarantees it is always serialized back out as a JSON string.
-    /// </summary>
-    public required string Sample
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("sample");
-        }
-        init { this._rawData.Set("sample", value); }
-    }
-
-    public required string Url
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("url");
-        }
-        init { this._rawData.Set("url", value); }
-    }
-
-    public required string VariableType
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("variableType");
-        }
-        init { this._rawData.Set("variableType", value); }
-    }
-
-    public string? Alt
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("alt");
-        }
-        init { this._rawData.Set("alt", value); }
-    }
-
-    public string? Regex
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("regex");
-        }
-        init { this._rawData.Set("regex", value); }
-    }
-
-    public string? ShortUrl
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("shortUrl");
-        }
-        init { this._rawData.Set("shortUrl", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.MediaType;
-        _ = this.Sample;
-        _ = this.Url;
-        _ = this.VariableType;
-        _ = this.Alt;
-        _ = this.Regex;
-        _ = this.ShortUrl;
-    }
-
-    public Props() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public Props(Props props)
-        : base(props) { }
-#pragma warning restore CS8618
-
-    public Props(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    Props(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="PropsFromRaw.FromRawUnchecked"/>
-    public static Props FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class PropsFromRaw : IFromRawJson<Props>
-{
-    /// <inheritdoc/>
-    public Props FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Props.FromRawUnchecked(rawData);
 }

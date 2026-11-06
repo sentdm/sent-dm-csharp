@@ -172,7 +172,7 @@ public interface IProfileService
     /// configuration.</para>
     /// </summary>
     [Obsolete("deprecated")]
-    Task<ProfileListResponse> List(
+    Task<ApiResponseOfProfilesList> List(
         ProfileListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -247,14 +247,14 @@ public interface IProfileService
     /// webhook reports the reason</para>
     /// </summary>
     [Obsolete("deprecated")]
-    Task<ProfileCompleteResponse> Complete(
+    Task<ApiResponseOfProfileCompletionResult> Complete(
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Complete(ProfileCompleteParams, CancellationToken)"/>
     [Obsolete("deprecated")]
-    Task<ProfileCompleteResponse> Complete(
+    Task<ApiResponseOfProfileCompletionResult> Complete(
         string profileID,
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
@@ -327,7 +327,7 @@ public interface IProfileServiceWithRawResponse
     /// same as <see cref="IProfileService.List(ProfileListParams?, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
-    Task<HttpResponse<ProfileListResponse>> List(
+    Task<HttpResponse<ApiResponseOfProfilesList>> List(
         ProfileListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -355,14 +355,14 @@ public interface IProfileServiceWithRawResponse
     /// same as <see cref="IProfileService.Complete(ProfileCompleteParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
-    Task<HttpResponse<ProfileCompleteResponse>> Complete(
+    Task<HttpResponse<ApiResponseOfProfileCompletionResult>> Complete(
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Complete(ProfileCompleteParams, CancellationToken)"/>
     [Obsolete("deprecated")]
-    Task<HttpResponse<ProfileCompleteResponse>> Complete(
+    Task<HttpResponse<ApiResponseOfProfileCompletionResult>> Complete(
         string profileID,
         ProfileCompleteParams parameters,
         CancellationToken cancellationToken = default

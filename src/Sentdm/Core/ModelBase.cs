@@ -1,8 +1,11 @@
 using System.Text.Json;
 using Sentdm.Exceptions;
+using Sentdm.Models.Channels.Rcs;
 using Sentdm.Models.Profiles;
-using Campaigns = Sentdm.Models.Profiles.Campaigns;
+using Sentdm.Models.Profiles.Campaigns;
+using Sms = Sentdm.Models.Channels.Sms;
 using Voice = Sentdm.Models.Channels.Voice;
+using Whatsapp = Sentdm.Models.Channels.Whatsapp;
 
 namespace Sentdm.Core;
 
@@ -24,12 +27,19 @@ public abstract record class ModelBase
         {
             new FrozenDictionaryConverterFactory(),
             new ApiEnumConverter<string, EntityType>(),
-            new ApiEnumConverter<string, IdentityStatus>(),
-            new ApiEnumConverter<string, Status>(),
+            new ApiEnumConverter<string, TcrBrandIdentityStatus>(),
             new ApiEnumConverter<string, TcrBrandRelationship>(),
+            new ApiEnumConverter<string, TcrBrandStatus>(),
+            new ApiEnumConverter<string, TcrCampaignStatus>(),
             new ApiEnumConverter<string, TcrVertical>(),
-            new ApiEnumConverter<string, Campaigns::Status>(),
-            new ApiEnumConverter<string, Campaigns::MessagingUseCaseUs>(),
+            new ApiEnumConverter<string, MessagingUseCaseUs>(),
+            new ApiEnumConverter<string, Sms::EntityType>(),
+            new ApiEnumConverter<string, Sms::UseCaseUseCase>(),
+            new ApiEnumConverter<string, Sms::Status>(),
+            new ApiEnumConverter<string, Sms::NumberType>(),
+            new ApiEnumConverter<string, Status>(),
+            new ApiEnumConverter<string, AgentUseCase>(),
+            new ApiEnumConverter<string, Whatsapp::Status>(),
             new ApiEnumConverter<string, Voice::Status>(),
         },
     };

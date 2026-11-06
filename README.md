@@ -377,10 +377,11 @@ Required properties on the nested parameter can also be changed or omitted using
 using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Models.Messages;
+using Sentdm.Models.Templates;
 
 MessageSendParams parameters = new()
 {
-    Template = Template.FromRawUnchecked
+    Template = TemplateRef.FromRawUnchecked
     (
         new Dictionary<string, JsonElement>
         {

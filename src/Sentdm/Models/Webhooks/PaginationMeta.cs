@@ -18,12 +18,12 @@ public sealed record class PaginationMeta : JsonModel
     /// Cursor-based pagination. Never populated — see Cursors.
     /// </summary>
     [Obsolete("deprecated")]
-    public Cursors? Cursors
+    public PaginationCursors? Cursors
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Cursors>("cursors");
+            return this._rawData.GetNullableClass<PaginationCursors>("cursors");
         }
         init { this._rawData.Set("cursors", value); }
     }
@@ -177,79 +177,4 @@ class PaginationMetaFromRaw : IFromRawJson<PaginationMeta>
     /// <inheritdoc/>
     public PaginationMeta FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         PaginationMeta.FromRawUnchecked(rawData);
-}
-
-/// <summary>
-/// Cursor-based pagination. Never populated — see Cursors.
-/// </summary>
-[Obsolete("deprecated")]
-[JsonConverter(typeof(JsonModelConverter<Cursors, CursorsFromRaw>))]
-public sealed record class Cursors : JsonModel
-{
-    /// <summary>
-    /// Cursor to fetch the next page.
-    /// </summary>
-    public string? After
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("after");
-        }
-        init { this._rawData.Set("after", value); }
-    }
-
-    /// <summary>
-    /// Cursor to fetch the previous page.
-    /// </summary>
-    public string? Before
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("before");
-        }
-        init { this._rawData.Set("before", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.After;
-        _ = this.Before;
-    }
-
-    public Cursors() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public Cursors(Cursors cursors)
-        : base(cursors) { }
-#pragma warning restore CS8618
-
-    public Cursors(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    Cursors(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="CursorsFromRaw.FromRawUnchecked"/>
-    public static Cursors FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class CursorsFromRaw : IFromRawJson<Cursors>
-{
-    /// <inheritdoc/>
-    public Cursors FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Cursors.FromRawUnchecked(rawData);
 }
