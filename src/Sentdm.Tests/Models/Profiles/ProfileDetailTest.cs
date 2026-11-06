@@ -1443,7 +1443,7 @@ public class BrandTest : TestBase
             TaxIDType = "tax_id_type",
             Url = "url",
         };
-        Compliance expectedCompliance = new()
+        BrandCompliance expectedCompliance = new()
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -1616,7 +1616,7 @@ public class BrandTest : TestBase
             TaxIDType = "tax_id_type",
             Url = "url",
         };
-        Compliance expectedCompliance = new()
+        BrandCompliance expectedCompliance = new()
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -2379,12 +2379,12 @@ public class BusinessTest : TestBase
     }
 }
 
-public class ComplianceTest : TestBase
+public class BrandComplianceTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -2424,7 +2424,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -2436,7 +2436,7 @@ public class ComplianceTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Compliance>(
+        var deserialized = JsonSerializer.Deserialize<BrandCompliance>(
             json,
             ModelBase.SerializerOptions
         );
@@ -2447,7 +2447,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -2459,7 +2459,7 @@ public class ComplianceTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Compliance>(
+        var deserialized = JsonSerializer.Deserialize<BrandCompliance>(
             element,
             ModelBase.SerializerOptions
         );
@@ -2494,7 +2494,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -2511,7 +2511,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             Notes = "notes",
@@ -2529,7 +2529,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             Notes = "notes",
@@ -2544,7 +2544,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             Notes = "notes",
@@ -2566,7 +2566,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             Notes = "notes",
@@ -2585,7 +2585,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             DestinationCountries = [new() { ID = "id", IsMain = true }],
             IsTcrApplication = true,
@@ -2606,7 +2606,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             DestinationCountries = [new() { ID = "id", IsMain = true }],
             IsTcrApplication = true,
@@ -2618,7 +2618,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             DestinationCountries = [new() { ID = "id", IsMain = true }],
             IsTcrApplication = true,
@@ -2645,7 +2645,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             DestinationCountries = [new() { ID = "id", IsMain = true }],
             IsTcrApplication = true,
@@ -2663,7 +2663,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Compliance
+        var model = new BrandCompliance
         {
             BrandRelationship = TcrBrandRelationship.BasicAccount,
             DestinationCountries = [new() { ID = "id", IsMain = true }],
@@ -2674,7 +2674,7 @@ public class ComplianceTest : TestBase
             Vertical = TcrVertical.Professional,
         };
 
-        Compliance copied = new(model);
+        BrandCompliance copied = new(model);
 
         Assert.Equal(model, copied);
     }

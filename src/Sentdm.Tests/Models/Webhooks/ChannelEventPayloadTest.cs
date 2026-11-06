@@ -46,7 +46,7 @@ public class ChannelEventPayloadTest : TestBase
         string expectedCountry = "country";
         string expectedAccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedChannel = "channel";
-        Compliance expectedCompliance = new()
+        ChannelEventPayloadCompliance expectedCompliance = new()
         {
             Brand = new Dictionary<string, JsonElement>()
             {
@@ -176,7 +176,7 @@ public class ChannelEventPayloadTest : TestBase
         string expectedCountry = "country";
         string expectedAccountID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedChannel = "channel";
-        Compliance expectedCompliance = new()
+        ChannelEventPayloadCompliance expectedCompliance = new()
         {
             Brand = new Dictionary<string, JsonElement>()
             {
@@ -552,12 +552,12 @@ public class ChannelEventPayloadTest : TestBase
     }
 }
 
-public class ComplianceTest : TestBase
+public class ChannelEventPayloadComplianceTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Compliance
+        var model = new ChannelEventPayloadCompliance
         {
             Brand = new Dictionary<string, JsonElement>()
             {
@@ -623,7 +623,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Compliance
+        var model = new ChannelEventPayloadCompliance
         {
             Brand = new Dictionary<string, JsonElement>()
             {
@@ -645,7 +645,7 @@ public class ComplianceTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Compliance>(
+        var deserialized = JsonSerializer.Deserialize<ChannelEventPayloadCompliance>(
             json,
             ModelBase.SerializerOptions
         );
@@ -656,7 +656,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Compliance
+        var model = new ChannelEventPayloadCompliance
         {
             Brand = new Dictionary<string, JsonElement>()
             {
@@ -678,7 +678,7 @@ public class ComplianceTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Compliance>(
+        var deserialized = JsonSerializer.Deserialize<ChannelEventPayloadCompliance>(
             element,
             ModelBase.SerializerOptions
         );
@@ -729,7 +729,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Compliance
+        var model = new ChannelEventPayloadCompliance
         {
             Brand = new Dictionary<string, JsonElement>()
             {
@@ -756,7 +756,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Compliance { };
+        var model = new ChannelEventPayloadCompliance { };
 
         Assert.Null(model.Brand);
         Assert.False(model.RawData.ContainsKey("brand"));
@@ -769,7 +769,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Compliance { };
+        var model = new ChannelEventPayloadCompliance { };
 
         model.Validate();
     }
@@ -777,7 +777,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new Compliance
+        var model = new ChannelEventPayloadCompliance
         {
             Brand = null,
             Campaign = null,
@@ -795,7 +795,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Compliance
+        var model = new ChannelEventPayloadCompliance
         {
             Brand = null,
             Campaign = null,
@@ -808,7 +808,7 @@ public class ComplianceTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Compliance
+        var model = new ChannelEventPayloadCompliance
         {
             Brand = new Dictionary<string, JsonElement>()
             {
@@ -829,7 +829,7 @@ public class ComplianceTest : TestBase
             ],
         };
 
-        Compliance copied = new(model);
+        ChannelEventPayloadCompliance copied = new(model);
 
         Assert.Equal(model, copied);
     }
