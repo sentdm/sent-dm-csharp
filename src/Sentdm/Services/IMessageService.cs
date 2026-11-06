@@ -84,13 +84,13 @@ public interface IMessageService
     /// the message after a few seconds — `GET /v3/messages/{id}` is cached briefly, so
     /// an immediate re-fetch can still show the pre-cancellation state.</para>
     /// </summary>
-    Task<MessageCancelResponse> Cancel(
+    Task<ApiResponseOfCancelledMessage> Cancel(
         MessageCancelParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Cancel(MessageCancelParams, CancellationToken)"/>
-    Task<MessageCancelResponse> Cancel(
+    Task<ApiResponseOfCancelledMessage> Cancel(
         string id,
         MessageCancelParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -145,13 +145,13 @@ public interface IMessageService
     /// SCHEDULED entry carries scheduled_at, the release instant in UTC as it stood at
     /// that moment. Other entries have no scheduled_at key.
     /// </summary>
-    Task<MessageRetrieveActivitiesResponse> RetrieveActivities(
+    Task<ApiResponseOfMessageActivities> RetrieveActivities(
         MessageRetrieveActivitiesParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="RetrieveActivities(MessageRetrieveActivitiesParams, CancellationToken)"/>
-    Task<MessageRetrieveActivitiesResponse> RetrieveActivities(
+    Task<ApiResponseOfMessageActivities> RetrieveActivities(
         string id,
         MessageRetrieveActivitiesParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -166,13 +166,13 @@ public interface IMessageService
     /// held for in UTC — or, on a CANCELLED message, the instant that was called off. A
     /// message sent immediately has no scheduled_at key.
     /// </summary>
-    Task<MessageRetrieveStatusResponse> RetrieveStatus(
+    Task<ApiResponseOfMessage> RetrieveStatus(
         MessageRetrieveStatusParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="RetrieveStatus(MessageRetrieveStatusParams, CancellationToken)"/>
-    Task<MessageRetrieveStatusResponse> RetrieveStatus(
+    Task<ApiResponseOfMessage> RetrieveStatus(
         string id,
         MessageRetrieveStatusParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -238,13 +238,13 @@ public interface IMessageServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/messages/{id}/cancel</c>, but is otherwise the
     /// same as <see cref="IMessageService.Cancel(MessageCancelParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<MessageCancelResponse>> Cancel(
+    Task<HttpResponse<ApiResponseOfCancelledMessage>> Cancel(
         MessageCancelParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Cancel(MessageCancelParams, CancellationToken)"/>
-    Task<HttpResponse<MessageCancelResponse>> Cancel(
+    Task<HttpResponse<ApiResponseOfCancelledMessage>> Cancel(
         string id,
         MessageCancelParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -270,13 +270,13 @@ public interface IMessageServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/messages/{id}/activities</c>, but is otherwise the
     /// same as <see cref="IMessageService.RetrieveActivities(MessageRetrieveActivitiesParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<MessageRetrieveActivitiesResponse>> RetrieveActivities(
+    Task<HttpResponse<ApiResponseOfMessageActivities>> RetrieveActivities(
         MessageRetrieveActivitiesParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="RetrieveActivities(MessageRetrieveActivitiesParams, CancellationToken)"/>
-    Task<HttpResponse<MessageRetrieveActivitiesResponse>> RetrieveActivities(
+    Task<HttpResponse<ApiResponseOfMessageActivities>> RetrieveActivities(
         string id,
         MessageRetrieveActivitiesParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -286,13 +286,13 @@ public interface IMessageServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/messages/{id}</c>, but is otherwise the
     /// same as <see cref="IMessageService.RetrieveStatus(MessageRetrieveStatusParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<MessageRetrieveStatusResponse>> RetrieveStatus(
+    Task<HttpResponse<ApiResponseOfMessage>> RetrieveStatus(
         MessageRetrieveStatusParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="RetrieveStatus(MessageRetrieveStatusParams, CancellationToken)"/>
-    Task<HttpResponse<MessageRetrieveStatusResponse>> RetrieveStatus(
+    Task<HttpResponse<ApiResponseOfMessage>> RetrieveStatus(
         string id,
         MessageRetrieveStatusParams? parameters = null,
         CancellationToken cancellationToken = default

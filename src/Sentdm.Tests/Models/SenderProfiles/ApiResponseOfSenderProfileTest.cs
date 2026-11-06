@@ -4,8 +4,8 @@ using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Channels.Rcs;
 using Sentdm.Models.SenderProfiles;
+using Sentdm.Models.Webhooks;
 using Sms = Sentdm.Models.Channels.Sms;
-using Webhooks = Sentdm.Models.Webhooks;
 using Whatsapp = Sentdm.Models.Channels.Whatsapp;
 
 namespace Sentdm.Tests.Models.SenderProfiles;
@@ -331,14 +331,14 @@ public class ApiResponseOfSenderProfileTest : TestBase
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ShortName = "short_name",
         };
-        Webhooks::ErrorDetail expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        Webhooks::ApiMeta expectedMeta = new()
+        ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -857,14 +857,14 @@ public class ApiResponseOfSenderProfileTest : TestBase
             OrganizationID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ShortName = "short_name",
         };
-        Webhooks::ErrorDetail expectedError = new()
+        ErrorDetail expectedError = new()
         {
             Code = "code",
             Details = new Dictionary<string, IReadOnlyList<string>>() { { "foo", ["string"] } },
             DocUrl = "doc_url",
             Message = "message",
         };
-        Webhooks::ApiMeta expectedMeta = new()
+        ApiMeta expectedMeta = new()
         {
             RequestID = "request_id",
             Timestamp = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),

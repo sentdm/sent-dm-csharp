@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
@@ -114,8 +115,8 @@ namespace Sentdm.Models.Channels.Sms;
 /// </summary>
 public record class SmsCreateParams : ParamsBase
 {
-    readonly MultipartJsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, MultipartJsonElement> RawBodyData
+    readonly JsonDictionary _rawBodyData = new();
+    public IReadOnlyDictionary<string, JsonElement> RawBodyData
     {
         get { return this._rawBodyData.Freeze(); }
     }
@@ -335,7 +336,7 @@ public record class SmsCreateParams : ParamsBase
     public SmsCreateParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, MultipartJsonElement> rawBodyData
+        IReadOnlyDictionary<string, JsonElement> rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
@@ -348,7 +349,7 @@ public record class SmsCreateParams : ParamsBase
     SmsCreateParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, MultipartJsonElement> rawBodyData
+        FrozenDictionary<string, JsonElement> rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
@@ -361,7 +362,7 @@ public record class SmsCreateParams : ParamsBase
     public static SmsCreateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, MultipartJsonElement> rawBodyData
+        IReadOnlyDictionary<string, JsonElement> rawBodyData
     )
     {
         return new(
@@ -374,7 +375,7 @@ public record class SmsCreateParams : ParamsBase
     public override string ToString() =>
         JsonSerializer.Serialize(
             FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, MultipartJsonElement>()
+                new Dictionary<string, JsonElement>()
                 {
                     ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
@@ -409,7 +410,11 @@ public record class SmsCreateParams : ParamsBase
 
     internal override HttpContent? BodyContent()
     {
-        return MultipartJsonSerializer.Serialize(RawBodyData);
+        return new StringContent(
+            JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
+            Encoding.UTF8,
+            "application/json"
+        );
     }
 
     internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)

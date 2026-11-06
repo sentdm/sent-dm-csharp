@@ -7,12 +7,12 @@ public class MessageServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Cancel_Works()
     {
-        var response = await this.client.Messages.Cancel(
+        var apiResponseOfCancelledMessage = await this.client.Messages.Cancel(
             "8ba7b830-9dad-11d1-80b4-00c04fd430c8",
             new(),
             TestContext.Current.CancellationToken
         );
-        response.Validate();
+        apiResponseOfCancelledMessage.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
@@ -29,23 +29,23 @@ public class MessageServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task RetrieveActivities_Works()
     {
-        var response = await this.client.Messages.RetrieveActivities(
+        var apiResponseOfMessageActivities = await this.client.Messages.RetrieveActivities(
             "8ba7b830-9dad-11d1-80b4-00c04fd430c8",
             new(),
             TestContext.Current.CancellationToken
         );
-        response.Validate();
+        apiResponseOfMessageActivities.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task RetrieveStatus_Works()
     {
-        var response = await this.client.Messages.RetrieveStatus(
+        var apiResponseOfMessage = await this.client.Messages.RetrieveStatus(
             "8ba7b830-9dad-11d1-80b4-00c04fd430c8",
             new(),
             TestContext.Current.CancellationToken
         );
-        response.Validate();
+        apiResponseOfMessage.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]

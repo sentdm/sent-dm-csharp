@@ -34,7 +34,7 @@ public sealed class MeService : IMeService
     }
 
     /// <inheritdoc/>
-    public async Task<MeRetrieveResponse> Retrieve(
+    public async Task<ApiResponseOfAccount> Retrieve(
         MeRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -63,7 +63,7 @@ public sealed class MeServiceWithRawResponse : IMeServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<MeRetrieveResponse>> Retrieve(
+    public async Task<HttpResponse<ApiResponseOfAccount>> Retrieve(
         MeRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -80,14 +80,14 @@ public sealed class MeServiceWithRawResponse : IMeServiceWithRawResponse
             response,
             async (token) =>
             {
-                var me = await response
-                    .Deserialize<MeRetrieveResponse>(token)
+                var apiResponseOfAccount = await response
+                    .Deserialize<ApiResponseOfAccount>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    me.Validate();
+                    apiResponseOfAccount.Validate();
                 }
-                return me;
+                return apiResponseOfAccount;
             }
         );
     }

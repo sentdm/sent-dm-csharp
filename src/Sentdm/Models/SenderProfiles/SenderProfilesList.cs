@@ -39,14 +39,14 @@ public sealed record class SenderProfilesList : JsonModel
     /// <summary>
     /// The sender_profiles on this page.
     /// </summary>
-    public IReadOnlyList<global::Sentdm.Models.SenderProfiles.SenderProfile>? SenderProfiles
+    public IReadOnlyList<SenderProfile>? SenderProfiles
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<
-                ImmutableArray<global::Sentdm.Models.SenderProfiles.SenderProfile>
-            >("sender_profiles");
+            return this._rawData.GetNullableStruct<ImmutableArray<SenderProfile>>(
+                "sender_profiles"
+            );
         }
         init
         {
@@ -55,7 +55,7 @@ public sealed record class SenderProfilesList : JsonModel
                 return;
             }
 
-            this._rawData.Set<ImmutableArray<global::Sentdm.Models.SenderProfiles.SenderProfile>?>(
+            this._rawData.Set<ImmutableArray<SenderProfile>?>(
                 "sender_profiles",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );

@@ -59,7 +59,7 @@ public sealed class UserService : IUserService
     }
 
     /// <inheritdoc/>
-    public async Task<UserListResponse> List(
+    public async Task<ApiResponseOfUsersList> List(
         UserListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -188,7 +188,7 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<UserListResponse>> List(
+    public async Task<HttpResponse<ApiResponseOfUsersList>> List(
         UserListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -205,14 +205,14 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
             response,
             async (token) =>
             {
-                var users = await response
-                    .Deserialize<UserListResponse>(token)
+                var apiResponseOfUsersList = await response
+                    .Deserialize<ApiResponseOfUsersList>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    users.Validate();
+                    apiResponseOfUsersList.Validate();
                 }
-                return users;
+                return apiResponseOfUsersList;
             }
         );
     }

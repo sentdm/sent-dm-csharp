@@ -3,6 +3,7 @@ using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Channels.Sms;
@@ -200,8 +201,8 @@ namespace Sentdm.Models.SenderProfiles;
 /// </summary>
 public record class SenderProfileCreateParams : ParamsBase
 {
-    readonly MultipartJsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, MultipartJsonElement> RawBodyData
+    readonly JsonDictionary _rawBodyData = new();
+    public IReadOnlyDictionary<string, JsonElement> RawBodyData
     {
         get { return this._rawBodyData.Freeze(); }
     }
@@ -395,7 +396,7 @@ public record class SenderProfileCreateParams : ParamsBase
     public SenderProfileCreateParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, MultipartJsonElement> rawBodyData
+        IReadOnlyDictionary<string, JsonElement> rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
@@ -408,7 +409,7 @@ public record class SenderProfileCreateParams : ParamsBase
     SenderProfileCreateParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, MultipartJsonElement> rawBodyData
+        FrozenDictionary<string, JsonElement> rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
@@ -421,7 +422,7 @@ public record class SenderProfileCreateParams : ParamsBase
     public static SenderProfileCreateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, MultipartJsonElement> rawBodyData
+        IReadOnlyDictionary<string, JsonElement> rawBodyData
     )
     {
         return new(
@@ -434,7 +435,7 @@ public record class SenderProfileCreateParams : ParamsBase
     public override string ToString() =>
         JsonSerializer.Serialize(
             FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, MultipartJsonElement>()
+                new Dictionary<string, JsonElement>()
                 {
                     ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
@@ -469,7 +470,11 @@ public record class SenderProfileCreateParams : ParamsBase
 
     internal override HttpContent? BodyContent()
     {
-        return MultipartJsonSerializer.Serialize(RawBodyData);
+        return new StringContent(
+            JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
+            Encoding.UTF8,
+            "application/json"
+        );
     }
 
     internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)

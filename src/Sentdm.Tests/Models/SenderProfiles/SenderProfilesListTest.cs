@@ -4,8 +4,8 @@ using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Channels.Rcs;
 using Sentdm.Models.SenderProfiles;
+using Sentdm.Models.Webhooks;
 using Sms = Sentdm.Models.Channels.Sms;
-using Webhooks = Sentdm.Models.Webhooks;
 using Whatsapp = Sentdm.Models.Channels.Whatsapp;
 
 namespace Sentdm.Tests.Models.SenderProfiles;
@@ -180,7 +180,7 @@ public class SenderProfilesListTest : TestBase
             ],
         };
 
-        Webhooks::PaginationMeta expectedPagination = new()
+        PaginationMeta expectedPagination = new()
         {
             Cursors = new() { After = "after", Before = "before" },
             HasMore = true,
@@ -703,7 +703,7 @@ public class SenderProfilesListTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        Webhooks::PaginationMeta expectedPagination = new()
+        PaginationMeta expectedPagination = new()
         {
             Cursors = new() { After = "after", Before = "before" },
             HasMore = true,
