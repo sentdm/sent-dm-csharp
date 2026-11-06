@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.46.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.45.0...v0.46.0) (2026-11-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** stable names for shared models; typed methods for sender profiles, channels, compliance requirements and message cancel
+
+### Features
+
+* **api:** stable names for shared models; typed methods for sender profiles, channels, compliance requirements and message cancel ([3f80ad2](https://github.com/sentdm/sent-dm-csharp/commit/3f80ad21d5478d6591885be7a667fc5121218f2a))
+
 ## [0.45.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.44.0...v0.45.0) (2026-11-05)
 
 
