@@ -110,12 +110,12 @@ public sealed record class ChannelEventPayload : JsonModel
     /// is null only when the market registers with nobody and compliance was not
     /// computed — nothing to show at all.
     /// </summary>
-    public Compliance? Compliance
+    public ChannelEventPayloadCompliance? Compliance
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Compliance>("compliance");
+            return this._rawData.GetNullableClass<ChannelEventPayloadCompliance>("compliance");
         }
         init { this._rawData.Set("compliance", value); }
     }
@@ -310,8 +310,10 @@ class ChannelEventPayloadFromRaw : IFromRawJson<ChannelEventPayload>
 /// given none. The parent object is null only when the market registers with nobody
 /// and compliance was not computed — nothing to show at all.
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<Compliance, ComplianceFromRaw>))]
-public sealed record class Compliance : JsonModel
+[JsonConverter(
+    typeof(JsonModelConverter<ChannelEventPayloadCompliance, ChannelEventPayloadComplianceFromRaw>)
+)]
+public sealed record class ChannelEventPayloadCompliance : JsonModel
 {
     /// <summary>
     /// The identity this market registers under, with inherit saying whose it is.
@@ -408,39 +410,44 @@ public sealed record class Compliance : JsonModel
         }
     }
 
-    public Compliance() { }
+    public ChannelEventPayloadCompliance() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Compliance(Compliance compliance)
-        : base(compliance) { }
+    public ChannelEventPayloadCompliance(
+        ChannelEventPayloadCompliance channelEventPayloadCompliance
+    )
+        : base(channelEventPayloadCompliance) { }
 #pragma warning restore CS8618
 
-    public Compliance(IReadOnlyDictionary<string, JsonElement> rawData)
+    public ChannelEventPayloadCompliance(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Compliance(FrozenDictionary<string, JsonElement> rawData)
+    ChannelEventPayloadCompliance(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="ComplianceFromRaw.FromRawUnchecked"/>
-    public static Compliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="ChannelEventPayloadComplianceFromRaw.FromRawUnchecked"/>
+    public static ChannelEventPayloadCompliance FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class ComplianceFromRaw : IFromRawJson<Compliance>
+class ChannelEventPayloadComplianceFromRaw : IFromRawJson<ChannelEventPayloadCompliance>
 {
     /// <inheritdoc/>
-    public Compliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Compliance.FromRawUnchecked(rawData);
+    public ChannelEventPayloadCompliance FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => ChannelEventPayloadCompliance.FromRawUnchecked(rawData);
 }
 
 /// <summary>

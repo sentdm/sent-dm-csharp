@@ -621,12 +621,12 @@ public sealed record class Brand : JsonModel
     /// <summary>
     /// Compliance and TCR-related information
     /// </summary>
-    public Compliance? Compliance
+    public BrandCompliance? Compliance
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Compliance>("compliance");
+            return this._rawData.GetNullableClass<BrandCompliance>("compliance");
         }
         init { this._rawData.Set("compliance", value); }
     }
@@ -1055,8 +1055,8 @@ class BusinessFromRaw : IFromRawJson<Business>
 /// <summary>
 /// Compliance and TCR-related information
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<Compliance, ComplianceFromRaw>))]
-public sealed record class Compliance : JsonModel
+[JsonConverter(typeof(JsonModelConverter<BrandCompliance, BrandComplianceFromRaw>))]
+public sealed record class BrandCompliance : JsonModel
 {
     public ApiEnum<string, TcrBrandRelationship>? BrandRelationship
     {
@@ -1188,39 +1188,39 @@ public sealed record class Compliance : JsonModel
         this.Vertical?.Validate();
     }
 
-    public Compliance() { }
+    public BrandCompliance() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Compliance(Compliance compliance)
-        : base(compliance) { }
+    public BrandCompliance(BrandCompliance brandCompliance)
+        : base(brandCompliance) { }
 #pragma warning restore CS8618
 
-    public Compliance(IReadOnlyDictionary<string, JsonElement> rawData)
+    public BrandCompliance(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Compliance(FrozenDictionary<string, JsonElement> rawData)
+    BrandCompliance(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="ComplianceFromRaw.FromRawUnchecked"/>
-    public static Compliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="BrandComplianceFromRaw.FromRawUnchecked"/>
+    public static BrandCompliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class ComplianceFromRaw : IFromRawJson<Compliance>
+class BrandComplianceFromRaw : IFromRawJson<BrandCompliance>
 {
     /// <inheritdoc/>
-    public Compliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Compliance.FromRawUnchecked(rawData);
+    public BrandCompliance FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        BrandCompliance.FromRawUnchecked(rawData);
 }
 
 /// <summary>

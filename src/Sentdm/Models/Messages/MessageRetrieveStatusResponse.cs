@@ -272,16 +272,18 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
         }
     }
 
-    public IReadOnlyList<Event>? Events
+    public IReadOnlyList<MessageRetrieveStatusResponseDataEvent>? Events
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Event>>("events");
+            return this._rawData.GetNullableStruct<
+                ImmutableArray<MessageRetrieveStatusResponseDataEvent>
+            >("events");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<Event>?>(
+            this._rawData.Set<ImmutableArray<MessageRetrieveStatusResponseDataEvent>?>(
                 "events",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -298,12 +300,14 @@ public sealed record class MessageRetrieveStatusResponseData : JsonModel
     /// implementations and MessageUtils.BuildSegmentBody — has to carry every member,
     /// or that member is silently dropped on whichever path forgot it.
     /// </summary>
-    public MessageBody? MessageBody
+    public MessageRetrieveStatusResponseDataMessageBody? MessageBody
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<MessageBody>("message_body");
+            return this._rawData.GetNullableClass<MessageRetrieveStatusResponseDataMessageBody>(
+                "message_body"
+            );
         }
         init { this._rawData.Set("message_body", value); }
     }
@@ -522,8 +526,13 @@ class MessageRetrieveStatusResponseDataFromRaw : IFromRawJson<MessageRetrieveSta
 /// <summary>
 /// Represents a status change event in a message's lifecycle (v3)
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<Event, EventFromRaw>))]
-public sealed record class Event : JsonModel
+[JsonConverter(
+    typeof(JsonModelConverter<
+        MessageRetrieveStatusResponseDataEvent,
+        MessageRetrieveStatusResponseDataEventFromRaw
+    >)
+)]
+public sealed record class MessageRetrieveStatusResponseDataEvent : JsonModel
 {
     public required string Status
     {
@@ -594,39 +603,45 @@ public sealed record class Event : JsonModel
         _ = this.ReasonCode;
     }
 
-    public Event() { }
+    public MessageRetrieveStatusResponseDataEvent() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Event(Event event_)
-        : base(event_) { }
+    public MessageRetrieveStatusResponseDataEvent(
+        MessageRetrieveStatusResponseDataEvent messageRetrieveStatusResponseDataEvent
+    )
+        : base(messageRetrieveStatusResponseDataEvent) { }
 #pragma warning restore CS8618
 
-    public Event(IReadOnlyDictionary<string, JsonElement> rawData)
+    public MessageRetrieveStatusResponseDataEvent(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Event(FrozenDictionary<string, JsonElement> rawData)
+    MessageRetrieveStatusResponseDataEvent(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="EventFromRaw.FromRawUnchecked"/>
-    public static Event FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="MessageRetrieveStatusResponseDataEventFromRaw.FromRawUnchecked"/>
+    public static MessageRetrieveStatusResponseDataEvent FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class EventFromRaw : IFromRawJson<Event>
+class MessageRetrieveStatusResponseDataEventFromRaw
+    : IFromRawJson<MessageRetrieveStatusResponseDataEvent>
 {
     /// <inheritdoc/>
-    public Event FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Event.FromRawUnchecked(rawData);
+    public MessageRetrieveStatusResponseDataEvent FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => MessageRetrieveStatusResponseDataEvent.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -639,19 +654,26 @@ class EventFromRaw : IFromRawJson<Event>
 /// MessageUtils.BuildSegmentBody — has to carry every member, or that member is silently
 /// dropped on whichever path forgot it.
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<MessageBody, MessageBodyFromRaw>))]
-public sealed record class MessageBody : JsonModel
+[JsonConverter(
+    typeof(JsonModelConverter<
+        MessageRetrieveStatusResponseDataMessageBody,
+        MessageRetrieveStatusResponseDataMessageBodyFromRaw
+    >)
+)]
+public sealed record class MessageRetrieveStatusResponseDataMessageBody : JsonModel
 {
-    public IReadOnlyList<Button>? Buttons
+    public IReadOnlyList<MessageRetrieveStatusResponseDataMessageBodyButton>? Buttons
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Button>>("buttons");
+            return this._rawData.GetNullableStruct<
+                ImmutableArray<MessageRetrieveStatusResponseDataMessageBodyButton>
+            >("buttons");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<Button>?>(
+            this._rawData.Set<ImmutableArray<MessageRetrieveStatusResponseDataMessageBodyButton>?>(
                 "buttons",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -699,12 +721,14 @@ public sealed record class MessageBody : JsonModel
     /// <summary>
     /// The media asset that rode a message's header, recorded as sent.
     /// </summary>
-    public HeaderMedia? HeaderMedia
+    public MessageRetrieveStatusResponseDataMessageBodyHeaderMedia? HeaderMedia
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<HeaderMedia>("headerMedia");
+            return this._rawData.GetNullableClass<MessageRetrieveStatusResponseDataMessageBodyHeaderMedia>(
+                "headerMedia"
+            );
         }
         init { this._rawData.Set("headerMedia", value); }
     }
@@ -716,18 +740,18 @@ public sealed record class MessageBody : JsonModel
     /// reads templateId and templateVariables and nothing else — so media that lives
     /// only on the original request would silently turn a replayed MMS into a text message.
     /// </summary>
-    public IReadOnlyList<global::Sentdm.Models.Messages.Media>? Media
+    public IReadOnlyList<MessageRetrieveStatusResponseDataMessageBodyMedia>? Media
     {
         get
         {
             this._rawData.Freeze();
             return this._rawData.GetNullableStruct<
-                ImmutableArray<global::Sentdm.Models.Messages.Media>
+                ImmutableArray<MessageRetrieveStatusResponseDataMessageBodyMedia>
             >("media");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<global::Sentdm.Models.Messages.Media>?>(
+            this._rawData.Set<ImmutableArray<MessageRetrieveStatusResponseDataMessageBodyMedia>?>(
                 "media",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -765,43 +789,56 @@ public sealed record class MessageBody : JsonModel
         _ = this.Subject;
     }
 
-    public MessageBody() { }
+    public MessageRetrieveStatusResponseDataMessageBody() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MessageBody(MessageBody messageBody)
-        : base(messageBody) { }
+    public MessageRetrieveStatusResponseDataMessageBody(
+        MessageRetrieveStatusResponseDataMessageBody messageRetrieveStatusResponseDataMessageBody
+    )
+        : base(messageRetrieveStatusResponseDataMessageBody) { }
 #pragma warning restore CS8618
 
-    public MessageBody(IReadOnlyDictionary<string, JsonElement> rawData)
+    public MessageRetrieveStatusResponseDataMessageBody(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MessageBody(FrozenDictionary<string, JsonElement> rawData)
+    MessageRetrieveStatusResponseDataMessageBody(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="MessageBodyFromRaw.FromRawUnchecked"/>
-    public static MessageBody FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="MessageRetrieveStatusResponseDataMessageBodyFromRaw.FromRawUnchecked"/>
+    public static MessageRetrieveStatusResponseDataMessageBody FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class MessageBodyFromRaw : IFromRawJson<MessageBody>
+class MessageRetrieveStatusResponseDataMessageBodyFromRaw
+    : IFromRawJson<MessageRetrieveStatusResponseDataMessageBody>
 {
     /// <inheritdoc/>
-    public MessageBody FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        MessageBody.FromRawUnchecked(rawData);
+    public MessageRetrieveStatusResponseDataMessageBody FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => MessageRetrieveStatusResponseDataMessageBody.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(typeof(JsonModelConverter<Button, ButtonFromRaw>))]
-public sealed record class Button : JsonModel
+[JsonConverter(
+    typeof(JsonModelConverter<
+        MessageRetrieveStatusResponseDataMessageBodyButton,
+        MessageRetrieveStatusResponseDataMessageBodyButtonFromRaw
+    >)
+)]
+public sealed record class MessageRetrieveStatusResponseDataMessageBodyButton : JsonModel
 {
     public string? PostbackData
     {
@@ -868,46 +905,61 @@ public sealed record class Button : JsonModel
         _ = this.Value;
     }
 
-    public Button() { }
+    public MessageRetrieveStatusResponseDataMessageBodyButton() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Button(Button button)
-        : base(button) { }
+    public MessageRetrieveStatusResponseDataMessageBodyButton(
+        MessageRetrieveStatusResponseDataMessageBodyButton messageRetrieveStatusResponseDataMessageBodyButton
+    )
+        : base(messageRetrieveStatusResponseDataMessageBodyButton) { }
 #pragma warning restore CS8618
 
-    public Button(IReadOnlyDictionary<string, JsonElement> rawData)
+    public MessageRetrieveStatusResponseDataMessageBodyButton(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Button(FrozenDictionary<string, JsonElement> rawData)
+    MessageRetrieveStatusResponseDataMessageBodyButton(
+        FrozenDictionary<string, JsonElement> rawData
+    )
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="ButtonFromRaw.FromRawUnchecked"/>
-    public static Button FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="MessageRetrieveStatusResponseDataMessageBodyButtonFromRaw.FromRawUnchecked"/>
+    public static MessageRetrieveStatusResponseDataMessageBodyButton FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class ButtonFromRaw : IFromRawJson<Button>
+class MessageRetrieveStatusResponseDataMessageBodyButtonFromRaw
+    : IFromRawJson<MessageRetrieveStatusResponseDataMessageBodyButton>
 {
     /// <inheritdoc/>
-    public Button FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Button.FromRawUnchecked(rawData);
+    public MessageRetrieveStatusResponseDataMessageBodyButton FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => MessageRetrieveStatusResponseDataMessageBodyButton.FromRawUnchecked(rawData);
 }
 
 /// <summary>
 /// The media asset that rode a message's header, recorded as sent.
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<HeaderMedia, HeaderMediaFromRaw>))]
-public sealed record class HeaderMedia : JsonModel
+[JsonConverter(
+    typeof(JsonModelConverter<
+        MessageRetrieveStatusResponseDataMessageBodyHeaderMedia,
+        MessageRetrieveStatusResponseDataMessageBodyHeaderMediaFromRaw
+    >)
+)]
+public sealed record class MessageRetrieveStatusResponseDataMessageBodyHeaderMedia : JsonModel
 {
     /// <summary>
     /// "image", "video" or "document" — taken from the header's media variable.
@@ -959,39 +1011,49 @@ public sealed record class HeaderMedia : JsonModel
         _ = this.Url;
     }
 
-    public HeaderMedia() { }
+    public MessageRetrieveStatusResponseDataMessageBodyHeaderMedia() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public HeaderMedia(HeaderMedia headerMedia)
-        : base(headerMedia) { }
+    public MessageRetrieveStatusResponseDataMessageBodyHeaderMedia(
+        MessageRetrieveStatusResponseDataMessageBodyHeaderMedia messageRetrieveStatusResponseDataMessageBodyHeaderMedia
+    )
+        : base(messageRetrieveStatusResponseDataMessageBodyHeaderMedia) { }
 #pragma warning restore CS8618
 
-    public HeaderMedia(IReadOnlyDictionary<string, JsonElement> rawData)
+    public MessageRetrieveStatusResponseDataMessageBodyHeaderMedia(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    HeaderMedia(FrozenDictionary<string, JsonElement> rawData)
+    MessageRetrieveStatusResponseDataMessageBodyHeaderMedia(
+        FrozenDictionary<string, JsonElement> rawData
+    )
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="HeaderMediaFromRaw.FromRawUnchecked"/>
-    public static HeaderMedia FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="MessageRetrieveStatusResponseDataMessageBodyHeaderMediaFromRaw.FromRawUnchecked"/>
+    public static MessageRetrieveStatusResponseDataMessageBodyHeaderMedia FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class HeaderMediaFromRaw : IFromRawJson<HeaderMedia>
+class MessageRetrieveStatusResponseDataMessageBodyHeaderMediaFromRaw
+    : IFromRawJson<MessageRetrieveStatusResponseDataMessageBodyHeaderMedia>
 {
     /// <inheritdoc/>
-    public HeaderMedia FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        HeaderMedia.FromRawUnchecked(rawData);
+    public MessageRetrieveStatusResponseDataMessageBodyHeaderMedia FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => MessageRetrieveStatusResponseDataMessageBodyHeaderMedia.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -1009,11 +1071,11 @@ class HeaderMediaFromRaw : IFromRawJson<HeaderMedia>
 /// </summary>
 [JsonConverter(
     typeof(JsonModelConverter<
-        global::Sentdm.Models.Messages.Media,
-        global::Sentdm.Models.Messages.MediaFromRaw
+        MessageRetrieveStatusResponseDataMessageBodyMedia,
+        MessageRetrieveStatusResponseDataMessageBodyMediaFromRaw
     >)
 )]
-public sealed record class Media : JsonModel
+public sealed record class MessageRetrieveStatusResponseDataMessageBodyMedia : JsonModel
 {
     /// <summary>
     /// One of MmsMediaTypes when the content type is known. Advisory — a reader should
@@ -1096,29 +1158,33 @@ public sealed record class Media : JsonModel
         _ = this.Url;
     }
 
-    public Media() { }
+    public MessageRetrieveStatusResponseDataMessageBodyMedia() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Media(global::Sentdm.Models.Messages.Media media)
-        : base(media) { }
+    public MessageRetrieveStatusResponseDataMessageBodyMedia(
+        MessageRetrieveStatusResponseDataMessageBodyMedia messageRetrieveStatusResponseDataMessageBodyMedia
+    )
+        : base(messageRetrieveStatusResponseDataMessageBodyMedia) { }
 #pragma warning restore CS8618
 
-    public Media(IReadOnlyDictionary<string, JsonElement> rawData)
+    public MessageRetrieveStatusResponseDataMessageBodyMedia(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Media(FrozenDictionary<string, JsonElement> rawData)
+    MessageRetrieveStatusResponseDataMessageBodyMedia(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="global::Sentdm.Models.Messages.MediaFromRaw.FromRawUnchecked"/>
-    public static global::Sentdm.Models.Messages.Media FromRawUnchecked(
+    /// <inheritdoc cref="MessageRetrieveStatusResponseDataMessageBodyMediaFromRaw.FromRawUnchecked"/>
+    public static MessageRetrieveStatusResponseDataMessageBodyMedia FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -1126,10 +1192,11 @@ public sealed record class Media : JsonModel
     }
 }
 
-class MediaFromRaw : IFromRawJson<global::Sentdm.Models.Messages.Media>
+class MessageRetrieveStatusResponseDataMessageBodyMediaFromRaw
+    : IFromRawJson<MessageRetrieveStatusResponseDataMessageBodyMedia>
 {
     /// <inheritdoc/>
-    public global::Sentdm.Models.Messages.Media FromRawUnchecked(
+    public MessageRetrieveStatusResponseDataMessageBodyMedia FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => global::Sentdm.Models.Messages.Media.FromRawUnchecked(rawData);
+    ) => MessageRetrieveStatusResponseDataMessageBodyMedia.FromRawUnchecked(rawData);
 }
