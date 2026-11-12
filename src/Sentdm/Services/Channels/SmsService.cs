@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Sentdm.Core;
 using Sentdm.Exceptions;
 using Sentdm.Models.Channels.Sms;
+using Sentdm.Services.Channels.Sms;
 
 namespace Sentdm.Services.Channels;
 
@@ -32,6 +33,13 @@ public sealed class SmsService : ISmsService
         _client = client;
 
         _withRawResponse = new(() => new SmsServiceWithRawResponse(client.WithRawResponse));
+        _tenDlc = new(() => new TenDlcService(client));
+    }
+
+    readonly Lazy<ITenDlcService> _tenDlc;
+    public ITenDlcService TenDlc
+    {
+        get { return _tenDlc.Value; }
     }
 
     /// <inheritdoc/>
@@ -117,6 +125,14 @@ public sealed class SmsServiceWithRawResponse : ISmsServiceWithRawResponse
     public SmsServiceWithRawResponse(ISentClientWithRawResponse client)
     {
         _client = client;
+
+        _tenDlc = new(() => new TenDlcServiceWithRawResponse(client));
+    }
+
+    readonly Lazy<ITenDlcServiceWithRawResponse> _tenDlc;
+    public ITenDlcServiceWithRawResponse TenDlc
+    {
+        get { return _tenDlc.Value; }
     }
 
     /// <inheritdoc/>
