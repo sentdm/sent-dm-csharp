@@ -23,6 +23,13 @@ public class SmsMarketTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -40,13 +47,13 @@ public class SmsMarketTest : TestBase
                 new()
                 {
                     AreaCode = "area_code",
+                    CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     SenderValue = "sender_value",
                     Status = "status",
                 },
             ],
             Reason = "reason",
             ReasonCode = "reason_code",
-            SenderValue = "sender_value",
             Status = Status.Provisioning,
         };
 
@@ -60,6 +67,13 @@ public class SmsMarketTest : TestBase
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
+            Campaigns =
+            [
+                new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+            ],
             Documents =
             [
                 new()
@@ -77,13 +91,13 @@ public class SmsMarketTest : TestBase
             new()
             {
                 AreaCode = "area_code",
+                CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 SenderValue = "sender_value",
                 Status = "status",
             },
         ];
         string expectedReason = "reason";
         string expectedReasonCode = "reason_code";
-        string expectedSenderValue = "sender_value";
         ApiEnum<string, Status> expectedStatus = Status.Provisioning;
 
         Assert.Equal(expectedCompliance, model.Compliance);
@@ -97,7 +111,6 @@ public class SmsMarketTest : TestBase
         }
         Assert.Equal(expectedReason, model.Reason);
         Assert.Equal(expectedReasonCode, model.ReasonCode);
-        Assert.Equal(expectedSenderValue, model.SenderValue);
         Assert.Equal(expectedStatus, model.Status);
     }
 
@@ -116,6 +129,13 @@ public class SmsMarketTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -133,13 +153,13 @@ public class SmsMarketTest : TestBase
                 new()
                 {
                     AreaCode = "area_code",
+                    CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     SenderValue = "sender_value",
                     Status = "status",
                 },
             ],
             Reason = "reason",
             ReasonCode = "reason_code",
-            SenderValue = "sender_value",
             Status = Status.Provisioning,
         };
 
@@ -164,6 +184,13 @@ public class SmsMarketTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -181,13 +208,13 @@ public class SmsMarketTest : TestBase
                 new()
                 {
                     AreaCode = "area_code",
+                    CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     SenderValue = "sender_value",
                     Status = "status",
                 },
             ],
             Reason = "reason",
             ReasonCode = "reason_code",
-            SenderValue = "sender_value",
             Status = Status.Provisioning,
         };
 
@@ -208,6 +235,13 @@ public class SmsMarketTest : TestBase
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
+            Campaigns =
+            [
+                new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+            ],
             Documents =
             [
                 new()
@@ -225,13 +259,13 @@ public class SmsMarketTest : TestBase
             new()
             {
                 AreaCode = "area_code",
+                CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 SenderValue = "sender_value",
                 Status = "status",
             },
         ];
         string expectedReason = "reason";
         string expectedReasonCode = "reason_code";
-        string expectedSenderValue = "sender_value";
         ApiEnum<string, Status> expectedStatus = Status.Provisioning;
 
         Assert.Equal(expectedCompliance, deserialized.Compliance);
@@ -245,7 +279,6 @@ public class SmsMarketTest : TestBase
         }
         Assert.Equal(expectedReason, deserialized.Reason);
         Assert.Equal(expectedReasonCode, deserialized.ReasonCode);
-        Assert.Equal(expectedSenderValue, deserialized.SenderValue);
         Assert.Equal(expectedStatus, deserialized.Status);
     }
 
@@ -264,6 +297,13 @@ public class SmsMarketTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -281,13 +321,13 @@ public class SmsMarketTest : TestBase
                 new()
                 {
                     AreaCode = "area_code",
+                    CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     SenderValue = "sender_value",
                     Status = "status",
                 },
             ],
             Reason = "reason",
             ReasonCode = "reason_code",
-            SenderValue = "sender_value",
             Status = Status.Provisioning,
         };
 
@@ -309,6 +349,13 @@ public class SmsMarketTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -323,7 +370,6 @@ public class SmsMarketTest : TestBase
             NumberType = "number_type",
             Reason = "reason",
             ReasonCode = "reason_code",
-            SenderValue = "sender_value",
             Status = Status.Provisioning,
         };
 
@@ -346,6 +392,13 @@ public class SmsMarketTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -360,7 +413,6 @@ public class SmsMarketTest : TestBase
             NumberType = "number_type",
             Reason = "reason",
             ReasonCode = "reason_code",
-            SenderValue = "sender_value",
             Status = Status.Provisioning,
         };
 
@@ -382,6 +434,13 @@ public class SmsMarketTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -396,7 +455,6 @@ public class SmsMarketTest : TestBase
             NumberType = "number_type",
             Reason = "reason",
             ReasonCode = "reason_code",
-            SenderValue = "sender_value",
             Status = Status.Provisioning,
 
             // Null should be interpreted as omitted for these properties
@@ -422,6 +480,13 @@ public class SmsMarketTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -436,7 +501,6 @@ public class SmsMarketTest : TestBase
             NumberType = "number_type",
             Reason = "reason",
             ReasonCode = "reason_code",
-            SenderValue = "sender_value",
             Status = Status.Provisioning,
 
             // Null should be interpreted as omitted for these properties
@@ -456,6 +520,7 @@ public class SmsMarketTest : TestBase
                 new()
                 {
                     AreaCode = "area_code",
+                    CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     SenderValue = "sender_value",
                     Status = "status",
                 },
@@ -472,8 +537,6 @@ public class SmsMarketTest : TestBase
         Assert.False(model.RawData.ContainsKey("reason"));
         Assert.Null(model.ReasonCode);
         Assert.False(model.RawData.ContainsKey("reason_code"));
-        Assert.Null(model.SenderValue);
-        Assert.False(model.RawData.ContainsKey("sender_value"));
         Assert.Null(model.Status);
         Assert.False(model.RawData.ContainsKey("status"));
     }
@@ -488,6 +551,7 @@ public class SmsMarketTest : TestBase
                 new()
                 {
                     AreaCode = "area_code",
+                    CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     SenderValue = "sender_value",
                     Status = "status",
                 },
@@ -507,6 +571,7 @@ public class SmsMarketTest : TestBase
                 new()
                 {
                     AreaCode = "area_code",
+                    CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     SenderValue = "sender_value",
                     Status = "status",
                 },
@@ -517,7 +582,6 @@ public class SmsMarketTest : TestBase
             NumberType = null,
             Reason = null,
             ReasonCode = null,
-            SenderValue = null,
             Status = null,
         };
 
@@ -531,8 +595,6 @@ public class SmsMarketTest : TestBase
         Assert.True(model.RawData.ContainsKey("reason"));
         Assert.Null(model.ReasonCode);
         Assert.True(model.RawData.ContainsKey("reason_code"));
-        Assert.Null(model.SenderValue);
-        Assert.True(model.RawData.ContainsKey("sender_value"));
         Assert.Null(model.Status);
         Assert.True(model.RawData.ContainsKey("status"));
     }
@@ -547,6 +609,7 @@ public class SmsMarketTest : TestBase
                 new()
                 {
                     AreaCode = "area_code",
+                    CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     SenderValue = "sender_value",
                     Status = "status",
                 },
@@ -557,7 +620,6 @@ public class SmsMarketTest : TestBase
             NumberType = null,
             Reason = null,
             ReasonCode = null,
-            SenderValue = null,
             Status = null,
         };
 
@@ -579,6 +641,13 @@ public class SmsMarketTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -596,13 +665,13 @@ public class SmsMarketTest : TestBase
                 new()
                 {
                     AreaCode = "area_code",
+                    CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     SenderValue = "sender_value",
                     Status = "status",
                 },
             ],
             Reason = "reason",
             ReasonCode = "reason_code",
-            SenderValue = "sender_value",
             Status = Status.Provisioning,
         };
 
