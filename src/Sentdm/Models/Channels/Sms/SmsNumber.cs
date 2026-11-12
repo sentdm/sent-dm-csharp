@@ -28,6 +28,22 @@ public sealed record class SmsNumber : JsonModel
     }
 
     /// <summary>
+    /// The campaign the number is on, or is owed for: the id of its entry in compliance.campaigns.
+    /// Omitted for a market that registers no campaigns, and where the campaign is
+    /// not known — a number recorded without one, or one owed on a campaign inherited
+    /// from the organization.
+    /// </summary>
+    public string? CampaignID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("campaign_id");
+        }
+        init { this._rawData.Set("campaign_id", value); }
+    }
+
+    /// <summary>
     /// The number, or null while it is still to be assigned.
     /// </summary>
     public string? SenderValue
@@ -58,6 +74,7 @@ public sealed record class SmsNumber : JsonModel
     public override void Validate()
     {
         _ = this.AreaCode;
+        _ = this.CampaignID;
         _ = this.SenderValue;
         _ = this.Status;
     }

@@ -126,7 +126,10 @@ public interface ISmsService
     /// read as `PROVISIONING` in the response's `numbers`, each with the area code it
     /// was asked for. A profile inheriting your organization's campaign cannot request
     /// `numbers` (`400`). `numbers` on a `TEN_DLC` market you already hold is `409`:
-    /// its numbers belong to its one campaign and are set when the market is created.</para>
+    /// change its campaign's numbers with `PATCH /v3/channels/sms/{country}/{type}`,
+    /// add numbers to one of its campaigns with `POST
+    /// /v3/channels/sms/numbers/US/TEN_DLC`, or add a new campaign with `POST
+    /// /v3/channels/sms/compliances/US/TEN_DLC/campaigns`.</para>
     ///
     /// <para>**A market you already send in is `409`**: adding what is already there is
     /// a mistake worth reporting rather than a silent no-op. A market is a `(country,

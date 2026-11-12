@@ -20,6 +20,13 @@ public class SuppliedComplianceTest : TestBase
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
+            Campaigns =
+            [
+                new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+            ],
             Documents =
             [
                 new()
@@ -39,6 +46,13 @@ public class SuppliedComplianceTest : TestBase
         {
             { "foo", JsonSerializer.SerializeToElement("bar") },
         };
+        List<Dictionary<string, JsonElement>> expectedCampaigns =
+        [
+            new Dictionary<string, JsonElement>()
+            {
+                { "foo", JsonSerializer.SerializeToElement("bar") },
+            },
+        ];
         List<SuppliedDocument> expectedDocuments =
         [
             new()
@@ -65,6 +79,18 @@ public class SuppliedComplianceTest : TestBase
 
             Assert.True(JsonElement.DeepEquals(value, model.Campaign[item.Key]));
         }
+        Assert.NotNull(model.Campaigns);
+        Assert.Equal(expectedCampaigns.Count, model.Campaigns.Count);
+        for (int i = 0; i < expectedCampaigns.Count; i++)
+        {
+            Assert.Equal(expectedCampaigns[i].Count, model.Campaigns[i].Count);
+            foreach (var item in expectedCampaigns[i])
+            {
+                Assert.True(model.Campaigns[i].TryGetValue(item.Key, out var value));
+
+                Assert.True(JsonElement.DeepEquals(value, model.Campaigns[i][item.Key]));
+            }
+        }
         Assert.NotNull(model.Documents);
         Assert.Equal(expectedDocuments.Count, model.Documents.Count);
         for (int i = 0; i < expectedDocuments.Count; i++)
@@ -86,6 +112,13 @@ public class SuppliedComplianceTest : TestBase
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
+            Campaigns =
+            [
+                new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+            ],
             Documents =
             [
                 new()
@@ -119,6 +152,13 @@ public class SuppliedComplianceTest : TestBase
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
+            Campaigns =
+            [
+                new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+            ],
             Documents =
             [
                 new()
@@ -145,6 +185,13 @@ public class SuppliedComplianceTest : TestBase
         {
             { "foo", JsonSerializer.SerializeToElement("bar") },
         };
+        List<Dictionary<string, JsonElement>> expectedCampaigns =
+        [
+            new Dictionary<string, JsonElement>()
+            {
+                { "foo", JsonSerializer.SerializeToElement("bar") },
+            },
+        ];
         List<SuppliedDocument> expectedDocuments =
         [
             new()
@@ -171,6 +218,18 @@ public class SuppliedComplianceTest : TestBase
 
             Assert.True(JsonElement.DeepEquals(value, deserialized.Campaign[item.Key]));
         }
+        Assert.NotNull(deserialized.Campaigns);
+        Assert.Equal(expectedCampaigns.Count, deserialized.Campaigns.Count);
+        for (int i = 0; i < expectedCampaigns.Count; i++)
+        {
+            Assert.Equal(expectedCampaigns[i].Count, deserialized.Campaigns[i].Count);
+            foreach (var item in expectedCampaigns[i])
+            {
+                Assert.True(deserialized.Campaigns[i].TryGetValue(item.Key, out var value));
+
+                Assert.True(JsonElement.DeepEquals(value, deserialized.Campaigns[i][item.Key]));
+            }
+        }
         Assert.NotNull(deserialized.Documents);
         Assert.Equal(expectedDocuments.Count, deserialized.Documents.Count);
         for (int i = 0; i < expectedDocuments.Count; i++)
@@ -192,6 +251,13 @@ public class SuppliedComplianceTest : TestBase
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
+            Campaigns =
+            [
+                new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+            ],
             Documents =
             [
                 new()
@@ -215,6 +281,8 @@ public class SuppliedComplianceTest : TestBase
         Assert.False(model.RawData.ContainsKey("brand"));
         Assert.Null(model.Campaign);
         Assert.False(model.RawData.ContainsKey("campaign"));
+        Assert.Null(model.Campaigns);
+        Assert.False(model.RawData.ContainsKey("campaigns"));
         Assert.Null(model.Documents);
         Assert.False(model.RawData.ContainsKey("documents"));
     }
@@ -234,6 +302,7 @@ public class SuppliedComplianceTest : TestBase
         {
             Brand = null,
             Campaign = null,
+            Campaigns = null,
             Documents = null,
         };
 
@@ -241,6 +310,8 @@ public class SuppliedComplianceTest : TestBase
         Assert.True(model.RawData.ContainsKey("brand"));
         Assert.Null(model.Campaign);
         Assert.True(model.RawData.ContainsKey("campaign"));
+        Assert.Null(model.Campaigns);
+        Assert.True(model.RawData.ContainsKey("campaigns"));
         Assert.Null(model.Documents);
         Assert.True(model.RawData.ContainsKey("documents"));
     }
@@ -252,6 +323,7 @@ public class SuppliedComplianceTest : TestBase
         {
             Brand = null,
             Campaign = null,
+            Campaigns = null,
             Documents = null,
         };
 
@@ -271,6 +343,13 @@ public class SuppliedComplianceTest : TestBase
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
+            Campaigns =
+            [
+                new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+            ],
             Documents =
             [
                 new()
