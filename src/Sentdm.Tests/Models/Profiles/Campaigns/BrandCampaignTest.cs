@@ -26,6 +26,7 @@ public class BrandCampaignTest : TestBase
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
+            IsInherited = true,
             MessageFlow = "messageFlow",
             Name = "name",
             OptinKeywords = "optinKeywords",
@@ -71,6 +72,7 @@ public class BrandCampaignTest : TestBase
         bool expectedHasSubmissionTransaction = true;
         string expectedHelpKeywords = "helpKeywords";
         string expectedHelpMessage = "helpMessage";
+        bool expectedIsInherited = true;
         string expectedMessageFlow = "messageFlow";
         string expectedName = "name";
         string expectedOptinKeywords = "optinKeywords";
@@ -113,6 +115,7 @@ public class BrandCampaignTest : TestBase
         Assert.Equal(expectedHasSubmissionTransaction, model.HasSubmissionTransaction);
         Assert.Equal(expectedHelpKeywords, model.HelpKeywords);
         Assert.Equal(expectedHelpMessage, model.HelpMessage);
+        Assert.Equal(expectedIsInherited, model.IsInherited);
         Assert.Equal(expectedMessageFlow, model.MessageFlow);
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedOptinKeywords, model.OptinKeywords);
@@ -154,6 +157,7 @@ public class BrandCampaignTest : TestBase
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
+            IsInherited = true,
             MessageFlow = "messageFlow",
             Name = "name",
             OptinKeywords = "optinKeywords",
@@ -211,6 +215,7 @@ public class BrandCampaignTest : TestBase
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
+            IsInherited = true,
             MessageFlow = "messageFlow",
             Name = "name",
             OptinKeywords = "optinKeywords",
@@ -263,6 +268,7 @@ public class BrandCampaignTest : TestBase
         bool expectedHasSubmissionTransaction = true;
         string expectedHelpKeywords = "helpKeywords";
         string expectedHelpMessage = "helpMessage";
+        bool expectedIsInherited = true;
         string expectedMessageFlow = "messageFlow";
         string expectedName = "name";
         string expectedOptinKeywords = "optinKeywords";
@@ -305,6 +311,7 @@ public class BrandCampaignTest : TestBase
         Assert.Equal(expectedHasSubmissionTransaction, deserialized.HasSubmissionTransaction);
         Assert.Equal(expectedHelpKeywords, deserialized.HelpKeywords);
         Assert.Equal(expectedHelpMessage, deserialized.HelpMessage);
+        Assert.Equal(expectedIsInherited, deserialized.IsInherited);
         Assert.Equal(expectedMessageFlow, deserialized.MessageFlow);
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedOptinKeywords, deserialized.OptinKeywords);
@@ -346,6 +353,7 @@ public class BrandCampaignTest : TestBase
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
+            IsInherited = true,
             MessageFlow = "messageFlow",
             Name = "name",
             OptinKeywords = "optinKeywords",
@@ -417,6 +425,8 @@ public class BrandCampaignTest : TestBase
         Assert.False(model.RawData.ContainsKey("description"));
         Assert.Null(model.HasSubmissionTransaction);
         Assert.False(model.RawData.ContainsKey("hasSubmissionTransaction"));
+        Assert.Null(model.IsInherited);
+        Assert.False(model.RawData.ContainsKey("isInherited"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.SubmittedToTcr);
@@ -489,6 +499,7 @@ public class BrandCampaignTest : TestBase
             CustomerID = null,
             Description = null,
             HasSubmissionTransaction = null,
+            IsInherited = null,
             Name = null,
             SubmittedToTcr = null,
             Type = null,
@@ -505,6 +516,8 @@ public class BrandCampaignTest : TestBase
         Assert.False(model.RawData.ContainsKey("description"));
         Assert.Null(model.HasSubmissionTransaction);
         Assert.False(model.RawData.ContainsKey("hasSubmissionTransaction"));
+        Assert.Null(model.IsInherited);
+        Assert.False(model.RawData.ContainsKey("isInherited"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.SubmittedToTcr);
@@ -547,6 +560,7 @@ public class BrandCampaignTest : TestBase
             CustomerID = null,
             Description = null,
             HasSubmissionTransaction = null,
+            IsInherited = null,
             Name = null,
             SubmittedToTcr = null,
             Type = null,
@@ -566,6 +580,7 @@ public class BrandCampaignTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
             HasSubmissionTransaction = true,
+            IsInherited = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -636,6 +651,7 @@ public class BrandCampaignTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
             HasSubmissionTransaction = true,
+            IsInherited = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -667,6 +683,7 @@ public class BrandCampaignTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
             HasSubmissionTransaction = true,
+            IsInherited = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -758,6 +775,7 @@ public class BrandCampaignTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
             HasSubmissionTransaction = true,
+            IsInherited = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -817,6 +835,7 @@ public class BrandCampaignTest : TestBase
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
+            IsInherited = true,
             MessageFlow = "messageFlow",
             Name = "name",
             OptinKeywords = "optinKeywords",

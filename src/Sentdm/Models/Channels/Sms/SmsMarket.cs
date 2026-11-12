@@ -125,21 +125,6 @@ public sealed record class SmsMarket : JsonModel
     }
 
     /// <summary>
-    /// The sender itself. Null until a carrier-assigned number is procured. For a
-    /// market holding several numbers, the first active one (the first assigned while
-    /// none is active) — every number is in numbers.
-    /// </summary>
-    public string? SenderValue
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("sender_value");
-        }
-        init { this._rawData.Set("sender_value", value); }
-    }
-
-    /// <summary>
     /// Where this market's sender stands, in terms of who is holding it up — PROVISIONING,
     /// ACTION_NEEDED, PENDING_REVIEW or ACTIVE. Read-only.              Resolved
     /// rather than reported raw: a live sender reads ACTIVE whatever it still owes,
@@ -174,7 +159,6 @@ public sealed record class SmsMarket : JsonModel
         }
         _ = this.Reason;
         _ = this.ReasonCode;
-        _ = this.SenderValue;
         this.Status?.Validate();
     }
 

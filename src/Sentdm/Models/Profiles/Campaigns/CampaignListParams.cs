@@ -15,7 +15,9 @@ namespace Sentdm.Models.Profiles.Campaigns;
 /// models a profile's markets, compliance, brand, campaigns and billing explicitly.
 ///
 /// <para>Retrieves all campaigns linked to the profile's brand, including use cases
-/// and sample messages. Returns inherited campaigns if inherit_tcr_campaign=true.</para>
+/// and sample messages. A profile with inherit_tcr_campaign=true gets its organization's
+/// campaigns and, beside them, any campaign of its own (added with POST /v3/channels/sms/compliances/US/TEN_DLC/campaigns);
+/// `isInherited` says which is which.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

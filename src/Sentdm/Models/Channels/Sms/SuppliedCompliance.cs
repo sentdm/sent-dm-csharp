@@ -2,6 +2,7 @@ using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
@@ -87,6 +88,46 @@ public sealed record class SuppliedCompliance : JsonModel
     }
 
     /// <summary>
+    /// Every campaign this market registers, each with inherit saying whose it is
+    /// — oldest first.              A list, because a market can now be on more than
+    /// one. POST /v3/channels/sms/compliances/US/TEN_DLC/campaigns adds a campaign
+    /// of the customer's own beside the one it has, and a profile running on its
+    /// organization's campaign keeps that one when it adds its own. Campaign can
+    /// only show one of them, so it stays as it was, for callers that read it, and
+    /// this is where the rest are.              The organization's campaign reads
+    /// "inherit": true and the customer's own read "inherit": false. Each entry is
+    /// the shape of Campaign plus id, the campaign's own id, so several can be told
+    /// apart. Campaign carries no id, because it is sent back to PATCH, which refuses
+    /// a key it does not declare; this list is read-only.              Absent for
+    /// a market that registers with nobody; empty for one that registers and has
+    /// no campaign yet.
+    /// </summary>
+    public IReadOnlyList<IReadOnlyDictionary<string, JsonElement>>? Campaigns
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<
+                ImmutableArray<FrozenDictionary<string, JsonElement>>
+            >("campaigns");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<FrozenDictionary<string, JsonElement>>?>(
+                "campaigns",
+                value == null
+                    ? null
+                    : ImmutableArray.ToImmutableArray(
+                        Enumerable.Select(
+                            value,
+                            (item) => FrozenDictionary.ToFrozenDictionary(item)
+                        )
+                    )
+            );
+        }
+    }
+
+    /// <summary>
     /// What has been supplied for this market.              Files, not values — the
     /// declared halves above carry the values. A document cannot be a JSON value,
     /// so it is sent as multipart on the channel call and reported here as a reference.
@@ -115,6 +156,7 @@ public sealed record class SuppliedCompliance : JsonModel
     {
         _ = this.Brand;
         _ = this.Campaign;
+        _ = this.Campaigns;
         foreach (var item in this.Documents ?? [])
         {
             item.Validate();

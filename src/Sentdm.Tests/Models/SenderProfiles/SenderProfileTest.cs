@@ -85,6 +85,13 @@ public class SenderProfileTest : TestBase
                             {
                                 { "foo", JsonSerializer.SerializeToElement("bar") },
                             },
+                            Campaigns =
+                            [
+                                new Dictionary<string, JsonElement>()
+                                {
+                                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                                },
+                            ],
                             Documents =
                             [
                                 new()
@@ -102,13 +109,13 @@ public class SenderProfileTest : TestBase
                             new()
                             {
                                 AreaCode = "area_code",
+                                CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                                 SenderValue = "sender_value",
                                 Status = "status",
                             },
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        SenderValue = "sender_value",
                         Status = Sms::Status.Provisioning,
                     },
                 ],
@@ -147,6 +154,13 @@ public class SenderProfileTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -233,6 +247,13 @@ public class SenderProfileTest : TestBase
                         {
                             { "foo", JsonSerializer.SerializeToElement("bar") },
                         },
+                        Campaigns =
+                        [
+                            new Dictionary<string, JsonElement>()
+                            {
+                                { "foo", JsonSerializer.SerializeToElement("bar") },
+                            },
+                        ],
                         Documents =
                         [
                             new()
@@ -250,13 +271,13 @@ public class SenderProfileTest : TestBase
                         new()
                         {
                             AreaCode = "area_code",
+                            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                             SenderValue = "sender_value",
                             Status = "status",
                         },
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    SenderValue = "sender_value",
                     Status = Sms::Status.Provisioning,
                 },
             ],
@@ -295,6 +316,13 @@ public class SenderProfileTest : TestBase
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
+            Campaigns =
+            [
+                new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+            ],
             Documents =
             [
                 new()
@@ -398,6 +426,13 @@ public class SenderProfileTest : TestBase
                             {
                                 { "foo", JsonSerializer.SerializeToElement("bar") },
                             },
+                            Campaigns =
+                            [
+                                new Dictionary<string, JsonElement>()
+                                {
+                                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                                },
+                            ],
                             Documents =
                             [
                                 new()
@@ -415,13 +450,13 @@ public class SenderProfileTest : TestBase
                             new()
                             {
                                 AreaCode = "area_code",
+                                CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                                 SenderValue = "sender_value",
                                 Status = "status",
                             },
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        SenderValue = "sender_value",
                         Status = Sms::Status.Provisioning,
                     },
                 ],
@@ -460,6 +495,13 @@ public class SenderProfileTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -560,6 +602,13 @@ public class SenderProfileTest : TestBase
                             {
                                 { "foo", JsonSerializer.SerializeToElement("bar") },
                             },
+                            Campaigns =
+                            [
+                                new Dictionary<string, JsonElement>()
+                                {
+                                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                                },
+                            ],
                             Documents =
                             [
                                 new()
@@ -577,13 +626,13 @@ public class SenderProfileTest : TestBase
                             new()
                             {
                                 AreaCode = "area_code",
+                                CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                                 SenderValue = "sender_value",
                                 Status = "status",
                             },
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        SenderValue = "sender_value",
                         Status = Sms::Status.Provisioning,
                     },
                 ],
@@ -622,6 +671,13 @@ public class SenderProfileTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -715,6 +771,13 @@ public class SenderProfileTest : TestBase
                         {
                             { "foo", JsonSerializer.SerializeToElement("bar") },
                         },
+                        Campaigns =
+                        [
+                            new Dictionary<string, JsonElement>()
+                            {
+                                { "foo", JsonSerializer.SerializeToElement("bar") },
+                            },
+                        ],
                         Documents =
                         [
                             new()
@@ -732,13 +795,13 @@ public class SenderProfileTest : TestBase
                         new()
                         {
                             AreaCode = "area_code",
+                            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                             SenderValue = "sender_value",
                             Status = "status",
                         },
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    SenderValue = "sender_value",
                     Status = Sms::Status.Provisioning,
                 },
             ],
@@ -777,6 +840,13 @@ public class SenderProfileTest : TestBase
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
+            Campaigns =
+            [
+                new Dictionary<string, JsonElement>()
+                {
+                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                },
+            ],
             Documents =
             [
                 new()
@@ -880,6 +950,13 @@ public class SenderProfileTest : TestBase
                             {
                                 { "foo", JsonSerializer.SerializeToElement("bar") },
                             },
+                            Campaigns =
+                            [
+                                new Dictionary<string, JsonElement>()
+                                {
+                                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                                },
+                            ],
                             Documents =
                             [
                                 new()
@@ -897,13 +974,13 @@ public class SenderProfileTest : TestBase
                             new()
                             {
                                 AreaCode = "area_code",
+                                CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                                 SenderValue = "sender_value",
                                 Status = "status",
                             },
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        SenderValue = "sender_value",
                         Status = Sms::Status.Provisioning,
                     },
                 ],
@@ -942,6 +1019,13 @@ public class SenderProfileTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -1035,6 +1119,13 @@ public class SenderProfileTest : TestBase
                             {
                                 { "foo", JsonSerializer.SerializeToElement("bar") },
                             },
+                            Campaigns =
+                            [
+                                new Dictionary<string, JsonElement>()
+                                {
+                                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                                },
+                            ],
                             Documents =
                             [
                                 new()
@@ -1052,13 +1143,13 @@ public class SenderProfileTest : TestBase
                             new()
                             {
                                 AreaCode = "area_code",
+                                CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                                 SenderValue = "sender_value",
                                 Status = "status",
                             },
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        SenderValue = "sender_value",
                         Status = Sms::Status.Provisioning,
                     },
                 ],
@@ -1097,6 +1188,13 @@ public class SenderProfileTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -1193,6 +1291,13 @@ public class SenderProfileTest : TestBase
                             {
                                 { "foo", JsonSerializer.SerializeToElement("bar") },
                             },
+                            Campaigns =
+                            [
+                                new Dictionary<string, JsonElement>()
+                                {
+                                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                                },
+                            ],
                             Documents =
                             [
                                 new()
@@ -1210,13 +1315,13 @@ public class SenderProfileTest : TestBase
                             new()
                             {
                                 AreaCode = "area_code",
+                                CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                                 SenderValue = "sender_value",
                                 Status = "status",
                             },
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        SenderValue = "sender_value",
                         Status = Sms::Status.Provisioning,
                     },
                 ],
@@ -1255,6 +1360,13 @@ public class SenderProfileTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -1346,6 +1458,13 @@ public class SenderProfileTest : TestBase
                             {
                                 { "foo", JsonSerializer.SerializeToElement("bar") },
                             },
+                            Campaigns =
+                            [
+                                new Dictionary<string, JsonElement>()
+                                {
+                                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                                },
+                            ],
                             Documents =
                             [
                                 new()
@@ -1363,13 +1482,13 @@ public class SenderProfileTest : TestBase
                             new()
                             {
                                 AreaCode = "area_code",
+                                CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                                 SenderValue = "sender_value",
                                 Status = "status",
                             },
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        SenderValue = "sender_value",
                         Status = Sms::Status.Provisioning,
                     },
                 ],
@@ -1408,6 +1527,13 @@ public class SenderProfileTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -1509,6 +1635,13 @@ public class SenderProfileTest : TestBase
                             {
                                 { "foo", JsonSerializer.SerializeToElement("bar") },
                             },
+                            Campaigns =
+                            [
+                                new Dictionary<string, JsonElement>()
+                                {
+                                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                                },
+                            ],
                             Documents =
                             [
                                 new()
@@ -1526,13 +1659,13 @@ public class SenderProfileTest : TestBase
                             new()
                             {
                                 AreaCode = "area_code",
+                                CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                                 SenderValue = "sender_value",
                                 Status = "status",
                             },
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        SenderValue = "sender_value",
                         Status = Sms::Status.Provisioning,
                     },
                 ],
@@ -1571,6 +1704,13 @@ public class SenderProfileTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -1768,6 +1908,13 @@ public class SenderProfileTest : TestBase
                             {
                                 { "foo", JsonSerializer.SerializeToElement("bar") },
                             },
+                            Campaigns =
+                            [
+                                new Dictionary<string, JsonElement>()
+                                {
+                                    { "foo", JsonSerializer.SerializeToElement("bar") },
+                                },
+                            ],
                             Documents =
                             [
                                 new()
@@ -1785,13 +1932,13 @@ public class SenderProfileTest : TestBase
                             new()
                             {
                                 AreaCode = "area_code",
+                                CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                                 SenderValue = "sender_value",
                                 Status = "status",
                             },
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        SenderValue = "sender_value",
                         Status = Sms::Status.Provisioning,
                     },
                 ],
@@ -1830,6 +1977,13 @@ public class SenderProfileTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()

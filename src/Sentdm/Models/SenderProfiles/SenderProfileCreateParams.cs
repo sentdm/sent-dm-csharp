@@ -24,7 +24,9 @@ namespace Sentdm.Models.SenderProfiles;
 ///
 /// <para>**A sender is not one of them.** The brand and the campaign can be inherited;
 /// a number cannot. A profile either has a sender of its own — `channels.sms` —
-/// or it has none and terminates through the shared routes for that country.</para>
+/// or it has none and reaches only the countries Sent runs a shared route for. The
+/// US has none: without a `TEN_DLC` number of its own, a profile's SMS to US numbers
+/// ends as `FAILED` with `DELIVERY_003`.</para>
 ///
 /// <para>## Saying what a profile owns</para>
 ///
