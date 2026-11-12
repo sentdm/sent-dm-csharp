@@ -37,7 +37,7 @@ public sealed class TenDlcService : ITenDlcService
 
     /// <inheritdoc/>
     public async Task<ApiResponseOfSmsMarket> AddCampaign(
-        TenDlcAddCampaignParams? parameters = null,
+        TenDlcAddCampaignParams parameters,
         CancellationToken cancellationToken = default
     )
     {
@@ -114,12 +114,10 @@ public sealed class TenDlcServiceWithRawResponse : ITenDlcServiceWithRawResponse
 
     /// <inheritdoc/>
     public async Task<HttpResponse<ApiResponseOfSmsMarket>> AddCampaign(
-        TenDlcAddCampaignParams? parameters = null,
+        TenDlcAddCampaignParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        parameters ??= new();
-
         HttpRequest<TenDlcAddCampaignParams> request = new()
         {
             Method = HttpMethod.Post,

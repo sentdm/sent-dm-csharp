@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Sentdm.Core;
+using Sentdm.Exceptions;
 
 namespace Sentdm.Models.Channels.Sms.TenDlc;
 
@@ -49,16 +52,17 @@ public record class TenDlcUpdateCampaignParams : ParamsBase
     public string? CampaignID { get; init; }
 
     /// <summary>
-    /// The compliance values a market registers with. `brand` and `campaign` apply
-    /// to US `TEN_DLC`; other markets fill this map with the document keys their
-    /// own requirements name.
+    /// What this programme sends. TCR description: what recipients will get and why,
+    /// in a sentence. The only one of these TCR takes verbatim as a description
+    /// of the programme, which is why it is asked for rather than derived from the
+    /// customer's name. Required when `compliance.campaign.inherit != true`.
     /// </summary>
-    public MarketCompliance? Compliance
+    public string? Description
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<MarketCompliance>("compliance");
+            return this._rawBodyData.GetNullableClass<string>("description");
         }
         init
         {
@@ -67,10 +71,194 @@ public record class TenDlcUpdateCampaignParams : ParamsBase
                 return;
             }
 
-            this._rawBodyData.Set("compliance", value);
+            this._rawBodyData.Set("description", value);
         }
     }
 
+    /// <summary>
+    /// Help keywords. TCR helpKeywords, comma separated, e.g. HELP,INFO. Required
+    /// when `compliance.campaign.inherit != true`.
+    /// </summary>
+    public string? HelpKeywords
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("help_keywords");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("help_keywords", value);
+        }
+    }
+
+    /// <summary>
+    /// Help reply. TCR helpMessage. Its presence is what sets subscriberHelp. Required
+    /// when `compliance.campaign.inherit != true`.
+    /// </summary>
+    public string? HelpMessage
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("help_message");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("help_message", value);
+        }
+    }
+
+    /// <summary>
+    /// Consent narrative. TCR messageFlow: how recipients opt in, in prose. Under
+    /// 40 characters is refused, and carriers reject vague descriptions — say where
+    /// opt-in happens, that the box is unchecked by default, and that consent is
+    /// not a condition of purchase. Required when `compliance.campaign.inherit != true`.
+    /// </summary>
+    public string? MessageFlow
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("message_flow");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("message_flow", value);
+        }
+    }
+
+    /// <summary>
+    /// Opt-in keywords. TCR optinKeywords, comma separated, e.g. START,YES. Required
+    /// when `compliance.campaign.inherit != true`.
+    /// </summary>
+    public string? OptInKeywords
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("opt_in_keywords");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("opt_in_keywords", value);
+        }
+    }
+
+    /// <summary>
+    /// Opt-in confirmation. TCR optinMessage. Should state message frequency and
+    /// that rates may apply. Its presence is what sets subscriberOptin. Required
+    /// when `compliance.campaign.inherit != true`.
+    /// </summary>
+    public string? OptInMessage
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("opt_in_message");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("opt_in_message", value);
+        }
+    }
+
+    /// <summary>
+    /// Opt-out keywords. TCR optoutKeywords, comma separated. STOP, END, CANCEL,
+    /// UNSUBSCRIBE and QUIT are honoured regardless of what is declared. Required
+    /// when `compliance.campaign.inherit != true`.
+    /// </summary>
+    public string? OptOutKeywords
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("opt_out_keywords");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("opt_out_keywords", value);
+        }
+    }
+
+    /// <summary>
+    /// Opt-out confirmation. TCR optoutMessage. Its presence is what sets subscriberOptout.
+    /// Required when `compliance.campaign.inherit != true`.
+    /// </summary>
+    public string? OptOutMessage
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("opt_out_message");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("opt_out_message", value);
+        }
+    }
+
+    /// <summary>
+    /// Privacy policy URL. TCR privacyPolicyLink. Required when `compliance.campaign.inherit
+    /// != true`.
+    /// </summary>
+    public string? PrivacyPolicyLink
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("privacy_policy_link");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("privacy_policy_link", value);
+        }
+    }
+
+    /// <summary>
+    /// Sandbox flag - when true, the operation is simulated without side effects
+    /// Useful for testing integrations without actual execution
+    /// </summary>
     public bool? Sandbox
     {
         get
@@ -86,6 +274,80 @@ public record class TenDlcUpdateCampaignParams : ParamsBase
             }
 
             this._rawBodyData.Set("sandbox", value);
+        }
+    }
+
+    /// <summary>
+    /// Terms and conditions URL. TCR termsAndConditionsLink. Required when `compliance.campaign.inherit
+    /// != true`.
+    /// </summary>
+    public string? TermsAndConditionsLink
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("terms_and_conditions_link");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("terms_and_conditions_link", value);
+        }
+    }
+
+    /// <summary>
+    /// Use cases. What the campaign sends, and an example of each. One to five entries;
+    /// how they register is decided by volume, never declared. Required when `compliance.campaign.inherit
+    /// != true`.
+    /// </summary>
+    public IReadOnlyList<TenDlcUpdateCampaignParamsUseCase>? UseCases
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<
+                ImmutableArray<TenDlcUpdateCampaignParamsUseCase>
+            >("use_cases");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set<ImmutableArray<TenDlcUpdateCampaignParamsUseCase>?>(
+                "use_cases",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
+    /// <summary>
+    /// Expected monthly volume. Decides how the campaign registers and which fee
+    /// tier applies: below the low-volume threshold it registers as LOW_VOLUME with
+    /// sub-use-cases, above it as a single use case or MIXED. Omitting it registers
+    /// the campaign at the higher-fee standard tier.
+    /// </summary>
+    public string? Volume
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("volume");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("volume", value);
         }
     }
 
@@ -246,5 +508,176 @@ public record class TenDlcUpdateCampaignParams : ParamsBase
     public override int GetHashCode()
     {
         return 0;
+    }
+}
+
+[JsonConverter(
+    typeof(JsonModelConverter<
+        TenDlcUpdateCampaignParamsUseCase,
+        TenDlcUpdateCampaignParamsUseCaseFromRaw
+    >)
+)]
+public sealed record class TenDlcUpdateCampaignParamsUseCase : JsonModel
+{
+    /// <summary>
+    /// Sample messages. TCR sample1..sample5 for this use case. One to five, each
+    /// carrying the brand name and an opt-out instruction.
+    /// </summary>
+    public required IReadOnlyList<JsonElement> SampleMessages
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<JsonElement>>("sample_messages");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<JsonElement>>(
+                "sample_messages",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
+    /// <summary>
+    /// Use case. What this entry sends. MIXED and LOW_VOLUME are refused — volume
+    /// decides those.
+    /// </summary>
+    public required ApiEnum<string, TenDlcUpdateCampaignParamsUseCaseUseCase> UseCase
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<
+                ApiEnum<string, TenDlcUpdateCampaignParamsUseCaseUseCase>
+            >("use_case");
+        }
+        init { this._rawData.Set("use_case", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.SampleMessages;
+        this.UseCase.Validate();
+    }
+
+    public TenDlcUpdateCampaignParamsUseCase() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public TenDlcUpdateCampaignParamsUseCase(
+        TenDlcUpdateCampaignParamsUseCase tenDlcUpdateCampaignParamsUseCase
+    )
+        : base(tenDlcUpdateCampaignParamsUseCase) { }
+#pragma warning restore CS8618
+
+    public TenDlcUpdateCampaignParamsUseCase(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    TenDlcUpdateCampaignParamsUseCase(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="TenDlcUpdateCampaignParamsUseCaseFromRaw.FromRawUnchecked"/>
+    public static TenDlcUpdateCampaignParamsUseCase FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class TenDlcUpdateCampaignParamsUseCaseFromRaw : IFromRawJson<TenDlcUpdateCampaignParamsUseCase>
+{
+    /// <inheritdoc/>
+    public TenDlcUpdateCampaignParamsUseCase FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => TenDlcUpdateCampaignParamsUseCase.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Use case. What this entry sends. MIXED and LOW_VOLUME are refused — volume decides those.
+/// </summary>
+[JsonConverter(typeof(TenDlcUpdateCampaignParamsUseCaseUseCaseConverter))]
+public enum TenDlcUpdateCampaignParamsUseCaseUseCase
+{
+    Marketing,
+    AccountNotification,
+    CustomerCare,
+    FraudAlert,
+    V2Fa,
+    DeliveryNotification,
+    SecurityAlert,
+    M2M,
+    HigherEducation,
+    PollingVoting,
+    PublicServiceAnnouncement,
+}
+
+sealed class TenDlcUpdateCampaignParamsUseCaseUseCaseConverter
+    : JsonConverter<TenDlcUpdateCampaignParamsUseCaseUseCase>
+{
+    public override TenDlcUpdateCampaignParamsUseCaseUseCase Read(
+        ref Utf8JsonReader reader,
+        Type typeToConvert,
+        JsonSerializerOptions options
+    )
+    {
+        return JsonSerializer.Deserialize<string>(ref reader, options) switch
+        {
+            "MARKETING" => TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing,
+            "ACCOUNT_NOTIFICATION" => TenDlcUpdateCampaignParamsUseCaseUseCase.AccountNotification,
+            "CUSTOMER_CARE" => TenDlcUpdateCampaignParamsUseCaseUseCase.CustomerCare,
+            "FRAUD_ALERT" => TenDlcUpdateCampaignParamsUseCaseUseCase.FraudAlert,
+            "2FA" => TenDlcUpdateCampaignParamsUseCaseUseCase.V2Fa,
+            "DELIVERY_NOTIFICATION" =>
+                TenDlcUpdateCampaignParamsUseCaseUseCase.DeliveryNotification,
+            "SECURITY_ALERT" => TenDlcUpdateCampaignParamsUseCaseUseCase.SecurityAlert,
+            "M2M" => TenDlcUpdateCampaignParamsUseCaseUseCase.M2M,
+            "HIGHER_EDUCATION" => TenDlcUpdateCampaignParamsUseCaseUseCase.HigherEducation,
+            "POLLING_VOTING" => TenDlcUpdateCampaignParamsUseCaseUseCase.PollingVoting,
+            "PUBLIC_SERVICE_ANNOUNCEMENT" =>
+                TenDlcUpdateCampaignParamsUseCaseUseCase.PublicServiceAnnouncement,
+            _ => (TenDlcUpdateCampaignParamsUseCaseUseCase)(-1),
+        };
+    }
+
+    public override void Write(
+        Utf8JsonWriter writer,
+        TenDlcUpdateCampaignParamsUseCaseUseCase value,
+        JsonSerializerOptions options
+    )
+    {
+        JsonSerializer.Serialize(
+            writer,
+            value switch
+            {
+                TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing => "MARKETING",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.AccountNotification =>
+                    "ACCOUNT_NOTIFICATION",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.CustomerCare => "CUSTOMER_CARE",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.FraudAlert => "FRAUD_ALERT",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.V2Fa => "2FA",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.DeliveryNotification =>
+                    "DELIVERY_NOTIFICATION",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.SecurityAlert => "SECURITY_ALERT",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.M2M => "M2M",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.HigherEducation => "HIGHER_EDUCATION",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.PollingVoting => "POLLING_VOTING",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.PublicServiceAnnouncement =>
+                    "PUBLIC_SERVICE_ANNOUNCEMENT",
+                _ => throw new SentInvalidDataException(
+                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
+                ),
+            },
+            options
+        );
     }
 }

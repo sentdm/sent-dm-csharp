@@ -15,15 +15,15 @@ public class TenDlcAddNumbersParamsTest : TestBase
         {
             CampaignID = "8f14e45f-ceea-467f-a8f0-7c2a3d1b9e01",
             Numbers = [new() { AreaCode = "415", Quantity = 2 }],
-            Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
+            Sandbox = false,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedCampaignID = "8f14e45f-ceea-467f-a8f0-7c2a3d1b9e01";
         List<SmsNumberRequest?> expectedNumbers = [new() { AreaCode = "415", Quantity = 2 }];
-        bool expectedSandbox = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
+        bool expectedSandbox = false;
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
         Assert.Equal(expectedCampaignID, parameters.CampaignID);
@@ -32,8 +32,8 @@ public class TenDlcAddNumbersParamsTest : TestBase
         {
             Assert.Equal(expectedNumbers[i], parameters.Numbers[i]);
         }
-        Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedIdempotencyKey, parameters.IdempotencyKey);
+        Assert.Equal(expectedSandbox, parameters.Sandbox);
         Assert.Equal(expectedXProfileID, parameters.XProfileID);
     }
 
@@ -44,12 +44,11 @@ public class TenDlcAddNumbersParamsTest : TestBase
         {
             CampaignID = "8f14e45f-ceea-467f-a8f0-7c2a3d1b9e01",
             Numbers = [new() { AreaCode = "415", Quantity = 2 }],
+            IdempotencyKey = "req_abc123_retry1",
         };
 
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.IdempotencyKey);
-        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
@@ -61,17 +60,15 @@ public class TenDlcAddNumbersParamsTest : TestBase
         {
             CampaignID = "8f14e45f-ceea-467f-a8f0-7c2a3d1b9e01",
             Numbers = [new() { AreaCode = "415", Quantity = 2 }],
+            IdempotencyKey = "req_abc123_retry1",
 
             // Null should be interpreted as omitted for these properties
             Sandbox = null,
-            IdempotencyKey = null,
             XProfileID = null,
         };
 
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
-        Assert.Null(parameters.IdempotencyKey);
-        Assert.False(parameters.RawHeaderData.ContainsKey("Idempotency-Key"));
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
     }
@@ -83,6 +80,7 @@ public class TenDlcAddNumbersParamsTest : TestBase
         {
             CampaignID = "8f14e45f-ceea-467f-a8f0-7c2a3d1b9e01",
             Numbers = [new() { AreaCode = "415", Quantity = 2 }],
+            IdempotencyKey = "req_abc123_retry1",
         };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
@@ -123,8 +121,8 @@ public class TenDlcAddNumbersParamsTest : TestBase
         {
             CampaignID = "8f14e45f-ceea-467f-a8f0-7c2a3d1b9e01",
             Numbers = [new() { AreaCode = "415", Quantity = 2 }],
-            Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
+            Sandbox = false,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 

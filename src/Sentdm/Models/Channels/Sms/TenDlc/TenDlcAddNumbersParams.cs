@@ -81,6 +81,16 @@ public record class TenDlcAddNumbersParams : ParamsBase
         }
     }
 
+    public required string IdempotencyKey
+    {
+        get
+        {
+            this._rawHeaderData.Freeze();
+            return this._rawHeaderData.GetNotNullClass<string>("Idempotency-Key");
+        }
+        init { this._rawHeaderData.Set("Idempotency-Key", value); }
+    }
+
     /// <summary>
     /// Sandbox flag - when true, the operation is simulated without side effects
     /// Useful for testing integrations without actual execution
@@ -100,24 +110,6 @@ public record class TenDlcAddNumbersParams : ParamsBase
             }
 
             this._rawBodyData.Set("sandbox", value);
-        }
-    }
-
-    public string? IdempotencyKey
-    {
-        get
-        {
-            this._rawHeaderData.Freeze();
-            return this._rawHeaderData.GetNullableClass<string>("Idempotency-Key");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawHeaderData.Set("Idempotency-Key", value);
         }
     }
 

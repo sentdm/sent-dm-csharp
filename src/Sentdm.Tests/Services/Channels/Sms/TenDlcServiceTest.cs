@@ -8,7 +8,7 @@ public class TenDlcServiceTest : TestBase
     public async Task AddCampaign_Works()
     {
         var apiResponseOfSmsMarket = await this.client.Channels.Sms.TenDlc.AddCampaign(
-            new(),
+            new() { IdempotencyKey = "req_abc123_retry1" },
             TestContext.Current.CancellationToken
         );
         apiResponseOfSmsMarket.Validate();
@@ -22,6 +22,7 @@ public class TenDlcServiceTest : TestBase
             {
                 CampaignID = "8f14e45f-ceea-467f-a8f0-7c2a3d1b9e01",
                 Numbers = [new() { AreaCode = "415", Quantity = 2 }],
+                IdempotencyKey = "req_abc123_retry1",
             },
             TestContext.Current.CancellationToken
         );

@@ -94,7 +94,7 @@ public interface ITenDlcService
     /// returns, with `202`.</para>
     /// </summary>
     Task<ApiResponseOfSmsMarket> AddCampaign(
-        TenDlcAddCampaignParams? parameters = null,
+        TenDlcAddCampaignParams parameters,
         CancellationToken cancellationToken = default
     );
 
@@ -201,10 +201,10 @@ public interface ITenDlcServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for <c>post /v3/channels/sms/compliances/US/TEN_DLC/campaigns</c>, but is otherwise the
-    /// same as <see cref="ITenDlcService.AddCampaign(TenDlcAddCampaignParams?, CancellationToken)"/>.
+    /// same as <see cref="ITenDlcService.AddCampaign(TenDlcAddCampaignParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ApiResponseOfSmsMarket>> AddCampaign(
-        TenDlcAddCampaignParams? parameters = null,
+        TenDlcAddCampaignParams parameters,
         CancellationToken cancellationToken = default
     );
 
