@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
-using Sentdm.Core;
-using Sentdm.Exceptions;
 using Sentdm.Models.Channels.Sms.TenDlc;
 
 namespace Sentdm.Tests.Models.Channels.Sms.TenDlc;
@@ -32,7 +30,7 @@ public class TenDlcAddCampaignParamsTest : TestBase
                 new()
                 {
                     SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-                    UseCaseValue = UseCaseUseCase.Marketing,
+                    UseCase = UseCase.Marketing,
                 },
             ],
             Volume = "volume",
@@ -51,12 +49,12 @@ public class TenDlcAddCampaignParamsTest : TestBase
         string expectedPrivacyPolicyLink = "privacy_policy_link";
         bool expectedSandbox = false;
         string expectedTermsAndConditionsLink = "terms_and_conditions_link";
-        List<UseCase> expectedUseCases =
+        List<TenDlcCampaignUseCase> expectedUseCases =
         [
             new()
             {
                 SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-                UseCaseValue = UseCaseUseCase.Marketing,
+                UseCase = UseCase.Marketing,
             },
         ];
         string expectedVolume = "volume";
@@ -229,7 +227,7 @@ public class TenDlcAddCampaignParamsTest : TestBase
                 new()
                 {
                     SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-                    UseCaseValue = UseCaseUseCase.Marketing,
+                    UseCase = UseCase.Marketing,
                 },
             ],
             Volume = "volume",
@@ -239,174 +237,5 @@ public class TenDlcAddCampaignParamsTest : TestBase
         TenDlcAddCampaignParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
-    }
-}
-
-public class UseCaseTest : TestBase
-{
-    [Fact]
-    public void FieldRoundtrip_Works()
-    {
-        var model = new UseCase
-        {
-            SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-            UseCaseValue = UseCaseUseCase.Marketing,
-        };
-
-        List<JsonElement> expectedSampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")];
-        ApiEnum<string, UseCaseUseCase> expectedUseCaseValue = UseCaseUseCase.Marketing;
-
-        Assert.Equal(expectedSampleMessages.Count, model.SampleMessages.Count);
-        for (int i = 0; i < expectedSampleMessages.Count; i++)
-        {
-            Assert.True(JsonElement.DeepEquals(expectedSampleMessages[i], model.SampleMessages[i]));
-        }
-        Assert.Equal(expectedUseCaseValue, model.UseCaseValue);
-    }
-
-    [Fact]
-    public void SerializationRoundtrip_Works()
-    {
-        var model = new UseCase
-        {
-            SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-            UseCaseValue = UseCaseUseCase.Marketing,
-        };
-
-        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UseCase>(json, ModelBase.SerializerOptions);
-
-        Assert.Equal(model, deserialized);
-    }
-
-    [Fact]
-    public void FieldRoundtripThroughSerialization_Works()
-    {
-        var model = new UseCase
-        {
-            SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-            UseCaseValue = UseCaseUseCase.Marketing,
-        };
-
-        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UseCase>(
-            element,
-            ModelBase.SerializerOptions
-        );
-        Assert.NotNull(deserialized);
-
-        List<JsonElement> expectedSampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")];
-        ApiEnum<string, UseCaseUseCase> expectedUseCaseValue = UseCaseUseCase.Marketing;
-
-        Assert.Equal(expectedSampleMessages.Count, deserialized.SampleMessages.Count);
-        for (int i = 0; i < expectedSampleMessages.Count; i++)
-        {
-            Assert.True(
-                JsonElement.DeepEquals(expectedSampleMessages[i], deserialized.SampleMessages[i])
-            );
-        }
-        Assert.Equal(expectedUseCaseValue, deserialized.UseCaseValue);
-    }
-
-    [Fact]
-    public void Validation_Works()
-    {
-        var model = new UseCase
-        {
-            SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-            UseCaseValue = UseCaseUseCase.Marketing,
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void CopyConstructor_Works()
-    {
-        var model = new UseCase
-        {
-            SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-            UseCaseValue = UseCaseUseCase.Marketing,
-        };
-
-        UseCase copied = new(model);
-
-        Assert.Equal(model, copied);
-    }
-}
-
-public class UseCaseUseCaseTest : TestBase
-{
-    [Theory]
-    [InlineData(UseCaseUseCase.Marketing)]
-    [InlineData(UseCaseUseCase.AccountNotification)]
-    [InlineData(UseCaseUseCase.CustomerCare)]
-    [InlineData(UseCaseUseCase.FraudAlert)]
-    [InlineData(UseCaseUseCase.V2Fa)]
-    [InlineData(UseCaseUseCase.DeliveryNotification)]
-    [InlineData(UseCaseUseCase.SecurityAlert)]
-    [InlineData(UseCaseUseCase.M2M)]
-    [InlineData(UseCaseUseCase.HigherEducation)]
-    [InlineData(UseCaseUseCase.PollingVoting)]
-    [InlineData(UseCaseUseCase.PublicServiceAnnouncement)]
-    public void Validation_Works(UseCaseUseCase rawValue)
-    {
-        // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, UseCaseUseCase> value = rawValue;
-        value.Validate();
-    }
-
-    [Fact]
-    public void InvalidEnumValidationThrows_Works()
-    {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, UseCaseUseCase>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
-
-        Assert.NotNull(value);
-        Assert.Throws<SentInvalidDataException>(() => value.Validate());
-    }
-
-    [Theory]
-    [InlineData(UseCaseUseCase.Marketing)]
-    [InlineData(UseCaseUseCase.AccountNotification)]
-    [InlineData(UseCaseUseCase.CustomerCare)]
-    [InlineData(UseCaseUseCase.FraudAlert)]
-    [InlineData(UseCaseUseCase.V2Fa)]
-    [InlineData(UseCaseUseCase.DeliveryNotification)]
-    [InlineData(UseCaseUseCase.SecurityAlert)]
-    [InlineData(UseCaseUseCase.M2M)]
-    [InlineData(UseCaseUseCase.HigherEducation)]
-    [InlineData(UseCaseUseCase.PollingVoting)]
-    [InlineData(UseCaseUseCase.PublicServiceAnnouncement)]
-    public void SerializationRoundtrip_Works(UseCaseUseCase rawValue)
-    {
-        // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, UseCaseUseCase> value = rawValue;
-
-        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, UseCaseUseCase>>(
-            json,
-            ModelBase.SerializerOptions
-        );
-
-        Assert.Equal(value, deserialized);
-    }
-
-    [Fact]
-    public void InvalidEnumSerializationRoundtrip_Works()
-    {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, UseCaseUseCase>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
-        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, UseCaseUseCase>>(
-            json,
-            ModelBase.SerializerOptions
-        );
-
-        Assert.Equal(value, deserialized);
     }
 }

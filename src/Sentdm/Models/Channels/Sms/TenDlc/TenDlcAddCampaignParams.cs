@@ -6,9 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Sentdm.Core;
-using Sentdm.Exceptions;
 
 namespace Sentdm.Models.Channels.Sms.TenDlc;
 
@@ -324,12 +322,14 @@ public record class TenDlcAddCampaignParams : ParamsBase
     /// how they register is decided by volume, never declared. Required when `compliance.campaign.inherit
     /// != true`.
     /// </summary>
-    public IReadOnlyList<UseCase>? UseCases
+    public IReadOnlyList<TenDlcCampaignUseCase>? UseCases
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<ImmutableArray<UseCase>>("use_cases");
+            return this._rawBodyData.GetNullableStruct<ImmutableArray<TenDlcCampaignUseCase>>(
+                "use_cases"
+            );
         }
         init
         {
@@ -338,7 +338,7 @@ public record class TenDlcAddCampaignParams : ParamsBase
                 return;
             }
 
-            this._rawBodyData.Set<ImmutableArray<UseCase>?>(
+            this._rawBodyData.Set<ImmutableArray<TenDlcCampaignUseCase>?>(
                 "use_cases",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -497,158 +497,5 @@ public record class TenDlcAddCampaignParams : ParamsBase
     public override int GetHashCode()
     {
         return 0;
-    }
-}
-
-[JsonConverter(typeof(JsonModelConverter<UseCase, UseCaseFromRaw>))]
-public sealed record class UseCase : JsonModel
-{
-    /// <summary>
-    /// Sample messages. TCR sample1..sample5 for this use case. One to five, each
-    /// carrying the brand name and an opt-out instruction.
-    /// </summary>
-    public required IReadOnlyList<JsonElement> SampleMessages
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<JsonElement>>("sample_messages");
-        }
-        init
-        {
-            this._rawData.Set<ImmutableArray<JsonElement>>(
-                "sample_messages",
-                ImmutableArray.ToImmutableArray(value)
-            );
-        }
-    }
-
-    /// <summary>
-    /// Use case. What this entry sends. MIXED and LOW_VOLUME are refused — volume
-    /// decides those.
-    /// </summary>
-    public required ApiEnum<string, UseCaseUseCase> UseCaseValue
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, UseCaseUseCase>>("use_case");
-        }
-        init { this._rawData.Set("use_case", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.SampleMessages;
-        this.UseCaseValue.Validate();
-    }
-
-    public UseCase() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public UseCase(UseCase useCase)
-        : base(useCase) { }
-#pragma warning restore CS8618
-
-    public UseCase(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    UseCase(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="UseCaseFromRaw.FromRawUnchecked"/>
-    public static UseCase FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class UseCaseFromRaw : IFromRawJson<UseCase>
-{
-    /// <inheritdoc/>
-    public UseCase FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        UseCase.FromRawUnchecked(rawData);
-}
-
-/// <summary>
-/// Use case. What this entry sends. MIXED and LOW_VOLUME are refused — volume decides those.
-/// </summary>
-[JsonConverter(typeof(UseCaseUseCaseConverter))]
-public enum UseCaseUseCase
-{
-    Marketing,
-    AccountNotification,
-    CustomerCare,
-    FraudAlert,
-    V2Fa,
-    DeliveryNotification,
-    SecurityAlert,
-    M2M,
-    HigherEducation,
-    PollingVoting,
-    PublicServiceAnnouncement,
-}
-
-sealed class UseCaseUseCaseConverter : JsonConverter<UseCaseUseCase>
-{
-    public override UseCaseUseCase Read(
-        ref Utf8JsonReader reader,
-        Type typeToConvert,
-        JsonSerializerOptions options
-    )
-    {
-        return JsonSerializer.Deserialize<string>(ref reader, options) switch
-        {
-            "MARKETING" => UseCaseUseCase.Marketing,
-            "ACCOUNT_NOTIFICATION" => UseCaseUseCase.AccountNotification,
-            "CUSTOMER_CARE" => UseCaseUseCase.CustomerCare,
-            "FRAUD_ALERT" => UseCaseUseCase.FraudAlert,
-            "2FA" => UseCaseUseCase.V2Fa,
-            "DELIVERY_NOTIFICATION" => UseCaseUseCase.DeliveryNotification,
-            "SECURITY_ALERT" => UseCaseUseCase.SecurityAlert,
-            "M2M" => UseCaseUseCase.M2M,
-            "HIGHER_EDUCATION" => UseCaseUseCase.HigherEducation,
-            "POLLING_VOTING" => UseCaseUseCase.PollingVoting,
-            "PUBLIC_SERVICE_ANNOUNCEMENT" => UseCaseUseCase.PublicServiceAnnouncement,
-            _ => (UseCaseUseCase)(-1),
-        };
-    }
-
-    public override void Write(
-        Utf8JsonWriter writer,
-        UseCaseUseCase value,
-        JsonSerializerOptions options
-    )
-    {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                UseCaseUseCase.Marketing => "MARKETING",
-                UseCaseUseCase.AccountNotification => "ACCOUNT_NOTIFICATION",
-                UseCaseUseCase.CustomerCare => "CUSTOMER_CARE",
-                UseCaseUseCase.FraudAlert => "FRAUD_ALERT",
-                UseCaseUseCase.V2Fa => "2FA",
-                UseCaseUseCase.DeliveryNotification => "DELIVERY_NOTIFICATION",
-                UseCaseUseCase.SecurityAlert => "SECURITY_ALERT",
-                UseCaseUseCase.M2M => "M2M",
-                UseCaseUseCase.HigherEducation => "HIGHER_EDUCATION",
-                UseCaseUseCase.PollingVoting => "POLLING_VOTING",
-                UseCaseUseCase.PublicServiceAnnouncement => "PUBLIC_SERVICE_ANNOUNCEMENT",
-                _ => throw new SentInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
     }
 }
