@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.47.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.46.0...v0.47.0) (2026-11-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** sync OpenAPI spec from production
+
+### Features
+
+* **api:** sync OpenAPI spec from production ([9b15c70](https://github.com/sentdm/sent-dm-csharp/commit/9b15c7019aa044541a12c45b8b4657927dbf2f4d))
+
 ## [0.46.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.45.0...v0.46.0) (2026-11-06)
 
 
