@@ -91,7 +91,10 @@ public interface ICampaignService
     /// explicitly.
     ///
     /// <para>Retrieves all campaigns linked to the profile's brand, including use cases
-    /// and sample messages. Returns inherited campaigns if inherit_tcr_campaign=true.</para>
+    /// and sample messages. A profile with inherit_tcr_campaign=true gets its
+    /// organization's campaigns and, beside them, any campaign of its own (added with
+    /// POST /v3/channels/sms/compliances/US/TEN_DLC/campaigns); `isInherited` says
+    /// which is which.</para>
     /// </summary>
     [Obsolete("deprecated")]
     Task<ApiResponseOfListOfBrandCampaign> List(

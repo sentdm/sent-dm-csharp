@@ -182,6 +182,29 @@ public sealed record class BrandCampaign : JsonModel
         init { this._rawData.Set("helpMessage", value); }
     }
 
+    /// <summary>
+    /// Whether the campaign is the organization's, which the profile runs on, rather
+    /// than one of the profile's own. A profile running on its organization's campaign
+    /// can hold campaigns of its own beside it, and the list returns both.
+    /// </summary>
+    public bool? IsInherited
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("isInherited");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("isInherited", value);
+        }
+    }
+
     public string? MessageFlow
     {
         get
@@ -417,6 +440,7 @@ public sealed record class BrandCampaign : JsonModel
         _ = this.HasSubmissionTransaction;
         _ = this.HelpKeywords;
         _ = this.HelpMessage;
+        _ = this.IsInherited;
         _ = this.MessageFlow;
         _ = this.Name;
         _ = this.OptinKeywords;
