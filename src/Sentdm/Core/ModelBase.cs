@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Sentdm.Exceptions;
 using Sentdm.Models.Channels.Rcs;
+using Sentdm.Models.Channels.Sms.TenDlc;
 using Sentdm.Models.Profiles;
 using Sentdm.Models.Profiles.Campaigns;
 using Sms = Sentdm.Models.Channels.Sms;
@@ -37,6 +38,7 @@ public abstract record class ModelBase
             new ApiEnumConverter<string, Sms::UseCaseUseCase>(),
             new ApiEnumConverter<string, Sms::Status>(),
             new ApiEnumConverter<string, Sms::NumberType>(),
+            new ApiEnumConverter<string, UseCase>(),
             new ApiEnumConverter<string, Status>(),
             new ApiEnumConverter<string, AgentUseCase>(),
             new ApiEnumConverter<string, Whatsapp::Status>(),
