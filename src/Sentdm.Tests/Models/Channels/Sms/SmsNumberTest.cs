@@ -12,15 +12,18 @@ public class SmsNumberTest : TestBase
         var model = new SmsNumber
         {
             AreaCode = "area_code",
+            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             SenderValue = "sender_value",
             Status = "status",
         };
 
         string expectedAreaCode = "area_code";
+        string expectedCampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedSenderValue = "sender_value";
         string expectedStatus = "status";
 
         Assert.Equal(expectedAreaCode, model.AreaCode);
+        Assert.Equal(expectedCampaignID, model.CampaignID);
         Assert.Equal(expectedSenderValue, model.SenderValue);
         Assert.Equal(expectedStatus, model.Status);
     }
@@ -31,6 +34,7 @@ public class SmsNumberTest : TestBase
         var model = new SmsNumber
         {
             AreaCode = "area_code",
+            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             SenderValue = "sender_value",
             Status = "status",
         };
@@ -47,6 +51,7 @@ public class SmsNumberTest : TestBase
         var model = new SmsNumber
         {
             AreaCode = "area_code",
+            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             SenderValue = "sender_value",
             Status = "status",
         };
@@ -59,10 +64,12 @@ public class SmsNumberTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedAreaCode = "area_code";
+        string expectedCampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedSenderValue = "sender_value";
         string expectedStatus = "status";
 
         Assert.Equal(expectedAreaCode, deserialized.AreaCode);
+        Assert.Equal(expectedCampaignID, deserialized.CampaignID);
         Assert.Equal(expectedSenderValue, deserialized.SenderValue);
         Assert.Equal(expectedStatus, deserialized.Status);
     }
@@ -73,6 +80,7 @@ public class SmsNumberTest : TestBase
         var model = new SmsNumber
         {
             AreaCode = "area_code",
+            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             SenderValue = "sender_value",
             Status = "status",
         };
@@ -87,6 +95,8 @@ public class SmsNumberTest : TestBase
 
         Assert.Null(model.AreaCode);
         Assert.False(model.RawData.ContainsKey("area_code"));
+        Assert.Null(model.CampaignID);
+        Assert.False(model.RawData.ContainsKey("campaign_id"));
         Assert.Null(model.SenderValue);
         Assert.False(model.RawData.ContainsKey("sender_value"));
         Assert.Null(model.Status);
@@ -107,12 +117,15 @@ public class SmsNumberTest : TestBase
         var model = new SmsNumber
         {
             AreaCode = null,
+            CampaignID = null,
             SenderValue = null,
             Status = null,
         };
 
         Assert.Null(model.AreaCode);
         Assert.True(model.RawData.ContainsKey("area_code"));
+        Assert.Null(model.CampaignID);
+        Assert.True(model.RawData.ContainsKey("campaign_id"));
         Assert.Null(model.SenderValue);
         Assert.True(model.RawData.ContainsKey("sender_value"));
         Assert.Null(model.Status);
@@ -125,6 +138,7 @@ public class SmsNumberTest : TestBase
         var model = new SmsNumber
         {
             AreaCode = null,
+            CampaignID = null,
             SenderValue = null,
             Status = null,
         };
@@ -138,6 +152,7 @@ public class SmsNumberTest : TestBase
         var model = new SmsNumber
         {
             AreaCode = "area_code",
+            CampaignID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             SenderValue = "sender_value",
             Status = "status",
         };
