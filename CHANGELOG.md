@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.48.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.47.0...v0.48.0) (2026-11-12)
+
+
+### Features
+
+* **api:** methods for the US 10DLC campaigns, numbers and market compliance ([63441ec](https://github.com/sentdm/sent-dm-csharp/commit/63441ec289f2b355c7b3b427e37e708263faee56))
+
 ## [0.47.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.46.0...v0.47.0) (2026-11-12)
 
 
