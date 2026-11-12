@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
 using Sentdm.Models.Channels.Sms;
+using Sentdm.Services.Channels.Sms;
 
 namespace Sentdm.Services.Channels;
 
@@ -51,6 +52,8 @@ public interface ISmsService
     /// <para>The original service is not modified.</para>
     /// </summary>
     ISmsService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    ITenDlcService TenDlc { get; }
 
     /// <summary>
     /// Gives the customer a sender in one country — the first market it sends in, and
@@ -346,6 +349,8 @@ public interface ISmsServiceWithRawResponse
     /// <para>The original service is not modified.</para>
     /// </summary>
     ISmsServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    ITenDlcServiceWithRawResponse TenDlc { get; }
 
     /// <summary>
     /// Returns a raw HTTP response for <c>post /v3/channels/sms</c>, but is otherwise the
