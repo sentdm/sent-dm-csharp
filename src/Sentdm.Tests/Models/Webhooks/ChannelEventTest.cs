@@ -29,6 +29,13 @@ public class ChannelEventTest : TestBase
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
+                    Campaigns =
+                    [
+                        new Dictionary<string, JsonElement>()
+                        {
+                            { "foo", JsonSerializer.SerializeToElement("bar") },
+                        },
+                    ],
                     Documents =
                     [
                         new()
@@ -67,6 +74,13 @@ public class ChannelEventTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -116,6 +130,13 @@ public class ChannelEventTest : TestBase
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
+                    Campaigns =
+                    [
+                        new Dictionary<string, JsonElement>()
+                        {
+                            { "foo", JsonSerializer.SerializeToElement("bar") },
+                        },
+                    ],
                     Documents =
                     [
                         new()
@@ -168,6 +189,13 @@ public class ChannelEventTest : TestBase
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
+                    Campaigns =
+                    [
+                        new Dictionary<string, JsonElement>()
+                        {
+                            { "foo", JsonSerializer.SerializeToElement("bar") },
+                        },
+                    ],
                     Documents =
                     [
                         new()
@@ -213,6 +241,13 @@ public class ChannelEventTest : TestBase
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
+                Campaigns =
+                [
+                    new Dictionary<string, JsonElement>()
+                    {
+                        { "foo", JsonSerializer.SerializeToElement("bar") },
+                    },
+                ],
                 Documents =
                 [
                     new()
@@ -262,6 +297,13 @@ public class ChannelEventTest : TestBase
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
+                    Campaigns =
+                    [
+                        new Dictionary<string, JsonElement>()
+                        {
+                            { "foo", JsonSerializer.SerializeToElement("bar") },
+                        },
+                    ],
                     Documents =
                     [
                         new()
@@ -307,6 +349,13 @@ public class ChannelEventTest : TestBase
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
+                    Campaigns =
+                    [
+                        new Dictionary<string, JsonElement>()
+                        {
+                            { "foo", JsonSerializer.SerializeToElement("bar") },
+                        },
+                    ],
                     Documents =
                     [
                         new()
@@ -354,6 +403,13 @@ public class ChannelEventTest : TestBase
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
+                    Campaigns =
+                    [
+                        new Dictionary<string, JsonElement>()
+                        {
+                            { "foo", JsonSerializer.SerializeToElement("bar") },
+                        },
+                    ],
                     Documents =
                     [
                         new()
@@ -398,6 +454,13 @@ public class ChannelEventTest : TestBase
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
+                    Campaigns =
+                    [
+                        new Dictionary<string, JsonElement>()
+                        {
+                            { "foo", JsonSerializer.SerializeToElement("bar") },
+                        },
+                    ],
                     Documents =
                     [
                         new()
@@ -449,6 +512,13 @@ public class ChannelEventTest : TestBase
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
+                    Campaigns =
+                    [
+                        new Dictionary<string, JsonElement>()
+                        {
+                            { "foo", JsonSerializer.SerializeToElement("bar") },
+                        },
+                    ],
                     Documents =
                     [
                         new()
@@ -556,6 +626,13 @@ public class ChannelEventTest : TestBase
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
+                    Campaigns =
+                    [
+                        new Dictionary<string, JsonElement>()
+                        {
+                            { "foo", JsonSerializer.SerializeToElement("bar") },
+                        },
+                    ],
                     Documents =
                     [
                         new()

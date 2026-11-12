@@ -63,7 +63,7 @@ public interface IMeService
     /// profiles. It is granted by Sent and off by default. A `profile` reports `false`,
     /// having no sender profiles of its own to create anything on.</para>
     /// </summary>
-    Task<MeRetrieveResponse> Retrieve(
+    Task<ApiResponseOfAccount> Retrieve(
         MeRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -86,7 +86,7 @@ public interface IMeServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/me</c>, but is otherwise the
     /// same as <see cref="IMeService.Retrieve(MeRetrieveParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<MeRetrieveResponse>> Retrieve(
+    Task<HttpResponse<ApiResponseOfAccount>> Retrieve(
         MeRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
     );

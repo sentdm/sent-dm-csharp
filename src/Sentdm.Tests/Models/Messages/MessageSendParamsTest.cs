@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text.Json;
-using Sentdm.Core;
 using Sentdm.Models.Messages;
+using Sentdm.Models.Templates;
 
 namespace Sentdm.Tests.Models.Messages;
 
@@ -15,10 +14,7 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
-            Channels = new Dictionary<
-                string,
-                IReadOnlyList<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
-            >()
+            Channels = new Dictionary<string, IReadOnlyList<MessageChannelOptions>>()
             {
                 {
                     "foo",
@@ -53,10 +49,7 @@ public class MessageSendParamsTest : TestBase
         };
 
         List<string> expectedChannel = ["sms", "whatsapp"];
-        Dictionary<
-            string,
-            List<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
-        > expectedChannels = new()
+        Dictionary<string, List<MessageChannelOptions>> expectedChannels = new()
         {
             {
                 "foo",
@@ -72,7 +65,7 @@ public class MessageSendParamsTest : TestBase
         };
         List<string> expectedMediaUrls = ["string"];
         bool expectedSandbox = false;
-        Template expectedTemplate = new()
+        TemplateRef expectedTemplate = new()
         {
             ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
             Name = "order_confirmation",
@@ -131,10 +124,7 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
-            Channels = new Dictionary<
-                string,
-                IReadOnlyList<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
-            >()
+            Channels = new Dictionary<string, IReadOnlyList<MessageChannelOptions>>()
             {
                 {
                     "foo",
@@ -180,10 +170,7 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
-            Channels = new Dictionary<
-                string,
-                IReadOnlyList<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
-            >()
+            Channels = new Dictionary<string, IReadOnlyList<MessageChannelOptions>>()
             {
                 {
                     "foo",
@@ -326,10 +313,7 @@ public class MessageSendParamsTest : TestBase
         var parameters = new MessageSendParams
         {
             Channel = ["sms", "whatsapp"],
-            Channels = new Dictionary<
-                string,
-                IReadOnlyList<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>
-            >()
+            Channels = new Dictionary<string, IReadOnlyList<MessageChannelOptions>>()
             {
                 {
                     "foo",
@@ -366,363 +350,5 @@ public class MessageSendParamsTest : TestBase
         MessageSendParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
-    }
-}
-
-public class SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequestTest
-    : TestBase
-{
-    [Fact]
-    public void FieldRoundtrip_Works()
-    {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
-            {
-                Country = "country",
-                From = ["string"],
-                Strategy = "strategy",
-            };
-
-        string expectedCountry = "country";
-        List<string> expectedFrom = ["string"];
-        string expectedStrategy = "strategy";
-
-        Assert.Equal(expectedCountry, model.Country);
-        Assert.NotNull(model.From);
-        Assert.Equal(expectedFrom.Count, model.From.Count);
-        for (int i = 0; i < expectedFrom.Count; i++)
-        {
-            Assert.Equal(expectedFrom[i], model.From[i]);
-        }
-        Assert.Equal(expectedStrategy, model.Strategy);
-    }
-
-    [Fact]
-    public void SerializationRoundtrip_Works()
-    {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
-            {
-                Country = "country",
-                From = ["string"],
-                Strategy = "strategy",
-            };
-
-        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>(
-                json,
-                ModelBase.SerializerOptions
-            );
-
-        Assert.Equal(model, deserialized);
-    }
-
-    [Fact]
-    public void FieldRoundtripThroughSerialization_Works()
-    {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
-            {
-                Country = "country",
-                From = ["string"],
-                Strategy = "strategy",
-            };
-
-        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized =
-            JsonSerializer.Deserialize<SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest>(
-                element,
-                ModelBase.SerializerOptions
-            );
-        Assert.NotNull(deserialized);
-
-        string expectedCountry = "country";
-        List<string> expectedFrom = ["string"];
-        string expectedStrategy = "strategy";
-
-        Assert.Equal(expectedCountry, deserialized.Country);
-        Assert.NotNull(deserialized.From);
-        Assert.Equal(expectedFrom.Count, deserialized.From.Count);
-        for (int i = 0; i < expectedFrom.Count; i++)
-        {
-            Assert.Equal(expectedFrom[i], deserialized.From[i]);
-        }
-        Assert.Equal(expectedStrategy, deserialized.Strategy);
-    }
-
-    [Fact]
-    public void Validation_Works()
-    {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
-            {
-                Country = "country",
-                From = ["string"],
-                Strategy = "strategy",
-            };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
-    {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
-            { };
-
-        Assert.Null(model.Country);
-        Assert.False(model.RawData.ContainsKey("country"));
-        Assert.Null(model.From);
-        Assert.False(model.RawData.ContainsKey("from"));
-        Assert.Null(model.Strategy);
-        Assert.False(model.RawData.ContainsKey("strategy"));
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesUnsetValidation_Works()
-    {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
-            { };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
-    {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
-            {
-                Country = null,
-                From = null,
-                Strategy = null,
-            };
-
-        Assert.Null(model.Country);
-        Assert.True(model.RawData.ContainsKey("country"));
-        Assert.Null(model.From);
-        Assert.True(model.RawData.ContainsKey("from"));
-        Assert.Null(model.Strategy);
-        Assert.True(model.RawData.ContainsKey("strategy"));
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesSetToNullValidation_Works()
-    {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
-            {
-                Country = null,
-                From = null,
-                Strategy = null,
-            };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void CopyConstructor_Works()
-    {
-        var model =
-            new SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest
-            {
-                Country = "country",
-                From = ["string"],
-                Strategy = "strategy",
-            };
-
-        SentDmServicesEndpointsCustomerApIv3MessagesRequestsMessageChannelOptionsRequest copied =
-            new(model);
-
-        Assert.Equal(model, copied);
-    }
-}
-
-public class TemplateTest : TestBase
-{
-    [Fact]
-    public void FieldRoundtrip_Works()
-    {
-        var model = new Template
-        {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Name = "order_confirmation",
-            Parameters = new Dictionary<string, string>()
-            {
-                { "name", "John Doe" },
-                { "order_id", "12345" },
-            },
-        };
-
-        string expectedID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8";
-        string expectedName = "order_confirmation";
-        Dictionary<string, string> expectedParameters = new()
-        {
-            { "name", "John Doe" },
-            { "order_id", "12345" },
-        };
-
-        Assert.Equal(expectedID, model.ID);
-        Assert.Equal(expectedName, model.Name);
-        Assert.NotNull(model.Parameters);
-        Assert.Equal(expectedParameters.Count, model.Parameters.Count);
-        foreach (var item in expectedParameters)
-        {
-            Assert.True(model.Parameters.TryGetValue(item.Key, out var value));
-
-            Assert.Equal(value, model.Parameters[item.Key]);
-        }
-    }
-
-    [Fact]
-    public void SerializationRoundtrip_Works()
-    {
-        var model = new Template
-        {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Name = "order_confirmation",
-            Parameters = new Dictionary<string, string>()
-            {
-                { "name", "John Doe" },
-                { "order_id", "12345" },
-            },
-        };
-
-        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Template>(json, ModelBase.SerializerOptions);
-
-        Assert.Equal(model, deserialized);
-    }
-
-    [Fact]
-    public void FieldRoundtripThroughSerialization_Works()
-    {
-        var model = new Template
-        {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Name = "order_confirmation",
-            Parameters = new Dictionary<string, string>()
-            {
-                { "name", "John Doe" },
-                { "order_id", "12345" },
-            },
-        };
-
-        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Template>(
-            element,
-            ModelBase.SerializerOptions
-        );
-        Assert.NotNull(deserialized);
-
-        string expectedID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8";
-        string expectedName = "order_confirmation";
-        Dictionary<string, string> expectedParameters = new()
-        {
-            { "name", "John Doe" },
-            { "order_id", "12345" },
-        };
-
-        Assert.Equal(expectedID, deserialized.ID);
-        Assert.Equal(expectedName, deserialized.Name);
-        Assert.NotNull(deserialized.Parameters);
-        Assert.Equal(expectedParameters.Count, deserialized.Parameters.Count);
-        foreach (var item in expectedParameters)
-        {
-            Assert.True(deserialized.Parameters.TryGetValue(item.Key, out var value));
-
-            Assert.Equal(value, deserialized.Parameters[item.Key]);
-        }
-    }
-
-    [Fact]
-    public void Validation_Works()
-    {
-        var model = new Template
-        {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Name = "order_confirmation",
-            Parameters = new Dictionary<string, string>()
-            {
-                { "name", "John Doe" },
-                { "order_id", "12345" },
-            },
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesUnsetAreNotSet_Works()
-    {
-        var model = new Template { };
-
-        Assert.Null(model.ID);
-        Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.Name);
-        Assert.False(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Parameters);
-        Assert.False(model.RawData.ContainsKey("parameters"));
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesUnsetValidation_Works()
-    {
-        var model = new Template { };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
-    {
-        var model = new Template
-        {
-            ID = null,
-            Name = null,
-            Parameters = null,
-        };
-
-        Assert.Null(model.ID);
-        Assert.True(model.RawData.ContainsKey("id"));
-        Assert.Null(model.Name);
-        Assert.True(model.RawData.ContainsKey("name"));
-        Assert.Null(model.Parameters);
-        Assert.True(model.RawData.ContainsKey("parameters"));
-    }
-
-    [Fact]
-    public void OptionalNullablePropertiesSetToNullValidation_Works()
-    {
-        var model = new Template
-        {
-            ID = null,
-            Name = null,
-            Parameters = null,
-        };
-
-        model.Validate();
-    }
-
-    [Fact]
-    public void CopyConstructor_Works()
-    {
-        var model = new Template
-        {
-            ID = "7ba7b820-9dad-11d1-80b4-00c04fd430c8",
-            Name = "order_confirmation",
-            Parameters = new Dictionary<string, string>()
-            {
-                { "name", "John Doe" },
-                { "order_id", "12345" },
-            },
-        };
-
-        Template copied = new(model);
-
-        Assert.Equal(model, copied);
     }
 }

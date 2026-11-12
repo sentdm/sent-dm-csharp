@@ -313,7 +313,7 @@ public sealed class ContactServiceWithRawResponse : IContactServiceWithRawRespon
             async (token) =>
             {
                 var page = await response
-                    .Deserialize<ContactListPageResponse>(token)
+                    .Deserialize<ApiResponseOfContactsList>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {

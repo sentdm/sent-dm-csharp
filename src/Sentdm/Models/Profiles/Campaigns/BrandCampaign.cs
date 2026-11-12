@@ -6,7 +6,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
-using Sentdm.Exceptions;
 
 namespace Sentdm.Models.Profiles.Campaigns;
 
@@ -183,6 +182,29 @@ public sealed record class BrandCampaign : JsonModel
         init { this._rawData.Set("helpMessage", value); }
     }
 
+    /// <summary>
+    /// Whether the campaign is the organization's, which the profile runs on, rather
+    /// than one of the profile's own. A profile running on its organization's campaign
+    /// can hold campaigns of its own beside it, and the list returns both.
+    /// </summary>
+    public bool? IsInherited
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("isInherited");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("isInherited", value);
+        }
+    }
+
     public string? MessageFlow
     {
         get
@@ -261,12 +283,12 @@ public sealed record class BrandCampaign : JsonModel
         init { this._rawData.Set("privacyPolicyLink", value); }
     }
 
-    public ApiEnum<string, Status>? Status
+    public ApiEnum<string, TcrCampaignStatus>? Status
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiEnum<string, Status>>("status");
+            return this._rawData.GetNullableClass<ApiEnum<string, TcrCampaignStatus>>("status");
         }
         init { this._rawData.Set("status", value); }
     }
@@ -418,6 +440,7 @@ public sealed record class BrandCampaign : JsonModel
         _ = this.HasSubmissionTransaction;
         _ = this.HelpKeywords;
         _ = this.HelpMessage;
+        _ = this.IsInherited;
         _ = this.MessageFlow;
         _ = this.Name;
         _ = this.OptinKeywords;
@@ -473,47 +496,4 @@ class BrandCampaignFromRaw : IFromRawJson<BrandCampaign>
     /// <inheritdoc/>
     public BrandCampaign FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         BrandCampaign.FromRawUnchecked(rawData);
-}
-
-[JsonConverter(typeof(StatusConverter))]
-public enum Status
-{
-    SentCreated,
-    Active,
-    Expired,
-}
-
-sealed class StatusConverter : JsonConverter<Status>
-{
-    public override Status Read(
-        ref Utf8JsonReader reader,
-        Type typeToConvert,
-        JsonSerializerOptions options
-    )
-    {
-        return JsonSerializer.Deserialize<string>(ref reader, options) switch
-        {
-            "SENT_CREATED" => Status.SentCreated,
-            "ACTIVE" => Status.Active,
-            "EXPIRED" => Status.Expired,
-            _ => (Status)(-1),
-        };
-    }
-
-    public override void Write(Utf8JsonWriter writer, Status value, JsonSerializerOptions options)
-    {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                Status.SentCreated => "SENT_CREATED",
-                Status.Active => "ACTIVE",
-                Status.Expired => "EXPIRED",
-                _ => throw new SentInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
-    }
 }

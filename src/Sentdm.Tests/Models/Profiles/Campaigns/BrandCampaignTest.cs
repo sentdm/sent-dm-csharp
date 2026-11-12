@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
-using Sentdm.Exceptions;
+using Sentdm.Models.Profiles;
 using Sentdm.Models.Profiles.Campaigns;
 
 namespace Sentdm.Tests.Models.Profiles.Campaigns;
@@ -26,6 +26,7 @@ public class BrandCampaignTest : TestBase
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
+            IsInherited = true,
             MessageFlow = "messageFlow",
             Name = "name",
             OptinKeywords = "optinKeywords",
@@ -33,7 +34,7 @@ public class BrandCampaignTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = Status.SentCreated,
+            Status = TcrCampaignStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SubmittedToTcr = true,
             TcrCampaignID = "tcrCampaignId",
@@ -71,6 +72,7 @@ public class BrandCampaignTest : TestBase
         bool expectedHasSubmissionTransaction = true;
         string expectedHelpKeywords = "helpKeywords";
         string expectedHelpMessage = "helpMessage";
+        bool expectedIsInherited = true;
         string expectedMessageFlow = "messageFlow";
         string expectedName = "name";
         string expectedOptinKeywords = "optinKeywords";
@@ -78,7 +80,7 @@ public class BrandCampaignTest : TestBase
         string expectedOptoutKeywords = "optoutKeywords";
         string expectedOptoutMessage = "optoutMessage";
         string expectedPrivacyPolicyLink = "privacyPolicyLink";
-        ApiEnum<string, Status> expectedStatus = Status.SentCreated;
+        ApiEnum<string, TcrCampaignStatus> expectedStatus = TcrCampaignStatus.SentCreated;
         DateTimeOffset expectedSubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         bool expectedSubmittedToTcr = true;
         string expectedTcrCampaignID = "tcrCampaignId";
@@ -113,6 +115,7 @@ public class BrandCampaignTest : TestBase
         Assert.Equal(expectedHasSubmissionTransaction, model.HasSubmissionTransaction);
         Assert.Equal(expectedHelpKeywords, model.HelpKeywords);
         Assert.Equal(expectedHelpMessage, model.HelpMessage);
+        Assert.Equal(expectedIsInherited, model.IsInherited);
         Assert.Equal(expectedMessageFlow, model.MessageFlow);
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedOptinKeywords, model.OptinKeywords);
@@ -154,6 +157,7 @@ public class BrandCampaignTest : TestBase
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
+            IsInherited = true,
             MessageFlow = "messageFlow",
             Name = "name",
             OptinKeywords = "optinKeywords",
@@ -161,7 +165,7 @@ public class BrandCampaignTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = Status.SentCreated,
+            Status = TcrCampaignStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SubmittedToTcr = true,
             TcrCampaignID = "tcrCampaignId",
@@ -211,6 +215,7 @@ public class BrandCampaignTest : TestBase
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
+            IsInherited = true,
             MessageFlow = "messageFlow",
             Name = "name",
             OptinKeywords = "optinKeywords",
@@ -218,7 +223,7 @@ public class BrandCampaignTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = Status.SentCreated,
+            Status = TcrCampaignStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SubmittedToTcr = true,
             TcrCampaignID = "tcrCampaignId",
@@ -263,6 +268,7 @@ public class BrandCampaignTest : TestBase
         bool expectedHasSubmissionTransaction = true;
         string expectedHelpKeywords = "helpKeywords";
         string expectedHelpMessage = "helpMessage";
+        bool expectedIsInherited = true;
         string expectedMessageFlow = "messageFlow";
         string expectedName = "name";
         string expectedOptinKeywords = "optinKeywords";
@@ -270,7 +276,7 @@ public class BrandCampaignTest : TestBase
         string expectedOptoutKeywords = "optoutKeywords";
         string expectedOptoutMessage = "optoutMessage";
         string expectedPrivacyPolicyLink = "privacyPolicyLink";
-        ApiEnum<string, Status> expectedStatus = Status.SentCreated;
+        ApiEnum<string, TcrCampaignStatus> expectedStatus = TcrCampaignStatus.SentCreated;
         DateTimeOffset expectedSubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         bool expectedSubmittedToTcr = true;
         string expectedTcrCampaignID = "tcrCampaignId";
@@ -305,6 +311,7 @@ public class BrandCampaignTest : TestBase
         Assert.Equal(expectedHasSubmissionTransaction, deserialized.HasSubmissionTransaction);
         Assert.Equal(expectedHelpKeywords, deserialized.HelpKeywords);
         Assert.Equal(expectedHelpMessage, deserialized.HelpMessage);
+        Assert.Equal(expectedIsInherited, deserialized.IsInherited);
         Assert.Equal(expectedMessageFlow, deserialized.MessageFlow);
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedOptinKeywords, deserialized.OptinKeywords);
@@ -346,6 +353,7 @@ public class BrandCampaignTest : TestBase
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
+            IsInherited = true,
             MessageFlow = "messageFlow",
             Name = "name",
             OptinKeywords = "optinKeywords",
@@ -353,7 +361,7 @@ public class BrandCampaignTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = Status.SentCreated,
+            Status = TcrCampaignStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SubmittedToTcr = true,
             TcrCampaignID = "tcrCampaignId",
@@ -398,7 +406,7 @@ public class BrandCampaignTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = Status.SentCreated,
+            Status = TcrCampaignStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             TcrCampaignID = "tcrCampaignId",
             TcrSyncError = "tcrSyncError",
@@ -417,6 +425,8 @@ public class BrandCampaignTest : TestBase
         Assert.False(model.RawData.ContainsKey("description"));
         Assert.Null(model.HasSubmissionTransaction);
         Assert.False(model.RawData.ContainsKey("hasSubmissionTransaction"));
+        Assert.Null(model.IsInherited);
+        Assert.False(model.RawData.ContainsKey("isInherited"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.SubmittedToTcr);
@@ -445,7 +455,7 @@ public class BrandCampaignTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = Status.SentCreated,
+            Status = TcrCampaignStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             TcrCampaignID = "tcrCampaignId",
             TcrSyncError = "tcrSyncError",
@@ -475,7 +485,7 @@ public class BrandCampaignTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = Status.SentCreated,
+            Status = TcrCampaignStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             TcrCampaignID = "tcrCampaignId",
             TcrSyncError = "tcrSyncError",
@@ -489,6 +499,7 @@ public class BrandCampaignTest : TestBase
             CustomerID = null,
             Description = null,
             HasSubmissionTransaction = null,
+            IsInherited = null,
             Name = null,
             SubmittedToTcr = null,
             Type = null,
@@ -505,6 +516,8 @@ public class BrandCampaignTest : TestBase
         Assert.False(model.RawData.ContainsKey("description"));
         Assert.Null(model.HasSubmissionTransaction);
         Assert.False(model.RawData.ContainsKey("hasSubmissionTransaction"));
+        Assert.Null(model.IsInherited);
+        Assert.False(model.RawData.ContainsKey("isInherited"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.SubmittedToTcr);
@@ -533,7 +546,7 @@ public class BrandCampaignTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = Status.SentCreated,
+            Status = TcrCampaignStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             TcrCampaignID = "tcrCampaignId",
             TcrSyncError = "tcrSyncError",
@@ -547,6 +560,7 @@ public class BrandCampaignTest : TestBase
             CustomerID = null,
             Description = null,
             HasSubmissionTransaction = null,
+            IsInherited = null,
             Name = null,
             SubmittedToTcr = null,
             Type = null,
@@ -566,6 +580,7 @@ public class BrandCampaignTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
             HasSubmissionTransaction = true,
+            IsInherited = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -636,6 +651,7 @@ public class BrandCampaignTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
             HasSubmissionTransaction = true,
+            IsInherited = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -667,6 +683,7 @@ public class BrandCampaignTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
             HasSubmissionTransaction = true,
+            IsInherited = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -758,6 +775,7 @@ public class BrandCampaignTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Description = "description",
             HasSubmissionTransaction = true,
+            IsInherited = true,
             Name = "name",
             SubmittedToTcr = true,
             Type = "type",
@@ -817,6 +835,7 @@ public class BrandCampaignTest : TestBase
             HasSubmissionTransaction = true,
             HelpKeywords = "helpKeywords",
             HelpMessage = "helpMessage",
+            IsInherited = true,
             MessageFlow = "messageFlow",
             Name = "name",
             OptinKeywords = "optinKeywords",
@@ -824,7 +843,7 @@ public class BrandCampaignTest : TestBase
             OptoutKeywords = "optoutKeywords",
             OptoutMessage = "optoutMessage",
             PrivacyPolicyLink = "privacyPolicyLink",
-            Status = Status.SentCreated,
+            Status = TcrCampaignStatus.SentCreated,
             SubmittedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             SubmittedToTcr = true,
             TcrCampaignID = "tcrCampaignId",
@@ -851,65 +870,5 @@ public class BrandCampaignTest : TestBase
         BrandCampaign copied = new(model);
 
         Assert.Equal(model, copied);
-    }
-}
-
-public class StatusTest : TestBase
-{
-    [Theory]
-    [InlineData(Status.SentCreated)]
-    [InlineData(Status.Active)]
-    [InlineData(Status.Expired)]
-    public void Validation_Works(Status rawValue)
-    {
-        // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, Status> value = rawValue;
-        value.Validate();
-    }
-
-    [Fact]
-    public void InvalidEnumValidationThrows_Works()
-    {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, Status>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
-
-        Assert.NotNull(value);
-        Assert.Throws<SentInvalidDataException>(() => value.Validate());
-    }
-
-    [Theory]
-    [InlineData(Status.SentCreated)]
-    [InlineData(Status.Active)]
-    [InlineData(Status.Expired)]
-    public void SerializationRoundtrip_Works(Status rawValue)
-    {
-        // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, Status> value = rawValue;
-
-        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Status>>(
-            json,
-            ModelBase.SerializerOptions
-        );
-
-        Assert.Equal(value, deserialized);
-    }
-
-    [Fact]
-    public void InvalidEnumSerializationRoundtrip_Works()
-    {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, Status>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
-        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Status>>(
-            json,
-            ModelBase.SerializerOptions
-        );
-
-        Assert.Equal(value, deserialized);
     }
 }

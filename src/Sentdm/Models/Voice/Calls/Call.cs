@@ -142,9 +142,9 @@ public sealed record class Call : JsonModel
 
     /// <summary>
     /// Why the call did not complete: callback_timeout, invalid_answer, insufficient_balance,
-    /// destination_blocked, callback_not_configured, rejected, no_answer, or for
-    /// an agent call agent_busy or agent_unreachable. Null while the call is live,
-    /// when it completed, and when it failed without a recorded reason
+    /// payment_method_missing, destination_blocked, callback_not_configured, rejected,
+    /// no_answer, or for an agent call agent_busy or agent_unreachable. Null while
+    /// the call is live, when it completed, and when it failed without a recorded reason
     /// </summary>
     public string? FailureReason
     {
@@ -183,16 +183,16 @@ public sealed record class Call : JsonModel
     /// number and the leg to the connected number at once, and both are billed.
     /// Null until the call has been priced
     /// </summary>
-    public IReadOnlyList<Leg>? Legs
+    public IReadOnlyList<CallLeg>? Legs
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<Leg>>("legs");
+            return this._rawData.GetNullableStruct<ImmutableArray<CallLeg>>("legs");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<Leg>?>(
+            this._rawData.Set<ImmutableArray<CallLeg>?>(
                 "legs",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -423,155 +423,4 @@ class CallFromRaw : IFromRawJson<Call>
     /// <inheritdoc/>
     public Call FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         Call.FromRawUnchecked(rawData);
-}
-
-/// <summary>
-/// One leg of a call the price covers
-/// </summary>
-[JsonConverter(typeof(JsonModelConverter<Leg, LegFromRaw>))]
-public sealed record class Leg : JsonModel
-{
-    /// <summary>
-    /// The whole minutes the leg was billed for
-    /// </summary>
-    public int? BilledMinutes
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("billed_minutes");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("billed_minutes", value);
-        }
-    }
-
-    /// <summary>
-    /// What the leg cost, in the same unit as the call's price
-    /// </summary>
-    public double? Cost
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("cost");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("cost", value);
-        }
-    }
-
-    /// <summary>
-    /// The currency of the cost: USD
-    /// </summary>
-    public string? Currency
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("currency");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("currency", value);
-        }
-    }
-
-    /// <summary>
-    /// inbound for the caller's leg to your number, outbound for a leg placed on
-    /// your behalf
-    /// </summary>
-    public string? Direction
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("direction");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("direction", value);
-        }
-    }
-
-    /// <summary>
-    /// The phone number the leg reached, in E.164 format: your number for the inbound
-    /// leg, the number dialed for an outbound one. Null for a leg to one of your
-    /// app users or a room
-    /// </summary>
-    public string? Number
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("number");
-        }
-        init { this._rawData.Set("number", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.BilledMinutes;
-        _ = this.Cost;
-        _ = this.Currency;
-        _ = this.Direction;
-        _ = this.Number;
-    }
-
-    public Leg() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public Leg(Leg leg)
-        : base(leg) { }
-#pragma warning restore CS8618
-
-    public Leg(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    Leg(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="LegFromRaw.FromRawUnchecked"/>
-    public static Leg FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class LegFromRaw : IFromRawJson<Leg>
-{
-    /// <inheritdoc/>
-    public Leg FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Leg.FromRawUnchecked(rawData);
 }

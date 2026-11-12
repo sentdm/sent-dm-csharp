@@ -18,8 +18,11 @@ public class UserServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
-        var users = await this.client.Users.List(new(), TestContext.Current.CancellationToken);
-        users.Validate();
+        var apiResponseOfUsersList = await this.client.Users.List(
+            new(),
+            TestContext.Current.CancellationToken
+        );
+        apiResponseOfUsersList.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
