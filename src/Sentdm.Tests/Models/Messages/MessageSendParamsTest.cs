@@ -41,6 +41,7 @@ public class MessageSendParamsTest : TestBase
                     { "name", "John Doe" },
                     { "order_id", "12345" },
                 },
+                Slug = "slug",
             },
             Text = null,
             To = ["+14155551234", "+14155555678"],
@@ -74,6 +75,7 @@ public class MessageSendParamsTest : TestBase
                 { "name", "John Doe" },
                 { "order_id", "12345" },
             },
+            Slug = "slug",
         };
         List<string> expectedTo = ["+14155551234", "+14155555678"];
         string expectedIdempotencyKey = "req_abc123_retry1";
@@ -150,6 +152,7 @@ public class MessageSendParamsTest : TestBase
                     { "name", "John Doe" },
                     { "order_id", "12345" },
                 },
+                Slug = "slug",
             },
             Text = null,
         };
@@ -196,6 +199,7 @@ public class MessageSendParamsTest : TestBase
                     { "name", "John Doe" },
                     { "order_id", "12345" },
                 },
+                Slug = "slug",
             },
             Text = null,
 
@@ -340,6 +344,7 @@ public class MessageSendParamsTest : TestBase
                     { "name", "John Doe" },
                     { "order_id", "12345" },
                 },
+                Slug = "slug",
             },
             Text = null,
             To = ["+14155551234", "+14155555678"],

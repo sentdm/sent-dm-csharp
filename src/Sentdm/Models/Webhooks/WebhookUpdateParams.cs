@@ -125,7 +125,7 @@ public record class WebhookUpdateParams : ParamsBase
     /// <summary>
     /// Makes this webhook inheritable by the organization's sender profiles (see
     /// create), or stops it being inheritable. Omit or pass null to keep it as it
-    /// is. Only a version 2 webhook can be inheritable.
+    /// is. Only a version 2 webhook can be inheritable, and never an agent's.
     /// </summary>
     public bool? IsInheritable
     {
