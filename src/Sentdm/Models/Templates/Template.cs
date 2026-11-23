@@ -144,6 +144,20 @@ public sealed record class Template : JsonModel
     }
 
     /// <summary>
+    /// Complete definition of a message template including header, body, footer,
+    /// and buttons
+    /// </summary>
+    public TemplateDefinition? Definition
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<TemplateDefinition>("definition");
+        }
+        init { this._rawData.Set("definition", value); }
+    }
+
+    /// <summary>
     /// Whether the template is published and active
     /// </summary>
     public bool? IsPublished
@@ -204,6 +218,21 @@ public sealed record class Template : JsonModel
 
             this._rawData.Set("name", value);
         }
+    }
+
+    /// <summary>
+    /// The template's slug: a stable, URL-safe name a send can use in place of the
+    /// id (template.slug on POST /v3/messages). Given at creation from the name
+    /// and never changed.
+    /// </summary>
+    public string? Slug
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("slug");
+        }
+        init { this._rawData.Set("slug", value); }
     }
 
     /// <summary>
@@ -269,9 +298,11 @@ public sealed record class Template : JsonModel
         _ = this.Category;
         _ = this.Channels;
         _ = this.CreatedAt;
+        this.Definition?.Validate();
         _ = this.IsPublished;
         _ = this.Language;
         _ = this.Name;
+        _ = this.Slug;
         _ = this.Status;
         _ = this.UpdatedAt;
         _ = this.Variables;

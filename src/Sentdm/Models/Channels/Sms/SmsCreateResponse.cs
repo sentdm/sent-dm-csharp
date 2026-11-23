@@ -7,18 +7,148 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
 using Sentdm.Exceptions;
+using Sentdm.Models.Webhooks;
 
 namespace Sentdm.Models.Channels.Sms;
 
 /// <summary>
-/// One SMS market the profile sends in — its sender, where that sender stands, and
-/// what the market wants.              A profile may send in several: it is a tenant,
-/// not a market. Each carries its own status, because a profile can be live in one
-/// country and mid-registration in another — and each carries what it still owes,
-/// rather than that being reported in a separate array a caller has to join on.
+/// Standard API response envelope for all v3 endpoints
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<SmsMarket, SmsMarketFromRaw>))]
-public sealed record class SmsMarket : JsonModel
+[JsonConverter(typeof(JsonModelConverter<SmsCreateResponse, SmsCreateResponseFromRaw>))]
+public sealed record class SmsCreateResponse : JsonModel
+{
+    /// <summary>
+    /// One market the profile sends in on a channel — its sender, where that sender
+    /// stands, and what the market wants. Named for no one channel, as the routes
+    /// it answers are not (/v3/channels/{channel}/{country}/{type}); SMS is the channel
+    /// with markets today.              A profile may send in several: it is a tenant,
+    /// not a market. Each carries its own status, because a profile can be live in
+    /// one country and mid-registration in another — and each carries what it still
+    /// owes, rather than that being reported in a separate array a caller has to
+    /// join on.
+    /// </summary>
+    public Data? Data
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Data>("data");
+        }
+        init { this._rawData.Set("data", value); }
+    }
+
+    /// <summary>
+    /// Error information
+    /// </summary>
+    public ErrorDetail? Error
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ErrorDetail>("error");
+        }
+        init { this._rawData.Set("error", value); }
+    }
+
+    /// <summary>
+    /// Request and response metadata
+    /// </summary>
+    public ApiMeta? Meta
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ApiMeta>("meta");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("meta", value);
+        }
+    }
+
+    /// <summary>
+    /// Indicates whether the request was successful
+    /// </summary>
+    public bool? Success
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("success");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("success", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        this.Data?.Validate();
+        this.Error?.Validate();
+        this.Meta?.Validate();
+        _ = this.Success;
+    }
+
+    public SmsCreateResponse() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public SmsCreateResponse(SmsCreateResponse smsCreateResponse)
+        : base(smsCreateResponse) { }
+#pragma warning restore CS8618
+
+    public SmsCreateResponse(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    SmsCreateResponse(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="SmsCreateResponseFromRaw.FromRawUnchecked"/>
+    public static SmsCreateResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class SmsCreateResponseFromRaw : IFromRawJson<SmsCreateResponse>
+{
+    /// <inheritdoc/>
+    public SmsCreateResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        SmsCreateResponse.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// One market the profile sends in on a channel — its sender, where that sender stands,
+/// and what the market wants. Named for no one channel, as the routes it answers
+/// are not (/v3/channels/{channel}/{country}/{type}); SMS is the channel with markets
+/// today.              A profile may send in several: it is a tenant, not a market.
+/// Each carries its own status, because a profile can be live in one country and
+/// mid-registration in another — and each carries what it still owes, rather than
+/// that being reported in a separate array a caller has to join on.
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Data, DataFromRaw>))]
+public sealed record class Data : JsonModel
 {
     /// <summary>
     /// What a market has been given: the identity it registers under, its programme,
@@ -162,39 +292,39 @@ public sealed record class SmsMarket : JsonModel
         this.Status?.Validate();
     }
 
-    public SmsMarket() { }
+    public Data() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public SmsMarket(SmsMarket smsMarket)
-        : base(smsMarket) { }
+    public Data(Data data)
+        : base(data) { }
 #pragma warning restore CS8618
 
-    public SmsMarket(IReadOnlyDictionary<string, JsonElement> rawData)
+    public Data(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    SmsMarket(FrozenDictionary<string, JsonElement> rawData)
+    Data(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="SmsMarketFromRaw.FromRawUnchecked"/>
-    public static SmsMarket FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="DataFromRaw.FromRawUnchecked"/>
+    public static Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class SmsMarketFromRaw : IFromRawJson<SmsMarket>
+class DataFromRaw : IFromRawJson<Data>
 {
     /// <inheritdoc/>
-    public SmsMarket FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        SmsMarket.FromRawUnchecked(rawData);
+    public Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Data.FromRawUnchecked(rawData);
 }
 
 /// <summary>

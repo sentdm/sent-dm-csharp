@@ -19,9 +19,243 @@ public class TemplateTest : TestBase
             Category = "category",
             Channels = ["string"],
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Definition = new()
+            {
+                Body = new()
+                {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
+                    MultiChannel = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Rcs = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Sms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Whatsapp = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                },
+                AuthenticationConfig = new()
+                {
+                    AddSecurityRecommendation = true,
+                    CodeExpirationMinutes = 0,
+                },
+                Buttons =
+                [
+                    new()
+                    {
+                        Props = new()
+                        {
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "url",
+                            UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
+                            AutofillText = "autofillText",
+                            OtpType = "otpType",
+                            PackageName = "packageName",
+                            SignatureHash = "signatureHash",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+                DefinitionVersion = "definitionVersion",
+                Footer = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Header = new()
+                {
+                    Template = "template",
+                    ExampleUrl = "example_url",
+                    Location = new()
+                    {
+                        Address = "x",
+                        Latitude = "x",
+                        Longitude = "x",
+                        Name = "x",
+                    },
+                    StaticResource = true,
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+            },
             IsPublished = true,
             Language = "language",
             Name = "name",
+            Slug = "slug",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
@@ -33,9 +267,243 @@ public class TemplateTest : TestBase
         string expectedCategory = "category";
         List<string> expectedChannels = ["string"];
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        TemplateDefinition expectedDefinition = new()
+        {
+            Body = new()
+            {
+                Mms = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Subject = "subject",
+                },
+                MultiChannel = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Rcs = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Sms = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Whatsapp = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+            },
+            AuthenticationConfig = new()
+            {
+                AddSecurityRecommendation = true,
+                CodeExpirationMinutes = 0,
+            },
+            Buttons =
+            [
+                new()
+                {
+                    Props = new()
+                    {
+                        ActiveFor = 1,
+                        CountryCode = "x",
+                        OfferCode = "x",
+                        PhoneNumber = "x",
+                        QuickReplyType = "x",
+                        Text = "text",
+                        Url = "url",
+                        UrlType = "x",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        AutofillText = "autofillText",
+                        OtpType = "otpType",
+                        PackageName = "packageName",
+                        SignatureHash = "signatureHash",
+                    },
+                    Type = "x",
+                    ID = 0,
+                },
+            ],
+            DefinitionVersion = "definitionVersion",
+            Footer = new()
+            {
+                Template = "template",
+                Type = "type",
+                Variables =
+                [
+                    new()
+                    {
+                        Name = "x",
+                        Props = new()
+                        {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
+                            Alt = "alt",
+                            Regex = "regex",
+                            ShortUrl = "shortUrl",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+            },
+            Header = new()
+            {
+                Template = "template",
+                ExampleUrl = "example_url",
+                Location = new()
+                {
+                    Address = "x",
+                    Latitude = "x",
+                    Longitude = "x",
+                    Name = "x",
+                },
+                StaticResource = true,
+                Type = "type",
+                Variables =
+                [
+                    new()
+                    {
+                        Name = "x",
+                        Props = new()
+                        {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
+                            Alt = "alt",
+                            Regex = "regex",
+                            ShortUrl = "shortUrl",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+            },
+        };
         bool expectedIsPublished = true;
         string expectedLanguage = "language";
         string expectedName = "name";
+        string expectedSlug = "slug";
         string expectedStatus = "status";
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         List<string> expectedVariables = ["string"];
@@ -51,9 +519,11 @@ public class TemplateTest : TestBase
             Assert.Equal(expectedChannels[i], model.Channels[i]);
         }
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
+        Assert.Equal(expectedDefinition, model.Definition);
         Assert.Equal(expectedIsPublished, model.IsPublished);
         Assert.Equal(expectedLanguage, model.Language);
         Assert.Equal(expectedName, model.Name);
+        Assert.Equal(expectedSlug, model.Slug);
         Assert.Equal(expectedStatus, model.Status);
         Assert.Equal(expectedUpdatedAt, model.UpdatedAt);
         Assert.NotNull(model.Variables);
@@ -75,9 +545,243 @@ public class TemplateTest : TestBase
             Category = "category",
             Channels = ["string"],
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Definition = new()
+            {
+                Body = new()
+                {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
+                    MultiChannel = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Rcs = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Sms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Whatsapp = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                },
+                AuthenticationConfig = new()
+                {
+                    AddSecurityRecommendation = true,
+                    CodeExpirationMinutes = 0,
+                },
+                Buttons =
+                [
+                    new()
+                    {
+                        Props = new()
+                        {
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "url",
+                            UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
+                            AutofillText = "autofillText",
+                            OtpType = "otpType",
+                            PackageName = "packageName",
+                            SignatureHash = "signatureHash",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+                DefinitionVersion = "definitionVersion",
+                Footer = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Header = new()
+                {
+                    Template = "template",
+                    ExampleUrl = "example_url",
+                    Location = new()
+                    {
+                        Address = "x",
+                        Latitude = "x",
+                        Longitude = "x",
+                        Name = "x",
+                    },
+                    StaticResource = true,
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+            },
             IsPublished = true,
             Language = "language",
             Name = "name",
+            Slug = "slug",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
@@ -100,9 +804,243 @@ public class TemplateTest : TestBase
             Category = "category",
             Channels = ["string"],
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Definition = new()
+            {
+                Body = new()
+                {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
+                    MultiChannel = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Rcs = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Sms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Whatsapp = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                },
+                AuthenticationConfig = new()
+                {
+                    AddSecurityRecommendation = true,
+                    CodeExpirationMinutes = 0,
+                },
+                Buttons =
+                [
+                    new()
+                    {
+                        Props = new()
+                        {
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "url",
+                            UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
+                            AutofillText = "autofillText",
+                            OtpType = "otpType",
+                            PackageName = "packageName",
+                            SignatureHash = "signatureHash",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+                DefinitionVersion = "definitionVersion",
+                Footer = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Header = new()
+                {
+                    Template = "template",
+                    ExampleUrl = "example_url",
+                    Location = new()
+                    {
+                        Address = "x",
+                        Latitude = "x",
+                        Longitude = "x",
+                        Name = "x",
+                    },
+                    StaticResource = true,
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+            },
             IsPublished = true,
             Language = "language",
             Name = "name",
+            Slug = "slug",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
@@ -121,9 +1059,243 @@ public class TemplateTest : TestBase
         string expectedCategory = "category";
         List<string> expectedChannels = ["string"];
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        TemplateDefinition expectedDefinition = new()
+        {
+            Body = new()
+            {
+                Mms = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                    Media = [new() { MediaType = "mediaType", Url = "url" }],
+                    Subject = "subject",
+                },
+                MultiChannel = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Rcs = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Sms = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Whatsapp = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+            },
+            AuthenticationConfig = new()
+            {
+                AddSecurityRecommendation = true,
+                CodeExpirationMinutes = 0,
+            },
+            Buttons =
+            [
+                new()
+                {
+                    Props = new()
+                    {
+                        ActiveFor = 1,
+                        CountryCode = "x",
+                        OfferCode = "x",
+                        PhoneNumber = "x",
+                        QuickReplyType = "x",
+                        Text = "text",
+                        Url = "url",
+                        UrlType = "x",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        AutofillText = "autofillText",
+                        OtpType = "otpType",
+                        PackageName = "packageName",
+                        SignatureHash = "signatureHash",
+                    },
+                    Type = "x",
+                    ID = 0,
+                },
+            ],
+            DefinitionVersion = "definitionVersion",
+            Footer = new()
+            {
+                Template = "template",
+                Type = "type",
+                Variables =
+                [
+                    new()
+                    {
+                        Name = "x",
+                        Props = new()
+                        {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
+                            Alt = "alt",
+                            Regex = "regex",
+                            ShortUrl = "shortUrl",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+            },
+            Header = new()
+            {
+                Template = "template",
+                ExampleUrl = "example_url",
+                Location = new()
+                {
+                    Address = "x",
+                    Latitude = "x",
+                    Longitude = "x",
+                    Name = "x",
+                },
+                StaticResource = true,
+                Type = "type",
+                Variables =
+                [
+                    new()
+                    {
+                        Name = "x",
+                        Props = new()
+                        {
+                            MediaType = "x",
+                            Sample = "x",
+                            Url = "x",
+                            VariableType = "x",
+                            Alt = "alt",
+                            Regex = "regex",
+                            ShortUrl = "shortUrl",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+            },
+        };
         bool expectedIsPublished = true;
         string expectedLanguage = "language";
         string expectedName = "name";
+        string expectedSlug = "slug";
         string expectedStatus = "status";
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         List<string> expectedVariables = ["string"];
@@ -139,9 +1311,11 @@ public class TemplateTest : TestBase
             Assert.Equal(expectedChannels[i], deserialized.Channels[i]);
         }
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
+        Assert.Equal(expectedDefinition, deserialized.Definition);
         Assert.Equal(expectedIsPublished, deserialized.IsPublished);
         Assert.Equal(expectedLanguage, deserialized.Language);
         Assert.Equal(expectedName, deserialized.Name);
+        Assert.Equal(expectedSlug, deserialized.Slug);
         Assert.Equal(expectedStatus, deserialized.Status);
         Assert.Equal(expectedUpdatedAt, deserialized.UpdatedAt);
         Assert.NotNull(deserialized.Variables);
@@ -163,9 +1337,243 @@ public class TemplateTest : TestBase
             Category = "category",
             Channels = ["string"],
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Definition = new()
+            {
+                Body = new()
+                {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
+                    MultiChannel = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Rcs = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Sms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Whatsapp = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                },
+                AuthenticationConfig = new()
+                {
+                    AddSecurityRecommendation = true,
+                    CodeExpirationMinutes = 0,
+                },
+                Buttons =
+                [
+                    new()
+                    {
+                        Props = new()
+                        {
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "url",
+                            UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
+                            AutofillText = "autofillText",
+                            OtpType = "otpType",
+                            PackageName = "packageName",
+                            SignatureHash = "signatureHash",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+                DefinitionVersion = "definitionVersion",
+                Footer = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Header = new()
+                {
+                    Template = "template",
+                    ExampleUrl = "example_url",
+                    Location = new()
+                    {
+                        Address = "x",
+                        Latitude = "x",
+                        Longitude = "x",
+                        Name = "x",
+                    },
+                    StaticResource = true,
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+            },
             IsPublished = true,
             Language = "language",
             Name = "name",
+            Slug = "slug",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
@@ -182,6 +1590,240 @@ public class TemplateTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AutoReplyAction = "auto_reply_action",
             Channels = ["string"],
+            Definition = new()
+            {
+                Body = new()
+                {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
+                    MultiChannel = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Rcs = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Sms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Whatsapp = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                },
+                AuthenticationConfig = new()
+                {
+                    AddSecurityRecommendation = true,
+                    CodeExpirationMinutes = 0,
+                },
+                Buttons =
+                [
+                    new()
+                    {
+                        Props = new()
+                        {
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "url",
+                            UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
+                            AutofillText = "autofillText",
+                            OtpType = "otpType",
+                            PackageName = "packageName",
+                            SignatureHash = "signatureHash",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+                DefinitionVersion = "definitionVersion",
+                Footer = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Header = new()
+                {
+                    Template = "template",
+                    ExampleUrl = "example_url",
+                    Location = new()
+                    {
+                        Address = "x",
+                        Latitude = "x",
+                        Longitude = "x",
+                        Name = "x",
+                    },
+                    StaticResource = true,
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+            },
+            Slug = "slug",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
         };
@@ -210,6 +1852,240 @@ public class TemplateTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AutoReplyAction = "auto_reply_action",
             Channels = ["string"],
+            Definition = new()
+            {
+                Body = new()
+                {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
+                    MultiChannel = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Rcs = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Sms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Whatsapp = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                },
+                AuthenticationConfig = new()
+                {
+                    AddSecurityRecommendation = true,
+                    CodeExpirationMinutes = 0,
+                },
+                Buttons =
+                [
+                    new()
+                    {
+                        Props = new()
+                        {
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "url",
+                            UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
+                            AutofillText = "autofillText",
+                            OtpType = "otpType",
+                            PackageName = "packageName",
+                            SignatureHash = "signatureHash",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+                DefinitionVersion = "definitionVersion",
+                Footer = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Header = new()
+                {
+                    Template = "template",
+                    ExampleUrl = "example_url",
+                    Location = new()
+                    {
+                        Address = "x",
+                        Latitude = "x",
+                        Longitude = "x",
+                        Name = "x",
+                    },
+                    StaticResource = true,
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+            },
+            Slug = "slug",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
         };
@@ -225,6 +2101,240 @@ public class TemplateTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AutoReplyAction = "auto_reply_action",
             Channels = ["string"],
+            Definition = new()
+            {
+                Body = new()
+                {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
+                    MultiChannel = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Rcs = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Sms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Whatsapp = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                },
+                AuthenticationConfig = new()
+                {
+                    AddSecurityRecommendation = true,
+                    CodeExpirationMinutes = 0,
+                },
+                Buttons =
+                [
+                    new()
+                    {
+                        Props = new()
+                        {
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "url",
+                            UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
+                            AutofillText = "autofillText",
+                            OtpType = "otpType",
+                            PackageName = "packageName",
+                            SignatureHash = "signatureHash",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+                DefinitionVersion = "definitionVersion",
+                Footer = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Header = new()
+                {
+                    Template = "template",
+                    ExampleUrl = "example_url",
+                    Location = new()
+                    {
+                        Address = "x",
+                        Latitude = "x",
+                        Longitude = "x",
+                        Name = "x",
+                    },
+                    StaticResource = true,
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+            },
+            Slug = "slug",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
 
@@ -262,6 +2372,240 @@ public class TemplateTest : TestBase
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             AutoReplyAction = "auto_reply_action",
             Channels = ["string"],
+            Definition = new()
+            {
+                Body = new()
+                {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
+                    MultiChannel = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Rcs = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Sms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Whatsapp = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                },
+                AuthenticationConfig = new()
+                {
+                    AddSecurityRecommendation = true,
+                    CodeExpirationMinutes = 0,
+                },
+                Buttons =
+                [
+                    new()
+                    {
+                        Props = new()
+                        {
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "url",
+                            UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
+                            AutofillText = "autofillText",
+                            OtpType = "otpType",
+                            PackageName = "packageName",
+                            SignatureHash = "signatureHash",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+                DefinitionVersion = "definitionVersion",
+                Footer = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Header = new()
+                {
+                    Template = "template",
+                    ExampleUrl = "example_url",
+                    Location = new()
+                    {
+                        Address = "x",
+                        Latitude = "x",
+                        Longitude = "x",
+                        Name = "x",
+                    },
+                    StaticResource = true,
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+            },
+            Slug = "slug",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
 
@@ -297,6 +2641,10 @@ public class TemplateTest : TestBase
         Assert.False(model.RawData.ContainsKey("auto_reply_action"));
         Assert.Null(model.Channels);
         Assert.False(model.RawData.ContainsKey("channels"));
+        Assert.Null(model.Definition);
+        Assert.False(model.RawData.ContainsKey("definition"));
+        Assert.Null(model.Slug);
+        Assert.False(model.RawData.ContainsKey("slug"));
         Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updated_at"));
         Assert.Null(model.Variables);
@@ -337,6 +2685,8 @@ public class TemplateTest : TestBase
 
             AutoReplyAction = null,
             Channels = null,
+            Definition = null,
+            Slug = null,
             UpdatedAt = null,
             Variables = null,
         };
@@ -345,6 +2695,10 @@ public class TemplateTest : TestBase
         Assert.True(model.RawData.ContainsKey("auto_reply_action"));
         Assert.Null(model.Channels);
         Assert.True(model.RawData.ContainsKey("channels"));
+        Assert.Null(model.Definition);
+        Assert.True(model.RawData.ContainsKey("definition"));
+        Assert.Null(model.Slug);
+        Assert.True(model.RawData.ContainsKey("slug"));
         Assert.Null(model.UpdatedAt);
         Assert.True(model.RawData.ContainsKey("updated_at"));
         Assert.Null(model.Variables);
@@ -367,6 +2721,8 @@ public class TemplateTest : TestBase
 
             AutoReplyAction = null,
             Channels = null,
+            Definition = null,
+            Slug = null,
             UpdatedAt = null,
             Variables = null,
         };
@@ -385,9 +2741,243 @@ public class TemplateTest : TestBase
             Category = "category",
             Channels = ["string"],
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Definition = new()
+            {
+                Body = new()
+                {
+                    Mms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                        Media = [new() { MediaType = "mediaType", Url = "url" }],
+                        Subject = "subject",
+                    },
+                    MultiChannel = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Rcs = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Sms = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                    Whatsapp = new()
+                    {
+                        Template = "template",
+                        Type = "type",
+                        Variables =
+                        [
+                            new()
+                            {
+                                Name = "x",
+                                Props = new()
+                                {
+                                    MediaType = "x",
+                                    Sample = "x",
+                                    Url = "x",
+                                    VariableType = "x",
+                                    Alt = "alt",
+                                    Regex = "regex",
+                                    ShortUrl = "shortUrl",
+                                },
+                                Type = "x",
+                                ID = 0,
+                            },
+                        ],
+                    },
+                },
+                AuthenticationConfig = new()
+                {
+                    AddSecurityRecommendation = true,
+                    CodeExpirationMinutes = 0,
+                },
+                Buttons =
+                [
+                    new()
+                    {
+                        Props = new()
+                        {
+                            ActiveFor = 1,
+                            CountryCode = "x",
+                            OfferCode = "x",
+                            PhoneNumber = "x",
+                            QuickReplyType = "x",
+                            Text = "text",
+                            Url = "url",
+                            UrlType = "x",
+                            Variables =
+                            [
+                                new()
+                                {
+                                    Name = "x",
+                                    Props = new()
+                                    {
+                                        MediaType = "x",
+                                        Sample = "x",
+                                        Url = "x",
+                                        VariableType = "x",
+                                        Alt = "alt",
+                                        Regex = "regex",
+                                        ShortUrl = "shortUrl",
+                                    },
+                                    Type = "x",
+                                    ID = 0,
+                                },
+                            ],
+                            AutofillText = "autofillText",
+                            OtpType = "otpType",
+                            PackageName = "packageName",
+                            SignatureHash = "signatureHash",
+                        },
+                        Type = "x",
+                        ID = 0,
+                    },
+                ],
+                DefinitionVersion = "definitionVersion",
+                Footer = new()
+                {
+                    Template = "template",
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+                Header = new()
+                {
+                    Template = "template",
+                    ExampleUrl = "example_url",
+                    Location = new()
+                    {
+                        Address = "x",
+                        Latitude = "x",
+                        Longitude = "x",
+                        Name = "x",
+                    },
+                    StaticResource = true,
+                    Type = "type",
+                    Variables =
+                    [
+                        new()
+                        {
+                            Name = "x",
+                            Props = new()
+                            {
+                                MediaType = "x",
+                                Sample = "x",
+                                Url = "x",
+                                VariableType = "x",
+                                Alt = "alt",
+                                Regex = "regex",
+                                ShortUrl = "shortUrl",
+                            },
+                            Type = "x",
+                            ID = 0,
+                        },
+                    ],
+                },
+            },
             IsPublished = true,
             Language = "language",
             Name = "name",
+            Slug = "slug",
             Status = "status",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Variables = ["string"],
