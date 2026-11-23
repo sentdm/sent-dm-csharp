@@ -31,6 +31,20 @@ public sealed record class WebhookResponse : JsonModel
     }
 
     /// <summary>
+    /// The Sent agent whose events alone this webhook receives; absent on a webhook
+    /// of the whole account.
+    /// </summary>
+    public string? AgentID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("agent_id");
+        }
+        init { this._rawData.Set("agent_id", value); }
+    }
+
+    /// <summary>
     /// Failed attempts since the last success. Version 1 only: always 0 on a version
     /// 2 webhook, whose deliveries are in its events (GET /v3/webhooks/{id}/events).
     /// </summary>
@@ -349,6 +363,7 @@ public sealed record class WebhookResponse : JsonModel
     public override void Validate()
     {
         _ = this.ID;
+        _ = this.AgentID;
         _ = this.ConsecutiveFailures;
         _ = this.CreatedAt;
         _ = this.CustomerID;

@@ -15,7 +15,9 @@ public sealed record class TenDlcCampaignUseCase : JsonModel
 {
     /// <summary>
     /// Sample messages. TCR sample1..sample5 for this use case. One to five, each
-    /// carrying the brand name and an opt-out instruction.
+    /// 20 to 1024 characters and carrying the brand name and an opt-out instruction.
+    /// At most five across the campaign, and at least two when a high-volume campaign
+    /// has a single use case.
     /// </summary>
     public required IReadOnlyList<JsonElement> SampleMessages
     {

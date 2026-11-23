@@ -5,7 +5,7 @@ using Sentdm.Core;
 using Sentdm.Models.Channels.Rcs;
 using Sentdm.Models.SenderProfiles;
 using Sentdm.Models.Webhooks;
-using Sms = Sentdm.Models.Channels.Sms;
+using Channels = Sentdm.Models.Channels;
 using Whatsapp = Sentdm.Models.Channels.Whatsapp;
 
 namespace Sentdm.Tests.Models.SenderProfiles;
@@ -131,7 +131,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Sms::Status.Provisioning,
+                                    Status = Channels::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -325,7 +325,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                 ],
                                 Reason = "reason",
                                 ReasonCode = "reason_code",
-                                Status = Sms::Status.Provisioning,
+                                Status = Channels::Status.Provisioning,
                             },
                         ],
                         Voice =
@@ -529,7 +529,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Sms::Status.Provisioning,
+                                    Status = Channels::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -737,7 +737,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Sms::Status.Provisioning,
+                                    Status = Channels::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -938,7 +938,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                 ],
                                 Reason = "reason",
                                 ReasonCode = "reason_code",
-                                Status = Sms::Status.Provisioning,
+                                Status = Channels::Status.Provisioning,
                             },
                         ],
                         Voice =
@@ -1142,7 +1142,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Sms::Status.Provisioning,
+                                    Status = Channels::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -1344,7 +1344,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Sms::Status.Provisioning,
+                                    Status = Channels::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -1542,7 +1542,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Sms::Status.Provisioning,
+                                    Status = Channels::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -1737,7 +1737,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Sms::Status.Provisioning,
+                                    Status = Channels::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -1939,7 +1939,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Sms::Status.Provisioning,
+                                    Status = Channels::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -2218,7 +2218,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Sms::Status.Provisioning,
+                                    Status = Channels::Status.Provisioning,
                                 },
                             ],
                             Voice =

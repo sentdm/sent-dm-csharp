@@ -15,7 +15,7 @@ public class MarketComplianceTest : TestBase
         {
             Brand = new()
             {
-                BusinessName = "business_name",
+                BusinessName = "xxx",
                 City = "city",
                 ContactEmail = "dev@stainless.com",
                 ContactName = "contact_name",
@@ -28,21 +28,21 @@ public class MarketComplianceTest : TestBase
                 PostalCode = "postal_code",
                 State = "state",
                 Street = "street",
-                TaxID = "tax_id",
+                TaxID = "xx",
                 TaxIDType = "tax_id_type",
                 Website = "website",
             },
             Campaign = new()
             {
-                Description = "description",
+                Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 HelpKeywords = "help_keywords",
-                HelpMessage = "help_message",
+                HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                 Inherit = true,
                 MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 OptInKeywords = "opt_in_keywords",
-                OptInMessage = "opt_in_message",
+                OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                 OptOutKeywords = "opt_out_keywords",
-                OptOutMessage = "opt_out_message",
+                OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                 PrivacyPolicyLink = "privacy_policy_link",
                 TermsAndConditionsLink = "terms_and_conditions_link",
                 UseCases =
@@ -59,7 +59,7 @@ public class MarketComplianceTest : TestBase
 
         Brand expectedBrand = new()
         {
-            BusinessName = "business_name",
+            BusinessName = "xxx",
             City = "city",
             ContactEmail = "dev@stainless.com",
             ContactName = "contact_name",
@@ -72,21 +72,21 @@ public class MarketComplianceTest : TestBase
             PostalCode = "postal_code",
             State = "state",
             Street = "street",
-            TaxID = "tax_id",
+            TaxID = "xx",
             TaxIDType = "tax_id_type",
             Website = "website",
         };
         Campaign expectedCampaign = new()
         {
-            Description = "description",
+            Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             HelpKeywords = "help_keywords",
-            HelpMessage = "help_message",
+            HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
             Inherit = true,
             MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             OptInKeywords = "opt_in_keywords",
-            OptInMessage = "opt_in_message",
+            OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
             OptOutKeywords = "opt_out_keywords",
-            OptOutMessage = "opt_out_message",
+            OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
             PrivacyPolicyLink = "privacy_policy_link",
             TermsAndConditionsLink = "terms_and_conditions_link",
             UseCases =
@@ -111,7 +111,7 @@ public class MarketComplianceTest : TestBase
         {
             Brand = new()
             {
-                BusinessName = "business_name",
+                BusinessName = "xxx",
                 City = "city",
                 ContactEmail = "dev@stainless.com",
                 ContactName = "contact_name",
@@ -124,21 +124,21 @@ public class MarketComplianceTest : TestBase
                 PostalCode = "postal_code",
                 State = "state",
                 Street = "street",
-                TaxID = "tax_id",
+                TaxID = "xx",
                 TaxIDType = "tax_id_type",
                 Website = "website",
             },
             Campaign = new()
             {
-                Description = "description",
+                Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 HelpKeywords = "help_keywords",
-                HelpMessage = "help_message",
+                HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                 Inherit = true,
                 MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 OptInKeywords = "opt_in_keywords",
-                OptInMessage = "opt_in_message",
+                OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                 OptOutKeywords = "opt_out_keywords",
-                OptOutMessage = "opt_out_message",
+                OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                 PrivacyPolicyLink = "privacy_policy_link",
                 TermsAndConditionsLink = "terms_and_conditions_link",
                 UseCases =
@@ -169,7 +169,7 @@ public class MarketComplianceTest : TestBase
         {
             Brand = new()
             {
-                BusinessName = "business_name",
+                BusinessName = "xxx",
                 City = "city",
                 ContactEmail = "dev@stainless.com",
                 ContactName = "contact_name",
@@ -182,21 +182,21 @@ public class MarketComplianceTest : TestBase
                 PostalCode = "postal_code",
                 State = "state",
                 Street = "street",
-                TaxID = "tax_id",
+                TaxID = "xx",
                 TaxIDType = "tax_id_type",
                 Website = "website",
             },
             Campaign = new()
             {
-                Description = "description",
+                Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 HelpKeywords = "help_keywords",
-                HelpMessage = "help_message",
+                HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                 Inherit = true,
                 MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 OptInKeywords = "opt_in_keywords",
-                OptInMessage = "opt_in_message",
+                OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                 OptOutKeywords = "opt_out_keywords",
-                OptOutMessage = "opt_out_message",
+                OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                 PrivacyPolicyLink = "privacy_policy_link",
                 TermsAndConditionsLink = "terms_and_conditions_link",
                 UseCases =
@@ -220,7 +220,7 @@ public class MarketComplianceTest : TestBase
 
         Brand expectedBrand = new()
         {
-            BusinessName = "business_name",
+            BusinessName = "xxx",
             City = "city",
             ContactEmail = "dev@stainless.com",
             ContactName = "contact_name",
@@ -233,21 +233,21 @@ public class MarketComplianceTest : TestBase
             PostalCode = "postal_code",
             State = "state",
             Street = "street",
-            TaxID = "tax_id",
+            TaxID = "xx",
             TaxIDType = "tax_id_type",
             Website = "website",
         };
         Campaign expectedCampaign = new()
         {
-            Description = "description",
+            Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             HelpKeywords = "help_keywords",
-            HelpMessage = "help_message",
+            HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
             Inherit = true,
             MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             OptInKeywords = "opt_in_keywords",
-            OptInMessage = "opt_in_message",
+            OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
             OptOutKeywords = "opt_out_keywords",
-            OptOutMessage = "opt_out_message",
+            OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
             PrivacyPolicyLink = "privacy_policy_link",
             TermsAndConditionsLink = "terms_and_conditions_link",
             UseCases =
@@ -272,7 +272,7 @@ public class MarketComplianceTest : TestBase
         {
             Brand = new()
             {
-                BusinessName = "business_name",
+                BusinessName = "xxx",
                 City = "city",
                 ContactEmail = "dev@stainless.com",
                 ContactName = "contact_name",
@@ -285,21 +285,21 @@ public class MarketComplianceTest : TestBase
                 PostalCode = "postal_code",
                 State = "state",
                 Street = "street",
-                TaxID = "tax_id",
+                TaxID = "xx",
                 TaxIDType = "tax_id_type",
                 Website = "website",
             },
             Campaign = new()
             {
-                Description = "description",
+                Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 HelpKeywords = "help_keywords",
-                HelpMessage = "help_message",
+                HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                 Inherit = true,
                 MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 OptInKeywords = "opt_in_keywords",
-                OptInMessage = "opt_in_message",
+                OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                 OptOutKeywords = "opt_out_keywords",
-                OptOutMessage = "opt_out_message",
+                OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                 PrivacyPolicyLink = "privacy_policy_link",
                 TermsAndConditionsLink = "terms_and_conditions_link",
                 UseCases =
@@ -372,7 +372,7 @@ public class MarketComplianceTest : TestBase
         {
             Brand = new()
             {
-                BusinessName = "business_name",
+                BusinessName = "xxx",
                 City = "city",
                 ContactEmail = "dev@stainless.com",
                 ContactName = "contact_name",
@@ -385,21 +385,21 @@ public class MarketComplianceTest : TestBase
                 PostalCode = "postal_code",
                 State = "state",
                 Street = "street",
-                TaxID = "tax_id",
+                TaxID = "xx",
                 TaxIDType = "tax_id_type",
                 Website = "website",
             },
             Campaign = new()
             {
-                Description = "description",
+                Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 HelpKeywords = "help_keywords",
-                HelpMessage = "help_message",
+                HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                 Inherit = true,
                 MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 OptInKeywords = "opt_in_keywords",
-                OptInMessage = "opt_in_message",
+                OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                 OptOutKeywords = "opt_out_keywords",
-                OptOutMessage = "opt_out_message",
+                OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                 PrivacyPolicyLink = "privacy_policy_link",
                 TermsAndConditionsLink = "terms_and_conditions_link",
                 UseCases =
@@ -427,7 +427,7 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            BusinessName = "business_name",
+            BusinessName = "xxx",
             City = "city",
             ContactEmail = "dev@stainless.com",
             ContactName = "contact_name",
@@ -440,12 +440,12 @@ public class BrandTest : TestBase
             PostalCode = "postal_code",
             State = "state",
             Street = "street",
-            TaxID = "tax_id",
+            TaxID = "xx",
             TaxIDType = "tax_id_type",
             Website = "website",
         };
 
-        string expectedBusinessName = "business_name";
+        string expectedBusinessName = "xxx";
         string expectedCity = "city";
         string expectedContactEmail = "dev@stainless.com";
         string expectedContactName = "contact_name";
@@ -458,7 +458,7 @@ public class BrandTest : TestBase
         string expectedPostalCode = "postal_code";
         string expectedState = "state";
         string expectedStreet = "street";
-        string expectedTaxID = "tax_id";
+        string expectedTaxID = "xx";
         string expectedTaxIDType = "tax_id_type";
         string expectedWebsite = "website";
 
@@ -485,7 +485,7 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            BusinessName = "business_name",
+            BusinessName = "xxx",
             City = "city",
             ContactEmail = "dev@stainless.com",
             ContactName = "contact_name",
@@ -498,7 +498,7 @@ public class BrandTest : TestBase
             PostalCode = "postal_code",
             State = "state",
             Street = "street",
-            TaxID = "tax_id",
+            TaxID = "xx",
             TaxIDType = "tax_id_type",
             Website = "website",
         };
@@ -514,7 +514,7 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            BusinessName = "business_name",
+            BusinessName = "xxx",
             City = "city",
             ContactEmail = "dev@stainless.com",
             ContactName = "contact_name",
@@ -527,7 +527,7 @@ public class BrandTest : TestBase
             PostalCode = "postal_code",
             State = "state",
             Street = "street",
-            TaxID = "tax_id",
+            TaxID = "xx",
             TaxIDType = "tax_id_type",
             Website = "website",
         };
@@ -536,7 +536,7 @@ public class BrandTest : TestBase
         var deserialized = JsonSerializer.Deserialize<Brand>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        string expectedBusinessName = "business_name";
+        string expectedBusinessName = "xxx";
         string expectedCity = "city";
         string expectedContactEmail = "dev@stainless.com";
         string expectedContactName = "contact_name";
@@ -549,7 +549,7 @@ public class BrandTest : TestBase
         string expectedPostalCode = "postal_code";
         string expectedState = "state";
         string expectedStreet = "street";
-        string expectedTaxID = "tax_id";
+        string expectedTaxID = "xx";
         string expectedTaxIDType = "tax_id_type";
         string expectedWebsite = "website";
 
@@ -576,7 +576,7 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            BusinessName = "business_name",
+            BusinessName = "xxx",
             City = "city",
             ContactEmail = "dev@stainless.com",
             ContactName = "contact_name",
@@ -589,7 +589,7 @@ public class BrandTest : TestBase
             PostalCode = "postal_code",
             State = "state",
             Street = "street",
-            TaxID = "tax_id",
+            TaxID = "xx",
             TaxIDType = "tax_id_type",
             Website = "website",
         };
@@ -734,7 +734,7 @@ public class BrandTest : TestBase
     {
         var model = new Brand
         {
-            BusinessName = "business_name",
+            BusinessName = "xxx",
             City = "city",
             ContactEmail = "dev@stainless.com",
             ContactName = "contact_name",
@@ -747,7 +747,7 @@ public class BrandTest : TestBase
             PostalCode = "postal_code",
             State = "state",
             Street = "street",
-            TaxID = "tax_id",
+            TaxID = "xx",
             TaxIDType = "tax_id_type",
             Website = "website",
         };
@@ -829,15 +829,15 @@ public class CampaignTest : TestBase
     {
         var model = new Campaign
         {
-            Description = "description",
+            Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             HelpKeywords = "help_keywords",
-            HelpMessage = "help_message",
+            HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
             Inherit = true,
             MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             OptInKeywords = "opt_in_keywords",
-            OptInMessage = "opt_in_message",
+            OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
             OptOutKeywords = "opt_out_keywords",
-            OptOutMessage = "opt_out_message",
+            OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
             PrivacyPolicyLink = "privacy_policy_link",
             TermsAndConditionsLink = "terms_and_conditions_link",
             UseCases =
@@ -851,15 +851,15 @@ public class CampaignTest : TestBase
             Volume = "volume",
         };
 
-        string expectedDescription = "description";
+        string expectedDescription = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
         string expectedHelpKeywords = "help_keywords";
-        string expectedHelpMessage = "help_message";
+        string expectedHelpMessage = "xxxxxxxxxxxxxxxxxxxx";
         bool expectedInherit = true;
         string expectedMessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
         string expectedOptInKeywords = "opt_in_keywords";
-        string expectedOptInMessage = "opt_in_message";
+        string expectedOptInMessage = "xxxxxxxxxxxxxxxxxxxx";
         string expectedOptOutKeywords = "opt_out_keywords";
-        string expectedOptOutMessage = "opt_out_message";
+        string expectedOptOutMessage = "xxxxxxxxxxxxxxxxxxxx";
         string expectedPrivacyPolicyLink = "privacy_policy_link";
         string expectedTermsAndConditionsLink = "terms_and_conditions_link";
         List<UseCase> expectedUseCases =
@@ -897,15 +897,15 @@ public class CampaignTest : TestBase
     {
         var model = new Campaign
         {
-            Description = "description",
+            Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             HelpKeywords = "help_keywords",
-            HelpMessage = "help_message",
+            HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
             Inherit = true,
             MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             OptInKeywords = "opt_in_keywords",
-            OptInMessage = "opt_in_message",
+            OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
             OptOutKeywords = "opt_out_keywords",
-            OptOutMessage = "opt_out_message",
+            OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
             PrivacyPolicyLink = "privacy_policy_link",
             TermsAndConditionsLink = "terms_and_conditions_link",
             UseCases =
@@ -930,15 +930,15 @@ public class CampaignTest : TestBase
     {
         var model = new Campaign
         {
-            Description = "description",
+            Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             HelpKeywords = "help_keywords",
-            HelpMessage = "help_message",
+            HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
             Inherit = true,
             MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             OptInKeywords = "opt_in_keywords",
-            OptInMessage = "opt_in_message",
+            OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
             OptOutKeywords = "opt_out_keywords",
-            OptOutMessage = "opt_out_message",
+            OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
             PrivacyPolicyLink = "privacy_policy_link",
             TermsAndConditionsLink = "terms_and_conditions_link",
             UseCases =
@@ -959,15 +959,15 @@ public class CampaignTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        string expectedDescription = "description";
+        string expectedDescription = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
         string expectedHelpKeywords = "help_keywords";
-        string expectedHelpMessage = "help_message";
+        string expectedHelpMessage = "xxxxxxxxxxxxxxxxxxxx";
         bool expectedInherit = true;
         string expectedMessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
         string expectedOptInKeywords = "opt_in_keywords";
-        string expectedOptInMessage = "opt_in_message";
+        string expectedOptInMessage = "xxxxxxxxxxxxxxxxxxxx";
         string expectedOptOutKeywords = "opt_out_keywords";
-        string expectedOptOutMessage = "opt_out_message";
+        string expectedOptOutMessage = "xxxxxxxxxxxxxxxxxxxx";
         string expectedPrivacyPolicyLink = "privacy_policy_link";
         string expectedTermsAndConditionsLink = "terms_and_conditions_link";
         List<UseCase> expectedUseCases =
@@ -1005,15 +1005,15 @@ public class CampaignTest : TestBase
     {
         var model = new Campaign
         {
-            Description = "description",
+            Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             HelpKeywords = "help_keywords",
-            HelpMessage = "help_message",
+            HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
             Inherit = true,
             MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             OptInKeywords = "opt_in_keywords",
-            OptInMessage = "opt_in_message",
+            OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
             OptOutKeywords = "opt_out_keywords",
-            OptOutMessage = "opt_out_message",
+            OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
             PrivacyPolicyLink = "privacy_policy_link",
             TermsAndConditionsLink = "terms_and_conditions_link",
             UseCases =
@@ -1149,15 +1149,15 @@ public class CampaignTest : TestBase
     {
         var model = new Campaign
         {
-            Description = "description",
+            Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             HelpKeywords = "help_keywords",
-            HelpMessage = "help_message",
+            HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
             Inherit = true,
             MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             OptInKeywords = "opt_in_keywords",
-            OptInMessage = "opt_in_message",
+            OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
             OptOutKeywords = "opt_out_keywords",
-            OptOutMessage = "opt_out_message",
+            OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
             PrivacyPolicyLink = "privacy_policy_link",
             TermsAndConditionsLink = "terms_and_conditions_link",
             UseCases =

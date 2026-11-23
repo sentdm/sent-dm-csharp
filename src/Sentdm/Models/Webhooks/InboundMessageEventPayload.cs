@@ -174,6 +174,34 @@ public sealed record class InboundMessageEventPayload : JsonModel
     }
 
     /// <summary>
+    /// The Sent agent whose conversation this reply arrived in, when the contact
+    /// is in one, as on the messages it sent. Absent otherwise.
+    /// </summary>
+    public string? SentAgentID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("sent_agent_id");
+        }
+        init { this._rawData.Set("sent_agent_id", value); }
+    }
+
+    /// <summary>
+    /// The conversation (agent × contact) the reply belongs to, when it belongs
+    /// to one.
+    /// </summary>
+    public string? SentInstanceID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("sent_instance_id");
+        }
+        init { this._rawData.Set("sent_instance_id", value); }
+    }
+
+    /// <summary>
     /// The message body. Sent as null when the inbound message carried no text, for
     /// example a media-only message. The field is always present, so read it and
     /// check for null rather than checking whether the key exists.
@@ -224,6 +252,8 @@ public sealed record class InboundMessageEventPayload : JsonModel
         _ = this.MessageID;
         _ = this.OutboundNumber;
         _ = this.Referral;
+        _ = this.SentAgentID;
+        _ = this.SentInstanceID;
         _ = this.Text;
         _ = this.UpdatedAt;
     }

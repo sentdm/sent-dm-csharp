@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
-using Sentdm.Models.Channels;
 using Sentdm.Models.Channels.Rcs;
 using Sentdm.Models.SenderProfiles;
+using Channels = Sentdm.Models.Channels;
 using Sms = Sentdm.Models.Channels.Sms;
 using Whatsapp = Sentdm.Models.Channels.Whatsapp;
 
@@ -116,7 +116,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Channels::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -182,7 +182,7 @@ public class SenderProfileTest : TestBase
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedApiKey = "api_key";
         SenderProfileBilling expectedBilling = new() { Inherit = true };
-        ChannelsState expectedChannels = new()
+        Channels::ChannelsState expectedChannels = new()
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Mms =
@@ -278,7 +278,7 @@ public class SenderProfileTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Channels::Status.Provisioning,
                 },
             ],
             Voice =
@@ -457,7 +457,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Channels::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -633,7 +633,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Channels::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -706,7 +706,7 @@ public class SenderProfileTest : TestBase
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedApiKey = "api_key";
         SenderProfileBilling expectedBilling = new() { Inherit = true };
-        ChannelsState expectedChannels = new()
+        Channels::ChannelsState expectedChannels = new()
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Mms =
@@ -802,7 +802,7 @@ public class SenderProfileTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Channels::Status.Provisioning,
                 },
             ],
             Voice =
@@ -981,7 +981,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Channels::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1150,7 +1150,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Channels::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1322,7 +1322,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Channels::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1489,7 +1489,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Channels::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1666,7 +1666,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Channels::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1939,7 +1939,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Channels::Status.Provisioning,
                     },
                 ],
                 Voice =

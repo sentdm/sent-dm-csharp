@@ -102,6 +102,33 @@ public sealed record class ComplianceRequirement : JsonModel
     }
 
     /// <summary>
+    /// Longest acceptable value, where the market caps it. On a list of strings,
+    /// each item's.
+    /// </summary>
+    public int? MaxLength
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<int>("max_length");
+        }
+        init { this._rawData.Set("max_length", value); }
+    }
+
+    /// <summary>
+    /// Fewest entries this value accepts, where the market sets a minimum.
+    /// </summary>
+    public int? MinItems
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<int>("min_items");
+        }
+        init { this._rawData.Set("min_items", value); }
+    }
+
+    /// <summary>
     /// Shortest acceptable value, where the market sets one. TCR refuses a consent
     /// narrative under 40 characters, and finding that out at submission time is
     /// the round trip this exists to save.
@@ -216,6 +243,8 @@ public sealed record class ComplianceRequirement : JsonModel
         _ = this.Key;
         _ = this.Label;
         _ = this.MaxItems;
+        _ = this.MaxLength;
+        _ = this.MinItems;
         _ = this.MinLength;
         _ = this.Notes;
         _ = this.Options;

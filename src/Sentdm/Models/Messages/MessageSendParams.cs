@@ -226,7 +226,8 @@ public record class MessageSendParams : ParamsBase
     }
 
     /// <summary>
-    /// SDK-style template reference: resolve by ID or by name, with optional parameters.
+    /// SDK-style template reference: resolve by id, by slug or by name (exactly
+    /// one), with optional parameters.
     /// </summary>
     public TemplateRef? Template
     {
