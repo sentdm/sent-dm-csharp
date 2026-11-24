@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.49.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.48.0...v0.49.0) (2026-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** markets move to channels.markets and 10DLC numbers to markets.add_numbers
+
+### Features
+
+* **api:** markets move to channels.markets and 10DLC numbers to markets.add_numbers ([c8a1278](https://github.com/sentdm/sent-dm-csharp/commit/c8a1278c3a27db3b2ea465def4b1bb1e41663eb0))
+
 ## [0.48.0](https://github.com/sentdm/sent-dm-csharp/compare/v0.47.0...v0.48.0) (2026-11-12)
 
 
