@@ -14,12 +14,11 @@ public class TenDlcCampaignUseCaseTest : TestBase
         var model = new TenDlcCampaignUseCase
         {
             SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-            UseCase = TenDlcCampaignUseCaseUseCase.Marketing,
+            UseCase = UseCase.Marketing,
         };
 
         List<JsonElement> expectedSampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")];
-        ApiEnum<string, TenDlcCampaignUseCaseUseCase> expectedUseCase =
-            TenDlcCampaignUseCaseUseCase.Marketing;
+        ApiEnum<string, UseCase> expectedUseCase = UseCase.Marketing;
 
         Assert.Equal(expectedSampleMessages.Count, model.SampleMessages.Count);
         for (int i = 0; i < expectedSampleMessages.Count; i++)
@@ -35,7 +34,7 @@ public class TenDlcCampaignUseCaseTest : TestBase
         var model = new TenDlcCampaignUseCase
         {
             SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-            UseCase = TenDlcCampaignUseCaseUseCase.Marketing,
+            UseCase = UseCase.Marketing,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -53,7 +52,7 @@ public class TenDlcCampaignUseCaseTest : TestBase
         var model = new TenDlcCampaignUseCase
         {
             SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-            UseCase = TenDlcCampaignUseCaseUseCase.Marketing,
+            UseCase = UseCase.Marketing,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -64,8 +63,7 @@ public class TenDlcCampaignUseCaseTest : TestBase
         Assert.NotNull(deserialized);
 
         List<JsonElement> expectedSampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")];
-        ApiEnum<string, TenDlcCampaignUseCaseUseCase> expectedUseCase =
-            TenDlcCampaignUseCaseUseCase.Marketing;
+        ApiEnum<string, UseCase> expectedUseCase = UseCase.Marketing;
 
         Assert.Equal(expectedSampleMessages.Count, deserialized.SampleMessages.Count);
         for (int i = 0; i < expectedSampleMessages.Count; i++)
@@ -83,7 +81,7 @@ public class TenDlcCampaignUseCaseTest : TestBase
         var model = new TenDlcCampaignUseCase
         {
             SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-            UseCase = TenDlcCampaignUseCaseUseCase.Marketing,
+            UseCase = UseCase.Marketing,
         };
 
         model.Validate();
@@ -95,7 +93,7 @@ public class TenDlcCampaignUseCaseTest : TestBase
         var model = new TenDlcCampaignUseCase
         {
             SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-            UseCase = TenDlcCampaignUseCaseUseCase.Marketing,
+            UseCase = UseCase.Marketing,
         };
 
         TenDlcCampaignUseCase copied = new(model);
@@ -104,31 +102,31 @@ public class TenDlcCampaignUseCaseTest : TestBase
     }
 }
 
-public class TenDlcCampaignUseCaseUseCaseTest : TestBase
+public class UseCaseTest : TestBase
 {
     [Theory]
-    [InlineData(TenDlcCampaignUseCaseUseCase.Marketing)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.AccountNotification)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.CustomerCare)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.FraudAlert)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.V2Fa)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.DeliveryNotification)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.SecurityAlert)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.M2M)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.HigherEducation)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.PollingVoting)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.PublicServiceAnnouncement)]
-    public void Validation_Works(TenDlcCampaignUseCaseUseCase rawValue)
+    [InlineData(UseCase.Marketing)]
+    [InlineData(UseCase.AccountNotification)]
+    [InlineData(UseCase.CustomerCare)]
+    [InlineData(UseCase.FraudAlert)]
+    [InlineData(UseCase.V2Fa)]
+    [InlineData(UseCase.DeliveryNotification)]
+    [InlineData(UseCase.SecurityAlert)]
+    [InlineData(UseCase.M2M)]
+    [InlineData(UseCase.HigherEducation)]
+    [InlineData(UseCase.PollingVoting)]
+    [InlineData(UseCase.PublicServiceAnnouncement)]
+    public void Validation_Works(UseCase rawValue)
     {
         // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, TenDlcCampaignUseCaseUseCase> value = rawValue;
+        ApiEnum<string, UseCase> value = rawValue;
         value.Validate();
     }
 
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TenDlcCampaignUseCaseUseCase>>(
+        var value = JsonSerializer.Deserialize<ApiEnum<string, UseCase>>(
             JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
@@ -138,26 +136,27 @@ public class TenDlcCampaignUseCaseUseCaseTest : TestBase
     }
 
     [Theory]
-    [InlineData(TenDlcCampaignUseCaseUseCase.Marketing)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.AccountNotification)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.CustomerCare)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.FraudAlert)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.V2Fa)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.DeliveryNotification)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.SecurityAlert)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.M2M)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.HigherEducation)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.PollingVoting)]
-    [InlineData(TenDlcCampaignUseCaseUseCase.PublicServiceAnnouncement)]
-    public void SerializationRoundtrip_Works(TenDlcCampaignUseCaseUseCase rawValue)
+    [InlineData(UseCase.Marketing)]
+    [InlineData(UseCase.AccountNotification)]
+    [InlineData(UseCase.CustomerCare)]
+    [InlineData(UseCase.FraudAlert)]
+    [InlineData(UseCase.V2Fa)]
+    [InlineData(UseCase.DeliveryNotification)]
+    [InlineData(UseCase.SecurityAlert)]
+    [InlineData(UseCase.M2M)]
+    [InlineData(UseCase.HigherEducation)]
+    [InlineData(UseCase.PollingVoting)]
+    [InlineData(UseCase.PublicServiceAnnouncement)]
+    public void SerializationRoundtrip_Works(UseCase rawValue)
     {
         // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, TenDlcCampaignUseCaseUseCase> value = rawValue;
+        ApiEnum<string, UseCase> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TenDlcCampaignUseCaseUseCase>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, UseCase>>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(value, deserialized);
     }
@@ -165,14 +164,15 @@ public class TenDlcCampaignUseCaseUseCaseTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TenDlcCampaignUseCaseUseCase>>(
+        var value = JsonSerializer.Deserialize<ApiEnum<string, UseCase>>(
             JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TenDlcCampaignUseCaseUseCase>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, UseCase>>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(value, deserialized);
     }

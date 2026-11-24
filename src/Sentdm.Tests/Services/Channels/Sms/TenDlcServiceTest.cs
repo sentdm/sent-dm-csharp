@@ -32,7 +32,7 @@ public class TenDlcServiceTest : TestBase
                                 "Reminder: your appointment is tomorrow at 10:00. Reply STOP to opt out."
                             ),
                         ],
-                        UseCaseValue = UseCaseUseCase.AccountNotification,
+                        UseCase = UseCase.AccountNotification,
                     },
                 ],
                 Volume = "volume",

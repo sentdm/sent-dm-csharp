@@ -39,14 +39,12 @@ public sealed record class TenDlcCampaignUseCase : JsonModel
     /// Use case. What this entry sends. MIXED and LOW_VOLUME are refused — volume
     /// decides those.
     /// </summary>
-    public required ApiEnum<string, TenDlcCampaignUseCaseUseCase> UseCase
+    public required ApiEnum<string, UseCase> UseCase
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, TenDlcCampaignUseCaseUseCase>>(
-                "use_case"
-            );
+            return this._rawData.GetNotNullClass<ApiEnum<string, UseCase>>("use_case");
         }
         init { this._rawData.Set("use_case", value); }
     }
@@ -99,8 +97,8 @@ class TenDlcCampaignUseCaseFromRaw : IFromRawJson<TenDlcCampaignUseCase>
 /// <summary>
 /// Use case. What this entry sends. MIXED and LOW_VOLUME are refused — volume decides those.
 /// </summary>
-[JsonConverter(typeof(TenDlcCampaignUseCaseUseCaseConverter))]
-public enum TenDlcCampaignUseCaseUseCase
+[JsonConverter(typeof(UseCaseConverter))]
+public enum UseCase
 {
     Marketing,
     AccountNotification,
@@ -115,9 +113,9 @@ public enum TenDlcCampaignUseCaseUseCase
     PublicServiceAnnouncement,
 }
 
-sealed class TenDlcCampaignUseCaseUseCaseConverter : JsonConverter<TenDlcCampaignUseCaseUseCase>
+sealed class UseCaseConverter : JsonConverter<UseCase>
 {
-    public override TenDlcCampaignUseCaseUseCase Read(
+    public override UseCase Read(
         ref Utf8JsonReader reader,
         Type typeToConvert,
         JsonSerializerOptions options
@@ -125,43 +123,38 @@ sealed class TenDlcCampaignUseCaseUseCaseConverter : JsonConverter<TenDlcCampaig
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "MARKETING" => TenDlcCampaignUseCaseUseCase.Marketing,
-            "ACCOUNT_NOTIFICATION" => TenDlcCampaignUseCaseUseCase.AccountNotification,
-            "CUSTOMER_CARE" => TenDlcCampaignUseCaseUseCase.CustomerCare,
-            "FRAUD_ALERT" => TenDlcCampaignUseCaseUseCase.FraudAlert,
-            "2FA" => TenDlcCampaignUseCaseUseCase.V2Fa,
-            "DELIVERY_NOTIFICATION" => TenDlcCampaignUseCaseUseCase.DeliveryNotification,
-            "SECURITY_ALERT" => TenDlcCampaignUseCaseUseCase.SecurityAlert,
-            "M2M" => TenDlcCampaignUseCaseUseCase.M2M,
-            "HIGHER_EDUCATION" => TenDlcCampaignUseCaseUseCase.HigherEducation,
-            "POLLING_VOTING" => TenDlcCampaignUseCaseUseCase.PollingVoting,
-            "PUBLIC_SERVICE_ANNOUNCEMENT" => TenDlcCampaignUseCaseUseCase.PublicServiceAnnouncement,
-            _ => (TenDlcCampaignUseCaseUseCase)(-1),
+            "MARKETING" => UseCase.Marketing,
+            "ACCOUNT_NOTIFICATION" => UseCase.AccountNotification,
+            "CUSTOMER_CARE" => UseCase.CustomerCare,
+            "FRAUD_ALERT" => UseCase.FraudAlert,
+            "2FA" => UseCase.V2Fa,
+            "DELIVERY_NOTIFICATION" => UseCase.DeliveryNotification,
+            "SECURITY_ALERT" => UseCase.SecurityAlert,
+            "M2M" => UseCase.M2M,
+            "HIGHER_EDUCATION" => UseCase.HigherEducation,
+            "POLLING_VOTING" => UseCase.PollingVoting,
+            "PUBLIC_SERVICE_ANNOUNCEMENT" => UseCase.PublicServiceAnnouncement,
+            _ => (UseCase)(-1),
         };
     }
 
-    public override void Write(
-        Utf8JsonWriter writer,
-        TenDlcCampaignUseCaseUseCase value,
-        JsonSerializerOptions options
-    )
+    public override void Write(Utf8JsonWriter writer, UseCase value, JsonSerializerOptions options)
     {
         JsonSerializer.Serialize(
             writer,
             value switch
             {
-                TenDlcCampaignUseCaseUseCase.Marketing => "MARKETING",
-                TenDlcCampaignUseCaseUseCase.AccountNotification => "ACCOUNT_NOTIFICATION",
-                TenDlcCampaignUseCaseUseCase.CustomerCare => "CUSTOMER_CARE",
-                TenDlcCampaignUseCaseUseCase.FraudAlert => "FRAUD_ALERT",
-                TenDlcCampaignUseCaseUseCase.V2Fa => "2FA",
-                TenDlcCampaignUseCaseUseCase.DeliveryNotification => "DELIVERY_NOTIFICATION",
-                TenDlcCampaignUseCaseUseCase.SecurityAlert => "SECURITY_ALERT",
-                TenDlcCampaignUseCaseUseCase.M2M => "M2M",
-                TenDlcCampaignUseCaseUseCase.HigherEducation => "HIGHER_EDUCATION",
-                TenDlcCampaignUseCaseUseCase.PollingVoting => "POLLING_VOTING",
-                TenDlcCampaignUseCaseUseCase.PublicServiceAnnouncement =>
-                    "PUBLIC_SERVICE_ANNOUNCEMENT",
+                UseCase.Marketing => "MARKETING",
+                UseCase.AccountNotification => "ACCOUNT_NOTIFICATION",
+                UseCase.CustomerCare => "CUSTOMER_CARE",
+                UseCase.FraudAlert => "FRAUD_ALERT",
+                UseCase.V2Fa => "2FA",
+                UseCase.DeliveryNotification => "DELIVERY_NOTIFICATION",
+                UseCase.SecurityAlert => "SECURITY_ALERT",
+                UseCase.M2M => "M2M",
+                UseCase.HigherEducation => "HIGHER_EDUCATION",
+                UseCase.PollingVoting => "POLLING_VOTING",
+                UseCase.PublicServiceAnnouncement => "PUBLIC_SERVICE_ANNOUNCEMENT",
                 _ => throw new SentInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
