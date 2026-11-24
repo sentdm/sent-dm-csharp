@@ -173,6 +173,21 @@ public sealed record class Message : JsonModel
         init { this._rawData.Set("message_body", value); }
     }
 
+    /// <summary>
+    /// When this message is another send of a message you sent earlier, the id of
+    /// that original message; null for every other message. Always the first message,
+    /// however many sends lie between them.
+    /// </summary>
+    public string? ParentMessageID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("parent_message_id");
+        }
+        init { this._rawData.Set("parent_message_id", value); }
+    }
+
     public string? Phone
     {
         get
@@ -332,6 +347,7 @@ public sealed record class Message : JsonModel
             item.Validate();
         }
         this.MessageBody?.Validate();
+        _ = this.ParentMessageID;
         _ = this.Phone;
         _ = this.PhoneInternational;
         _ = this.Price;

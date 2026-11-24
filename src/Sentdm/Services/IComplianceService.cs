@@ -42,10 +42,14 @@ public interface IComplianceService
     IComplianceService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// **Call this first.** It returns what a channel, country and sender type demand
-    /// before you can send there — and `setup[]`, the calls that satisfy those demands,
-    /// in order, each with a body you can copy and send as it stands. You never have to
-    /// track forty countries' rules yourself.
+    /// **Deprecated.** Use `GET /v3/channels/{channel}/{country}/compliance` instead,
+    /// and expect this to be removed in a future release. It answers exactly as before,
+    /// so nothing needs to change today.
+    ///
+    /// <para>**Call this first.** It returns what a channel, country and sender type
+    /// demand before you can send there — and `setup[]`, the calls that satisfy those
+    /// demands, in order, each with a body you can copy and send as it stands. You
+    /// never have to track forty countries' rules yourself.</para>
     ///
     /// <para>## Channel</para>
     ///
@@ -111,6 +115,7 @@ public interface IComplianceService
     /// step carries no `compliance` array at all. A `sender_id_pattern` may still be
     /// present — many markets constrain the sender string without registering anything.</para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task<ApiResponseOfComplianceRequirements> RetrieveRequirements(
         ComplianceRetrieveRequirementsParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -134,6 +139,7 @@ public interface IComplianceServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /v3/compliance/requirements</c>, but is otherwise the
     /// same as <see cref="IComplianceService.RetrieveRequirements(ComplianceRetrieveRequirementsParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ApiResponseOfComplianceRequirements>> RetrieveRequirements(
         ComplianceRetrieveRequirementsParams? parameters = null,
         CancellationToken cancellationToken = default

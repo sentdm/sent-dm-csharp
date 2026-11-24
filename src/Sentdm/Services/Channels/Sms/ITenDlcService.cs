@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
-using Sentdm.Models.Channels.Sms;
+using Sentdm.Models.Channels.Markets;
 using Sentdm.Models.Channels.Sms.TenDlc;
 
 namespace Sentdm.Services.Channels.Sms;
@@ -63,12 +63,10 @@ public interface ITenDlcService
     /// <para>## What to send</para>
     ///
     /// <para>The new campaign's fields, at the top level of the body: use cases,
-    /// consent narrative, volume, sample messages and keywords, under the
-    /// `compliance.campaign.*` keys `GET
-    /// /v3/compliance/requirements?country=US&amp;type=TEN_DLC` lists, without that
-    /// prefix. It has to be complete. A rejected field is keyed by its name
-    /// (`description`). `id` and `inherit` are ignored, so an entry of
-    /// `compliance.campaigns` can be sent as read.</para>
+    /// consent narrative, volume, sample messages and keywords, under their keys
+    /// (`description`, `message_flow`, `use_cases`, `volume`, …). It has to be
+    /// complete. A rejected field is keyed by its name (`description`). `id` and
+    /// `inherit` are ignored, so an entry of `campaigns` can be sent as read.</para>
     ///
     /// <para>The identity is the market's and is not sent here. A market whose identity
     /// has no registration yet, or one not yet submitted for review, is `400`.</para>
@@ -77,71 +75,44 @@ public interface ITenDlcService
     ///
     /// <para>The campaign is recorded and goes for review; it is not filed with The
     /// Campaign Registry by this call. **It comes without numbers**: send its `id` from
-    /// `compliance.campaigns` to `POST /v3/channels/sms/numbers/US/TEN_DLC` to give it
-    /// some. **The campaign you already have, and its numbers, are not touched** —
-    /// including a campaign you run on from your organization.</para>
+    /// `compliance.campaigns` to `POST /v3/channels/sms/{country}/{type}/numbers` to
+    /// give it some. **The campaign you already have, and its numbers, are not
+    /// touched** — including a campaign you run on from your organization.</para>
     ///
     /// <para>**Each call files a new campaign**, which is charged when it is submitted.
     /// Send an `Idempotency-Key` so a retried request does not file a second one.</para>
     ///
-    /// <para>To change the campaign a market already has, use `PATCH
-    /// /v3/channels/sms/US/TEN_DLC`. Once a market holds more than one campaign, that
-    /// `PATCH` refuses a campaign or numbers change (`409`) rather than guess which
-    /// campaign is meant; numbers are added to a named campaign with `POST
-    /// /v3/channels/sms/numbers/US/TEN_DLC`.</para>
+    /// <para>To change a campaign, use `PATCH
+    /// /v3/channels/sms/US/TEN_DLC/campaigns/{campaignId}`; `PATCH
+    /// /v3/channels/sms/US/TEN_DLC` changes the brand and documents only, and refuses a
+    /// campaign or numbers (`400`).</para>
     ///
     /// <para>Returns **the market**, in the shape `GET /v3/channels/sms/US/TEN_DLC`
     /// returns, with `202`.</para>
     /// </summary>
-    Task<ApiResponseOfSmsMarket> AddCampaign(
+    Task<ApiResponseOfChannelMarket> AddCampaign(
         TenDlcAddCampaignParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Adds numbers to **one campaign of your own** on the US `TEN_DLC` market you
-    /// hold, named by `campaign_id` — the `id` of an entry in the market's
-    /// `compliance.campaigns`.
+    /// Every campaign your US `TEN_DLC` market registers, oldest first, each with its
+    /// `id`, where it stands and `inherit` (`true` for your organization's) beside its
+    /// fields — the list `GET /v3/channels/sms/US/TEN_DLC` reports under
+    /// `compliance.campaigns`. Add one with `POST` on this path, and change one of your
+    /// own with `PATCH /v3/channels/sms/US/TEN_DLC/campaigns/{id}`.
     ///
-    /// <para>## What to send</para>
+    /// <para>Each campaign has a `status` of its own, so a market on several says which
+    /// is approved: `ACTIVE` once the carriers have elected it, `PENDING_REVIEW` until
+    /// then, `ACTION_NEEDED` when it came back for correction, `DECLINED` when the
+    /// carriers refused it, `INACTIVE` once it has ended. Why the market is held up is
+    /// the market's own `reason`, which names the campaign concerned. `status` is
+    /// read-only and ignored when the entry is sent back.</para>
     ///
-    /// <para>- `campaign_id` — the campaign. One you inherit from your organization is
-    /// `400`: its numbers are the organization's. One out of service — expired,
-    /// deactivated or released — is `409`. - `numbers` — the list `POST
-    /// /v3/channels/sms` takes, one entry per area code.</para>
-    ///
-    /// <para>## What happens</para>
-    ///
-    /// <para>The entries are **added** to what the campaign already asks for. With
-    /// everything it asks for, a campaign holds at most 49 numbers, counting one for
-    /// each sender profile inheriting it. A campaign the carriers have not approved yet
-    /// gets its numbers when they do; an approved one gets them now. Until a number is
-    /// assigned it reads as `PROVISIONING` in the market's `numbers`, with the area
-    /// code it was asked for.</para>
-    ///
-    /// <para>Returns **the market**, in the shape `GET /v3/channels/sms/US/TEN_DLC`
-    /// returns, with `202`.</para>
+    /// <para>A customer without a US `TEN_DLC` market is `404`.</para>
     /// </summary>
-    Task<ApiResponseOfSmsMarket> AddNumbers(
-        TenDlcAddNumbersParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Reads what the US `TEN_DLC` market you hold has registered: the `brand` it files
-    /// under, **every campaign** under `campaigns` (each with its `id` and `inherit`),
-    /// and its `documents`. It is the `compliance` object `GET
-    /// /v3/channels/sms/US/TEN_DLC` returns, without the sender and numbers.
-    ///
-    /// <para>Use a campaign's `id` to change it with `PATCH
-    /// /v3/channels/sms/compliances/US/TEN_DLC/campaigns/{campaignId}`, or to add
-    /// numbers to it with `POST /v3/channels/sms/numbers/US/TEN_DLC`.</para>
-    ///
-    /// <para>Send `x-profile-id` with an organization key to read one of your profiles'
-    /// markets.</para>
-    /// </summary>
-    Task<ApiResponseOfSuppliedCompliance> RetrieveCompliance(
-        TenDlcRetrieveComplianceParams? parameters = null,
+    Task<TenDlcListCampaignsResponse> ListCampaigns(
+        TenDlcListCampaignsParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
@@ -151,15 +122,14 @@ public interface ITenDlcService
     ///
     /// <para>## What to send</para>
     ///
-    /// <para>The fields to change, at the top level of the body, under the
-    /// `compliance.campaign.*` keys `GET
-    /// /v3/compliance/requirements?country=US&amp;type=TEN_DLC` lists, without that
-    /// prefix. A field you leave out keeps its value, and a rejected one is keyed by
-    /// its name. `id` and `"inherit": false` are ignored, so an entry of
-    /// `compliance.campaigns` can be sent as read; `"inherit": true` is `400`, because
-    /// this call changes a campaign's fields, not whose campaign you run on. The
-    /// campaign only: add numbers with `POST /v3/channels/sms/numbers/US/TEN_DLC`, and
-    /// change the brand or documents with `PATCH /v3/channels/sms/US/TEN_DLC`.</para>
+    /// <para>The fields to change, at the top level of the body, under their keys
+    /// (`description`, `message_flow`, `use_cases`, `help_message`, …). A field you
+    /// leave out keeps its value, and a rejected one is keyed by its name. `id` and
+    /// `"inherit": false` are ignored, so an entry of `campaigns` can be sent as read;
+    /// `"inherit": true` is `400`, because this call changes a campaign's fields, not
+    /// whose campaign you run on. The campaign only: add numbers with `POST
+    /// /v3/channels/sms/US/TEN_DLC/numbers`, and change the brand or documents with
+    /// `PATCH /v3/channels/sms/US/TEN_DLC`.</para>
     ///
     /// <para>## When it can be changed</para>
     ///
@@ -173,13 +143,13 @@ public interface ITenDlcService
     /// <para>Returns **the market**, in the shape `GET /v3/channels/sms/US/TEN_DLC`
     /// returns.</para>
     /// </summary>
-    Task<ApiResponseOfSmsMarket> UpdateCampaign(
+    Task<ApiResponseOfChannelMarket> UpdateCampaign(
         TenDlcUpdateCampaignParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="UpdateCampaign(TenDlcUpdateCampaignParams, CancellationToken)"/>
-    Task<ApiResponseOfSmsMarket> UpdateCampaign(
+    Task<ApiResponseOfChannelMarket> UpdateCampaign(
         string campaignID,
         TenDlcUpdateCampaignParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -200,43 +170,34 @@ public interface ITenDlcServiceWithRawResponse
     ITenDlcServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /v3/channels/sms/compliances/US/TEN_DLC/campaigns</c>, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /v3/channels/sms/US/TEN_DLC/campaigns</c>, but is otherwise the
     /// same as <see cref="ITenDlcService.AddCampaign(TenDlcAddCampaignParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfSmsMarket>> AddCampaign(
+    Task<HttpResponse<ApiResponseOfChannelMarket>> AddCampaign(
         TenDlcAddCampaignParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /v3/channels/sms/numbers/US/TEN_DLC</c>, but is otherwise the
-    /// same as <see cref="ITenDlcService.AddNumbers(TenDlcAddNumbersParams, CancellationToken)"/>.
+    /// Returns a raw HTTP response for <c>get /v3/channels/sms/US/TEN_DLC/campaigns</c>, but is otherwise the
+    /// same as <see cref="ITenDlcService.ListCampaigns(TenDlcListCampaignsParams?, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfSmsMarket>> AddNumbers(
-        TenDlcAddNumbersParams parameters,
+    Task<HttpResponse<TenDlcListCampaignsResponse>> ListCampaigns(
+        TenDlcListCampaignsParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /v3/channels/sms/compliances/US/TEN_DLC</c>, but is otherwise the
-    /// same as <see cref="ITenDlcService.RetrieveCompliance(TenDlcRetrieveComplianceParams?, CancellationToken)"/>.
-    /// </summary>
-    Task<HttpResponse<ApiResponseOfSuppliedCompliance>> RetrieveCompliance(
-        TenDlcRetrieveComplianceParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Returns a raw HTTP response for <c>patch /v3/channels/sms/compliances/US/TEN_DLC/campaigns/{campaignId}</c>, but is otherwise the
+    /// Returns a raw HTTP response for <c>patch /v3/channels/sms/US/TEN_DLC/campaigns/{campaignId}</c>, but is otherwise the
     /// same as <see cref="ITenDlcService.UpdateCampaign(TenDlcUpdateCampaignParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<ApiResponseOfSmsMarket>> UpdateCampaign(
+    Task<HttpResponse<ApiResponseOfChannelMarket>> UpdateCampaign(
         TenDlcUpdateCampaignParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="UpdateCampaign(TenDlcUpdateCampaignParams, CancellationToken)"/>
-    Task<HttpResponse<ApiResponseOfSmsMarket>> UpdateCampaign(
+    Task<HttpResponse<ApiResponseOfChannelMarket>> UpdateCampaign(
         string campaignID,
         TenDlcUpdateCampaignParams? parameters = null,
         CancellationToken cancellationToken = default

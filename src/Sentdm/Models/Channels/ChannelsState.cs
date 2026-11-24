@@ -5,8 +5,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
+using Sentdm.Models.Channels.Markets;
 using Sentdm.Models.Channels.Rcs;
-using Sentdm.Models.Channels.Sms;
 using Sentdm.Models.Channels.Voice;
 using Sentdm.Models.Channels.Whatsapp;
 
@@ -87,12 +87,12 @@ public sealed record class ChannelsState : JsonModel
         init { this._rawData.Set("rcs", value); }
     }
 
-    public IReadOnlyList<SmsMarket>? Sms
+    public IReadOnlyList<ChannelMarket>? Sms
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<SmsMarket>>("sms");
+            return this._rawData.GetNullableStruct<ImmutableArray<ChannelMarket>>("sms");
         }
         init
         {
@@ -101,7 +101,7 @@ public sealed record class ChannelsState : JsonModel
                 return;
             }
 
-            this._rawData.Set<ImmutableArray<SmsMarket>?>(
+            this._rawData.Set<ImmutableArray<ChannelMarket>?>(
                 "sms",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );

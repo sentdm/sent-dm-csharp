@@ -14,14 +14,14 @@ public class TenDlcUpdateCampaignParamsTest : TestBase
         var parameters = new TenDlcUpdateCampaignParams
         {
             CampaignID = "3f2a6c1e-8b4d-4e2a-9c7f-1d5b0a9e4c21",
-            Description = "description",
+            Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             HelpKeywords = "help_keywords",
-            HelpMessage = "help_message",
+            HelpMessage = "Example Clinic: for help call +1 212 555 0100. Reply STOP to opt out.",
             MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             OptInKeywords = "opt_in_keywords",
-            OptInMessage = "opt_in_message",
+            OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
             OptOutKeywords = "opt_out_keywords",
-            OptOutMessage = "opt_out_message",
+            OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
             PrivacyPolicyLink = "privacy_policy_link",
             Sandbox = false,
             TermsAndConditionsLink = "terms_and_conditions_link",
@@ -39,14 +39,15 @@ public class TenDlcUpdateCampaignParamsTest : TestBase
         };
 
         string expectedCampaignID = "3f2a6c1e-8b4d-4e2a-9c7f-1d5b0a9e4c21";
-        string expectedDescription = "description";
+        string expectedDescription = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
         string expectedHelpKeywords = "help_keywords";
-        string expectedHelpMessage = "help_message";
+        string expectedHelpMessage =
+            "Example Clinic: for help call +1 212 555 0100. Reply STOP to opt out.";
         string expectedMessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
         string expectedOptInKeywords = "opt_in_keywords";
-        string expectedOptInMessage = "opt_in_message";
+        string expectedOptInMessage = "xxxxxxxxxxxxxxxxxxxx";
         string expectedOptOutKeywords = "opt_out_keywords";
-        string expectedOptOutMessage = "opt_out_message";
+        string expectedOptOutMessage = "xxxxxxxxxxxxxxxxxxxx";
         string expectedPrivacyPolicyLink = "privacy_policy_link";
         bool expectedSandbox = false;
         string expectedTermsAndConditionsLink = "terms_and_conditions_link";
@@ -195,7 +196,7 @@ public class TenDlcUpdateCampaignParamsTest : TestBase
         Assert.True(
             TestBase.UrisEqual(
                 new Uri(
-                    "https://api.sent.dm/v3/channels/sms/compliances/US/TEN_DLC/campaigns/3f2a6c1e-8b4d-4e2a-9c7f-1d5b0a9e4c21"
+                    "https://api.sent.dm/v3/channels/sms/US/TEN_DLC/campaigns/3f2a6c1e-8b4d-4e2a-9c7f-1d5b0a9e4c21"
                 ),
                 url
             )
@@ -228,14 +229,14 @@ public class TenDlcUpdateCampaignParamsTest : TestBase
         var parameters = new TenDlcUpdateCampaignParams
         {
             CampaignID = "3f2a6c1e-8b4d-4e2a-9c7f-1d5b0a9e4c21",
-            Description = "description",
+            Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             HelpKeywords = "help_keywords",
-            HelpMessage = "help_message",
+            HelpMessage = "Example Clinic: for help call +1 212 555 0100. Reply STOP to opt out.",
             MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             OptInKeywords = "opt_in_keywords",
-            OptInMessage = "opt_in_message",
+            OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
             OptOutKeywords = "opt_out_keywords",
-            OptOutMessage = "opt_out_message",
+            OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
             PrivacyPolicyLink = "privacy_policy_link",
             Sandbox = false,
             TermsAndConditionsLink = "terms_and_conditions_link",
