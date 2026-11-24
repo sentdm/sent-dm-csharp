@@ -18,6 +18,19 @@ namespace Sentdm.Models.Webhooks;
 /// </summary>
 public record class WebhookListParams : ParamsBase
 {
+    /// <summary>
+    /// Only the webhooks of this Sent agent.
+    /// </summary>
+    public string? AgentID
+    {
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("agent_id");
+        }
+        init { this._rawQueryData.Set("agent_id", value); }
+    }
+
     public bool? IsActive
     {
         get

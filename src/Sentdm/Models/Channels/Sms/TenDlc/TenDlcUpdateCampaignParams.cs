@@ -6,7 +6,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Sentdm.Core;
+using Sentdm.Exceptions;
 
 namespace Sentdm.Models.Channels.Sms.TenDlc;
 
@@ -16,14 +18,13 @@ namespace Sentdm.Models.Channels.Sms.TenDlc;
 ///
 /// <para>## What to send</para>
 ///
-/// <para>The fields to change, at the top level of the body, under the `compliance.campaign.*`
-/// keys `GET /v3/compliance/requirements?country=US&amp;type=TEN_DLC` lists, without
-/// that prefix. A field you leave out keeps its value, and a rejected one is keyed
-/// by its name. `id` and `"inherit": false` are ignored, so an entry of `compliance.campaigns`
-/// can be sent as read; `"inherit": true` is `400`, because this call changes a campaign's
-/// fields, not whose campaign you run on. The campaign only: add numbers with `POST
-/// /v3/channels/sms/numbers/US/TEN_DLC`, and change the brand or documents with
-/// `PATCH /v3/channels/sms/US/TEN_DLC`.</para>
+/// <para>The fields to change, at the top level of the body, under their keys (`description`,
+/// `message_flow`, `use_cases`, `help_message`, …). A field you leave out keeps its
+/// value, and a rejected one is keyed by its name. `id` and `"inherit": false` are
+/// ignored, so an entry of `campaigns` can be sent as read; `"inherit": true` is
+/// `400`, because this call changes a campaign's fields, not whose campaign you run
+/// on. The campaign only: add numbers with `POST /v3/channels/sms/US/TEN_DLC/numbers`,
+/// and change the brand or documents with `PATCH /v3/channels/sms/US/TEN_DLC`.</para>
 ///
 /// <para>## When it can be changed</para>
 ///
@@ -302,14 +303,14 @@ public record class TenDlcUpdateCampaignParams : ParamsBase
     /// how they register is decided by volume, never declared. Required when `compliance.campaign.inherit
     /// != true`.
     /// </summary>
-    public IReadOnlyList<TenDlcCampaignUseCase>? UseCases
+    public IReadOnlyList<TenDlcUpdateCampaignParamsUseCase>? UseCases
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<ImmutableArray<TenDlcCampaignUseCase>>(
-                "use_cases"
-            );
+            return this._rawBodyData.GetNullableStruct<
+                ImmutableArray<TenDlcUpdateCampaignParamsUseCase>
+            >("use_cases");
         }
         init
         {
@@ -318,7 +319,7 @@ public record class TenDlcUpdateCampaignParams : ParamsBase
                 return;
             }
 
-            this._rawBodyData.Set<ImmutableArray<TenDlcCampaignUseCase>?>(
+            this._rawBodyData.Set<ImmutableArray<TenDlcUpdateCampaignParamsUseCase>?>(
                 "use_cases",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
             );
@@ -326,10 +327,12 @@ public record class TenDlcUpdateCampaignParams : ParamsBase
     }
 
     /// <summary>
-    /// Expected monthly volume. Decides how the campaign registers and which fee
-    /// tier applies: below the low-volume threshold it registers as LOW_VOLUME with
-    /// sub-use-cases, above it as a single use case or MIXED. Omitting it registers
-    /// the campaign at the higher-fee standard tier.
+    /// Expected monthly volume. Required whenever the campaign's fields are written.
+    /// A whole number of messages, e.g. 1000 or 10000. Decides how the campaign registers
+    /// and which fee tier applies: below the low-volume threshold it registers as
+    /// LOW_VOLUME with sub-use-cases, above it as a single use case or MIXED. Omitting
+    /// it registers the campaign at the higher-fee standard tier. Required when
+    /// `compliance.campaign.inherit != true`, whenever its block is written.
     /// </summary>
     public string? Volume
     {
@@ -475,10 +478,7 @@ public record class TenDlcUpdateCampaignParams : ParamsBase
     {
         return new UriBuilder(
             options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format(
-                    "/v3/channels/sms/compliances/US/TEN_DLC/campaigns/{0}",
-                    this.CampaignID
-                )
+                + string.Format("/v3/channels/sms/US/TEN_DLC/campaigns/{0}", this.CampaignID)
         )
         {
             Query = this.QueryString(options),
@@ -506,5 +506,178 @@ public record class TenDlcUpdateCampaignParams : ParamsBase
     public override int GetHashCode()
     {
         return 0;
+    }
+}
+
+[JsonConverter(
+    typeof(JsonModelConverter<
+        TenDlcUpdateCampaignParamsUseCase,
+        TenDlcUpdateCampaignParamsUseCaseFromRaw
+    >)
+)]
+public sealed record class TenDlcUpdateCampaignParamsUseCase : JsonModel
+{
+    /// <summary>
+    /// Sample messages. TCR sample1..sample5 for this use case. One to five, each
+    /// 20 to 1024 characters and carrying the brand name and an opt-out instruction.
+    /// At most five across the campaign, and at least two when a high-volume campaign
+    /// has a single use case.
+    /// </summary>
+    public required IReadOnlyList<JsonElement> SampleMessages
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<JsonElement>>("sample_messages");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<JsonElement>>(
+                "sample_messages",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
+    /// <summary>
+    /// Use case. What this entry sends. MIXED and LOW_VOLUME are refused — volume
+    /// decides those.
+    /// </summary>
+    public required ApiEnum<string, TenDlcUpdateCampaignParamsUseCaseUseCase> UseCase
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<
+                ApiEnum<string, TenDlcUpdateCampaignParamsUseCaseUseCase>
+            >("use_case");
+        }
+        init { this._rawData.Set("use_case", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.SampleMessages;
+        this.UseCase.Validate();
+    }
+
+    public TenDlcUpdateCampaignParamsUseCase() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public TenDlcUpdateCampaignParamsUseCase(
+        TenDlcUpdateCampaignParamsUseCase tenDlcUpdateCampaignParamsUseCase
+    )
+        : base(tenDlcUpdateCampaignParamsUseCase) { }
+#pragma warning restore CS8618
+
+    public TenDlcUpdateCampaignParamsUseCase(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    TenDlcUpdateCampaignParamsUseCase(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="TenDlcUpdateCampaignParamsUseCaseFromRaw.FromRawUnchecked"/>
+    public static TenDlcUpdateCampaignParamsUseCase FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class TenDlcUpdateCampaignParamsUseCaseFromRaw : IFromRawJson<TenDlcUpdateCampaignParamsUseCase>
+{
+    /// <inheritdoc/>
+    public TenDlcUpdateCampaignParamsUseCase FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => TenDlcUpdateCampaignParamsUseCase.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Use case. What this entry sends. MIXED and LOW_VOLUME are refused — volume decides those.
+/// </summary>
+[JsonConverter(typeof(TenDlcUpdateCampaignParamsUseCaseUseCaseConverter))]
+public enum TenDlcUpdateCampaignParamsUseCaseUseCase
+{
+    Marketing,
+    AccountNotification,
+    CustomerCare,
+    FraudAlert,
+    V2Fa,
+    DeliveryNotification,
+    SecurityAlert,
+    M2M,
+    HigherEducation,
+    PollingVoting,
+    PublicServiceAnnouncement,
+}
+
+sealed class TenDlcUpdateCampaignParamsUseCaseUseCaseConverter
+    : JsonConverter<TenDlcUpdateCampaignParamsUseCaseUseCase>
+{
+    public override TenDlcUpdateCampaignParamsUseCaseUseCase Read(
+        ref Utf8JsonReader reader,
+        Type typeToConvert,
+        JsonSerializerOptions options
+    )
+    {
+        return JsonSerializer.Deserialize<string>(ref reader, options) switch
+        {
+            "MARKETING" => TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing,
+            "ACCOUNT_NOTIFICATION" => TenDlcUpdateCampaignParamsUseCaseUseCase.AccountNotification,
+            "CUSTOMER_CARE" => TenDlcUpdateCampaignParamsUseCaseUseCase.CustomerCare,
+            "FRAUD_ALERT" => TenDlcUpdateCampaignParamsUseCaseUseCase.FraudAlert,
+            "2FA" => TenDlcUpdateCampaignParamsUseCaseUseCase.V2Fa,
+            "DELIVERY_NOTIFICATION" =>
+                TenDlcUpdateCampaignParamsUseCaseUseCase.DeliveryNotification,
+            "SECURITY_ALERT" => TenDlcUpdateCampaignParamsUseCaseUseCase.SecurityAlert,
+            "M2M" => TenDlcUpdateCampaignParamsUseCaseUseCase.M2M,
+            "HIGHER_EDUCATION" => TenDlcUpdateCampaignParamsUseCaseUseCase.HigherEducation,
+            "POLLING_VOTING" => TenDlcUpdateCampaignParamsUseCaseUseCase.PollingVoting,
+            "PUBLIC_SERVICE_ANNOUNCEMENT" =>
+                TenDlcUpdateCampaignParamsUseCaseUseCase.PublicServiceAnnouncement,
+            _ => (TenDlcUpdateCampaignParamsUseCaseUseCase)(-1),
+        };
+    }
+
+    public override void Write(
+        Utf8JsonWriter writer,
+        TenDlcUpdateCampaignParamsUseCaseUseCase value,
+        JsonSerializerOptions options
+    )
+    {
+        JsonSerializer.Serialize(
+            writer,
+            value switch
+            {
+                TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing => "MARKETING",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.AccountNotification =>
+                    "ACCOUNT_NOTIFICATION",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.CustomerCare => "CUSTOMER_CARE",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.FraudAlert => "FRAUD_ALERT",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.V2Fa => "2FA",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.DeliveryNotification =>
+                    "DELIVERY_NOTIFICATION",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.SecurityAlert => "SECURITY_ALERT",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.M2M => "M2M",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.HigherEducation => "HIGHER_EDUCATION",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.PollingVoting => "POLLING_VOTING",
+                TenDlcUpdateCampaignParamsUseCaseUseCase.PublicServiceAnnouncement =>
+                    "PUBLIC_SERVICE_ANNOUNCEMENT",
+                _ => throw new SentInvalidDataException(
+                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
+                ),
+            },
+            options
+        );
     }
 }

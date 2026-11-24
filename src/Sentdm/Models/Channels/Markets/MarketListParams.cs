@@ -6,49 +6,25 @@ using System.Net.Http;
 using System.Text.Json;
 using Sentdm.Core;
 
-namespace Sentdm.Models.Channels.Sms;
+namespace Sentdm.Models.Channels.Markets;
 
 /// <summary>
-/// Reads one market you send in — its sender, where that sender stands, and everything
-/// its compliance holds.
+/// Every market you send SMS in, each with its sender, where that sender stands,
+/// and what its compliance holds.
 ///
-/// <para>## What `compliance` carries</para>
+/// <para>The same entries `GET /v3/channels` reports under `sms`, and the same shape
+/// `GET /v3/channels/sms/{country}/{type}` returns for one of them — so a list, a
+/// member read and the all-channels read cannot describe a market differently.</para>
 ///
-/// <para>A market that registers with a compliance regime reports `brand` — the
-/// identity the registration is filed against — and `campaign`, the programme filed
-/// against it. Each carries `inherit`, saying whether it is yours or your organization's.</para>
-///
-/// <para>A market that registers with nobody has neither, so **both keys are absent**
-/// rather than null: absent says this market does not ask, where null would say it
-/// asks and you supplied nothing. It reports `documents` instead.</para>
-///
-/// <para>`GET /v3/compliance/requirements` says what a market demands of any new
-/// customer; this says what you gave it.</para>
-///
-/// <para>## Writing it back</para>
-///
-/// <para>**`PATCH` this same path**, with the `compliance` object from this response:</para>
-///
-/// <para>```json { "compliance": { "brand": { "tax_id": "12-3456789" } } } ```</para>
-///
-/// <para>Nothing else to learn — what comes back can be sent back, an omitted key
-/// is left alone. There is no sub-resource for either half: both are singletons
-/// of the market, so both are written here.</para>
-///
-/// <para>`GET /v3/compliance/requirements` says what a market demands of anybody;
-/// this says what you gave it.</para>
-///
-/// <para>Send `x-profile-id` with an organization key to read one of your profiles' markets.</para>
+/// <para>Send `x-profile-id` with an organization key to list one of your profiles' markets.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
-public record class SmsRetrieveParams : ParamsBase
+public record class MarketListParams : ParamsBase
 {
-    public required string Country { get; init; }
-
-    public string? Type { get; init; }
+    public string? Channel { get; init; }
 
     public string? XProfileID
     {
@@ -68,19 +44,18 @@ public record class SmsRetrieveParams : ParamsBase
         }
     }
 
-    public SmsRetrieveParams() { }
+    public MarketListParams() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public SmsRetrieveParams(SmsRetrieveParams smsRetrieveParams)
-        : base(smsRetrieveParams)
+    public MarketListParams(MarketListParams marketListParams)
+        : base(marketListParams)
     {
-        this.Country = smsRetrieveParams.Country;
-        this.Type = smsRetrieveParams.Type;
+        this.Channel = marketListParams.Channel;
     }
 #pragma warning restore CS8618
 
-    public SmsRetrieveParams(
+    public MarketListParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -91,33 +66,29 @@ public record class SmsRetrieveParams : ParamsBase
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    SmsRetrieveParams(
+    MarketListParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        string country,
-        string type
+        string channel
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this.Country = country;
-        this.Type = type;
+        this.Channel = channel;
     }
 #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
-    public static SmsRetrieveParams FromRawUnchecked(
+    public static MarketListParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        string country,
-        string type
+        string channel
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            country,
-            type
+            channel
         );
     }
 
@@ -126,8 +97,7 @@ public record class SmsRetrieveParams : ParamsBase
             FriendlyJsonPrinter.PrintValue(
                 new Dictionary<string, JsonElement>()
                 {
-                    ["Country"] = JsonSerializer.SerializeToElement(this.Country),
-                    ["Type"] = JsonSerializer.SerializeToElement(this.Type),
+                    ["Channel"] = JsonSerializer.SerializeToElement(this.Channel),
                     ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
                     ),
@@ -139,14 +109,13 @@ public record class SmsRetrieveParams : ParamsBase
             ModelBase.ToStringSerializerOptions
         );
 
-    public virtual bool Equals(SmsRetrieveParams? other)
+    public virtual bool Equals(MarketListParams? other)
     {
         if (other == null)
         {
             return false;
         }
-        return this.Country.Equals(other.Country)
-            && (this.Type?.Equals(other.Type) ?? other.Type == null)
+        return (this.Channel?.Equals(other.Channel) ?? other.Channel == null)
             && this._rawHeaderData.Equals(other._rawHeaderData)
             && this._rawQueryData.Equals(other._rawQueryData);
     }
@@ -155,7 +124,7 @@ public record class SmsRetrieveParams : ParamsBase
     {
         return new UriBuilder(
             options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/v3/channels/sms/{0}/{1}", this.Country, this.Type)
+                + string.Format("/v3/channels/{0}", this.Channel)
         )
         {
             Query = this.QueryString(options),

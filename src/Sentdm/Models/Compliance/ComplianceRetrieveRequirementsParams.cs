@@ -9,10 +9,14 @@ using Sentdm.Core;
 namespace Sentdm.Models.Compliance;
 
 /// <summary>
-/// **Call this first.** It returns what a channel, country and sender type demand
-/// before you can send there — and `setup[]`, the calls that satisfy those demands,
-/// in order, each with a body you can copy and send as it stands. You never have
-/// to track forty countries' rules yourself.
+/// **Deprecated.** Use `GET /v3/channels/{channel}/{country}/compliance` instead,
+/// and expect this to be removed in a future release. It answers exactly as before,
+/// so nothing needs to change today.
+///
+/// <para>**Call this first.** It returns what a channel, country and sender type
+/// demand before you can send there — and `setup[]`, the calls that satisfy those
+/// demands, in order, each with a body you can copy and send as it stands. You never
+/// have to track forty countries' rules yourself.</para>
 ///
 /// <para>## Channel</para>
 ///
@@ -79,6 +83,7 @@ namespace Sentdm.Models.Compliance;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class ComplianceRetrieveRequirementsParams : ParamsBase
 {
     /// <summary>

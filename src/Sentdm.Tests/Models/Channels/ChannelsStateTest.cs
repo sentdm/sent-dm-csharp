@@ -4,7 +4,7 @@ using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Channels;
 using Sentdm.Models.Channels.Rcs;
-using Sms = Sentdm.Models.Channels.Sms;
+using Markets = Sentdm.Models.Channels.Markets;
 using Voice = Sentdm.Models.Channels.Voice;
 using Whatsapp = Sentdm.Models.Channels.Whatsapp;
 
@@ -111,7 +111,7 @@ public class ChannelsStateTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -189,7 +189,7 @@ public class ChannelsStateTest : TestBase
             TermsAndConditionsUrl = "terms_and_conditions_url",
             WebsiteUrl = "website_url",
         };
-        List<Sms::SmsMarket> expectedSms =
+        List<Markets::ChannelMarket> expectedSms =
         [
             new()
             {
@@ -234,7 +234,7 @@ public class ChannelsStateTest : TestBase
                 ],
                 Reason = "reason",
                 ReasonCode = "reason_code",
-                Status = Sms::Status.Provisioning,
+                Status = Markets::Status.Provisioning,
             },
         ];
         List<Voice::VoiceNumber> expectedVoice =
@@ -384,7 +384,7 @@ public class ChannelsStateTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -521,7 +521,7 @@ public class ChannelsStateTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -606,7 +606,7 @@ public class ChannelsStateTest : TestBase
             TermsAndConditionsUrl = "terms_and_conditions_url",
             WebsiteUrl = "website_url",
         };
-        List<Sms::SmsMarket> expectedSms =
+        List<Markets::ChannelMarket> expectedSms =
         [
             new()
             {
@@ -651,7 +651,7 @@ public class ChannelsStateTest : TestBase
                 ],
                 Reason = "reason",
                 ReasonCode = "reason_code",
-                Status = Sms::Status.Provisioning,
+                Status = Markets::Status.Provisioning,
             },
         ];
         List<Voice::VoiceNumber> expectedVoice =
@@ -801,7 +801,7 @@ public class ChannelsStateTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -1149,7 +1149,7 @@ public class ChannelsStateTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -1236,7 +1236,7 @@ public class ChannelsStateTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -1318,7 +1318,7 @@ public class ChannelsStateTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -1409,7 +1409,7 @@ public class ChannelsStateTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -1534,7 +1534,7 @@ public class ChannelsStateTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =

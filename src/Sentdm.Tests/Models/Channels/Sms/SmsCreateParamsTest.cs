@@ -21,7 +21,7 @@ public class SmsCreateParamsTest : TestBase
             {
                 Brand = new()
                 {
-                    BusinessName = "business_name",
+                    BusinessName = "xxx",
                     City = "city",
                     ContactEmail = "dev@stainless.com",
                     ContactName = "contact_name",
@@ -34,21 +34,21 @@ public class SmsCreateParamsTest : TestBase
                     PostalCode = "postal_code",
                     State = "state",
                     Street = "street",
-                    TaxID = "tax_id",
+                    TaxID = "xx",
                     TaxIDType = "tax_id_type",
                     Website = "website",
                 },
                 Campaign = new()
                 {
-                    Description = "description",
+                    Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     HelpKeywords = "help_keywords",
-                    HelpMessage = "help_message",
+                    HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                     Inherit = true,
                     MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     OptInKeywords = "opt_in_keywords",
-                    OptInMessage = "opt_in_message",
+                    OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                     OptOutKeywords = "opt_out_keywords",
-                    OptOutMessage = "opt_out_message",
+                    OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                     PrivacyPolicyLink = "privacy_policy_link",
                     TermsAndConditionsLink = "terms_and_conditions_link",
                     UseCases =
@@ -62,7 +62,6 @@ public class SmsCreateParamsTest : TestBase
                     Volume = "volume",
                 },
             },
-            Country = "US",
             Numbers = [new() { AreaCode = "area_code", Quantity = 0 }],
             Sandbox = false,
             SenderValue = null,
@@ -76,7 +75,7 @@ public class SmsCreateParamsTest : TestBase
         {
             Brand = new()
             {
-                BusinessName = "business_name",
+                BusinessName = "xxx",
                 City = "city",
                 ContactEmail = "dev@stainless.com",
                 ContactName = "contact_name",
@@ -89,21 +88,21 @@ public class SmsCreateParamsTest : TestBase
                 PostalCode = "postal_code",
                 State = "state",
                 Street = "street",
-                TaxID = "tax_id",
+                TaxID = "xx",
                 TaxIDType = "tax_id_type",
                 Website = "website",
             },
             Campaign = new()
             {
-                Description = "description",
+                Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 HelpKeywords = "help_keywords",
-                HelpMessage = "help_message",
+                HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                 Inherit = true,
                 MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 OptInKeywords = "opt_in_keywords",
-                OptInMessage = "opt_in_message",
+                OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                 OptOutKeywords = "opt_out_keywords",
-                OptOutMessage = "opt_out_message",
+                OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                 PrivacyPolicyLink = "privacy_policy_link",
                 TermsAndConditionsLink = "terms_and_conditions_link",
                 UseCases =
@@ -117,7 +116,6 @@ public class SmsCreateParamsTest : TestBase
                 Volume = "volume",
             },
         };
-        string expectedCountry = "US";
         List<SmsNumberRequest> expectedNumbers = [new() { AreaCode = "area_code", Quantity = 0 }];
         bool expectedSandbox = false;
         string expectedIdempotencyKey = "req_abc123_retry1";
@@ -131,7 +129,6 @@ public class SmsCreateParamsTest : TestBase
             Assert.Equal(expectedAreaCodes[i], parameters.AreaCodes[i]);
         }
         Assert.Equal(expectedCompliance, parameters.Compliance);
-        Assert.Equal(expectedCountry, parameters.Country);
         Assert.NotNull(parameters.Numbers);
         Assert.Equal(expectedNumbers.Count, parameters.Numbers.Count);
         for (int i = 0; i < expectedNumbers.Count; i++)
@@ -157,8 +154,6 @@ public class SmsCreateParamsTest : TestBase
 
         Assert.Null(parameters.Compliance);
         Assert.False(parameters.RawBodyData.ContainsKey("compliance"));
-        Assert.Null(parameters.Country);
-        Assert.False(parameters.RawBodyData.ContainsKey("country"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -179,7 +174,6 @@ public class SmsCreateParamsTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             Compliance = null,
-            Country = null,
             Sandbox = null,
             IdempotencyKey = null,
             XProfileID = null,
@@ -187,8 +181,6 @@ public class SmsCreateParamsTest : TestBase
 
         Assert.Null(parameters.Compliance);
         Assert.False(parameters.RawBodyData.ContainsKey("compliance"));
-        Assert.Null(parameters.Country);
-        Assert.False(parameters.RawBodyData.ContainsKey("country"));
         Assert.Null(parameters.Sandbox);
         Assert.False(parameters.RawBodyData.ContainsKey("sandbox"));
         Assert.Null(parameters.IdempotencyKey);
@@ -207,7 +199,7 @@ public class SmsCreateParamsTest : TestBase
             {
                 Brand = new()
                 {
-                    BusinessName = "business_name",
+                    BusinessName = "xxx",
                     City = "city",
                     ContactEmail = "dev@stainless.com",
                     ContactName = "contact_name",
@@ -220,21 +212,21 @@ public class SmsCreateParamsTest : TestBase
                     PostalCode = "postal_code",
                     State = "state",
                     Street = "street",
-                    TaxID = "tax_id",
+                    TaxID = "xx",
                     TaxIDType = "tax_id_type",
                     Website = "website",
                 },
                 Campaign = new()
                 {
-                    Description = "description",
+                    Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     HelpKeywords = "help_keywords",
-                    HelpMessage = "help_message",
+                    HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                     Inherit = true,
                     MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     OptInKeywords = "opt_in_keywords",
-                    OptInMessage = "opt_in_message",
+                    OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                     OptOutKeywords = "opt_out_keywords",
-                    OptOutMessage = "opt_out_message",
+                    OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                     PrivacyPolicyLink = "privacy_policy_link",
                     TermsAndConditionsLink = "terms_and_conditions_link",
                     UseCases =
@@ -248,7 +240,6 @@ public class SmsCreateParamsTest : TestBase
                     Volume = "volume",
                 },
             },
-            Country = "US",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -272,7 +263,7 @@ public class SmsCreateParamsTest : TestBase
             {
                 Brand = new()
                 {
-                    BusinessName = "business_name",
+                    BusinessName = "xxx",
                     City = "city",
                     ContactEmail = "dev@stainless.com",
                     ContactName = "contact_name",
@@ -285,21 +276,21 @@ public class SmsCreateParamsTest : TestBase
                     PostalCode = "postal_code",
                     State = "state",
                     Street = "street",
-                    TaxID = "tax_id",
+                    TaxID = "xx",
                     TaxIDType = "tax_id_type",
                     Website = "website",
                 },
                 Campaign = new()
                 {
-                    Description = "description",
+                    Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     HelpKeywords = "help_keywords",
-                    HelpMessage = "help_message",
+                    HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                     Inherit = true,
                     MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     OptInKeywords = "opt_in_keywords",
-                    OptInMessage = "opt_in_message",
+                    OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                     OptOutKeywords = "opt_out_keywords",
-                    OptOutMessage = "opt_out_message",
+                    OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                     PrivacyPolicyLink = "privacy_policy_link",
                     TermsAndConditionsLink = "terms_and_conditions_link",
                     UseCases =
@@ -313,7 +304,6 @@ public class SmsCreateParamsTest : TestBase
                     Volume = "volume",
                 },
             },
-            Country = "US",
             Sandbox = false,
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -372,7 +362,7 @@ public class SmsCreateParamsTest : TestBase
             {
                 Brand = new()
                 {
-                    BusinessName = "business_name",
+                    BusinessName = "xxx",
                     City = "city",
                     ContactEmail = "dev@stainless.com",
                     ContactName = "contact_name",
@@ -385,21 +375,21 @@ public class SmsCreateParamsTest : TestBase
                     PostalCode = "postal_code",
                     State = "state",
                     Street = "street",
-                    TaxID = "tax_id",
+                    TaxID = "xx",
                     TaxIDType = "tax_id_type",
                     Website = "website",
                 },
                 Campaign = new()
                 {
-                    Description = "description",
+                    Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     HelpKeywords = "help_keywords",
-                    HelpMessage = "help_message",
+                    HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                     Inherit = true,
                     MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     OptInKeywords = "opt_in_keywords",
-                    OptInMessage = "opt_in_message",
+                    OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                     OptOutKeywords = "opt_out_keywords",
-                    OptOutMessage = "opt_out_message",
+                    OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                     PrivacyPolicyLink = "privacy_policy_link",
                     TermsAndConditionsLink = "terms_and_conditions_link",
                     UseCases =
@@ -413,7 +403,6 @@ public class SmsCreateParamsTest : TestBase
                     Volume = "volume",
                 },
             },
-            Country = "US",
             Numbers = [new() { AreaCode = "area_code", Quantity = 0 }],
             Sandbox = false,
             SenderValue = null,
