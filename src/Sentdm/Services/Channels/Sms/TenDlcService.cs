@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
 using Sentdm.Exceptions;
-using Sentdm.Models.Channels.Sms;
+using Sentdm.Models.Channels.Markets;
 using Sentdm.Models.Channels.Sms.TenDlc;
 
 namespace Sentdm.Services.Channels.Sms;
@@ -36,7 +36,7 @@ public sealed class TenDlcService : ITenDlcService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfSmsMarket> AddCampaign(
+    public async Task<ApiResponseOfChannelMarket> AddCampaign(
         TenDlcAddCampaignParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -48,31 +48,19 @@ public sealed class TenDlcService : ITenDlcService
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfSmsMarket> AddNumbers(
-        TenDlcAddNumbersParams parameters,
+    public async Task<TenDlcListCampaignsResponse> ListCampaigns(
+        TenDlcListCampaignsParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
         using var response = await this
-            .WithRawResponse.AddNumbers(parameters, cancellationToken)
+            .WithRawResponse.ListCampaigns(parameters, cancellationToken)
             .ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public async Task<ApiResponseOfSuppliedCompliance> RetrieveCompliance(
-        TenDlcRetrieveComplianceParams? parameters = null,
-        CancellationToken cancellationToken = default
-    )
-    {
-        using var response = await this
-            .WithRawResponse.RetrieveCompliance(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
-    public async Task<ApiResponseOfSmsMarket> UpdateCampaign(
+    public async Task<ApiResponseOfChannelMarket> UpdateCampaign(
         TenDlcUpdateCampaignParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -84,7 +72,7 @@ public sealed class TenDlcService : ITenDlcService
     }
 
     /// <inheritdoc/>
-    public Task<ApiResponseOfSmsMarket> UpdateCampaign(
+    public Task<ApiResponseOfChannelMarket> UpdateCampaign(
         string campaignID,
         TenDlcUpdateCampaignParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -113,7 +101,7 @@ public sealed class TenDlcServiceWithRawResponse : ITenDlcServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfSmsMarket>> AddCampaign(
+    public async Task<HttpResponse<ApiResponseOfChannelMarket>> AddCampaign(
         TenDlcAddCampaignParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -128,55 +116,27 @@ public sealed class TenDlcServiceWithRawResponse : ITenDlcServiceWithRawResponse
             response,
             async (token) =>
             {
-                var apiResponseOfSmsMarket = await response
-                    .Deserialize<ApiResponseOfSmsMarket>(token)
+                var apiResponseOfChannelMarket = await response
+                    .Deserialize<ApiResponseOfChannelMarket>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfSmsMarket.Validate();
+                    apiResponseOfChannelMarket.Validate();
                 }
-                return apiResponseOfSmsMarket;
+                return apiResponseOfChannelMarket;
             }
         );
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfSmsMarket>> AddNumbers(
-        TenDlcAddNumbersParams parameters,
-        CancellationToken cancellationToken = default
-    )
-    {
-        HttpRequest<TenDlcAddNumbersParams> request = new()
-        {
-            Method = HttpMethod.Post,
-            Params = parameters,
-        };
-        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var apiResponseOfSmsMarket = await response
-                    .Deserialize<ApiResponseOfSmsMarket>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    apiResponseOfSmsMarket.Validate();
-                }
-                return apiResponseOfSmsMarket;
-            }
-        );
-    }
-
-    /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfSuppliedCompliance>> RetrieveCompliance(
-        TenDlcRetrieveComplianceParams? parameters = null,
+    public async Task<HttpResponse<TenDlcListCampaignsResponse>> ListCampaigns(
+        TenDlcListCampaignsParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
         parameters ??= new();
 
-        HttpRequest<TenDlcRetrieveComplianceParams> request = new()
+        HttpRequest<TenDlcListCampaignsParams> request = new()
         {
             Method = HttpMethod.Get,
             Params = parameters,
@@ -186,20 +146,20 @@ public sealed class TenDlcServiceWithRawResponse : ITenDlcServiceWithRawResponse
             response,
             async (token) =>
             {
-                var apiResponseOfSuppliedCompliance = await response
-                    .Deserialize<ApiResponseOfSuppliedCompliance>(token)
+                var deserializedResponse = await response
+                    .Deserialize<TenDlcListCampaignsResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfSuppliedCompliance.Validate();
+                    deserializedResponse.Validate();
                 }
-                return apiResponseOfSuppliedCompliance;
+                return deserializedResponse;
             }
         );
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<ApiResponseOfSmsMarket>> UpdateCampaign(
+    public async Task<HttpResponse<ApiResponseOfChannelMarket>> UpdateCampaign(
         TenDlcUpdateCampaignParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -219,20 +179,20 @@ public sealed class TenDlcServiceWithRawResponse : ITenDlcServiceWithRawResponse
             response,
             async (token) =>
             {
-                var apiResponseOfSmsMarket = await response
-                    .Deserialize<ApiResponseOfSmsMarket>(token)
+                var apiResponseOfChannelMarket = await response
+                    .Deserialize<ApiResponseOfChannelMarket>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    apiResponseOfSmsMarket.Validate();
+                    apiResponseOfChannelMarket.Validate();
                 }
-                return apiResponseOfSmsMarket;
+                return apiResponseOfChannelMarket;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<ApiResponseOfSmsMarket>> UpdateCampaign(
+    public Task<HttpResponse<ApiResponseOfChannelMarket>> UpdateCampaign(
         string campaignID,
         TenDlcUpdateCampaignParams? parameters = null,
         CancellationToken cancellationToken = default

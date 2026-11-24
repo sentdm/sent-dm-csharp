@@ -143,6 +143,22 @@ public sealed record class MessageEventPayload : JsonModel
     }
 
     /// <summary>
+    /// When this message is another send of a message you sent earlier, the id of
+    /// that original message; omitted for every other message. The new send has its
+    /// own message_id, so this ties its events back to the message you sent. Always
+    /// the first message, however many sends lie between them.
+    /// </summary>
+    public string? ParentMessageID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("parent_message_id");
+        }
+        init { this._rawData.Set("parent_message_id", value); }
+    }
+
+    /// <summary>
     /// A human-readable sentence for ReasonCode, for example "The recipient is not
     /// registered on this channel". Omitted whenever reason_code is.
     /// </summary>
@@ -208,6 +224,35 @@ public sealed record class MessageEventPayload : JsonModel
     }
 
     /// <summary>
+    /// The Sent agent (Sent Agents) that sent this message, when one did. Not the
+    /// RCS agent_id above: that names the RCS sender agent, this names the autonomous
+    /// agent running on the account.
+    /// </summary>
+    public string? SentAgentID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("sent_agent_id");
+        }
+        init { this._rawData.Set("sent_agent_id", value); }
+    }
+
+    /// <summary>
+    /// The conversation (agent × contact) the message belongs to, when a Sent agent
+    /// sent it.
+    /// </summary>
+    public string? SentInstanceID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("sent_instance_id");
+        }
+        init { this._rawData.Set("sent_instance_id", value); }
+    }
+
+    /// <summary>
     /// The template the message was sent from, when it was sent from one.
     /// </summary>
     public string? TemplateID
@@ -264,10 +309,13 @@ public sealed record class MessageEventPayload : JsonModel
         _ = this.Channel;
         _ = this.MessageID;
         _ = this.OutboundNumber;
+        _ = this.ParentMessageID;
         _ = this.Reason;
         _ = this.ReasonCode;
         _ = this.ScheduleReason;
         _ = this.ScheduledAt;
+        _ = this.SentAgentID;
+        _ = this.SentInstanceID;
         _ = this.TemplateID;
         _ = this.TemplateName;
         _ = this.UpdatedAt;

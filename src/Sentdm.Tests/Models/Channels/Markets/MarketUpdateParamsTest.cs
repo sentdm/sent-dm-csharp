@@ -1,24 +1,26 @@
 using System;
 using System.Net.Http;
 using System.Text.Json;
+using Sentdm.Models.Channels.Markets;
 using Sentdm.Models.Channels.Sms;
 
-namespace Sentdm.Tests.Models.Channels.Sms;
+namespace Sentdm.Tests.Models.Channels.Markets;
 
-public class SmsUpdateParamsTest : TestBase
+public class MarketUpdateParamsTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new SmsUpdateParams
+        var parameters = new MarketUpdateParams
         {
+            Channel = "sms",
             Country = "US",
             Type = "ten_dlc",
             Compliance = new()
             {
                 Brand = new()
                 {
-                    BusinessName = "business_name",
+                    BusinessName = "xxx",
                     City = "city",
                     ContactEmail = "dev@stainless.com",
                     ContactName = "contact_name",
@@ -31,21 +33,21 @@ public class SmsUpdateParamsTest : TestBase
                     PostalCode = "postal_code",
                     State = "state",
                     Street = "street",
-                    TaxID = "tax_id",
+                    TaxID = "xx",
                     TaxIDType = "tax_id_type",
                     Website = "website",
                 },
                 Campaign = new()
                 {
-                    Description = "description",
+                    Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     HelpKeywords = "help_keywords",
-                    HelpMessage = "help_message",
+                    HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                     Inherit = true,
                     MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     OptInKeywords = "opt_in_keywords",
-                    OptInMessage = "opt_in_message",
+                    OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                     OptOutKeywords = "opt_out_keywords",
-                    OptOutMessage = "opt_out_message",
+                    OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                     PrivacyPolicyLink = "privacy_policy_link",
                     TermsAndConditionsLink = "terms_and_conditions_link",
                     UseCases =
@@ -64,13 +66,14 @@ public class SmsUpdateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        string expectedChannel = "sms";
         string expectedCountry = "US";
         string expectedType = "ten_dlc";
         MarketCompliance expectedCompliance = new()
         {
             Brand = new()
             {
-                BusinessName = "business_name",
+                BusinessName = "xxx",
                 City = "city",
                 ContactEmail = "dev@stainless.com",
                 ContactName = "contact_name",
@@ -83,21 +86,21 @@ public class SmsUpdateParamsTest : TestBase
                 PostalCode = "postal_code",
                 State = "state",
                 Street = "street",
-                TaxID = "tax_id",
+                TaxID = "xx",
                 TaxIDType = "tax_id_type",
                 Website = "website",
             },
             Campaign = new()
             {
-                Description = "description",
+                Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 HelpKeywords = "help_keywords",
-                HelpMessage = "help_message",
+                HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                 Inherit = true,
                 MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 OptInKeywords = "opt_in_keywords",
-                OptInMessage = "opt_in_message",
+                OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                 OptOutKeywords = "opt_out_keywords",
-                OptOutMessage = "opt_out_message",
+                OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                 PrivacyPolicyLink = "privacy_policy_link",
                 TermsAndConditionsLink = "terms_and_conditions_link",
                 UseCases =
@@ -115,6 +118,7 @@ public class SmsUpdateParamsTest : TestBase
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
+        Assert.Equal(expectedChannel, parameters.Channel);
         Assert.Equal(expectedCountry, parameters.Country);
         Assert.Equal(expectedType, parameters.Type);
         Assert.Equal(expectedCompliance, parameters.Compliance);
@@ -126,7 +130,12 @@ public class SmsUpdateParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new SmsUpdateParams { Country = "US", Type = "ten_dlc" };
+        var parameters = new MarketUpdateParams
+        {
+            Channel = "sms",
+            Country = "US",
+            Type = "ten_dlc",
+        };
 
         Assert.Null(parameters.Compliance);
         Assert.False(parameters.RawBodyData.ContainsKey("compliance"));
@@ -141,8 +150,9 @@ public class SmsUpdateParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
-        var parameters = new SmsUpdateParams
+        var parameters = new MarketUpdateParams
         {
+            Channel = "sms",
             Country = "US",
             Type = "ten_dlc",
 
@@ -166,7 +176,12 @@ public class SmsUpdateParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        SmsUpdateParams parameters = new() { Country = "US", Type = "ten_dlc" };
+        MarketUpdateParams parameters = new()
+        {
+            Channel = "sms",
+            Country = "US",
+            Type = "ten_dlc",
+        };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
@@ -179,8 +194,9 @@ public class SmsUpdateParamsTest : TestBase
     public void AddHeadersToRequest_Works()
     {
         HttpRequestMessage requestMessage = new();
-        SmsUpdateParams parameters = new()
+        MarketUpdateParams parameters = new()
         {
+            Channel = "sms",
             Country = "US",
             Type = "ten_dlc",
             IdempotencyKey = "req_abc123_retry1",
@@ -199,15 +215,16 @@ public class SmsUpdateParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new SmsUpdateParams
+        var parameters = new MarketUpdateParams
         {
+            Channel = "sms",
             Country = "US",
             Type = "ten_dlc",
             Compliance = new()
             {
                 Brand = new()
                 {
-                    BusinessName = "business_name",
+                    BusinessName = "xxx",
                     City = "city",
                     ContactEmail = "dev@stainless.com",
                     ContactName = "contact_name",
@@ -220,21 +237,21 @@ public class SmsUpdateParamsTest : TestBase
                     PostalCode = "postal_code",
                     State = "state",
                     Street = "street",
-                    TaxID = "tax_id",
+                    TaxID = "xx",
                     TaxIDType = "tax_id_type",
                     Website = "website",
                 },
                 Campaign = new()
                 {
-                    Description = "description",
+                    Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     HelpKeywords = "help_keywords",
-                    HelpMessage = "help_message",
+                    HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                     Inherit = true,
                     MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     OptInKeywords = "opt_in_keywords",
-                    OptInMessage = "opt_in_message",
+                    OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                     OptOutKeywords = "opt_out_keywords",
-                    OptOutMessage = "opt_out_message",
+                    OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                     PrivacyPolicyLink = "privacy_policy_link",
                     TermsAndConditionsLink = "terms_and_conditions_link",
                     UseCases =
@@ -253,7 +270,7 @@ public class SmsUpdateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        SmsUpdateParams copied = new(parameters);
+        MarketUpdateParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
     }

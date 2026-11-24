@@ -32,6 +32,22 @@ public record class WebhookCreateParams : ParamsBase
         get { return this._rawBodyData.Freeze(); }
     }
 
+    /// <summary>
+    /// One of your Sent agents: the webhook then receives only that agent's events,
+    /// its agent events and the messages it sent or received, and is never inheritable:
+    /// is_inheritable set with it is refused. Only the account the agent runs on
+    /// can set it, and only on a version 2 webhook.
+    /// </summary>
+    public string? AgentID
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("agent_id");
+        }
+        init { this._rawBodyData.Set("agent_id", value); }
+    }
+
     public string? DisplayName
     {
         get

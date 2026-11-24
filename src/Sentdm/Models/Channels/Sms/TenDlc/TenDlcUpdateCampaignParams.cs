@@ -16,14 +16,13 @@ namespace Sentdm.Models.Channels.Sms.TenDlc;
 ///
 /// <para>## What to send</para>
 ///
-/// <para>The fields to change, at the top level of the body, under the `compliance.campaign.*`
-/// keys `GET /v3/compliance/requirements?country=US&amp;type=TEN_DLC` lists, without
-/// that prefix. A field you leave out keeps its value, and a rejected one is keyed
-/// by its name. `id` and `"inherit": false` are ignored, so an entry of `compliance.campaigns`
-/// can be sent as read; `"inherit": true` is `400`, because this call changes a campaign's
-/// fields, not whose campaign you run on. The campaign only: add numbers with `POST
-/// /v3/channels/sms/numbers/US/TEN_DLC`, and change the brand or documents with
-/// `PATCH /v3/channels/sms/US/TEN_DLC`.</para>
+/// <para>The fields to change, at the top level of the body, under their keys (`description`,
+/// `message_flow`, `use_cases`, `help_message`, …). A field you leave out keeps its
+/// value, and a rejected one is keyed by its name. `id` and `"inherit": false` are
+/// ignored, so an entry of `campaigns` can be sent as read; `"inherit": true` is
+/// `400`, because this call changes a campaign's fields, not whose campaign you run
+/// on. The campaign only: add numbers with `POST /v3/channels/sms/US/TEN_DLC/numbers`,
+/// and change the brand or documents with `PATCH /v3/channels/sms/US/TEN_DLC`.</para>
 ///
 /// <para>## When it can be changed</para>
 ///
@@ -326,10 +325,12 @@ public record class TenDlcUpdateCampaignParams : ParamsBase
     }
 
     /// <summary>
-    /// Expected monthly volume. Decides how the campaign registers and which fee
-    /// tier applies: below the low-volume threshold it registers as LOW_VOLUME with
-    /// sub-use-cases, above it as a single use case or MIXED. Omitting it registers
-    /// the campaign at the higher-fee standard tier.
+    /// Expected monthly volume. Required whenever the campaign's fields are written.
+    /// A whole number of messages, e.g. 1000 or 10000. Decides how the campaign registers
+    /// and which fee tier applies: below the low-volume threshold it registers as
+    /// LOW_VOLUME with sub-use-cases, above it as a single use case or MIXED. Omitting
+    /// it registers the campaign at the higher-fee standard tier. Required when
+    /// `compliance.campaign.inherit != true`, whenever its block is written.
     /// </summary>
     public string? Volume
     {
@@ -475,10 +476,7 @@ public record class TenDlcUpdateCampaignParams : ParamsBase
     {
         return new UriBuilder(
             options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format(
-                    "/v3/channels/sms/compliances/US/TEN_DLC/campaigns/{0}",
-                    this.CampaignID
-                )
+                + string.Format("/v3/channels/sms/US/TEN_DLC/campaigns/{0}", this.CampaignID)
         )
         {
             Query = this.QueryString(options),

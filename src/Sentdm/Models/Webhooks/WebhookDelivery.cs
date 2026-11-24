@@ -278,7 +278,8 @@ public record class EventData : ModelBase
                 channelEvent: (x) => x.Event,
                 contactEvent: (x) => x.Event,
                 linkEvent: (x) => x.Event,
-                callEvent: (x) => x.Event
+                callEvent: (x) => x.Event,
+                agentEvent: (x) => x.Event
             );
         }
     }
@@ -294,7 +295,8 @@ public record class EventData : ModelBase
                 channelEvent: (x) => x.Field,
                 contactEvent: (x) => x.Field,
                 linkEvent: (x) => x.Field,
-                callEvent: (x) => x.Field
+                callEvent: (x) => x.Field,
+                agentEvent: (x) => x.Field
             );
         }
     }
@@ -310,7 +312,8 @@ public record class EventData : ModelBase
                 channelEvent: (x) => x.RequestID,
                 contactEvent: (x) => x.RequestID,
                 linkEvent: (x) => x.RequestID,
-                callEvent: (x) => x.RequestID
+                callEvent: (x) => x.RequestID,
+                agentEvent: (x) => x.RequestID
             );
         }
     }
@@ -326,7 +329,8 @@ public record class EventData : ModelBase
                 channelEvent: (x) => x.Timestamp,
                 contactEvent: (x) => x.Timestamp,
                 linkEvent: (x) => x.Timestamp,
-                callEvent: (x) => x.Timestamp
+                callEvent: (x) => x.Timestamp,
+                agentEvent: (x) => x.Timestamp
             );
         }
     }
@@ -368,6 +372,12 @@ public record class EventData : ModelBase
     }
 
     public EventData(CallEvent value, JsonElement? element = null)
+    {
+        this.Value = value;
+        this._element = element;
+    }
+
+    public EventData(AgentEvent value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
@@ -526,6 +536,27 @@ public record class EventData : ModelBase
     }
 
     /// <summary>
+    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+    /// type <see cref="AgentEvent"/>.
+    ///
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+    ///
+    /// <example>
+    /// <code>
+    /// if (instance.TryPickAgentEvent(out var value)) {
+    ///     // `value` is of type `AgentEvent`
+    ///     Console.WriteLine(value);
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
+    public bool TryPickAgentEvent([NotNullWhen(true)] out AgentEvent? value)
+    {
+        value = this.Value as AgentEvent;
+        return value != null;
+    }
+
+    /// <summary>
     /// Calls the function parameter corresponding to the variant the instance was constructed with.
     ///
     /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
@@ -545,7 +576,8 @@ public record class EventData : ModelBase
     ///     (ChannelEvent value) =&gt; {...},
     ///     (ContactEvent value) =&gt; {...},
     ///     (LinkEvent value) =&gt; {...},
-    ///     (CallEvent value) =&gt; {...}
+    ///     (CallEvent value) =&gt; {...},
+    ///     (AgentEvent value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -557,7 +589,8 @@ public record class EventData : ModelBase
         Action<ChannelEvent> channelEvent,
         Action<ContactEvent> contactEvent,
         Action<LinkEvent> linkEvent,
-        Action<CallEvent> callEvent
+        Action<CallEvent> callEvent,
+        Action<AgentEvent> agentEvent
     )
     {
         switch (this.Value)
@@ -582,6 +615,9 @@ public record class EventData : ModelBase
                 break;
             case CallEvent value:
                 callEvent(value);
+                break;
+            case AgentEvent value:
+                agentEvent(value);
                 break;
             default:
                 throw new SentInvalidDataException("Data did not match any variant of EventData");
@@ -609,7 +645,8 @@ public record class EventData : ModelBase
     ///     (ChannelEvent value) =&gt; {...},
     ///     (ContactEvent value) =&gt; {...},
     ///     (LinkEvent value) =&gt; {...},
-    ///     (CallEvent value) =&gt; {...}
+    ///     (CallEvent value) =&gt; {...},
+    ///     (AgentEvent value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -621,7 +658,8 @@ public record class EventData : ModelBase
         Func<ChannelEvent, T> channelEvent,
         Func<ContactEvent, T> contactEvent,
         Func<LinkEvent, T> linkEvent,
-        Func<CallEvent, T> callEvent
+        Func<CallEvent, T> callEvent,
+        Func<AgentEvent, T> agentEvent
     )
     {
         return this.Value switch
@@ -633,6 +671,7 @@ public record class EventData : ModelBase
             ContactEvent value => contactEvent(value),
             LinkEvent value => linkEvent(value),
             CallEvent value => callEvent(value),
+            AgentEvent value => agentEvent(value),
             _ => throw new SentInvalidDataException("Data did not match any variant of EventData"),
         };
     }
@@ -650,6 +689,8 @@ public record class EventData : ModelBase
     public static implicit operator EventData(LinkEvent value) => new(value);
 
     public static implicit operator EventData(CallEvent value) => new(value);
+
+    public static implicit operator EventData(AgentEvent value) => new(value);
 
     /// <summary>
     /// Validates that the instance was constructed with a known variant and that this variant is valid
@@ -674,7 +715,8 @@ public record class EventData : ModelBase
             (channelEvent) => channelEvent.Validate(),
             (contactEvent) => contactEvent.Validate(),
             (linkEvent) => linkEvent.Validate(),
-            (callEvent) => callEvent.Validate()
+            (callEvent) => callEvent.Validate(),
+            (agentEvent) => agentEvent.Validate()
         );
     }
 
@@ -705,6 +747,7 @@ public record class EventData : ModelBase
             ContactEvent _ => 4,
             LinkEvent _ => 5,
             CallEvent _ => 6,
+            AgentEvent _ => 7,
             _ => -1,
         };
     }
@@ -806,6 +849,20 @@ sealed class EventDataConverter : JsonConverter<EventData>
         try
         {
             var deserialized = JsonSerializer.Deserialize<CallEvent>(element, options);
+            if (deserialized != null)
+            {
+                deserialized.Validate();
+                return new(deserialized, element);
+            }
+        }
+        catch (Exception e) when (e is JsonException || e is SentInvalidDataException)
+        {
+            // ignore
+        }
+
+        try
+        {
+            var deserialized = JsonSerializer.Deserialize<AgentEvent>(element, options);
             if (deserialized != null)
             {
                 deserialized.Validate();

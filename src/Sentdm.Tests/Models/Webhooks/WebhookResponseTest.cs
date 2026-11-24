@@ -14,6 +14,7 @@ public class WebhookResponseTest : TestBase
         var model = new WebhookResponse
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ConsecutiveFailures = 0,
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -44,6 +45,7 @@ public class WebhookResponseTest : TestBase
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedAgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         int expectedConsecutiveFailures = 0;
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -74,6 +76,7 @@ public class WebhookResponseTest : TestBase
         long expectedWebhookVersion = 0;
 
         Assert.Equal(expectedID, model.ID);
+        Assert.Equal(expectedAgentID, model.AgentID);
         Assert.Equal(expectedConsecutiveFailures, model.ConsecutiveFailures);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedCustomerID, model.CustomerID);
@@ -115,6 +118,7 @@ public class WebhookResponseTest : TestBase
         var model = new WebhookResponse
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ConsecutiveFailures = 0,
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -159,6 +163,7 @@ public class WebhookResponseTest : TestBase
         var model = new WebhookResponse
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ConsecutiveFailures = 0,
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -196,6 +201,7 @@ public class WebhookResponseTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedAgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         int expectedConsecutiveFailures = 0;
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         string expectedCustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -226,6 +232,7 @@ public class WebhookResponseTest : TestBase
         long expectedWebhookVersion = 0;
 
         Assert.Equal(expectedID, deserialized.ID);
+        Assert.Equal(expectedAgentID, deserialized.AgentID);
         Assert.Equal(expectedConsecutiveFailures, deserialized.ConsecutiveFailures);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedCustomerID, deserialized.CustomerID);
@@ -267,6 +274,7 @@ public class WebhookResponseTest : TestBase
         var model = new WebhookResponse
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ConsecutiveFailures = 0,
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -304,6 +312,7 @@ public class WebhookResponseTest : TestBase
     {
         var model = new WebhookResponse
         {
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()
             {
                 { "foo", ["string"] },
@@ -353,6 +362,7 @@ public class WebhookResponseTest : TestBase
     {
         var model = new WebhookResponse
         {
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()
             {
                 { "foo", ["string"] },
@@ -379,6 +389,7 @@ public class WebhookResponseTest : TestBase
     {
         var model = new WebhookResponse
         {
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()
             {
                 { "foo", ["string"] },
@@ -442,6 +453,7 @@ public class WebhookResponseTest : TestBase
     {
         var model = new WebhookResponse
         {
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()
             {
                 { "foo", ["string"] },
@@ -496,6 +508,8 @@ public class WebhookResponseTest : TestBase
             WebhookVersion = 0,
         };
 
+        Assert.Null(model.AgentID);
+        Assert.False(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.EventFilters);
         Assert.False(model.RawData.ContainsKey("event_filters"));
         Assert.Null(model.LastDeliveryAttemptAt);
@@ -550,6 +564,7 @@ public class WebhookResponseTest : TestBase
             TimeoutSeconds = 0,
             WebhookVersion = 0,
 
+            AgentID = null,
             EventFilters = null,
             LastDeliveryAttemptAt = null,
             LastSuccessfulDeliveryAt = null,
@@ -558,6 +573,8 @@ public class WebhookResponseTest : TestBase
             UpdatedAt = null,
         };
 
+        Assert.Null(model.AgentID);
+        Assert.True(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.EventFilters);
         Assert.True(model.RawData.ContainsKey("event_filters"));
         Assert.Null(model.LastDeliveryAttemptAt);
@@ -590,6 +607,7 @@ public class WebhookResponseTest : TestBase
             TimeoutSeconds = 0,
             WebhookVersion = 0,
 
+            AgentID = null,
             EventFilters = null,
             LastDeliveryAttemptAt = null,
             LastSuccessfulDeliveryAt = null,
@@ -607,6 +625,7 @@ public class WebhookResponseTest : TestBase
         var model = new WebhookResponse
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ConsecutiveFailures = 0,
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

@@ -1,35 +1,42 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
 using Sentdm.Models.Webhooks;
 
-namespace Sentdm.Models.Channels.Sms;
+namespace Sentdm.Models.Channels.Markets;
 
 /// <summary>
 /// Standard API response envelope for all v3 endpoints
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<ApiResponseOfSmsMarket, ApiResponseOfSmsMarketFromRaw>))]
-public sealed record class ApiResponseOfSmsMarket : JsonModel
+[JsonConverter(
+    typeof(JsonModelConverter<
+        ApiResponseOfListOfChannelMarket,
+        ApiResponseOfListOfChannelMarketFromRaw
+    >)
+)]
+public sealed record class ApiResponseOfListOfChannelMarket : JsonModel
 {
     /// <summary>
-    /// One SMS market the profile sends in — its sender, where that sender stands,
-    /// and what the market wants.              A profile may send in several: it
-    /// is a tenant, not a market. Each carries its own status, because a profile
-    /// can be live in one country and mid-registration in another — and each carries
-    /// what it still owes, rather than that being reported in a separate array a
-    /// caller has to join on.
+    /// The response data (null if error)
     /// </summary>
-    public SmsMarket? Data
+    public IReadOnlyList<ChannelMarket>? Data
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<SmsMarket>("data");
+            return this._rawData.GetNullableStruct<ImmutableArray<ChannelMarket>>("data");
         }
-        init { this._rawData.Set("data", value); }
+        init
+        {
+            this._rawData.Set<ImmutableArray<ChannelMarket>?>(
+                "data",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -90,35 +97,40 @@ public sealed record class ApiResponseOfSmsMarket : JsonModel
     /// <inheritdoc/>
     public override void Validate()
     {
-        this.Data?.Validate();
+        foreach (var item in this.Data ?? [])
+        {
+            item.Validate();
+        }
         this.Error?.Validate();
         this.Meta?.Validate();
         _ = this.Success;
     }
 
-    public ApiResponseOfSmsMarket() { }
+    public ApiResponseOfListOfChannelMarket() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ApiResponseOfSmsMarket(ApiResponseOfSmsMarket apiResponseOfSmsMarket)
-        : base(apiResponseOfSmsMarket) { }
+    public ApiResponseOfListOfChannelMarket(
+        ApiResponseOfListOfChannelMarket apiResponseOfListOfChannelMarket
+    )
+        : base(apiResponseOfListOfChannelMarket) { }
 #pragma warning restore CS8618
 
-    public ApiResponseOfSmsMarket(IReadOnlyDictionary<string, JsonElement> rawData)
+    public ApiResponseOfListOfChannelMarket(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ApiResponseOfSmsMarket(FrozenDictionary<string, JsonElement> rawData)
+    ApiResponseOfListOfChannelMarket(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="ApiResponseOfSmsMarketFromRaw.FromRawUnchecked"/>
-    public static ApiResponseOfSmsMarket FromRawUnchecked(
+    /// <inheritdoc cref="ApiResponseOfListOfChannelMarketFromRaw.FromRawUnchecked"/>
+    public static ApiResponseOfListOfChannelMarket FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -126,10 +138,10 @@ public sealed record class ApiResponseOfSmsMarket : JsonModel
     }
 }
 
-class ApiResponseOfSmsMarketFromRaw : IFromRawJson<ApiResponseOfSmsMarket>
+class ApiResponseOfListOfChannelMarketFromRaw : IFromRawJson<ApiResponseOfListOfChannelMarket>
 {
     /// <inheritdoc/>
-    public ApiResponseOfSmsMarket FromRawUnchecked(
+    public ApiResponseOfListOfChannelMarket FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ApiResponseOfSmsMarket.FromRawUnchecked(rawData);
+    ) => ApiResponseOfListOfChannelMarket.FromRawUnchecked(rawData);
 }

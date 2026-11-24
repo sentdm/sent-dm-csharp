@@ -67,7 +67,7 @@ public class SenderProfileCreateParamsTest : TestBase
             {
                 Brand = new()
                 {
-                    BusinessName = "business_name",
+                    BusinessName = "xxx",
                     City = "city",
                     ContactEmail = "dev@stainless.com",
                     ContactName = "contact_name",
@@ -80,21 +80,21 @@ public class SenderProfileCreateParamsTest : TestBase
                     PostalCode = "postal_code",
                     State = "state",
                     Street = "street",
-                    TaxID = "tax_id",
+                    TaxID = "xx",
                     TaxIDType = "tax_id_type",
                     Website = "website",
                 },
                 Campaign = new()
                 {
-                    Description = "description",
+                    Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     HelpKeywords = "help_keywords",
-                    HelpMessage = "help_message",
+                    HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                     Inherit = true,
                     MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     OptInKeywords = "opt_in_keywords",
-                    OptInMessage = "opt_in_message",
+                    OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                     OptOutKeywords = "opt_out_keywords",
-                    OptOutMessage = "opt_out_message",
+                    OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                     PrivacyPolicyLink = "privacy_policy_link",
                     TermsAndConditionsLink = "terms_and_conditions_link",
                     UseCases =
@@ -170,7 +170,7 @@ public class SenderProfileCreateParamsTest : TestBase
         {
             Brand = new()
             {
-                BusinessName = "business_name",
+                BusinessName = "xxx",
                 City = "city",
                 ContactEmail = "dev@stainless.com",
                 ContactName = "contact_name",
@@ -183,21 +183,21 @@ public class SenderProfileCreateParamsTest : TestBase
                 PostalCode = "postal_code",
                 State = "state",
                 Street = "street",
-                TaxID = "tax_id",
+                TaxID = "xx",
                 TaxIDType = "tax_id_type",
                 Website = "website",
             },
             Campaign = new()
             {
-                Description = "description",
+                Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 HelpKeywords = "help_keywords",
-                HelpMessage = "help_message",
+                HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                 Inherit = true,
                 MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 OptInKeywords = "opt_in_keywords",
-                OptInMessage = "opt_in_message",
+                OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                 OptOutKeywords = "opt_out_keywords",
-                OptOutMessage = "opt_out_message",
+                OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                 PrivacyPolicyLink = "privacy_policy_link",
                 TermsAndConditionsLink = "terms_and_conditions_link",
                 UseCases =
@@ -385,7 +385,7 @@ public class SenderProfileCreateParamsTest : TestBase
             {
                 Brand = new()
                 {
-                    BusinessName = "business_name",
+                    BusinessName = "xxx",
                     City = "city",
                     ContactEmail = "dev@stainless.com",
                     ContactName = "contact_name",
@@ -398,21 +398,21 @@ public class SenderProfileCreateParamsTest : TestBase
                     PostalCode = "postal_code",
                     State = "state",
                     Street = "street",
-                    TaxID = "tax_id",
+                    TaxID = "xx",
                     TaxIDType = "tax_id_type",
                     Website = "website",
                 },
                 Campaign = new()
                 {
-                    Description = "description",
+                    Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     HelpKeywords = "help_keywords",
-                    HelpMessage = "help_message",
+                    HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                     Inherit = true,
                     MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     OptInKeywords = "opt_in_keywords",
-                    OptInMessage = "opt_in_message",
+                    OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                     OptOutKeywords = "opt_out_keywords",
-                    OptOutMessage = "opt_out_message",
+                    OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                     PrivacyPolicyLink = "privacy_policy_link",
                     TermsAndConditionsLink = "terms_and_conditions_link",
                     UseCases =
@@ -451,7 +451,7 @@ public class SenderProfileCreateParamsTest : TestBase
             {
                 Brand = new()
                 {
-                    BusinessName = "business_name",
+                    BusinessName = "xxx",
                     City = "city",
                     ContactEmail = "dev@stainless.com",
                     ContactName = "contact_name",
@@ -464,21 +464,21 @@ public class SenderProfileCreateParamsTest : TestBase
                     PostalCode = "postal_code",
                     State = "state",
                     Street = "street",
-                    TaxID = "tax_id",
+                    TaxID = "xx",
                     TaxIDType = "tax_id_type",
                     Website = "website",
                 },
                 Campaign = new()
                 {
-                    Description = "description",
+                    Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     HelpKeywords = "help_keywords",
-                    HelpMessage = "help_message",
+                    HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                     Inherit = true,
                     MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     OptInKeywords = "opt_in_keywords",
-                    OptInMessage = "opt_in_message",
+                    OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                     OptOutKeywords = "opt_out_keywords",
-                    OptOutMessage = "opt_out_message",
+                    OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                     PrivacyPolicyLink = "privacy_policy_link",
                     TermsAndConditionsLink = "terms_and_conditions_link",
                     UseCases =
@@ -593,7 +593,7 @@ public class SenderProfileCreateParamsTest : TestBase
             {
                 Brand = new()
                 {
-                    BusinessName = "business_name",
+                    BusinessName = "xxx",
                     City = "city",
                     ContactEmail = "dev@stainless.com",
                     ContactName = "contact_name",
@@ -606,21 +606,21 @@ public class SenderProfileCreateParamsTest : TestBase
                     PostalCode = "postal_code",
                     State = "state",
                     Street = "street",
-                    TaxID = "tax_id",
+                    TaxID = "xx",
                     TaxIDType = "tax_id_type",
                     Website = "website",
                 },
                 Campaign = new()
                 {
-                    Description = "description",
+                    Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     HelpKeywords = "help_keywords",
-                    HelpMessage = "help_message",
+                    HelpMessage = "xxxxxxxxxxxxxxxxxxxx",
                     Inherit = true,
                     MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                     OptInKeywords = "opt_in_keywords",
-                    OptInMessage = "opt_in_message",
+                    OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
                     OptOutKeywords = "opt_out_keywords",
-                    OptOutMessage = "opt_out_message",
+                    OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
                     PrivacyPolicyLink = "privacy_policy_link",
                     TermsAndConditionsLink = "terms_and_conditions_link",
                     UseCases =

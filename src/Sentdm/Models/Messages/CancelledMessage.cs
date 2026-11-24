@@ -181,6 +181,21 @@ public sealed record class CancelledMessage : JsonModel
         }
     }
 
+    /// <summary>
+    /// When this message is another send of a message you sent earlier, the id of
+    /// that original message; null for every other message. Always the first message,
+    /// however many sends lie between them.
+    /// </summary>
+    public string? ParentMessageID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("parent_message_id");
+        }
+        init { this._rawData.Set("parent_message_id", value); }
+    }
+
     public string? Phone
     {
         get
@@ -353,6 +368,7 @@ public sealed record class CancelledMessage : JsonModel
             Direction = cancelledMessage.Direction,
             Events = cancelledMessage.Events,
             MessageBody = cancelledMessage.MessageBody,
+            ParentMessageID = cancelledMessage.ParentMessageID,
             Phone = cancelledMessage.Phone,
             PhoneInternational = cancelledMessage.PhoneInternational,
             Price = cancelledMessage.Price,
@@ -380,6 +396,7 @@ public sealed record class CancelledMessage : JsonModel
             item.Validate();
         }
         this.MessageBody?.Validate();
+        _ = this.ParentMessageID;
         _ = this.Phone;
         _ = this.PhoneInternational;
         _ = this.Price;
