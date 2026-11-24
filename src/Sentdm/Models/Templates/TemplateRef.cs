@@ -8,13 +8,14 @@ using Sentdm.Core;
 namespace Sentdm.Models.Templates;
 
 /// <summary>
-/// SDK-style template reference: resolve by ID or by name, with optional parameters.
+/// SDK-style template reference: resolve by id, by slug or by name (exactly one),
+/// with optional parameters.
 /// </summary>
 [JsonConverter(typeof(JsonModelConverter<TemplateRef, TemplateRefFromRaw>))]
 public sealed record class TemplateRef : JsonModel
 {
     /// <summary>
-    /// Template ID (mutually exclusive with name)
+    /// Template ID (mutually exclusive with slug and name)
     /// </summary>
     public string? ID
     {
@@ -27,7 +28,7 @@ public sealed record class TemplateRef : JsonModel
     }
 
     /// <summary>
-    /// Template name (mutually exclusive with id)
+    /// Template name (mutually exclusive with id and slug)
     /// </summary>
     public string? Name
     {
@@ -68,12 +69,27 @@ public sealed record class TemplateRef : JsonModel
         }
     }
 
+    /// <summary>
+    /// Template slug (mutually exclusive with id and name): the stable name every
+    /// template on this account carries (GET /v3/templates lists them). Compared case-insensitively.
+    /// </summary>
+    public string? Slug
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("slug");
+        }
+        init { this._rawData.Set("slug", value); }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
         _ = this.ID;
         _ = this.Name;
         _ = this.Parameters;
+        _ = this.Slug;
     }
 
     public TemplateRef() { }

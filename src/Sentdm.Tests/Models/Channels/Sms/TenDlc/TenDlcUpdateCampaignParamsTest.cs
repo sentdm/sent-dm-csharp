@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
+using Sentdm.Core;
+using Sentdm.Exceptions;
 using Sentdm.Models.Channels.Sms.TenDlc;
 
 namespace Sentdm.Tests.Models.Channels.Sms.TenDlc;
@@ -14,14 +16,14 @@ public class TenDlcUpdateCampaignParamsTest : TestBase
         var parameters = new TenDlcUpdateCampaignParams
         {
             CampaignID = "3f2a6c1e-8b4d-4e2a-9c7f-1d5b0a9e4c21",
-            Description = "description",
+            Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             HelpKeywords = "help_keywords",
-            HelpMessage = "help_message",
+            HelpMessage = "Example Clinic: for help call +1 212 555 0100. Reply STOP to opt out.",
             MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             OptInKeywords = "opt_in_keywords",
-            OptInMessage = "opt_in_message",
+            OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
             OptOutKeywords = "opt_out_keywords",
-            OptOutMessage = "opt_out_message",
+            OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
             PrivacyPolicyLink = "privacy_policy_link",
             Sandbox = false,
             TermsAndConditionsLink = "terms_and_conditions_link",
@@ -30,7 +32,7 @@ public class TenDlcUpdateCampaignParamsTest : TestBase
                 new()
                 {
                     SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-                    UseCase = UseCase.Marketing,
+                    UseCase = TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing,
                 },
             ],
             Volume = "volume",
@@ -39,23 +41,24 @@ public class TenDlcUpdateCampaignParamsTest : TestBase
         };
 
         string expectedCampaignID = "3f2a6c1e-8b4d-4e2a-9c7f-1d5b0a9e4c21";
-        string expectedDescription = "description";
+        string expectedDescription = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
         string expectedHelpKeywords = "help_keywords";
-        string expectedHelpMessage = "help_message";
+        string expectedHelpMessage =
+            "Example Clinic: for help call +1 212 555 0100. Reply STOP to opt out.";
         string expectedMessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
         string expectedOptInKeywords = "opt_in_keywords";
-        string expectedOptInMessage = "opt_in_message";
+        string expectedOptInMessage = "xxxxxxxxxxxxxxxxxxxx";
         string expectedOptOutKeywords = "opt_out_keywords";
-        string expectedOptOutMessage = "opt_out_message";
+        string expectedOptOutMessage = "xxxxxxxxxxxxxxxxxxxx";
         string expectedPrivacyPolicyLink = "privacy_policy_link";
         bool expectedSandbox = false;
         string expectedTermsAndConditionsLink = "terms_and_conditions_link";
-        List<TenDlcCampaignUseCase> expectedUseCases =
+        List<TenDlcUpdateCampaignParamsUseCase> expectedUseCases =
         [
             new()
             {
                 SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-                UseCase = UseCase.Marketing,
+                UseCase = TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing,
             },
         ];
         string expectedVolume = "volume";
@@ -195,7 +198,7 @@ public class TenDlcUpdateCampaignParamsTest : TestBase
         Assert.True(
             TestBase.UrisEqual(
                 new Uri(
-                    "https://api.sent.dm/v3/channels/sms/compliances/US/TEN_DLC/campaigns/3f2a6c1e-8b4d-4e2a-9c7f-1d5b0a9e4c21"
+                    "https://api.sent.dm/v3/channels/sms/US/TEN_DLC/campaigns/3f2a6c1e-8b4d-4e2a-9c7f-1d5b0a9e4c21"
                 ),
                 url
             )
@@ -228,14 +231,14 @@ public class TenDlcUpdateCampaignParamsTest : TestBase
         var parameters = new TenDlcUpdateCampaignParams
         {
             CampaignID = "3f2a6c1e-8b4d-4e2a-9c7f-1d5b0a9e4c21",
-            Description = "description",
+            Description = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             HelpKeywords = "help_keywords",
-            HelpMessage = "help_message",
+            HelpMessage = "Example Clinic: for help call +1 212 555 0100. Reply STOP to opt out.",
             MessageFlow = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             OptInKeywords = "opt_in_keywords",
-            OptInMessage = "opt_in_message",
+            OptInMessage = "xxxxxxxxxxxxxxxxxxxx",
             OptOutKeywords = "opt_out_keywords",
-            OptOutMessage = "opt_out_message",
+            OptOutMessage = "xxxxxxxxxxxxxxxxxxxx",
             PrivacyPolicyLink = "privacy_policy_link",
             Sandbox = false,
             TermsAndConditionsLink = "terms_and_conditions_link",
@@ -244,7 +247,7 @@ public class TenDlcUpdateCampaignParamsTest : TestBase
                 new()
                 {
                     SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
-                    UseCase = UseCase.Marketing,
+                    UseCase = TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing,
                 },
             ],
             Volume = "volume",
@@ -255,5 +258,175 @@ public class TenDlcUpdateCampaignParamsTest : TestBase
         TenDlcUpdateCampaignParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
+    }
+}
+
+public class TenDlcUpdateCampaignParamsUseCaseTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var model = new TenDlcUpdateCampaignParamsUseCase
+        {
+            SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
+            UseCase = TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing,
+        };
+
+        List<JsonElement> expectedSampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")];
+        ApiEnum<string, TenDlcUpdateCampaignParamsUseCaseUseCase> expectedUseCase =
+            TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing;
+
+        Assert.Equal(expectedSampleMessages.Count, model.SampleMessages.Count);
+        for (int i = 0; i < expectedSampleMessages.Count; i++)
+        {
+            Assert.True(JsonElement.DeepEquals(expectedSampleMessages[i], model.SampleMessages[i]));
+        }
+        Assert.Equal(expectedUseCase, model.UseCase);
+    }
+
+    [Fact]
+    public void SerializationRoundtrip_Works()
+    {
+        var model = new TenDlcUpdateCampaignParamsUseCase
+        {
+            SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
+            UseCase = TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing,
+        };
+
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<TenDlcUpdateCampaignParamsUseCase>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(model, deserialized);
+    }
+
+    [Fact]
+    public void FieldRoundtripThroughSerialization_Works()
+    {
+        var model = new TenDlcUpdateCampaignParamsUseCase
+        {
+            SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
+            UseCase = TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing,
+        };
+
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<TenDlcUpdateCampaignParamsUseCase>(
+            element,
+            ModelBase.SerializerOptions
+        );
+        Assert.NotNull(deserialized);
+
+        List<JsonElement> expectedSampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")];
+        ApiEnum<string, TenDlcUpdateCampaignParamsUseCaseUseCase> expectedUseCase =
+            TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing;
+
+        Assert.Equal(expectedSampleMessages.Count, deserialized.SampleMessages.Count);
+        for (int i = 0; i < expectedSampleMessages.Count; i++)
+        {
+            Assert.True(
+                JsonElement.DeepEquals(expectedSampleMessages[i], deserialized.SampleMessages[i])
+            );
+        }
+        Assert.Equal(expectedUseCase, deserialized.UseCase);
+    }
+
+    [Fact]
+    public void Validation_Works()
+    {
+        var model = new TenDlcUpdateCampaignParamsUseCase
+        {
+            SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
+            UseCase = TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new TenDlcUpdateCampaignParamsUseCase
+        {
+            SampleMessages = [JsonSerializer.Deserialize<JsonElement>("{}")],
+            UseCase = TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing,
+        };
+
+        TenDlcUpdateCampaignParamsUseCase copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
+}
+
+public class TenDlcUpdateCampaignParamsUseCaseUseCaseTest : TestBase
+{
+    [Theory]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.AccountNotification)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.CustomerCare)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.FraudAlert)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.V2Fa)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.DeliveryNotification)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.SecurityAlert)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.M2M)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.HigherEducation)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.PollingVoting)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.PublicServiceAnnouncement)]
+    public void Validation_Works(TenDlcUpdateCampaignParamsUseCaseUseCase rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, TenDlcUpdateCampaignParamsUseCaseUseCase> value = rawValue;
+        value.Validate();
+    }
+
+    [Fact]
+    public void InvalidEnumValidationThrows_Works()
+    {
+        var value = JsonSerializer.Deserialize<
+            ApiEnum<string, TenDlcUpdateCampaignParamsUseCaseUseCase>
+        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
+
+        Assert.NotNull(value);
+        Assert.Throws<SentInvalidDataException>(() => value.Validate());
+    }
+
+    [Theory]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.Marketing)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.AccountNotification)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.CustomerCare)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.FraudAlert)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.V2Fa)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.DeliveryNotification)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.SecurityAlert)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.M2M)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.HigherEducation)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.PollingVoting)]
+    [InlineData(TenDlcUpdateCampaignParamsUseCaseUseCase.PublicServiceAnnouncement)]
+    public void SerializationRoundtrip_Works(TenDlcUpdateCampaignParamsUseCaseUseCase rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, TenDlcUpdateCampaignParamsUseCaseUseCase> value = rawValue;
+
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<
+            ApiEnum<string, TenDlcUpdateCampaignParamsUseCaseUseCase>
+        >(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void InvalidEnumSerializationRoundtrip_Works()
+    {
+        var value = JsonSerializer.Deserialize<
+            ApiEnum<string, TenDlcUpdateCampaignParamsUseCaseUseCase>
+        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<
+            ApiEnum<string, TenDlcUpdateCampaignParamsUseCaseUseCase>
+        >(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(value, deserialized);
     }
 }

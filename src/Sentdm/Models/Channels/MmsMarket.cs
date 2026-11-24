@@ -8,7 +8,7 @@ using Sentdm.Core;
 namespace Sentdm.Models.Channels;
 
 /// <summary>
-/// One market the profile can send MMS in.              Deliberately not SmsMarketState:
+/// One market the profile can send MMS in.              Deliberately not ChannelMarketState:
 /// an MMS market carries no compliance of its own. It is the same number, carrier
 /// and registration as the SMS market on it in that country — MMS files nothing separately
 /// — so a compliance block here would always be null and would invite the question

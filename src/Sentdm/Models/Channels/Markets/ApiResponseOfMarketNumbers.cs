@@ -6,41 +6,25 @@ using System.Text.Json.Serialization;
 using Sentdm.Core;
 using Sentdm.Models.Webhooks;
 
-namespace Sentdm.Models.Channels.Sms.TenDlc;
+namespace Sentdm.Models.Channels.Markets;
 
 /// <summary>
 /// Standard API response envelope for all v3 endpoints
 /// </summary>
 [JsonConverter(
-    typeof(JsonModelConverter<
-        ApiResponseOfSuppliedCompliance,
-        ApiResponseOfSuppliedComplianceFromRaw
-    >)
+    typeof(JsonModelConverter<ApiResponseOfMarketNumbers, ApiResponseOfMarketNumbersFromRaw>)
 )]
-public sealed record class ApiResponseOfSuppliedCompliance : JsonModel
+public sealed record class ApiResponseOfMarketNumbers : JsonModel
 {
     /// <summary>
-    /// What a market has been given: the identity it registers under, its programme,
-    /// and any documents attached.              What it does not carry is what the
-    /// market asks for. That is the subject of GET /v3/compliance/requirements, and
-    /// it is the same answer for every caller — a description of what a compliance
-    /// regime wants, not a record of one customer's progress through it. It was
-    /// reported here as well for a while, which put the same array in six response
-    /// shapes and left a caller deciding which of two sources to believe.
-    ///       Present on a list read for markets that register (carrying brand and
-    /// campaign), but with documents absent — documents are not fetched for a list,
-    /// because a catalog lookup and a document read per market would multiply across
-    /// a page. Absent documents is distinct from an empty list: absent says they
-    /// were not fetched; empty says the market has been given none. The parent object
-    /// is null only when the market registers with nobody and compliance was not
-    /// computed — nothing to show at all.
+    /// The numbers a customer holds in one market: GET /v3/channels/{channel}/{country}/{type}/numbers.
     /// </summary>
-    public SuppliedCompliance? Data
+    public MarketNumbers? Data
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<SuppliedCompliance>("data");
+            return this._rawData.GetNullableClass<MarketNumbers>("data");
         }
         init { this._rawData.Set("data", value); }
     }
@@ -109,31 +93,29 @@ public sealed record class ApiResponseOfSuppliedCompliance : JsonModel
         _ = this.Success;
     }
 
-    public ApiResponseOfSuppliedCompliance() { }
+    public ApiResponseOfMarketNumbers() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ApiResponseOfSuppliedCompliance(
-        ApiResponseOfSuppliedCompliance apiResponseOfSuppliedCompliance
-    )
-        : base(apiResponseOfSuppliedCompliance) { }
+    public ApiResponseOfMarketNumbers(ApiResponseOfMarketNumbers apiResponseOfMarketNumbers)
+        : base(apiResponseOfMarketNumbers) { }
 #pragma warning restore CS8618
 
-    public ApiResponseOfSuppliedCompliance(IReadOnlyDictionary<string, JsonElement> rawData)
+    public ApiResponseOfMarketNumbers(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ApiResponseOfSuppliedCompliance(FrozenDictionary<string, JsonElement> rawData)
+    ApiResponseOfMarketNumbers(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="ApiResponseOfSuppliedComplianceFromRaw.FromRawUnchecked"/>
-    public static ApiResponseOfSuppliedCompliance FromRawUnchecked(
+    /// <inheritdoc cref="ApiResponseOfMarketNumbersFromRaw.FromRawUnchecked"/>
+    public static ApiResponseOfMarketNumbers FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -141,10 +123,10 @@ public sealed record class ApiResponseOfSuppliedCompliance : JsonModel
     }
 }
 
-class ApiResponseOfSuppliedComplianceFromRaw : IFromRawJson<ApiResponseOfSuppliedCompliance>
+class ApiResponseOfMarketNumbersFromRaw : IFromRawJson<ApiResponseOfMarketNumbers>
 {
     /// <inheritdoc/>
-    public ApiResponseOfSuppliedCompliance FromRawUnchecked(
+    public ApiResponseOfMarketNumbers FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ApiResponseOfSuppliedCompliance.FromRawUnchecked(rawData);
+    ) => ApiResponseOfMarketNumbers.FromRawUnchecked(rawData);
 }

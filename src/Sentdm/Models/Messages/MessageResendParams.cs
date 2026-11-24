@@ -10,27 +10,31 @@ using Sentdm.Core;
 namespace Sentdm.Models.Messages;
 
 /// <summary>
-/// Resends a message you already sent, on the same message id, without rebuilding
-/// the request. The typical use is recovering a BLOCKED message — for example one
-/// refused for insufficient balance — after the account has been topped up.
+/// Resends a message you already sent, as a new message, without rebuilding the request.
+/// The typical use is recovering a BLOCKED message — for example one refused for
+/// insufficient balance — after the account has been topped up.
 ///
-/// <para>**A resend bills again.** Each accepted resend is a new delivery attempt
-/// and records a new charge against the same message id; a client that resends on
-/// every failure is charged on every loop.</para>
+/// <para>**A resend is a new message.** It gets its own message id, returned in
+/// `recipients[0].message_id`, with its own status, delivery attempts and charge.
+/// The message you resent is left exactly as it was. Each accepted resend is billed;
+/// a client that resends on every failure is charged on every loop.</para>
 ///
 /// <para>**Every policy runs again.** The resend goes back through the full send
 /// pipeline — consent, balance, KYC and channel quota, template approval, quiet hours
 /// and channel health — so it can land on BLOCKED, FILTERED or SCHEDULED again rather
-/// than being sent, exactly as a fresh send would. Status webhooks (message.sent,
-/// message.blocked, message.filtered, message.failed) fire again for the same message
-/// id, so consumers keyed on the id will see repeated transitions.</para>
+/// than being sent, exactly as a fresh send would. Status webhooks (message.queued,
+/// message.sent, message.delivered, message.blocked, message.filtered, message.failed)
+/// fire for the new message id.</para>
 ///
 /// <para>**What can be resent.** A message in a terminal state — DELIVERED, FAILED,
 /// READ or BLOCKED — or one stuck at SENT for more than 15 minutes. A FILTERED message
 /// can never be resent: the recipient opted out or a routing rule refused the send.
 /// A message still in flight (QUEUED, PROCESSED, ROUTED), held for quiet hours (SCHEDULED),
-/// or SENT less than 15 minutes ago returns 409. Two concurrent resends of one id
-/// are serialised: one is accepted, the other gets 409.</para>
+/// or SENT less than 15 minutes ago returns 409. A message can be resent more than
+/// once, one resend at a time: while an earlier resend of it is still in flight,
+/// a new resend returns 409, so a double click or a retried request does not send
+/// it twice. Each accepted resend is another new message. A resend can itself be
+/// resent; the new message's parent is still the original.</para>
 ///
 /// <para>The resend keeps the channel the message was originally requested on; the
 /// channel cannot be changed on a resend — send a new message instead. `Idempotency-Key`
@@ -38,7 +42,7 @@ namespace Sentdm.Models.Messages;
 /// of resending twice.</para>
 ///
 /// <para>The response has the same shape as `POST /v3/messages`: `recipients` has
-/// a single entry whose `message_id` is the id you resent.</para>
+/// a single entry whose `message_id` is the new message's id.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

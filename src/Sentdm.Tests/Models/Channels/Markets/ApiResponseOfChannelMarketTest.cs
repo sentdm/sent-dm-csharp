@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
-using Sentdm.Models.Channels.Sms;
+using Sentdm.Models.Channels.Markets;
 using Sentdm.Models.Webhooks;
 
-namespace Sentdm.Tests.Models.Channels.Sms;
+namespace Sentdm.Tests.Models.Channels.Markets;
 
-public class ApiResponseOfSmsMarketTest : TestBase
+public class ApiResponseOfChannelMarketTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Data = new()
             {
@@ -75,7 +75,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
             Success = true,
         };
 
-        SmsMarket expectedData = new()
+        ChannelMarket expectedData = new()
         {
             Compliance = new()
             {
@@ -144,7 +144,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Data = new()
             {
@@ -208,7 +208,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiResponseOfSmsMarket>(
+        var deserialized = JsonSerializer.Deserialize<ApiResponseOfChannelMarket>(
             json,
             ModelBase.SerializerOptions
         );
@@ -219,7 +219,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Data = new()
             {
@@ -283,13 +283,13 @@ public class ApiResponseOfSmsMarketTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiResponseOfSmsMarket>(
+        var deserialized = JsonSerializer.Deserialize<ApiResponseOfChannelMarket>(
             element,
             ModelBase.SerializerOptions
         );
         Assert.NotNull(deserialized);
 
-        SmsMarket expectedData = new()
+        ChannelMarket expectedData = new()
         {
             Compliance = new()
             {
@@ -358,7 +358,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Data = new()
             {
@@ -427,7 +427,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Data = new()
             {
@@ -492,7 +492,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Data = new()
             {
@@ -554,7 +554,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Data = new()
             {
@@ -623,7 +623,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Data = new()
             {
@@ -689,7 +689,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Meta = new()
             {
@@ -709,7 +709,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Meta = new()
             {
@@ -726,7 +726,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Meta = new()
             {
@@ -749,7 +749,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Meta = new()
             {
@@ -769,7 +769,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new ApiResponseOfSmsMarket
+        var model = new ApiResponseOfChannelMarket
         {
             Data = new()
             {
@@ -832,7 +832,7 @@ public class ApiResponseOfSmsMarketTest : TestBase
             Success = true,
         };
 
-        ApiResponseOfSmsMarket copied = new(model);
+        ApiResponseOfChannelMarket copied = new(model);
 
         Assert.Equal(model, copied);
     }
