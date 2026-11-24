@@ -22,6 +22,8 @@ public class ComplianceRequirementTest : TestBase
                     Key = "key",
                     Label = "label",
                     MaxItems = 0,
+                    MaxLength = 0,
+                    MinItems = 0,
                     MinLength = 0,
                     Notes = "notes",
                     Options = ["string"],
@@ -33,6 +35,8 @@ public class ComplianceRequirementTest : TestBase
             Key = "key",
             Label = "label",
             MaxItems = 0,
+            MaxLength = 0,
+            MinItems = 0,
             MinLength = 0,
             Notes = "notes",
             Options = ["string"],
@@ -51,6 +55,8 @@ public class ComplianceRequirementTest : TestBase
                 Key = "key",
                 Label = "label",
                 MaxItems = 0,
+                MaxLength = 0,
+                MinItems = 0,
                 MinLength = 0,
                 Notes = "notes",
                 Options = ["string"],
@@ -62,6 +68,8 @@ public class ComplianceRequirementTest : TestBase
         string expectedKey = "key";
         string expectedLabel = "label";
         int expectedMaxItems = 0;
+        int expectedMaxLength = 0;
+        int expectedMinItems = 0;
         int expectedMinLength = 0;
         string expectedNotes = "notes";
         List<string> expectedOptions = ["string"];
@@ -79,6 +87,8 @@ public class ComplianceRequirementTest : TestBase
         Assert.Equal(expectedKey, model.Key);
         Assert.Equal(expectedLabel, model.Label);
         Assert.Equal(expectedMaxItems, model.MaxItems);
+        Assert.Equal(expectedMaxLength, model.MaxLength);
+        Assert.Equal(expectedMinItems, model.MinItems);
         Assert.Equal(expectedMinLength, model.MinLength);
         Assert.Equal(expectedNotes, model.Notes);
         Assert.NotNull(model.Options);
@@ -107,6 +117,8 @@ public class ComplianceRequirementTest : TestBase
                     Key = "key",
                     Label = "label",
                     MaxItems = 0,
+                    MaxLength = 0,
+                    MinItems = 0,
                     MinLength = 0,
                     Notes = "notes",
                     Options = ["string"],
@@ -118,6 +130,8 @@ public class ComplianceRequirementTest : TestBase
             Key = "key",
             Label = "label",
             MaxItems = 0,
+            MaxLength = 0,
+            MinItems = 0,
             MinLength = 0,
             Notes = "notes",
             Options = ["string"],
@@ -150,6 +164,8 @@ public class ComplianceRequirementTest : TestBase
                     Key = "key",
                     Label = "label",
                     MaxItems = 0,
+                    MaxLength = 0,
+                    MinItems = 0,
                     MinLength = 0,
                     Notes = "notes",
                     Options = ["string"],
@@ -161,6 +177,8 @@ public class ComplianceRequirementTest : TestBase
             Key = "key",
             Label = "label",
             MaxItems = 0,
+            MaxLength = 0,
+            MinItems = 0,
             MinLength = 0,
             Notes = "notes",
             Options = ["string"],
@@ -186,6 +204,8 @@ public class ComplianceRequirementTest : TestBase
                 Key = "key",
                 Label = "label",
                 MaxItems = 0,
+                MaxLength = 0,
+                MinItems = 0,
                 MinLength = 0,
                 Notes = "notes",
                 Options = ["string"],
@@ -197,6 +217,8 @@ public class ComplianceRequirementTest : TestBase
         string expectedKey = "key";
         string expectedLabel = "label";
         int expectedMaxItems = 0;
+        int expectedMaxLength = 0;
+        int expectedMinItems = 0;
         int expectedMinLength = 0;
         string expectedNotes = "notes";
         List<string> expectedOptions = ["string"];
@@ -214,6 +236,8 @@ public class ComplianceRequirementTest : TestBase
         Assert.Equal(expectedKey, deserialized.Key);
         Assert.Equal(expectedLabel, deserialized.Label);
         Assert.Equal(expectedMaxItems, deserialized.MaxItems);
+        Assert.Equal(expectedMaxLength, deserialized.MaxLength);
+        Assert.Equal(expectedMinItems, deserialized.MinItems);
         Assert.Equal(expectedMinLength, deserialized.MinLength);
         Assert.Equal(expectedNotes, deserialized.Notes);
         Assert.NotNull(deserialized.Options);
@@ -242,6 +266,8 @@ public class ComplianceRequirementTest : TestBase
                     Key = "key",
                     Label = "label",
                     MaxItems = 0,
+                    MaxLength = 0,
+                    MinItems = 0,
                     MinLength = 0,
                     Notes = "notes",
                     Options = ["string"],
@@ -253,6 +279,8 @@ public class ComplianceRequirementTest : TestBase
             Key = "key",
             Label = "label",
             MaxItems = 0,
+            MaxLength = 0,
+            MinItems = 0,
             MinLength = 0,
             Notes = "notes",
             Options = ["string"],
@@ -279,6 +307,8 @@ public class ComplianceRequirementTest : TestBase
                     Key = "key",
                     Label = "label",
                     MaxItems = 0,
+                    MaxLength = 0,
+                    MinItems = 0,
                     MinLength = 0,
                     Notes = "notes",
                     Options = ["string"],
@@ -289,6 +319,8 @@ public class ComplianceRequirementTest : TestBase
             ],
             Label = "label",
             MaxItems = 0,
+            MaxLength = 0,
+            MinItems = 0,
             MinLength = 0,
             Notes = "notes",
             Options = ["string"],
@@ -318,6 +350,8 @@ public class ComplianceRequirementTest : TestBase
                     Key = "key",
                     Label = "label",
                     MaxItems = 0,
+                    MaxLength = 0,
+                    MinItems = 0,
                     MinLength = 0,
                     Notes = "notes",
                     Options = ["string"],
@@ -328,6 +362,8 @@ public class ComplianceRequirementTest : TestBase
             ],
             Label = "label",
             MaxItems = 0,
+            MaxLength = 0,
+            MinItems = 0,
             MinLength = 0,
             Notes = "notes",
             Options = ["string"],
@@ -352,6 +388,8 @@ public class ComplianceRequirementTest : TestBase
                     Key = "key",
                     Label = "label",
                     MaxItems = 0,
+                    MaxLength = 0,
+                    MinItems = 0,
                     MinLength = 0,
                     Notes = "notes",
                     Options = ["string"],
@@ -362,6 +400,8 @@ public class ComplianceRequirementTest : TestBase
             ],
             Label = "label",
             MaxItems = 0,
+            MaxLength = 0,
+            MinItems = 0,
             MinLength = 0,
             Notes = "notes",
             Options = ["string"],
@@ -396,6 +436,8 @@ public class ComplianceRequirementTest : TestBase
                     Key = "key",
                     Label = "label",
                     MaxItems = 0,
+                    MaxLength = 0,
+                    MinItems = 0,
                     MinLength = 0,
                     Notes = "notes",
                     Options = ["string"],
@@ -406,6 +448,8 @@ public class ComplianceRequirementTest : TestBase
             ],
             Label = "label",
             MaxItems = 0,
+            MaxLength = 0,
+            MinItems = 0,
             MinLength = 0,
             Notes = "notes",
             Options = ["string"],
@@ -438,6 +482,10 @@ public class ComplianceRequirementTest : TestBase
         Assert.False(model.RawData.ContainsKey("label"));
         Assert.Null(model.MaxItems);
         Assert.False(model.RawData.ContainsKey("max_items"));
+        Assert.Null(model.MaxLength);
+        Assert.False(model.RawData.ContainsKey("max_length"));
+        Assert.Null(model.MinItems);
+        Assert.False(model.RawData.ContainsKey("min_items"));
         Assert.Null(model.MinLength);
         Assert.False(model.RawData.ContainsKey("min_length"));
         Assert.Null(model.Notes);
@@ -474,6 +522,8 @@ public class ComplianceRequirementTest : TestBase
             ItemFields = null,
             Label = null,
             MaxItems = null,
+            MaxLength = null,
+            MinItems = null,
             MinLength = null,
             Notes = null,
             Options = null,
@@ -488,6 +538,10 @@ public class ComplianceRequirementTest : TestBase
         Assert.True(model.RawData.ContainsKey("label"));
         Assert.Null(model.MaxItems);
         Assert.True(model.RawData.ContainsKey("max_items"));
+        Assert.Null(model.MaxLength);
+        Assert.True(model.RawData.ContainsKey("max_length"));
+        Assert.Null(model.MinItems);
+        Assert.True(model.RawData.ContainsKey("min_items"));
         Assert.Null(model.MinLength);
         Assert.True(model.RawData.ContainsKey("min_length"));
         Assert.Null(model.Notes);
@@ -511,6 +565,8 @@ public class ComplianceRequirementTest : TestBase
             ItemFields = null,
             Label = null,
             MaxItems = null,
+            MaxLength = null,
+            MinItems = null,
             MinLength = null,
             Notes = null,
             Options = null,
@@ -535,6 +591,8 @@ public class ComplianceRequirementTest : TestBase
                     Key = "key",
                     Label = "label",
                     MaxItems = 0,
+                    MaxLength = 0,
+                    MinItems = 0,
                     MinLength = 0,
                     Notes = "notes",
                     Options = ["string"],
@@ -546,6 +604,8 @@ public class ComplianceRequirementTest : TestBase
             Key = "key",
             Label = "label",
             MaxItems = 0,
+            MaxLength = 0,
+            MinItems = 0,
             MinLength = 0,
             Notes = "notes",
             Options = ["string"],

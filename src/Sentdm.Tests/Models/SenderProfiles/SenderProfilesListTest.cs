@@ -5,7 +5,7 @@ using Sentdm.Core;
 using Sentdm.Models.Channels.Rcs;
 using Sentdm.Models.SenderProfiles;
 using Sentdm.Models.Webhooks;
-using Sms = Sentdm.Models.Channels.Sms;
+using Markets = Sentdm.Models.Channels.Markets;
 using Whatsapp = Sentdm.Models.Channels.Whatsapp;
 
 namespace Sentdm.Tests.Models.SenderProfiles;
@@ -129,7 +129,7 @@ public class SenderProfilesListTest : TestBase
                                 ],
                                 Reason = "reason",
                                 ReasonCode = "reason_code",
-                                Status = Sms::Status.Provisioning,
+                                Status = Markets::Status.Provisioning,
                             },
                         ],
                         Voice =
@@ -306,7 +306,7 @@ public class SenderProfilesListTest : TestBase
                             ],
                             Reason = "reason",
                             ReasonCode = "reason_code",
-                            Status = Sms::Status.Provisioning,
+                            Status = Markets::Status.Provisioning,
                         },
                     ],
                     Voice =
@@ -496,7 +496,7 @@ public class SenderProfilesListTest : TestBase
                                 ],
                                 Reason = "reason",
                                 ReasonCode = "reason_code",
-                                Status = Sms::Status.Provisioning,
+                                Status = Markets::Status.Provisioning,
                             },
                         ],
                         Voice =
@@ -687,7 +687,7 @@ public class SenderProfilesListTest : TestBase
                                 ],
                                 Reason = "reason",
                                 ReasonCode = "reason_code",
-                                Status = Sms::Status.Provisioning,
+                                Status = Markets::Status.Provisioning,
                             },
                         ],
                         Voice =
@@ -871,7 +871,7 @@ public class SenderProfilesListTest : TestBase
                             ],
                             Reason = "reason",
                             ReasonCode = "reason_code",
-                            Status = Sms::Status.Provisioning,
+                            Status = Markets::Status.Provisioning,
                         },
                     ],
                     Voice =
@@ -1061,7 +1061,7 @@ public class SenderProfilesListTest : TestBase
                                 ],
                                 Reason = "reason",
                                 ReasonCode = "reason_code",
-                                Status = Sms::Status.Provisioning,
+                                Status = Markets::Status.Provisioning,
                             },
                         ],
                         Voice =
@@ -1294,7 +1294,7 @@ public class SenderProfilesListTest : TestBase
                                 ],
                                 Reason = "reason",
                                 ReasonCode = "reason_code",
-                                Status = Sms::Status.Provisioning,
+                                Status = Markets::Status.Provisioning,
                             },
                         ],
                         Voice =

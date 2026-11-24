@@ -14,13 +14,16 @@ namespace Sentdm.Models.Channels.Sms;
 
 /// <summary>
 /// Gives the customer a sender in one country — the first market it sends in, and
-/// the fifth.
+/// the fifth. Two addresses, one call: `POST /v3/channels/sms` with `country` and
+/// `number_type` in the body, or `POST /v3/channels/sms/{country}/{type}` with the
+/// market as the path (the path wins over the body).
 ///
 /// <para>## What to have in place first</para>
 ///
-/// <para>**Call `GET /v3/compliance/requirements?country=US&amp;type=TEN_DLC` first.**
-/// It returns this request's body ready to fill in, plus the brand and campaign
-/// calls to make before it, in order. You never have to track forty countries' rules yourself.</para>
+/// <para>**Call `GET /v3/channels/sms/{country}/compliance` first.** It lists every
+/// sender type the country offers and, for each, the compliance values and documents
+/// to send, with their formats and options. You never have to track forty countries'
+/// rules yourself.</para>
 ///
 /// <para>**A market that registers with a compliance regime needs an identity, and
 /// this call takes one.** US `TEN_DLC` registers with The Campaign Registry and
@@ -40,11 +43,16 @@ namespace Sentdm.Models.Channels.Sms;
 /// here either: the rows are what a submission is later assembled from, and filing
 /// is externally rejectable so it happens on its own path.</para>
 ///
-/// <para>**A half you run yourself has to be complete here.** Whichever of `brand`
-/// and `campaign` is your own rather than your organization's must carry every field
-/// the regime asks of it, counting what you already hold — send the rest in this
-/// request. A missing one is `400` naming each field, rather than a `202` for a market
-/// that could never be filed. A half you inherit is asked for nothing.</para>
+/// <para>**Your own brand has to be complete here.** It must carry every field the
+/// regime asks of it, counting what you already hold — send the rest in this request.
+/// A missing one is `400` naming each field, rather than a `202` for a market that
+/// could never be filed. A brand you inherit is asked for nothing.</para>
+///
+/// <para>**A campaign of your own is optional here.** Sent, it has to be complete
+/// in the same way, and the `numbers` you ask for go on it. Omitted, no campaign
+/// is written and `numbers` and `area_codes` are refused (`400`), because numbers
+/// belong to a campaign: the market reads `ACTION_NEEDED` until you add one with
+/// `POST /v3/channels/sms/US/TEN_DLC/campaigns`, then its numbers with `POST /v3/channels/sms/US/TEN_DLC/numbers`.</para>
 ///
 /// <para>A market that registers with nobody — an alphanumeric sender in most countries
 /// — needs neither, and may need documents instead.</para>
@@ -73,35 +81,25 @@ namespace Sentdm.Models.Channels.Sms;
 /// `[{"area_code": "212", "quantity": 2}, {"quantity": 1}]` for two numbers in 212
 /// and one in any area code. `quantity` defaults to 1, and an entry without `area_code`
 /// means any area code. Omit `numbers` for one number. It is for `LOCAL` and `TEN_DLC`
-/// only and cannot be combined with `area_codes`. A market holds at most 49 numbers,
-/// counting the ones it already has.</para>
+/// only and cannot be combined with `area_codes`. A market holds at most 49 numbers.</para>
 ///
-/// <para>**On a `LOCAL` market you already hold, `numbers` adds those numbers to
-/// it** instead of `409`. US `TEN_DLC` numbers belong to the market's campaign and
-/// are assigned when the campaign is approved, not at request time. Until then they
-/// read as `PROVISIONING` in the response's `numbers`, each with the area code it
-/// was asked for. A profile inheriting your organization's campaign cannot request
-/// `numbers` (`400`). `numbers` on a `TEN_DLC` market you already hold is `409`:
-/// change its campaign's numbers with `PATCH /v3/channels/sms/{country}/{type}`,
-/// add numbers to one of its campaigns with `POST /v3/channels/sms/numbers/US/TEN_DLC`,
-/// or add a new campaign with `POST /v3/channels/sms/compliances/US/TEN_DLC/campaigns`.</para>
+/// <para>US `TEN_DLC` numbers belong to the market's campaign and are assigned when
+/// the campaign is approved, not at request time. Until then they read as `PROVISIONING`
+/// in the response's `numbers`, each with the area code it was asked for. A profile
+/// inheriting your organization's campaign cannot request `numbers` (`400`).</para>
 ///
-/// <para>**A market you already send in is `409`**: adding what is already there
-/// is a mistake worth reporting rather than a silent no-op. A market is a `(country,
-/// sender_type)` pair, so a **second sender type in a country you already send in
-/// is fine** — `US TOLL_FREE` alongside `US TEN_DLC` is the ordinary case. Two of
-/// the same type is not.</para>
-///
-/// <para>**A market you hold that has no sender yet is not a duplicate**, and re-sending
-/// it re-asks for a sender rather than being refused. That is the way out of an area-code
-/// request nothing could fill: send the call again to name different codes, or no
-/// codes at all to take a number anywhere in the country. It answers `201` with the
-/// sender when the pool has one, otherwise `202` with the codes recorded — and changes
-/// nothing else; compliance on a market you hold is `PATCH /v3/channels/sms/{country}/{type}`.</para>
+/// <para>**This call opens a market once. A market you already hold is `409`**, with
+/// a sender or still waiting for one, and nothing is added to it here: change its
+/// compliance with `PATCH /v3/channels/sms/{country}/{type}`, add numbers (and their
+/// area codes) with `POST /v3/channels/sms/{country}/{type}/numbers`, and on US
+/// `TEN_DLC` add a campaign with `POST /v3/channels/sms/US/TEN_DLC/campaigns`. The
+/// `409` names them. A market is a `(country, sender_type)` pair, so a **second sender
+/// type in a country you already send in is fine** — `US TOLL_FREE` alongside `US
+/// TEN_DLC` is the ordinary case. Two of the same type is not.</para>
 ///
 /// <para>One exception: while a market's sender type is still unassigned, adding
-/// any type to that country is `409` once it has a sender, because the market you
-/// have may be about to become the one you asked for.</para>
+/// any type to that country is `409`, because the market you have may be about to
+/// become the one you asked for.</para>
 ///
 /// <para>Returns **the market**, in the shape `GET` and `PATCH` on `/v3/channels/sms/{country}/{type}`
 /// use — so what this answers can be read back and written back without reshaping.
@@ -200,27 +198,6 @@ public record class SmsCreateParams : ParamsBase
             }
 
             this._rawBodyData.Set("compliance", value);
-        }
-    }
-
-    /// <summary>
-    /// ISO 3166-1 alpha-2 country the sender operates in.
-    /// </summary>
-    public string? Country
-    {
-        get
-        {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("country");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawBodyData.Set("country", value);
         }
     }
 

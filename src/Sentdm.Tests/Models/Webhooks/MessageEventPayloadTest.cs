@@ -18,10 +18,13 @@ public class MessageEventPayloadTest : TestBase
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Reason = "reason",
             ReasonCode = "reason_code",
             ScheduleReason = "schedule_reason",
             ScheduledAt = "scheduled_at",
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
             UpdatedAt = "updated_at",
@@ -34,10 +37,13 @@ public class MessageEventPayloadTest : TestBase
         string expectedChannel = "channel";
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedOutboundNumber = "outbound_number";
+        string expectedParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedReason = "reason";
         string expectedReasonCode = "reason_code";
         string expectedScheduleReason = "schedule_reason";
         string expectedScheduledAt = "scheduled_at";
+        string expectedSentAgentID = "sent_agent_id";
+        string expectedSentInstanceID = "sent_instance_id";
         string expectedTemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedTemplateName = "template_name";
         string expectedUpdatedAt = "updated_at";
@@ -49,10 +55,13 @@ public class MessageEventPayloadTest : TestBase
         Assert.Equal(expectedChannel, model.Channel);
         Assert.Equal(expectedMessageID, model.MessageID);
         Assert.Equal(expectedOutboundNumber, model.OutboundNumber);
+        Assert.Equal(expectedParentMessageID, model.ParentMessageID);
         Assert.Equal(expectedReason, model.Reason);
         Assert.Equal(expectedReasonCode, model.ReasonCode);
         Assert.Equal(expectedScheduleReason, model.ScheduleReason);
         Assert.Equal(expectedScheduledAt, model.ScheduledAt);
+        Assert.Equal(expectedSentAgentID, model.SentAgentID);
+        Assert.Equal(expectedSentInstanceID, model.SentInstanceID);
         Assert.Equal(expectedTemplateID, model.TemplateID);
         Assert.Equal(expectedTemplateName, model.TemplateName);
         Assert.Equal(expectedUpdatedAt, model.UpdatedAt);
@@ -70,10 +79,13 @@ public class MessageEventPayloadTest : TestBase
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Reason = "reason",
             ReasonCode = "reason_code",
             ScheduleReason = "schedule_reason",
             ScheduledAt = "scheduled_at",
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
             UpdatedAt = "updated_at",
@@ -100,10 +112,13 @@ public class MessageEventPayloadTest : TestBase
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Reason = "reason",
             ReasonCode = "reason_code",
             ScheduleReason = "schedule_reason",
             ScheduledAt = "scheduled_at",
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
             UpdatedAt = "updated_at",
@@ -123,10 +138,13 @@ public class MessageEventPayloadTest : TestBase
         string expectedChannel = "channel";
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedOutboundNumber = "outbound_number";
+        string expectedParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedReason = "reason";
         string expectedReasonCode = "reason_code";
         string expectedScheduleReason = "schedule_reason";
         string expectedScheduledAt = "scheduled_at";
+        string expectedSentAgentID = "sent_agent_id";
+        string expectedSentInstanceID = "sent_instance_id";
         string expectedTemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedTemplateName = "template_name";
         string expectedUpdatedAt = "updated_at";
@@ -138,10 +156,13 @@ public class MessageEventPayloadTest : TestBase
         Assert.Equal(expectedChannel, deserialized.Channel);
         Assert.Equal(expectedMessageID, deserialized.MessageID);
         Assert.Equal(expectedOutboundNumber, deserialized.OutboundNumber);
+        Assert.Equal(expectedParentMessageID, deserialized.ParentMessageID);
         Assert.Equal(expectedReason, deserialized.Reason);
         Assert.Equal(expectedReasonCode, deserialized.ReasonCode);
         Assert.Equal(expectedScheduleReason, deserialized.ScheduleReason);
         Assert.Equal(expectedScheduledAt, deserialized.ScheduledAt);
+        Assert.Equal(expectedSentAgentID, deserialized.SentAgentID);
+        Assert.Equal(expectedSentInstanceID, deserialized.SentInstanceID);
         Assert.Equal(expectedTemplateID, deserialized.TemplateID);
         Assert.Equal(expectedTemplateName, deserialized.TemplateName);
         Assert.Equal(expectedUpdatedAt, deserialized.UpdatedAt);
@@ -159,10 +180,13 @@ public class MessageEventPayloadTest : TestBase
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Reason = "reason",
             ReasonCode = "reason_code",
             ScheduleReason = "schedule_reason",
             ScheduledAt = "scheduled_at",
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
             UpdatedAt = "updated_at",
@@ -179,10 +203,13 @@ public class MessageEventPayloadTest : TestBase
             MessageStatus = "message_status",
             AgentID = "agent_id",
             Body = "body",
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Reason = "reason",
             ReasonCode = "reason_code",
             ScheduleReason = "schedule_reason",
             ScheduledAt = "scheduled_at",
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
         };
@@ -207,10 +234,13 @@ public class MessageEventPayloadTest : TestBase
             MessageStatus = "message_status",
             AgentID = "agent_id",
             Body = "body",
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Reason = "reason",
             ReasonCode = "reason_code",
             ScheduleReason = "schedule_reason",
             ScheduledAt = "scheduled_at",
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
         };
@@ -226,10 +256,13 @@ public class MessageEventPayloadTest : TestBase
             MessageStatus = "message_status",
             AgentID = "agent_id",
             Body = "body",
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Reason = "reason",
             ReasonCode = "reason_code",
             ScheduleReason = "schedule_reason",
             ScheduledAt = "scheduled_at",
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
 
@@ -261,10 +294,13 @@ public class MessageEventPayloadTest : TestBase
             MessageStatus = "message_status",
             AgentID = "agent_id",
             Body = "body",
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Reason = "reason",
             ReasonCode = "reason_code",
             ScheduleReason = "schedule_reason",
             ScheduledAt = "scheduled_at",
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
 
@@ -296,6 +332,8 @@ public class MessageEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.Body);
         Assert.False(model.RawData.ContainsKey("body"));
+        Assert.Null(model.ParentMessageID);
+        Assert.False(model.RawData.ContainsKey("parent_message_id"));
         Assert.Null(model.Reason);
         Assert.False(model.RawData.ContainsKey("reason"));
         Assert.Null(model.ReasonCode);
@@ -304,6 +342,10 @@ public class MessageEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("schedule_reason"));
         Assert.Null(model.ScheduledAt);
         Assert.False(model.RawData.ContainsKey("scheduled_at"));
+        Assert.Null(model.SentAgentID);
+        Assert.False(model.RawData.ContainsKey("sent_agent_id"));
+        Assert.Null(model.SentInstanceID);
+        Assert.False(model.RawData.ContainsKey("sent_instance_id"));
         Assert.Null(model.TemplateID);
         Assert.False(model.RawData.ContainsKey("template_id"));
         Assert.Null(model.TemplateName);
@@ -340,10 +382,13 @@ public class MessageEventPayloadTest : TestBase
 
             AgentID = null,
             Body = null,
+            ParentMessageID = null,
             Reason = null,
             ReasonCode = null,
             ScheduleReason = null,
             ScheduledAt = null,
+            SentAgentID = null,
+            SentInstanceID = null,
             TemplateID = null,
             TemplateName = null,
         };
@@ -352,6 +397,8 @@ public class MessageEventPayloadTest : TestBase
         Assert.True(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.Body);
         Assert.True(model.RawData.ContainsKey("body"));
+        Assert.Null(model.ParentMessageID);
+        Assert.True(model.RawData.ContainsKey("parent_message_id"));
         Assert.Null(model.Reason);
         Assert.True(model.RawData.ContainsKey("reason"));
         Assert.Null(model.ReasonCode);
@@ -360,6 +407,10 @@ public class MessageEventPayloadTest : TestBase
         Assert.True(model.RawData.ContainsKey("schedule_reason"));
         Assert.Null(model.ScheduledAt);
         Assert.True(model.RawData.ContainsKey("scheduled_at"));
+        Assert.Null(model.SentAgentID);
+        Assert.True(model.RawData.ContainsKey("sent_agent_id"));
+        Assert.Null(model.SentInstanceID);
+        Assert.True(model.RawData.ContainsKey("sent_instance_id"));
         Assert.Null(model.TemplateID);
         Assert.True(model.RawData.ContainsKey("template_id"));
         Assert.Null(model.TemplateName);
@@ -380,10 +431,13 @@ public class MessageEventPayloadTest : TestBase
 
             AgentID = null,
             Body = null,
+            ParentMessageID = null,
             Reason = null,
             ReasonCode = null,
             ScheduleReason = null,
             ScheduledAt = null,
+            SentAgentID = null,
+            SentInstanceID = null,
             TemplateID = null,
             TemplateName = null,
         };
@@ -403,10 +457,13 @@ public class MessageEventPayloadTest : TestBase
             Channel = "channel",
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Reason = "reason",
             ReasonCode = "reason_code",
             ScheduleReason = "schedule_reason",
             ScheduledAt = "scheduled_at",
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             TemplateID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             TemplateName = "template_name",
             UpdatedAt = "updated_at",

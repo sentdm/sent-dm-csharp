@@ -60,6 +60,7 @@ public class CancelledMessageTest : TestBase
                 ],
                 Subject = "subject",
             },
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Phone = "phone",
             PhoneInternational = "phone_international",
             Price = 0,
@@ -120,6 +121,7 @@ public class CancelledMessageTest : TestBase
             ],
             Subject = "subject",
         };
+        string expectedParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedPhone = "phone";
         string expectedPhoneInternational = "phone_international";
         double expectedPrice = 0;
@@ -146,6 +148,7 @@ public class CancelledMessageTest : TestBase
             Assert.Equal(expectedEvents[i], model.Events[i]);
         }
         Assert.Equal(expectedMessageBody, model.MessageBody);
+        Assert.Equal(expectedParentMessageID, model.ParentMessageID);
         Assert.Equal(expectedPhone, model.Phone);
         Assert.Equal(expectedPhoneInternational, model.PhoneInternational);
         Assert.Equal(expectedPrice, model.Price);
@@ -211,6 +214,7 @@ public class CancelledMessageTest : TestBase
                 ],
                 Subject = "subject",
             },
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Phone = "phone",
             PhoneInternational = "phone_international",
             Price = 0,
@@ -285,6 +289,7 @@ public class CancelledMessageTest : TestBase
                 ],
                 Subject = "subject",
             },
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Phone = "phone",
             PhoneInternational = "phone_international",
             Price = 0,
@@ -352,6 +357,7 @@ public class CancelledMessageTest : TestBase
             ],
             Subject = "subject",
         };
+        string expectedParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedPhone = "phone";
         string expectedPhoneInternational = "phone_international";
         double expectedPrice = 0;
@@ -378,6 +384,7 @@ public class CancelledMessageTest : TestBase
             Assert.Equal(expectedEvents[i], deserialized.Events[i]);
         }
         Assert.Equal(expectedMessageBody, deserialized.MessageBody);
+        Assert.Equal(expectedParentMessageID, deserialized.ParentMessageID);
         Assert.Equal(expectedPhone, deserialized.Phone);
         Assert.Equal(expectedPhoneInternational, deserialized.PhoneInternational);
         Assert.Equal(expectedPrice, deserialized.Price);
@@ -443,6 +450,7 @@ public class CancelledMessageTest : TestBase
                 ],
                 Subject = "subject",
             },
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Phone = "phone",
             PhoneInternational = "phone_international",
             Price = 0,
@@ -476,6 +484,7 @@ public class CancelledMessageTest : TestBase
                     ReasonCode = "reason_code",
                 },
             ],
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Price = 0,
             Reason = "reason",
             ReasonCode = "reason_code",
@@ -526,6 +535,7 @@ public class CancelledMessageTest : TestBase
                     ReasonCode = "reason_code",
                 },
             ],
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Price = 0,
             Reason = "reason",
             ReasonCode = "reason_code",
@@ -555,6 +565,7 @@ public class CancelledMessageTest : TestBase
                     ReasonCode = "reason_code",
                 },
             ],
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Price = 0,
             Reason = "reason",
             ReasonCode = "reason_code",
@@ -618,6 +629,7 @@ public class CancelledMessageTest : TestBase
                     ReasonCode = "reason_code",
                 },
             ],
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Price = 0,
             Reason = "reason",
             ReasonCode = "reason_code",
@@ -693,6 +705,8 @@ public class CancelledMessageTest : TestBase
         Assert.False(model.RawData.ContainsKey("active_contact_price"));
         Assert.Null(model.Events);
         Assert.False(model.RawData.ContainsKey("events"));
+        Assert.Null(model.ParentMessageID);
+        Assert.False(model.RawData.ContainsKey("parent_message_id"));
         Assert.Null(model.Price);
         Assert.False(model.RawData.ContainsKey("price"));
         Assert.Null(model.Reason);
@@ -805,6 +819,7 @@ public class CancelledMessageTest : TestBase
 
             ActiveContactPrice = null,
             Events = null,
+            ParentMessageID = null,
             Price = null,
             Reason = null,
             ReasonCode = null,
@@ -818,6 +833,8 @@ public class CancelledMessageTest : TestBase
         Assert.True(model.RawData.ContainsKey("active_contact_price"));
         Assert.Null(model.Events);
         Assert.True(model.RawData.ContainsKey("events"));
+        Assert.Null(model.ParentMessageID);
+        Assert.True(model.RawData.ContainsKey("parent_message_id"));
         Assert.Null(model.Price);
         Assert.True(model.RawData.ContainsKey("price"));
         Assert.Null(model.Reason);
@@ -881,6 +898,7 @@ public class CancelledMessageTest : TestBase
 
             ActiveContactPrice = null,
             Events = null,
+            ParentMessageID = null,
             Price = null,
             Reason = null,
             ReasonCode = null,
@@ -945,6 +963,7 @@ public class CancelledMessageTest : TestBase
                 ],
                 Subject = "subject",
             },
+            ParentMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Phone = "phone",
             PhoneInternational = "phone_international",
             Price = 0,

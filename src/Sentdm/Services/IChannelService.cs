@@ -53,6 +53,8 @@ public interface IChannelService
     /// </summary>
     IChannelService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
+    Channels::IMarketService Markets { get; }
+
     Channels::ISmsService Sms { get; }
 
     Channels::IRcService Rcs { get; }
@@ -100,6 +102,8 @@ public interface IChannelServiceWithRawResponse
     /// <para>The original service is not modified.</para>
     /// </summary>
     IChannelServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    Channels::IMarketServiceWithRawResponse Markets { get; }
 
     Channels::ISmsServiceWithRawResponse Sms { get; }
 

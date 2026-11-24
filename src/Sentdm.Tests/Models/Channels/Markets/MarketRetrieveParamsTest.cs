@@ -1,28 +1,42 @@
 using System;
 using System.Net.Http;
-using Sentdm.Models.Channels.Sms.TenDlc;
+using Sentdm.Models.Channels.Markets;
 
-namespace Sentdm.Tests.Models.Channels.Sms.TenDlc;
+namespace Sentdm.Tests.Models.Channels.Markets;
 
-public class TenDlcRetrieveComplianceParamsTest : TestBase
+public class MarketRetrieveParamsTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new TenDlcRetrieveComplianceParams
+        var parameters = new MarketRetrieveParams
         {
+            Channel = "sms",
+            Country = "US",
+            Type = "ten_dlc",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        string expectedChannel = "sms";
+        string expectedCountry = "US";
+        string expectedType = "ten_dlc";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
+        Assert.Equal(expectedChannel, parameters.Channel);
+        Assert.Equal(expectedCountry, parameters.Country);
+        Assert.Equal(expectedType, parameters.Type);
         Assert.Equal(expectedXProfileID, parameters.XProfileID);
     }
 
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new TenDlcRetrieveComplianceParams { };
+        var parameters = new MarketRetrieveParams
+        {
+            Channel = "sms",
+            Country = "US",
+            Type = "ten_dlc",
+        };
 
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
@@ -31,8 +45,12 @@ public class TenDlcRetrieveComplianceParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
-        var parameters = new TenDlcRetrieveComplianceParams
+        var parameters = new MarketRetrieveParams
         {
+            Channel = "sms",
+            Country = "US",
+            Type = "ten_dlc",
+
             // Null should be interpreted as omitted for these properties
             XProfileID = null,
         };
@@ -44,15 +62,17 @@ public class TenDlcRetrieveComplianceParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        TenDlcRetrieveComplianceParams parameters = new();
+        MarketRetrieveParams parameters = new()
+        {
+            Channel = "sms",
+            Country = "US",
+            Type = "ten_dlc",
+        };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
         Assert.True(
-            TestBase.UrisEqual(
-                new Uri("https://api.sent.dm/v3/channels/sms/compliances/US/TEN_DLC"),
-                url
-            )
+            TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/channels/sms/US/ten_dlc"), url)
         );
     }
 
@@ -60,8 +80,11 @@ public class TenDlcRetrieveComplianceParamsTest : TestBase
     public void AddHeadersToRequest_Works()
     {
         HttpRequestMessage requestMessage = new();
-        TenDlcRetrieveComplianceParams parameters = new()
+        MarketRetrieveParams parameters = new()
         {
+            Channel = "sms",
+            Country = "US",
+            Type = "ten_dlc",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
@@ -76,12 +99,15 @@ public class TenDlcRetrieveComplianceParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new TenDlcRetrieveComplianceParams
+        var parameters = new MarketRetrieveParams
         {
+            Channel = "sms",
+            Country = "US",
+            Type = "ten_dlc",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        TenDlcRetrieveComplianceParams copied = new(parameters);
+        MarketRetrieveParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
     }

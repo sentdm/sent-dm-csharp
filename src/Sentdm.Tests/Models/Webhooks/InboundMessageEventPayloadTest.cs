@@ -29,6 +29,8 @@ public class InboundMessageEventPayloadTest : TestBase
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
             Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             Text = "text",
             UpdatedAt = "updated_at",
         };
@@ -50,6 +52,8 @@ public class InboundMessageEventPayloadTest : TestBase
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedOutboundNumber = "outbound_number";
         JsonElement expectedReferral = JsonSerializer.Deserialize<JsonElement>("{}");
+        string expectedSentAgentID = "sent_agent_id";
+        string expectedSentInstanceID = "sent_instance_id";
         string expectedText = "text";
         string expectedUpdatedAt = "updated_at";
 
@@ -67,6 +71,8 @@ public class InboundMessageEventPayloadTest : TestBase
         Assert.Equal(expectedOutboundNumber, model.OutboundNumber);
         Assert.NotNull(model.Referral);
         Assert.True(JsonElement.DeepEquals(expectedReferral, model.Referral.Value));
+        Assert.Equal(expectedSentAgentID, model.SentAgentID);
+        Assert.Equal(expectedSentInstanceID, model.SentInstanceID);
         Assert.Equal(expectedText, model.Text);
         Assert.Equal(expectedUpdatedAt, model.UpdatedAt);
     }
@@ -93,6 +99,8 @@ public class InboundMessageEventPayloadTest : TestBase
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
             Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             Text = "text",
             UpdatedAt = "updated_at",
         };
@@ -128,6 +136,8 @@ public class InboundMessageEventPayloadTest : TestBase
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
             Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             Text = "text",
             UpdatedAt = "updated_at",
         };
@@ -156,6 +166,8 @@ public class InboundMessageEventPayloadTest : TestBase
         string expectedMessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedOutboundNumber = "outbound_number";
         JsonElement expectedReferral = JsonSerializer.Deserialize<JsonElement>("{}");
+        string expectedSentAgentID = "sent_agent_id";
+        string expectedSentInstanceID = "sent_instance_id";
         string expectedText = "text";
         string expectedUpdatedAt = "updated_at";
 
@@ -173,6 +185,8 @@ public class InboundMessageEventPayloadTest : TestBase
         Assert.Equal(expectedOutboundNumber, deserialized.OutboundNumber);
         Assert.NotNull(deserialized.Referral);
         Assert.True(JsonElement.DeepEquals(expectedReferral, deserialized.Referral.Value));
+        Assert.Equal(expectedSentAgentID, deserialized.SentAgentID);
+        Assert.Equal(expectedSentInstanceID, deserialized.SentInstanceID);
         Assert.Equal(expectedText, deserialized.Text);
         Assert.Equal(expectedUpdatedAt, deserialized.UpdatedAt);
     }
@@ -199,6 +213,8 @@ public class InboundMessageEventPayloadTest : TestBase
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
             Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             Text = "text",
             UpdatedAt = "updated_at",
         };
@@ -224,6 +240,8 @@ public class InboundMessageEventPayloadTest : TestBase
                 },
             ],
             Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             Text = "text",
         };
 
@@ -257,6 +275,8 @@ public class InboundMessageEventPayloadTest : TestBase
                 },
             ],
             Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             Text = "text",
         };
 
@@ -281,6 +301,8 @@ public class InboundMessageEventPayloadTest : TestBase
                 },
             ],
             Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             Text = "text",
 
             // Null should be interpreted as omitted for these properties
@@ -321,6 +343,8 @@ public class InboundMessageEventPayloadTest : TestBase
                 },
             ],
             Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             Text = "text",
 
             // Null should be interpreted as omitted for these properties
@@ -352,6 +376,10 @@ public class InboundMessageEventPayloadTest : TestBase
         Assert.False(model.RawData.ContainsKey("media"));
         Assert.Null(model.Referral);
         Assert.False(model.RawData.ContainsKey("referral"));
+        Assert.Null(model.SentAgentID);
+        Assert.False(model.RawData.ContainsKey("sent_agent_id"));
+        Assert.Null(model.SentInstanceID);
+        Assert.False(model.RawData.ContainsKey("sent_instance_id"));
         Assert.Null(model.Text);
         Assert.False(model.RawData.ContainsKey("text"));
     }
@@ -388,6 +416,8 @@ public class InboundMessageEventPayloadTest : TestBase
 
             Media = null,
             Referral = null,
+            SentAgentID = null,
+            SentInstanceID = null,
             Text = null,
         };
 
@@ -395,6 +425,10 @@ public class InboundMessageEventPayloadTest : TestBase
         Assert.True(model.RawData.ContainsKey("media"));
         Assert.Null(model.Referral);
         Assert.True(model.RawData.ContainsKey("referral"));
+        Assert.Null(model.SentAgentID);
+        Assert.True(model.RawData.ContainsKey("sent_agent_id"));
+        Assert.Null(model.SentInstanceID);
+        Assert.True(model.RawData.ContainsKey("sent_instance_id"));
         Assert.Null(model.Text);
         Assert.True(model.RawData.ContainsKey("text"));
     }
@@ -414,6 +448,8 @@ public class InboundMessageEventPayloadTest : TestBase
 
             Media = null,
             Referral = null,
+            SentAgentID = null,
+            SentInstanceID = null,
             Text = null,
         };
 
@@ -442,6 +478,8 @@ public class InboundMessageEventPayloadTest : TestBase
             MessageID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             OutboundNumber = "outbound_number",
             Referral = JsonSerializer.Deserialize<JsonElement>("{}"),
+            SentAgentID = "sent_agent_id",
+            SentInstanceID = "sent_instance_id",
             Text = "text",
             UpdatedAt = "updated_at",
         };

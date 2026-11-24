@@ -4,8 +4,9 @@ using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Channels;
 using Sentdm.Models.Channels.Rcs;
+using Sentdm.Models.Channels.Sms;
 using Sentdm.Models.SenderProfiles;
-using Sms = Sentdm.Models.Channels.Sms;
+using Markets = Sentdm.Models.Channels.Markets;
 using Whatsapp = Sentdm.Models.Channels.Whatsapp;
 
 namespace Sentdm.Tests.Models.SenderProfiles;
@@ -116,7 +117,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -278,7 +279,7 @@ public class SenderProfileTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -306,7 +307,7 @@ public class SenderProfileTest : TestBase
                 WabaID = "waba_id",
             },
         };
-        Sms::SuppliedCompliance expectedCompliance = new()
+        SuppliedCompliance expectedCompliance = new()
         {
             Brand = new Dictionary<string, JsonElement>()
             {
@@ -457,7 +458,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -633,7 +634,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -802,7 +803,7 @@ public class SenderProfileTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Sms::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -830,7 +831,7 @@ public class SenderProfileTest : TestBase
                 WabaID = "waba_id",
             },
         };
-        Sms::SuppliedCompliance expectedCompliance = new()
+        SuppliedCompliance expectedCompliance = new()
         {
             Brand = new Dictionary<string, JsonElement>()
             {
@@ -981,7 +982,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1150,7 +1151,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1322,7 +1323,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1489,7 +1490,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1666,7 +1667,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1939,7 +1940,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Sms::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
