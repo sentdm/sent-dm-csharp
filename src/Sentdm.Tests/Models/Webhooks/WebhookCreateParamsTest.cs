@@ -12,6 +12,7 @@ public class WebhookCreateParamsTest : TestBase
     {
         var parameters = new WebhookCreateParams
         {
+            AgentID = null,
             DisplayName = "Order Notifications",
             EndpointUrl = "https://example.com/webhooks/orders",
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()
@@ -60,6 +61,7 @@ public class WebhookCreateParamsTest : TestBase
         string expectedIdempotencyKey = "req_abc123_retry1";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
+        Assert.Null(parameters.AgentID);
         Assert.Equal(expectedDisplayName, parameters.DisplayName);
         Assert.Equal(expectedEndpointUrl, parameters.EndpointUrl);
         Assert.NotNull(parameters.EventFilters);
@@ -95,6 +97,7 @@ public class WebhookCreateParamsTest : TestBase
     {
         var parameters = new WebhookCreateParams
         {
+            AgentID = null,
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()
             {
                 { "message", ["delivered", "failed"] },
@@ -136,6 +139,7 @@ public class WebhookCreateParamsTest : TestBase
     {
         var parameters = new WebhookCreateParams
         {
+            AgentID = null,
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()
             {
                 { "message", ["delivered", "failed"] },
@@ -199,6 +203,8 @@ public class WebhookCreateParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        Assert.Null(parameters.AgentID);
+        Assert.False(parameters.RawBodyData.ContainsKey("agent_id"));
         Assert.Null(parameters.EventFilters);
         Assert.False(parameters.RawBodyData.ContainsKey("event_filters"));
         Assert.Null(parameters.SenderProfile);
@@ -222,11 +228,14 @@ public class WebhookCreateParamsTest : TestBase
             IdempotencyKey = "req_abc123_retry1",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
+            AgentID = null,
             EventFilters = null,
             SenderProfile = null,
             WebhookVersion = null,
         };
 
+        Assert.Null(parameters.AgentID);
+        Assert.True(parameters.RawBodyData.ContainsKey("agent_id"));
         Assert.Null(parameters.EventFilters);
         Assert.True(parameters.RawBodyData.ContainsKey("event_filters"));
         Assert.Null(parameters.SenderProfile);
@@ -269,6 +278,7 @@ public class WebhookCreateParamsTest : TestBase
     {
         var parameters = new WebhookCreateParams
         {
+            AgentID = null,
             DisplayName = "Order Notifications",
             EndpointUrl = "https://example.com/webhooks/orders",
             EventFilters = new Dictionary<string, IReadOnlyList<string>>()

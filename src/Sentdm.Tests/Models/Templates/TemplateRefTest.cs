@@ -15,11 +15,13 @@ public class TemplateRefTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Name = "name",
             Parameters = new Dictionary<string, string>() { { "foo", "string" } },
+            Slug = "slug",
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedName = "name";
         Dictionary<string, string> expectedParameters = new() { { "foo", "string" } };
+        string expectedSlug = "slug";
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedName, model.Name);
@@ -31,6 +33,7 @@ public class TemplateRefTest : TestBase
 
             Assert.Equal(value, model.Parameters[item.Key]);
         }
+        Assert.Equal(expectedSlug, model.Slug);
     }
 
     [Fact]
@@ -41,6 +44,7 @@ public class TemplateRefTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Name = "name",
             Parameters = new Dictionary<string, string>() { { "foo", "string" } },
+            Slug = "slug",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -60,6 +64,7 @@ public class TemplateRefTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Name = "name",
             Parameters = new Dictionary<string, string>() { { "foo", "string" } },
+            Slug = "slug",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -72,6 +77,7 @@ public class TemplateRefTest : TestBase
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedName = "name";
         Dictionary<string, string> expectedParameters = new() { { "foo", "string" } };
+        string expectedSlug = "slug";
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedName, deserialized.Name);
@@ -83,6 +89,7 @@ public class TemplateRefTest : TestBase
 
             Assert.Equal(value, deserialized.Parameters[item.Key]);
         }
+        Assert.Equal(expectedSlug, deserialized.Slug);
     }
 
     [Fact]
@@ -93,6 +100,7 @@ public class TemplateRefTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Name = "name",
             Parameters = new Dictionary<string, string>() { { "foo", "string" } },
+            Slug = "slug",
         };
 
         model.Validate();
@@ -109,6 +117,8 @@ public class TemplateRefTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Parameters);
         Assert.False(model.RawData.ContainsKey("parameters"));
+        Assert.Null(model.Slug);
+        Assert.False(model.RawData.ContainsKey("slug"));
     }
 
     [Fact]
@@ -127,6 +137,7 @@ public class TemplateRefTest : TestBase
             ID = null,
             Name = null,
             Parameters = null,
+            Slug = null,
         };
 
         Assert.Null(model.ID);
@@ -135,6 +146,8 @@ public class TemplateRefTest : TestBase
         Assert.True(model.RawData.ContainsKey("name"));
         Assert.Null(model.Parameters);
         Assert.True(model.RawData.ContainsKey("parameters"));
+        Assert.Null(model.Slug);
+        Assert.True(model.RawData.ContainsKey("slug"));
     }
 
     [Fact]
@@ -145,6 +158,7 @@ public class TemplateRefTest : TestBase
             ID = null,
             Name = null,
             Parameters = null,
+            Slug = null,
         };
 
         model.Validate();
@@ -158,6 +172,7 @@ public class TemplateRefTest : TestBase
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Name = "name",
             Parameters = new Dictionary<string, string>() { { "foo", "string" } },
+            Slug = "slug",
         };
 
         TemplateRef copied = new(model);

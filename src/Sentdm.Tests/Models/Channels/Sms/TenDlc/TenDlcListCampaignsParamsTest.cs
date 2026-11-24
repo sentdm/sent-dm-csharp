@@ -1,34 +1,28 @@
 using System;
 using System.Net.Http;
-using Sentdm.Models.Channels.Sms;
+using Sentdm.Models.Channels.Sms.TenDlc;
 
-namespace Sentdm.Tests.Models.Channels.Sms;
+namespace Sentdm.Tests.Models.Channels.Sms.TenDlc;
 
-public class SmsRetrieveParamsTest : TestBase
+public class TenDlcListCampaignsParamsTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new SmsRetrieveParams
+        var parameters = new TenDlcListCampaignsParams
         {
-            Country = "US",
-            Type = "ten_dlc",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        string expectedCountry = "US";
-        string expectedType = "ten_dlc";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
-        Assert.Equal(expectedCountry, parameters.Country);
-        Assert.Equal(expectedType, parameters.Type);
         Assert.Equal(expectedXProfileID, parameters.XProfileID);
     }
 
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new SmsRetrieveParams { Country = "US", Type = "ten_dlc" };
+        var parameters = new TenDlcListCampaignsParams { };
 
         Assert.Null(parameters.XProfileID);
         Assert.False(parameters.RawHeaderData.ContainsKey("x-profile-id"));
@@ -37,11 +31,8 @@ public class SmsRetrieveParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
-        var parameters = new SmsRetrieveParams
+        var parameters = new TenDlcListCampaignsParams
         {
-            Country = "US",
-            Type = "ten_dlc",
-
             // Null should be interpreted as omitted for these properties
             XProfileID = null,
         };
@@ -53,12 +44,15 @@ public class SmsRetrieveParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        SmsRetrieveParams parameters = new() { Country = "US", Type = "ten_dlc" };
+        TenDlcListCampaignsParams parameters = new();
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
         Assert.True(
-            TestBase.UrisEqual(new Uri("https://api.sent.dm/v3/channels/sms/US/ten_dlc"), url)
+            TestBase.UrisEqual(
+                new Uri("https://api.sent.dm/v3/channels/sms/US/TEN_DLC/campaigns"),
+                url
+            )
         );
     }
 
@@ -66,10 +60,8 @@ public class SmsRetrieveParamsTest : TestBase
     public void AddHeadersToRequest_Works()
     {
         HttpRequestMessage requestMessage = new();
-        SmsRetrieveParams parameters = new()
+        TenDlcListCampaignsParams parameters = new()
         {
-            Country = "US",
-            Type = "ten_dlc",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
@@ -84,14 +76,12 @@ public class SmsRetrieveParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new SmsRetrieveParams
+        var parameters = new TenDlcListCampaignsParams
         {
-            Country = "US",
-            Type = "ten_dlc",
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        SmsRetrieveParams copied = new(parameters);
+        TenDlcListCampaignsParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
     }

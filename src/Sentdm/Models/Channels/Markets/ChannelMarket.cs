@@ -7,18 +7,21 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Sentdm.Core;
 using Sentdm.Exceptions;
+using Sentdm.Models.Channels.Sms;
 
-namespace Sentdm.Models.Channels.Sms;
+namespace Sentdm.Models.Channels.Markets;
 
 /// <summary>
-/// One SMS market the profile sends in — its sender, where that sender stands, and
-/// what the market wants.              A profile may send in several: it is a tenant,
-/// not a market. Each carries its own status, because a profile can be live in one
-/// country and mid-registration in another — and each carries what it still owes,
-/// rather than that being reported in a separate array a caller has to join on.
+/// One market the profile sends in on a channel — its sender, where that sender stands,
+/// and what the market wants. Named for no one channel, as the routes it answers
+/// are not (/v3/channels/{channel}/{country}/{type}); SMS is the channel with markets
+/// today.              A profile may send in several: it is a tenant, not a market.
+/// Each carries its own status, because a profile can be live in one country and
+/// mid-registration in another — and each carries what it still owes, rather than
+/// that being reported in a separate array a caller has to join on.
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<SmsMarket, SmsMarketFromRaw>))]
-public sealed record class SmsMarket : JsonModel
+[JsonConverter(typeof(JsonModelConverter<ChannelMarket, ChannelMarketFromRaw>))]
+public sealed record class ChannelMarket : JsonModel
 {
     /// <summary>
     /// What a market has been given: the identity it registers under, its programme,
@@ -162,39 +165,39 @@ public sealed record class SmsMarket : JsonModel
         this.Status?.Validate();
     }
 
-    public SmsMarket() { }
+    public ChannelMarket() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public SmsMarket(SmsMarket smsMarket)
-        : base(smsMarket) { }
+    public ChannelMarket(ChannelMarket channelMarket)
+        : base(channelMarket) { }
 #pragma warning restore CS8618
 
-    public SmsMarket(IReadOnlyDictionary<string, JsonElement> rawData)
+    public ChannelMarket(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    SmsMarket(FrozenDictionary<string, JsonElement> rawData)
+    ChannelMarket(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="SmsMarketFromRaw.FromRawUnchecked"/>
-    public static SmsMarket FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="ChannelMarketFromRaw.FromRawUnchecked"/>
+    public static ChannelMarket FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class SmsMarketFromRaw : IFromRawJson<SmsMarket>
+class ChannelMarketFromRaw : IFromRawJson<ChannelMarket>
 {
     /// <inheritdoc/>
-    public SmsMarket FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        SmsMarket.FromRawUnchecked(rawData);
+    public ChannelMarket FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        ChannelMarket.FromRawUnchecked(rawData);
 }
 
 /// <summary>

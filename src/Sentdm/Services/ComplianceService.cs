@@ -34,6 +34,7 @@ public sealed class ComplianceService : IComplianceService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<ApiResponseOfComplianceRequirements> RetrieveRequirements(
         ComplianceRetrieveRequirementsParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -65,6 +66,7 @@ public sealed class ComplianceServiceWithRawResponse : IComplianceServiceWithRaw
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<ApiResponseOfComplianceRequirements>> RetrieveRequirements(
         ComplianceRetrieveRequirementsParams? parameters = null,
         CancellationToken cancellationToken = default

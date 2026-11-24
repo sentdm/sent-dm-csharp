@@ -11,6 +11,7 @@ public class WebhookListParamsTest : TestBase
     {
         var parameters = new WebhookListParams
         {
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             IsActive = true,
             Page = 0,
             PageSize = 0,
@@ -18,12 +19,14 @@ public class WebhookListParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        string expectedAgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         bool expectedIsActive = true;
         int expectedPage = 0;
         int expectedPageSize = 0;
         string expectedSearch = "search";
         string expectedXProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
 
+        Assert.Equal(expectedAgentID, parameters.AgentID);
         Assert.Equal(expectedIsActive, parameters.IsActive);
         Assert.Equal(expectedPage, parameters.Page);
         Assert.Equal(expectedPageSize, parameters.PageSize);
@@ -34,7 +37,12 @@ public class WebhookListParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new WebhookListParams { IsActive = true, Search = "search" };
+        var parameters = new WebhookListParams
+        {
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            IsActive = true,
+            Search = "search",
+        };
 
         Assert.Null(parameters.Page);
         Assert.False(parameters.RawQueryData.ContainsKey("page"));
@@ -49,6 +57,7 @@ public class WebhookListParamsTest : TestBase
     {
         var parameters = new WebhookListParams
         {
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             IsActive = true,
             Search = "search",
 
@@ -76,6 +85,8 @@ public class WebhookListParamsTest : TestBase
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
+        Assert.Null(parameters.AgentID);
+        Assert.False(parameters.RawQueryData.ContainsKey("agent_id"));
         Assert.Null(parameters.IsActive);
         Assert.False(parameters.RawQueryData.ContainsKey("is_active"));
         Assert.Null(parameters.Search);
@@ -91,10 +102,13 @@ public class WebhookListParamsTest : TestBase
             PageSize = 0,
             XProfileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 
+            AgentID = null,
             IsActive = null,
             Search = null,
         };
 
+        Assert.Null(parameters.AgentID);
+        Assert.True(parameters.RawQueryData.ContainsKey("agent_id"));
         Assert.Null(parameters.IsActive);
         Assert.True(parameters.RawQueryData.ContainsKey("is_active"));
         Assert.Null(parameters.Search);
@@ -106,6 +120,7 @@ public class WebhookListParamsTest : TestBase
     {
         WebhookListParams parameters = new()
         {
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             IsActive = true,
             Page = 0,
             PageSize = 0,
@@ -117,7 +132,7 @@ public class WebhookListParamsTest : TestBase
         Assert.True(
             TestBase.UrisEqual(
                 new Uri(
-                    "https://api.sent.dm/v3/webhooks?is_active=true&page=0&page_size=0&search=search"
+                    "https://api.sent.dm/v3/webhooks?agent_id=182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e&is_active=true&page=0&page_size=0&search=search"
                 ),
                 url
             )
@@ -146,6 +161,7 @@ public class WebhookListParamsTest : TestBase
     {
         var parameters = new WebhookListParams
         {
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             IsActive = true,
             Page = 0,
             PageSize = 0,

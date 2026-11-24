@@ -9,21 +9,25 @@ using Sentdm.Core;
 namespace Sentdm.Models.Channels.Sms.TenDlc;
 
 /// <summary>
-/// Reads what the US `TEN_DLC` market you hold has registered: the `brand` it files
-/// under, **every campaign** under `campaigns` (each with its `id` and `inherit`),
-/// and its `documents`. It is the `compliance` object `GET /v3/channels/sms/US/TEN_DLC`
-/// returns, without the sender and numbers.
+/// Every campaign your US `TEN_DLC` market registers, oldest first, each with its
+/// `id`, where it stands and `inherit` (`true` for your organization's) beside its
+/// fields — the list `GET /v3/channels/sms/US/TEN_DLC` reports under `compliance.campaigns`.
+/// Add one with `POST` on this path, and change one of your own with `PATCH /v3/channels/sms/US/TEN_DLC/campaigns/{id}`.
 ///
-/// <para>Use a campaign's `id` to change it with `PATCH /v3/channels/sms/compliances/US/TEN_DLC/campaigns/{campaignId}`,
-/// or to add numbers to it with `POST /v3/channels/sms/numbers/US/TEN_DLC`.</para>
+/// <para>Each campaign has a `status` of its own, so a market on several says which
+/// is approved: `ACTIVE` once the carriers have elected it, `PENDING_REVIEW` until
+/// then, `ACTION_NEEDED` when it came back for correction, `DECLINED` when the carriers
+/// refused it, `INACTIVE` once it has ended. Why the market is held up is the market's
+/// own `reason`, which names the campaign concerned. `status` is read-only and ignored
+/// when the entry is sent back.</para>
 ///
-/// <para>Send `x-profile-id` with an organization key to read one of your profiles' markets.</para>
+/// <para>A customer without a US `TEN_DLC` market is `404`.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
-public record class TenDlcRetrieveComplianceParams : ParamsBase
+public record class TenDlcListCampaignsParams : ParamsBase
 {
     public string? XProfileID
     {
@@ -43,17 +47,15 @@ public record class TenDlcRetrieveComplianceParams : ParamsBase
         }
     }
 
-    public TenDlcRetrieveComplianceParams() { }
+    public TenDlcListCampaignsParams() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TenDlcRetrieveComplianceParams(
-        TenDlcRetrieveComplianceParams tenDlcRetrieveComplianceParams
-    )
-        : base(tenDlcRetrieveComplianceParams) { }
+    public TenDlcListCampaignsParams(TenDlcListCampaignsParams tenDlcListCampaignsParams)
+        : base(tenDlcListCampaignsParams) { }
 #pragma warning restore CS8618
 
-    public TenDlcRetrieveComplianceParams(
+    public TenDlcListCampaignsParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -64,7 +66,7 @@ public record class TenDlcRetrieveComplianceParams : ParamsBase
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TenDlcRetrieveComplianceParams(
+    TenDlcListCampaignsParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -75,7 +77,7 @@ public record class TenDlcRetrieveComplianceParams : ParamsBase
 #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
-    public static TenDlcRetrieveComplianceParams FromRawUnchecked(
+    public static TenDlcListCampaignsParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -102,7 +104,7 @@ public record class TenDlcRetrieveComplianceParams : ParamsBase
             ModelBase.ToStringSerializerOptions
         );
 
-    public virtual bool Equals(TenDlcRetrieveComplianceParams? other)
+    public virtual bool Equals(TenDlcListCampaignsParams? other)
     {
         if (other == null)
         {
@@ -115,7 +117,7 @@ public record class TenDlcRetrieveComplianceParams : ParamsBase
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/') + "/v3/channels/sms/compliances/US/TEN_DLC"
+            options.BaseUrl.ToString().TrimEnd('/') + "/v3/channels/sms/US/TEN_DLC/campaigns"
         )
         {
             Query = this.QueryString(options),
