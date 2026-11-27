@@ -5,7 +5,7 @@ using Sentdm.Core;
 using Sentdm.Models.Channels.Rcs;
 using Sentdm.Models.SenderProfiles;
 using Sentdm.Models.Webhooks;
-using Channels = Sentdm.Models.Channels;
+using Markets = Sentdm.Models.Channels.Markets;
 using Whatsapp = Sentdm.Models.Channels.Whatsapp;
 
 namespace Sentdm.Tests.Models.SenderProfiles;
@@ -33,6 +33,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -131,7 +133,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Channels::Status.Provisioning,
+                                    Status = Markets::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -227,6 +229,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                 new()
                 {
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentError = "agent_error",
+                    AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ApiKey = "api_key",
                     Billing = new() { Inherit = true },
                     Channels = new()
@@ -325,7 +329,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                 ],
                                 Reason = "reason",
                                 ReasonCode = "reason_code",
-                                Status = Channels::Status.Provisioning,
+                                Status = Markets::Status.Provisioning,
                             },
                         ],
                         Voice =
@@ -431,6 +435,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -529,7 +535,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Channels::Status.Provisioning,
+                                    Status = Markets::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -639,6 +645,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -737,7 +745,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Channels::Status.Provisioning,
+                                    Status = Markets::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -840,6 +848,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                 new()
                 {
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentError = "agent_error",
+                    AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ApiKey = "api_key",
                     Billing = new() { Inherit = true },
                     Channels = new()
@@ -938,7 +948,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                 ],
                                 Reason = "reason",
                                 ReasonCode = "reason_code",
-                                Status = Channels::Status.Provisioning,
+                                Status = Markets::Status.Provisioning,
                             },
                         ],
                         Voice =
@@ -1044,6 +1054,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -1142,7 +1154,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Channels::Status.Provisioning,
+                                    Status = Markets::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -1246,6 +1258,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -1344,7 +1358,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Channels::Status.Provisioning,
+                                    Status = Markets::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -1444,6 +1458,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -1542,7 +1558,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Channels::Status.Provisioning,
+                                    Status = Markets::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -1639,6 +1655,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -1737,7 +1755,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Channels::Status.Provisioning,
+                                    Status = Markets::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -1841,6 +1859,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -1939,7 +1959,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Channels::Status.Provisioning,
+                                    Status = Markets::Status.Provisioning,
                                 },
                             ],
                             Voice =
@@ -2120,6 +2140,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -2218,7 +2240,7 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                                     ],
                                     Reason = "reason",
                                     ReasonCode = "reason_code",
-                                    Status = Channels::Status.Provisioning,
+                                    Status = Markets::Status.Provisioning,
                                 },
                             ],
                             Voice =

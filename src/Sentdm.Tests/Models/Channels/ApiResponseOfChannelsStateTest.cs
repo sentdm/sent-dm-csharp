@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
 using Sentdm.Models.Channels;
+using Sentdm.Models.Channels.Rcs;
 using Sentdm.Models.Webhooks;
-using Rcs = Sentdm.Models.Channels.Rcs;
+using Markets = Sentdm.Models.Channels.Markets;
 using Whatsapp = Sentdm.Models.Channels.Whatsapp;
 
 namespace Sentdm.Tests.Models.Channels;
@@ -62,7 +63,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                     ReasonCode = "reason_code",
                     SampleMessages = ["string"],
                     StartMessage = "start_message",
-                    Status = Rcs::Status.Provisioning,
+                    Status = Status.Provisioning,
                     StopMessage = "stop_message",
                     TermsAndConditionsUrl = "terms_and_conditions_url",
                     WebsiteUrl = "website_url",
@@ -112,7 +113,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -202,7 +203,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                 ReasonCode = "reason_code",
                 SampleMessages = ["string"],
                 StartMessage = "start_message",
-                Status = Rcs::Status.Provisioning,
+                Status = Status.Provisioning,
                 StopMessage = "stop_message",
                 TermsAndConditionsUrl = "terms_and_conditions_url",
                 WebsiteUrl = "website_url",
@@ -252,7 +253,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -352,7 +353,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                     ReasonCode = "reason_code",
                     SampleMessages = ["string"],
                     StartMessage = "start_message",
-                    Status = Rcs::Status.Provisioning,
+                    Status = Status.Provisioning,
                     StopMessage = "stop_message",
                     TermsAndConditionsUrl = "terms_and_conditions_url",
                     WebsiteUrl = "website_url",
@@ -402,7 +403,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -506,7 +507,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                     ReasonCode = "reason_code",
                     SampleMessages = ["string"],
                     StartMessage = "start_message",
-                    Status = Rcs::Status.Provisioning,
+                    Status = Status.Provisioning,
                     StopMessage = "stop_message",
                     TermsAndConditionsUrl = "terms_and_conditions_url",
                     WebsiteUrl = "website_url",
@@ -556,7 +557,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -653,7 +654,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                 ReasonCode = "reason_code",
                 SampleMessages = ["string"],
                 StartMessage = "start_message",
-                Status = Rcs::Status.Provisioning,
+                Status = Status.Provisioning,
                 StopMessage = "stop_message",
                 TermsAndConditionsUrl = "terms_and_conditions_url",
                 WebsiteUrl = "website_url",
@@ -703,7 +704,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -803,7 +804,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                     ReasonCode = "reason_code",
                     SampleMessages = ["string"],
                     StartMessage = "start_message",
-                    Status = Rcs::Status.Provisioning,
+                    Status = Status.Provisioning,
                     StopMessage = "stop_message",
                     TermsAndConditionsUrl = "terms_and_conditions_url",
                     WebsiteUrl = "website_url",
@@ -853,7 +854,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -951,7 +952,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                     ReasonCode = "reason_code",
                     SampleMessages = ["string"],
                     StartMessage = "start_message",
-                    Status = Rcs::Status.Provisioning,
+                    Status = Status.Provisioning,
                     StopMessage = "stop_message",
                     TermsAndConditionsUrl = "terms_and_conditions_url",
                     WebsiteUrl = "website_url",
@@ -1001,7 +1002,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1095,7 +1096,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                     ReasonCode = "reason_code",
                     SampleMessages = ["string"],
                     StartMessage = "start_message",
-                    Status = Rcs::Status.Provisioning,
+                    Status = Status.Provisioning,
                     StopMessage = "stop_message",
                     TermsAndConditionsUrl = "terms_and_conditions_url",
                     WebsiteUrl = "website_url",
@@ -1145,7 +1146,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1236,7 +1237,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                     ReasonCode = "reason_code",
                     SampleMessages = ["string"],
                     StartMessage = "start_message",
-                    Status = Rcs::Status.Provisioning,
+                    Status = Status.Provisioning,
                     StopMessage = "stop_message",
                     TermsAndConditionsUrl = "terms_and_conditions_url",
                     WebsiteUrl = "website_url",
@@ -1286,7 +1287,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1384,7 +1385,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                     ReasonCode = "reason_code",
                     SampleMessages = ["string"],
                     StartMessage = "start_message",
-                    Status = Rcs::Status.Provisioning,
+                    Status = Status.Provisioning,
                     StopMessage = "stop_message",
                     TermsAndConditionsUrl = "terms_and_conditions_url",
                     WebsiteUrl = "website_url",
@@ -1434,7 +1435,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1609,7 +1610,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                     ReasonCode = "reason_code",
                     SampleMessages = ["string"],
                     StartMessage = "start_message",
-                    Status = Rcs::Status.Provisioning,
+                    Status = Status.Provisioning,
                     StopMessage = "stop_message",
                     TermsAndConditionsUrl = "terms_and_conditions_url",
                     WebsiteUrl = "website_url",
@@ -1659,7 +1660,7 @@ public class ApiResponseOfChannelsStateTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =

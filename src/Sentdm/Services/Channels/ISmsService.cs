@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
+using Sentdm.Models.Channels.Markets;
 using Sentdm.Models.Channels.Sms;
 using Sentdm.Services.Channels.Sms;
 
@@ -160,7 +161,7 @@ public interface ISmsService
     /// <para>Send `x-profile-id` with an organization key to add a market to one of
     /// your profiles.</para>
     /// </summary>
-    Task<SmsCreateResponse> Create(
+    Task<ApiResponseOfChannelMarket> Create(
         SmsCreateParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -185,7 +186,7 @@ public interface ISmsServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /v3/channels/sms</c>, but is otherwise the
     /// same as <see cref="ISmsService.Create(SmsCreateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<SmsCreateResponse>> Create(
+    Task<HttpResponse<ApiResponseOfChannelMarket>> Create(
         SmsCreateParams parameters,
         CancellationToken cancellationToken = default
     );

@@ -41,6 +41,35 @@ public sealed record class SenderProfile : JsonModel
     }
 
     /// <summary>
+    /// Why no agent was made from agent_template_id, when the profile was created
+    /// and the agent could not be: the profile stands, and the agent can be made
+    /// with POST /v3/agents and template_id.
+    /// </summary>
+    public string? AgentError
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("agent_error");
+        }
+        init { this._rawData.Set("agent_error", value); }
+    }
+
+    /// <summary>
+    /// The draft agent made from agent_template_id when the profile was created.
+    /// Only on that answer, and left out when none was asked for.
+    /// </summary>
+    public string? AgentID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("agent_id");
+        }
+        init { this._rawData.Set("agent_id", value); }
+    }
+
+    /// <summary>
     /// The API key for this profile.              Returned by create and by nothing
     /// else. It is shown once; a read that repeated it would turn every profile
     /// list into a credential dump and put the key into any log or cache that keeps
@@ -201,6 +230,8 @@ public sealed record class SenderProfile : JsonModel
     public override void Validate()
     {
         _ = this.ID;
+        _ = this.AgentError;
+        _ = this.AgentID;
         _ = this.ApiKey;
         this.Billing?.Validate();
         this.Channels?.Validate();

@@ -279,9 +279,7 @@ public record class EventData : ModelBase
                 contactEvent: (x) => x.Event,
                 linkEvent: (x) => x.Event,
                 callEvent: (x) => x.Event,
-                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload: (
-                    x
-                ) => x.Event
+                agentEvent: (x) => x.Event
             );
         }
     }
@@ -298,9 +296,7 @@ public record class EventData : ModelBase
                 contactEvent: (x) => x.Field,
                 linkEvent: (x) => x.Field,
                 callEvent: (x) => x.Field,
-                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload: (
-                    x
-                ) => x.Field
+                agentEvent: (x) => x.Field
             );
         }
     }
@@ -317,9 +313,7 @@ public record class EventData : ModelBase
                 contactEvent: (x) => x.RequestID,
                 linkEvent: (x) => x.RequestID,
                 callEvent: (x) => x.RequestID,
-                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload: (
-                    x
-                ) => x.RequestID
+                agentEvent: (x) => x.RequestID
             );
         }
     }
@@ -336,9 +330,7 @@ public record class EventData : ModelBase
                 contactEvent: (x) => x.Timestamp,
                 linkEvent: (x) => x.Timestamp,
                 callEvent: (x) => x.Timestamp,
-                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload: (
-                    x
-                ) => x.Timestamp
+                agentEvent: (x) => x.Timestamp
             );
         }
     }
@@ -385,10 +377,7 @@ public record class EventData : ModelBase
         this._element = element;
     }
 
-    public EventData(
-        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload value,
-        JsonElement? element = null
-    )
+    public EventData(AgentEvent value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
@@ -548,27 +537,22 @@ public record class EventData : ModelBase
 
     /// <summary>
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
-    /// type <see cref="SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload"/>.
+    /// type <see cref="AgentEvent"/>.
     ///
     /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
-    /// if (instance.TryPickSentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload(out var value)) {
-    ///     // `value` is of type `SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload`
+    /// if (instance.TryPickAgentEvent(out var value)) {
+    ///     // `value` is of type `AgentEvent`
     ///     Console.WriteLine(value);
     /// }
     /// </code>
     /// </example>
     /// </summary>
-    public bool TryPickSentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload(
-        [NotNullWhen(true)]
-            out SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload? value
-    )
+    public bool TryPickAgentEvent([NotNullWhen(true)] out AgentEvent? value)
     {
-        value =
-            this.Value
-            as SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload;
+        value = this.Value as AgentEvent;
         return value != null;
     }
 
@@ -593,7 +577,7 @@ public record class EventData : ModelBase
     ///     (ContactEvent value) =&gt; {...},
     ///     (LinkEvent value) =&gt; {...},
     ///     (CallEvent value) =&gt; {...},
-    ///     (SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload value) =&gt; {...}
+    ///     (AgentEvent value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -606,7 +590,7 @@ public record class EventData : ModelBase
         Action<ContactEvent> contactEvent,
         Action<LinkEvent> linkEvent,
         Action<CallEvent> callEvent,
-        Action<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload> sentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload
+        Action<AgentEvent> agentEvent
     )
     {
         switch (this.Value)
@@ -632,10 +616,8 @@ public record class EventData : ModelBase
             case CallEvent value:
                 callEvent(value);
                 break;
-            case SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload value:
-                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload(
-                    value
-                );
+            case AgentEvent value:
+                agentEvent(value);
                 break;
             default:
                 throw new SentInvalidDataException("Data did not match any variant of EventData");
@@ -664,7 +646,7 @@ public record class EventData : ModelBase
     ///     (ContactEvent value) =&gt; {...},
     ///     (LinkEvent value) =&gt; {...},
     ///     (CallEvent value) =&gt; {...},
-    ///     (SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload value) =&gt; {...}
+    ///     (AgentEvent value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -677,10 +659,7 @@ public record class EventData : ModelBase
         Func<ContactEvent, T> contactEvent,
         Func<LinkEvent, T> linkEvent,
         Func<CallEvent, T> callEvent,
-        Func<
-            SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload,
-            T
-        > sentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload
+        Func<AgentEvent, T> agentEvent
     )
     {
         return this.Value switch
@@ -692,10 +671,7 @@ public record class EventData : ModelBase
             ContactEvent value => contactEvent(value),
             LinkEvent value => linkEvent(value),
             CallEvent value => callEvent(value),
-            SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload value =>
-                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload(
-                    value
-                ),
+            AgentEvent value => agentEvent(value),
             _ => throw new SentInvalidDataException("Data did not match any variant of EventData"),
         };
     }
@@ -714,9 +690,7 @@ public record class EventData : ModelBase
 
     public static implicit operator EventData(CallEvent value) => new(value);
 
-    public static implicit operator EventData(
-        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload value
-    ) => new(value);
+    public static implicit operator EventData(AgentEvent value) => new(value);
 
     /// <summary>
     /// Validates that the instance was constructed with a known variant and that this variant is valid
@@ -742,8 +716,7 @@ public record class EventData : ModelBase
             (contactEvent) => contactEvent.Validate(),
             (linkEvent) => linkEvent.Validate(),
             (callEvent) => callEvent.Validate(),
-            (sentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload) =>
-                sentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload.Validate()
+            (agentEvent) => agentEvent.Validate()
         );
     }
 
@@ -774,7 +747,7 @@ public record class EventData : ModelBase
             ContactEvent _ => 4,
             LinkEvent _ => 5,
             CallEvent _ => 6,
-            SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload _ => 7,
+            AgentEvent _ => 7,
             _ => -1,
         };
     }
@@ -889,11 +862,7 @@ sealed class EventDataConverter : JsonConverter<EventData>
 
         try
         {
-            var deserialized =
-                JsonSerializer.Deserialize<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload>(
-                    element,
-                    options
-                );
+            var deserialized = JsonSerializer.Deserialize<AgentEvent>(element, options);
             if (deserialized != null)
             {
                 deserialized.Validate();
@@ -916,411 +885,4 @@ sealed class EventDataConverter : JsonConverter<EventData>
     {
         JsonSerializer.Serialize(writer, value.Json, options);
     }
-}
-
-/// <summary>
-/// The envelope Sent POSTs to a subscribed webhook endpoint. Every event shares
-/// this shape and varies only in Payload.
-/// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload,
-        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayloadFromRaw
-    >)
-)]
-public sealed record class SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload
-    : JsonModel
-{
-    /// <summary>
-    /// The specific event within the family, for example message.delivered, message.received
-    /// or contact.opt_out. Absent on events that have no subtype, so treat it as optional.
-    /// </summary>
-    public string? Event
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("event");
-        }
-        init { this._rawData.Set("event", value); }
-    }
-
-    /// <summary>
-    /// The event family, for example message, templates or contact. Route on this
-    /// first, then on event for the specific change.
-    /// </summary>
-    public string? Field
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("field");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("field", value);
-        }
-    }
-
-    /// <summary>
-    /// Body of an agent.* webhook (Sent Agents). The event is the agent service's
-    /// own record, forwarded without renaming: EventId is its id, so a subscriber
-    /// can dedupe a redelivery.
-    /// </summary>
-    public Payload? Payload
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<Payload>("payload");
-        }
-        init { this._rawData.Set("payload", value); }
-    }
-
-    /// <summary>
-    /// The event-specific body.
-    /// </summary>
-    public string? RequestID
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("request_id");
-        }
-        init { this._rawData.Set("request_id", value); }
-    }
-
-    /// <summary>
-    /// When Sent emitted the event, in UTC (yyyy-MM-ddTHH:mm:ssZ). This is the emission
-    /// time, not the time the underlying change happened. Use the timestamp inside
-    /// the payload for the latter.
-    /// </summary>
-    public string? Timestamp
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("timestamp");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("timestamp", value);
-        }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.Event;
-        _ = this.Field;
-        this.Payload?.Validate();
-        _ = this.RequestID;
-        _ = this.Timestamp;
-    }
-
-    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload(
-        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload sentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload
-    )
-        : base(sentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload) { }
-#pragma warning restore CS8618
-
-    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload(
-        FrozenDictionary<string, JsonElement> rawData
-    )
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayloadFromRaw.FromRawUnchecked"/>
-    public static SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayloadFromRaw
-    : IFromRawJson<SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload>
-{
-    /// <inheritdoc/>
-    public SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) =>
-        SentDmServicesCommonServicesWebhooksContractsWebhookEventOfAgentWebhookPayload.FromRawUnchecked(
-            rawData
-        );
-}
-
-/// <summary>
-/// Body of an agent.* webhook (Sent Agents). The event is the agent service's own
-/// record, forwarded without renaming: EventId is its id, so a subscriber can dedupe
-/// a redelivery.
-/// </summary>
-[JsonConverter(typeof(JsonModelConverter<Payload, PayloadFromRaw>))]
-public sealed record class Payload : JsonModel
-{
-    /// <summary>
-    /// The agent service's event id. The same event is never delivered under two ids.
-    /// </summary>
-    public required string EventID
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("event_id");
-        }
-        init { this._rawData.Set("event_id", value); }
-    }
-
-    /// <summary>
-    /// When the agent service recorded it, UTC, to the millisecond.
-    /// </summary>
-    public required string OccurredAt
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("occurred_at");
-        }
-        init { this._rawData.Set("occurred_at", value); }
-    }
-
-    /// <summary>
-    /// The sender profile the agent runs on.
-    /// </summary>
-    public string? AccountID
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("account_id");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("account_id", value);
-        }
-    }
-
-    /// <summary>
-    /// Who caused it: system, the agent service's customer, or an approver.
-    /// </summary>
-    public string? Actor
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("actor");
-        }
-        init { this._rawData.Set("actor", value); }
-    }
-
-    /// <summary>
-    /// The agent.
-    /// </summary>
-    public string? AgentID
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("agent_id");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("agent_id", value);
-        }
-    }
-
-    /// <summary>
-    /// The agent's name, as it is listed. Absent for an agent services no longer holds.
-    /// </summary>
-    public string? AgentName
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("agent_name");
-        }
-        init { this._rawData.Set("agent_name", value); }
-    }
-
-    /// <summary>
-    /// The version of the agent the event is of: the one its conversation runs,
-    /// or the active one for an event of the agent itself. Absent when the agent
-    /// service does not say it.
-    /// </summary>
-    public int? AgentVersion
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<int>("agent_version");
-        }
-        init { this._rawData.Set("agent_version", value); }
-    }
-
-    /// <summary>
-    /// The contact of that conversation; absent on agent-level events.
-    /// </summary>
-    public string? ContactID
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("contact_id");
-        }
-        init { this._rawData.Set("contact_id", value); }
-    }
-
-    /// <summary>
-    /// The contact's phone number, in E.164, so a receiver knows who the event is
-    /// about without asking for the contact. Read from the account's contacts as
-    /// the webhook is built: the agent service's own record names a contact by id
-    /// only. Absent on agent-level events, and for a contact the account no longer holds.
-    /// </summary>
-    public string? ContactPhoneNumber
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("contact_phone_number");
-        }
-        init { this._rawData.Set("contact_phone_number", value); }
-    }
-
-    /// <summary>
-    /// The event's own fields (outcome, reason, ...), exactly as the agent service
-    /// recorded them.
-    /// </summary>
-    public JsonElement? Data
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<JsonElement>("data");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawData.Set("data", value);
-        }
-    }
-
-    /// <summary>
-    /// The conversation (agent × contact) the event belongs to; absent on agent-level events.
-    /// </summary>
-    public string? InstanceID
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("instance_id");
-        }
-        init { this._rawData.Set("instance_id", value); }
-    }
-
-    /// <summary>
-    /// Where the event stands among the agent's events: a number that grows with
-    /// each, so two events of the same second are put in order by it. Not a count:
-    /// there are gaps between an agent's own. Absent from an agent service that does
-    /// not say it.
-    /// </summary>
-    public long? Sequence
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("sequence");
-        }
-        init { this._rawData.Set("sequence", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.EventID;
-        _ = this.OccurredAt;
-        _ = this.AccountID;
-        _ = this.Actor;
-        _ = this.AgentID;
-        _ = this.AgentName;
-        _ = this.AgentVersion;
-        _ = this.ContactID;
-        _ = this.ContactPhoneNumber;
-        _ = this.Data;
-        _ = this.InstanceID;
-        _ = this.Sequence;
-    }
-
-    public Payload() { }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    public Payload(Payload payload)
-        : base(payload) { }
-#pragma warning restore CS8618
-
-    public Payload(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    Payload(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="PayloadFromRaw.FromRawUnchecked"/>
-    public static Payload FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class PayloadFromRaw : IFromRawJson<Payload>
-{
-    /// <inheritdoc/>
-    public Payload FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Payload.FromRawUnchecked(rawData);
 }

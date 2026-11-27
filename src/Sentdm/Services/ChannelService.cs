@@ -32,10 +32,17 @@ public sealed class ChannelService : IChannelService
         _client = client;
 
         _withRawResponse = new(() => new ChannelServiceWithRawResponse(client.WithRawResponse));
+        _markets = new(() => new Channels::MarketService(client));
         _sms = new(() => new Channels::SmsService(client));
         _rcs = new(() => new Channels::RcService(client));
         _whatsapp = new(() => new Channels::WhatsappService(client));
         _voice = new(() => new Channels::VoiceService(client));
+    }
+
+    readonly Lazy<Channels::IMarketService> _markets;
+    public Channels::IMarketService Markets
+    {
+        get { return _markets.Value; }
     }
 
     readonly Lazy<Channels::ISmsService> _sms;
@@ -90,10 +97,17 @@ public sealed class ChannelServiceWithRawResponse : IChannelServiceWithRawRespon
     {
         _client = client;
 
+        _markets = new(() => new Channels::MarketServiceWithRawResponse(client));
         _sms = new(() => new Channels::SmsServiceWithRawResponse(client));
         _rcs = new(() => new Channels::RcServiceWithRawResponse(client));
         _whatsapp = new(() => new Channels::WhatsappServiceWithRawResponse(client));
         _voice = new(() => new Channels::VoiceServiceWithRawResponse(client));
+    }
+
+    readonly Lazy<Channels::IMarketServiceWithRawResponse> _markets;
+    public Channels::IMarketServiceWithRawResponse Markets
+    {
+        get { return _markets.Value; }
     }
 
     readonly Lazy<Channels::ISmsServiceWithRawResponse> _sms;

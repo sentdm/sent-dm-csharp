@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Sentdm.Core;
+using Sentdm.Models.Channels.Markets;
 using Sentdm.Models.Channels.Sms;
 using Sentdm.Services.Channels.Sms;
 
@@ -42,7 +43,7 @@ public sealed class SmsService : ISmsService
     }
 
     /// <inheritdoc/>
-    public async Task<SmsCreateResponse> Create(
+    public async Task<ApiResponseOfChannelMarket> Create(
         SmsCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -79,7 +80,7 @@ public sealed class SmsServiceWithRawResponse : ISmsServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<SmsCreateResponse>> Create(
+    public async Task<HttpResponse<ApiResponseOfChannelMarket>> Create(
         SmsCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -94,14 +95,14 @@ public sealed class SmsServiceWithRawResponse : ISmsServiceWithRawResponse
             response,
             async (token) =>
             {
-                var sms = await response
-                    .Deserialize<SmsCreateResponse>(token)
+                var apiResponseOfChannelMarket = await response
+                    .Deserialize<ApiResponseOfChannelMarket>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    sms.Validate();
+                    apiResponseOfChannelMarket.Validate();
                 }
-                return sms;
+                return apiResponseOfChannelMarket;
             }
         );
     }

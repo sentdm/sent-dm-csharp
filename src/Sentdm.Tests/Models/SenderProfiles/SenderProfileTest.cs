@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Sentdm.Core;
+using Sentdm.Models.Channels;
 using Sentdm.Models.Channels.Rcs;
+using Sentdm.Models.Channels.Sms;
 using Sentdm.Models.SenderProfiles;
-using Channels = Sentdm.Models.Channels;
-using Sms = Sentdm.Models.Channels.Sms;
+using Markets = Sentdm.Models.Channels.Markets;
 using Whatsapp = Sentdm.Models.Channels.Whatsapp;
 
 namespace Sentdm.Tests.Models.SenderProfiles;
@@ -18,6 +19,8 @@ public class SenderProfileTest : TestBase
         var model = new SenderProfile
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentError = "agent_error",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ApiKey = "api_key",
             Billing = new() { Inherit = true },
             Channels = new()
@@ -116,7 +119,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Channels::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -180,9 +183,11 @@ public class SenderProfileTest : TestBase
         };
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedAgentError = "agent_error";
+        string expectedAgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedApiKey = "api_key";
         SenderProfileBilling expectedBilling = new() { Inherit = true };
-        Channels::ChannelsState expectedChannels = new()
+        ChannelsState expectedChannels = new()
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Mms =
@@ -278,7 +283,7 @@ public class SenderProfileTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Channels::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -306,7 +311,7 @@ public class SenderProfileTest : TestBase
                 WabaID = "waba_id",
             },
         };
-        Sms::SuppliedCompliance expectedCompliance = new()
+        SuppliedCompliance expectedCompliance = new()
         {
             Brand = new Dictionary<string, JsonElement>()
             {
@@ -341,6 +346,8 @@ public class SenderProfileTest : TestBase
         string expectedShortName = "short_name";
 
         Assert.Equal(expectedID, model.ID);
+        Assert.Equal(expectedAgentError, model.AgentError);
+        Assert.Equal(expectedAgentID, model.AgentID);
         Assert.Equal(expectedApiKey, model.ApiKey);
         Assert.Equal(expectedBilling, model.Billing);
         Assert.Equal(expectedChannels, model.Channels);
@@ -359,6 +366,8 @@ public class SenderProfileTest : TestBase
         var model = new SenderProfile
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentError = "agent_error",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ApiKey = "api_key",
             Billing = new() { Inherit = true },
             Channels = new()
@@ -457,7 +466,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Channels::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -535,6 +544,8 @@ public class SenderProfileTest : TestBase
         var model = new SenderProfile
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentError = "agent_error",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ApiKey = "api_key",
             Billing = new() { Inherit = true },
             Channels = new()
@@ -633,7 +644,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Channels::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -704,9 +715,11 @@ public class SenderProfileTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        string expectedAgentError = "agent_error";
+        string expectedAgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedApiKey = "api_key";
         SenderProfileBilling expectedBilling = new() { Inherit = true };
-        Channels::ChannelsState expectedChannels = new()
+        ChannelsState expectedChannels = new()
         {
             CustomerID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             Mms =
@@ -802,7 +815,7 @@ public class SenderProfileTest : TestBase
                     ],
                     Reason = "reason",
                     ReasonCode = "reason_code",
-                    Status = Channels::Status.Provisioning,
+                    Status = Markets::Status.Provisioning,
                 },
             ],
             Voice =
@@ -830,7 +843,7 @@ public class SenderProfileTest : TestBase
                 WabaID = "waba_id",
             },
         };
-        Sms::SuppliedCompliance expectedCompliance = new()
+        SuppliedCompliance expectedCompliance = new()
         {
             Brand = new Dictionary<string, JsonElement>()
             {
@@ -865,6 +878,8 @@ public class SenderProfileTest : TestBase
         string expectedShortName = "short_name";
 
         Assert.Equal(expectedID, deserialized.ID);
+        Assert.Equal(expectedAgentError, deserialized.AgentError);
+        Assert.Equal(expectedAgentID, deserialized.AgentID);
         Assert.Equal(expectedApiKey, deserialized.ApiKey);
         Assert.Equal(expectedBilling, deserialized.Billing);
         Assert.Equal(expectedChannels, deserialized.Channels);
@@ -883,6 +898,8 @@ public class SenderProfileTest : TestBase
         var model = new SenderProfile
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentError = "agent_error",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ApiKey = "api_key",
             Billing = new() { Inherit = true },
             Channels = new()
@@ -981,7 +998,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Channels::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1052,6 +1069,8 @@ public class SenderProfileTest : TestBase
     {
         var model = new SenderProfile
         {
+            AgentError = "agent_error",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ApiKey = "api_key",
             Billing = new() { Inherit = true },
             Channels = new()
@@ -1150,7 +1169,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Channels::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1224,6 +1243,8 @@ public class SenderProfileTest : TestBase
     {
         var model = new SenderProfile
         {
+            AgentError = "agent_error",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ApiKey = "api_key",
             Billing = new() { Inherit = true },
             Channels = new()
@@ -1322,7 +1343,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Channels::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1391,6 +1412,8 @@ public class SenderProfileTest : TestBase
     {
         var model = new SenderProfile
         {
+            AgentError = "agent_error",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ApiKey = "api_key",
             Billing = new() { Inherit = true },
             Channels = new()
@@ -1489,7 +1512,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Channels::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1568,6 +1591,8 @@ public class SenderProfileTest : TestBase
     {
         var model = new SenderProfile
         {
+            AgentError = "agent_error",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ApiKey = "api_key",
             Billing = new() { Inherit = true },
             Channels = new()
@@ -1666,7 +1691,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Channels::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
@@ -1745,6 +1770,10 @@ public class SenderProfileTest : TestBase
             Name = "name",
         };
 
+        Assert.Null(model.AgentError);
+        Assert.False(model.RawData.ContainsKey("agent_error"));
+        Assert.Null(model.AgentID);
+        Assert.False(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.ApiKey);
         Assert.False(model.RawData.ContainsKey("api_key"));
         Assert.Null(model.Billing);
@@ -1785,6 +1814,8 @@ public class SenderProfileTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Name = "name",
 
+            AgentError = null,
+            AgentID = null,
             ApiKey = null,
             Billing = null,
             Channels = null,
@@ -1795,6 +1826,10 @@ public class SenderProfileTest : TestBase
             ShortName = null,
         };
 
+        Assert.Null(model.AgentError);
+        Assert.True(model.RawData.ContainsKey("agent_error"));
+        Assert.Null(model.AgentID);
+        Assert.True(model.RawData.ContainsKey("agent_id"));
         Assert.Null(model.ApiKey);
         Assert.True(model.RawData.ContainsKey("api_key"));
         Assert.Null(model.Billing);
@@ -1822,6 +1857,8 @@ public class SenderProfileTest : TestBase
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Name = "name",
 
+            AgentError = null,
+            AgentID = null,
             ApiKey = null,
             Billing = null,
             Channels = null,
@@ -1841,6 +1878,8 @@ public class SenderProfileTest : TestBase
         var model = new SenderProfile
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            AgentError = "agent_error",
+            AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ApiKey = "api_key",
             Billing = new() { Inherit = true },
             Channels = new()
@@ -1939,7 +1978,7 @@ public class SenderProfileTest : TestBase
                         ],
                         Reason = "reason",
                         ReasonCode = "reason_code",
-                        Status = Channels::Status.Provisioning,
+                        Status = Markets::Status.Provisioning,
                     },
                 ],
                 Voice =
