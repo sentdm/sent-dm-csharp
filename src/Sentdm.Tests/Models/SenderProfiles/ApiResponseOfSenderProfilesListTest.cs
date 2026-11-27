@@ -33,6 +33,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -227,6 +229,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                 new()
                 {
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentError = "agent_error",
+                    AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ApiKey = "api_key",
                     Billing = new() { Inherit = true },
                     Channels = new()
@@ -431,6 +435,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -639,6 +645,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -840,6 +848,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                 new()
                 {
                     ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    AgentError = "agent_error",
+                    AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     ApiKey = "api_key",
                     Billing = new() { Inherit = true },
                     Channels = new()
@@ -1044,6 +1054,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -1246,6 +1258,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -1444,6 +1458,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -1639,6 +1655,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -1841,6 +1859,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
@@ -2120,6 +2140,8 @@ public class ApiResponseOfSenderProfilesListTest : TestBase
                     new()
                     {
                         ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                        AgentError = "agent_error",
+                        AgentID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                         ApiKey = "api_key",
                         Billing = new() { Inherit = true },
                         Channels = new()
