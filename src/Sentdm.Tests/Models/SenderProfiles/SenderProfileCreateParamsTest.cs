@@ -13,6 +13,7 @@ public class SenderProfileCreateParamsTest : TestBase
     {
         var parameters = new SenderProfileCreateParams
         {
+            AgentTemplateID = null,
             Billing = new() { Inherit = true },
             Channels = new()
             {
@@ -216,6 +217,7 @@ public class SenderProfileCreateParamsTest : TestBase
         string expectedShortName = "Example";
         string expectedIdempotencyKey = "req_abc123_retry1";
 
+        Assert.Null(parameters.AgentTemplateID);
         Assert.Equal(expectedBilling, parameters.Billing);
         Assert.Equal(expectedChannels, parameters.Channels);
         Assert.Equal(expectedCompliance, parameters.Compliance);
@@ -232,6 +234,7 @@ public class SenderProfileCreateParamsTest : TestBase
     {
         var parameters = new SenderProfileCreateParams
         {
+            AgentTemplateID = null,
             Billing = new() { Inherit = true },
             Channels = new()
             {
@@ -303,6 +306,7 @@ public class SenderProfileCreateParamsTest : TestBase
     {
         var parameters = new SenderProfileCreateParams
         {
+            AgentTemplateID = null,
             Billing = new() { Inherit = true },
             Channels = new()
             {
@@ -432,6 +436,8 @@ public class SenderProfileCreateParamsTest : TestBase
             IdempotencyKey = "req_abc123_retry1",
         };
 
+        Assert.Null(parameters.AgentTemplateID);
+        Assert.False(parameters.RawBodyData.ContainsKey("agent_template_id"));
         Assert.Null(parameters.Billing);
         Assert.False(parameters.RawBodyData.ContainsKey("billing"));
         Assert.Null(parameters.Channels);
@@ -497,12 +503,15 @@ public class SenderProfileCreateParamsTest : TestBase
             ShortName = "Example",
             IdempotencyKey = "req_abc123_retry1",
 
+            AgentTemplateID = null,
             Billing = null,
             Channels = null,
             Description = null,
             Notifications = null,
         };
 
+        Assert.Null(parameters.AgentTemplateID);
+        Assert.True(parameters.RawBodyData.ContainsKey("agent_template_id"));
         Assert.Null(parameters.Billing);
         Assert.True(parameters.RawBodyData.ContainsKey("billing"));
         Assert.Null(parameters.Channels);
@@ -539,6 +548,7 @@ public class SenderProfileCreateParamsTest : TestBase
     {
         var parameters = new SenderProfileCreateParams
         {
+            AgentTemplateID = null,
             Billing = new() { Inherit = true },
             Channels = new()
             {
